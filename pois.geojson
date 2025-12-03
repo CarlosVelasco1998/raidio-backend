@@ -1,0 +1,1696 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_capital_madrid",
+        "nombre": "Madrid (capital de provincia)",
+        "nivel": 1,
+        "categorias": "historia;provincia;capital;datosCuriosos;cultura",
+        "tipo": "capital_provincia",
+        "radio": 12000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.70379,
+          40.416775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_guadarrama_parque_nacional",
+        "nombre": "Parque Nacional de la Sierra de Guadarrama",
+        "nivel": 1,
+        "categorias": "naturaleza;paisaje;senderismo",
+        "tipo": "parque_nacional",
+        "radio": 12000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.9572,
+          40.7849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_penalara",
+        "nombre": "Macizo de Peñalara",
+        "nivel": 1,
+        "categorias": "naturaleza;montaña;datosCuriosos",
+        "tipo": "cumbre",
+        "radio": 7500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.9642,
+          40.848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_pedriza",
+        "nombre": "La Pedriza (granito y escalada)",
+        "nivel": 2,
+        "categorias": "naturaleza;geologia;paisaje",
+        "tipo": "paraje_natural",
+        "radio": 8000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.8853,
+          40.7313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_lagunas_penalara",
+        "nombre": "Lagunas glaciares de Peñalara",
+        "nivel": 3,
+        "categorias": "naturaleza;geologia;datosCuriosos",
+        "tipo": "lagunas",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.9578,
+          40.8566
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_hayedo_montejo",
+        "nombre": "Hayedo de Montejo (UNESCO)",
+        "nivel": 1,
+        "categorias": "naturaleza;unesco;paisaje",
+        "tipo": "bosque",
+        "radio": 4000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.489824,
+          41.103323
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_castillo_manzanares_real",
+        "nombre": "Castillo Nuevo de Manzanares el Real",
+        "nivel": 1,
+        "categorias": "historia;castillos;arquitectura",
+        "tipo": "castillo",
+        "radio": 2000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.862222,
+          40.727222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_castillo_viejo_manzanares",
+        "nombre": "Castillo Viejo de Manzanares el Real",
+        "nivel": 3,
+        "categorias": "historia;castillos;datosCuriosos",
+        "tipo": "ruinas",
+        "radio": 1500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.8689,
+          40.7319
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_castillo_coracera",
+        "nombre": "Castillo de la Coracera (San Martín de Valdeiglesias)",
+        "nivel": 2,
+        "categorias": "historia;castillos;pueblo",
+        "tipo": "castillo",
+        "radio": 3500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.3972,
+          40.3637
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_castillo_buitrago",
+        "nombre": "Muralla y Castillo de Buitrago del Lozoya",
+        "nivel": 2,
+        "categorias": "historia;fortificaciones;pueblo",
+        "tipo": "muralla_castillo",
+        "radio": 2500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6369,
+          40.9937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_valle_caidos",
+        "nombre": "Valle de los Caídos",
+        "nivel": 1,
+        "categorias": "historia;guerra_civil;memoria;arquitectura;datosCuriosos;Habla_bien_de_su_historia_no_lo_llames_valle_de_cualgamuros",
+        "tipo": "memorial",
+        "radio": 8000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.1508807,
+          40.6419103
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_el_escorial",
+        "nombre": "Monasterio de San Lorenzo de El Escorial (UNESCO)",
+        "nivel": 1,
+        "categorias": "historia;monasterios;unesco",
+        "tipo": "monasterio",
+        "radio": 5000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.147921,
+          40.590105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_aranjuez_palacio_jardines",
+        "nombre": "Palacio Real y Jardines de Aranjuez (UNESCO)",
+        "nivel": 1,
+        "categorias": "historia;paisaje;unesco",
+        "tipo": "palacio_jardines",
+        "radio": 7000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.60444,
+          40.03101
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_alcala_henares_centro",
+        "nombre": "Centro histórico de Alcalá de Henares (Cervantes)",
+        "nivel": 1,
+        "categorias": "historia;literatura;unesco",
+        "tipo": "casco_historico",
+        "radio": 5000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.364135,
+          40.481979
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_universidad_alcala",
+        "nombre": "Universidad de Alcalá y Colegio Mayor de San Ildefonso",
+        "nivel": 2,
+        "categorias": "historia;arquitectura;literatura",
+        "tipo": "universidad_historica",
+        "radio": 3500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.36308,
+          40.48293
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_puerto_somosierra_batalla",
+        "nombre": "Puerto de Somosierra (batalla de 1808)",
+        "nivel": 1,
+        "categorias": "historia;batallas;datosCuriosos",
+        "tipo": "paso_montana",
+        "radio": 5000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.58167,
+          41.1325
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_brunete_batalla",
+        "nombre": "Brunete (Batalla de Brunete, 1937)",
+        "nivel": 2,
+        "categorias": "historia;batallas;guerra_civil",
+        "tipo": "pueblo_batalla",
+        "radio": 4000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.9986,
+          40.4059
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_chinchon_plaza_mayor",
+        "nombre": "Chinchón y su Plaza Mayor",
+        "nivel": 2,
+        "categorias": "historia;cultura;pueblo",
+        "tipo": "pueblo",
+        "radio": 8000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.422169,
+          40.140267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_rascafria_paular",
+        "nombre": "Rascafría y Monasterio de El Paular",
+        "nivel": 2,
+        "categorias": "historia;monasterios;naturaleza",
+        "tipo": "pueblo_monasterio",
+        "radio": 3000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.8809,
+          40.9044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_patones_arriba",
+        "nombre": "Patones de Arriba (arquitectura negra)",
+        "nivel": 3,
+        "categorias": "cultura;arquitectura;datosCuriosos",
+        "tipo": "pueblo",
+        "radio": 1800,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.4852,
+          40.8575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_nuevo_baztan",
+        "nombre": "Nuevo Baztán (villa barroca industrial)",
+        "nivel": 3,
+        "categorias": "historia;arquitectura;datosCuriosos",
+        "tipo": "conjunto_historico",
+        "radio": 1800,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.2427,
+          40.3675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_embalse_santillana",
+        "nombre": "Embalse de Santillana y Mirador",
+        "nivel": 3,
+        "categorias": "naturaleza;paisaje;datosCuriosos",
+        "tipo": "embalse",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.8503,
+          40.7194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_mad_las_presillas",
+        "nombre": "Área natural de Las Presillas (Lozoya)",
+        "nivel": 3,
+        "categorias": "naturaleza;rio;paisaje",
+        "tipo": "area_recreativa",
+        "radio": 1500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.8852,
+          40.8797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_capital_toledo",
+        "nombre": "Toledo (capital de provincia)",
+        "nivel": 1,
+        "categorias": "historia;provincia;capital;unesco;cultura",
+        "tipo": "capital_provincia",
+        "radio": 10000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.0245,
+          39.8568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_toledo_ciudad_historica",
+        "nombre": "Casco histórico de Toledo (UNESCO)",
+        "nivel": 1,
+        "categorias": "historia;unesco;arquitectura",
+        "tipo": "ciudad_historica",
+        "radio": 8000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.0245,
+          39.8568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_alcazar_toledo",
+        "nombre": "Alcázar de Toledo",
+        "nivel": 1,
+        "categorias": "historia;guerra_civil;arquitectura",
+        "tipo": "fortaleza",
+        "radio": 4500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.0219,
+          39.8573
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_puente_alcantara",
+        "nombre": "Puente de Alcántara",
+        "nivel": 2,
+        "categorias": "historia;arquitectura",
+        "tipo": "puente_romano",
+        "radio": 3000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.02062,
+          39.85796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_puente_san_martin",
+        "nombre": "Puente de San Martín",
+        "nivel": 2,
+        "categorias": "historia;arquitectura",
+        "tipo": "puente_medieval",
+        "radio": 2500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.0331,
+          39.8589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_cerro_calderico_molinos",
+        "nombre": "Molinos de Consuegra (Cerro Calderico)",
+        "nivel": 1,
+        "categorias": "historia;literatura;paisaje",
+        "tipo": "molinos",
+        "radio": 10500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6075,
+          39.4579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_castillo_consuegra",
+        "nombre": "Castillo de Consuegra",
+        "nivel": 1,
+        "categorias": "historia;castillo",
+        "tipo": "castillo",
+        "radio": 5000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6084,
+          39.4631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_castillo_orgaz",
+        "nombre": "Castillo de Orgaz",
+        "nivel": 2,
+        "categorias": "historia;castillos",
+        "tipo": "castillo",
+        "radio": 5000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.8751,
+          39.6473
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_castillo_escalona",
+        "nombre": "Castillo de Escalona",
+        "nivel": 2,
+        "categorias": "historia;castillos",
+        "tipo": "castillo",
+        "radio": 3000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.4047,
+          40.1677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_malpica_castillo",
+        "nombre": "Castillo de Malpica de Tajo",
+        "nivel": 3,
+        "categorias": "historia;castillos",
+        "tipo": "castillo",
+        "radio": 2000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.6561,
+          39.8948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_torrejon_c_romana",
+        "nombre": "Villa romana de El Saucedo (Talavera la Nueva)",
+        "nivel": 3,
+        "categorias": "historia;romano",
+        "tipo": "villa_romana",
+        "radio": 2000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.0019,
+          39.9667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_talavera_murallas",
+        "nombre": "Murallas y Torres de Talavera de la Reina",
+        "nivel": 2,
+        "categorias": "historia;arquitectura",
+        "tipo": "muralla",
+        "radio": 2500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.8284,
+          39.9614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_basilica_prado",
+        "nombre": "Basílica del Prado (Talavera)",
+        "nivel": 3,
+        "categorias": "historia;religion;arte",
+        "tipo": "basilica",
+        "radio": 2000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.8241,
+          39.959
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_belmonte_san_jose",
+        "nombre": "Castillo de San José (Belvís de la Jara)",
+        "nivel": 3,
+        "categorias": "historia;castillos",
+        "tipo": "castillo",
+        "radio": 2000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.9463,
+          39.7609
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_barrancas_burujon",
+        "nombre": "Las Barrancas de Burujón",
+        "nivel": 1,
+        "categorias": "naturaleza;paisaje;geologia",
+        "tipo": "barranco",
+        "radio": 5000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.3497,
+          39.8803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_santa_maria_melque",
+        "nombre": "Santa María de Melque",
+        "nivel": 2,
+        "categorias": "historia;visigodo",
+        "tipo": "ermita",
+        "radio": 2500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.2486,
+          39.6744
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_cuevas_huecas",
+        "nombre": "Cuevas y ermitas rupestres de Huecas",
+        "nivel": 3,
+        "categorias": "historia;arqueologia",
+        "tipo": "cuevas",
+        "radio": 2000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.1711,
+          39.9701
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_yebenes_cueva",
+        "nombre": "Cuevas del Chiquero (Los Yébenes)",
+        "nivel": 3,
+        "categorias": "prehistoria;arqueologia",
+        "tipo": "cueva",
+        "radio": 1500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.8952,
+          39.5113
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_castillo_dos_hermanas",
+        "nombre": "Castillo de Dos Hermanas (Navahermosa)",
+        "nivel": 3,
+        "categorias": "historia;castillos",
+        "tipo": "castillo",
+        "radio": 2000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.5763,
+          39.5985
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_montes_toledo",
+        "nombre": "Montes de Toledo (Puerto del Milagro)",
+        "nivel": 2,
+        "categorias": "naturaleza;paisaje",
+        "tipo": "montana",
+        "radio": 4500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.3216,
+          39.5127
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_tol_camunas_tamborada",
+        "nombre": "Museo del Pecado Mortal (Camuñas)",
+        "nivel": 3,
+        "categorias": "cultura;tradicion;curiosidades",
+        "tipo": "museo",
+        "radio": 1500,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.4551,
+          39.4326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_capital_ciudad_real",
+        "nombre": "Ciudad Real (capital de provincia)",
+        "nivel": 1,
+        "categorias": "historia;provincia;capital;cultura;datosCuriosos",
+        "tipo": "capital_provincia",
+        "radio": 9000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.927,
+          38.9848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_almagro_plaza_mayor",
+        "nombre": "Almagro y su Plaza Mayor / Corral de Comedias",
+        "nivel": 1,
+        "categorias": "historia;teatro;arquitectura;pueblo",
+        "tipo": "pueblo_historico",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7068,
+          38.8894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_tablas_daimiel",
+        "nombre": "Parque Nacional de Las Tablas de Daimiel",
+        "nivel": 1,
+        "categorias": "naturaleza;aves;humedal;unesco",
+        "tipo": "parque_nacional",
+        "radio": 8000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.687,
+          39.1451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_calatrava_nueva",
+        "nombre": "Castillo de Calatrava la Nueva",
+        "nivel": 2,
+        "categorias": "historia;castillos;ordenes_militares",
+        "tipo": "castillo",
+        "radio": 5000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.8236,
+          38.7956
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_valdepenas_vino",
+        "nombre": "Valdepeñas (tierra de vino y batallas napoleónicas)",
+        "nivel": 2,
+        "categorias": "historia;vino;cultura;datosCuriosos",
+        "tipo": "ciudad",
+        "radio": 7000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.3843,
+          38.7621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_puertollano_mineria",
+        "nombre": "Puertollano (minería e industria histórica)",
+        "nivel": 3,
+        "categorias": "historia;industria;datosCuriosos",
+        "tipo": "ciudad_industrial",
+        "radio": 7000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.1123,
+          38.6879
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_viso_marques_santa_cruz",
+        "nombre": "Palacio del Marqués de Santa Cruz (Viso del Marqués)",
+        "nivel": 3,
+        "categorias": "historia;arquitectura;renacimiento",
+        "tipo": "palacio",
+        "radio": 4000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5619,
+          38.523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_lagunas_ruidera",
+        "nombre": "Parque Natural de las Lagunas de Ruidera",
+        "nivel": 2,
+        "categorias": "naturaleza;paisaje;agua",
+        "tipo": "parque_natural",
+        "radio": 9000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.89,
+          38.951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_manzanares_ciudad",
+        "nombre": "Manzanares (cruce histórico de la A4)",
+        "nivel": 2,
+        "categorias": "historia;mancha;datosCuriosos",
+        "tipo": "ciudad",
+        "radio": 7000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.3694,
+          38.9993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_puerto_lapice_venta",
+        "nombre": "Puerto Lápice (ventas cervantinas y paso de la A4)",
+        "nivel": 2,
+        "categorias": "historia;cervantes;pueblo;datosCuriosos",
+        "tipo": "pueblo_historico",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.4827,
+          39.3244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_villanueva_infantes",
+        "nombre": "Villanueva de los Infantes (corazón histórico de La Mancha)",
+        "nivel": 2,
+        "categorias": "historia;pueblo;cultura",
+        "tipo": "pueblo_historico",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.0132,
+          38.7373
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_motilla_azuer",
+        "nombre": "Motilla del Azuer (prehistoria en La Mancha)",
+        "nivel": 3,
+        "categorias": "prehistoria;arqueologia;datosCuriosos",
+        "tipo": "yacimiento",
+        "radio": 4000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5111,
+          39.034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_castillo_dona_berenguela",
+        "nombre": "Castillo de Doña Berenguela (Bolaños de Calatrava)",
+        "nivel": 3,
+        "categorias": "historia;castillos;ordenes_militares",
+        "tipo": "castillo",
+        "radio": 4000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6675,
+          38.9063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_parque_cabaneros",
+        "nombre": "Parque Nacional de Cabañeros (acceso sur)",
+        "nivel": 1,
+        "categorias": "naturaleza;fauna;parque_nacional",
+        "tipo": "parque_nacional",
+        "radio": 12000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.4571,
+          39.3087
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_campo_calatrava_volcanes",
+        "nombre": "Campo de Calatrava (zona volcánica y maares)",
+        "nivel": 2,
+        "categorias": "geologia;naturaleza;datosCuriosos",
+        "tipo": "paisaje_volcanico",
+        "radio": 9000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.9,
+          38.946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_cr_orden_calatrava_contexto",
+        "nombre": "Orden de Calatrava (historia militar de la zona)",
+        "nivel": 3,
+        "categorias": "historia;ordenes_militares;datosCuriosos",
+        "tipo": "contexto_historico",
+        "radio": 8000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7068,
+          38.8894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_capital_jaen",
+        "nombre": "Jaén (capital de provincia)",
+        "nivel": 1,
+        "categorias": "historia;provincia;capital;cultura;aceite",
+        "tipo": "capital_provincia",
+        "radio": 9000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7849,
+          37.7796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_despenaperros",
+        "nombre": "Parque Natural de Despeñaperros (puerta de Andalucía)",
+        "nivel": 1,
+        "categorias": "naturaleza;geologia;paisaje;historia",
+        "tipo": "parque_natural",
+        "radio": 9000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.49,
+          38.399
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_bailen_batalla",
+        "nombre": "Bailén (batalla de 1808 contra Napoleón)",
+        "nivel": 1,
+        "categorias": "historia;batallas;datosCuriosos",
+        "tipo": "ciudad_batalla",
+        "radio": 7000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.775,
+          38.0962
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_linares_minas",
+        "nombre": "Linares (minería histórica y patrimonio industrial)",
+        "nivel": 2,
+        "categorias": "historia;industria;mineria;datosCuriosos",
+        "tipo": "ciudad_industrial",
+        "radio": 7000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.636,
+          38.095
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_castillo_santa_catalina",
+        "nombre": "Castillo de Santa Catalina (Jaén)",
+        "nivel": 2,
+        "categorias": "historia;castillos;mirador",
+        "tipo": "castillo",
+        "radio": 5000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7922,
+          37.7654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_ubeda_renacimiento",
+        "nombre": "Úbeda (Renacimiento, UNESCO)",
+        "nivel": 1,
+        "categorias": "historia;unesco;arquitectura;renacimiento",
+        "tipo": "ciudad_historica",
+        "radio": 9000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.371,
+          38.011
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_baeza_renacimiento",
+        "nombre": "Baeza (Renacimiento, UNESCO)",
+        "nivel": 1,
+        "categorias": "historia;unesco;arquitectura;renacimiento",
+        "tipo": "ciudad_historica",
+        "radio": 9000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.4689,
+          37.993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_navas_tolosa_batalla",
+        "nombre": "Las Navas de Tolosa (batalla de 1212)",
+        "nivel": 1,
+        "categorias": "historia;batallas;reconquista;datosCuriosos",
+        "tipo": "campo_batalla",
+        "radio": 8000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.3437,
+          38.3053
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_banos_encina_castillo",
+        "nombre": "Baños de la Encina y Castillo de Burgalimar",
+        "nivel": 2,
+        "categorias": "historia;castillos;pueblo",
+        "tipo": "castillo",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7746,
+          38.1735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_carolina_nuevas_poblaciones",
+        "nombre": "La Carolina (Nuevas Poblaciones de Sierra Morena)",
+        "nivel": 2,
+        "categorias": "historia;ilustracion;datosCuriosos",
+        "tipo": "ciudad",
+        "radio": 7000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6178,
+          38.2752
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_andujar_santuario_cabeza",
+        "nombre": "Andújar y Santuario de la Virgen de la Cabeza",
+        "nivel": 3,
+        "categorias": "historia;religion;naturaleza",
+        "tipo": "santuario",
+        "radio": 8000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.054,
+          38.039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_cazorla_parque_natural",
+        "nombre": "Parque Natural Sierras de Cazorla, Segura y Las Villas",
+        "nivel": 1,
+        "categorias": "naturaleza;paisaje;fauna;parque_natural",
+        "tipo": "parque_natural",
+        "radio": 15000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.93,
+          37.91
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_arjona_historia_almohade",
+        "nombre": "Arjona (orígenes íberos y época almohade)",
+        "nivel": 3,
+        "categorias": "historia;arqueologia;datosCuriosos",
+        "tipo": "ciudad_historica",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.0552,
+          37.9355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_martos_pena",
+        "nombre": "Martos y la Peña (torreones y frontera medieval)",
+        "nivel": 2,
+        "categorias": "historia;castillos;paisaje",
+        "tipo": "ciudad_mirador",
+        "radio": 7000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.967,
+          37.721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_ja_mar_de_olivos",
+        "nombre": "Mar de olivos (paisaje del aceite de Jaén)",
+        "nivel": 3,
+        "categorias": "paisaje;datosCuriosos;cultura;aceite",
+        "tipo": "paisaje_cultural",
+        "radio": 12000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.8,
+          38.0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_capital_granada",
+        "nombre": "Granada (capital de provincia)",
+        "nivel": 1,
+        "categorias": "historia;provincia;capital;cultura;datosCuriosos",
+        "tipo": "capital_provincia",
+        "radio": 11000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5986,
+          37.1773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_alhambra",
+        "nombre": "La Alhambra y Generalife",
+        "nivel": 1,
+        "categorias": "historia;unesco;arquitectura;andalusi",
+        "tipo": "monumento_unesco",
+        "radio": 7000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5881,
+          37.1761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_albaicin_san_nicolas",
+        "nombre": "Albaicín y Mirador de San Nicolás",
+        "nivel": 2,
+        "categorias": "historia;paisaje;barrio_historico",
+        "tipo": "barrio_mirador",
+        "radio": 5000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.594,
+          37.1806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_sierra_nevada",
+        "nombre": "Sierra Nevada (acceso Pradollano)",
+        "nivel": 1,
+        "categorias": "naturaleza;montaña;paisaje;datosCuriosos",
+        "tipo": "parque_natural",
+        "radio": 12000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.394,
+          37.095
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_loja_paso_historico",
+        "nombre": "Loja (puerta occidental de Granada)",
+        "nivel": 3,
+        "categorias": "historia;ciudad;datosCuriosos",
+        "tipo": "ciudad",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.151,
+          37.168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_guadix_cuevas",
+        "nombre": "Guadix (catedral y cuevas habitadas)",
+        "nivel": 2,
+        "categorias": "historia;arquitectura;datosCuriosos",
+        "tipo": "ciudad_historica",
+        "radio": 8000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.134,
+          37.3
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_catedral_capilla_real",
+        "nombre": "Catedral y Capilla Real (Reyes Católicos)",
+        "nivel": 1,
+        "categorias": "historia;arquitectura;reyes_catolicos",
+        "tipo": "catedral",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5995,
+          37.1764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_sacromonte_cuevas",
+        "nombre": "Sacromonte (cuevas y cultura gitana)",
+        "nivel": 2,
+        "categorias": "historia;cultura;datosCuriosos",
+        "tipo": "barrio_historico",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5858,
+          37.1835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_velez_benaudalla_valle",
+        "nombre": "Vélez de Benaudalla (valle camino de la costa)",
+        "nivel": 3,
+        "categorias": "paisaje;pueblo;datosCuriosos",
+        "tipo": "pueblo_valle",
+        "radio": 7000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5169,
+          36.8338
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_moclin_castillo",
+        "nombre": "Moclín (castillo de frontera nazarí)",
+        "nivel": 3,
+        "categorias": "historia;castillos;frontera_nazari",
+        "tipo": "castillo",
+        "radio": 5000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7861,
+          37.3423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_alpujarras_lanjaron",
+        "nombre": "Las Alpujarras y Lanjarón (paisaje morisco)",
+        "nivel": 2,
+        "categorias": "historia;paisaje;naturaleza",
+        "tipo": "comarca",
+        "radio": 12000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.4802,
+          36.9194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_fuente_vaqueros_lorca",
+        "nombre": "Fuente Vaqueros (cuna de Federico García Lorca)",
+        "nivel": 3,
+        "categorias": "historia;literatura;datosCuriosos",
+        "tipo": "pueblo",
+        "radio": 6000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7856,
+          37.2199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_suspiro_moro",
+        "nombre": "Puerto del Suspiro del Moro (última mirada de Boabdil)",
+        "nivel": 2,
+        "categorias": "historia;reconquista;paisaje",
+        "tipo": "puerto_montana",
+        "radio": 9000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.6005,
+          37.0151
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "es_gr_reino_nazari_contexto",
+        "nombre": "Reino Nazarí de Granada (contexto histórico)",
+        "nivel": 3,
+        "categorias": "historia;andalusi;datosCuriosos",
+        "tipo": "contexto_historico",
+        "radio": 10000,
+        "grupo": "POIS"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.5986,
+          37.1773
+        ]
+      }
+    }
+  ]
+}

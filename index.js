@@ -13,15 +13,91 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ------------------ MIDDLEWARES ------------------
+// ================== CONFIG SPOTIFY ==================
+const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
+
+// Cache sencillo del token de Spotify
+let spotifyTokenCache = {
+  accessToken: null,
+  expiresAt: 0, // timestamp en ms
+};
+
+async function getSpotifyAccessToken() {
+  if (
+    spotifyTokenCache.accessToken &&
+    Date.now() < spotifyTokenCache.expiresAt
+  ) {
+    // Token aún válido
+    return spotifyTokenCache.accessToken;
+  }
+
+  if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET) {
+    throw new Error("Faltan SPOTIFY_CLIENT_ID o SPOTIFY_CLIENT_SECRET en env");
+  }
+
+  const basicAuth = Buffer.from(
+    `${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`
+  ).toString("base64");
+
+  const tokenUrl = "https://accounts.spotify.com/api/token";
+
+  const resp = await axios.post(
+    tokenUrl,
+    "grant_type=client_credentials",
+    {
+      headers: {
+        Authorization: `Basic ${basicAuth}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      timeout: 15000,
+    }
+  );
+
+  const data = resp.data;
+  const accessToken = data.access_token;
+  const expiresIn = data.expires_in; // en segundos (suele ser 3600)
+
+  spotifyTokenCache = {
+    accessToken,
+    // Le restamos 60 segundos de margen
+    expiresAt: Date.now() + (expiresIn - 60) * 1000,
+  };
+
+  console.log("🎧 Nuevo token de Spotify obtenido (caduca en", expiresIn, "s)");
+
+  return accessToken;
+}
+
+// Mapeo simple de géneros de la app → búsqueda Spotify
+function mapGenreToSpotifyQuery(genre) {
+  switch (genre) {
+    case "pop":
+      return "genre:pop";
+    case "rock":
+      return "genre:rock";
+    case "reggaeton":
+      // Spotify no tiene seed "reggaeton" formal, pero la keyword funciona
+      return "reggaeton";
+    case "indie":
+      return "genre:indie";
+    case "clasicos_80":
+      return "year:1980-1989";
+    case "any":
+    default:
+      return "year:1980-2024";
+  }
+}
+
+// ================== MIDDLEWARES ==================
 app.use(cors());
 app.use(express.json({ limit: "2mb" }));
 
-// ------------------ LOG CARGA POIS ------------------
+// ================== LOG CARGA POIS ==================
 console.log("POIS cargados:", POIS.length);
 if (POIS.length > 0) console.log("Primer POI:", POIS[0]);
 
-// ------------------ UTIL: DISTANCIA HAVERSINE ------------------
+// ================== UTIL: DISTANCIA HAVERSINE ==================
 function distanciaMetros(lat1, lon1, lat2, lon2) {
   const R = 6371000;
   const toRad = (v) => (v * Math.PI) / 180;
@@ -39,12 +115,12 @@ function distanciaMetros(lat1, lon1, lat2, lon2) {
   return R * c;
 }
 
-// ------------------ ENDPOINT SALUD ------------------
+// ================== ENDPOINT SALUD ==================
 app.get("/", (req, res) => {
   res.send("Backend RAIDIOAPP funcionando ✔️");
 });
 
-// ------------------ ENDPOINT POIS CERCANOS ------------------
+// ================== ENDPOINT POIS CERCANOS ==================
 // GET /pois-nearby?lat=...&lng=...&maxNivel=3&radius=50000
 app.get("/pois-nearby", (req, res) => {
   try {
@@ -81,7 +157,7 @@ app.get("/pois-nearby", (req, res) => {
   }
 });
 
-// ------------------ ENDPOINT LISTAR VOCES (DEBUG) ------------------
+// ================== ENDPOINT LISTAR VOCES (DEBUG) ==================
 // GET /voices  -> te devuelve las voces reales de TU cuenta
 app.get("/voices", async (req, res) => {
   try {
@@ -100,7 +176,7 @@ app.get("/voices", async (req, res) => {
   }
 });
 
-// ------------------ ENDPOINT TTS ELEVENLABS ------------------
+// ================== ENDPOINT TTS ELEVENLABS ==================
 // POST /tts { "text": "hola...", "voiceId": "OPCIONAL" }
 // Devuelve audio/mpeg
 
@@ -209,7 +285,66 @@ app.post("/tts", async (req, res) => {
   }
 });
 
-// ------------------ START SERVER ------------------
+// ================== ENDPOINT SPOTIFY RANDOM TRACK ==================
+// GET /spotify-random-track?genre=pop
+// Respuesta: { title, artist, preview_url }
+app.get("/spotify-random-track", async (req, res) => {
+  try {
+    const genre = (req.query.genre || "any").toString();
+    const q = mapGenreToSpotifyQuery(genre);
+
+    const accessToken = await getSpotifyAccessToken();
+
+    const searchUrl = "https://api.spotify.com/v1/search";
+
+    const r = await axios.get(searchUrl, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      params: {
+        q,
+        type: "track",
+        market: "ES",
+        limit: 40,
+      },
+      timeout: 15000,
+    });
+
+    const tracks = r.data?.tracks?.items || [];
+
+    // Filtramos solo las que tienen preview_url
+    const conPreview = tracks.filter(
+      (t) => t.preview_url && typeof t.preview_url === "string"
+    );
+
+    if (!conPreview.length) {
+      return res.status(404).json({
+        error: "No se han encontrado canciones con preview para ese género.",
+      });
+    }
+
+    // Elegimos una al azar
+    const elegido =
+      conPreview[Math.floor(Math.random() * conPreview.length)];
+
+    const title = elegido.name;
+    const artist = (elegido.artists || [])
+      .map((a) => a.name)
+      .join(", ");
+    const previewUrl = elegido.preview_url;
+
+    res.json({
+      title,
+      artist,
+      preview_url: previewUrl,
+    });
+  } catch (e) {
+    console.error("❌ ERROR /spotify-random-track:", e.response?.data || e.message);
+    res.status(500).json({ error: "spotify random track failed" });
+  }
+});
+
+// ================== START SERVER ==================
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 RAIDIOAPP backend ON en puerto ${PORT}`);
 });

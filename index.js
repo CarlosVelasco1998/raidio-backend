@@ -310,10 +310,8 @@ function mapGenreToSeedGenres(genre) {
 // Respuesta: { title, artist, preview_url }
 app.get("/spotify-random-track", async (req, res) => {
   try {
-    const genre = (req.query.genre || "any").toString();
+    const genre = (req.query.genre || "any").toString().toLowerCase();
     const accessToken = await getSpotifyAccessToken();
-
-    const seedGenres = mapGenreToSeedGenres(genre);
 
     const spotify = axios.create({
       baseURL: "https://api.spotify.com/v1",
@@ -321,60 +319,88 @@ app.get("/spotify-random-track", async (req, res) => {
       timeout: 15000,
     });
 
-    const paramsES = {
-      seed_genres: seedGenres.slice(0, 3).join(","),
-      limit: 100,
-      market: "ES",
+    // Queries de playlists por género (más fácil encontrar previews)
+    const playlistQueries = {
+      rock: ["rock hits", "rock classics", "classic rock", "rock español"],
+      pop: ["pop hits", "today's top hits", "pop classics", "éxitos pop"],
+      reggaeton: ["reggaeton hits", "baila reggaeton", "latin hits", "perreo"],
+      indie: ["indie hits", "indie pop", "indie classics"],
+      any: ["today's top hits", "top hits", "global top 50", "viral hits"],
     };
 
-    console.log("🎯 Spotify GET /recommendations params:", paramsES);
+    const queries =
+      playlistQueries[genre] || playlistQueries.any;
 
-    // 1) Intento con market ES
-    const r = await spotify.get("/recommendations", { params: paramsES });
+    // 1) Buscar playlists
+    async function searchPlaylists(q) {
+      const r = await spotify.get("/search", {
+        params: {
+          q,
+          type: "playlist",
+          limit: 10,
+          market: "ES",
+        },
+      });
+      return r.data?.playlists?.items || [];
+    }
 
-    const tracks = r.data?.tracks || [];
-    let conPreview = tracks.filter(
-      (t) => t.preview_url && typeof t.preview_url === "string"
-    );
+    // 2) Sacar tracks de una playlist
+    async function getPlaylistTracks(playlistId) {
+      const r = await spotify.get(`/playlists/${playlistId}/tracks`, {
+        params: { limit: 100, market: "ES" },
+      });
+      // items[].track
+      return (r.data?.items || [])
+        .map((it) => it.track)
+        .filter(Boolean);
+    }
 
-    // 2) Si no hay previews en ES, probamos sin market
-    if (!conPreview.length) {
-      const paramsGlobal = {
-        seed_genres: seedGenres.slice(0, 3).join(","),
-        limit: 100,
-      };
-      console.log("🎯 Spotify GET /recommendations params:", paramsGlobal);
-
-      const r2 = await spotify.get("/recommendations", { params: paramsGlobal });
-
-      const tracks2 = r2.data?.tracks || [];
-      conPreview = tracks2.filter(
+    // 3) Elegir random de tracks con preview_url
+    function pickRandomWithPreview(tracks) {
+      const withPreview = tracks.filter(
         (t) => t.preview_url && typeof t.preview_url === "string"
       );
+      if (!withPreview.length) return null;
+      return withPreview[Math.floor(Math.random() * withPreview.length)];
     }
 
-    if (!conPreview.length) {
-      return res.status(404).json({
-        error:
-          "Spotify no ha devuelto previews para este género. Prueba otro género.",
-      });
+    console.log("🎵 Spotify playlist queries:", queries);
+
+    // Intentamos varias queries y varias playlists
+    for (const q of queries) {
+      const playlists = await searchPlaylists(q);
+      console.log(`🎵 Playlists encontradas para "${q}":`, playlists.length);
+
+      // probamos hasta 5 playlists por query
+      for (const pl of playlists.slice(0, 5)) {
+        if (!pl?.id) continue;
+        console.log("🎵 Probando playlist:", pl.name, pl.id);
+
+        const tracks = await getPlaylistTracks(pl.id);
+        const elegido = pickRandomWithPreview(tracks);
+
+        if (elegido) {
+          return res.json({
+            title: elegido.name,
+            artist: (elegido.artists || []).map((a) => a.name).join(", "),
+            preview_url: elegido.preview_url,
+            source_playlist: pl.name,
+          });
+        }
+      }
     }
 
-    const elegido = conPreview[Math.floor(Math.random() * conPreview.length)];
-
-    return res.json({
-      title: elegido.name,
-      artist: (elegido.artists || []).map((a) => a.name).join(", "),
-      preview_url: elegido.preview_url,
+    return res.status(404).json({
+      error:
+        "No he encontrado previews en playlists para ese género. Prueba otro género.",
     });
   } catch (e) {
     console.error("❌ ERROR /spotify-random-track:", {
       status: e.response?.status,
       data: e.response?.data,
       message: e.message,
-      configUrl: e.config?.url,
-      configBaseURL: e.config?.baseURL,
-      configParams: e.config?.params,
+      url: e.config?.url,
+      baseURL: e.config?.baseURL,
     });
 
     return res.status(500).json({
@@ -384,7 +410,6 @@ app.get("/spotify-random-track", async (req, res) => {
     });
   }
 });
-
 
 // ================== START SERVER ==================
 app.listen(PORT, "0.0.0.0", () => {

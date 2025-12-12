@@ -285,131 +285,78 @@ app.post("/tts", async (req, res) => {
   }
 });
 
-// ------------------ UTIL: MAPEO DE GÉNEROS A SEED_GENRES ------------------
-function mapGenreToSeedGenres(genre) {
+
+// ================== ENDPOINT DEEZER RANDOM TRACK ==================
+// GET /deezer-random-track?genre=rock
+// Respuesta: { title, artist, preview_url, deezer_id, link }
+
+function mapGenreToDeezerQuery(genre) {
   switch ((genre || "").toLowerCase()) {
     case "rock":
-      return ["rock"];
+      return 'genre:"Rock"';
     case "pop":
-      return ["pop"];
+      return 'genre:"Pop"';
     case "reggaeton":
-      return ["reggaeton", "latin"];
+      return 'genre:"Reggaeton" OR genre:"Latin"';
     case "indie":
-      return ["indie"];
-    case "80s":
-    case "clasicos":
-      return ["new-wave", "pop"];
+      return 'genre:"Indie" OR genre:"Alternative"';
+    case "rap":
+    case "hiphop":
+    case "hip-hop":
+      return 'genre:"Hip Hop" OR genre:"Rap"';
+    case "electronic":
+    case "electronica":
+      return 'genre:"Electronic" OR genre:"Dance"';
     case "any":
     default:
-      return ["pop", "rock"];
+      // genérico para que siempre salga algo
+      return 'genre:"Pop" OR genre:"Rock" OR genre:"Dance"';
   }
 }
 
-// ================== ENDPOINT SPOTIFY RANDOM TRACK ==================
-// GET /spotify-random-track?genre=pop
-// Respuesta: { title, artist, preview_url }
-app.get("/spotify-random-track", async (req, res) => {
+app.get("/deezer-random-track", async (req, res) => {
   try {
-    const genre = (req.query.genre || "any").toString().toLowerCase();
-    const accessToken = await getSpotifyAccessToken();
+    const genre = (req.query.genre || "any").toString();
+    const q = mapGenreToDeezerQuery(genre);
 
-    const spotify = axios.create({
-      baseURL: "https://api.spotify.com/v1",
-      headers: { Authorization: `Bearer ${accessToken}` },
+    // Deezer search: devuelve tracks con campo preview (mp3 30s)
+    // OJO: limit alto para aumentar probabilidad
+    const url = "https://api.deezer.com/search";
+
+    const r = await axios.get(url, {
+      params: { q, limit: 100 },
       timeout: 15000,
     });
 
-    // Queries de playlists por género (más fácil encontrar previews)
-    const playlistQueries = {
-      rock: ["rock hits", "rock classics", "classic rock", "rock español"],
-      pop: ["pop hits", "today's top hits", "pop classics", "éxitos pop"],
-      reggaeton: ["reggaeton hits", "baila reggaeton", "latin hits", "perreo"],
-      indie: ["indie hits", "indie pop", "indie classics"],
-      any: ["today's top hits", "top hits", "global top 50", "viral hits"],
-    };
+    const data = r.data?.data || [];
+    const conPreview = data.filter(
+      (t) => t?.preview && typeof t.preview === "string" && t.preview.length > 10
+    );
 
-    const queries =
-      playlistQueries[genre] || playlistQueries.any;
-
-    // 1) Buscar playlists
-    async function searchPlaylists(q) {
-      const r = await spotify.get("/search", {
-        params: {
-          q,
-          type: "playlist",
-          limit: 10,
-          market: "ES",
-        },
+    if (!conPreview.length) {
+      return res.status(404).json({
+        error: "No se han encontrado previews en Deezer para ese género.",
       });
-      return r.data?.playlists?.items || [];
     }
 
-    // 2) Sacar tracks de una playlist
-    async function getPlaylistTracks(playlistId) {
-      const r = await spotify.get(`/playlists/${playlistId}/tracks`, {
-        params: { limit: 100, market: "ES" },
-      });
-      // items[].track
-      return (r.data?.items || [])
-        .map((it) => it.track)
-        .filter(Boolean);
-    }
+    const elegido = conPreview[Math.floor(Math.random() * conPreview.length)];
 
-    // 3) Elegir random de tracks con preview_url
-    function pickRandomWithPreview(tracks) {
-      const withPreview = tracks.filter(
-        (t) => t.preview_url && typeof t.preview_url === "string"
-      );
-      if (!withPreview.length) return null;
-      return withPreview[Math.floor(Math.random() * withPreview.length)];
-    }
-
-    console.log("🎵 Spotify playlist queries:", queries);
-
-    // Intentamos varias queries y varias playlists
-    for (const q of queries) {
-      const playlists = await searchPlaylists(q);
-      console.log(`🎵 Playlists encontradas para "${q}":`, playlists.length);
-
-      // probamos hasta 5 playlists por query
-      for (const pl of playlists.slice(0, 5)) {
-        if (!pl?.id) continue;
-        console.log("🎵 Probando playlist:", pl.name, pl.id);
-
-        const tracks = await getPlaylistTracks(pl.id);
-        const elegido = pickRandomWithPreview(tracks);
-
-        if (elegido) {
-          return res.json({
-            title: elegido.name,
-            artist: (elegido.artists || []).map((a) => a.name).join(", "),
-            preview_url: elegido.preview_url,
-            source_playlist: pl.name,
-          });
-        }
-      }
-    }
-
-    return res.status(404).json({
-      error:
-        "No he encontrado previews en playlists para ese género. Prueba otro género.",
+    return res.json({
+      title: elegido.title,
+      artist: elegido.artist?.name || "Unknown",
+      preview_url: elegido.preview,
+      deezer_id: elegido.id,
+      link: elegido.link,
     });
   } catch (e) {
-    console.error("❌ ERROR /spotify-random-track:", {
-      status: e.response?.status,
-      data: e.response?.data,
-      message: e.message,
-      url: e.config?.url,
-      baseURL: e.config?.baseURL,
-    });
-
+    console.error("❌ ERROR /deezer-random-track:", e.response?.data || e.message);
     return res.status(500).json({
-      error: "spotify random track failed",
-      status: e.response?.status,
+      error: "deezer random track failed",
       body: e.response?.data || e.message,
     });
   }
 });
+
 
 // ================== START SERVER ==================
 app.listen(PORT, "0.0.0.0", () => {

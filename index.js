@@ -314,18 +314,23 @@ app.get("/spotify-random-track", async (req, res) => {
     const accessToken = await getSpotifyAccessToken();
 
     const seedGenres = mapGenreToSeedGenres(genre);
-    const recoUrl = "https://api.spotify.com/v1/recommendations";
 
-    // 1) Intento con market ES
-    const r = await axios.get(recoUrl, {
+    const spotify = axios.create({
+      baseURL: "https://api.spotify.com/v1",
       headers: { Authorization: `Bearer ${accessToken}` },
-      params: {
-        seed_genres: seedGenres.slice(0, 3).join(","),
-        limit: 100,
-        market: "ES",
-      },
       timeout: 15000,
     });
+
+    const paramsES = {
+      seed_genres: seedGenres.slice(0, 3).join(","),
+      limit: 100,
+      market: "ES",
+    };
+
+    console.log("🎯 Spotify GET /recommendations params:", paramsES);
+
+    // 1) Intento con market ES
+    const r = await spotify.get("/recommendations", { params: paramsES });
 
     const tracks = r.data?.tracks || [];
     let conPreview = tracks.filter(
@@ -334,15 +339,13 @@ app.get("/spotify-random-track", async (req, res) => {
 
     // 2) Si no hay previews en ES, probamos sin market
     if (!conPreview.length) {
-      console.log("🎧 Reco sin previews en ES, probando sin market...");
-      const r2 = await axios.get(recoUrl, {
-        headers: { Authorization: `Bearer ${accessToken}` },
-        params: {
-          seed_genres: seedGenres.slice(0, 3).join(","),
-          limit: 100,
-        },
-        timeout: 15000,
-      });
+      const paramsGlobal = {
+        seed_genres: seedGenres.slice(0, 3).join(","),
+        limit: 100,
+      };
+      console.log("🎯 Spotify GET /recommendations params:", paramsGlobal);
+
+      const r2 = await spotify.get("/recommendations", { params: paramsGlobal });
 
       const tracks2 = r2.data?.tracks || [];
       conPreview = tracks2.filter(
@@ -359,7 +362,7 @@ app.get("/spotify-random-track", async (req, res) => {
 
     const elegido = conPreview[Math.floor(Math.random() * conPreview.length)];
 
-    res.json({
+    return res.json({
       title: elegido.name,
       artist: (elegido.artists || []).map((a) => a.name).join(", "),
       preview_url: elegido.preview_url,
@@ -369,7 +372,9 @@ app.get("/spotify-random-track", async (req, res) => {
       status: e.response?.status,
       data: e.response?.data,
       message: e.message,
-      url: e.config?.url,
+      configUrl: e.config?.url,
+      configBaseURL: e.config?.baseURL,
+      configParams: e.config?.params,
     });
 
     return res.status(500).json({
@@ -379,7 +384,6 @@ app.get("/spotify-random-track", async (req, res) => {
     });
   }
 });
-
 
 
 // ================== START SERVER ==================

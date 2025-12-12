@@ -288,71 +288,62 @@ app.post("/tts", async (req, res) => {
 // ================== ENDPOINT SPOTIFY RANDOM TRACK ==================
 // GET /spotify-random-track?genre=pop
 // Respuesta: { title, artist, preview_url }
+
 app.get("/spotify-random-track", async (req, res) => {
   try {
     const genre = (req.query.genre || "any").toString();
     const accessToken = await getSpotifyAccessToken();
-    const searchUrl = "https://api.spotify.com/v1/search";
 
-    // Función auxiliar para buscar y filtrar con preview
-    async function buscarConPreview(q, market = "ES", limit = 40) {
-      const r = await axios.get(searchUrl, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+    const seedGenres = mapGenreToSeedGenres(genre);
+
+    const recoUrl = "https://api.spotify.com/v1/recommendations";
+
+    // Pedimos más para aumentar probabilidad de previews
+    const r = await axios.get(recoUrl, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      params: {
+        seed_genres: seedGenres.slice(0, 3).join(","), // max 5, usamos 3
+        limit: 100,
+        market: "ES",
+      },
+      timeout: 15000,
+    });
+
+    const tracks = r.data?.tracks || [];
+
+    // Filtramos solo con preview_url
+    let conPreview = tracks.filter(
+      (t) => t.preview_url && typeof t.preview_url === "string"
+    );
+
+    // Si en ES no hay, probamos sin market
+    if (!conPreview.length) {
+      console.log("🎧 Reco sin previews en ES, probando sin market...");
+      const r2 = await axios.get(recoUrl, {
+        headers: { Authorization: `Bearer ${accessToken}` },
         params: {
-          q,
-          type: "track",
-          market,
-          limit,
+          seed_genres: seedGenres.slice(0, 3).join(","),
+          limit: 100,
         },
         timeout: 15000,
       });
 
-      const tracks = r.data?.tracks?.items || [];
-      return tracks.filter(
+      const tracks2 = r2.data?.tracks || [];
+      conPreview = tracks2.filter(
         (t) => t.preview_url && typeof t.preview_url === "string"
       );
-    }
-
-    // 1) Intento principal: mapeo de género → query Spotify
-    const qPrincipal = mapGenreToSpotifyQuery(genre);
-    let conPreview = await buscarConPreview(qPrincipal, "ES", 40);
-
-    // 2) Si no hay resultados con preview, probamos con el género "crudo" como keyword
-    if (!conPreview.length && genre !== "any") {
-      console.log(
-        `🎧 Sin previews con query mapeada (${qPrincipal}), probando con género crudo: ${genre}`
-      );
-      conPreview = await buscarConPreview(genre, "ES", 40);
-    }
-
-    // 3) Si sigue sin haber, probamos una búsqueda genérica de todo un rango de años
-    if (!conPreview.length) {
-      console.log(
-        "🎧 Sin previews todavía, probando query genérica year:1980-2024"
-      );
-      conPreview = await buscarConPreview("year:1980-2024", "ES", 40);
-    }
-
-    // 4) Último recurso: mismo query pero sin limitar a ES
-    if (!conPreview.length) {
-      console.log(
-        "🎧 Sin previews en ES, probando sin mercado específico (global)"
-      );
-      conPreview = await buscarConPreview("year:1980-2024", undefined, 40);
     }
 
     if (!conPreview.length) {
       return res.status(404).json({
         error:
-          "No se han encontrado canciones con preview. Prueba con otro género o más tarde.",
+          "Spotify no ha devuelto previews para este género. Prueba otro género.",
       });
     }
 
-    // Elegimos una al azar
-    const elegido =
-      conPreview[Math.floor(Math.random() * conPreview.length)];
+    const elegido = conPreview[Math.floor(Math.random() * conPreview.length)];
 
     const title = elegido.name;
     const artist = (elegido.artists || []).map((a) => a.name).join(", ");

@@ -289,6 +289,27 @@ app.post("/tts", async (req, res) => {
 // GET /spotify-random-track?genre=pop
 // Respuesta: { title, artist, preview_url }
 
+// ------------------ UTIL: MAPEO DE GÉNEROS A SEED_GENRES ------------------
+function mapGenreToSeedGenres(genre) {
+  switch ((genre || "").toLowerCase()) {
+    case "rock":
+      return ["rock"];
+    case "pop":
+      return ["pop"];
+    case "reggaeton":
+      return ["reggaeton", "latin"];
+    case "indie":
+      return ["indie"];
+    case "80s":
+    case "clasicos":
+      return ["new-wave", "pop"];
+    case "any":
+    default:
+      return ["pop", "rock"];
+  }
+}
+
+
 app.get("/spotify-random-track", async (req, res) => {
   try {
     const genre = (req.query.genre || "any").toString();

@@ -291,35 +291,62 @@ app.post("/tts", async (req, res) => {
 app.get("/spotify-random-track", async (req, res) => {
   try {
     const genre = (req.query.genre || "any").toString();
-    const q = mapGenreToSpotifyQuery(genre);
-
     const accessToken = await getSpotifyAccessToken();
-
     const searchUrl = "https://api.spotify.com/v1/search";
 
-    const r = await axios.get(searchUrl, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-      params: {
-        q,
-        type: "track",
-        market: "ES",
-        limit: 40,
-      },
-      timeout: 15000,
-    });
+    // Función auxiliar para buscar y filtrar con preview
+    async function buscarConPreview(q, market = "ES", limit = 40) {
+      const r = await axios.get(searchUrl, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        params: {
+          q,
+          type: "track",
+          market,
+          limit,
+        },
+        timeout: 15000,
+      });
 
-    const tracks = r.data?.tracks?.items || [];
+      const tracks = r.data?.tracks?.items || [];
+      return tracks.filter(
+        (t) => t.preview_url && typeof t.preview_url === "string"
+      );
+    }
 
-    // Filtramos solo las que tienen preview_url
-    const conPreview = tracks.filter(
-      (t) => t.preview_url && typeof t.preview_url === "string"
-    );
+    // 1) Intento principal: mapeo de género → query Spotify
+    const qPrincipal = mapGenreToSpotifyQuery(genre);
+    let conPreview = await buscarConPreview(qPrincipal, "ES", 40);
+
+    // 2) Si no hay resultados con preview, probamos con el género "crudo" como keyword
+    if (!conPreview.length && genre !== "any") {
+      console.log(
+        `🎧 Sin previews con query mapeada (${qPrincipal}), probando con género crudo: ${genre}`
+      );
+      conPreview = await buscarConPreview(genre, "ES", 40);
+    }
+
+    // 3) Si sigue sin haber, probamos una búsqueda genérica de todo un rango de años
+    if (!conPreview.length) {
+      console.log(
+        "🎧 Sin previews todavía, probando query genérica year:1980-2024"
+      );
+      conPreview = await buscarConPreview("year:1980-2024", "ES", 40);
+    }
+
+    // 4) Último recurso: mismo query pero sin limitar a ES
+    if (!conPreview.length) {
+      console.log(
+        "🎧 Sin previews en ES, probando sin mercado específico (global)"
+      );
+      conPreview = await buscarConPreview("year:1980-2024", undefined, 40);
+    }
 
     if (!conPreview.length) {
       return res.status(404).json({
-        error: "No se han encontrado canciones con preview para ese género.",
+        error:
+          "No se han encontrado canciones con preview. Prueba con otro género o más tarde.",
       });
     }
 
@@ -328,9 +355,7 @@ app.get("/spotify-random-track", async (req, res) => {
       conPreview[Math.floor(Math.random() * conPreview.length)];
 
     const title = elegido.name;
-    const artist = (elegido.artists || [])
-      .map((a) => a.name)
-      .join(", ");
+    const artist = (elegido.artists || []).map((a) => a.name).join(", ");
     const previewUrl = elegido.preview_url;
 
     res.json({
@@ -339,10 +364,14 @@ app.get("/spotify-random-track", async (req, res) => {
       preview_url: previewUrl,
     });
   } catch (e) {
-    console.error("❌ ERROR /spotify-random-track:", e.response?.data || e.message);
+    console.error(
+      "❌ ERROR /spotify-random-track:",
+      e.response?.data || e.message
+    );
     res.status(500).json({ error: "spotify random track failed" });
   }
 });
+
 
 // ================== START SERVER ==================
 app.listen(PORT, "0.0.0.0", () => {

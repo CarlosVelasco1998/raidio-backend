@@ -376,13 +376,18 @@ app.get("/spotify-random-track", async (req, res) => {
       preview_url: previewUrl,
     });
   } catch (e) {
-    console.error(
-      "❌ ERROR /spotify-random-track:",
-      e.response?.data || e.message
-    );
-    res.status(500).json({ error: "spotify random track failed" });
-  }
+    console.error("❌ ERROR /spotify-random-track:", {
+  status: e.response?.status,
+  data: e.response?.data,
+  message: e.message,
+  url: e.config?.url,
 });
+res.status(500).json({
+  error: "spotify random track failed",
+  status: e.response?.status,
+  body: e.response?.data || e.message,
+});
+
 
 
 // ================== START SERVER ==================

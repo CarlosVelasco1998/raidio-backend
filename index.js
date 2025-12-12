@@ -285,10 +285,6 @@ app.post("/tts", async (req, res) => {
   }
 });
 
-// ================== ENDPOINT SPOTIFY RANDOM TRACK ==================
-// GET /spotify-random-track?genre=pop
-// Respuesta: { title, artist, preview_url }
-
 // ------------------ UTIL: MAPEO DE GÉNEROS A SEED_GENRES ------------------
 function mapGenreToSeedGenres(genre) {
   switch ((genre || "").toLowerCase()) {
@@ -309,23 +305,22 @@ function mapGenreToSeedGenres(genre) {
   }
 }
 
-
+// ================== ENDPOINT SPOTIFY RANDOM TRACK ==================
+// GET /spotify-random-track?genre=pop
+// Respuesta: { title, artist, preview_url }
 app.get("/spotify-random-track", async (req, res) => {
   try {
     const genre = (req.query.genre || "any").toString();
     const accessToken = await getSpotifyAccessToken();
 
     const seedGenres = mapGenreToSeedGenres(genre);
-
     const recoUrl = "https://api.spotify.com/v1/recommendations";
 
-    // Pedimos más para aumentar probabilidad de previews
+    // 1) Intento con market ES
     const r = await axios.get(recoUrl, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
+      headers: { Authorization: `Bearer ${accessToken}` },
       params: {
-        seed_genres: seedGenres.slice(0, 3).join(","), // max 5, usamos 3
+        seed_genres: seedGenres.slice(0, 3).join(","),
         limit: 100,
         market: "ES",
       },
@@ -333,13 +328,11 @@ app.get("/spotify-random-track", async (req, res) => {
     });
 
     const tracks = r.data?.tracks || [];
-
-    // Filtramos solo con preview_url
     let conPreview = tracks.filter(
       (t) => t.preview_url && typeof t.preview_url === "string"
     );
 
-    // Si en ES no hay, probamos sin market
+    // 2) Si no hay previews en ES, probamos sin market
     if (!conPreview.length) {
       console.log("🎧 Reco sin previews en ES, probando sin market...");
       const r2 = await axios.get(recoUrl, {
@@ -366,26 +359,25 @@ app.get("/spotify-random-track", async (req, res) => {
 
     const elegido = conPreview[Math.floor(Math.random() * conPreview.length)];
 
-    const title = elegido.name;
-    const artist = (elegido.artists || []).map((a) => a.name).join(", ");
-    const previewUrl = elegido.preview_url;
-
     res.json({
-      title,
-      artist,
-      preview_url: previewUrl,
+      title: elegido.name,
+      artist: (elegido.artists || []).map((a) => a.name).join(", "),
+      preview_url: elegido.preview_url,
     });
   } catch (e) {
     console.error("❌ ERROR /spotify-random-track:", {
-  status: e.response?.status,
-  data: e.response?.data,
-  message: e.message,
-  url: e.config?.url,
-});
-res.status(500).json({
-  error: "spotify random track failed",
-  status: e.response?.status,
-  body: e.response?.data || e.message,
+      status: e.response?.status,
+      data: e.response?.data,
+      message: e.message,
+      url: e.config?.url,
+    });
+
+    return res.status(500).json({
+      error: "spotify random track failed",
+      status: e.response?.status,
+      body: e.response?.data || e.message,
+    });
+  }
 });
 
 

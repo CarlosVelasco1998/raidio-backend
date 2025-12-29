@@ -136,10 +136,15 @@ app.get("/pois-nearby", (req, res) => {
     const encontrados = [];
 
     for (const poi of POIS) {
-      if (!poi?.lat || !poi?.lng) continue;
+      if (!poi) continue;
+
+      const poiLat = Number(poi.lat);
+      const poiLng = Number(poi.lng);
+      if (Number.isNaN(poiLat) || Number.isNaN(poiLng)) continue;
+
       if ((poi.nivel ?? 3) > maxNivel) continue;
 
-      const d = distanciaMetros(lat, lng, poi.lat, poi.lng);
+      const d = distanciaMetros(lat, lng, poiLat, poiLng);
       if (d > radius) continue;
 
       encontrados.push({ ...poi, distanceMeters: d });
@@ -147,10 +152,7 @@ app.get("/pois-nearby", (req, res) => {
 
     encontrados.sort((a, b) => a.distanceMeters - b.distanceMeters);
 
-    res.json({
-      count: encontrados.length,
-      pois: encontrados,
-    });
+    res.json({ count: encontrados.length, pois: encontrados });
   } catch (e) {
     console.error("ERROR /pois-nearby:", e);
     res.status(500).json({ error: "backend error" });

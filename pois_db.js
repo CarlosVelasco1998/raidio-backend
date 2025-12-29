@@ -1,9 +1,18 @@
 // pois_db.js
 // Base de datos de puntos de interés para RAIDIOAPP
 // Provincias: Madrid, Toledo, Ciudad Real, Jaén, Granada
+//
+// ✅ NUEVO ESQUEMA AÑADIDO POR POI:
+// - perfil: "historia" | "naturaleza" | "cultura" | "parada"
+// - prioridad: número (más alto = se narra antes si coincide con otros POIs)
+// - cooldownMin: minutos (cooldown por POI; si no, usa uno global en la app)
+// - intereses: lista para afinar prompts (montañero / geología / arte / batallas…)
+// - sponsor: opcional (para aytos/diputaciones/negocios)
+// - eventos: opcional (agenda; fechas ISO)
+//
+// Nota: por defecto NO marco sponsor/eventos, te dejo la estructura preparada.
 
 export const POIS = [
-
   // =====================================================================
   // ================================ MADRID =============================
   // =====================================================================
@@ -13,53 +22,80 @@ export const POIS = [
     id: "es_mad_capital_madrid",
     nombre: "Madrid (capital de provincia)",
     lat: 40.416775,
-    lng: -3.703790,
+    lng: -3.70379,
     nivel: 1,
     categorias: ["historia", "provincia", "capital", "datosCuriosos", "cultura"],
     tipo: "capital_provincia",
-    radioActivacionMetros: 12000
+    radioActivacionMetros: 12000,
+
+    perfil: "cultura",
+    prioridad: 130,
+    cooldownMin: 120,
+    intereses: ["capitalidad", "historia_urbana", "monarquia", "cultura", "museos", "siglo_xvi_xvii"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
   // --- SIERRA / NATURALEZA TOP ---
   {
     id: "es_mad_guadarrama_parque_nacional",
     nombre: "Parque Nacional de la Sierra de Guadarrama",
-    lat: 40.784900,
-    lng: -3.957200,
+    lat: 40.7849,
+    lng: -3.9572,
     nivel: 1,
     categorias: ["naturaleza", "paisaje", "senderismo"],
     tipo: "parque_nacional",
-    radioActivacionMetros: 12000
+    radioActivacionMetros: 12000,
+
+    perfil: "naturaleza",
+    prioridad: 115,
+    cooldownMin: 45,
+    intereses: ["senderismo", "cumbres", "miradores", "fauna", "flora", "clima", "paisaje"],
   },
   {
     id: "es_mad_penalara",
     nombre: "Macizo de Peñalara",
-    lat: 40.848000,
-    lng: -3.964200,
+    lat: 40.848,
+    lng: -3.9642,
     nivel: 1,
     categorias: ["naturaleza", "montaña", "datosCuriosos"],
     tipo: "cumbre",
-    radioActivacionMetros: 7500
+    radioActivacionMetros: 7500,
+
+    perfil: "naturaleza",
+    prioridad: 120,
+    cooldownMin: 50,
+    intereses: ["montañismo", "cumbre", "clima", "vistas", "glaciarismo", "senderos"],
   },
   {
     id: "es_mad_pedriza",
     nombre: "La Pedriza (granito y escalada)",
-    lat: 40.731300,
-    lng: -3.885300,
+    lat: 40.7313,
+    lng: -3.8853,
     nivel: 2,
     categorias: ["naturaleza", "geologia", "paisaje"],
     tipo: "paraje_natural",
-    radioActivacionMetros: 8000
+    radioActivacionMetros: 8000,
+
+    perfil: "naturaleza",
+    prioridad: 105,
+    cooldownMin: 40,
+    intereses: ["granito", "escalada", "bloques", "rutas", "vistas", "fauna", "flora", "seguridad_montana"],
   },
   {
     id: "es_mad_lagunas_penalara",
     nombre: "Lagunas glaciares de Peñalara",
-    lat: 40.856600,
-    lng: -3.957800,
+    lat: 40.8566,
+    lng: -3.9578,
     nivel: 3,
     categorias: ["naturaleza", "geologia", "datosCuriosos"],
     tipo: "lagunas",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "naturaleza",
+    prioridad: 95,
+    cooldownMin: 45,
+    intereses: ["lagunas", "glaciarismo", "geologia", "ecosistemas", "fauna", "flora", "rutas"],
   },
   {
     id: "es_mad_hayedo_montejo",
@@ -69,7 +105,12 @@ export const POIS = [
     nivel: 1,
     categorias: ["naturaleza", "unesco", "paisaje"],
     tipo: "bosque",
-    radioActivacionMetros: 4000
+    radioActivacionMetros: 4000,
+
+    perfil: "naturaleza",
+    prioridad: 120,
+    cooldownMin: 60,
+    intereses: ["bosque", "hayedo", "unesco", "biodiversidad", "otoño", "sendero"],
   },
 
   // --- CASTILLOS / FORTALEZAS ---
@@ -81,37 +122,57 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "castillos", "arquitectura"],
     tipo: "castillo",
-    radioActivacionMetros: 2000
+    radioActivacionMetros: 2000,
+
+    perfil: "historia",
+    prioridad: 120,
+    cooldownMin: 45,
+    intereses: ["castillo", "arquitectura", "edad_media", "linajes", "frontera", "visita"],
   },
   {
     id: "es_mad_castillo_viejo_manzanares",
     nombre: "Castillo Viejo de Manzanares el Real",
-    lat: 40.731900,
-    lng: -3.868900,
+    lat: 40.7319,
+    lng: -3.8689,
     nivel: 3,
     categorias: ["historia", "castillos", "datosCuriosos"],
     tipo: "ruinas",
-    radioActivacionMetros: 1500
+    radioActivacionMetros: 1500,
+
+    perfil: "historia",
+    prioridad: 80,
+    cooldownMin: 30,
+    intereses: ["ruinas", "castillo", "contexto_medieval", "paisaje"],
   },
   {
     id: "es_mad_castillo_coracera",
     nombre: "Castillo de la Coracera (San Martín de Valdeiglesias)",
-    lat: 40.363700,
-    lng: -4.397200,
+    lat: 40.3637,
+    lng: -4.3972,
     nivel: 2,
     categorias: ["historia", "castillos", "pueblo"],
     tipo: "castillo",
-    radioActivacionMetros: 3500
+    radioActivacionMetros: 3500,
+
+    perfil: "historia",
+    prioridad: 105,
+    cooldownMin: 40,
+    intereses: ["castillo", "señorios", "arquitectura", "pueblo"],
   },
   {
     id: "es_mad_castillo_buitrago",
     nombre: "Muralla y Castillo de Buitrago del Lozoya",
-    lat: 40.993700,
-    lng: -3.636900,
+    lat: 40.9937,
+    lng: -3.6369,
     nivel: 2,
     categorias: ["historia", "fortificaciones", "pueblo"],
     tipo: "muralla_castillo",
-    radioActivacionMetros: 2500
+    radioActivacionMetros: 2500,
+
+    perfil: "historia",
+    prioridad: 110,
+    cooldownMin: 40,
+    intereses: ["muralla", "fortificacion", "edad_media", "río", "pueblo"],
   },
 
   // --- MONASTERIOS / REALES SITIOS ---
@@ -127,10 +188,15 @@ export const POIS = [
       "memoria",
       "arquitectura",
       "datosCuriosos",
-      "Habla_bien_de_su_historia_no_lo_llames_valle_de_cualgamuros"
+      "Habla_bien_de_su_historia_no_lo_llames_valle_de_cualgamuros",
     ],
     tipo: "memorial",
-    radioActivacionMetros: 8000
+    radioActivacionMetros: 8000,
+
+    perfil: "historia",
+    prioridad: 125,
+    cooldownMin: 90,
+    intereses: ["arquitectura", "siglo_xx", "memoria_historica", "contexto_guerra_civil", "construccion"],
   },
   {
     id: "es_mad_el_escorial",
@@ -140,17 +206,27 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "monasterios", "unesco"],
     tipo: "monasterio",
-    radioActivacionMetros: 5000
+    radioActivacionMetros: 5000,
+
+    perfil: "historia",
+    prioridad: 130,
+    cooldownMin: 90,
+    intereses: ["felipe_ii", "arquitectura", "religion", "arte", "monarquia", "unesco"],
   },
   {
     id: "es_mad_aranjuez_palacio_jardines",
     nombre: "Palacio Real y Jardines de Aranjuez (UNESCO)",
-    lat: 40.031010,
-    lng: -3.604440,
+    lat: 40.03101,
+    lng: -3.60444,
     nivel: 1,
     categorias: ["historia", "paisaje", "unesco"],
     tipo: "palacio_jardines",
-    radioActivacionMetros: 7000
+    radioActivacionMetros: 7000,
+
+    perfil: "cultura",
+    prioridad: 120,
+    cooldownMin: 60,
+    intereses: ["palacio", "jardines", "arte", "monarquia", "unesco", "paisaje_cultural"],
   },
   {
     id: "es_mad_alcala_henares_centro",
@@ -160,39 +236,59 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "literatura", "unesco"],
     tipo: "casco_historico",
-    radioActivacionMetros: 5000
+    radioActivacionMetros: 5000,
+
+    perfil: "cultura",
+    prioridad: 125,
+    cooldownMin: 70,
+    intereses: ["cervantes", "literatura", "universidad", "arquitectura", "unesco"],
   },
   {
     id: "es_mad_universidad_alcala",
     nombre: "Universidad de Alcalá y Colegio Mayor de San Ildefonso",
-    lat: 40.482930,
-    lng: -3.363080,
+    lat: 40.48293,
+    lng: -3.36308,
     nivel: 2,
     categorias: ["historia", "arquitectura", "literatura"],
     tipo: "universidad_historica",
-    radioActivacionMetros: 3500
+    radioActivacionMetros: 3500,
+
+    perfil: "cultura",
+    prioridad: 105,
+    cooldownMin: 45,
+    intereses: ["universidad", "arquitectura", "humanismo", "literatura"],
   },
 
   // --- BATALLAS / EPISODIOS ---
   {
     id: "es_mad_puerto_somosierra_batalla",
     nombre: "Puerto de Somosierra (batalla de 1808)",
-    lat: 41.132500,
-    lng: -3.581670,
+    lat: 41.1325,
+    lng: -3.58167,
     nivel: 1,
     categorias: ["historia", "batallas", "datosCuriosos"],
     tipo: "paso_montana",
-    radioActivacionMetros: 5000
+    radioActivacionMetros: 5000,
+
+    perfil: "historia",
+    prioridad: 140,
+    cooldownMin: 80,
+    intereses: ["guerra_independencia", "batalla", "paso_montana", "logistica", "terreno"],
   },
   {
     id: "es_mad_brunete_batalla",
     nombre: "Brunete (Batalla de Brunete, 1937)",
-    lat: 40.405900,
-    lng: -3.998600,
+    lat: 40.4059,
+    lng: -3.9986,
     nivel: 2,
     categorias: ["historia", "batallas", "guerra_civil"],
     tipo: "pueblo_batalla",
-    radioActivacionMetros: 4000
+    radioActivacionMetros: 4000,
+
+    perfil: "historia",
+    prioridad: 125,
+    cooldownMin: 90,
+    intereses: ["guerra_civil", "batalla", "frentes", "consecuencias"],
   },
 
   // --- PUEBLOS CON ENCANTO ---
@@ -204,61 +300,90 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "cultura", "pueblo"],
     tipo: "pueblo",
-    radioActivacionMetros: 8000
+    radioActivacionMetros: 8000,
+
+    perfil: "parada",
+    prioridad: 95,
+    cooldownMin: 40,
+    intereses: ["plaza_mayor", "gastronomia", "pueblo", "patrimonio", "plan_rapido"],
   },
   {
     id: "es_mad_rascafria_paular",
     nombre: "Rascafría y Monasterio de El Paular",
-    lat: 40.904400,
-    lng: -3.880900,
+    lat: 40.9044,
+    lng: -3.8809,
     nivel: 2,
     categorias: ["historia", "monasterios", "naturaleza"],
     tipo: "pueblo_monasterio",
-    radioActivacionMetros: 3000
+    radioActivacionMetros: 3000,
+
+    perfil: "parada",
+    prioridad: 105,
+    cooldownMin: 45,
+    intereses: ["monasterio", "valle", "rio", "senderismo", "pueblo"],
   },
   {
     id: "es_mad_patones_arriba",
     nombre: "Patones de Arriba (arquitectura negra)",
-    lat: 40.857500,
-    lng: -3.485200,
+    lat: 40.8575,
+    lng: -3.4852,
     nivel: 3,
     categorias: ["cultura", "arquitectura", "datosCuriosos"],
     tipo: "pueblo",
-    radioActivacionMetros: 1800
+    radioActivacionMetros: 1800,
+
+    perfil: "parada",
+    prioridad: 80,
+    cooldownMin: 35,
+    intereses: ["arquitectura_negra", "pueblo", "paseo", "foto", "gastronomia"],
   },
   {
     id: "es_mad_nuevo_baztan",
     nombre: "Nuevo Baztán (villa barroca industrial)",
-    lat: 40.367500,
-    lng: -3.242700,
+    lat: 40.3675,
+    lng: -3.2427,
     nivel: 3,
     categorias: ["historia", "arquitectura", "datosCuriosos"],
     tipo: "conjunto_historico",
-    radioActivacionMetros: 1800
+    radioActivacionMetros: 1800,
+
+    perfil: "cultura",
+    prioridad: 85,
+    cooldownMin: 40,
+    intereses: ["barroco", "industrializacion", "urbanismo", "arquitectura"],
   },
 
   // --- NATURALEZA / RÍOS / EMBALSES ---
   {
     id: "es_mad_embalse_santillana",
     nombre: "Embalse de Santillana y Mirador",
-    lat: 40.719400,
-    lng: -3.850300,
+    lat: 40.7194,
+    lng: -3.8503,
     nivel: 3,
     categorias: ["naturaleza", "paisaje", "datosCuriosos"],
     tipo: "embalse",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "naturaleza",
+    prioridad: 80,
+    cooldownMin: 35,
+    intereses: ["embalse", "mirador", "foto", "aves", "paisaje"],
   },
   {
     id: "es_mad_las_presillas",
     nombre: "Área natural de Las Presillas (Lozoya)",
-    lat: 40.879700,
-    lng: -3.885200,
+    lat: 40.8797,
+    lng: -3.8852,
     nivel: 3,
     categorias: ["naturaleza", "rio", "paisaje"],
     tipo: "area_recreativa",
-    radioActivacionMetros: 1500
-  },
+    radioActivacionMetros: 1500,
 
+    perfil: "naturaleza",
+    prioridad: 75,
+    cooldownMin: 30,
+    intereses: ["rio", "baño", "area_recreativa", "paseo", "familia"],
+  },
 
   // =====================================================================
   // ================================ TOLEDO =============================
@@ -268,14 +393,18 @@ export const POIS = [
   {
     id: "es_tol_capital_toledo",
     nombre: "Toledo (capital de provincia)",
-    lat: 39.856800,
-    lng: -4.024500,
+    lat: 39.8568,
+    lng: -4.0245,
     nivel: 1,
     categorias: ["historia", "provincia", "capital", "unesco", "cultura"],
     tipo: "capital_provincia",
-    radioActivacionMetros: 10000
-  },
+    radioActivacionMetros: 10000,
 
+    perfil: "cultura",
+    prioridad: 135,
+    cooldownMin: 120,
+    intereses: ["unesco", "ciudad_historica", "tres_culturas", "arquitectura", "arte"],
+  },
   {
     id: "es_tol_toledo_ciudad_historica",
     nombre: "Casco histórico de Toledo (UNESCO)",
@@ -284,7 +413,12 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "unesco", "arquitectura"],
     tipo: "ciudad_historica",
-    radioActivacionMetros: 8000
+    radioActivacionMetros: 8000,
+
+    perfil: "cultura",
+    prioridad: 140,
+    cooldownMin: 90,
+    intereses: ["unesco", "urbanismo", "arquitectura", "medieval", "visigodo"],
   },
   {
     id: "es_tol_alcazar_toledo",
@@ -294,7 +428,12 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "guerra_civil", "arquitectura"],
     tipo: "fortaleza",
-    radioActivacionMetros: 4500
+    radioActivacionMetros: 4500,
+
+    perfil: "historia",
+    prioridad: 135,
+    cooldownMin: 90,
+    intereses: ["fortaleza", "guerra_civil", "historia_militar", "arquitectura"],
   },
   {
     id: "es_tol_puente_alcantara",
@@ -304,7 +443,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "arquitectura"],
     tipo: "puente_romano",
-    radioActivacionMetros: 3000
+    radioActivacionMetros: 3000,
+
+    perfil: "historia",
+    prioridad: 105,
+    cooldownMin: 45,
+    intereses: ["ingenieria", "romano", "rio", "arquitectura"],
   },
   {
     id: "es_tol_puente_san_martin",
@@ -314,7 +458,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "arquitectura"],
     tipo: "puente_medieval",
-    radioActivacionMetros: 2500
+    radioActivacionMetros: 2500,
+
+    perfil: "historia",
+    prioridad: 100,
+    cooldownMin: 45,
+    intereses: ["puente", "medieval", "rio", "arquitectura"],
   },
   {
     id: "es_tol_cerro_calderico_molinos",
@@ -324,7 +473,12 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "literatura", "paisaje"],
     tipo: "molinos",
-    radioActivacionMetros: 10500
+    radioActivacionMetros: 10500,
+
+    perfil: "cultura",
+    prioridad: 125,
+    cooldownMin: 70,
+    intereses: ["molinos", "quijote", "vistas", "paisaje", "viento"],
   },
   {
     id: "es_tol_castillo_consuegra",
@@ -334,7 +488,12 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "castillo"],
     tipo: "castillo",
-    radioActivacionMetros: 5000
+    radioActivacionMetros: 5000,
+
+    perfil: "historia",
+    prioridad: 120,
+    cooldownMin: 60,
+    intereses: ["castillo", "ordenes_militares", "frontera", "edad_media"],
   },
   {
     id: "es_tol_castillo_orgaz",
@@ -344,7 +503,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "castillos"],
     tipo: "castillo",
-    radioActivacionMetros: 5000
+    radioActivacionMetros: 5000,
+
+    perfil: "historia",
+    prioridad: 100,
+    cooldownMin: 45,
+    intereses: ["castillo", "edad_media", "señorio"],
   },
   {
     id: "es_tol_castillo_escalona",
@@ -354,7 +518,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "castillos"],
     tipo: "castillo",
-    radioActivacionMetros: 3000
+    radioActivacionMetros: 3000,
+
+    perfil: "historia",
+    prioridad: 105,
+    cooldownMin: 45,
+    intereses: ["castillo", "tajo", "frontera"],
   },
   {
     id: "es_tol_malpica_castillo",
@@ -364,7 +533,12 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "castillos"],
     tipo: "castillo",
-    radioActivacionMetros: 2000
+    radioActivacionMetros: 2000,
+
+    perfil: "historia",
+    prioridad: 80,
+    cooldownMin: 35,
+    intereses: ["castillo", "tajo", "edad_media"],
   },
   {
     id: "es_tol_torrejon_c_romana",
@@ -374,7 +548,12 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "romano"],
     tipo: "villa_romana",
-    radioActivacionMetros: 2000
+    radioActivacionMetros: 2000,
+
+    perfil: "historia",
+    prioridad: 85,
+    cooldownMin: 45,
+    intereses: ["romano", "villa", "mosaicos", "vida_cotidiana"],
   },
   {
     id: "es_tol_talavera_murallas",
@@ -384,17 +563,27 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "arquitectura"],
     tipo: "muralla",
-    radioActivacionMetros: 2500
+    radioActivacionMetros: 2500,
+
+    perfil: "historia",
+    prioridad: 95,
+    cooldownMin: 45,
+    intereses: ["muralla", "defensa", "arquitectura", "ciudad"],
   },
   {
     id: "es_tol_basilica_prado",
     nombre: "Basílica del Prado (Talavera)",
-    lat: 39.9590,
+    lat: 39.959,
     lng: -4.8241,
     nivel: 3,
     categorias: ["historia", "religion", "arte"],
     tipo: "basilica",
-    radioActivacionMetros: 2000
+    radioActivacionMetros: 2000,
+
+    perfil: "cultura",
+    prioridad: 85,
+    cooldownMin: 45,
+    intereses: ["arte", "religion", "arquitectura", "devocion"],
   },
   {
     id: "es_tol_belmonte_san_jose",
@@ -404,7 +593,12 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "castillos"],
     tipo: "castillo",
-    radioActivacionMetros: 2000
+    radioActivacionMetros: 2000,
+
+    perfil: "historia",
+    prioridad: 80,
+    cooldownMin: 35,
+    intereses: ["castillo", "edad_media"],
   },
   {
     id: "es_tol_barrancas_burujon",
@@ -414,7 +608,12 @@ export const POIS = [
     nivel: 1,
     categorias: ["naturaleza", "paisaje", "geologia"],
     tipo: "barranco",
-    radioActivacionMetros: 5000
+    radioActivacionMetros: 5000,
+
+    perfil: "naturaleza",
+    prioridad: 120,
+    cooldownMin: 50,
+    intereses: ["geologia", "miradores", "foto", "aves", "sendero_corto"],
   },
   {
     id: "es_tol_santa_maria_melque",
@@ -424,7 +623,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "visigodo"],
     tipo: "ermita",
-    radioActivacionMetros: 2500
+    radioActivacionMetros: 2500,
+
+    perfil: "historia",
+    prioridad: 110,
+    cooldownMin: 60,
+    intereses: ["visigodo", "religion", "arte", "arquitectura"],
   },
   {
     id: "es_tol_cuevas_huecas",
@@ -434,7 +638,12 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "arqueologia"],
     tipo: "cuevas",
-    radioActivacionMetros: 2000
+    radioActivacionMetros: 2000,
+
+    perfil: "historia",
+    prioridad: 80,
+    cooldownMin: 45,
+    intereses: ["arqueologia", "rupestre", "cuevas", "religion"],
   },
   {
     id: "es_tol_yebenes_cueva",
@@ -444,7 +653,12 @@ export const POIS = [
     nivel: 3,
     categorias: ["prehistoria", "arqueologia"],
     tipo: "cueva",
-    radioActivacionMetros: 1500
+    radioActivacionMetros: 1500,
+
+    perfil: "historia",
+    prioridad: 75,
+    cooldownMin: 45,
+    intereses: ["prehistoria", "cuevas", "arqueologia"],
   },
   {
     id: "es_tol_castillo_dos_hermanas",
@@ -454,7 +668,12 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "castillos"],
     tipo: "castillo",
-    radioActivacionMetros: 2000
+    radioActivacionMetros: 2000,
+
+    perfil: "historia",
+    prioridad: 80,
+    cooldownMin: 35,
+    intereses: ["castillo", "edad_media"],
   },
   {
     id: "es_tol_montes_toledo",
@@ -464,7 +683,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["naturaleza", "paisaje"],
     tipo: "montana",
-    radioActivacionMetros: 4500
+    radioActivacionMetros: 4500,
+
+    perfil: "naturaleza",
+    prioridad: 105,
+    cooldownMin: 45,
+    intereses: ["paisaje", "sierra", "fauna", "senderismo", "miradores"],
   },
   {
     id: "es_tol_camunas_tamborada",
@@ -474,9 +698,13 @@ export const POIS = [
     nivel: 3,
     categorias: ["cultura", "tradicion", "curiosidades"],
     tipo: "museo",
-    radioActivacionMetros: 1500
-  },
+    radioActivacionMetros: 1500,
 
+    perfil: "cultura",
+    prioridad: 75,
+    cooldownMin: 45,
+    intereses: ["tradiciones", "museo", "curiosidades", "cultura_local"],
+  },
 
   // =====================================================================
   // ============================= CIUDAD REAL ===========================
@@ -487,13 +715,17 @@ export const POIS = [
     id: "es_cr_capital_ciudad_real",
     nombre: "Ciudad Real (capital de provincia)",
     lat: 38.9848,
-    lng: -3.9270,
+    lng: -3.927,
     nivel: 1,
     categorias: ["historia", "provincia", "capital", "cultura", "datosCuriosos"],
     tipo: "capital_provincia",
-    radioActivacionMetros: 9000
-  },
+    radioActivacionMetros: 9000,
 
+    perfil: "cultura",
+    prioridad: 125,
+    cooldownMin: 120,
+    intereses: ["capitalidad", "historia_urbana", "cultura", "mancha"],
+  },
   {
     id: "es_cr_almagro_plaza_mayor",
     nombre: "Almagro y su Plaza Mayor / Corral de Comedias",
@@ -502,17 +734,27 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "teatro", "arquitectura", "pueblo"],
     tipo: "pueblo_historico",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "parada",
+    prioridad: 120,
+    cooldownMin: 60,
+    intereses: ["teatro", "corral_de_comedias", "arquitectura", "pueblo", "plan_cultural"],
   },
   {
     id: "es_cr_tablas_daimiel",
     nombre: "Parque Nacional de Las Tablas de Daimiel",
     lat: 39.1451,
-    lng: -3.6870,
+    lng: -3.687,
     nivel: 1,
     categorias: ["naturaleza", "aves", "humedal", "unesco"],
     tipo: "parque_nacional",
-    radioActivacionMetros: 8000
+    radioActivacionMetros: 8000,
+
+    perfil: "naturaleza",
+    prioridad: 125,
+    cooldownMin: 60,
+    intereses: ["humedal", "aves", "observacion", "sendero", "ecosistema"],
   },
   {
     id: "es_cr_calatrava_nueva",
@@ -522,7 +764,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "castillos", "ordenes_militares"],
     tipo: "castillo",
-    radioActivacionMetros: 5000
+    radioActivacionMetros: 5000,
+
+    perfil: "historia",
+    prioridad: 120,
+    cooldownMin: 60,
+    intereses: ["ordenes_militares", "castillo", "defensa", "reconquista"],
   },
   {
     id: "es_cr_valdepenas_vino",
@@ -532,7 +779,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "vino", "cultura", "datosCuriosos"],
     tipo: "ciudad",
-    radioActivacionMetros: 7000
+    radioActivacionMetros: 7000,
+
+    perfil: "parada",
+    prioridad: 105,
+    cooldownMin: 50,
+    intereses: ["vino", "cultura_local", "gastronomia", "historia_napoleonica"],
   },
   {
     id: "es_cr_puertollano_mineria",
@@ -542,27 +794,42 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "industria", "datosCuriosos"],
     tipo: "ciudad_industrial",
-    radioActivacionMetros: 7000
+    radioActivacionMetros: 7000,
+
+    perfil: "historia",
+    prioridad: 85,
+    cooldownMin: 60,
+    intereses: ["industria", "mineria", "historia_economica", "siglo_xix_xx"],
   },
   {
     id: "es_cr_viso_marques_santa_cruz",
     nombre: "Palacio del Marqués de Santa Cruz (Viso del Marqués)",
-    lat: 38.5230,
+    lat: 38.523,
     lng: -3.5619,
     nivel: 3,
     categorias: ["historia", "arquitectura", "renacimiento"],
     tipo: "palacio",
-    radioActivacionMetros: 4000
+    radioActivacionMetros: 4000,
+
+    perfil: "cultura",
+    prioridad: 90,
+    cooldownMin: 60,
+    intereses: ["renacimiento", "arte", "arquitectura", "palacio"],
   },
   {
     id: "es_cr_lagunas_ruidera",
     nombre: "Parque Natural de las Lagunas de Ruidera",
-    lat: 38.9510,
-    lng: -2.8900,
+    lat: 38.951,
+    lng: -2.89,
     nivel: 2,
     categorias: ["naturaleza", "paisaje", "agua"],
     tipo: "parque_natural",
-    radioActivacionMetros: 9000
+    radioActivacionMetros: 9000,
+
+    perfil: "naturaleza",
+    prioridad: 115,
+    cooldownMin: 60,
+    intereses: ["lagunas", "agua", "rutas", "baño", "fauna", "paisaje"],
   },
 
   // --- MÁS CIUDAD REAL (A4 / Mancha) ---
@@ -574,7 +841,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "mancha", "datosCuriosos"],
     tipo: "ciudad",
-    radioActivacionMetros: 7000
+    radioActivacionMetros: 7000,
+
+    perfil: "cultura",
+    prioridad: 95,
+    cooldownMin: 60,
+    intereses: ["mancha", "rutas", "comunicaciones", "historia_local"],
   },
   {
     id: "es_cr_puerto_lapice_venta",
@@ -584,7 +856,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "cervantes", "pueblo", "datosCuriosos"],
     tipo: "pueblo_historico",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "parada",
+    prioridad: 110,
+    cooldownMin: 60,
+    intereses: ["quijote", "ventas", "cervantes", "pueblo", "parada_viaje"],
   },
   {
     id: "es_cr_villanueva_infantes",
@@ -594,17 +871,27 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "pueblo", "cultura"],
     tipo: "pueblo_historico",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "parada",
+    prioridad: 100,
+    cooldownMin: 60,
+    intereses: ["pueblo", "patrimonio", "mancha", "plan_paseo"],
   },
   {
     id: "es_cr_motilla_azuer",
     nombre: "Motilla del Azuer (prehistoria en La Mancha)",
-    lat: 39.0340,
+    lat: 39.034,
     lng: -3.5111,
     nivel: 3,
     categorias: ["prehistoria", "arqueologia", "datosCuriosos"],
     tipo: "yacimiento",
-    radioActivacionMetros: 4000
+    radioActivacionMetros: 4000,
+
+    perfil: "historia",
+    prioridad: 90,
+    cooldownMin: 90,
+    intereses: ["prehistoria", "arqueologia", "yacimiento", "agua", "ingenieria_antigua"],
   },
   {
     id: "es_cr_castillo_dona_berenguela",
@@ -614,7 +901,12 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "castillos", "ordenes_militares"],
     tipo: "castillo",
-    radioActivacionMetros: 4000
+    radioActivacionMetros: 4000,
+
+    perfil: "historia",
+    prioridad: 85,
+    cooldownMin: 60,
+    intereses: ["castillo", "ordenes_militares", "edad_media"],
   },
   {
     id: "es_cr_parque_cabaneros",
@@ -624,17 +916,27 @@ export const POIS = [
     nivel: 1,
     categorias: ["naturaleza", "fauna", "parque_nacional"],
     tipo: "parque_nacional",
-    radioActivacionMetros: 12000
+    radioActivacionMetros: 12000,
+
+    perfil: "naturaleza",
+    prioridad: 125,
+    cooldownMin: 60,
+    intereses: ["fauna", "berrea", "observacion", "paisaje", "senderismo"],
   },
   {
     id: "es_cr_campo_calatrava_volcanes",
     nombre: "Campo de Calatrava (zona volcánica y maares)",
-    lat: 38.9460,
-    lng: -3.9000,
+    lat: 38.946,
+    lng: -3.9,
     nivel: 2,
     categorias: ["geologia", "naturaleza", "datosCuriosos"],
     tipo: "paisaje_volcanico",
-    radioActivacionMetros: 9000
+    radioActivacionMetros: 9000,
+
+    perfil: "naturaleza",
+    prioridad: 120,
+    cooldownMin: 60,
+    intereses: ["geologia", "volcanes", "maares", "paisaje", "rocas"],
   },
   {
     id: "es_cr_orden_calatrava_contexto",
@@ -644,9 +946,13 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "ordenes_militares", "datosCuriosos"],
     tipo: "contexto_historico",
-    radioActivacionMetros: 8000
-  },
+    radioActivacionMetros: 8000,
 
+    perfil: "historia",
+    prioridad: 95,
+    cooldownMin: 90,
+    intereses: ["ordenes_militares", "reconquista", "frontera", "contexto"],
+  },
 
   // =====================================================================
   // ================================ JAÉN ===============================
@@ -661,38 +967,57 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "provincia", "capital", "cultura", "aceite"],
     tipo: "capital_provincia",
-    radioActivacionMetros: 9000
-  },
+    radioActivacionMetros: 9000,
 
+    perfil: "cultura",
+    prioridad: 125,
+    cooldownMin: 120,
+    intereses: ["aceite", "cultura", "historia_urbana", "capitalidad"],
+  },
   {
     id: "es_ja_despenaperros",
     nombre: "Parque Natural de Despeñaperros (puerta de Andalucía)",
-    lat: 38.3990,
-    lng: -3.4900,
+    lat: 38.399,
+    lng: -3.49,
     nivel: 1,
     categorias: ["naturaleza", "geologia", "paisaje", "historia"],
     tipo: "parque_natural",
-    radioActivacionMetros: 9000
+    radioActivacionMetros: 9000,
+
+    perfil: "naturaleza",
+    prioridad: 130,
+    cooldownMin: 60,
+    intereses: ["geologia", "desfiladero", "paisaje", "paso_natural", "fauna", "rutas"],
   },
   {
     id: "es_ja_bailen_batalla",
     nombre: "Bailén (batalla de 1808 contra Napoleón)",
     lat: 38.0962,
-    lng: -3.7750,
+    lng: -3.775,
     nivel: 1,
     categorias: ["historia", "batallas", "datosCuriosos"],
     tipo: "ciudad_batalla",
-    radioActivacionMetros: 7000
+    radioActivacionMetros: 7000,
+
+    perfil: "historia",
+    prioridad: 150,
+    cooldownMin: 120,
+    intereses: ["guerra_independencia", "batalla", "consecuencias", "logistica"],
   },
   {
     id: "es_ja_linares_minas",
     nombre: "Linares (minería histórica y patrimonio industrial)",
-    lat: 38.0950,
-    lng: -3.6360,
+    lat: 38.095,
+    lng: -3.636,
     nivel: 2,
     categorias: ["historia", "industria", "mineria", "datosCuriosos"],
     tipo: "ciudad_industrial",
-    radioActivacionMetros: 7000
+    radioActivacionMetros: 7000,
+
+    perfil: "historia",
+    prioridad: 100,
+    cooldownMin: 90,
+    intereses: ["mineria", "industria", "patrimonio", "siglo_xix_xx"],
   },
   {
     id: "es_ja_castillo_santa_catalina",
@@ -702,27 +1027,42 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "castillos", "mirador"],
     tipo: "castillo",
-    radioActivacionMetros: 5000
+    radioActivacionMetros: 5000,
+
+    perfil: "historia",
+    prioridad: 115,
+    cooldownMin: 60,
+    intereses: ["castillo", "mirador", "frontera", "edad_media"],
   },
   {
     id: "es_ja_ubeda_renacimiento",
     nombre: "Úbeda (Renacimiento, UNESCO)",
-    lat: 38.0110,
-    lng: -3.3710,
+    lat: 38.011,
+    lng: -3.371,
     nivel: 1,
     categorias: ["historia", "unesco", "arquitectura", "renacimiento"],
     tipo: "ciudad_historica",
-    radioActivacionMetros: 9000
+    radioActivacionMetros: 9000,
+
+    perfil: "cultura",
+    prioridad: 140,
+    cooldownMin: 120,
+    intereses: ["renacimiento", "unesco", "arquitectura", "arte", "urbanismo"],
   },
   {
     id: "es_ja_baeza_renacimiento",
     nombre: "Baeza (Renacimiento, UNESCO)",
-    lat: 37.9930,
+    lat: 37.993,
     lng: -3.4689,
     nivel: 1,
     categorias: ["historia", "unesco", "arquitectura", "renacimiento"],
     tipo: "ciudad_historica",
-    radioActivacionMetros: 9000
+    radioActivacionMetros: 9000,
+
+    perfil: "cultura",
+    prioridad: 140,
+    cooldownMin: 120,
+    intereses: ["renacimiento", "unesco", "arquitectura", "arte", "historia"],
   },
 
   // --- MÁS JAÉN (A4/A44) ---
@@ -734,7 +1074,12 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "batallas", "reconquista", "datosCuriosos"],
     tipo: "campo_batalla",
-    radioActivacionMetros: 8000
+    radioActivacionMetros: 8000,
+
+    perfil: "historia",
+    prioridad: 160,
+    cooldownMin: 180,
+    intereses: ["reconquista", "batalla", "terreno", "logistica", "consecuencias"],
   },
   {
     id: "es_ja_banos_encina_castillo",
@@ -744,7 +1089,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "castillos", "pueblo"],
     tipo: "castillo",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "parada",
+    prioridad: 120,
+    cooldownMin: 90,
+    intereses: ["castillo", "pueblo", "edad_media", "plan_visita"],
   },
   {
     id: "es_ja_carolina_nuevas_poblaciones",
@@ -754,27 +1104,42 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "ilustracion", "datosCuriosos"],
     tipo: "ciudad",
-    radioActivacionMetros: 7000
+    radioActivacionMetros: 7000,
+
+    perfil: "historia",
+    prioridad: 110,
+    cooldownMin: 90,
+    intereses: ["ilustracion", "poblamiento", "reformas", "siglo_xviii"],
   },
   {
     id: "es_ja_andujar_santuario_cabeza",
     nombre: "Andújar y Santuario de la Virgen de la Cabeza",
-    lat: 38.0390,
-    lng: -4.0540,
+    lat: 38.039,
+    lng: -4.054,
     nivel: 3,
     categorias: ["historia", "religion", "naturaleza"],
     tipo: "santuario",
-    radioActivacionMetros: 8000
+    radioActivacionMetros: 8000,
+
+    perfil: "parada",
+    prioridad: 95,
+    cooldownMin: 90,
+    intereses: ["religion", "santuario", "paisaje", "romeria", "rutas"],
   },
   {
     id: "es_ja_cazorla_parque_natural",
     nombre: "Parque Natural Sierras de Cazorla, Segura y Las Villas",
-    lat: 37.9100,
-    lng: -2.9300,
+    lat: 37.91,
+    lng: -2.93,
     nivel: 1,
     categorias: ["naturaleza", "paisaje", "fauna", "parque_natural"],
     tipo: "parque_natural",
-    radioActivacionMetros: 15000
+    radioActivacionMetros: 15000,
+
+    perfil: "naturaleza",
+    prioridad: 130,
+    cooldownMin: 90,
+    intereses: ["fauna", "senderismo", "ríos", "bosques", "miradores", "naturaleza"],
   },
   {
     id: "es_ja_arjona_historia_almohade",
@@ -784,29 +1149,43 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "arqueologia", "datosCuriosos"],
     tipo: "ciudad_historica",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "historia",
+    prioridad: 95,
+    cooldownMin: 120,
+    intereses: ["iberos", "andalusi", "arqueologia", "contexto"],
   },
   {
     id: "es_ja_martos_pena",
     nombre: "Martos y la Peña (torreones y frontera medieval)",
-    lat: 37.7210,
-    lng: -3.9670,
+    lat: 37.721,
+    lng: -3.967,
     nivel: 2,
     categorias: ["historia", "castillos", "paisaje"],
     tipo: "ciudad_mirador",
-    radioActivacionMetros: 7000
+    radioActivacionMetros: 7000,
+
+    perfil: "parada",
+    prioridad: 110,
+    cooldownMin: 90,
+    intereses: ["mirador", "frontera_medieval", "paisaje", "castillos"],
   },
   {
     id: "es_ja_mar_de_olivos",
     nombre: "Mar de olivos (paisaje del aceite de Jaén)",
-    lat: 38.0000,
-    lng: -3.8000,
+    lat: 38.0,
+    lng: -3.8,
     nivel: 3,
     categorias: ["paisaje", "datosCuriosos", "cultura", "aceite"],
     tipo: "paisaje_cultural",
-    radioActivacionMetros: 12000
-  },
+    radioActivacionMetros: 12000,
 
+    perfil: "cultura",
+    prioridad: 85,
+    cooldownMin: 90,
+    intereses: ["aceite", "paisaje", "agricultura", "cultura_local"],
+  },
 
   // =====================================================================
   // =============================== GRANADA =============================
@@ -821,9 +1200,13 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "provincia", "capital", "cultura", "datosCuriosos"],
     tipo: "capital_provincia",
-    radioActivacionMetros: 11000
-  },
+    radioActivacionMetros: 11000,
 
+    perfil: "cultura",
+    prioridad: 130,
+    cooldownMin: 120,
+    intereses: ["reino_nazari", "renacimiento", "cultura", "historia_urbana"],
+  },
   {
     id: "es_gr_alhambra",
     nombre: "La Alhambra y Generalife",
@@ -832,47 +1215,72 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "unesco", "arquitectura", "andalusi"],
     tipo: "monumento_unesco",
-    radioActivacionMetros: 7000
+    radioActivacionMetros: 7000,
+
+    perfil: "historia",
+    prioridad: 170,
+    cooldownMin: 180,
+    intereses: ["andalusi", "arquitectura", "arte", "unesco", "reino_nazari"],
   },
   {
     id: "es_gr_albaicin_san_nicolas",
     nombre: "Albaicín y Mirador de San Nicolás",
     lat: 37.1806,
-    lng: -3.5940,
+    lng: -3.594,
     nivel: 2,
     categorias: ["historia", "paisaje", "barrio_historico"],
     tipo: "barrio_mirador",
-    radioActivacionMetros: 5000
+    radioActivacionMetros: 5000,
+
+    perfil: "parada",
+    prioridad: 130,
+    cooldownMin: 90,
+    intereses: ["mirador", "barrio_historico", "paisaje", "foto", "paseo"],
   },
   {
     id: "es_gr_sierra_nevada",
     nombre: "Sierra Nevada (acceso Pradollano)",
-    lat: 37.0950,
-    lng: -3.3940,
+    lat: 37.095,
+    lng: -3.394,
     nivel: 1,
     categorias: ["naturaleza", "montaña", "paisaje", "datosCuriosos"],
     tipo: "parque_natural",
-    radioActivacionMetros: 12000
+    radioActivacionMetros: 12000,
+
+    perfil: "naturaleza",
+    prioridad: 140,
+    cooldownMin: 90,
+    intereses: ["montaña", "senderismo", "nieve", "vistas", "fauna", "altitud"],
   },
   {
     id: "es_gr_loja_paso_historico",
     nombre: "Loja (puerta occidental de Granada)",
-    lat: 37.1680,
-    lng: -4.1510,
+    lat: 37.168,
+    lng: -4.151,
     nivel: 3,
     categorias: ["historia", "ciudad", "datosCuriosos"],
     tipo: "ciudad",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "historia",
+    prioridad: 90,
+    cooldownMin: 90,
+    intereses: ["frontera", "reconquista", "ruta", "ciudad"],
   },
   {
     id: "es_gr_guadix_cuevas",
     nombre: "Guadix (catedral y cuevas habitadas)",
-    lat: 37.3000,
-    lng: -3.1340,
+    lat: 37.3,
+    lng: -3.134,
     nivel: 2,
     categorias: ["historia", "arquitectura", "datosCuriosos"],
     tipo: "ciudad_historica",
-    radioActivacionMetros: 8000
+    radioActivacionMetros: 8000,
+
+    perfil: "parada",
+    prioridad: 110,
+    cooldownMin: 90,
+    intereses: ["cuevas", "arquitectura", "catedral", "plan_visita"],
   },
 
   // --- MÁS GRANADA ---
@@ -884,7 +1292,12 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "arquitectura", "reyes_catolicos"],
     tipo: "catedral",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "historia",
+    prioridad: 160,
+    cooldownMin: 180,
+    intereses: ["reyes_catolicos", "religion", "arte", "arquitectura", "renacimiento"],
   },
   {
     id: "es_gr_sacromonte_cuevas",
@@ -894,7 +1307,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "cultura", "datosCuriosos"],
     tipo: "barrio_historico",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "cultura",
+    prioridad: 110,
+    cooldownMin: 90,
+    intereses: ["cuevas", "cultura_git", "tradiciones", "barrio"],
   },
   {
     id: "es_gr_velez_benaudalla_valle",
@@ -904,7 +1322,12 @@ export const POIS = [
     nivel: 3,
     categorias: ["paisaje", "pueblo", "datosCuriosos"],
     tipo: "pueblo_valle",
-    radioActivacionMetros: 7000
+    radioActivacionMetros: 7000,
+
+    perfil: "parada",
+    prioridad: 85,
+    cooldownMin: 60,
+    intereses: ["valle", "paisaje", "pueblo", "parada_viaje"],
   },
   {
     id: "es_gr_moclin_castillo",
@@ -914,7 +1337,12 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "castillos", "frontera_nazari"],
     tipo: "castillo",
-    radioActivacionMetros: 5000
+    radioActivacionMetros: 5000,
+
+    perfil: "historia",
+    prioridad: 95,
+    cooldownMin: 90,
+    intereses: ["frontera_nazari", "castillo", "vigilancia", "edad_media"],
   },
   {
     id: "es_gr_alpujarras_lanjaron",
@@ -924,7 +1352,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "paisaje", "naturaleza"],
     tipo: "comarca",
-    radioActivacionMetros: 12000
+    radioActivacionMetros: 12000,
+
+    perfil: "parada",
+    prioridad: 120,
+    cooldownMin: 90,
+    intereses: ["paisaje", "rutas", "pueblos", "agua", "historia_morisca"],
   },
   {
     id: "es_gr_fuente_vaqueros_lorca",
@@ -934,7 +1367,12 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "literatura", "datosCuriosos"],
     tipo: "pueblo",
-    radioActivacionMetros: 6000
+    radioActivacionMetros: 6000,
+
+    perfil: "cultura",
+    prioridad: 90,
+    cooldownMin: 90,
+    intereses: ["lorca", "literatura", "cultura", "pueblo"],
   },
   {
     id: "es_gr_suspiro_moro",
@@ -944,7 +1382,12 @@ export const POIS = [
     nivel: 2,
     categorias: ["historia", "reconquista", "paisaje"],
     tipo: "puerto_montana",
-    radioActivacionMetros: 9000
+    radioActivacionMetros: 9000,
+
+    perfil: "historia",
+    prioridad: 135,
+    cooldownMin: 120,
+    intereses: ["reconquista", "boabdil", "paso_montana", "paisaje", "cronica"],
   },
   {
     id: "es_gr_reino_nazari_contexto",
@@ -954,6 +1397,11 @@ export const POIS = [
     nivel: 3,
     categorias: ["historia", "andalusi", "datosCuriosos"],
     tipo: "contexto_historico",
-    radioActivacionMetros: 10000
+    radioActivacionMetros: 10000,
+
+    perfil: "historia",
+    prioridad: 95,
+    cooldownMin: 180,
+    intereses: ["andalusi", "contexto", "reino_nazari", "sociedad", "economia"],
   },
 ];

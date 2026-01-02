@@ -15,6 +15,11 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json({ limit: "2mb" }));
 
+app.get("/healthz", (req, res) => {
+  res.status(200).send("ok");
+});
+
+
 // ================== LOG CARGA POIS ==================
 console.log("POIS cargados:", POIS.length);
 if (POIS.length > 0) console.log("Primer POI:", POIS[0]);

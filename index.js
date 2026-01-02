@@ -159,6 +159,17 @@ app.get("/pois-nearby", (req, res) => {
   }
 });
 
+// GET /pois-all
+app.get("/pois-all", (req, res) => {
+  try {
+    // Devuelve todo (puedes recortar campos si quieres)
+    res.json({ count: POIS.length, pois: POIS });
+  } catch (e) {
+    console.error("ERROR /pois-all:", e);
+    res.status(500).json({ error: "backend error" });
+  }
+});
+
 // ================== ENDPOINT LISTAR VOCES (DEBUG) ==================
 // GET /voices  -> te devuelve las voces reales de TU cuenta
 app.get("/voices", async (req, res) => {

@@ -1,2 +1,6 @@
 node_modules
 .env
+pois.xlsx
+Ejecutar Pois_excel a Pois_js.txt
+excel_to_pois_db.mjs
+PUSH A GITHUB.txt

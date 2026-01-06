@@ -2,17 +2,11 @@
 // Base de datos de puntos de interés para RAIDIOAPP
 // Provincias: Madrid, Toledo, Ciudad Real, Jaén, Granada
 //
-// ✅ NUEVO ESQUEMA AÑADIDO POR POI:
-// - perfil: "historia" | "naturaleza" | "cultura" | "parada"
-// - prioridad: número (más alto = se narra antes si coincide con otros POIs)
-// - cooldownMin: minutos (cooldown por POI; si no, usa uno global en la app)
-// - intereses: lista para afinar prompts (montañero / geología / arte / batallas…)
-// - sponsor: opcional (para aytos/diputaciones/negocios)
-// - eventos: opcional (agenda; fechas ISO)
-//
-// Nota: por defecto NO marco sponsor/eventos, te dejo la estructura preparada.
+// ✅ Generado automáticamente desde Excel. NO EDITAR A MANO.
+//    Fuente: pois.xlsx
 
 export const POIS = [
+
   // =====================================================================
   // ================================ MADRID =============================
   // =====================================================================
@@ -36,7 +30,6 @@ export const POIS = [
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  // --- SIERRA / NATURALEZA TOP ---
   {
     id: "es_mad_guadarrama_parque_nacional",
     nombre: "Parque Nacional de la Sierra de Guadarrama",
@@ -51,7 +44,10 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 45,
     intereses: ["senderismo", "cumbres", "miradores", "fauna", "flora", "clima", "paisaje"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_penalara",
     nombre: "Macizo de Peñalara",
@@ -66,7 +62,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 50,
     intereses: ["montañismo", "cumbre", "clima", "vistas", "glaciarismo", "senderos"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_pedriza",
     nombre: "La Pedriza (granito y escalada)",
@@ -81,7 +80,10 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 40,
     intereses: ["granito", "escalada", "bloques", "rutas", "vistas", "fauna", "flora", "seguridad_montana"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_lagunas_penalara",
     nombre: "Lagunas glaciares de Peñalara",
@@ -96,7 +98,10 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 45,
     intereses: ["lagunas", "glaciarismo", "geologia", "ecosistemas", "fauna", "flora", "rutas"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_hayedo_montejo",
     nombre: "Hayedo de Montejo (UNESCO)",
@@ -111,9 +116,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["bosque", "hayedo", "unesco", "biodiversidad", "otoño", "sendero"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  // --- CASTILLOS / FORTALEZAS ---
   {
     id: "es_mad_castillo_manzanares_real",
     nombre: "Castillo Nuevo de Manzanares el Real",
@@ -128,7 +134,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 45,
     intereses: ["castillo", "arquitectura", "edad_media", "linajes", "frontera", "visita"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_castillo_viejo_manzanares",
     nombre: "Castillo Viejo de Manzanares el Real",
@@ -143,7 +152,10 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 30,
     intereses: ["ruinas", "castillo", "contexto_medieval", "paisaje"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_castillo_coracera",
     nombre: "Castillo de la Coracera (San Martín de Valdeiglesias)",
@@ -158,7 +170,10 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 40,
     intereses: ["castillo", "señorios", "arquitectura", "pueblo"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_castillo_buitrago",
     nombre: "Muralla y Castillo de Buitrago del Lozoya",
@@ -173,23 +188,17 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 40,
     intereses: ["muralla", "fortificacion", "edad_media", "río", "pueblo"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  // --- MONASTERIOS / REALES SITIOS ---
   {
     id: "es_mad_valle_caidos",
     nombre: "Valle de los Caídos",
     lat: 40.6419103,
     lng: -4.1508807,
     nivel: 1,
-    categorias: [
-      "historia",
-      "guerra_civil",
-      "memoria",
-      "arquitectura",
-      "datosCuriosos",
-      "Habla_bien_de_su_historia_no_lo_llames_valle_de_cualgamuros",
-    ],
+    categorias: ["historia", "guerra_civil", "memoria", "arquitectura", "datosCuriosos"],
     tipo: "memorial",
     radioActivacionMetros: 8000,
 
@@ -197,7 +206,10 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 90,
     intereses: ["arquitectura", "siglo_xx", "memoria_historica", "contexto_guerra_civil", "construccion"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_el_escorial",
     nombre: "Monasterio de San Lorenzo de El Escorial (UNESCO)",
@@ -212,7 +224,10 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["felipe_ii", "arquitectura", "religion", "arte", "monarquia", "unesco"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_aranjuez_palacio_jardines",
     nombre: "Palacio Real y Jardines de Aranjuez (UNESCO)",
@@ -227,7 +242,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["palacio", "jardines", "arte", "monarquia", "unesco", "paisaje_cultural"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_alcala_henares_centro",
     nombre: "Centro histórico de Alcalá de Henares (Cervantes)",
@@ -242,7 +260,10 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 70,
     intereses: ["cervantes", "literatura", "universidad", "arquitectura", "unesco"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_universidad_alcala",
     nombre: "Universidad de Alcalá y Colegio Mayor de San Ildefonso",
@@ -257,9 +278,10 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["universidad", "arquitectura", "humanismo", "literatura"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  // --- BATALLAS / EPISODIOS ---
   {
     id: "es_mad_puerto_somosierra_batalla",
     nombre: "Puerto de Somosierra (batalla de 1808)",
@@ -274,7 +296,10 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 80,
     intereses: ["guerra_independencia", "batalla", "paso_montana", "logistica", "terreno"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_brunete_batalla",
     nombre: "Brunete (Batalla de Brunete, 1937)",
@@ -289,9 +314,10 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 90,
     intereses: ["guerra_civil", "batalla", "frentes", "consecuencias"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  // --- PUEBLOS CON ENCANTO ---
   {
     id: "es_mad_chinchon_plaza_mayor",
     nombre: "Chinchón y su Plaza Mayor",
@@ -306,7 +332,10 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["plaza_mayor", "gastronomia", "pueblo", "patrimonio", "plan_rapido"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_rascafria_paular",
     nombre: "Rascafría y Monasterio de El Paular",
@@ -321,7 +350,10 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["monasterio", "valle", "rio", "senderismo", "pueblo"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_patones_arriba",
     nombre: "Patones de Arriba (arquitectura negra)",
@@ -336,7 +368,10 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["arquitectura_negra", "pueblo", "paseo", "foto", "gastronomia"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_nuevo_baztan",
     nombre: "Nuevo Baztán (villa barroca industrial)",
@@ -351,9 +386,10 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 40,
     intereses: ["barroco", "industrializacion", "urbanismo", "arquitectura"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  // --- NATURALEZA / RÍOS / EMBALSES ---
   {
     id: "es_mad_embalse_santillana",
     nombre: "Embalse de Santillana y Mirador",
@@ -368,7 +404,10 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["embalse", "mirador", "foto", "aves", "paisaje"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_mad_las_presillas",
     nombre: "Área natural de Las Presillas (Lozoya)",
@@ -383,6 +422,8 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 30,
     intereses: ["rio", "baño", "area_recreativa", "paseo", "familia"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
   // =====================================================================
@@ -404,7 +445,10 @@ export const POIS = [
     prioridad: 135,
     cooldownMin: 120,
     intereses: ["unesco", "ciudad_historica", "tres_culturas", "arquitectura", "arte"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_toledo_ciudad_historica",
     nombre: "Casco histórico de Toledo (UNESCO)",
@@ -419,7 +463,10 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 90,
     intereses: ["unesco", "urbanismo", "arquitectura", "medieval", "visigodo"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_alcazar_toledo",
     nombre: "Alcázar de Toledo",
@@ -434,7 +481,10 @@ export const POIS = [
     prioridad: 135,
     cooldownMin: 90,
     intereses: ["fortaleza", "guerra_civil", "historia_militar", "arquitectura"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_puente_alcantara",
     nombre: "Puente de Alcántara",
@@ -449,7 +499,10 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["ingenieria", "romano", "rio", "arquitectura"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_puente_san_martin",
     nombre: "Puente de San Martín",
@@ -464,7 +517,10 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["puente", "medieval", "rio", "arquitectura"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_cerro_calderico_molinos",
     nombre: "Molinos de Consuegra (Cerro Calderico)",
@@ -479,7 +535,10 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 70,
     intereses: ["molinos", "quijote", "vistas", "paisaje", "viento"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_castillo_consuegra",
     nombre: "Castillo de Consuegra",
@@ -494,7 +553,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["castillo", "ordenes_militares", "frontera", "edad_media"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_castillo_orgaz",
     nombre: "Castillo de Orgaz",
@@ -509,7 +571,10 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["castillo", "edad_media", "señorio"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_castillo_escalona",
     nombre: "Castillo de Escalona",
@@ -524,7 +589,10 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["castillo", "tajo", "frontera"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_malpica_castillo",
     nombre: "Castillo de Malpica de Tajo",
@@ -539,7 +607,10 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["castillo", "tajo", "edad_media"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_torrejon_c_romana",
     nombre: "Villa romana de El Saucedo (Talavera la Nueva)",
@@ -554,7 +625,10 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 45,
     intereses: ["romano", "villa", "mosaicos", "vida_cotidiana"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_talavera_murallas",
     nombre: "Murallas y Torres de Talavera de la Reina",
@@ -569,7 +643,10 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 45,
     intereses: ["muralla", "defensa", "arquitectura", "ciudad"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_basilica_prado",
     nombre: "Basílica del Prado (Talavera)",
@@ -584,7 +661,10 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 45,
     intereses: ["arte", "religion", "arquitectura", "devocion"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_belmonte_san_jose",
     nombre: "Castillo de San José (Belvís de la Jara)",
@@ -599,7 +679,10 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["castillo", "edad_media"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_barrancas_burujon",
     nombre: "Las Barrancas de Burujón",
@@ -614,7 +697,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 50,
     intereses: ["geologia", "miradores", "foto", "aves", "sendero_corto"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_santa_maria_melque",
     nombre: "Santa María de Melque",
@@ -629,7 +715,10 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 60,
     intereses: ["visigodo", "religion", "arte", "arquitectura"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_cuevas_huecas",
     nombre: "Cuevas y ermitas rupestres de Huecas",
@@ -644,7 +733,10 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 45,
     intereses: ["arqueologia", "rupestre", "cuevas", "religion"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_yebenes_cueva",
     nombre: "Cuevas del Chiquero (Los Yébenes)",
@@ -659,7 +751,10 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 45,
     intereses: ["prehistoria", "cuevas", "arqueologia"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_castillo_dos_hermanas",
     nombre: "Castillo de Dos Hermanas (Navahermosa)",
@@ -674,7 +769,10 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["castillo", "edad_media"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_montes_toledo",
     nombre: "Montes de Toledo (Puerto del Milagro)",
@@ -689,7 +787,10 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["paisaje", "sierra", "fauna", "senderismo", "miradores"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_tol_camunas_tamborada",
     nombre: "Museo del Pecado Mortal (Camuñas)",
@@ -704,10 +805,12 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 45,
     intereses: ["tradiciones", "museo", "curiosidades", "cultura_local"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
   // =====================================================================
-  // ============================= CIUDAD REAL ===========================
+  // ================================ CIUDAD REAL =============================
   // =====================================================================
 
   // ✅ CAPITAL
@@ -725,7 +828,10 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "cultura", "mancha"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_almagro_plaza_mayor",
     nombre: "Almagro y su Plaza Mayor / Corral de Comedias",
@@ -740,7 +846,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["teatro", "corral_de_comedias", "arquitectura", "pueblo", "plan_cultural"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_tablas_daimiel",
     nombre: "Parque Nacional de Las Tablas de Daimiel",
@@ -755,7 +864,10 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 60,
     intereses: ["humedal", "aves", "observacion", "sendero", "ecosistema"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_calatrava_nueva",
     nombre: "Castillo de Calatrava la Nueva",
@@ -770,7 +882,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["ordenes_militares", "castillo", "defensa", "reconquista"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_valdepenas_vino",
     nombre: "Valdepeñas (tierra de vino y batallas napoleónicas)",
@@ -785,7 +900,10 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 50,
     intereses: ["vino", "cultura_local", "gastronomia", "historia_napoleonica"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_puertollano_mineria",
     nombre: "Puertollano (minería e industria histórica)",
@@ -800,7 +918,10 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 60,
     intereses: ["industria", "mineria", "historia_economica", "siglo_xix_xx"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_viso_marques_santa_cruz",
     nombre: "Palacio del Marqués de Santa Cruz (Viso del Marqués)",
@@ -815,7 +936,10 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 60,
     intereses: ["renacimiento", "arte", "arquitectura", "palacio"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_lagunas_ruidera",
     nombre: "Parque Natural de las Lagunas de Ruidera",
@@ -830,9 +954,10 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 60,
     intereses: ["lagunas", "agua", "rutas", "baño", "fauna", "paisaje"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  // --- MÁS CIUDAD REAL (A4 / Mancha) ---
   {
     id: "es_cr_manzanares_ciudad",
     nombre: "Manzanares (cruce histórico de la A4)",
@@ -847,7 +972,10 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 60,
     intereses: ["mancha", "rutas", "comunicaciones", "historia_local"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_puerto_lapice_venta",
     nombre: "Puerto Lápice (ventas cervantinas y paso de la A4)",
@@ -862,7 +990,10 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 60,
     intereses: ["quijote", "ventas", "cervantes", "pueblo", "parada_viaje"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_villanueva_infantes",
     nombre: "Villanueva de los Infantes (corazón histórico de La Mancha)",
@@ -877,7 +1008,10 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 60,
     intereses: ["pueblo", "patrimonio", "mancha", "plan_paseo"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_motilla_azuer",
     nombre: "Motilla del Azuer (prehistoria en La Mancha)",
@@ -892,7 +1026,10 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 90,
     intereses: ["prehistoria", "arqueologia", "yacimiento", "agua", "ingenieria_antigua"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_castillo_dona_berenguela",
     nombre: "Castillo de Doña Berenguela (Bolaños de Calatrava)",
@@ -907,7 +1044,10 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 60,
     intereses: ["castillo", "ordenes_militares", "edad_media"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_parque_cabaneros",
     nombre: "Parque Nacional de Cabañeros (acceso sur)",
@@ -922,7 +1062,10 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 60,
     intereses: ["fauna", "berrea", "observacion", "paisaje", "senderismo"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_campo_calatrava_volcanes",
     nombre: "Campo de Calatrava (zona volcánica y maares)",
@@ -937,7 +1080,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["geologia", "volcanes", "maares", "paisaje", "rocas"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_cr_orden_calatrava_contexto",
     nombre: "Orden de Calatrava (historia militar de la zona)",
@@ -952,10 +1098,12 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 90,
     intereses: ["ordenes_militares", "reconquista", "frontera", "contexto"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
   // =====================================================================
-  // ================================ JAÉN ===============================
+  // ================================ JAÉN =============================
   // =====================================================================
 
   // ✅ CAPITAL
@@ -973,7 +1121,10 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 120,
     intereses: ["aceite", "cultura", "historia_urbana", "capitalidad"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_despenaperros",
     nombre: "Parque Natural de Despeñaperros (puerta de Andalucía)",
@@ -988,7 +1139,10 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 60,
     intereses: ["geologia", "desfiladero", "paisaje", "paso_natural", "fauna", "rutas"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_bailen_batalla",
     nombre: "Bailén (batalla de 1808 contra Napoleón)",
@@ -1003,7 +1157,10 @@ export const POIS = [
     prioridad: 150,
     cooldownMin: 120,
     intereses: ["guerra_independencia", "batalla", "consecuencias", "logistica"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_linares_minas",
     nombre: "Linares (minería histórica y patrimonio industrial)",
@@ -1018,7 +1175,10 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 90,
     intereses: ["mineria", "industria", "patrimonio", "siglo_xix_xx"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_castillo_santa_catalina",
     nombre: "Castillo de Santa Catalina (Jaén)",
@@ -1033,7 +1193,10 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 60,
     intereses: ["castillo", "mirador", "frontera", "edad_media"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_ubeda_renacimiento",
     nombre: "Úbeda (Renacimiento, UNESCO)",
@@ -1048,7 +1211,10 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 120,
     intereses: ["renacimiento", "unesco", "arquitectura", "arte", "urbanismo"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_baeza_renacimiento",
     nombre: "Baeza (Renacimiento, UNESCO)",
@@ -1063,9 +1229,10 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 120,
     intereses: ["renacimiento", "unesco", "arquitectura", "arte", "historia"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  // --- MÁS JAÉN (A4/A44) ---
   {
     id: "es_ja_navas_tolosa_batalla",
     nombre: "Las Navas de Tolosa (batalla de 1212)",
@@ -1080,7 +1247,10 @@ export const POIS = [
     prioridad: 160,
     cooldownMin: 180,
     intereses: ["reconquista", "batalla", "terreno", "logistica", "consecuencias"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_banos_encina_castillo",
     nombre: "Baños de la Encina y Castillo de Burgalimar",
@@ -1095,7 +1265,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["castillo", "pueblo", "edad_media", "plan_visita"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_carolina_nuevas_poblaciones",
     nombre: "La Carolina (Nuevas Poblaciones de Sierra Morena)",
@@ -1110,7 +1283,10 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["ilustracion", "poblamiento", "reformas", "siglo_xviii"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_andujar_santuario_cabeza",
     nombre: "Andújar y Santuario de la Virgen de la Cabeza",
@@ -1125,7 +1301,10 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 90,
     intereses: ["religion", "santuario", "paisaje", "romeria", "rutas"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_cazorla_parque_natural",
     nombre: "Parque Natural Sierras de Cazorla, Segura y Las Villas",
@@ -1140,7 +1319,10 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["fauna", "senderismo", "ríos", "bosques", "miradores", "naturaleza"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_arjona_historia_almohade",
     nombre: "Arjona (orígenes íberos y época almohade)",
@@ -1155,7 +1337,10 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 120,
     intereses: ["iberos", "andalusi", "arqueologia", "contexto"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_martos_pena",
     nombre: "Martos y la Peña (torreones y frontera medieval)",
@@ -1170,11 +1355,14 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["mirador", "frontera_medieval", "paisaje", "castillos"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_ja_mar_de_olivos",
     nombre: "Mar de olivos (paisaje del aceite de Jaén)",
-    lat: 38.0,
+    lat: 38,
     lng: -3.8,
     nivel: 3,
     categorias: ["paisaje", "datosCuriosos", "cultura", "aceite"],
@@ -1185,10 +1373,12 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 90,
     intereses: ["aceite", "paisaje", "agricultura", "cultura_local"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
   // =====================================================================
-  // =============================== GRANADA =============================
+  // ================================ GRANADA =============================
   // =====================================================================
 
   // ✅ CAPITAL
@@ -1206,7 +1396,10 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["reino_nazari", "renacimiento", "cultura", "historia_urbana"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_alhambra",
     nombre: "La Alhambra y Generalife",
@@ -1221,7 +1414,10 @@ export const POIS = [
     prioridad: 170,
     cooldownMin: 180,
     intereses: ["andalusi", "arquitectura", "arte", "unesco", "reino_nazari"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_albaicin_san_nicolas",
     nombre: "Albaicín y Mirador de San Nicolás",
@@ -1236,7 +1432,10 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["mirador", "barrio_historico", "paisaje", "foto", "paseo"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_sierra_nevada",
     nombre: "Sierra Nevada (acceso Pradollano)",
@@ -1251,7 +1450,10 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 90,
     intereses: ["montaña", "senderismo", "nieve", "vistas", "fauna", "altitud"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_loja_paso_historico",
     nombre: "Loja (puerta occidental de Granada)",
@@ -1266,7 +1468,10 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 90,
     intereses: ["frontera", "reconquista", "ruta", "ciudad"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_guadix_cuevas",
     nombre: "Guadix (catedral y cuevas habitadas)",
@@ -1281,9 +1486,10 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["cuevas", "arquitectura", "catedral", "plan_visita"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  // --- MÁS GRANADA ---
   {
     id: "es_gr_catedral_capilla_real",
     nombre: "Catedral y Capilla Real (Reyes Católicos)",
@@ -1298,7 +1504,10 @@ export const POIS = [
     prioridad: 160,
     cooldownMin: 180,
     intereses: ["reyes_catolicos", "religion", "arte", "arquitectura", "renacimiento"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_sacromonte_cuevas",
     nombre: "Sacromonte (cuevas y cultura gitana)",
@@ -1313,7 +1522,10 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["cuevas", "cultura_git", "tradiciones", "barrio"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_velez_benaudalla_valle",
     nombre: "Vélez de Benaudalla (valle camino de la costa)",
@@ -1328,7 +1540,10 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 60,
     intereses: ["valle", "paisaje", "pueblo", "parada_viaje"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_moclin_castillo",
     nombre: "Moclín (castillo de frontera nazarí)",
@@ -1343,7 +1558,10 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 90,
     intereses: ["frontera_nazari", "castillo", "vigilancia", "edad_media"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_alpujarras_lanjaron",
     nombre: "Las Alpujarras y Lanjarón (paisaje morisco)",
@@ -1358,7 +1576,10 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["paisaje", "rutas", "pueblos", "agua", "historia_morisca"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_fuente_vaqueros_lorca",
     nombre: "Fuente Vaqueros (cuna de Federico García Lorca)",
@@ -1373,7 +1594,10 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 90,
     intereses: ["lorca", "literatura", "cultura", "pueblo"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_suspiro_moro",
     nombre: "Puerto del Suspiro del Moro (última mirada de Boabdil)",
@@ -1388,7 +1612,10 @@ export const POIS = [
     prioridad: 135,
     cooldownMin: 120,
     intereses: ["reconquista", "boabdil", "paso_montana", "paisaje", "cronica"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
   {
     id: "es_gr_reino_nazari_contexto",
     nombre: "Reino Nazarí de Granada (contexto histórico)",
@@ -1403,5 +1630,8 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 180,
     intereses: ["andalusi", "contexto", "reino_nazari", "sociedad", "economia"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
+
 ];

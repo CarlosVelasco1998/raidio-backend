@@ -2084,7 +2084,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 170,
     cooldownMin: 240,
-    intereses: ["cister", "Don Pablo Muntadas Campeny", "cascadas", "jardines", "paseo", "fotografia"],
+    intereses: ["cister", "Desamortizción de Mendizábal", "Don Pablo Muntadas Campeny", "cascadas", "jardines", "paseo", "fotografia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },

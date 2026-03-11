@@ -19,7 +19,6 @@ app.get("/healthz", (req, res) => {
   res.status(200).send("ok");
 });
 
-
 // ================== LOG CARGA POIS ==================
 console.log("POIS cargados:", POIS.length);
 if (POIS.length > 0) console.log("Primer POI:", POIS[0]);
@@ -40,6 +39,95 @@ function distanciaMetros(lat1, lon1, lat2, lon2) {
 
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
+}
+
+// ================== UTIL: NORMALIZACIÓN ==================
+function normalizarNumero(v) {
+  if (typeof v === "number" && Number.isFinite(v)) return v;
+
+  if (typeof v === "string" && v.trim() !== "") {
+    const n = Number(v.replace(",", "."));
+    return Number.isFinite(n) ? n : null;
+  }
+
+  return null;
+}
+
+// ================== UTIL: EN VIVO (PREPARADO, AÚN SIN BÚSQUEDA REAL) ==================
+async function getLiveEventsContext({
+  liveEvents = false,
+  latitude = null,
+  longitude = null,
+  timestamp = null,
+  poiNombre = "",
+  language = "es",
+}) {
+  // Si el usuario no activó "En vivo", no hacemos nada.
+  if (!liveEvents) return "";
+
+  const lat = normalizarNumero(latitude);
+  const lng = normalizarNumero(longitude);
+
+  // Si no llegan coordenadas válidas, no añadimos contexto.
+  if (lat === null || lng === null) return "";
+
+  // Dejamos validados también estos campos para futuras fases.
+  const ts =
+    typeof timestamp === "string" && timestamp.trim()
+      ? timestamp.trim()
+      : new Date().toISOString();
+
+  const poi =
+    typeof poiNombre === "string" && poiNombre.trim()
+      ? poiNombre.trim()
+      : "";
+
+  const lang =
+    typeof language === "string" && language.trim()
+      ? language.trim()
+      : "es";
+
+  // De momento NO buscamos nada todavía.
+  // Esta función devuelve vacío para que el modelo no invente eventos.
+  // En el siguiente paso aquí meteremos reverse geocoding + búsqueda real.
+  console.log("LIVE_EVENTS preparado:", {
+    liveEvents,
+    latitude: lat,
+    longitude: lng,
+    timestamp: ts,
+    poiNombre: poi,
+    language: lang,
+  });
+
+  return "";
+}
+
+function buildPromptWithLiveContext({
+  prompt,
+  liveEvents = false,
+  liveContext = "",
+}) {
+  if (!liveEvents) return prompt;
+
+  if (liveContext && liveContext.trim()) {
+    return `${prompt}
+
+LIVE_CONTEXT (información actual fiable):
+${liveContext}
+
+INSTRUCCIONES IMPORTANTES SOBRE EN VIVO:
+- Usa LIVE_CONTEXT solo como apoyo y de forma breve y natural.
+- No inventes eventos, fechas, conciertos, celebraciones ni agendas.
+- Si LIVE_CONTEXT existe, úsalo solo para contexto actual de la zona.`;
+  }
+
+  return `${prompt}
+
+INSTRUCCIONES IMPORTANTES SOBRE EN VIVO:
+- El usuario ha activado "En vivo", pero NO se ha proporcionado contexto actual fiable.
+- No menciones eventos actuales, celebraciones del día, conciertos, ferias ni agendas en vivo.
+- No inventes nada relacionado con actualidad.
+- Esto NO afecta a promociones o recomendaciones ya incluidas en el propio prompt del POI.`;
 }
 
 // ================== ENDPOINT SALUD ==================
@@ -86,7 +174,7 @@ app.get("/pois-nearby", (req, res) => {
   }
 });
 
-// GET /pois-all  (útil para modo dev en Flutter)
+// GET /pois-all (útil para modo dev en Flutter)
 app.get("/pois-all", (req, res) => {
   try {
     res.json({ count: POIS.length, pois: POIS });
@@ -97,7 +185,19 @@ app.get("/pois-all", (req, res) => {
 });
 
 // ================== ENDPOINT IA (OPENAI) ==================
-// POST /ai/generate { prompt: "...", temas: [...], model?: "gpt-4o-mini" }
+// POST /ai/generate
+// Body esperado:
+// {
+//   prompt: string,
+//   temas?: string[],
+//   model?: string,
+//   liveEvents?: boolean,
+//   latitude?: number,
+//   longitude?: number,
+//   timestamp?: string,
+//   poiNombre?: string,
+//   language?: string
+// }
 app.post("/ai/generate", async (req, res) => {
   try {
     const apiKey = process.env.OPENAI_API_KEY;
@@ -105,15 +205,39 @@ app.post("/ai/generate", async (req, res) => {
       return res.status(500).json({ error: "Falta OPENAI_API_KEY en env" });
     }
 
-    const { prompt, temas, model } = req.body || {};
+    const {
+      prompt,
+      temas,
+      model,
+      liveEvents = false,
+      latitude = null,
+      longitude = null,
+      timestamp = null,
+      poiNombre = "",
+      language = "es",
+    } = req.body || {};
+
     if (!prompt || typeof prompt !== "string") {
       return res.status(400).json({ error: "prompt requerido (string)" });
     }
 
     const usedModel = model || process.env.OPENAI_MODEL || "gpt-4o-mini";
-
-    // Si quieres, puedes meter “temas” en el system o dejarlo solo para logging:
     const temasTxt = Array.isArray(temas) ? temas.filter(Boolean).join(", ") : "";
+
+    const liveContext = await getLiveEventsContext({
+      liveEvents: Boolean(liveEvents),
+      latitude,
+      longitude,
+      timestamp,
+      poiNombre,
+      language,
+    });
+
+    const finalPrompt = buildPromptWithLiveContext({
+      prompt,
+      liveEvents: Boolean(liveEvents),
+      liveContext,
+    });
 
     const body = {
       model: usedModel,
@@ -126,7 +250,7 @@ app.post("/ai/generate", async (req, res) => {
         ...(temasTxt
           ? [{ role: "system", content: `Temas seleccionados: ${temasTxt}` }]
           : []),
-        { role: "user", content: prompt },
+        { role: "user", content: finalPrompt },
       ],
       max_tokens: 800,
       temperature: 0.7,
@@ -145,10 +269,13 @@ app.post("/ai/generate", async (req, res) => {
     );
 
     const text = r.data?.choices?.[0]?.message?.content ?? "";
+
     res.json({
       text,
       model_used: r.data?.model ?? usedModel,
       usage: r.data?.usage,
+      live_events_enabled: Boolean(liveEvents),
+      live_context_used: Boolean(liveContext && liveContext.trim()),
     });
   } catch (e) {
     const status = e.response?.status;
@@ -193,6 +320,7 @@ app.post("/tts", async (req, res) => {
     if (!text || !text.trim()) {
       return res.status(400).json({ error: "text required" });
     }
+
     if (!apiKey || !DEFAULT_VOICE_ID) {
       return res.status(500).json({
         error: "Falta ELEVEN_API_KEY o ELEVEN_VOICE_ID en env",
@@ -200,7 +328,6 @@ app.post("/tts", async (req, res) => {
     }
 
     const usedVoiceId = voiceId || DEFAULT_VOICE_ID;
-
     const url = `https://api.elevenlabs.io/v1/text-to-speech/${usedVoiceId}`;
 
     const payloadFlash = {
@@ -236,7 +363,11 @@ app.post("/tts", async (req, res) => {
         timeout: 30000,
       });
     } catch (eFlash) {
-      console.error("⚠️ Flash failed:", eFlash.response?.status, eFlash.response?.data || eFlash.message);
+      console.error(
+        "⚠️ Flash failed:",
+        eFlash.response?.status,
+        eFlash.response?.data || eFlash.message
+      );
 
       elevenResp = await axios.post(url, payloadFallback, {
         headers: {
@@ -257,8 +388,11 @@ app.post("/tts", async (req, res) => {
 
     let decoded = raw;
     try {
-      if (raw && Buffer.isBuffer(raw)) decoded = raw.toString("utf8");
-      else if (raw instanceof ArrayBuffer) decoded = Buffer.from(raw).toString("utf8");
+      if (raw && Buffer.isBuffer(raw)) {
+        decoded = raw.toString("utf8");
+      } else if (raw instanceof ArrayBuffer) {
+        decoded = Buffer.from(raw).toString("utf8");
+      }
     } catch (_) {}
 
     console.error("❌ ElevenLabs status:", status);

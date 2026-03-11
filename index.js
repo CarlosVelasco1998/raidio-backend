@@ -53,7 +53,64 @@ function normalizarNumero(v) {
   return null;
 }
 
-// ================== UTIL: EN VIVO (PREPARADO, AÚN SIN BÚSQUEDA REAL) ==================
+function limpiarTexto(v) {
+  return typeof v === "string" ? v.trim() : "";
+}
+
+// ================== UTIL: REVERSE GEOCODING ==================
+async function reverseGeocode(lat, lng, language = "es") {
+  try {
+    const r = await axios.get("https://nominatim.openstreetmap.org/reverse", {
+      params: {
+        format: "jsonv2",
+        lat,
+        lon: lng,
+        zoom: 10,
+        addressdetails: 1,
+        "accept-language": language || "es",
+      },
+      headers: {
+        "User-Agent": "RAIDIOAPP/1.0 (contact: raidioapp@gmail.com)",
+      },
+      timeout: 15000,
+    });
+
+    const address = r.data?.address || {};
+
+    const city =
+      address.city ||
+      address.town ||
+      address.village ||
+      address.municipality ||
+      address.hamlet ||
+      "";
+
+    const province =
+      address.state_district ||
+      address.province ||
+      address.state ||
+      "";
+
+    const country = address.country || "";
+
+    return {
+      city: limpiarTexto(city),
+      province: limpiarTexto(province),
+      country: limpiarTexto(country),
+      raw: r.data || null,
+    };
+  } catch (e) {
+    console.error("ERROR reverseGeocode:", e.response?.data || e.message);
+    return {
+      city: "",
+      province: "",
+      country: "",
+      raw: null,
+    };
+  }
+}
+
+// ================== UTIL: EN VIVO ==================
 async function getLiveEventsContext({
   liveEvents = false,
   latitude = null,
@@ -62,44 +119,47 @@ async function getLiveEventsContext({
   poiNombre = "",
   language = "es",
 }) {
-  // Si el usuario no activó "En vivo", no hacemos nada.
   if (!liveEvents) return "";
 
   const lat = normalizarNumero(latitude);
   const lng = normalizarNumero(longitude);
 
-  // Si no llegan coordenadas válidas, no añadimos contexto.
   if (lat === null || lng === null) return "";
 
-  // Dejamos validados también estos campos para futuras fases.
   const ts =
     typeof timestamp === "string" && timestamp.trim()
       ? timestamp.trim()
       : new Date().toISOString();
 
-  const poi =
-    typeof poiNombre === "string" && poiNombre.trim()
-      ? poiNombre.trim()
-      : "";
+  const poi = limpiarTexto(poiNombre);
+  const lang = limpiarTexto(language) || "es";
 
-  const lang =
-    typeof language === "string" && language.trim()
-      ? language.trim()
-      : "es";
+  const place = await reverseGeocode(lat, lng, lang);
 
-  // De momento NO buscamos nada todavía.
-  // Esta función devuelve vacío para que el modelo no invente eventos.
-  // En el siguiente paso aquí meteremos reverse geocoding + búsqueda real.
-  console.log("LIVE_EVENTS preparado:", {
-    liveEvents,
+  console.log("LIVE_EVENTS geo:", {
     latitude: lat,
     longitude: lng,
     timestamp: ts,
     poiNombre: poi,
     language: lang,
+    place,
   });
 
-  return "";
+  if (!place.city && !place.province) return "";
+
+  const partes = [];
+  if (place.city) partes.push(place.city);
+  if (place.province && place.province !== place.city) partes.push(place.province);
+  if (place.country) partes.push(place.country);
+
+  const zonaTxt = partes.join(", ");
+
+  return `
+Contexto actual fiable del sistema:
+- Fecha actual: ${ts}
+- Zona detectada: ${zonaTxt}
+${poi ? `- POI de referencia: ${poi}` : ""}
+`;
 }
 
 function buildPromptWithLiveContext({
@@ -117,8 +177,10 @@ ${liveContext}
 
 INSTRUCCIONES IMPORTANTES SOBRE EN VIVO:
 - Usa LIVE_CONTEXT solo como apoyo y de forma breve y natural.
+- Si mencionas actualidad, debe estar apoyada por LIVE_CONTEXT.
 - No inventes eventos, fechas, conciertos, celebraciones ni agendas.
-- Si LIVE_CONTEXT existe, úsalo solo para contexto actual de la zona.`;
+- Si LIVE_CONTEXT no contiene eventos concretos, no hables de eventos concretos.
+- Puedes usar la zona detectada para contextualizar mejor el lugar, pero sin inventar actualidad.`;
   }
 
   return `${prompt}
@@ -174,7 +236,7 @@ app.get("/pois-nearby", (req, res) => {
   }
 });
 
-// GET /pois-all (útil para modo dev en Flutter)
+// ================== ENDPOINT POIS ALL ==================
 app.get("/pois-all", (req, res) => {
   try {
     res.json({ count: POIS.length, pois: POIS });

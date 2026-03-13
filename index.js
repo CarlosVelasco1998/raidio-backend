@@ -1,9 +1,10 @@
+
 // index.js (RAIDIOAPP backend) - ES Modules ("type":"module")
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
-import * as cheerio from "cheerio";
+import { chromium } from "playwright";
 
 import { POIS } from "./pois_db.js";
 
@@ -22,6 +23,36 @@ const CACHE_TTL_MS = {
   reverse: 1000 * 60 * 60 * 6, // 6 h
   spainInfoSearch: 1000 * 60 * 20, // 20 min
 };
+
+// Browser singleton
+let browserPromise = null;
+
+async function getBrowser() {
+  if (!browserPromise) {
+    browserPromise = chromium.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+  }
+  return browserPromise;
+}
+
+async function closeBrowserSafe() {
+  if (!browserPromise) return;
+  try {
+    const browser = await browserPromise;
+    await browser.close();
+  } catch (_) {}
+  browserPromise = null;
+}
+
+process.on("SIGTERM", () => {
+  closeBrowserSafe().finally(() => process.exit(0));
+});
+
+process.on("SIGINT", () => {
+  closeBrowserSafe().finally(() => process.exit(0));
+});
 
 // ================== MIDDLEWARES ==================
 app.use(cors());
@@ -141,33 +172,6 @@ function getMonthRange(dateInput) {
 
 function daysBetween(a, b) {
   return Math.round((a.getTime() - b.getTime()) / (1000 * 60 * 60 * 24));
-}
-
-// ================== UTIL: HTML ==================
-function decodeHtmlEntities(str = "") {
-  return str
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&apos;/g, "'")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">");
-}
-
-function htmlToText(html = "") {
-  return decodeHtmlEntities(
-    html
-      .replace(/<script[\s\S]*?<\/script>/gi, " ")
-      .replace(/<style[\s\S]*?<\/style>/gi, " ")
-      .replace(/<noscript[\s\S]*?<\/noscript>/gi, " ")
-      .replace(/<\/(p|div|section|article|h1|h2|h3|li|ul|ol|br)>/gi, "\n")
-      .replace(/<[^>]+>/g, " ")
-      .replace(/\r/g, "\n")
-      .replace(/\n{2,}/g, "\n")
-      .replace(/[ \t]{2,}/g, " ")
-      .trim()
-  );
 }
 
 // ================== UTIL: REVERSE GEOCODING ==================
@@ -347,44 +351,67 @@ function scoreAgendaEvent(event, nowDate, place) {
   return score;
 }
 
-async function searchSpainInfoAgenda({ province, nowDate }) {
+async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
   const url = buildSpainInfoAgendaUrl({ province, date: nowDate });
-  const cacheKey = `spaininfo-search|${province}|${formatDdMmYyyy(nowDate)}`;
+  const browser = await getBrowser();
+  const context = await browser.newContext({
+    locale: "es-ES",
+    userAgent: "RAIDIOAPP/1.0 (contact: raidioapp@gmail.com)",
+  });
 
+  const page = await context.newPage();
+
+  try {
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+    await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
+    await page.waitForTimeout(2500);
+
+    // Algunos sitios terminan de hidratar contenido tras la red.
+    // Extraemos anchors y body final renderizado.
+    const anchors = await page.$$eval('a[href*="/agenda/"]', (els) =>
+      els.map((el) => ({
+        href: el.href || el.getAttribute("href") || "",
+        text: (el.innerText || el.textContent || "").replace(/\s+/g, " ").trim(),
+      }))
+    );
+
+    const bodyText = await page.locator("body").innerText().catch(() => "");
+
+    return { url, anchors, bodyText };
+  } finally {
+    await context.close().catch(() => {});
+  }
+}
+
+async function searchSpainInfoAgenda({ province, nowDate }) {
+  const cacheKey = `spaininfo-search|${province}|${formatDdMmYyyy(nowDate)}`;
   const cached = getCache(cacheKey, CACHE_TTL_MS.spainInfoSearch);
   if (cached) return cached;
 
   try {
-    const r = await axios.get(url, {
-      headers: {
-        "User-Agent": "RAIDIOAPP/1.0 (contact: raidioapp@gmail.com)",
-        "Accept-Language": "es-ES,es;q=0.9",
-      },
-      timeout: 20000,
+    const { url, anchors, bodyText } = await fetchSpainInfoAgendaWithPlaywright({
+      province,
+      nowDate,
     });
-
-    const html = r.data || "";
-    const $ = cheerio.load(html);
-    const pageText = htmlToText(html);
 
     const events = [];
 
-    // Método principal: anchors a fichas de agenda
-    $('a[href*="/agenda/"]').each((_, el) => {
-      const href = $(el).attr("href") || "";
-      const text = $(el).text().replace(/\s+/g, " ").trim();
+    // Método principal: links a fichas de agenda ya renderizadas por JS
+    for (const item of anchors) {
+      const href = limpiarTexto(item.href);
+      const text = limpiarTexto(item.text);
 
-      if (!href || !text) return;
-      if (!/agenda\s*\|/i.test(text)) return;
+      if (!href || !text) continue;
+      if (!/agenda\s*\|/i.test(text)) continue;
 
       const cleanText = text.replace(/^Agenda\s*\|\s*/i, "").trim();
       const { start, end, rawMatches } = extractDateRangeFromText(cleanText);
 
-      if (!rawMatches.length) return;
+      if (!rawMatches.length) continue;
 
       const firstDateText = rawMatches[0];
       const idx = cleanText.indexOf(firstDateText);
-      if (idx <= 0) return;
+      if (idx <= 0) continue;
 
       const beforeDate = cleanText.slice(0, idx).trim();
       const afterDates = cleanText
@@ -393,29 +420,27 @@ async function searchSpainInfoAgenda({ province, nowDate }) {
         .replace(/^\s*-\s*\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4}/, "")
         .trim();
 
-      const absoluteUrl = href.startsWith("http")
-        ? href
-        : `https://www.spain.info${href.startsWith("/") ? href : `/${href}`}`;
-
-      const isOngoing = start && end ? nowDate >= start && nowDate <= end : false;
+      const startDate = start;
+      const endDate = end;
+      const isOngoing = startDate && endDate ? nowDate >= startDate && nowDate <= endDate : false;
 
       events.push({
         title: beforeDate,
         summary: afterDates,
-        startDate: start,
-        endDate: end,
-        url: absoluteUrl,
+        startDate,
+        endDate,
+        url: href,
         isOngoing,
       });
-    });
+    }
 
-    // Fallback si el HTML cambia y no pilla anchors como esperamos
+    // Fallback: regex sobre el texto final del body renderizado
     if (!events.length) {
       const regex =
         /Agenda\s*\|\s*([^\n]+?)\s+(\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4})(?:\s*-\s*(\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4}))?/gi;
 
       let match;
-      while ((match = regex.exec(pageText)) !== null) {
+      while ((match = regex.exec(bodyText)) !== null) {
         const title = limpiarTexto(match[1]);
         const startDate = parseSpanishDateText(match[2]);
         const endDate = match[3] ? parseSpanishDateText(match[3]) : startDate;
@@ -428,7 +453,7 @@ async function searchSpainInfoAgenda({ province, nowDate }) {
           summary: "",
           startDate,
           endDate,
-          url: buildSpainInfoAgendaUrl({ province, date: nowDate }),
+          url,
           isOngoing,
         });
       }
@@ -467,7 +492,9 @@ function buildLiveContextFromSpainInfoEvent({ event, place, nowDate, poiNombre }
 
   if (event.startDate && event.endDate) {
     lines.push(
-      `- Fechas del evento: del ${formatDateEs(event.startDate.toISOString())} al ${formatDateEs(event.endDate.toISOString())}`
+      `- Fechas del evento: del ${formatDateEs(event.startDate.toISOString())} al ${formatDateEs(
+        event.endDate.toISOString()
+      )}`
     );
   } else if (event.startDate) {
     lines.push(`- Fecha del evento: ${formatDateEs(event.startDate.toISOString())}`);
@@ -578,6 +605,60 @@ INSTRUCCIONES IMPORTANTES SOBRE EN VIVO:
 - No inventes nada relacionado con actualidad.`;
 }
 
+// ================== DEBUG SPAIN.INFO ==================
+app.get("/debug/spaininfo-test", async (req, res) => {
+  try {
+    const lat = normalizarNumero(req.query.lat);
+    const lng = normalizarNumero(req.query.lng);
+    const date = parseSafeDate(req.query.date);
+
+    if (lat === null || lng === null) {
+      return res.status(400).json({ error: "lat/lng inválidos" });
+    }
+
+    const place = await reverseGeocode(lat, lng, "es");
+    const province = place.province || "";
+    const spainInfoUrl = province
+      ? buildSpainInfoAgendaUrl({ province, date })
+      : "";
+
+    const events = province
+      ? await searchSpainInfoAgenda({ province, nowDate: date })
+      : [];
+
+    const ranked = events
+      .map((ev) => ({
+        title: ev.title,
+        summary: ev.summary,
+        startDate: ev.startDate ? ev.startDate.toISOString() : null,
+        endDate: ev.endDate ? ev.endDate.toISOString() : null,
+        isOngoing: ev.isOngoing,
+        url: ev.url,
+        score: scoreAgendaEvent(ev, date, place),
+      }))
+      .sort((a, b) => b.score - a.score);
+
+    return res.json({
+      input: {
+        lat,
+        lng,
+        date: date.toISOString(),
+      },
+      place,
+      provinceNormalized: normalizeProvinceForSpainInfo(province),
+      spainInfoUrl,
+      eventsFound: ranked.length,
+      topEvents: ranked.slice(0, 10),
+    });
+  } catch (e) {
+    console.error("ERROR /debug/spaininfo-test:", e.response?.data || e.message);
+    return res.status(500).json({
+      error: "debug_spaininfo_failed",
+      detail: e.response?.data || e.message,
+    });
+  }
+});
+
 // ================== ENDPOINT SALUD ==================
 app.get("/", (req, res) => {
   res.send("Backend RAIDIOAPP funcionando ✔️");
@@ -629,61 +710,6 @@ app.get("/pois-all", (req, res) => {
   } catch (e) {
     console.error("ERROR /pois-all:", e);
     res.status(500).json({ error: "backend error" });
-  }
-});
-
-// ================== DEBUG SPAIN.INFO ==================
-// GET /debug/spaininfo-test?lat=39.8568&lng=-4.0245&date=2026-03-20T12:00:00+01:00
-app.get("/debug/spaininfo-test", async (req, res) => {
-  try {
-    const lat = normalizarNumero(req.query.lat);
-    const lng = normalizarNumero(req.query.lng);
-    const date = parseSafeDate(req.query.date);
-
-    if (lat === null || lng === null) {
-      return res.status(400).json({ error: "lat/lng inválidos" });
-    }
-
-    const place = await reverseGeocode(lat, lng, "es");
-    const province = place.province || "";
-    const url = province
-      ? buildSpainInfoAgendaUrl({ province, date })
-      : "";
-
-    const events = province
-      ? await searchSpainInfoAgenda({ province, nowDate: date })
-      : [];
-
-    const ranked = events
-      .map((ev) => ({
-        title: ev.title,
-        summary: ev.summary,
-        startDate: ev.startDate ? ev.startDate.toISOString() : null,
-        endDate: ev.endDate ? ev.endDate.toISOString() : null,
-        isOngoing: ev.isOngoing,
-        url: ev.url,
-        score: scoreAgendaEvent(ev, date, place),
-      }))
-      .sort((a, b) => b.score - a.score);
-
-    return res.json({
-      input: {
-        lat,
-        lng,
-        date: date.toISOString(),
-      },
-      place,
-      provinceNormalized: normalizeProvinceForSpainInfo(province),
-      spainInfoUrl: url,
-      eventsFound: ranked.length,
-      topEvents: ranked.slice(0, 10),
-    });
-  } catch (e) {
-    console.error("ERROR /debug/spaininfo-test:", e.response?.data || e.message);
-    return res.status(500).json({
-      error: "debug_spaininfo_failed",
-      detail: e.response?.data || e.message,
-    });
   }
 });
 
@@ -818,6 +844,7 @@ app.post("/tts", async (req, res) => {
     }
 
     const usedVoiceId = voiceId || DEFAULT_VOICE_ID;
+
     const url = `https://api.elevenlabs.io/v1/text-to-speech/${usedVoiceId}`;
 
     const payloadFlash = {
@@ -853,11 +880,7 @@ app.post("/tts", async (req, res) => {
         timeout: 30000,
       });
     } catch (eFlash) {
-      console.error(
-        "⚠️ Flash failed:",
-        eFlash.response?.status,
-        eFlash.response?.data || eFlash.message
-      );
+      console.error("⚠️ Flash failed:", eFlash.response?.status, eFlash.response?.data || eFlash.message);
 
       elevenResp = await axios.post(url, payloadFallback, {
         headers: {

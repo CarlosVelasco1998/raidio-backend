@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
+import * as cheerio from "cheerio";
 
 import { POIS } from "./pois_db.js";
 
@@ -10,6 +11,17 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// ================== CONFIG ==================
+const OPENAI_MODEL_DEFAULT = process.env.OPENAI_MODEL || "gpt-4o-mini";
+const DEFAULT_TIMEZONE = "Europe/Madrid";
+
+// Cache simple en memoria
+const memoryCache = new Map();
+const CACHE_TTL_MS = {
+  reverse: 1000 * 60 * 60 * 6, // 6 h
+  spainInfoSearch: 1000 * 60 * 20, // 20 min
+};
 
 // ================== MIDDLEWARES ==================
 app.use(cors());
@@ -22,6 +34,21 @@ app.get("/healthz", (req, res) => {
 // ================== LOG CARGA POIS ==================
 console.log("POIS cargados:", POIS.length);
 if (POIS.length > 0) console.log("Primer POI:", POIS[0]);
+
+// ================== UTIL: CACHE ==================
+function getCache(key, ttlMs) {
+  const item = memoryCache.get(key);
+  if (!item) return null;
+  if (Date.now() - item.ts > ttlMs) {
+    memoryCache.delete(key);
+    return null;
+  }
+  return item.value;
+}
+
+function setCache(key, value) {
+  memoryCache.set(key, { ts: Date.now(), value });
+}
 
 // ================== UTIL: DISTANCIA HAVERSINE ==================
 function distanciaMetros(lat1, lon1, lat2, lon2) {
@@ -57,8 +84,98 @@ function limpiarTexto(v) {
   return typeof v === "string" ? v.trim() : "";
 }
 
+function asBool(v) {
+  return v === true || v === "true" || v === 1 || v === "1";
+}
+
+function quitarAcentos(s = "") {
+  return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function slugifyText(s = "") {
+  return quitarAcentos(limpiarTexto(s))
+    .toLowerCase()
+    .replace(/[^a-z0-9\s\-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// ================== UTIL: FECHAS ==================
+function parseSafeDate(v) {
+  if (typeof v === "string" && v.trim()) {
+    const d = new Date(v);
+    if (!Number.isNaN(d.getTime())) return d;
+  }
+  return new Date();
+}
+
+function formatDdMmYyyy(date) {
+  const d = new Date(date);
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const year = d.getFullYear();
+  return `${day}-${month}-${year}`;
+}
+
+function formatDateEs(isoString) {
+  try {
+    const d = new Date(isoString);
+    if (Number.isNaN(d.getTime())) return isoString;
+    return new Intl.DateTimeFormat("es-ES", {
+      timeZone: DEFAULT_TIMEZONE,
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(d);
+  } catch (_) {
+    return isoString;
+  }
+}
+
+function getMonthRange(dateInput) {
+  const date = new Date(dateInput);
+  const start = new Date(date.getFullYear(), date.getMonth(), 1, 12, 0, 0);
+  const end = new Date(date.getFullYear(), date.getMonth() + 1, 0, 12, 0, 0);
+  return { start, end };
+}
+
+function daysBetween(a, b) {
+  return Math.round((a.getTime() - b.getTime()) / (1000 * 60 * 60 * 24));
+}
+
+// ================== UTIL: HTML ==================
+function decodeHtmlEntities(str = "") {
+  return str
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+function htmlToText(html = "") {
+  return decodeHtmlEntities(
+    html
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<noscript[\s\S]*?<\/noscript>/gi, " ")
+      .replace(/<\/(p|div|section|article|h1|h2|h3|li|ul|ol|br)>/gi, "\n")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\r/g, "\n")
+      .replace(/\n{2,}/g, "\n")
+      .replace(/[ \t]{2,}/g, " ")
+      .trim()
+  );
+}
+
 // ================== UTIL: REVERSE GEOCODING ==================
 async function reverseGeocode(lat, lng, language = "es") {
+  const cacheKey = `reverse|${lat.toFixed(3)}|${lng.toFixed(3)}|${language}`;
+  const cached = getCache(cacheKey, CACHE_TTL_MS.reverse);
+  if (cached) return cached;
+
   try {
     const r = await axios.get("https://nominatim.openstreetmap.org/reverse", {
       params: {
@@ -92,25 +209,284 @@ async function reverseGeocode(lat, lng, language = "es") {
       "";
 
     const country = address.country || "";
+    const countryCode = (address.country_code || "").toUpperCase();
 
-    return {
+    const result = {
       city: limpiarTexto(city),
       province: limpiarTexto(province),
       country: limpiarTexto(country),
+      countryCode: limpiarTexto(countryCode),
       raw: r.data || null,
     };
+
+    setCache(cacheKey, result);
+    return result;
   } catch (e) {
     console.error("ERROR reverseGeocode:", e.response?.data || e.message);
     return {
       city: "",
       province: "",
       country: "",
+      countryCode: "",
       raw: null,
     };
   }
 }
 
-// ================== UTIL: EN VIVO ==================
+// ================== UTIL: SPAIN.INFO ==================
+function normalizeProvinceForSpainInfo(province = "") {
+  const p = limpiarTexto(province);
+
+  const map = {
+    "Alicante": "Alicante-Alacant",
+    "Castellón": "Castellón-Castelló",
+    "Valencia": "Valencia-València",
+    "Álava": "Araba-Álava",
+    "La Coruña": "A Coruña",
+  };
+
+  return map[p] || p;
+}
+
+function buildSpainInfoAgendaUrl({ province, date }) {
+  const { start, end } = getMonthRange(date);
+  const provinceValue = encodeURIComponent(normalizeProvinceForSpainInfo(province));
+
+  return `https://www.spain.info/es/resultados-busqueda/index.html?lq=&reloaded=&tab=i&sh=agenda&dateTo=${formatDdMmYyyy(
+    end
+  )}&dateFrom=${formatDdMmYyyy(start)}&facet_SEGITUR_LOCATION_PROVINCE_es_mvs=${provinceValue}&q=`;
+}
+
+function parseSpanishDateText(dateText = "") {
+  const months = {
+    enero: 0,
+    febrero: 1,
+    marzo: 2,
+    abril: 3,
+    mayo: 4,
+    junio: 5,
+    julio: 6,
+    agosto: 7,
+    septiembre: 8,
+    setiembre: 8,
+    octubre: 9,
+    noviembre: 10,
+    diciembre: 11,
+  };
+
+  const clean = limpiarTexto(dateText).toLowerCase();
+  const m = clean.match(/(\d{1,2})\s+([a-záéíóú]+)\s+(\d{4})/i);
+  if (!m) return null;
+
+  const day = Number(m[1]);
+  const monthName = quitarAcentos(m[2]);
+  const year = Number(m[3]);
+  const month = months[monthName];
+
+  if (month === undefined) return null;
+
+  return new Date(year, month, day, 12, 0, 0);
+}
+
+function extractDateRangeFromText(text = "") {
+  const matches = text.match(/\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4}/g) || [];
+  const start = matches[0] ? parseSpanishDateText(matches[0]) : null;
+  const end = matches[1] ? parseSpanishDateText(matches[1]) : start;
+  return { start, end, rawMatches: matches };
+}
+
+function scoreAgendaEvent(event, nowDate, place) {
+  let score = 0;
+
+  const cityNorm = slugifyText(place.city || "");
+  const provinceNorm = slugifyText(place.province || "");
+  const titleNorm = slugifyText(event.title || "");
+  const summaryNorm = slugifyText(event.summary || "");
+
+  if (cityNorm && (titleNorm.includes(cityNorm) || summaryNorm.includes(cityNorm))) {
+    score += 30;
+  }
+
+  if (provinceNorm && (titleNorm.includes(provinceNorm) || summaryNorm.includes(provinceNorm))) {
+    score += 20;
+  }
+
+  const daysToStart = event.startDate ? daysBetween(event.startDate, nowDate) : 999;
+
+  if (daysToStart === 0) score += 40;
+  else if (daysToStart >= 1 && daysToStart <= 2) score += 30;
+  else if (daysToStart >= 3 && daysToStart <= 7) score += 20;
+  else if (daysToStart >= 8 && daysToStart <= 14) score += 10;
+
+  if (event.isOngoing) score += 35;
+
+  const keywords = [
+    "semana santa",
+    "fallas",
+    "feria",
+    "fiesta",
+    "fiestas",
+    "romeria",
+    "romería",
+    "procesion",
+    "procesión",
+    "festival",
+    "magdalena",
+    "san fermin",
+    "san fermín",
+    "mascleta",
+    "mascletà",
+  ];
+
+  for (const kw of keywords) {
+    if (titleNorm.includes(slugifyText(kw)) || summaryNorm.includes(slugifyText(kw))) {
+      score += 10;
+    }
+  }
+
+  return score;
+}
+
+async function searchSpainInfoAgenda({ province, nowDate }) {
+  const url = buildSpainInfoAgendaUrl({ province, date: nowDate });
+  const cacheKey = `spaininfo-search|${province}|${formatDdMmYyyy(nowDate)}`;
+
+  const cached = getCache(cacheKey, CACHE_TTL_MS.spainInfoSearch);
+  if (cached) return cached;
+
+  try {
+    const r = await axios.get(url, {
+      headers: {
+        "User-Agent": "RAIDIOAPP/1.0 (contact: raidioapp@gmail.com)",
+        "Accept-Language": "es-ES,es;q=0.9",
+      },
+      timeout: 20000,
+    });
+
+    const html = r.data || "";
+    const $ = cheerio.load(html);
+    const pageText = htmlToText(html);
+
+    const events = [];
+
+    // Método principal: anchors a fichas de agenda
+    $('a[href*="/agenda/"]').each((_, el) => {
+      const href = $(el).attr("href") || "";
+      const text = $(el).text().replace(/\s+/g, " ").trim();
+
+      if (!href || !text) return;
+      if (!/agenda\s*\|/i.test(text)) return;
+
+      const cleanText = text.replace(/^Agenda\s*\|\s*/i, "").trim();
+      const { start, end, rawMatches } = extractDateRangeFromText(cleanText);
+
+      if (!rawMatches.length) return;
+
+      const firstDateText = rawMatches[0];
+      const idx = cleanText.indexOf(firstDateText);
+      if (idx <= 0) return;
+
+      const beforeDate = cleanText.slice(0, idx).trim();
+      const afterDates = cleanText
+        .slice(idx)
+        .replace(/^.*?\d{4}/, "")
+        .replace(/^\s*-\s*\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4}/, "")
+        .trim();
+
+      const absoluteUrl = href.startsWith("http")
+        ? href
+        : `https://www.spain.info${href.startsWith("/") ? href : `/${href}`}`;
+
+      const isOngoing = start && end ? nowDate >= start && nowDate <= end : false;
+
+      events.push({
+        title: beforeDate,
+        summary: afterDates,
+        startDate: start,
+        endDate: end,
+        url: absoluteUrl,
+        isOngoing,
+      });
+    });
+
+    // Fallback si el HTML cambia y no pilla anchors como esperamos
+    if (!events.length) {
+      const regex =
+        /Agenda\s*\|\s*([^\n]+?)\s+(\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4})(?:\s*-\s*(\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4}))?/gi;
+
+      let match;
+      while ((match = regex.exec(pageText)) !== null) {
+        const title = limpiarTexto(match[1]);
+        const startDate = parseSpanishDateText(match[2]);
+        const endDate = match[3] ? parseSpanishDateText(match[3]) : startDate;
+        if (!title || !startDate) continue;
+
+        const isOngoing = startDate && endDate ? nowDate >= startDate && nowDate <= endDate : false;
+
+        events.push({
+          title,
+          summary: "",
+          startDate,
+          endDate,
+          url: buildSpainInfoAgendaUrl({ province, date: nowDate }),
+          isOngoing,
+        });
+      }
+    }
+
+    const unique = [];
+    const seen = new Set();
+
+    for (const ev of events) {
+      const key = `${ev.title}|${ev.startDate?.toISOString() || ""}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      unique.push(ev);
+    }
+
+    setCache(cacheKey, unique);
+    return unique;
+  } catch (e) {
+    console.error("ERROR searchSpainInfoAgenda:", e.response?.data || e.message);
+    return [];
+  }
+}
+
+function buildLiveContextFromSpainInfoEvent({ event, place, nowDate, poiNombre }) {
+  const zona = [place.city, place.province, place.country]
+    .filter(Boolean)
+    .filter((v, i, arr) => arr.indexOf(v) === i)
+    .join(", ");
+
+  const lines = [];
+  lines.push("Contexto actual fiable del sistema:");
+  lines.push(`- Fecha actual: ${formatDateEs(nowDate.toISOString())}`);
+  if (zona) lines.push(`- Zona detectada: ${zona}`);
+  if (poiNombre) lines.push(`- POI de referencia: ${poiNombre}`);
+  lines.push(`- Evento detectado en agenda oficial: ${event.title}`);
+
+  if (event.startDate && event.endDate) {
+    lines.push(
+      `- Fechas del evento: del ${formatDateEs(event.startDate.toISOString())} al ${formatDateEs(event.endDate.toISOString())}`
+    );
+  } else if (event.startDate) {
+    lines.push(`- Fecha del evento: ${formatDateEs(event.startDate.toISOString())}`);
+  }
+
+  if (event.summary) {
+    lines.push(`- Resumen oficial: ${event.summary}`);
+  }
+
+  if (event.url) {
+    lines.push(`- Fuente: ${event.url}`);
+  }
+
+  lines.push("- Usa esto solo si encaja de forma natural con la narración.");
+  lines.push("- No inventes horarios, calles, recorridos ni detalles no presentes arriba.");
+  lines.push("- Si el evento es próximo o ya está en curso, puedes mencionarlo brevemente.");
+  return lines.join("\n");
+}
+
 async function getLiveEventsContext({
   liveEvents = false,
   latitude = null,
@@ -123,43 +499,55 @@ async function getLiveEventsContext({
 
   const lat = normalizarNumero(latitude);
   const lng = normalizarNumero(longitude);
-
   if (lat === null || lng === null) return "";
 
-  const ts =
-    typeof timestamp === "string" && timestamp.trim()
-      ? timestamp.trim()
-      : new Date().toISOString();
-
+  const nowDate = parseSafeDate(timestamp);
   const poi = limpiarTexto(poiNombre);
   const lang = limpiarTexto(language) || "es";
 
   const place = await reverseGeocode(lat, lng, lang);
+  if (!place.province) return "";
 
-  console.log("LIVE_EVENTS geo:", {
-    latitude: lat,
-    longitude: lng,
-    timestamp: ts,
-    poiNombre: poi,
-    language: lang,
-    place,
+  const events = await searchSpainInfoAgenda({
+    province: place.province,
+    nowDate,
   });
 
-  if (!place.city && !place.province) return "";
+  if (!events.length) return "";
 
-  const partes = [];
-  if (place.city) partes.push(place.city);
-  if (place.province && place.province !== place.city) partes.push(place.province);
-  if (place.country) partes.push(place.country);
+  const filtered = events.filter((ev) => {
+    if (!ev.startDate && !ev.endDate) return false;
 
-  const zonaTxt = partes.join(", ");
+    const start = ev.startDate || ev.endDate;
+    const end = ev.endDate || ev.startDate;
 
-  return `
-Contexto actual fiable del sistema:
-- Fecha actual: ${ts}
-- Zona detectada: ${zonaTxt}
-${poi ? `- POI de referencia: ${poi}` : ""}
-`;
+    if (!start || !end) return false;
+
+    const daysToStart = daysBetween(start, nowDate);
+    const isSoon = daysToStart >= -2 && daysToStart <= 14;
+    const isOngoing = ev.isOngoing;
+
+    return isSoon || isOngoing;
+  });
+
+  if (!filtered.length) return "";
+
+  const ranked = filtered
+    .map((ev) => ({
+      ...ev,
+      _score: scoreAgendaEvent(ev, nowDate, place),
+    }))
+    .sort((a, b) => b._score - a._score);
+
+  const best = ranked[0];
+  if (!best) return "";
+
+  return buildLiveContextFromSpainInfoEvent({
+    event: best,
+    place,
+    nowDate,
+    poiNombre: poi,
+  });
 }
 
 function buildPromptWithLiveContext({
@@ -172,24 +560,22 @@ function buildPromptWithLiveContext({
   if (liveContext && liveContext.trim()) {
     return `${prompt}
 
-LIVE_CONTEXT (información actual fiable):
+LIVE_CONTEXT (agenda oficial):
 ${liveContext}
 
 INSTRUCCIONES IMPORTANTES SOBRE EN VIVO:
-- Usa LIVE_CONTEXT solo como apoyo y de forma breve y natural.
-- Si mencionas actualidad, debe estar apoyada por LIVE_CONTEXT.
-- No inventes eventos, fechas, conciertos, celebraciones ni agendas.
-- Si LIVE_CONTEXT no contiene eventos concretos, no hables de eventos concretos.
-- Puedes usar la zona detectada para contextualizar mejor el lugar, pero sin inventar actualidad.`;
+- Si LIVE_CONTEXT contiene un evento actual o próximo, intégralo de forma breve, natural y útil.
+- Prioriza fiestas, celebraciones y eventos relevantes de la zona.
+- No inventes horarios, recorridos, calles, actos concretos ni detalles no incluidos en LIVE_CONTEXT.
+- No conviertas la respuesta en una agenda larga.`;
   }
 
   return `${prompt}
 
 INSTRUCCIONES IMPORTANTES SOBRE EN VIVO:
-- El usuario ha activado "En vivo", pero NO se ha proporcionado contexto actual fiable.
-- No menciones eventos actuales, celebraciones del día, conciertos, ferias ni agendas en vivo.
-- No inventes nada relacionado con actualidad.
-- Esto NO afecta a promociones o recomendaciones ya incluidas en el propio prompt del POI.`;
+- El usuario ha activado "En vivo", pero NO se ha encontrado contexto actual fiable y relevante.
+- No menciones eventos actuales, celebraciones del día, conciertos, ferias ni agenda en vivo.
+- No inventes nada relacionado con actualidad.`;
 }
 
 // ================== ENDPOINT SALUD ==================
@@ -236,7 +622,7 @@ app.get("/pois-nearby", (req, res) => {
   }
 });
 
-// ================== ENDPOINT POIS ALL ==================
+// GET /pois-all  (útil para modo dev en Flutter)
 app.get("/pois-all", (req, res) => {
   try {
     res.json({ count: POIS.length, pois: POIS });
@@ -248,18 +634,6 @@ app.get("/pois-all", (req, res) => {
 
 // ================== ENDPOINT IA (OPENAI) ==================
 // POST /ai/generate
-// Body esperado:
-// {
-//   prompt: string,
-//   temas?: string[],
-//   model?: string,
-//   liveEvents?: boolean,
-//   latitude?: number,
-//   longitude?: number,
-//   timestamp?: string,
-//   poiNombre?: string,
-//   language?: string
-// }
 app.post("/ai/generate", async (req, res) => {
   try {
     const apiKey = process.env.OPENAI_API_KEY;
@@ -283,11 +657,11 @@ app.post("/ai/generate", async (req, res) => {
       return res.status(400).json({ error: "prompt requerido (string)" });
     }
 
-    const usedModel = model || process.env.OPENAI_MODEL || "gpt-4o-mini";
+    const usedModel = model || OPENAI_MODEL_DEFAULT;
     const temasTxt = Array.isArray(temas) ? temas.filter(Boolean).join(", ") : "";
 
     const liveContext = await getLiveEventsContext({
-      liveEvents: Boolean(liveEvents),
+      liveEvents: asBool(liveEvents),
       latitude,
       longitude,
       timestamp,
@@ -297,7 +671,7 @@ app.post("/ai/generate", async (req, res) => {
 
     const finalPrompt = buildPromptWithLiveContext({
       prompt,
-      liveEvents: Boolean(liveEvents),
+      liveEvents: asBool(liveEvents),
       liveContext,
     });
 
@@ -336,7 +710,7 @@ app.post("/ai/generate", async (req, res) => {
       text,
       model_used: r.data?.model ?? usedModel,
       usage: r.data?.usage,
-      live_events_enabled: Boolean(liveEvents),
+      live_events_enabled: asBool(liveEvents),
       live_context_used: Boolean(liveContext && liveContext.trim()),
     });
   } catch (e) {
@@ -382,7 +756,6 @@ app.post("/tts", async (req, res) => {
     if (!text || !text.trim()) {
       return res.status(400).json({ error: "text required" });
     }
-
     if (!apiKey || !DEFAULT_VOICE_ID) {
       return res.status(500).json({
         error: "Falta ELEVEN_API_KEY o ELEVEN_VOICE_ID en env",
@@ -450,11 +823,8 @@ app.post("/tts", async (req, res) => {
 
     let decoded = raw;
     try {
-      if (raw && Buffer.isBuffer(raw)) {
-        decoded = raw.toString("utf8");
-      } else if (raw instanceof ArrayBuffer) {
-        decoded = Buffer.from(raw).toString("utf8");
-      }
+      if (raw && Buffer.isBuffer(raw)) decoded = raw.toString("utf8");
+      else if (raw instanceof ArrayBuffer) decoded = Buffer.from(raw).toString("utf8");
     } catch (_) {}
 
     console.error("❌ ElevenLabs status:", status);

@@ -632,6 +632,61 @@ app.get("/pois-all", (req, res) => {
   }
 });
 
+// ================== DEBUG SPAIN.INFO ==================
+// GET /debug/spaininfo-test?lat=39.8568&lng=-4.0245&date=2026-03-20T12:00:00+01:00
+app.get("/debug/spaininfo-test", async (req, res) => {
+  try {
+    const lat = normalizarNumero(req.query.lat);
+    const lng = normalizarNumero(req.query.lng);
+    const date = parseSafeDate(req.query.date);
+
+    if (lat === null || lng === null) {
+      return res.status(400).json({ error: "lat/lng inválidos" });
+    }
+
+    const place = await reverseGeocode(lat, lng, "es");
+    const province = place.province || "";
+    const url = province
+      ? buildSpainInfoAgendaUrl({ province, date })
+      : "";
+
+    const events = province
+      ? await searchSpainInfoAgenda({ province, nowDate: date })
+      : [];
+
+    const ranked = events
+      .map((ev) => ({
+        title: ev.title,
+        summary: ev.summary,
+        startDate: ev.startDate ? ev.startDate.toISOString() : null,
+        endDate: ev.endDate ? ev.endDate.toISOString() : null,
+        isOngoing: ev.isOngoing,
+        url: ev.url,
+        score: scoreAgendaEvent(ev, date, place),
+      }))
+      .sort((a, b) => b.score - a.score);
+
+    return res.json({
+      input: {
+        lat,
+        lng,
+        date: date.toISOString(),
+      },
+      place,
+      provinceNormalized: normalizeProvinceForSpainInfo(province),
+      spainInfoUrl: url,
+      eventsFound: ranked.length,
+      topEvents: ranked.slice(0, 10),
+    });
+  } catch (e) {
+    console.error("ERROR /debug/spaininfo-test:", e.response?.data || e.message);
+    return res.status(500).json({
+      error: "debug_spaininfo_failed",
+      detail: e.response?.data || e.message,
+    });
+  }
+});
+
 // ================== ENDPOINT IA (OPENAI) ==================
 // POST /ai/generate
 app.post("/ai/generate", async (req, res) => {

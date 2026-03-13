@@ -1,4 +1,3 @@
-
 // index.js (RAIDIOAPP backend) - ES Modules ("type":"module")
 import express from "express";
 import cors from "cors";
@@ -354,6 +353,7 @@ function scoreAgendaEvent(event, nowDate, place) {
 async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
   const url = buildSpainInfoAgendaUrl({ province, date: nowDate });
   const browser = await getBrowser();
+
   const context = await browser.newContext({
     locale: "es-ES",
     userAgent: "RAIDIOAPP/1.0 (contact: raidioapp@gmail.com)",
@@ -364,20 +364,41 @@ async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
   try {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
     await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
-    await page.waitForTimeout(2500);
+    await page.waitForTimeout(3000);
 
-    // Algunos sitios terminan de hidratar contenido tras la red.
-    // Extraemos anchors y body final renderizado.
-    const anchors = await page.$$eval('a[href*="/agenda/"]', (els) =>
-      els.map((el) => ({
-        href: el.href || el.getAttribute("href") || "",
-        text: (el.innerText || el.textContent || "").replace(/\s+/g, " ").trim(),
-      }))
-    );
+    const items = await page.evaluate(() => {
+      function clean(v) {
+        return (v || "").replace(/\s+/g, " ").trim();
+      }
+
+      const anchors = Array.from(document.querySelectorAll('a[href*="/agenda/"]'));
+
+      return anchors.map((a) => {
+        const href = a.href || a.getAttribute("href") || "";
+        const title = clean(a.innerText || a.textContent || "");
+
+        let node = a;
+        let container = null;
+
+        for (let i = 0; i < 6 && node; i++) {
+          const txt = clean(node.innerText || node.textContent || "");
+          if (/\d{1,2}\s+[A-Za-zÁÉÍÓÚáéíóúüÜñÑ]+\s+\d{4}/.test(txt)) {
+            container = node;
+            break;
+          }
+          node = node.parentElement;
+        }
+
+        const baseNode = container || a.parentElement || a;
+        const cardText = clean(baseNode.innerText || baseNode.textContent || "");
+
+        return { href, title, cardText };
+      });
+    });
 
     const bodyText = await page.locator("body").innerText().catch(() => "");
 
-    return { url, anchors, bodyText };
+    return { url, items, bodyText };
   } finally {
     await context.close().catch(() => {});
   }
@@ -389,44 +410,41 @@ async function searchSpainInfoAgenda({ province, nowDate }) {
   if (cached) return cached;
 
   try {
-    const { url, anchors, bodyText } = await fetchSpainInfoAgendaWithPlaywright({
+    const { url, items, bodyText } = await fetchSpainInfoAgendaWithPlaywright({
       province,
       nowDate,
     });
 
     const events = [];
 
-    // Método principal: links a fichas de agenda ya renderizadas por JS
-    for (const item of anchors) {
+    for (const item of items) {
       const href = limpiarTexto(item.href);
-      const text = limpiarTexto(item.text);
+      const title = limpiarTexto(item.title);
+      const cardText = limpiarTexto(item.cardText);
 
-      if (!href || !text) continue;
-      if (!/agenda\s*\|/i.test(text)) continue;
+      if (!href || !title || !cardText) continue;
 
-      const cleanText = text.replace(/^Agenda\s*\|\s*/i, "").trim();
-      const { start, end, rawMatches } = extractDateRangeFromText(cleanText);
-
+      const { start, end, rawMatches } = extractDateRangeFromText(cardText);
       if (!rawMatches.length) continue;
 
-      const firstDateText = rawMatches[0];
-      const idx = cleanText.indexOf(firstDateText);
-      if (idx <= 0) continue;
+      let summary = cardText;
+      summary = summary.replace(title, " ");
 
-      const beforeDate = cleanText.slice(0, idx).trim();
-      const afterDates = cleanText
-        .slice(idx)
-        .replace(/^.*?\d{4}/, "")
-        .replace(/^\s*-\s*\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4}/, "")
-        .trim();
+      for (const d of rawMatches) {
+        summary = summary.replace(d, " ");
+      }
+
+      summary = summary.replace(/AGENDA\s*\|\s*[A-ZÁÉÍÓÚÜÑa-záéíóúüñ\s\-]+/i, " ");
+      summary = summary.replace(/\s*-\s*/g, " ").replace(/\s+/g, " ").trim();
 
       const startDate = start;
       const endDate = end;
-      const isOngoing = startDate && endDate ? nowDate >= startDate && nowDate <= endDate : false;
+      const isOngoing =
+        startDate && endDate ? nowDate >= startDate && nowDate <= endDate : false;
 
       events.push({
-        title: beforeDate,
-        summary: afterDates,
+        title,
+        summary,
         startDate,
         endDate,
         url: href,
@@ -434,19 +452,20 @@ async function searchSpainInfoAgenda({ province, nowDate }) {
       });
     }
 
-    // Fallback: regex sobre el texto final del body renderizado
     if (!events.length) {
       const regex =
-        /Agenda\s*\|\s*([^\n]+?)\s+(\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4})(?:\s*-\s*(\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4}))?/gi;
+        /AGENDA\s*\|\s*([A-ZÁÉÍÓÚÜÑa-záéíóúüñ\s\-]+)\s+([^\n]+?)\s+(\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚüÜñÑ]+\s+\d{4})(?:\s*-\s*(\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚüÜñÑ]+\s+\d{4}))?/gi;
 
       let match;
       while ((match = regex.exec(bodyText)) !== null) {
-        const title = limpiarTexto(match[1]);
-        const startDate = parseSpanishDateText(match[2]);
-        const endDate = match[3] ? parseSpanishDateText(match[3]) : startDate;
+        const title = limpiarTexto(match[2]);
+        const startDate = parseSpanishDateText(match[3]);
+        const endDate = match[4] ? parseSpanishDateText(match[4]) : startDate;
+
         if (!title || !startDate) continue;
 
-        const isOngoing = startDate && endDate ? nowDate >= startDate && nowDate <= endDate : false;
+        const isOngoing =
+          startDate && endDate ? nowDate >= startDate && nowDate <= endDate : false;
 
         events.push({
           title,
@@ -622,6 +641,10 @@ app.get("/debug/spaininfo-test", async (req, res) => {
       ? buildSpainInfoAgendaUrl({ province, date })
       : "";
 
+    const raw = province
+      ? await fetchSpainInfoAgendaWithPlaywright({ province, nowDate: date })
+      : { url: "", items: [], bodyText: "" };
+
     const events = province
       ? await searchSpainInfoAgenda({ province, nowDate: date })
       : [];
@@ -647,6 +670,9 @@ app.get("/debug/spaininfo-test", async (req, res) => {
       place,
       provinceNormalized: normalizeProvinceForSpainInfo(province),
       spainInfoUrl,
+      rawItemsFound: raw.items.length,
+      rawItemsSample: raw.items.slice(0, 5),
+      bodyPreview: raw.bodyText.slice(0, 1500),
       eventsFound: ranked.length,
       topEvents: ranked.slice(0, 10),
     });
@@ -880,7 +906,11 @@ app.post("/tts", async (req, res) => {
         timeout: 30000,
       });
     } catch (eFlash) {
-      console.error("⚠️ Flash failed:", eFlash.response?.status, eFlash.response?.data || eFlash.message);
+      console.error(
+        "⚠️ Flash failed:",
+        eFlash.response?.status,
+        eFlash.response?.data || eFlash.message
+      );
 
       elevenResp = await axios.post(url, payloadFallback, {
         headers: {

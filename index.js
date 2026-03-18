@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 3000;
 // ================== CONFIG ==================
 const OPENAI_MODEL_DEFAULT = process.env.OPENAI_MODEL || "gpt-4o-mini";
 const DEFAULT_TIMEZONE = "Europe/Madrid";
+const SPAIN_INFO_AGENDA_URL = "https://www.spain.info/es/agenda/";
 
 // Cache simple en memoria
 const memoryCache = new Map();
@@ -141,14 +142,6 @@ function parseSafeDate(v) {
   return new Date();
 }
 
-function formatDdMmYyyy(date) {
-  const d = new Date(date);
-  const day = String(d.getDate()).padStart(2, "0");
-  const month = String(d.getMonth() + 1).padStart(2, "0");
-  const year = d.getFullYear();
-  return `${day}-${month}-${year}`;
-}
-
 function formatDateEs(isoString) {
   try {
     const d = new Date(isoString);
@@ -164,15 +157,21 @@ function formatDateEs(isoString) {
   }
 }
 
-function getMonthRange(dateInput) {
-  const date = new Date(dateInput);
-  const start = new Date(date.getFullYear(), date.getMonth(), 1, 12, 0, 0);
-  const end = new Date(date.getFullYear(), date.getMonth() + 1, 0, 12, 0, 0);
-  return { start, end };
-}
-
 function daysBetween(a, b) {
   return Math.round((a.getTime() - b.getTime()) / (1000 * 60 * 60 * 24));
+}
+
+function getMonthSlugEs(dateInput) {
+  const date = new Date(dateInput);
+  const formatter = new Intl.DateTimeFormat("es-ES", {
+    timeZone: DEFAULT_TIMEZONE,
+    month: "long",
+    year: "numeric",
+  });
+  const parts = formatter.formatToParts(date);
+  const month = parts.find((p) => p.type === "month")?.value || "";
+  const year = parts.find((p) => p.type === "year")?.value || "";
+  return `${month.toLowerCase()}-${year}`;
 }
 
 // ================== UTIL: REVERSE GEOCODING ==================
@@ -253,19 +252,6 @@ function normalizeProvinceForSpainInfo(province = "") {
   return map[p] || p;
 }
 
-function buildSpainInfoAgendaUrl({ province, date }) {
-  const { start, end } = getMonthRange(date);
-  const provinceValue = encodeURIComponent(
-    normalizeProvinceForSpainInfo(province)
-  );
-
-  return `https://www.spain.info/es/resultados-busqueda/index.html?lq=&reloaded=&tab=i&sh=agenda&dateTo=${formatDdMmYyyy(
-    end
-  )}&dateFrom=${formatDdMmYyyy(
-    start
-  )}&facet_SEGITUR_LOCATION_PROVINCE_es_mvs=${provinceValue}&q=`;
-}
-
 function parseSpanishDateText(dateText = "") {
   const months = {
     enero: 0,
@@ -299,7 +285,7 @@ function parseSpanishDateText(dateText = "") {
 
 function extractDateRangeFromText(text = "") {
   const matches =
-    text.match(/\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4}/g) || [];
+    text.match(/\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚüÜñÑ]+\s+\d{4}/g) || [];
   const start = matches[0] ? parseSpanishDateText(matches[0]) : null;
   const end = matches[1] ? parseSpanishDateText(matches[1]) : start;
   return { start, end, rawMatches: matches };
@@ -363,8 +349,148 @@ function scoreAgendaEvent(event, nowDate, place) {
   return score;
 }
 
+async function tryAcceptCookies(page) {
+  const candidates = [
+    'button:has-text("Aceptar")',
+    'button:has-text("ACEPTAR")',
+    'button:has-text("Aceptar todas")',
+    'button:has-text("Aceptar todo")',
+    'button:has-text("Accept")',
+    '#onetrust-accept-btn-handler',
+    'button[aria-label*="Aceptar"]',
+  ];
+
+  for (const sel of candidates) {
+    try {
+      const locator = page.locator(sel).first();
+      if (await locator.isVisible({ timeout: 1200 }).catch(() => false)) {
+        await locator.click({ timeout: 1200 }).catch(() => {});
+        await page.waitForTimeout(500);
+        return true;
+      }
+    } catch (_) {}
+  }
+  return false;
+}
+
+async function fillAgendaFilters(page, province, monthSlug) {
+  const normalizedProvince = normalizeProvinceForSpainInfo(province);
+
+  await tryAcceptCookies(page);
+
+  // Selección de los 3 selects por contenido de opciones.
+  const result = await page.evaluate(
+    ({ provinceValue, monthValue }) => {
+      function clean(v) {
+        return (v || "").replace(/\s+/g, " ").trim();
+      }
+
+      const selects = Array.from(document.querySelectorAll("select"));
+
+      function optionsText(select) {
+        return Array.from(select.options).map((o) => clean(o.textContent || o.value || ""));
+      }
+
+      const thematicSelect = selects.find((s) => {
+        const opts = optionsText(s).map((x) => x.toLowerCase());
+        return (
+          opts.includes("deportes") &&
+          opts.includes("festival") &&
+          opts.includes("fiestas")
+        );
+      });
+
+      const monthSelect = selects.find((s) => {
+        const opts = optionsText(s).map((x) => x.toLowerCase());
+        return opts.some((x) => x.includes("marzo-")) && opts.some((x) => x.includes("abril-"));
+      });
+
+      const provinceSelect = selects.find((s) => {
+        const opts = optionsText(s);
+        return opts.includes("Granada") && opts.includes("Toledo") && opts.includes("Madrid");
+      });
+
+      if (!thematicSelect || !monthSelect || !provinceSelect) {
+        return {
+          ok: false,
+          reason: "selects_not_found",
+          selectCount: selects.length,
+          sampleOptions: selects.map((s) => optionsText(s).slice(0, 10)),
+        };
+      }
+
+      function pickOption(select, desiredText) {
+        const opts = Array.from(select.options);
+        const exact = opts.find((o) => clean(o.textContent || "") === desiredText);
+        if (exact) {
+          select.value = exact.value;
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+          return { ok: true, value: exact.value, text: clean(exact.textContent || "") };
+        }
+
+        const loose = opts.find(
+          (o) =>
+            clean(o.textContent || "").toLowerCase() === desiredText.toLowerCase()
+        );
+        if (loose) {
+          select.value = loose.value;
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+          return { ok: true, value: loose.value, text: clean(loose.textContent || "") };
+        }
+
+        return {
+          ok: false,
+          options: opts.map((o) => clean(o.textContent || "")).slice(0, 100),
+        };
+      }
+
+      const thematicPick = pickOption(thematicSelect, "Fiestas");
+      const monthPick = pickOption(monthSelect, monthValue);
+      const provincePick = pickOption(provinceSelect, provinceValue);
+
+      return {
+        ok: thematicPick.ok && monthPick.ok && provincePick.ok,
+        thematicPick,
+        monthPick,
+        provincePick,
+      };
+    },
+    { provinceValue: normalizedProvince, monthValue: monthSlug }
+  );
+
+  if (!result.ok) {
+    return result;
+  }
+
+  await page.waitForTimeout(800);
+
+  // Botón buscar
+  const buttonCandidates = [
+    'button:has-text("BUSCAR")',
+    'button:has-text("Buscar")',
+    'input[type="submit"]',
+    'button[type="submit"]',
+  ];
+
+  let clicked = false;
+  for (const sel of buttonCandidates) {
+    try {
+      const locator = page.locator(sel).first();
+      if (await locator.isVisible({ timeout: 1200 }).catch(() => false)) {
+        await Promise.all([
+          page.waitForLoadState("domcontentloaded").catch(() => {}),
+          locator.click({ timeout: 1500 }).catch(() => {}),
+        ]);
+        clicked = true;
+        break;
+      }
+    } catch (_) {}
+  }
+
+  return { ...result, clicked };
+}
+
 async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
-  const url = buildSpainInfoAgendaUrl({ province, date: nowDate });
   const browser = await getBrowser();
 
   const context = await browser.newContext({
@@ -375,9 +501,22 @@ async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
   const page = await context.newPage();
 
   try {
-    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+    const monthSlug = getMonthSlugEs(nowDate);
+
+    await page.goto(SPAIN_INFO_AGENDA_URL, {
+      waitUntil: "domcontentloaded",
+      timeout: 30000,
+    });
+
     await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(2000);
+
+    const filterDebug = await fillAgendaFilters(page, province, monthSlug);
+
+    await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
+    await page.waitForTimeout(3500);
+
+    const finalUrl = page.url();
 
     const items = await page.evaluate(() => {
       function clean(v) {
@@ -393,9 +532,12 @@ async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
         let node = a;
         let container = null;
 
-        for (let i = 0; i < 6 && node; i++) {
+        for (let i = 0; i < 8 && node; i++) {
           const txt = clean(node.innerText || node.textContent || "");
-          if (/\d{1,2}\s+[A-Za-zÁÉÍÓÚáéíóúüÜñÑ]+\s+\d{4}/.test(txt)) {
+          if (
+            /\d{1,2}\s+[A-Za-zÁÉÍÓÚáéíóúüÜñÑ]+\s+\d{4}/.test(txt) ||
+            /AGENDA\s*\|/i.test(txt)
+          ) {
             container = node;
             break;
           }
@@ -411,19 +553,26 @@ async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
 
     const bodyText = await page.locator("body").innerText().catch(() => "");
 
-    return { url, items, bodyText };
+    return {
+      url: SPAIN_INFO_AGENDA_URL,
+      finalUrl,
+      monthSlug,
+      filterDebug,
+      items,
+      bodyText,
+    };
   } finally {
     await context.close().catch(() => {});
   }
 }
 
 async function searchSpainInfoAgenda({ province, nowDate }) {
-  const cacheKey = `spaininfo-search|${province}|${formatDdMmYyyy(nowDate)}`;
+  const cacheKey = `spaininfo-search|${province}|${getMonthSlugEs(nowDate)}`;
   const cached = getCache(cacheKey, CACHE_TTL_MS.spainInfoSearch);
   if (cached) return cached;
 
   try {
-    const { url, items, bodyText } = await fetchSpainInfoAgendaWithPlaywright({
+    const { finalUrl, items, bodyText } = await fetchSpainInfoAgendaWithPlaywright({
       province,
       nowDate,
     });
@@ -465,6 +614,7 @@ async function searchSpainInfoAgenda({ province, nowDate }) {
         endDate,
         url: href,
         isOngoing,
+        sourceUrl: finalUrl,
       });
     }
 
@@ -488,8 +638,9 @@ async function searchSpainInfoAgenda({ province, nowDate }) {
           summary: "",
           startDate,
           endDate,
-          url,
+          url: finalUrl,
           isOngoing,
+          sourceUrl: finalUrl,
         });
       }
     }
@@ -653,13 +804,10 @@ app.get("/debug/spaininfo-test", async (req, res) => {
 
     const place = await reverseGeocode(lat, lng, "es");
     const province = place.province || "";
-    const spainInfoUrl = province
-      ? buildSpainInfoAgendaUrl({ province, date })
-      : "";
 
     const raw = province
       ? await fetchSpainInfoAgendaWithPlaywright({ province, nowDate: date })
-      : { url: "", items: [], bodyText: "" };
+      : { url: "", finalUrl: "", items: [], bodyText: "", filterDebug: {} };
 
     const events = province
       ? await searchSpainInfoAgenda({ province, nowDate: date })
@@ -685,7 +833,10 @@ app.get("/debug/spaininfo-test", async (req, res) => {
       },
       place,
       provinceNormalized: normalizeProvinceForSpainInfo(province),
-      spainInfoUrl,
+      agendaUrl: SPAIN_INFO_AGENDA_URL,
+      finalUrl: raw.finalUrl,
+      monthSlug: raw.monthSlug,
+      filterDebug: raw.filterDebug,
       rawItemsFound: raw.items.length,
       rawItemsSample: raw.items.slice(0, 5),
       bodyPreview: raw.bodyText.slice(0, 1500),

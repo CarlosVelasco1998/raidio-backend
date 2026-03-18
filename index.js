@@ -356,7 +356,7 @@ async function tryAcceptCookies(page) {
     'button:has-text("Aceptar todas")',
     'button:has-text("Aceptar todo")',
     'button:has-text("Accept")',
-    '#onetrust-accept-btn-handler',
+    "#onetrust-accept-btn-handler",
     'button[aria-label*="Aceptar"]',
   ];
 
@@ -378,7 +378,6 @@ async function fillAgendaFilters(page, province, monthSlug) {
 
   await tryAcceptCookies(page);
 
-  // Selección de los 3 selects por contenido de opciones.
   const result = await page.evaluate(
     ({ provinceValue, monthValue }) => {
       function clean(v) {
@@ -388,7 +387,9 @@ async function fillAgendaFilters(page, province, monthSlug) {
       const selects = Array.from(document.querySelectorAll("select"));
 
       function optionsText(select) {
-        return Array.from(select.options).map((o) => clean(o.textContent || o.value || ""));
+        return Array.from(select.options).map((o) =>
+          clean(o.textContent || o.value || "")
+        );
       }
 
       const thematicSelect = selects.find((s) => {
@@ -402,12 +403,19 @@ async function fillAgendaFilters(page, province, monthSlug) {
 
       const monthSelect = selects.find((s) => {
         const opts = optionsText(s).map((x) => x.toLowerCase());
-        return opts.some((x) => x.includes("marzo-")) && opts.some((x) => x.includes("abril-"));
+        return (
+          opts.some((x) => x.includes("marzo-")) &&
+          opts.some((x) => x.includes("abril-"))
+        );
       });
 
       const provinceSelect = selects.find((s) => {
         const opts = optionsText(s);
-        return opts.includes("Granada") && opts.includes("Toledo") && opts.includes("Madrid");
+        return (
+          opts.includes("Granada") &&
+          opts.includes("Toledo") &&
+          opts.includes("Madrid")
+        );
       });
 
       if (!thematicSelect || !monthSelect || !provinceSelect) {
@@ -421,26 +429,28 @@ async function fillAgendaFilters(page, province, monthSlug) {
 
       function pickOption(select, desiredText) {
         const opts = Array.from(select.options);
+
         const exact = opts.find((o) => clean(o.textContent || "") === desiredText);
-        if (exact) {
-          select.value = exact.value;
-          select.dispatchEvent(new Event("change", { bubbles: true }));
-          return { ok: true, value: exact.value, text: clean(exact.textContent || "") };
+        const loose = opts.find(
+          (o) => clean(o.textContent || "").toLowerCase() === desiredText.toLowerCase()
+        );
+        const chosen = exact || loose;
+
+        if (!chosen) {
+          return {
+            ok: false,
+            options: opts.map((o) => clean(o.textContent || "")).slice(0, 100),
+          };
         }
 
-        const loose = opts.find(
-          (o) =>
-            clean(o.textContent || "").toLowerCase() === desiredText.toLowerCase()
-        );
-        if (loose) {
-          select.value = loose.value;
-          select.dispatchEvent(new Event("change", { bubbles: true }));
-          return { ok: true, value: loose.value, text: clean(loose.textContent || "") };
-        }
+        select.value = chosen.value;
+        select.dispatchEvent(new Event("input", { bubbles: true }));
+        select.dispatchEvent(new Event("change", { bubbles: true }));
 
         return {
-          ok: false,
-          options: opts.map((o) => clean(o.textContent || "")).slice(0, 100),
+          ok: true,
+          value: chosen.value,
+          text: clean(chosen.textContent || ""),
         };
       }
 
@@ -448,46 +458,69 @@ async function fillAgendaFilters(page, province, monthSlug) {
       const monthPick = pickOption(monthSelect, monthValue);
       const provincePick = pickOption(provinceSelect, provinceValue);
 
+      if (!(thematicPick.ok && monthPick.ok && provincePick.ok)) {
+        return {
+          ok: false,
+          thematicPick,
+          monthPick,
+          provincePick,
+          reason: "pick_failed",
+        };
+      }
+
+      const form =
+        thematicSelect.form ||
+        monthSelect.form ||
+        provinceSelect.form ||
+        thematicSelect.closest("form") ||
+        monthSelect.closest("form") ||
+        provinceSelect.closest("form");
+
+      let submitted = false;
+
+      if (form) {
+        try {
+          if (typeof form.requestSubmit === "function") {
+            form.requestSubmit();
+          } else {
+            form.submit();
+          }
+          submitted = true;
+        } catch (_) {}
+      }
+
+      if (!submitted) {
+        const candidates = Array.from(
+          document.querySelectorAll('button, input[type="submit"], a')
+        );
+
+        const searchControl = candidates.find((el) => {
+          const txt = clean(el.textContent || el.value || "");
+          return /buscar/i.test(txt);
+        });
+
+        if (searchControl) {
+          try {
+            searchControl.click();
+            submitted = true;
+          } catch (_) {}
+        }
+      }
+
       return {
-        ok: thematicPick.ok && monthPick.ok && provincePick.ok,
+        ok: true,
         thematicPick,
         monthPick,
         provincePick,
+        submitted,
       };
     },
     { provinceValue: normalizedProvince, monthValue: monthSlug }
   );
 
-  if (!result.ok) {
-    return result;
-  }
+  await page.waitForTimeout(1200);
 
-  await page.waitForTimeout(800);
-
-  // Botón buscar
-  const buttonCandidates = [
-    'button:has-text("BUSCAR")',
-    'button:has-text("Buscar")',
-    'input[type="submit"]',
-    'button[type="submit"]',
-  ];
-
-  let clicked = false;
-  for (const sel of buttonCandidates) {
-    try {
-      const locator = page.locator(sel).first();
-      if (await locator.isVisible({ timeout: 1200 }).catch(() => false)) {
-        await Promise.all([
-          page.waitForLoadState("domcontentloaded").catch(() => {}),
-          locator.click({ timeout: 1500 }).catch(() => {}),
-        ]);
-        clicked = true;
-        break;
-      }
-    } catch (_) {}
-  }
-
-  return { ...result, clicked };
+  return result;
 }
 
 async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
@@ -511,10 +544,12 @@ async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
     await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
     await page.waitForTimeout(2000);
 
+    const beforeUrl = page.url();
     const filterDebug = await fillAgendaFilters(page, province, monthSlug);
 
+    await page.waitForLoadState("domcontentloaded", { timeout: 10000 }).catch(() => {});
     await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
-    await page.waitForTimeout(3500);
+    await page.waitForTimeout(4000);
 
     const finalUrl = page.url();
 
@@ -555,6 +590,7 @@ async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
 
     return {
       url: SPAIN_INFO_AGENDA_URL,
+      beforeUrl,
       finalUrl,
       monthSlug,
       filterDebug,
@@ -858,7 +894,6 @@ app.get("/", (req, res) => {
 });
 
 // ================== ENDPOINT POIS CERCANOS ==================
-// GET /pois-nearby?lat=...&lng=...&maxNivel=3&radius=50000
 app.get("/pois-nearby", (req, res) => {
   try {
     const lat = parseFloat(req.query.lat);
@@ -896,7 +931,7 @@ app.get("/pois-nearby", (req, res) => {
   }
 });
 
-// GET /pois-all  (útil para modo dev en Flutter)
+// GET /pois-all
 app.get("/pois-all", (req, res) => {
   try {
     res.json({ count: POIS.length, pois: POIS });
@@ -907,7 +942,6 @@ app.get("/pois-all", (req, res) => {
 });
 
 // ================== ENDPOINT IA (OPENAI) ==================
-// POST /ai/generate
 app.post("/ai/generate", async (req, res) => {
   try {
     const apiKey = process.env.OPENAI_API_KEY;
@@ -1000,7 +1034,6 @@ app.post("/ai/generate", async (req, res) => {
 });
 
 // ================== ENDPOINT LISTAR VOCES (DEBUG) ==================
-// GET /voices
 app.get("/voices", async (req, res) => {
   try {
     const apiKey = process.env.ELEVEN_API_KEY;
@@ -1019,7 +1052,6 @@ app.get("/voices", async (req, res) => {
 });
 
 // ================== ENDPOINT TTS ELEVENLABS ==================
-// POST /tts { text, voiceId? } -> audio/mpeg
 const DEFAULT_VOICE_ID = process.env.ELEVEN_VOICE_ID;
 
 app.post("/tts", async (req, res) => {
@@ -1037,7 +1069,6 @@ app.post("/tts", async (req, res) => {
     }
 
     const usedVoiceId = voiceId || DEFAULT_VOICE_ID;
-
     const url = `https://api.elevenlabs.io/v1/text-to-speech/${usedVoiceId}`;
 
     const payloadFlash = {
@@ -1114,7 +1145,6 @@ app.post("/tts", async (req, res) => {
 });
 
 // ================== ENDPOINT DEEZER RANDOM TRACK ==================
-// GET /deezer-random-track?genre=rock
 function mapGenreToDeezerQuery(genre) {
   switch ((genre || "").toLowerCase()) {
     case "rock":

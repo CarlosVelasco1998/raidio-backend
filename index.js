@@ -8,6 +8,8 @@ import { chromium } from "playwright";
 import { POIS } from "./pois_db.js";
 
 dotenv.config();
+process.env.PLAYWRIGHT_BROWSERS_PATH =
+  process.env.PLAYWRIGHT_BROWSERS_PATH || "0";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -241,10 +243,10 @@ function normalizeProvinceForSpainInfo(province = "") {
   const p = limpiarTexto(province);
 
   const map = {
-    "Alicante": "Alicante-Alacant",
-    "Castellón": "Castellón-Castelló",
-    "Valencia": "Valencia-València",
-    "Álava": "Araba-Álava",
+    Alicante: "Alicante-Alacant",
+    Castellón: "Castellón-Castelló",
+    Valencia: "Valencia-València",
+    Álava: "Araba-Álava",
     "La Coruña": "A Coruña",
   };
 
@@ -253,11 +255,15 @@ function normalizeProvinceForSpainInfo(province = "") {
 
 function buildSpainInfoAgendaUrl({ province, date }) {
   const { start, end } = getMonthRange(date);
-  const provinceValue = encodeURIComponent(normalizeProvinceForSpainInfo(province));
+  const provinceValue = encodeURIComponent(
+    normalizeProvinceForSpainInfo(province)
+  );
 
   return `https://www.spain.info/es/resultados-busqueda/index.html?lq=&reloaded=&tab=i&sh=agenda&dateTo=${formatDdMmYyyy(
     end
-  )}&dateFrom=${formatDdMmYyyy(start)}&facet_SEGITUR_LOCATION_PROVINCE_es_mvs=${provinceValue}&q=`;
+  )}&dateFrom=${formatDdMmYyyy(
+    start
+  )}&facet_SEGITUR_LOCATION_PROVINCE_es_mvs=${provinceValue}&q=`;
 }
 
 function parseSpanishDateText(dateText = "") {
@@ -292,7 +298,8 @@ function parseSpanishDateText(dateText = "") {
 }
 
 function extractDateRangeFromText(text = "") {
-  const matches = text.match(/\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4}/g) || [];
+  const matches =
+    text.match(/\d{1,2}\s+[A-Za-záéíóúÁÉÍÓÚ]+\s+\d{4}/g) || [];
   const start = matches[0] ? parseSpanishDateText(matches[0]) : null;
   const end = matches[1] ? parseSpanishDateText(matches[1]) : start;
   return { start, end, rawMatches: matches };
@@ -310,7 +317,10 @@ function scoreAgendaEvent(event, nowDate, place) {
     score += 30;
   }
 
-  if (provinceNorm && (titleNorm.includes(provinceNorm) || summaryNorm.includes(provinceNorm))) {
+  if (
+    provinceNorm &&
+    (titleNorm.includes(provinceNorm) || summaryNorm.includes(provinceNorm))
+  ) {
     score += 20;
   }
 
@@ -342,7 +352,10 @@ function scoreAgendaEvent(event, nowDate, place) {
   ];
 
   for (const kw of keywords) {
-    if (titleNorm.includes(slugifyText(kw)) || summaryNorm.includes(slugifyText(kw))) {
+    if (
+      titleNorm.includes(slugifyText(kw)) ||
+      summaryNorm.includes(slugifyText(kw))
+    ) {
       score += 10;
     }
   }
@@ -434,7 +447,10 @@ async function searchSpainInfoAgenda({ province, nowDate }) {
         summary = summary.replace(d, " ");
       }
 
-      summary = summary.replace(/AGENDA\s*\|\s*[A-ZÁÉÍÓÚÜÑa-záéíóúüñ\s\-]+/i, " ");
+      summary = summary.replace(
+        /AGENDA\s*\|\s*[A-ZÁÉÍÓÚÜÑa-záéíóúüñ\s\-]+/i,
+        " "
+      );
       summary = summary.replace(/\s*-\s*/g, " ").replace(/\s+/g, " ").trim();
 
       const startDate = start;
@@ -511,9 +527,9 @@ function buildLiveContextFromSpainInfoEvent({ event, place, nowDate, poiNombre }
 
   if (event.startDate && event.endDate) {
     lines.push(
-      `- Fechas del evento: del ${formatDateEs(event.startDate.toISOString())} al ${formatDateEs(
-        event.endDate.toISOString()
-      )}`
+      `- Fechas del evento: del ${formatDateEs(
+        event.startDate.toISOString()
+      )} al ${formatDateEs(event.endDate.toISOString())}`
     );
   } else if (event.startDate) {
     lines.push(`- Fecha del evento: ${formatDateEs(event.startDate.toISOString())}`);

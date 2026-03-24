@@ -26,8 +26,17 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "monarquia", "cultura", "museos", "siglo_xvi_xvii"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sponsor: {
+      "sponsorId": "bar_001",
+      "sponsorNombre": "Bar Manolo",
+      "mensaje": "Bocadillos y terraza y cocks",
+      "url": "https://www.google.com/maps/place/Bernab%C3%A9u/@40.4544295,-3.6877974,17z/data=!3m1!5s0xd4228e2361e11b7:0x67f5c76cf9a0be21!4m6!3m5!1s0xd4228e23705d39f:0xa8fff6d26e2b1988!8m2!3d40.4530196!4d-3.6883748!16zL20vMDFneGx0?entry=ttu&g_ep=EgoyMDI2MDMyMi4wIKXMDSoASAFQAw%3D%3D"
+    },
+    eventos: [
+      {
+        "titulo": "id, titulo, descripcion, startDate, endDate, importancia"
+      }
+    ],
   },
 
   {
@@ -44,7 +53,7 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 45,
     intereses: ["senderismo", "cumbres", "miradores", "fauna", "flora", "clima", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -62,7 +71,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 50,
     intereses: ["montañismo", "cumbre", "clima", "vistas", "glaciarismo", "senderos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -80,7 +89,7 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 40,
     intereses: ["granito", "escalada", "bloques", "rutas", "vistas", "fauna", "flora", "seguridad_montana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -98,7 +107,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 45,
     intereses: ["lagunas", "glaciarismo", "geologia", "ecosistemas", "fauna", "flora", "rutas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -116,7 +125,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["bosque", "hayedo", "unesco", "biodiversidad", "otoño", "sendero"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -134,7 +143,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 45,
     intereses: ["castillo", "arquitectura", "edad_media", "linajes", "frontera", "visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -152,7 +161,7 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 30,
     intereses: ["ruinas", "castillo", "contexto_medieval", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -170,7 +179,7 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 40,
     intereses: ["castillo", "señorios", "arquitectura", "pueblo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -188,7 +197,7 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 40,
     intereses: ["muralla", "fortificacion", "edad_media", "río", "pueblo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -206,7 +215,7 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 90,
     intereses: ["arquitectura", "siglo_xx", "memoria_historica", "contexto_guerra_civil", "construccion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -224,7 +233,7 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["felipe_ii", "arquitectura", "religion", "arte", "monarquia", "unesco"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -242,7 +251,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["palacio", "jardines", "arte", "monarquia", "unesco", "paisaje_cultural"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -260,7 +269,7 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 70,
     intereses: ["cervantes", "literatura", "universidad", "arquitectura", "unesco"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -278,7 +287,7 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["universidad", "arquitectura", "humanismo", "literatura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -296,7 +305,7 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 80,
     intereses: ["guerra_independencia", "batalla", "paso_montana", "logistica", "terreno"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -314,7 +323,7 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 90,
     intereses: ["guerra_civil", "batalla", "frentes", "consecuencias"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -332,7 +341,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["plaza_mayor", "gastronomia", "pueblo", "patrimonio", "plan_rapido"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -350,7 +359,7 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["monasterio", "valle", "rio", "senderismo", "pueblo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -368,7 +377,7 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["arquitectura_negra", "pueblo", "paseo", "foto", "gastronomia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -386,7 +395,7 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 40,
     intereses: ["barroco", "industrializacion", "urbanismo", "arquitectura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -404,7 +413,7 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["embalse", "mirador", "foto", "aves", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -422,7 +431,7 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 30,
     intereses: ["rio", "baño", "area_recreativa", "paseo", "familia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -445,7 +454,7 @@ export const POIS = [
     prioridad: 135,
     cooldownMin: 120,
     intereses: ["unesco", "ciudad_historica", "tres_culturas", "arquitectura", "arte"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -463,7 +472,7 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 90,
     intereses: ["unesco", "urbanismo", "arquitectura", "medieval", "visigodo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -481,7 +490,7 @@ export const POIS = [
     prioridad: 135,
     cooldownMin: 90,
     intereses: ["fortaleza", "guerra_civil", "historia_militar", "arquitectura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -499,7 +508,7 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["ingenieria", "romano", "rio", "arquitectura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -517,7 +526,7 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["puente", "medieval", "rio", "arquitectura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -535,7 +544,7 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 70,
     intereses: ["molinos", "quijote", "vistas", "paisaje", "viento"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -553,7 +562,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["castillo", "ordenes_militares", "frontera", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -571,7 +580,7 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["castillo", "edad_media", "señorio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -589,7 +598,7 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["castillo", "tajo", "frontera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -607,7 +616,7 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["castillo", "tajo", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -625,7 +634,7 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 45,
     intereses: ["romano", "villa", "mosaicos", "vida_cotidiana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -643,7 +652,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 45,
     intereses: ["muralla", "defensa", "arquitectura", "ciudad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -661,7 +670,7 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 45,
     intereses: ["arte", "religion", "arquitectura", "devocion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -679,7 +688,7 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["castillo", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -697,7 +706,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 50,
     intereses: ["geologia", "miradores", "foto", "aves", "sendero_corto"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -715,7 +724,7 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 60,
     intereses: ["visigodo", "religion", "arte", "arquitectura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -733,7 +742,7 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 45,
     intereses: ["arqueologia", "rupestre", "cuevas", "religion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -751,7 +760,7 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 45,
     intereses: ["prehistoria", "cuevas", "arqueologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -769,7 +778,7 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["castillo", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -787,7 +796,7 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["paisaje", "sierra", "fauna", "senderismo", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -805,7 +814,7 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 45,
     intereses: ["tradiciones", "museo", "curiosidades", "cultura_local"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -828,7 +837,7 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "cultura", "mancha"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -846,7 +855,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["teatro", "corral_de_comedias", "arquitectura", "pueblo", "plan_cultural"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -864,7 +873,7 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 60,
     intereses: ["humedal", "aves", "observacion", "sendero", "ecosistema"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -882,7 +891,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["ordenes_militares", "castillo", "defensa", "reconquista"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -900,7 +909,7 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 50,
     intereses: ["vino", "cultura_local", "gastronomia", "historia_napoleonica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -918,7 +927,7 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 60,
     intereses: ["industria", "mineria", "historia_economica", "siglo_xix_xx"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -936,7 +945,7 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 60,
     intereses: ["renacimiento", "arte", "arquitectura", "palacio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -954,7 +963,7 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 60,
     intereses: ["lagunas", "agua", "rutas", "baño", "fauna", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -972,7 +981,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 60,
     intereses: ["mancha", "rutas", "comunicaciones", "historia_local"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -990,7 +999,7 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 60,
     intereses: ["quijote", "ventas", "cervantes", "pueblo", "parada_viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1008,7 +1017,7 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 60,
     intereses: ["pueblo", "patrimonio", "mancha", "plan_paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1026,7 +1035,7 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 90,
     intereses: ["prehistoria", "arqueologia", "yacimiento", "agua", "ingenieria_antigua"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1044,7 +1053,7 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 60,
     intereses: ["castillo", "ordenes_militares", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1062,7 +1071,7 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 60,
     intereses: ["fauna", "berrea", "observacion", "paisaje", "senderismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1080,7 +1089,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["geologia", "volcanes", "maares", "paisaje", "rocas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1098,7 +1107,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 90,
     intereses: ["ordenes_militares", "reconquista", "frontera", "contexto"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1121,7 +1130,7 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 120,
     intereses: ["aceite", "cultura", "historia_urbana", "capitalidad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1139,7 +1148,7 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 60,
     intereses: ["geologia", "desfiladero", "paisaje", "paso_natural", "fauna", "rutas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1157,7 +1166,7 @@ export const POIS = [
     prioridad: 150,
     cooldownMin: 120,
     intereses: ["guerra_independencia", "batalla", "consecuencias", "logistica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1175,7 +1184,7 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 90,
     intereses: ["mineria", "industria", "patrimonio", "siglo_xix_xx"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1193,7 +1202,7 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 60,
     intereses: ["castillo", "mirador", "frontera", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1211,7 +1220,7 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 120,
     intereses: ["renacimiento", "unesco", "arquitectura", "arte", "urbanismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1229,7 +1238,7 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 120,
     intereses: ["renacimiento", "unesco", "arquitectura", "arte", "historia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1247,7 +1256,7 @@ export const POIS = [
     prioridad: 160,
     cooldownMin: 180,
     intereses: ["reconquista", "batalla", "terreno", "logistica", "consecuencias"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1265,7 +1274,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["castillo", "pueblo", "edad_media", "plan_visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1283,7 +1292,7 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["ilustracion", "poblamiento", "reformas", "siglo_xviii"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1301,7 +1310,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 90,
     intereses: ["religion", "santuario", "paisaje", "romeria", "rutas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1319,7 +1328,7 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["fauna", "senderismo", "ríos", "bosques", "miradores", "naturaleza"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1337,7 +1346,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 120,
     intereses: ["iberos", "andalusi", "arqueologia", "contexto"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1355,7 +1364,7 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["mirador", "frontera_medieval", "paisaje", "castillos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1373,7 +1382,7 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 90,
     intereses: ["aceite", "paisaje", "agricultura", "cultura_local"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1396,7 +1405,7 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["reino_nazari", "renacimiento", "cultura", "historia_urbana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1414,7 +1423,7 @@ export const POIS = [
     prioridad: 170,
     cooldownMin: 180,
     intereses: ["andalusi", "arquitectura", "arte", "unesco", "reino_nazari"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1432,7 +1441,7 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["mirador", "barrio_historico", "paisaje", "foto", "paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1450,7 +1459,7 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 90,
     intereses: ["montaña", "senderismo", "nieve", "vistas", "fauna", "altitud"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1468,7 +1477,7 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 90,
     intereses: ["frontera", "reconquista", "ruta", "ciudad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1486,7 +1495,7 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["cuevas", "arquitectura", "catedral", "plan_visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1504,7 +1513,7 @@ export const POIS = [
     prioridad: 160,
     cooldownMin: 180,
     intereses: ["reyes_catolicos", "religion", "arte", "arquitectura", "renacimiento"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1522,7 +1531,7 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["cuevas", "cultura_git", "tradiciones", "barrio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1540,7 +1549,7 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 60,
     intereses: ["valle", "paisaje", "pueblo", "parada_viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1558,7 +1567,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 90,
     intereses: ["frontera_nazari", "castillo", "vigilancia", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1576,7 +1585,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["paisaje", "rutas", "pueblos", "agua", "historia_morisca"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1594,7 +1603,7 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 90,
     intereses: ["lorca", "literatura", "cultura", "pueblo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1612,7 +1621,7 @@ export const POIS = [
     prioridad: 135,
     cooldownMin: 120,
     intereses: ["reconquista", "boabdil", "paso_montana", "paisaje", "cronica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1630,7 +1639,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 180,
     intereses: ["andalusi", "contexto", "reino_nazari", "sociedad", "economia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1653,7 +1662,7 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 120,
     intereses: ["historia_urbana", "patrimonio", "rio_henares", "paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1671,7 +1680,7 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["arquitectura", "gótico_isabelino", "renacimiento", "nobles"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1689,7 +1698,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 90,
     intereses: ["arte", "arquitectura", "religion", "centro_historico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1707,7 +1716,7 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["castillo", "edad_media", "frontera", "museo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1725,7 +1734,7 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 90,
     intereses: ["pueblo", "jardines", "historia_local", "foto", "parada_viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1743,7 +1752,7 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 120,
     intereses: ["palacio_ducal", "princesa_de_eboli", "historia_moderna", "paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1761,7 +1770,7 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 150,
     intereses: ["medieval", "catedral", "castillo_parador", "paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1779,7 +1788,7 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 120,
     intereses: ["sal", "industria_historica", "patrimonio", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1797,7 +1806,7 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["senderismo", "cañón", "aves", "miradores", "geologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1815,7 +1824,7 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["mirador", "sendero", "foto", "cañon"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1833,7 +1842,7 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 90,
     intereses: ["parada_viaje", "servicios", "nudo_carreteras"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1851,7 +1860,7 @@ export const POIS = [
     prioridad: 145,
     cooldownMin: 180,
     intereses: ["romano", "medieval", "miradores", "paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1869,7 +1878,7 @@ export const POIS = [
     prioridad: 155,
     cooldownMin: 240,
     intereses: ["romano", "ingenieria", "via_romana", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1887,7 +1896,7 @@ export const POIS = [
     prioridad: 150,
     cooldownMin: 180,
     intereses: ["cister", "arte", "arquitectura", "religion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1905,7 +1914,7 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 90,
     intereses: ["valle_jalon", "parada_viaje", "historia_local"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1923,7 +1932,7 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 90,
     intereses: ["aves", "observacion", "paisaje", "foto"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1941,7 +1950,7 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 120,
     intereses: ["balneario", "aguas_termales", "descanso", "parada_viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1959,7 +1968,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 120,
     intereses: ["aguas_termales", "baño", "paisaje", "relax"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1977,7 +1986,7 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 90,
     intereses: ["pueblo", "parada_viaje", "paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -1995,7 +2004,7 @@ export const POIS = [
     prioridad: 145,
     cooldownMin: 150,
     intereses: ["mudejar", "casco_historico", "arquitectura", "paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -2013,7 +2022,7 @@ export const POIS = [
     prioridad: 155,
     cooldownMin: 180,
     intereses: ["mudejar", "arte", "arquitectura", "religion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -2031,7 +2040,7 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 150,
     intereses: ["castillo", "mirador", "frontera", "medieval"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -2049,7 +2058,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["embalse", "paisaje", "foto", "agua"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -2067,7 +2076,7 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 90,
     intereses: ["parada_viaje", "pueblo", "acceso"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -2085,7 +2094,7 @@ export const POIS = [
     prioridad: 170,
     cooldownMin: 240,
     intereses: ["cister", "Desamortizción de Mendizábal", "Don Pablo Muntadas Campeny", "cascadas", "jardines", "paseo", "fotografia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -2103,7 +2112,7 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 120,
     intereses: ["cascadas", "senderismo", "barranco", "agua"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
@@ -2121,7 +2130,7 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 150,
     intereses: ["murallas", "medieval", "paseo", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url? },
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 

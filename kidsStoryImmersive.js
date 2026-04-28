@@ -10,7 +10,7 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 
 // ================== LIBRERÍA DE VOCES ==================
 const VOICE_LIBRARY = {
-  narrator_f:   { id: "Nh2zY9kknu6z4pZy6FhD", name: "Sara",     s: { stability: 0.50, similarity_boost: 0.80, style: 0.30, use_speaker_boost: true } },
+  narrator_f:   { id: "KHCvMklQZZo0O30ERnVn", name: "Sara",     s: { stability: 0.50, similarity_boost: 0.80, style: 0.30, use_speaker_boost: true } },
   narrator_m:   { id: "JBFqnCBsd6RMkjVDRZzb", name: "George",   s: { stability: 0.50, similarity_boost: 0.80, style: 0.30, use_speaker_boost: true } },
   child_girl_1: { id: "1tDEBGOo8EqEPApM49eJ", name: "Niña-1",    s: { stability: 0.40, similarity_boost: 0.85, style: 0.50, use_speaker_boost: true } },
   child_girl_2: { id: "cgSgspJ2msm6clMCkdW9", name: "Jessica",   s: { stability: 0.42, similarity_boost: 0.85, style: 0.50, use_speaker_boost: true } },
@@ -260,6 +260,17 @@ export async function generateKidsStoryImmersive(req, res) {
     if (audioBuffers.length === 0) {
       return res.status(500).json({ error: "No se generó ningún segmento de audio" });
     }
+
+    // Coletilla final siempre presente
+    try {
+      const narratorKey = narratorGender === "m" ? "narrator_m" : "narrator_f";
+      const closingBuf = await callTTS(
+        elevenKey,
+        narratorKey,
+        "Y colorín colorado, este cuento ha terminado. ¡Hasta la próxima aventura, chicos!"
+      );
+      audioBuffers.push(closingBuf);
+    } catch (_) {}
 
     // 4 — Concatenar con ffmpeg
     console.log(`🎵 Concatenando ${audioBuffers.length} piezas...`);

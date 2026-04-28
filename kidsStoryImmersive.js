@@ -63,50 +63,52 @@ function buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voic
     .filter((k) => !k.startsWith("narrator") && !k.startsWith("child"))
     .join(", ");
 
-  return `Eres un experto cuentacuentos infantil. Crea un cuento ORIGINAL en español para niños de ${age} años que viajan en coche.
+  return `Eres un cuentacuentos experto para niños. Crea un cuento ORIGINAL en español castellano para niños de ${age} años que van en coche con su familia.
 
 PROTAGONISTAS (con su voz asignada): ${kidsList}
 VOZ NARRADOR/A: ${narratorKey}
-IDEA DEL CUENTO: "${idea || "Inventa una aventura original. Puede ser de cualquier tipo: exploración, misterio, humor, fantasía, animales que hablan, viajes a mundos extraños, lo que se te ocurra."}"
-DURACIÓN: entre ${minWords} y ${maxWords} palabras en total (texto hablado).
+IDEA: "${idea || "Inventa una aventura original y entretenida."}"
+DURACIÓN OBJETIVO: entre ${minWords} y ${maxWords} palabras en total.
 
 VOCES DISPONIBLES para personajes secundarios: ${secondaryVoices}
-Elige solo las que encajen con los personajes del cuento. No uses todas si no hacen falta.
+Usa solo las que necesites según los personajes del cuento.
 
-ESTILO Y TONO:
-- Que sea una historia con gancho desde la primera frase: algo que pase, un problema, un misterio, una situación absurda o divertida.
-- Puede ser de princesas, dragones, robots, piratas, animales, detectives, lo que sea — pero que tenga aventura real.
-- Incluye tensión, humor, sorpresas o giros inesperados. Los niños deben querer saber qué pasa después.
-- Los personajes tienen personalidad propia: que se note quién es el valiente, el gracioso, el que tiene miedo pero se atreve.
-- El final debe sentirse GANADO: que los protagonistas hayan resuelto algo, superado algo o descubierto algo.
-- Evita finales genéricos tipo "y todos fueron felices para siempre rodeados de arcoíris". El desenlace puede ser alegre, emotivo o divertido, pero que surja de lo que ha pasado en la historia.
-- Nada de moralejas forzadas ni frases del tipo "y aprendieron que la amistad es lo más importante del mundo".
-- Sin violencia explícita. Apto para escuchar en coche.
+ESTRUCTURA OBLIGATORIA DEL CUENTO:
+1. PRESENTACIÓN (primeros segmentos): sitúa la escena con calma. Di dónde estamos, quiénes son los protagonistas, qué les gusta, qué estaban haciendo. Deja que los niños se imaginen la escena. Ejemplo: "Érase una vez, yendo por la carretera, [nombre], a quien le encantaba [cosa], y [nombre2], que siempre llevaba [objeto]..."
+2. DETONANTE: algo inesperado ocurre que arranca la aventura.
+3. DESARROLLO: los protagonistas afrontan el problema con humor, ingenio o valentía. Incluye 1 o 2 momentos donde los personajes del cuento le gastan una broma o le preguntan algo gracioso directamente a los protagonistas por su nombre.
+4. DESENLACE: resuelto de forma satisfactoria, sin moraleja forzada.
+
+ESTILO:
+- Lenguaje sencillo y cercano, apto para la edad indicada.
+- El narrador SIEMPRE presenta quién habla antes de cada diálogo: "dijo [personaje]:", "respondió [personaje]:", "preguntó [personaje] con una sonrisa:".
+- Humor suave, situaciones absurdas o sorprendentes. Que los niños quieran escuchar qué pasa después.
+- Sin violencia. Sin moraleja forzada. Sin arcoíris ni nubes de algodón al final.
 - Nunca menciones que eres una IA.
 
-FORMATO DEL CUENTO:
-- Cada segmento de narración o diálogo: máximo 60 palabras.
-- Añade entre 4 y 6 efectos de sonido en momentos clave (no en cada segmento).
-- Usa los nombres de los protagonistas como personajes activos con diálogos expresivos.
+EFECTOS DE SONIDO:
+- Pon SOLO 2 o 3 efectos de sonido en momentos muy concretos y significativos.
+- Colócalos donde realmente aporten (una puerta que se abre, un trueno, un animal que aparece). No los pongas entre todos los segmentos.
 
 FORMATO DE RESPUESTA — responde EXCLUSIVAMENTE con un JSON válido, sin texto antes ni después:
 
 {
   "title": "Título del cuento",
   "segments": [
-    { "type": "narration", "voice": "${narratorKey}", "text": "Texto narrado..." },
-    { "type": "sfx", "description": "specific sound effect in english, max 10 words" },
-    { "type": "dialogue", "voice": "child_girl_1", "character": "Nombre", "text": "Lo que dice el personaje..." },
+    { "type": "narration", "voice": "${narratorKey}", "text": "Érase una vez... [presentación de la escena y los personajes]" },
+    { "type": "narration", "voice": "${narratorKey}", "text": "De repente... [narración que termina con: 'dijo el dragón:']" },
+    { "type": "dialogue", "voice": "animal_large", "character": "Dragón", "text": "¡Eh, vosotros! ¿Acaso [nombre] sabe hacer [cosa graciosa]?" },
+    { "type": "sfx", "description": "precise sound effect in english, max 10 words" },
     { "type": "narration", "voice": "${narratorKey}", "text": "Continúa la narración..." }
   ]
 }
 
-TIPOS DE SEGMENTO:
-- "narration" → texto narrado. Voz siempre "${narratorKey}".
-- "dialogue"  → frase dicha por un personaje. Voz según el personaje.
-- "sfx"       → efecto de sonido. SIEMPRE en inglés, concreto y descriptivo (ej: "old wooden door creaking open slowly", "distant thunder followed by rain", "horse galloping on cobblestones", "small bell tinkling three times", "fire crackling in a hearth").
-
-Asegúrate de que el JSON sea completo y válido.`;
+REGLAS DE FORMATO:
+- "narration" → voz siempre "${narratorKey}". Termina con una presentación del siguiente hablante cuando corresponda: "dijo X:", "respondió Y:", "preguntó Z:".
+- "dialogue"  → lo que dice el personaje, sin incluir su nombre.
+- "sfx"       → SIEMPRE en inglés, muy concreto (ej: "large dragon roaring", "heavy wooden door slamming shut", "tiny bell ringing twice").
+- Cada segmento de texto: máximo 60 palabras.
+- El JSON debe ser completo y válido.`;
 }
 
 // ================== TTS POR SEGMENTO ==================
@@ -114,7 +116,7 @@ async function callTTS(apiKey, voiceKey, text) {
   const voice = VOICE_LIBRARY[voiceKey] ?? VOICE_LIBRARY["narrator_f"];
   const resp = await axios.post(
     `https://api.elevenlabs.io/v1/text-to-speech/${voice.id}`,
-    { text, model_id: "eleven_turbo_v2_5", language_code: "es", voice_settings: voice.s },
+    { text, model_id: "eleven_multilingual_v2", voice_settings: voice.s },
     {
       headers: { "xi-api-key": apiKey, "Content-Type": "application/json", Accept: "audio/mpeg" },
       responseType: "arraybuffer",

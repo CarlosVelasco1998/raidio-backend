@@ -6,6 +6,7 @@ import axios from "axios";
 import { chromium } from "playwright";
 
 import { POIS } from "./pois_db.js";
+import { generateKidsStoryImmersive } from "./kidsStoryImmersive.js";
 
 dotenv.config();
 process.env.PLAYWRIGHT_BROWSERS_PATH =
@@ -63,6 +64,9 @@ app.use(express.json({ limit: "2mb" }));
 app.get("/healthz", (req, res) => {
   res.status(200).send("ok");
 });
+
+// ================== ENDPOINT CUENTOS INMERSIVOS ==================
+app.post("/kids-story-immersive", generateKidsStoryImmersive);
 
 // ================== LOG CARGA POIS ==================
 console.log("POIS cargados:", POIS.length);

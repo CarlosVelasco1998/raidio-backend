@@ -10,16 +10,16 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 
 // ================== LIBRERÍA DE VOCES ==================
 const VOICE_LIBRARY = {
-  narrator_f:   { id: "XrExE9yKIg1WjnnlVkGX", name: "Matilda",  s: { stability: 0.50, similarity_boost: 0.80, style: 0.30, use_speaker_boost: true } },
+  narrator_f:   { id: "Nh2zY9kknu6z4pZy6FhD", name: "Sara",     s: { stability: 0.50, similarity_boost: 0.80, style: 0.30, use_speaker_boost: true } },
   narrator_m:   { id: "JBFqnCBsd6RMkjVDRZzb", name: "George",   s: { stability: 0.50, similarity_boost: 0.80, style: 0.30, use_speaker_boost: true } },
-  child_girl_1: { id: "MF3mGyEYCl7XYWbV9V6O", name: "Elli",      s: { stability: 0.40, similarity_boost: 0.85, style: 0.50, use_speaker_boost: true } },
+  child_girl_1: { id: "1tDEBGOo8EqEPApM49eJ", name: "Niña-1",    s: { stability: 0.40, similarity_boost: 0.85, style: 0.50, use_speaker_boost: true } },
   child_girl_2: { id: "cgSgspJ2msm6clMCkdW9", name: "Jessica",   s: { stability: 0.42, similarity_boost: 0.85, style: 0.50, use_speaker_boost: true } },
   child_girl_3: { id: "XB0fDUnXU5powFXDhCwa", name: "Charlotte", s: { stability: 0.45, similarity_boost: 0.82, style: 0.45, use_speaker_boost: true } },
-  child_boy_1:  { id: "IKne3meq5aSn9XLyUdCD", name: "Charlie",   s: { stability: 0.40, similarity_boost: 0.85, style: 0.50, use_speaker_boost: true } },
+  child_boy_1:  { id: "jQrhxsqzG6CPKo3ll0w9", name: "Niño-1",    s: { stability: 0.40, similarity_boost: 0.85, style: 0.50, use_speaker_boost: true } },
   child_boy_2:  { id: "bIHbv24MWmeRgasZH58o", name: "Will",      s: { stability: 0.42, similarity_boost: 0.85, style: 0.50, use_speaker_boost: true } },
   child_boy_3:  { id: "iP95p4xoKVk53GoZ742B", name: "Chris",     s: { stability: 0.45, similarity_boost: 0.82, style: 0.45, use_speaker_boost: true } },
   old_man:      { id: "pqHfZKP75CvOlQylNhV4", name: "Bill",      s: { stability: 0.65, similarity_boost: 0.75, style: 0.20, use_speaker_boost: true } },
-  old_woman:    { id: "pFZP5JQG7iQjIQuC4Bku", name: "Lily",      s: { stability: 0.60, similarity_boost: 0.75, style: 0.25, use_speaker_boost: true } },
+  old_woman:    { id: "M9RTtrzRACmbUzsEMq8p", name: "Anciana",   s: { stability: 0.60, similarity_boost: 0.75, style: 0.25, use_speaker_boost: true } },
   villain_m:    { id: "N2lVS1w4EtoT3dr4eOWO", name: "Callum",    s: { stability: 0.45, similarity_boost: 0.80, style: 0.55, use_speaker_boost: true } },
   villain_f:    { id: "AZnzlk1XvdvUeBnXmlld", name: "Domi",      s: { stability: 0.45, similarity_boost: 0.80, style: 0.50, use_speaker_boost: true } },
   animal_small: { id: "21m00Tcm4TlvDq8ikWAM", name: "Rachel",    s: { stability: 0.35, similarity_boost: 0.90, style: 0.60, use_speaker_boost: true } },
@@ -50,7 +50,8 @@ function assignChildVoices(kids) {
 function buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voiceAssignments }) {
   const narratorKey = narratorGender === "m" ? "narrator_m" : "narrator_f";
   const wpm = Math.min(Math.max(120 + (age - 3) * 5, 115), 165);
-  const targetWords = targetMinutes * wpm;
+  // ElevenLabs habla más rápido que un narrador humano — compensamos con factor 1.7
+  const targetWords = Math.round(targetMinutes * wpm * 1.7);
   const minWords = Math.round(targetWords * 0.85);
   const maxWords = Math.round(targetWords * 1.15);
 
@@ -94,7 +95,7 @@ FORMATO DE RESPUESTA — responde EXCLUSIVAMENTE con un JSON válido, sin texto 
   "title": "Título del cuento",
   "segments": [
     { "type": "narration", "voice": "${narratorKey}", "text": "Texto narrado..." },
-    { "type": "sfx", "description": "sound description in english, max 6 words" },
+    { "type": "sfx", "description": "specific sound effect in english, max 10 words" },
     { "type": "dialogue", "voice": "child_girl_1", "character": "Nombre", "text": "Lo que dice el personaje..." },
     { "type": "narration", "voice": "${narratorKey}", "text": "Continúa la narración..." }
   ]
@@ -103,7 +104,7 @@ FORMATO DE RESPUESTA — responde EXCLUSIVAMENTE con un JSON válido, sin texto 
 TIPOS DE SEGMENTO:
 - "narration" → texto narrado. Voz siempre "${narratorKey}".
 - "dialogue"  → frase dicha por un personaje. Voz según el personaje.
-- "sfx"       → efecto de sonido. Solo el campo "description" en inglés (ej: "creaking wooden door", "distant thunder rumble").
+- "sfx"       → efecto de sonido. SIEMPRE en inglés, concreto y descriptivo (ej: "old wooden door creaking open slowly", "distant thunder followed by rain", "horse galloping on cobblestones", "small bell tinkling three times", "fire crackling in a hearth").
 
 Asegúrate de que el JSON sea completo y válido.`;
 }
@@ -113,7 +114,7 @@ async function callTTS(apiKey, voiceKey, text) {
   const voice = VOICE_LIBRARY[voiceKey] ?? VOICE_LIBRARY["narrator_f"];
   const resp = await axios.post(
     `https://api.elevenlabs.io/v1/text-to-speech/${voice.id}`,
-    { text, model_id: "eleven_multilingual_v2", voice_settings: voice.s },
+    { text, model_id: "eleven_turbo_v2_5", language_code: "es", voice_settings: voice.s },
     {
       headers: { "xi-api-key": apiKey, "Content-Type": "application/json", Accept: "audio/mpeg" },
       responseType: "arraybuffer",
@@ -127,7 +128,7 @@ async function callTTS(apiKey, voiceKey, text) {
 async function callSFX(apiKey, description) {
   const resp = await axios.post(
     "https://api.elevenlabs.io/v1/sound-generation",
-    { text: description, duration_seconds: 3.0, prompt_influence: 0.3 },
+    { text: description, duration_seconds: 2.0, prompt_influence: 0.5 },
     {
       headers: { "xi-api-key": apiKey, "Content-Type": "application/json", Accept: "audio/mpeg" },
       responseType: "arraybuffer",

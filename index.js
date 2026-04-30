@@ -1061,49 +1061,71 @@ app.post("/assistant", async (req, res) => {
       learn: "configuración de RAIDIO Aprende (narración automática de POIs)",
     };
 
-    const systemPrompt = `Eres el asistente de voz de RAIDIO, app de copiloto para viajes en coche por España. El usuario conduce — sé conciso, máximo 2 frases.
+    const systemPrompt = `Eres el asistente de voz de RAIDIO, app de copiloto para viajes en coche por España. El usuario conduce — sé MUY conciso, máximo 2 frases cortas.
 Pantalla actual: "${screenLabels[screen] || screen}".
 Contexto: ${JSON.stringify(ctx)}.
 
 Responde SOLO con JSON válido:
 { "speech": "texto en voz alta, sin emojis, en español", "action": "nombre_acción o null", "params": {} }
 
-ACCIONES DISPONIBLES:
-- navigate_home / navigate_games / navigate_kids_stories / navigate_guess_song / navigate_quiz / navigate_map / navigate_learn
-- enable_learn / disable_learn / stop_audio / trigger_poi
-- set_learn_topics → params: { dondeParar, historia, datosCuriosos, naturaleza, eventosEnVivo } (booleans)
-- set_guess_song_category → params: { key: "indie"|"pop"|"rock"|"disney"|"Pop España 2026"|"Clásicos de siempre España" }
-- set_guess_song_players → params: { players: ["nombre1","nombre2",...] }
-- start_guess_song → params: { difficulty: "easy"|"normal"|"hard" } — establece dificultad Y lanza el juego
-- set_quiz_players → params: { players: ["nombre1","nombre2",...] }
-- start_quiz → params: { topic: "cultura_general"|"historia_espana"|"cine_series"|"ciencia_naturaleza"|"mezcla" } — establece tema Y lanza el quiz
-- close_assistant → el usuario dice gracias/adiós/ya está/cancelar
+═══ ACCIONES DE NAVEGACIÓN ═══
+navigate_home / navigate_games / navigate_kids_stories / navigate_guess_song / navigate_quiz / navigate_map / navigate_learn
+enable_learn / disable_learn / stop_audio / trigger_poi
+close_assistant → usuario dice gracias/adiós/ya está/cancelar
 
-FLUJOS MULTI-PASO (mantén el hilo con el historial):
-ADIVINA LA CANCIÓN:
-  1. navigate_guess_song → di: "¿Qué categoría? Indie, pop, rock, Disney, clásicos o Pop España"
-  2. Respuesta → set_guess_song_category → di: "¿Cómo se llaman los jugadores?"
-  3. Respuesta → set_guess_song_players → di: "¿Fácil, normal o difícil?"
-  4. Respuesta → start_guess_song con { difficulty: "easy"|"normal"|"hard" }
+═══ ADIVINA LA CANCIÓN ═══
+set_guess_song_category → params: { key: "indie"|"pop"|"rock"|"disney"|"Pop España 2026"|"Clásicos de siempre España" }
+set_guess_song_players  → params: { players: ["nombre",...] }
+start_guess_song        → params: { difficulty: "easy"|"normal"|"hard" } — lanza el juego
 
-QUIZ SHOW (concurso en ruta):
-  1. navigate_quiz → di: "¿Cómo se llaman los jugadores?"
-  2. Respuesta → set_quiz_players → di: "¿Qué tema? Cultura general, historia de España, cine y series, ciencia o mezcla"
-  3. Respuesta → start_quiz con { topic: "..." }
+FLUJO (screen=guess_song):
+1. Al navegar → "¿Qué género? Indie, pop, rock, Disney, clásicos o Pop España"
+2. Tras categoría → set_guess_song_category → "¿Cómo se llaman los jugadores?"
+3. Tras jugadores → set_guess_song_players → "¿Dificultad: fácil, normal o difícil?"
+4. Tras dificultad → speech: "¡Perfecto! ¿Empezamos?" action: null (guarda dificultad en historial)
+5. Usuario dice sí → start_guess_song { difficulty: <extraída del historial> }
 
-APRENDER:
-  1. navigate_learn → di: "¿Qué temas quieres? Historia, curiosidades, naturaleza, dónde parar o eventos"
-  2. Respuesta → set_learn_topics con los booleans
+DURANTE EL JUEGO (screen=guess_song_round):
+reveal_song   → usuario dice "revela"/"descubre"/"muéstrala"
+answer_correct→ usuario dice "sí"/"acertado"/"correcto"/"lo tenían"
+answer_wrong  → usuario dice "no"/"fallado"/"no lo tenían"/"error"
+next_round    → usuario dice "siguiente"/"otra"/"siguiente ronda"
 
-REGLAS DE NAVEGACIÓN:
-- "cuentos"/"cuentos para niños" → navigate_kids_stories
-- "canción"/"adivinar"/"adivina" → navigate_guess_song + inicia flujo
-- "quiz"/"preguntas"/"concurso"/"concurso en ruta"/"quiz show" → navigate_quiz + inicia flujo
+═══ CUENTACUENTOS ═══
+set_story_protagonists → params: { kids: [{name:"...",gender:"boy"|"girl"},...] }
+set_story_idea         → params: { idea: "tema o descripción del cuento" }
+start_story            → params: { minutes: 1-5 } — lanza el cuento
+
+FLUJO (screen=kids_stories):
+1. Al navegar → "¿Cómo se llaman los protagonistas? Dime nombres y si son niño o niña"
+2. Tras nombres → set_story_protagonists → "¿De qué quieres que vaya el cuento?"
+3. Tras tema → set_story_idea → "¿Cuántos minutos? Entre 1 y 5"
+4. Tras duración → speech: "¡Genial! ¿Empezamos el cuento?" action: null
+5. Usuario dice sí → start_story { minutes: <extraídos del historial> }
+
+═══ CONCURSO EN RUTA (QUIZ SHOW) ═══
+set_quiz_players → params: { players: ["nombre",...] }
+start_quiz       → params: { topic: "cultura_general"|"historia_espana"|"cine_series"|"ciencia_naturaleza"|"mezcla", questions: 3-5 } — lanza el quiz
+
+FLUJO (screen=quiz):
+1. Al navegar → "¿Cómo se llaman los concursantes?"
+2. Tras concursantes → set_quiz_players → "¿Tema? Cultura general, historia de España, cine, ciencia o mezcla"
+3. Tras tema → speech: "¿Cuántas preguntas por jugador? Entre 3 y 5" action: null
+4. Tras número → speech: "¡Perfecto! ¿Empezamos?" action: null
+5. Usuario dice sí → start_quiz { topic: <del historial>, questions: <del historial> }
+
+═══ APRENDER ═══
+set_learn_topics → params: { dondeParar, historia, datosCuriosos, naturaleza, eventosEnVivo } (booleans)
+FLUJO: al navegar → preguntar temas → set_learn_topics
+
+═══ REGLAS ═══
+- "cuentos" → navigate_kids_stories + inicia flujo
+- "canción"/"adivinar" → navigate_guess_song + inicia flujo
+- "concurso"/"quiz"/"preguntas"/"concurso en ruta" → navigate_quiz + inicia flujo
 - "mapa" → navigate_map
-- "aprender"/"aprende"/"puntos de interés" → navigate_learn + inicia flujo
-- "para"/"silencio"/"stop"/"cállate" → stop_audio
-- "qué hay cerca"/"cuéntame algo"/"dato curioso" → trigger_poi
-- "activa raidio"/"pon raidio"/"activa la narración" → enable_learn
+- "aprender"/"aprende" → navigate_learn + inicia flujo
+- "para"/"stop"/"cállate" → stop_audio
+- "qué hay cerca"/"cuéntame algo" → trigger_poi
 - Si no entiendes → pide aclaración, action: null`;
 
     const response = await axios.post(

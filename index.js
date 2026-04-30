@@ -1074,27 +1074,36 @@ ACCIONES DISPONIBLES:
 - set_learn_topics → params: { dondeParar, historia, datosCuriosos, naturaleza, eventosEnVivo } (booleans)
 - set_guess_song_category → params: { key: "indie"|"pop"|"rock"|"disney"|"Pop España 2026"|"Clásicos de siempre España" }
 - set_guess_song_players → params: { players: ["nombre1","nombre2",...] }
-- set_guess_song_difficulty → params: { difficulty: "easy"|"normal"|"hard" }
-- start_guess_song → lanza el juego con la config actual
+- start_guess_song → params: { difficulty: "easy"|"normal"|"hard" } — establece dificultad Y lanza el juego
+- set_quiz_players → params: { players: ["nombre1","nombre2",...] }
+- start_quiz → params: { topic: "cultura_general"|"historia_espana"|"cine_series"|"ciencia_naturaleza"|"mezcla" } — establece tema Y lanza el quiz
 - close_assistant → el usuario dice gracias/adiós/ya está/cancelar
 
-FLUJOS MULTI-PASO (mantén el hilo de conversación):
-- Si navega a guess_song → pregunta la categoría: "¿Qué categoría? Tengo indie, pop, rock, Disney, clásicos o Pop España"
-- Tras set_guess_song_category → pregunta jugadores: "¿Cuántos jugadores y cómo se llaman?"
-- Tras set_guess_song_players → pregunta dificultad: "¿Dificultad: fácil, normal o difícil?"
-- Tras set_guess_song_difficulty → lanza el juego con start_guess_song
-- Si navega a learn → pregunta temas: "¿Qué temas quieres? Historia, curiosidades, naturaleza, dónde parar o eventos"
-- Tras recibir temas → aplica set_learn_topics con los booleans correspondientes
+FLUJOS MULTI-PASO (mantén el hilo con el historial):
+ADIVINA LA CANCIÓN:
+  1. navigate_guess_song → di: "¿Qué categoría? Indie, pop, rock, Disney, clásicos o Pop España"
+  2. Respuesta → set_guess_song_category → di: "¿Cómo se llaman los jugadores?"
+  3. Respuesta → set_guess_song_players → di: "¿Fácil, normal o difícil?"
+  4. Respuesta → start_guess_song con { difficulty: "easy"|"normal"|"hard" }
 
-REGLAS:
-- "cuentos" → navigate_kids_stories
-- "canción"/"adivinar" → navigate_guess_song (e inicia el flujo)
-- "quiz"/"preguntas" → navigate_quiz
+QUIZ SHOW (concurso en ruta):
+  1. navigate_quiz → di: "¿Cómo se llaman los jugadores?"
+  2. Respuesta → set_quiz_players → di: "¿Qué tema? Cultura general, historia de España, cine y series, ciencia o mezcla"
+  3. Respuesta → start_quiz con { topic: "..." }
+
+APRENDER:
+  1. navigate_learn → di: "¿Qué temas quieres? Historia, curiosidades, naturaleza, dónde parar o eventos"
+  2. Respuesta → set_learn_topics con los booleans
+
+REGLAS DE NAVEGACIÓN:
+- "cuentos"/"cuentos para niños" → navigate_kids_stories
+- "canción"/"adivinar"/"adivina" → navigate_guess_song + inicia flujo
+- "quiz"/"preguntas"/"concurso"/"concurso en ruta"/"quiz show" → navigate_quiz + inicia flujo
 - "mapa" → navigate_map
-- "aprender"/"aprende"/"puntos de interés" → navigate_learn (e inicia el flujo de temas)
-- "para"/"silencio"/"stop" → stop_audio
-- "qué hay cerca"/"cuéntame algo" → trigger_poi
-- "activa raidio"/"pon raidio" → enable_learn
+- "aprender"/"aprende"/"puntos de interés" → navigate_learn + inicia flujo
+- "para"/"silencio"/"stop"/"cállate" → stop_audio
+- "qué hay cerca"/"cuéntame algo"/"dato curioso" → trigger_poi
+- "activa raidio"/"pon raidio"/"activa la narración" → enable_learn
 - Si no entiendes → pide aclaración, action: null`;
 
     const response = await axios.post(

@@ -1037,6 +1037,105 @@ app.post("/ai/generate", async (req, res) => {
   }
 });
 
+// ================== VOICE ASSISTANT ==================
+app.post("/assistant", async (req, res) => {
+  try {
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) return res.status(500).json({ error: "Falta OPENAI_API_KEY" });
+
+    const { text, screen = "home", context: ctx = {} } = req.body || {};
+    if (!text || typeof text !== "string") {
+      return res.status(400).json({ error: "text requerido" });
+    }
+
+    const screenLabels = {
+      home: "menú principal de RAIDIO",
+      games: "menú de juegos (Adivina la Canción, Quiz Show, Cuentos para Niños)",
+      guess_song: "configuración del juego Adivina la Canción",
+      guess_song_round: "jugando a Adivina la Canción",
+      kids_stories: "configuración de Cuentos para Niños",
+      kids_story_playing: "escuchando un cuento para niños",
+      quiz: "configuración del Quiz Show",
+      quiz_playing: "jugando al Quiz Show",
+      map: "mapa de ruta con puntos de interés",
+      learn: "configuración de RAIDIO Aprende (narración automática de POIs)",
+    };
+
+    const systemPrompt = `Eres el asistente de voz de RAIDIO, una app de copiloto para viajes en coche por España.
+Pantalla actual: "${screenLabels[screen] || screen}".
+Contexto: ${JSON.stringify(ctx)}.
+
+Responde SOLO con JSON válido:
+{
+  "speech": "texto que dirás en voz alta — máximo 2 frases, tono natural y amigable, en español sin emojis",
+  "action": "nombre_acción o null",
+  "params": {}
+}
+
+Acciones disponibles:
+- "navigate_home" → volver al menú principal
+- "navigate_games" → abrir menú de juegos
+- "navigate_kids_stories" → abrir Cuentos para Niños
+- "navigate_guess_song" → abrir Adivina la Canción
+- "navigate_quiz" → abrir el Quiz Show
+- "navigate_map" → abrir el mapa de ruta
+- "navigate_learn" → abrir RAIDIO Aprende
+- "enable_learn" → activar narración automática de POIs
+- "disable_learn" → desactivar narración automática
+- "stop_audio" → parar todo el audio
+- "trigger_poi" → pedir un dato curioso de la zona ahora mismo
+- null → solo responder sin acción
+
+Reglas:
+- Eres conciso: el usuario conduce, no puede leer
+- Si pide "juegos" sin especificar → navega a games y menciona las opciones brevemente
+- Si pide "cuentos" → navigate_kids_stories
+- Si pide "canción" / "adivinar" → navigate_guess_song
+- Si pide "quiz" / "preguntas" → navigate_quiz
+- Si pide "mapa" → navigate_map
+- Si pide "aprender" / "aprende" / "puntos de interés" → navigate_learn
+- Si dice "para" / "silencio" / "stop" → stop_audio
+- Si dice "qué hay cerca" / "cuéntame algo" → trigger_poi
+- Si dice "activa raidio" / "pon raidio" → enable_learn
+- Si no entiendes → pide aclaración brevemente, action: null`;
+
+    const response = await axios.post(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        model: "gpt-4o",
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: text },
+        ],
+        response_format: { type: "json_object" },
+        max_tokens: 150,
+        temperature: 0.4,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        timeout: 12000,
+      }
+    );
+
+    const parsed = JSON.parse(response.data.choices[0].message.content);
+    if (!parsed.speech) parsed.speech = "Entendido.";
+    if (parsed.action === undefined) parsed.action = null;
+    if (!parsed.params) parsed.params = {};
+
+    res.json(parsed);
+  } catch (e) {
+    console.error("Assistant error:", e.message);
+    res.status(200).json({
+      speech: "Lo siento, ha habido un error. Inténtalo de nuevo.",
+      action: null,
+      params: {},
+    });
+  }
+});
+
 // ================== ENDPOINT LISTAR VOCES (DEBUG) ==================
 app.get("/voices", async (req, res) => {
   try {

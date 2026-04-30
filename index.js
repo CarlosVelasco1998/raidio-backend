@@ -1043,9 +1043,9 @@ app.post("/assistant", async (req, res) => {
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) return res.status(500).json({ error: "Falta OPENAI_API_KEY" });
 
-    const { text, screen = "home", context: ctx = {} } = req.body || {};
-    if (!text || typeof text !== "string") {
-      return res.status(400).json({ error: "text requerido" });
+    const { messages = [], screen = "home", context: ctx = {} } = req.body || {};
+    if (!Array.isArray(messages) || messages.length === 0) {
+      return res.status(400).json({ error: "messages requerido" });
     }
 
     const screenLabels = {
@@ -1061,54 +1061,52 @@ app.post("/assistant", async (req, res) => {
       learn: "configuración de RAIDIO Aprende (narración automática de POIs)",
     };
 
-    const systemPrompt = `Eres el asistente de voz de RAIDIO, una app de copiloto para viajes en coche por España.
+    const systemPrompt = `Eres el asistente de voz de RAIDIO, app de copiloto para viajes en coche por España. El usuario conduce — sé conciso, máximo 2 frases.
 Pantalla actual: "${screenLabels[screen] || screen}".
 Contexto: ${JSON.stringify(ctx)}.
 
 Responde SOLO con JSON válido:
-{
-  "speech": "texto que dirás en voz alta — máximo 2 frases, tono natural y amigable, en español sin emojis",
-  "action": "nombre_acción o null",
-  "params": {}
-}
+{ "speech": "texto en voz alta, sin emojis, en español", "action": "nombre_acción o null", "params": {} }
 
-Acciones disponibles:
-- "navigate_home" → volver al menú principal
-- "navigate_games" → abrir menú de juegos
-- "navigate_kids_stories" → abrir Cuentos para Niños
-- "navigate_guess_song" → abrir Adivina la Canción
-- "navigate_quiz" → abrir el Quiz Show
-- "navigate_map" → abrir el mapa de ruta
-- "navigate_learn" → abrir RAIDIO Aprende
-- "enable_learn" → activar narración automática de POIs
-- "disable_learn" → desactivar narración automática
-- "stop_audio" → parar todo el audio
-- "trigger_poi" → pedir un dato curioso de la zona ahora mismo
-- null → solo responder sin acción
+ACCIONES DISPONIBLES:
+- navigate_home / navigate_games / navigate_kids_stories / navigate_guess_song / navigate_quiz / navigate_map / navigate_learn
+- enable_learn / disable_learn / stop_audio / trigger_poi
+- set_learn_topics → params: { dondeParar, historia, datosCuriosos, naturaleza, eventosEnVivo } (booleans)
+- set_guess_song_category → params: { key: "indie"|"pop"|"rock"|"disney"|"Pop España 2026"|"Clásicos de siempre España" }
+- set_guess_song_players → params: { players: ["nombre1","nombre2",...] }
+- set_guess_song_difficulty → params: { difficulty: "easy"|"normal"|"hard" }
+- start_guess_song → lanza el juego con la config actual
+- close_assistant → el usuario dice gracias/adiós/ya está/cancelar
 
-Reglas:
-- Eres conciso: el usuario conduce, no puede leer
-- Si pide "juegos" sin especificar → navega a games y menciona las opciones brevemente
-- Si pide "cuentos" → navigate_kids_stories
-- Si pide "canción" / "adivinar" → navigate_guess_song
-- Si pide "quiz" / "preguntas" → navigate_quiz
-- Si pide "mapa" → navigate_map
-- Si pide "aprender" / "aprende" / "puntos de interés" → navigate_learn
-- Si dice "para" / "silencio" / "stop" → stop_audio
-- Si dice "qué hay cerca" / "cuéntame algo" → trigger_poi
-- Si dice "activa raidio" / "pon raidio" → enable_learn
-- Si no entiendes → pide aclaración brevemente, action: null`;
+FLUJOS MULTI-PASO (mantén el hilo de conversación):
+- Si navega a guess_song → pregunta la categoría: "¿Qué categoría? Tengo indie, pop, rock, Disney, clásicos o Pop España"
+- Tras set_guess_song_category → pregunta jugadores: "¿Cuántos jugadores y cómo se llaman?"
+- Tras set_guess_song_players → pregunta dificultad: "¿Dificultad: fácil, normal o difícil?"
+- Tras set_guess_song_difficulty → lanza el juego con start_guess_song
+- Si navega a learn → pregunta temas: "¿Qué temas quieres? Historia, curiosidades, naturaleza, dónde parar o eventos"
+- Tras recibir temas → aplica set_learn_topics con los booleans correspondientes
+
+REGLAS:
+- "cuentos" → navigate_kids_stories
+- "canción"/"adivinar" → navigate_guess_song (e inicia el flujo)
+- "quiz"/"preguntas" → navigate_quiz
+- "mapa" → navigate_map
+- "aprender"/"aprende"/"puntos de interés" → navigate_learn (e inicia el flujo de temas)
+- "para"/"silencio"/"stop" → stop_audio
+- "qué hay cerca"/"cuéntame algo" → trigger_poi
+- "activa raidio"/"pon raidio" → enable_learn
+- Si no entiendes → pide aclaración, action: null`;
 
     const response = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-4o",
+        model: "gpt-4o-mini",
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: text },
+          ...messages,
         ],
         response_format: { type: "json_object" },
-        max_tokens: 150,
+        max_tokens: 200,
         temperature: 0.4,
       },
       {

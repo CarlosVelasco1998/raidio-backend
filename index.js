@@ -1100,7 +1100,7 @@ paso=song_difficulty → Usuario da la dificultad. Mapea: fácil→"easy", norma
   Llama: note_song_difficulty { difficulty: "easy"|"normal"|"hard" }  speech: "¡Listo! ¿Empezamos?"
 
 paso=song_confirm → Usuario dice sí/dale/empezamos/venga. Lee difficulty de ctx.difficulty.
-  Llama: start_guess_song { difficulty: "${ctx.difficulty || 'normal'}" }  speech: "¡Vamos!"
+  Llama: start_guess_song { difficulty: "${ctx.difficulty || 'normal'}" }  speech: "¡Hecho! ¡Suerte a todos y que gane el mejor!"
 
 Durante la partida (screen=guess_song_round):
   "revela"/"muéstrala" → reveal_song
@@ -1119,7 +1119,7 @@ paso=story_duration → Usuario da la duración en minutos (1-5).
   Llama: note_story_duration { minutes: N }  speech: "¡Perfecto! ¿Empezamos el cuento?"
 
 paso=story_confirm → Usuario dice sí. Lee minutes de ctx.minutes.
-  Llama: start_story { minutes: ${ctx.minutes || 3} }  speech: "¡Vamos!"
+  Llama: start_story { minutes: ${ctx.minutes || 3} }  speech: "¡Hecho! ¡Que disfruten del cuento!"
 
 ━━━ CONCURSO EN RUTA ━━━
 paso=quiz_players → Usuario da nombres de concursantes. Extrae lista.
@@ -1132,7 +1132,7 @@ paso=quiz_questions → Usuario da un número entre 3 y 5.
   Llama: note_quiz_questions { questions: N }  speech: "¡Perfecto! ¿Empezamos?"
 
 paso=quiz_confirm → Usuario dice sí. Lee topic de ctx.topic y questions de ctx.questions.
-  Llama: start_quiz { topic: "${ctx.topic || 'cultura_general'}", questions: ${ctx.questions || 3} }  speech: "¡Vamos!"
+  Llama: start_quiz { topic: "${ctx.topic || 'cultura_general'}", questions: ${ctx.questions || 3} }  speech: "¡Hecho! ¡Que empiece el concurso, suerte a todos!"
 
 ━━━ APRENDER ━━━
 paso=learn_topics → Usuario indica los temas. Mapea a booleans.

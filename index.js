@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
 import { chromium } from "playwright";
+import fs from "fs";
 
 import { POIS } from "./pois_db.js";
 import { generateKidsStoryImmersive } from "./kidsStoryImmersive.js";
@@ -30,10 +31,26 @@ const CACHE_TTL_MS = {
 // Browser singleton
 let browserPromise = null;
 
+function findChromium() {
+  const candidates = [
+    process.env.CHROMIUM_PATH,
+    "/usr/bin/chromium-browser",
+    "/usr/bin/chromium",
+    "/usr/bin/google-chrome-stable",
+    "/usr/bin/google-chrome",
+  ].filter(Boolean);
+  for (const p of candidates) {
+    if (fs.existsSync(p)) return p;
+  }
+  return undefined; // let playwright use its own
+}
+
 async function getBrowser() {
   if (!browserPromise) {
+    const executablePath = findChromium();
     browserPromise = chromium.launch({
       headless: true,
+      ...(executablePath ? { executablePath } : {}),
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
   }

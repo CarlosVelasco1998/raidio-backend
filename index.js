@@ -1203,6 +1203,77 @@ app.get("/deezer-random-track", async (req, res) => {
   }
 });
 
+// ================== PROVINCIA ACTUAL ==================
+app.get("/provincia", async (req, res) => {
+  try {
+    const lat = normalizarNumero(req.query.lat);
+    const lng = normalizarNumero(req.query.lng);
+    if (lat === null || lng === null) return res.status(400).json({ error: "lat/lng inválidos" });
+
+    const place = await reverseGeocode(lat, lng, "es");
+    res.json({
+      provincia: place.province || "",
+      comunidad: place.raw?.address?.state || "",
+      ciudad: place.city || "",
+    });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+// ================== BIENVENIDA PROVINCIA ==================
+app.post("/narrate/bienvenida-provincia", async (req, res) => {
+  try {
+    if (!process.env.ANTHROPIC_API_KEY) return res.status(500).json({ error: "Falta ANTHROPIC_API_KEY" });
+
+    const { provincia, comunidad, timestamp } = req.body || {};
+    if (!provincia) return res.status(400).json({ error: "provincia requerida" });
+
+    const cacheKey = `bienvenida|${provincia}`;
+    const cached = getCache(cacheKey, 1000 * 60 * 60 * 24); // 24h cache
+    if (cached) return res.json({ text: cached });
+
+    const nowDate = parseSafeDate(timestamp);
+    const mes = nowDate.toLocaleString("es-ES", { month: "long", timeZone: "Europe/Madrid" });
+    const estacion = (() => {
+      const m = nowDate.getMonth() + 1;
+      if (m >= 3 && m <= 5) return "primavera";
+      if (m >= 6 && m <= 8) return "verano";
+      if (m >= 9 && m <= 11) return "otoño";
+      return "invierno";
+    })();
+
+    const r = await anthropic.messages.create({
+      model: ANTHROPIC_MODEL_SMART,
+      max_tokens: 600,
+      system: "Eres el copiloto de carretera de RAIDIO. Narras con calidez, como un amigo que conoce bien España. Sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta.",
+      messages: [{
+        role: "user",
+        content: `El viajero acaba de cruzar la frontera y entrar en la provincia de ${provincia}${comunidad ? `, comunidad de ${comunidad}` : ""}. Es ${mes}, ${estacion}.
+
+Dale la bienvenida en 3 a 5 párrafos con esta estructura natural:
+
+1. Una bienvenida con carácter — algo visual o sensorial que el viajero puede percibir nada más entrar: el paisaje que cambia, el terreno, la luz, los colores.
+
+2. La identidad de ${provincia} — qué la define de verdad. Su historia, su carácter, su posición en España, lo que la hace única. Una sola idea fuerte, bien contada.
+
+3. Dos o tres cosas que el viajero va a encontrar, contadas con anticipación y entusiasmo. Al menos una debe ser sorprendente o poco conocida fuera de la provincia.
+
+4. Un cierre con gancho — una frase que invite a estar atento durante el trayecto por ${provincia}.
+
+Tono cercano, cálido, con personalidad. Que el viajero sienta que acaba de entrar en un sitio con alma.`,
+      }],
+    });
+
+    const text = r.content?.[0]?.text?.trim() ?? "";
+    setCache(cacheKey, text);
+    res.json({ text, provincia, comunidad });
+  } catch (e) {
+    console.error("ERROR /narrate/bienvenida-provincia:", e.message);
+    res.status(500).json({ error: e.message });
+  }
+});
+
 // ================== START SERVER ==================
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 RAIDIOAPP backend ON en puerto ${PORT}`);

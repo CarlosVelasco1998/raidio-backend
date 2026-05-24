@@ -996,7 +996,7 @@ paso=quiz_confirm → Usuario dice sí. Lee topic de ctx.topic y questions de ct
 
 ━━━ APRENDER ━━━
 paso=learn_topics → Usuario indica los temas. Mapea a booleans.
-  Llama: set_learn_topics { dondeParar: bool, historia: bool, datosCuriosos: bool, naturaleza: bool, eventosEnVivo: bool }`;
+  Llama: set_learn_topics { dondeParar: bool, historia: bool, datosCuriosos: bool, naturaleza: bool, eventosEnVivo: bool, ingenieria: bool }`;
 
     const response = await anthropic.messages.create({
       model: ANTHROPIC_MODEL_SMART,

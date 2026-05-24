@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import axios from "axios";
 import { chromium } from "playwright";
 import fs from "fs";
+import Anthropic from "@anthropic-ai/sdk";
 
 import { POIS } from "./pois_db.js";
 import { generateKidsStoryImmersive } from "./kidsStoryImmersive.js";
@@ -13,11 +14,14 @@ dotenv.config();
 process.env.PLAYWRIGHT_BROWSERS_PATH =
   process.env.PLAYWRIGHT_BROWSERS_PATH || "0";
 
+const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ================== CONFIG ==================
-const OPENAI_MODEL_DEFAULT = process.env.OPENAI_MODEL || "gpt-4o-mini";
+const ANTHROPIC_MODEL_FAST = "claude-haiku-4-5-20251001";
+const ANTHROPIC_MODEL_SMART = "claude-sonnet-4-6";
 const DEFAULT_TIMEZONE = "Europe/Madrid";
 const SPAIN_INFO_AGENDA_URL = "https://www.spain.info/es/agenda/";
 
@@ -962,18 +966,16 @@ app.get("/pois-all", (req, res) => {
   }
 });
 
-// ================== ENDPOINT IA (OPENAI) ==================
+// ================== ENDPOINT IA (ANTHROPIC) ==================
 app.post("/ai/generate", async (req, res) => {
   try {
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      return res.status(500).json({ error: "Falta OPENAI_API_KEY en env" });
+    if (!process.env.ANTHROPIC_API_KEY) {
+      return res.status(500).json({ error: "Falta ANTHROPIC_API_KEY en env" });
     }
 
     const {
       prompt,
       temas,
-      model,
       liveEvents = false,
       latitude = null,
       longitude = null,
@@ -986,7 +988,6 @@ app.post("/ai/generate", async (req, res) => {
       return res.status(400).json({ error: "prompt requerido (string)" });
     }
 
-    const usedModel = model || OPENAI_MODEL_DEFAULT;
     const temasTxt = Array.isArray(temas) ? temas.filter(Boolean).join(", ") : "";
 
     const liveContext = await getLiveEventsContext({
@@ -1004,62 +1005,36 @@ app.post("/ai/generate", async (req, res) => {
       liveContext,
     });
 
-    const body = {
-      model: usedModel,
-      messages: [
-        {
-          role: "system",
-          content:
-            "Eres RAIDIOAPP, un copiloto que explica lugares mientras se viaja. Responde en español, claro y útil.",
-        },
-        ...(temasTxt
-          ? [{ role: "system", content: `Temas seleccionados: ${temasTxt}` }]
-          : []),
-        { role: "user", content: finalPrompt },
-      ],
+    const systemPrompt = [
+      "Eres RAIDIOAPP, un copiloto que explica lugares mientras se viaja. Responde en español, claro y útil.",
+      temasTxt ? `Temas seleccionados: ${temasTxt}` : "",
+    ].filter(Boolean).join("\n");
+
+    const r = await anthropic.messages.create({
+      model: ANTHROPIC_MODEL_FAST,
       max_tokens: 800,
-      temperature: 0.7,
-    };
+      system: systemPrompt,
+      messages: [{ role: "user", content: finalPrompt }],
+    });
 
-    const r = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      body,
-      {
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        timeout: 30000,
-      }
-    );
-
-    const text = r.data?.choices?.[0]?.message?.content ?? "";
+    const text = r.content?.[0]?.text ?? "";
 
     res.json({
       text,
-      model_used: r.data?.model ?? usedModel,
-      usage: r.data?.usage,
+      model_used: r.model,
+      usage: r.usage,
       live_events_enabled: asBool(liveEvents),
       live_context_used: Boolean(liveContext && liveContext.trim()),
     });
   } catch (e) {
-    const status = e.response?.status;
-    const detail = e.response?.data || e.message;
-    console.error("ERROR /ai/generate:", status, detail);
-    res.status(status || 500).json({
-      error: "ai_generate_failed",
-      status: status || 500,
-      detail,
-    });
+    console.error("ERROR /ai/generate:", e.message);
+    res.status(500).json({ error: "ai_generate_failed", detail: e.message });
   }
 });
 
 // ================== VOICE ASSISTANT ==================
 app.post("/assistant", async (req, res) => {
   try {
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) return res.status(500).json({ error: "Falta OPENAI_API_KEY" });
-
     const { messages = [], screen = "home", context: ctx = {}, step = null } = req.body || {};
     if (!Array.isArray(messages) || messages.length === 0) {
       return res.status(400).json({ error: "messages requerido" });
@@ -1155,28 +1130,20 @@ paso=quiz_confirm → Usuario dice sí. Lee topic de ctx.topic y questions de ct
 paso=learn_topics → Usuario indica los temas. Mapea a booleans.
   Llama: set_learn_topics { dondeParar: bool, historia: bool, datosCuriosos: bool, naturaleza: bool, eventosEnVivo: bool }`;
 
-    const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-4o",
-        messages: [
-          { role: "system", content: systemPrompt },
-          ...messages,
-        ],
-        response_format: { type: "json_object" },
-        max_tokens: 200,
-        temperature: 0.2,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        timeout: 12000,
-      }
-    );
+    const response = await anthropic.messages.create({
+      model: ANTHROPIC_MODEL_SMART,
+      max_tokens: 200,
+      system: systemPrompt + "\n\nResponde SIEMPRE con JSON válido, sin texto fuera del JSON.",
+      messages,
+    });
 
-    const parsed = JSON.parse(response.data.choices[0].message.content);
+    let parsed;
+    try {
+      parsed = JSON.parse(response.content[0].text);
+    } catch {
+      const match = response.content[0].text.match(/\{[\s\S]*\}/);
+      parsed = match ? JSON.parse(match[0]) : {};
+    }
     if (!parsed.speech) parsed.speech = "Entendido.";
     if (parsed.action === undefined) parsed.action = null;
     if (!parsed.params) parsed.params = {};

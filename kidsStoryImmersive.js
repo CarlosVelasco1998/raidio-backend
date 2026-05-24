@@ -1,6 +1,7 @@
 // kidsStoryImmersive.js  – ES Modules
 import axios from "axios";
 import fs from "fs";
+import Anthropic from "@anthropic-ai/sdk";
 import path from "path";
 import os from "os";
 import ffmpeg from "fluent-ffmpeg";
@@ -179,10 +180,12 @@ async function concatenateBuffers(buffers) {
 // ================== HANDLER PRINCIPAL ==================
 export async function generateKidsStoryImmersive(req, res) {
   const elevenKey = process.env.ELEVEN_API_KEY;
-  const openaiKey = process.env.OPENAI_API_KEY;
+  const anthropicKey = process.env.ANTHROPIC_API_KEY;
 
   if (!elevenKey) return res.status(500).json({ error: "No ELEVEN_API_KEY" });
-  if (!openaiKey) return res.status(500).json({ error: "No OPENAI_API_KEY" });
+  if (!anthropicKey) return res.status(500).json({ error: "No ANTHROPIC_API_KEY" });
+
+  const anthropic = new Anthropic({ apiKey: anthropicKey });
 
   const {
     kids           = [],
@@ -201,32 +204,18 @@ export async function generateKidsStoryImmersive(req, res) {
     const voiceAssignments = assignChildVoices(kids);
     console.log("🎭 Voces asignadas:", voiceAssignments);
 
-    // 2 — Generar cuento estructurado con OpenAI
+    // 2 — Generar cuento estructurado con Claude
     const prompt = buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voiceAssignments });
-    console.log("✍️  Generando cuento con OpenAI...");
+    console.log("✍️  Generando cuento con Claude...");
 
-    const openaiResp = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-4o",
-        messages: [
-          {
-            role: "system",
-            content: "Eres un experto cuentacuentos infantil. Respondes SIEMPRE con JSON válido y completo, sin texto adicional.",
-          },
-          { role: "user", content: prompt },
-        ],
-        max_tokens: 4000,
-        temperature: 0.85,
-        response_format: { type: "json_object" },
-      },
-      {
-        headers: { Authorization: `Bearer ${openaiKey}`, "Content-Type": "application/json" },
-        timeout: 60000,
-      }
-    );
+    const claudeResp = await anthropic.messages.create({
+      model: "claude-sonnet-4-6",
+      max_tokens: 4000,
+      system: "Eres un experto cuentacuentos infantil. Respondes SIEMPRE con JSON válido y completo, sin texto adicional.",
+      messages: [{ role: "user", content: prompt }],
+    });
 
-    const parsed   = JSON.parse(openaiResp.data.choices[0].message.content);
+    const parsed   = JSON.parse(claudeResp.content[0].text);
     const segments = parsed.segments ?? [];
     const title    = parsed.title ?? "Cuento";
 

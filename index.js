@@ -658,52 +658,44 @@ async function getLiveEventsContext({
   if (lat === null || lng === null) return "";
 
   const nowDate = parseSafeDate(timestamp);
-  const poi = limpiarTexto(poiNombre);
   const lang = limpiarTexto(language) || "es";
 
   const place = await reverseGeocode(lat, lng, lang);
-  if (!place.province) return "";
+  const zona = [place.city, place.province].filter(Boolean).join(", ");
+  if (!zona) return "";
 
-  const events = await searchSpainInfoAgenda({
-    province: place.province,
-    nowDate,
-  });
+  const mes = nowDate.toLocaleString("es-ES", { month: "long", timeZone: "Europe/Madrid" });
+  const año = nowDate.getFullYear();
+  const poi = limpiarTexto(poiNombre);
 
-  if (!events.length) return "";
+  try {
+    const cacheKey = `live-events|${zona}|${mes}|${año}`;
+    const cached = getCache(cacheKey, CACHE_TTL_MS.spainInfoSearch);
+    if (cached) return cached;
 
-  const filtered = events.filter((ev) => {
-    if (!ev.startDate && !ev.endDate) return false;
+    const r = await anthropic.messages.create({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 200,
+      system: "Eres un experto en cultura y tradiciones locales de España. Responde SOLO si conoces eventos reales y concretos. Si no estás seguro, responde con: NINGUNO.",
+      messages: [{
+        role: "user",
+        content: `¿Qué ferias, fiestas patronales, mercados o eventos culturales importantes suelen celebrarse en ${zona} durante ${mes} de ${año}? ${poi ? `El viajero está cerca de: ${poi}.` : ""} Menciona solo eventos reales y conocidos, en 1-2 frases máximo.`,
+      }],
+    });
 
-    const start = ev.startDate || ev.endDate;
-    const end = ev.endDate || ev.startDate;
+    const text = r.content?.[0]?.text?.trim() ?? "";
+    if (!text || text.toUpperCase().includes("NINGUNO")) {
+      setCache(cacheKey, "");
+      return "";
+    }
 
-    if (!start || !end) return false;
-
-    const daysToStart = daysBetween(start, nowDate);
-    const isSoon = daysToStart >= -2 && daysToStart <= 14;
-    const isOngoing = ev.isOngoing;
-
-    return isSoon || isOngoing;
-  });
-
-  if (!filtered.length) return "";
-
-  const ranked = filtered
-    .map((ev) => ({
-      ...ev,
-      _score: scoreAgendaEvent(ev, nowDate, place),
-    }))
-    .sort((a, b) => b._score - a._score);
-
-  const best = ranked[0];
-  if (!best) return "";
-
-  return buildLiveContextFromSpainInfoEvent({
-    event: best,
-    place,
-    nowDate,
-    poiNombre: poi,
-  });
+    const context = `Contexto de eventos locales en ${zona} (${mes} ${año}): ${text}`;
+    setCache(cacheKey, context);
+    return context;
+  } catch (e) {
+    console.error("ERROR getLiveEventsContext:", e.message);
+    return "";
+  }
 }
 
 function buildPromptWithLiveContext({
@@ -716,22 +708,16 @@ function buildPromptWithLiveContext({
   if (liveContext && liveContext.trim()) {
     return `${prompt}
 
-LIVE_CONTEXT (agenda oficial):
+CONTEXTO LOCAL (eventos y ferias de la zona):
 ${liveContext}
 
-INSTRUCCIONES IMPORTANTES SOBRE EN VIVO:
-- Si LIVE_CONTEXT contiene un evento actual o próximo, intégralo de forma breve, natural y útil.
-- Prioriza fiestas, celebraciones y eventos relevantes de la zona.
-- No inventes horarios, recorridos, calles, actos concretos ni detalles no incluidos en LIVE_CONTEXT.
-- No conviertas la respuesta en una agenda larga.`;
+INSTRUCCIONES:
+- Menciona este evento o feria de forma breve y natural dentro de la narración.
+- No inventes detalles concretos que no estén en el contexto.
+- Máximo 1 frase sobre el evento.`;
   }
 
-  return `${prompt}
-
-INSTRUCCIONES IMPORTANTES SOBRE EN VIVO:
-- El usuario ha activado "En vivo", pero NO se ha encontrado contexto actual fiable y relevante.
-- No menciones eventos actuales, celebraciones del día, conciertos, ferias ni agenda en vivo.
-- No inventes nada relacionado con actualidad.`;
+  return prompt;
 }
 
 // ================== DEBUG SPAIN.INFO ==================

@@ -679,7 +679,7 @@ async function getLiveEventsContext({
       system: "Eres un experto en cultura y tradiciones locales de España. Responde SOLO si conoces eventos reales y concretos. Si no estás seguro, responde con: NINGUNO.",
       messages: [{
         role: "user",
-        content: `¿Qué ferias, fiestas patronales, mercados o eventos culturales importantes suelen celebrarse en ${zona} durante ${mes} de ${año}? ${poi ? `El viajero está cerca de: ${poi}.` : ""} Menciona solo eventos reales y conocidos, en 1-2 frases máximo.`,
+        content: `¿Qué eventos importantes suelen ocurrir en ${zona} durante ${mes}? Incluye ferias, fiestas patronales, mercados, festivales de música, conciertos recurrentes o cualquier evento cultural destacado de la zona. ${poi ? `El viajero está cerca de: ${poi}.` : ""} Menciona solo eventos reales y conocidos, en 1-2 frases máximo.`,
       }],
     });
 

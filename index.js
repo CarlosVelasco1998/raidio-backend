@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
-import { chromium } from "playwright";
+import * as cheerio from "cheerio";
 import fs from "fs";
 import Anthropic from "@anthropic-ai/sdk";
 
@@ -32,41 +32,8 @@ const CACHE_TTL_MS = {
   spainInfoSearch: 1000 * 60 * 20, // 20 min
 };
 
-// Browser singleton
-let browserPromise = null;
-
-function findChromium() {
-  return undefined; // let playwright use its installed browser
-}
-
-async function getBrowser() {
-  if (!browserPromise) {
-    const executablePath = findChromium();
-    browserPromise = chromium.launch({
-      headless: true,
-      ...(executablePath ? { executablePath } : {}),
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
-  }
-  return browserPromise;
-}
-
-async function closeBrowserSafe() {
-  if (!browserPromise) return;
-  try {
-    const browser = await browserPromise;
-    await browser.close();
-  } catch (_) {}
-  browserPromise = null;
-}
-
-process.on("SIGTERM", () => {
-  closeBrowserSafe().finally(() => process.exit(0));
-});
-
-process.on("SIGINT", () => {
-  closeBrowserSafe().finally(() => process.exit(0));
-});
+process.on("SIGTERM", () => process.exit(0));
+process.on("SIGINT", () => process.exit(0));
 
 // ================== MIDDLEWARES ==================
 app.use(cors());
@@ -364,31 +331,34 @@ function scoreAgendaEvent(event, nowDate, place) {
   return score;
 }
 
-async function tryAcceptCookies(page) {
-  const candidates = [
-    'button:has-text("Aceptar")',
-    'button:has-text("ACEPTAR")',
-    'button:has-text("Aceptar todas")',
-    'button:has-text("Aceptar todo")',
-    'button:has-text("Accept")',
-    "#onetrust-accept-btn-handler",
-    'button[aria-label*="Aceptar"]',
-  ];
+async function fetchSpainInfoAgendaWithCheerio({ province, nowDate }) {
+  const monthSlug = getMonthSlugEs(nowDate);
+  const url = `${SPAIN_INFO_AGENDA_URL}?provincia=${encodeURIComponent(province)}&mes=${encodeURIComponent(monthSlug)}`;
 
-  for (const sel of candidates) {
-    try {
-      const locator = page.locator(sel).first();
-      if (await locator.isVisible({ timeout: 1200 }).catch(() => false)) {
-        await locator.click({ timeout: 1200 }).catch(() => {});
-        await page.waitForTimeout(500);
-        return true;
-      }
-    } catch (_) {}
-  }
-  return false;
+  const resp = await axios.get(url, {
+    headers: {
+      "User-Agent": "RAIDIOAPP/1.0 (contact: app.raidio@gmail.com)",
+      "Accept-Language": "es-ES,es;q=0.9",
+    },
+    timeout: 15000,
+  });
+
+  const $ = cheerio.load(resp.data);
+  const items = [];
+
+  $('a[href*="/agenda/"]').each((_, el) => {
+    const href = $(el).attr("href") || "";
+    const title = $(el).text().replace(/\s+/g, " ").trim();
+    const cardText = $(el).closest("article, .card, .item, li, div").text().replace(/\s+/g, " ").trim();
+    if (href && title) items.push({ href, title, cardText: cardText || title });
+  });
+
+  const bodyText = $("body").text().replace(/\s+/g, " ").trim();
+
+  return { url, finalUrl: url, monthSlug, items, bodyText };
 }
 
-async function fillAgendaFilters(page, province, monthSlug) {
+async function fillAgendaFilters_UNUSED(page, province, monthSlug) {
   const normalizedProvince = normalizeProvinceForSpainInfo(province);
 
   await tryAcceptCookies(page);
@@ -538,84 +508,6 @@ async function fillAgendaFilters(page, province, monthSlug) {
   return result;
 }
 
-async function fetchSpainInfoAgendaWithPlaywright({ province, nowDate }) {
-  const browser = await getBrowser();
-
-  const context = await browser.newContext({
-    locale: "es-ES",
-    userAgent: "RAIDIOAPP/1.0 (contact: raidioapp@gmail.com)",
-  });
-
-  const page = await context.newPage();
-
-  try {
-    const monthSlug = getMonthSlugEs(nowDate);
-
-    await page.goto(SPAIN_INFO_AGENDA_URL, {
-      waitUntil: "domcontentloaded",
-      timeout: 30000,
-    });
-
-    await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
-    await page.waitForTimeout(2000);
-
-    const beforeUrl = page.url();
-    const filterDebug = await fillAgendaFilters(page, province, monthSlug);
-
-    await page.waitForLoadState("domcontentloaded", { timeout: 10000 }).catch(() => {});
-    await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
-    await page.waitForTimeout(4000);
-
-    const finalUrl = page.url();
-
-    const items = await page.evaluate(() => {
-      function clean(v) {
-        return (v || "").replace(/\s+/g, " ").trim();
-      }
-
-      const anchors = Array.from(document.querySelectorAll('a[href*="/agenda/"]'));
-
-      return anchors.map((a) => {
-        const href = a.href || a.getAttribute("href") || "";
-        const title = clean(a.innerText || a.textContent || "");
-
-        let node = a;
-        let container = null;
-
-        for (let i = 0; i < 8 && node; i++) {
-          const txt = clean(node.innerText || node.textContent || "");
-          if (
-            /\d{1,2}\s+[A-Za-zÁÉÍÓÚáéíóúüÜñÑ]+\s+\d{4}/.test(txt) ||
-            /AGENDA\s*\|/i.test(txt)
-          ) {
-            container = node;
-            break;
-          }
-          node = node.parentElement;
-        }
-
-        const baseNode = container || a.parentElement || a;
-        const cardText = clean(baseNode.innerText || baseNode.textContent || "");
-
-        return { href, title, cardText };
-      });
-    });
-
-    const bodyText = await page.locator("body").innerText().catch(() => "");
-
-    return {
-      url: SPAIN_INFO_AGENDA_URL,
-      beforeUrl,
-      finalUrl,
-      monthSlug,
-      filterDebug,
-      items,
-      bodyText,
-    };
-  } finally {
-    await context.close().catch(() => {});
-  }
-}
 
 async function searchSpainInfoAgenda({ province, nowDate }) {
   const cacheKey = `spaininfo-search|${province}|${getMonthSlugEs(nowDate)}`;
@@ -623,7 +515,7 @@ async function searchSpainInfoAgenda({ province, nowDate }) {
   if (cached) return cached;
 
   try {
-    const { finalUrl, items, bodyText } = await fetchSpainInfoAgendaWithPlaywright({
+    const { finalUrl, items, bodyText } = await fetchSpainInfoAgendaWithCheerio({
       province,
       nowDate,
     });
@@ -857,7 +749,7 @@ app.get("/debug/spaininfo-test", async (req, res) => {
     const province = place.province || "";
 
     const raw = province
-      ? await fetchSpainInfoAgendaWithPlaywright({ province, nowDate: date })
+      ? await fetchSpainInfoAgendaWithCheerio({ province, nowDate: date })
       : { url: "", finalUrl: "", items: [], bodyText: "", filterDebug: {} };
 
     const events = province

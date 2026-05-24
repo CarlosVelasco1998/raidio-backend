@@ -36,17 +36,7 @@ const CACHE_TTL_MS = {
 let browserPromise = null;
 
 function findChromium() {
-  const candidates = [
-    process.env.CHROMIUM_PATH,
-    "/usr/bin/chromium-browser",
-    "/usr/bin/chromium",
-    "/usr/bin/google-chrome-stable",
-    "/usr/bin/google-chrome",
-  ].filter(Boolean);
-  for (const p of candidates) {
-    if (fs.existsSync(p)) return p;
-  }
-  return undefined; // let playwright use its own
+  return undefined; // let playwright use its installed browser
 }
 
 async function getBrowser() {

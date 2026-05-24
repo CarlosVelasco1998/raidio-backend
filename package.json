@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "apt-get install -y chromium-browser 2>/dev/null || apt-get install -y chromium 2>/dev/null || true"
+    "postinstall": "npx playwright install --with-deps chromium"
   },
   "engines": {
     "node": ">=20.0.0"

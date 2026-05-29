@@ -14,6 +14,7 @@ export const POIS = [
   {
     id: "es_mad_puerto_somosierra_batalla",
     nombre: "Puerto de Somosierra (batalla de 1808)",
+    emoji: "⛰️",
     lat: 41.1325,
     lng: -3.58167,
     nivel: 1,
@@ -33,6 +34,7 @@ export const POIS = [
   {
     id: "es_mad_capital_madrid",
     nombre: "Madrid (capital de provincia)",
+    emoji: "🏛️",
     lat: 40.416775,
     lng: -3.70379,
     nivel: 1,
@@ -60,6 +62,7 @@ export const POIS = [
   {
     id: "es_mad_valle_caidos",
     nombre: "Valle de los Caídos",
+    emoji: "🕊️",
     lat: 40.6419103,
     lng: -4.1508807,
     nivel: 1,
@@ -89,6 +92,7 @@ export const POIS = [
   {
     id: "es_mad_alcala_henares_centro",
     nombre: "Centro histórico de Alcalá de Henares (Cervantes)",
+    emoji: "🏰",
     lat: 40.481979,
     lng: -3.364135,
     nivel: 1,
@@ -118,6 +122,7 @@ export const POIS = [
   {
     id: "es_mad_aranjuez_palacio_jardines",
     nombre: "Palacio Real y Jardines de Aranjuez (UNESCO)",
+    emoji: "🌸",
     lat: 40.03101,
     lng: -3.60444,
     nivel: 1,
@@ -136,6 +141,7 @@ export const POIS = [
   {
     id: "es_mad_hayedo_montejo",
     nombre: "Hayedo de Montejo (UNESCO)",
+    emoji: "🌲",
     lat: 41.103323,
     lng: -3.489824,
     nivel: 1,
@@ -154,6 +160,7 @@ export const POIS = [
   {
     id: "es_mad_guadarrama_parque_nacional",
     nombre: "Parque Nacional de la Sierra de Guadarrama",
+    emoji: "🌲",
     lat: 40.7849,
     lng: -3.9572,
     nivel: 1,
@@ -228,6 +235,7 @@ export const POIS = [
   {
     id: "es_mad_brunete_batalla",
     nombre: "Brunete (Batalla de Brunete, 1937)",
+    emoji: "⚔️",
     lat: 40.4059,
     lng: -3.9986,
     nivel: 2,
@@ -246,6 +254,7 @@ export const POIS = [
   {
     id: "es_mad_castillo_buitrago",
     nombre: "Muralla y Castillo de Buitrago del Lozoya",
+    emoji: "🧱",
     lat: 40.9937,
     lng: -3.6369,
     nivel: 2,
@@ -264,6 +273,7 @@ export const POIS = [
   {
     id: "es_mad_castillo_coracera",
     nombre: "Castillo de la Coracera (San Martín de Valdeiglesias)",
+    emoji: "🏰",
     lat: 40.3637,
     lng: -4.3972,
     nivel: 2,
@@ -282,6 +292,7 @@ export const POIS = [
   {
     id: "es_mad_rascafria_paular",
     nombre: "Rascafría y Monasterio de El Paular",
+    emoji: "⛪",
     lat: 40.9044,
     lng: -3.8809,
     nivel: 2,
@@ -311,6 +322,7 @@ export const POIS = [
   {
     id: "es_mad_chinchon_plaza_mayor",
     nombre: "Chinchón y su Plaza Mayor",
+    emoji: "🏡",
     lat: 40.140267,
     lng: -3.422169,
     nivel: 2,
@@ -329,6 +341,7 @@ export const POIS = [
   {
     id: "es_mad_nuevo_baztan",
     nombre: "Nuevo Baztán (villa barroca industrial)",
+    emoji: "🏰",
     lat: 40.3675,
     lng: -3.2427,
     nivel: 3,
@@ -347,6 +360,7 @@ export const POIS = [
   {
     id: "es_mad_patones_arriba",
     nombre: "Patones de Arriba (arquitectura negra)",
+    emoji: "🏡",
     lat: 40.8575,
     lng: -3.4852,
     nivel: 3,
@@ -365,6 +379,7 @@ export const POIS = [
   {
     id: "es_mad_tunel_guadarrama_ave",
     nombre: "Túnel de Guadarrama — el más largo de España (28 km)",
+    emoji: "🚇",
     lat: 40.7667,
     lng: -4.0333,
     nivel: 1,
@@ -383,6 +398,7 @@ export const POIS = [
   {
     id: "es_mad_bypass_m30",
     nombre: "Bypass Sur M-30 — el mayor túnel urbano de España (7,8 km)",
+    emoji: "🚇",
     lat: 40.3878,
     lng: -3.6872,
     nivel: 2,
@@ -406,6 +422,7 @@ export const POIS = [
   {
     id: "es_tol_capital_toledo",
     nombre: "Toledo (capital de provincia)",
+    emoji: "🏛️",
     lat: 39.8568,
     lng: -4.0245,
     nivel: 1,
@@ -462,6 +479,7 @@ export const POIS = [
   {
     id: "es_tol_cerro_calderico_molinos",
     nombre: "Molinos de Consuegra (Cerro Calderico)",
+    emoji: "💨",
     lat: 39.4579,
     lng: -3.6075,
     nivel: 1,
@@ -491,6 +509,7 @@ export const POIS = [
   {
     id: "es_tol_barrancas_burujon",
     nombre: "Las Barrancas de Burujón",
+    emoji: "🏔️",
     lat: 39.8803,
     lng: -4.3497,
     nivel: 1,
@@ -509,6 +528,7 @@ export const POIS = [
   {
     id: "es_tol_santa_maria_melque",
     nombre: "Santa María de Melque",
+    emoji: "🛕",
     lat: 39.6744,
     lng: -4.2486,
     nivel: 2,
@@ -527,6 +547,7 @@ export const POIS = [
   {
     id: "es_tol_montes_toledo",
     nombre: "Montes de Toledo (Puerto del Milagro)",
+    emoji: "🏔️",
     lat: 39.5127,
     lng: -4.3216,
     nivel: 2,
@@ -545,6 +566,7 @@ export const POIS = [
   {
     id: "es_tol_castillo_escalona",
     nombre: "Castillo de Escalona",
+    emoji: "🏰",
     lat: 40.1677,
     lng: -4.4047,
     nivel: 2,
@@ -563,6 +585,7 @@ export const POIS = [
   {
     id: "es_tol_castillo_orgaz",
     nombre: "Castillo de Orgaz",
+    emoji: "🏰",
     lat: 39.6473,
     lng: -3.8751,
     nivel: 2,
@@ -581,6 +604,7 @@ export const POIS = [
   {
     id: "es_tol_talavera_murallas",
     nombre: "Murallas y Torres de Talavera de la Reina",
+    emoji: "🧱",
     lat: 39.9614,
     lng: -4.8284,
     nivel: 2,
@@ -610,6 +634,7 @@ export const POIS = [
   {
     id: "es_tol_torrejon_c_romana",
     nombre: "Villa romana de El Saucedo (Talavera la Nueva)",
+    emoji: "🏛️",
     lat: 39.9667,
     lng: -5.0019,
     nivel: 3,
@@ -628,6 +653,7 @@ export const POIS = [
   {
     id: "es_tol_castillo_dos_hermanas",
     nombre: "Castillo de Dos Hermanas (Navahermosa)",
+    emoji: "🏰",
     lat: 39.5985,
     lng: -4.5763,
     nivel: 3,
@@ -646,6 +672,7 @@ export const POIS = [
   {
     id: "es_tol_cuevas_huecas",
     nombre: "Cuevas y ermitas rupestres de Huecas",
+    emoji: "🕳️",
     lat: 39.9701,
     lng: -4.1711,
     nivel: 3,
@@ -664,6 +691,7 @@ export const POIS = [
   {
     id: "es_tol_malpica_castillo",
     nombre: "Castillo de Malpica de Tajo",
+    emoji: "🏰",
     lat: 39.8948,
     lng: -4.6561,
     nivel: 3,
@@ -682,6 +710,7 @@ export const POIS = [
   {
     id: "es_tol_belmonte_san_jose",
     nombre: "Castillo de San José (Belvís de la Jara)",
+    emoji: "🏰",
     lat: 39.7609,
     lng: -4.9463,
     nivel: 3,
@@ -700,6 +729,7 @@ export const POIS = [
   {
     id: "es_tol_yebenes_cueva",
     nombre: "Cuevas del Chiquero (Los Yébenes)",
+    emoji: "🕳️",
     lat: 39.5113,
     lng: -3.8952,
     nivel: 3,
@@ -718,6 +748,7 @@ export const POIS = [
   {
     id: "es_tol_camunas_tamborada",
     nombre: "Museo del Pecado Mortal (Camuñas)",
+    emoji: "🖼️",
     lat: 39.4326,
     lng: -3.4551,
     nivel: 3,
@@ -740,6 +771,7 @@ export const POIS = [
   {
     id: "es_cr_parque_cabaneros",
     nombre: "Parque Nacional de Cabañeros (acceso sur)",
+    emoji: "🌲",
     lat: 39.3087,
     lng: -4.4571,
     nivel: 1,
@@ -759,6 +791,7 @@ export const POIS = [
   {
     id: "es_cr_capital_ciudad_real",
     nombre: "Ciudad Real (capital de provincia)",
+    emoji: "🏛️",
     lat: 38.9848,
     lng: -3.927,
     nivel: 1,
@@ -788,6 +821,7 @@ export const POIS = [
   {
     id: "es_cr_tablas_daimiel",
     nombre: "Parque Nacional de Las Tablas de Daimiel",
+    emoji: "🌲",
     lat: 39.1451,
     lng: -3.687,
     nivel: 1,
@@ -806,6 +840,7 @@ export const POIS = [
   {
     id: "es_cr_almagro_plaza_mayor",
     nombre: "Almagro y su Plaza Mayor / Corral de Comedias",
+    emoji: "🏰",
     lat: 38.8894,
     lng: -3.7068,
     nivel: 1,
@@ -844,6 +879,7 @@ export const POIS = [
   {
     id: "es_cr_calatrava_nueva",
     nombre: "Castillo de Calatrava la Nueva",
+    emoji: "🏰",
     lat: 38.7956,
     lng: -3.8236,
     nivel: 2,
@@ -862,6 +898,7 @@ export const POIS = [
   {
     id: "es_cr_lagunas_ruidera",
     nombre: "Parque Natural de las Lagunas de Ruidera",
+    emoji: "🌿",
     lat: 38.951,
     lng: -2.89,
     nivel: 2,
@@ -880,6 +917,7 @@ export const POIS = [
   {
     id: "es_cr_puerto_lapice_venta",
     nombre: "Puerto Lápice (ventas cervantinas y paso de la A4)",
+    emoji: "🏰",
     lat: 39.3244,
     lng: -3.4827,
     nivel: 2,
@@ -898,6 +936,7 @@ export const POIS = [
   {
     id: "es_cr_valdepenas_vino",
     nombre: "Valdepeñas (tierra de vino y batallas napoleónicas)",
+    emoji: "🏙️",
     lat: 38.7621,
     lng: -3.3843,
     nivel: 2,
@@ -916,6 +955,7 @@ export const POIS = [
   {
     id: "es_cr_villanueva_infantes",
     nombre: "Villanueva de los Infantes (corazón histórico de La Mancha)",
+    emoji: "🏰",
     lat: 38.7373,
     lng: -3.0132,
     nivel: 2,
@@ -934,6 +974,7 @@ export const POIS = [
   {
     id: "es_cr_manzanares_ciudad",
     nombre: "Manzanares (cruce histórico de la A4)",
+    emoji: "🏙️",
     lat: 38.9993,
     lng: -3.3694,
     nivel: 2,
@@ -952,6 +993,7 @@ export const POIS = [
   {
     id: "es_cr_motilla_azuer",
     nombre: "Motilla del Azuer (prehistoria en La Mancha)",
+    emoji: "⛏️",
     lat: 39.034,
     lng: -3.5111,
     nivel: 3,
@@ -970,6 +1012,7 @@ export const POIS = [
   {
     id: "es_cr_viso_marques_santa_cruz",
     nombre: "Palacio del Marqués de Santa Cruz (Viso del Marqués)",
+    emoji: "🏯",
     lat: 38.523,
     lng: -3.5619,
     nivel: 3,
@@ -988,6 +1031,7 @@ export const POIS = [
   {
     id: "es_cr_puertollano_mineria",
     nombre: "Puertollano (minería e industria histórica)",
+    emoji: "🏭",
     lat: 38.6879,
     lng: -4.1123,
     nivel: 3,
@@ -1006,6 +1050,7 @@ export const POIS = [
   {
     id: "es_cr_minas_almaden",
     nombre: "Minas de Almadén — mayor yacimiento mercurio del mundo",
+    emoji: "⛏️",
     lat: 38.7742,
     lng: -4.8356,
     nivel: 1,
@@ -1028,6 +1073,7 @@ export const POIS = [
   {
     id: "es_ja_navas_tolosa_batalla",
     nombre: "Las Navas de Tolosa (batalla de 1212)",
+    emoji: "⚔️",
     lat: 38.3053,
     lng: -3.3437,
     nivel: 1,
@@ -1046,6 +1092,7 @@ export const POIS = [
   {
     id: "es_ja_bailen_batalla",
     nombre: "Bailén (batalla de 1808 contra Napoleón)",
+    emoji: "⚔️",
     lat: 38.0962,
     lng: -3.775,
     nivel: 1,
@@ -1064,6 +1111,7 @@ export const POIS = [
   {
     id: "es_ja_baeza_renacimiento",
     nombre: "Baeza (Renacimiento, UNESCO)",
+    emoji: "🏰",
     lat: 37.993,
     lng: -3.4689,
     nivel: 1,
@@ -1082,6 +1130,7 @@ export const POIS = [
   {
     id: "es_ja_ubeda_renacimiento",
     nombre: "Úbeda (Renacimiento, UNESCO)",
+    emoji: "🏰",
     lat: 38.011,
     lng: -3.371,
     nivel: 1,
@@ -1100,6 +1149,7 @@ export const POIS = [
   {
     id: "es_ja_cazorla_parque_natural",
     nombre: "Parque Natural Sierras de Cazorla, Segura y Las Villas",
+    emoji: "🌿",
     lat: 37.91,
     lng: -2.93,
     nivel: 1,
@@ -1118,6 +1168,7 @@ export const POIS = [
   {
     id: "es_ja_despenaperros",
     nombre: "Parque Natural de Despeñaperros (puerta de Andalucía)",
+    emoji: "🌿",
     lat: 38.399,
     lng: -3.49,
     nivel: 1,
@@ -1137,6 +1188,7 @@ export const POIS = [
   {
     id: "es_ja_capital_jaen",
     nombre: "Jaén (capital de provincia)",
+    emoji: "🏛️",
     lat: 37.7796,
     lng: -3.7849,
     nivel: 1,
@@ -1166,6 +1218,7 @@ export const POIS = [
   {
     id: "es_ja_banos_encina_castillo",
     nombre: "Baños de la Encina y Castillo de Burgalimar",
+    emoji: "🏰",
     lat: 38.1735,
     lng: -3.7746,
     nivel: 2,
@@ -1184,6 +1237,7 @@ export const POIS = [
   {
     id: "es_ja_martos_pena",
     nombre: "Martos y la Peña (torreones y frontera medieval)",
+    emoji: "🔭",
     lat: 37.721,
     lng: -3.967,
     nivel: 2,
@@ -1202,6 +1256,7 @@ export const POIS = [
   {
     id: "es_ja_carolina_nuevas_poblaciones",
     nombre: "La Carolina (Nuevas Poblaciones de Sierra Morena)",
+    emoji: "🏙️",
     lat: 38.2752,
     lng: -3.6178,
     nivel: 2,
@@ -1220,6 +1275,7 @@ export const POIS = [
   {
     id: "es_ja_linares_minas",
     nombre: "Linares (minería histórica y patrimonio industrial)",
+    emoji: "🏭",
     lat: 38.095,
     lng: -3.636,
     nivel: 2,
@@ -1238,6 +1294,7 @@ export const POIS = [
   {
     id: "es_ja_andujar_santuario_cabeza",
     nombre: "Andújar y Santuario de la Virgen de la Cabeza",
+    emoji: "🕍",
     lat: 38.039,
     lng: -4.054,
     nivel: 3,
@@ -1256,6 +1313,7 @@ export const POIS = [
   {
     id: "es_ja_arjona_historia_almohade",
     nombre: "Arjona (orígenes íberos y época almohade)",
+    emoji: "🏰",
     lat: 37.9355,
     lng: -4.0552,
     nivel: 3,
@@ -1274,6 +1332,7 @@ export const POIS = [
   {
     id: "es_ja_mar_de_olivos",
     nombre: "Mar de olivos (paisaje del aceite de Jaén)",
+    emoji: "🌄",
     lat: 38,
     lng: -3.8,
     nivel: 3,
@@ -1292,6 +1351,7 @@ export const POIS = [
   {
     id: "es_jaen_tunel_despeñaperros_ferroviario",
     nombre: "Paso ferroviario de Despeñaperros — vía de Alta Velocidad",
+    emoji: "🚇",
     lat: 38.3967,
     lng: -3.5178,
     nivel: 2,
@@ -1310,6 +1370,7 @@ export const POIS = [
   {
     id: "es_jaen_tunel_espeluy_ave",
     nombre: "Túnel de Despeñaperros AVE — Sierra Morena perforada",
+    emoji: "🚇",
     lat: 38.3967,
     lng: -3.5178,
     nivel: 2,
@@ -1332,6 +1393,7 @@ export const POIS = [
   {
     id: "es_gr_sierra_nevada",
     nombre: "Sierra Nevada (acceso Pradollano)",
+    emoji: "🌿",
     lat: 37.095,
     lng: -3.394,
     nivel: 1,
@@ -1351,6 +1413,7 @@ export const POIS = [
   {
     id: "es_gr_capital_granada",
     nombre: "Granada (capital de provincia)",
+    emoji: "🏛️",
     lat: 37.1773,
     lng: -3.5986,
     nivel: 1,
@@ -1416,6 +1479,7 @@ export const POIS = [
   {
     id: "es_gr_suspiro_moro",
     nombre: "Puerto del Suspiro del Moro (última mirada de Boabdil)",
+    emoji: "⛰️",
     lat: 37.0151,
     lng: -3.6005,
     nivel: 2,
@@ -1434,6 +1498,7 @@ export const POIS = [
   {
     id: "es_gr_alpujarras_lanjaron",
     nombre: "Las Alpujarras y Lanjarón (paisaje morisco)",
+    emoji: "🗺️",
     lat: 36.9194,
     lng: -3.4802,
     nivel: 2,
@@ -1463,6 +1528,7 @@ export const POIS = [
   {
     id: "es_gr_guadix_cuevas",
     nombre: "Guadix (catedral y cuevas habitadas)",
+    emoji: "🏰",
     lat: 37.3,
     lng: -3.134,
     nivel: 2,
@@ -1481,6 +1547,7 @@ export const POIS = [
   {
     id: "es_gr_moclin_castillo",
     nombre: "Moclín (castillo de frontera nazarí)",
+    emoji: "🏰",
     lat: 37.3423,
     lng: -3.7861,
     nivel: 3,
@@ -1499,6 +1566,7 @@ export const POIS = [
   {
     id: "es_gr_fuente_vaqueros_lorca",
     nombre: "Fuente Vaqueros (cuna de Federico García Lorca)",
+    emoji: "🏡",
     lat: 37.2199,
     lng: -3.7856,
     nivel: 3,
@@ -1517,6 +1585,7 @@ export const POIS = [
   {
     id: "es_gr_loja_paso_historico",
     nombre: "Loja (puerta occidental de Granada)",
+    emoji: "🏙️",
     lat: 37.168,
     lng: -4.151,
     nivel: 3,
@@ -1540,6 +1609,7 @@ export const POIS = [
   {
     id: "es_alm_capital_almeria",
     nombre: "Almería (capital mediterránea del sureste andaluz)",
+    emoji: "🏛️",
     lat: 36.834,
     lng: -2.4637,
     nivel: 1,
@@ -1569,6 +1639,7 @@ export const POIS = [
   {
     id: "es_alm_cabo_gata",
     nombre: "Cabo de Gata (volcanes y costa árida singular)",
+    emoji: "🌿",
     lat: 36.766,
     lng: -2.236,
     nivel: 1,
@@ -1587,6 +1658,7 @@ export const POIS = [
   {
     id: "es_alm_desierto_tabernas",
     nombre: "Desierto de Tabernas (paisaje semiárido único en Europa)",
+    emoji: "🏜️",
     lat: 37.046,
     lng: -2.39,
     nivel: 1,
@@ -1625,6 +1697,7 @@ export const POIS = [
   {
     id: "es_alm_karst_sorbas",
     nombre: "Karst en Yesos de Sorbas",
+    emoji: "🪨",
     lat: 37.1,
     lng: -2.065,
     nivel: 1,
@@ -1654,6 +1727,7 @@ export const POIS = [
   {
     id: "es_alm_playa_muertos",
     nombre: "Playa de los Muertos (gran icono paisajístico del levante)",
+    emoji: "🏖️",
     lat: 36.951,
     lng: -1.899,
     nivel: 1,
@@ -1672,6 +1746,7 @@ export const POIS = [
   {
     id: "es_alm_mojacar",
     nombre: "Mojácar (pueblo blanco del levante almeriense)",
+    emoji: "🏰",
     lat: 37.14,
     lng: -1.851,
     nivel: 1,
@@ -1690,6 +1765,7 @@ export const POIS = [
   {
     id: "es_alm_velez_blanco",
     nombre: "Vélez-Blanco y castillo de los Fajardo",
+    emoji: "🏰",
     lat: 37.691,
     lng: -2.095,
     nivel: 1,
@@ -1719,6 +1795,7 @@ export const POIS = [
   {
     id: "es_alm_san_jose",
     nombre: "San José (puerto y base costera del Cabo de Gata)",
+    emoji: "🐚",
     lat: 36.765,
     lng: -2.108,
     nivel: 2,
@@ -1737,6 +1814,7 @@ export const POIS = [
   {
     id: "es_alm_roquetas_mar",
     nombre: "Roquetas de Mar (gran acceso occidental del litoral)",
+    emoji: "⚓",
     lat: 36.764,
     lng: -2.614,
     nivel: 2,
@@ -1755,6 +1833,7 @@ export const POIS = [
   {
     id: "es_alm_nijar",
     nombre: "Níjar (cerámica y puerta interior del parque)",
+    emoji: "🏡",
     lat: 36.966,
     lng: -2.206,
     nivel: 2,
@@ -1773,6 +1852,7 @@ export const POIS = [
   {
     id: "es_alm_cuevas_almanzora",
     nombre: "Cuevas del Almanzora (valle, castillo y río)",
+    emoji: "🏰",
     lat: 37.296,
     lng: -1.879,
     nivel: 2,
@@ -1791,6 +1871,7 @@ export const POIS = [
   {
     id: "es_alm_carboneras",
     nombre: "Carboneras (bahía industrial y marinera del Levante)",
+    emoji: "⚓",
     lat: 36.998,
     lng: -1.893,
     nivel: 2,
@@ -1809,6 +1890,7 @@ export const POIS = [
   {
     id: "es_alm_vera",
     nombre: "Vera (cruce histórico del levante)",
+    emoji: "🏙️",
     lat: 37.246,
     lng: -1.869,
     nivel: 2,
@@ -1827,6 +1909,7 @@ export const POIS = [
   {
     id: "es_alm_huercal_overa",
     nombre: "Huércal-Overa (bisagra entre Andalucía y el sureste peninsular)",
+    emoji: "🏙️",
     lat: 37.39,
     lng: -1.943,
     nivel: 2,
@@ -1845,6 +1928,7 @@ export const POIS = [
   {
     id: "es_alm_gergal",
     nombre: "Gérgal (puerto serrano entre la A-92 y la alta montaña)",
+    emoji: "🏡",
     lat: 37.12,
     lng: -2.54,
     nivel: 3,
@@ -1864,6 +1948,7 @@ export const POIS = [
   {
     id: "es_cad_capital_cadiz",
     nombre: "Cádiz (capital atlántica y extremo histórico de la bahía)",
+    emoji: "🏛️",
     lat: 36.5271,
     lng: -6.2886,
     nivel: 1,
@@ -1911,6 +1996,7 @@ export const POIS = [
   {
     id: "es_cad_jerez_frontera",
     nombre: "Jerez de la Frontera (gran nudo histórico del oeste andaluz)",
+    emoji: "🏰",
     lat: 36.68645,
     lng: -6.13606,
     nivel: 1,
@@ -1949,6 +2035,7 @@ export const POIS = [
   {
     id: "es_cad_baelo_claudia",
     nombre: "Baelo Claudia (ruinas romanas frente al Estrecho)",
+    emoji: "🏛️",
     lat: 36.0899,
     lng: -5.7784,
     nivel: 1,
@@ -1967,6 +2054,7 @@ export const POIS = [
   {
     id: "es_cad_arcos_frontera",
     nombre: "Arcos de la Frontera (balcón blanco sobre la campiña)",
+    emoji: "🏰",
     lat: 36.7508,
     lng: -5.8107,
     nivel: 1,
@@ -1985,6 +2073,7 @@ export const POIS = [
   {
     id: "es_cad_tarifa",
     nombre: "Tarifa (puerta del Estrecho y viento del sur)",
+    emoji: "⚓",
     lat: 36.0143,
     lng: -5.6044,
     nivel: 1,
@@ -2003,6 +2092,7 @@ export const POIS = [
   {
     id: "es_cad_algeciras",
     nombre: "Algeciras (gran puerto entre Mediterráneo y Atlántico)",
+    emoji: "🚢",
     lat: 36.1408,
     lng: -5.4562,
     nivel: 1,
@@ -2032,6 +2122,7 @@ export const POIS = [
   {
     id: "es_cad_medina_sidonia",
     nombre: "Medina Sidonia (cerro histórico entre la Bahía y el Estrecho)",
+    emoji: "🏰",
     lat: 36.4565,
     lng: -5.9273,
     nivel: 1,
@@ -2050,6 +2141,7 @@ export const POIS = [
   {
     id: "es_cad_vejer_frontera",
     nombre: "Vejer de la Frontera (uno de los grandes pueblos blancos)",
+    emoji: "🏰",
     lat: 36.2524,
     lng: -5.9656,
     nivel: 1,
@@ -2068,6 +2160,7 @@ export const POIS = [
   {
     id: "es_cad_chipiona_rocio_jurado",
     nombre: "Chipiona (la localidad de Rocío Jurado)",
+    emoji: "🎭",
     lat: 36.7362,
     lng: -6.437,
     nivel: 2,
@@ -2086,6 +2179,7 @@ export const POIS = [
   {
     id: "es_cad_zahara_sierra",
     nombre: "Zahara de la Sierra (atalaya blanca en la ruta interior)",
+    emoji: "🏰",
     lat: 36.8402,
     lng: -5.3911,
     nivel: 2,
@@ -2104,6 +2198,7 @@ export const POIS = [
   {
     id: "es_cad_san_fernando",
     nombre: "San Fernando (arsenal, salinas y puente hacia Cádiz)",
+    emoji: "🏙️",
     lat: 36.4678,
     lng: -6.1982,
     nivel: 2,
@@ -2122,6 +2217,7 @@ export const POIS = [
   {
     id: "es_cad_castellar_frontera",
     nombre: "Castellar de la Frontera (castillo y bosque mediterráneo)",
+    emoji: "🏰",
     lat: 36.3181,
     lng: -5.4536,
     nivel: 2,
@@ -2140,6 +2236,7 @@ export const POIS = [
   {
     id: "es_cad_chiclana_frontera",
     nombre: "Chiclana de la Frontera (enlace costero entre bahía y costa de la Luz)",
+    emoji: "🏙️",
     lat: 36.4192,
     lng: -6.1494,
     nivel: 2,
@@ -2158,6 +2255,7 @@ export const POIS = [
   {
     id: "es_cad_jimena_frontera",
     nombre: "Jimena de la Frontera (corazón serrano del interior gaditano)",
+    emoji: "🏰",
     lat: 36.4333,
     lng: -5.45,
     nivel: 2,
@@ -2176,6 +2274,7 @@ export const POIS = [
   {
     id: "es_cad_bornos",
     nombre: "Bornos (lago y entrada oriental de la sierra gaditana)",
+    emoji: "🏡",
     lat: 36.8152,
     lng: -5.7439,
     nivel: 3,
@@ -2195,6 +2294,7 @@ export const POIS = [
   {
     id: "es_cor_capital_cordoba",
     nombre: "Córdoba (capital califal del eje A-4)",
+    emoji: "🏛️",
     lat: 37.8882,
     lng: -4.7794,
     nivel: 1,
@@ -2242,6 +2342,7 @@ export const POIS = [
   {
     id: "es_cor_sierras_subbeticas",
     nombre: "Parque Natural Sierras Subbéticas",
+    emoji: "🌿",
     lat: 37.5,
     lng: -4.25,
     nivel: 1,
@@ -2271,6 +2372,7 @@ export const POIS = [
   {
     id: "es_cor_montoro",
     nombre: "Montoro (meandro rojo sobre la A-4)",
+    emoji: "🏰",
     lat: 38.026,
     lng: -4.381,
     nivel: 1,
@@ -2289,6 +2391,7 @@ export const POIS = [
   {
     id: "es_cor_priego_cordoba",
     nombre: "Priego de Córdoba (barroco y balcón de las Subbéticas)",
+    emoji: "🏰",
     lat: 37.438,
     lng: -4.195,
     nivel: 1,
@@ -2307,6 +2410,7 @@ export const POIS = [
   {
     id: "es_cor_almodovar_rio",
     nombre: "Almodóvar del Río (castillo junto al Guadalquivir)",
+    emoji: "🏰",
     lat: 37.81,
     lng: -5.02,
     nivel: 1,
@@ -2325,6 +2429,7 @@ export const POIS = [
   {
     id: "es_cor_lucena",
     nombre: "Lucena (gran nudo del sur cordobés)",
+    emoji: "🏰",
     lat: 37.409,
     lng: -4.485,
     nivel: 1,
@@ -2343,6 +2448,7 @@ export const POIS = [
   {
     id: "es_cor_parque_cardenia_montoro",
     nombre: "Parque Natural Cardeña-Montoro",
+    emoji: "🌿",
     lat: 38.2,
     lng: -4.3,
     nivel: 2,
@@ -2361,6 +2467,7 @@ export const POIS = [
   {
     id: "es_cor_puente_genil",
     nombre: "Puente Genil (nudo del Genil entre Córdoba, Málaga y Sevilla)",
+    emoji: "🏙️",
     lat: 37.39,
     lng: -4.77,
     nivel: 2,
@@ -2379,6 +2486,7 @@ export const POIS = [
   {
     id: "es_cor_montilla",
     nombre: "Montilla (vinos del sur de Córdoba)",
+    emoji: "🏙️",
     lat: 37.586,
     lng: -4.638,
     nivel: 2,
@@ -2397,6 +2505,7 @@ export const POIS = [
   {
     id: "es_cor_baena",
     nombre: "Baena (olivar e historia entre campiña y Subbética)",
+    emoji: "🏰",
     lat: 37.615,
     lng: -4.327,
     nivel: 2,
@@ -2415,6 +2524,7 @@ export const POIS = [
   {
     id: "es_cor_cabra",
     nombre: "Cabra (puerta central de las Subbéticas)",
+    emoji: "🏙️",
     lat: 37.472,
     lng: -4.442,
     nivel: 2,
@@ -2433,6 +2543,7 @@ export const POIS = [
   {
     id: "es_cor_iznajar",
     nombre: "Iznájar (embalse y miradores en la frontera sur)",
+    emoji: "🏰",
     lat: 37.257,
     lng: -4.308,
     nivel: 2,
@@ -2451,6 +2562,7 @@ export const POIS = [
   {
     id: "es_cor_aguilar_frontera",
     nombre: "Aguilar de la Frontera (cerro, bodegas y campiña)",
+    emoji: "🏰",
     lat: 37.514,
     lng: -4.656,
     nivel: 2,
@@ -2469,6 +2581,7 @@ export const POIS = [
   {
     id: "es_cor_palma_rio",
     nombre: "Palma del Río (vega, naranjos y cruce occidental)",
+    emoji: "🏙️",
     lat: 37.7,
     lng: -5.28,
     nivel: 2,
@@ -2487,6 +2600,7 @@ export const POIS = [
   {
     id: "es_cor_bujalance",
     nombre: "Bujalance (campiña y torres en la salida este)",
+    emoji: "🏡",
     lat: 37.896,
     lng: -4.383,
     nivel: 3,
@@ -2505,6 +2619,7 @@ export const POIS = [
   {
     id: "es_cor_adamuz",
     nombre: "Adamuz (puerta serrana del nordeste cordobés)",
+    emoji: "🏡",
     lat: 38.027,
     lng: -4.525,
     nivel: 3,
@@ -2524,6 +2639,7 @@ export const POIS = [
   {
     id: "es_hue_capital_huelva",
     nombre: "Huelva (capital atlántica del corredor A-49)",
+    emoji: "🏛️",
     lat: 37.2614,
     lng: -6.9447,
     nivel: 1,
@@ -2571,6 +2687,7 @@ export const POIS = [
   {
     id: "es_hue_el_rocio",
     nombre: "El Rocío (aldea de marisma y romería)",
+    emoji: "🏡",
     lat: 37.128,
     lng: -6.488,
     nivel: 1,
@@ -2589,6 +2706,7 @@ export const POIS = [
   {
     id: "es_hue_aracena",
     nombre: "Aracena (capital serrana del norte onubense)",
+    emoji: "🏰",
     lat: 37.892,
     lng: -6.562,
     nivel: 1,
@@ -2618,6 +2736,7 @@ export const POIS = [
   {
     id: "es_hue_minas_riotinto",
     nombre: "Minas de Riotinto (paisaje minero del interior)",
+    emoji: "⛏️",
     lat: 37.694,
     lng: -6.591,
     nivel: 1,
@@ -2636,6 +2755,7 @@ export const POIS = [
   {
     id: "es_hue_niebla",
     nombre: "Niebla (murallas sobre el Tinto a pie de la A-49)",
+    emoji: "🏰",
     lat: 37.3613,
     lng: -6.6792,
     nivel: 1,
@@ -2654,6 +2774,7 @@ export const POIS = [
   {
     id: "es_hue_ayamonte",
     nombre: "Ayamonte (frontera del Guadiana y final occidental de la A-49)",
+    emoji: "🚩",
     lat: 37.214,
     lng: -7.408,
     nivel: 1,
@@ -2672,6 +2793,7 @@ export const POIS = [
   {
     id: "es_hue_dolmen_soto",
     nombre: "Dolmen de Soto (gran monumento megalítico de Trigueros)",
+    emoji: "🪨",
     lat: 37.3897,
     lng: -6.8242,
     nivel: 1,
@@ -2690,6 +2812,7 @@ export const POIS = [
   {
     id: "es_hue_almonte",
     nombre: "Almonte (puerta del eje Doñana-El Rocío)",
+    emoji: "🏡",
     lat: 37.262,
     lng: -6.517,
     nivel: 2,
@@ -2708,6 +2831,7 @@ export const POIS = [
   {
     id: "es_hue_moguer",
     nombre: "Moguer (literatura, vino y cercanía al eje Huelva-Sevilla)",
+    emoji: "🏰",
     lat: 37.2749,
     lng: -6.8385,
     nivel: 2,
@@ -2737,6 +2861,7 @@ export const POIS = [
   {
     id: "es_hue_matalascanas",
     nombre: "Matalascañas (acceso litoral a Doñana)",
+    emoji: "🐚",
     lat: 36.995,
     lng: -6.55,
     nivel: 2,
@@ -2755,6 +2880,7 @@ export const POIS = [
   {
     id: "es_hue_isla_cristina",
     nombre: "Isla Cristina (pesca, sal y marismas)",
+    emoji: "⚓",
     lat: 37.2,
     lng: -7.325,
     nivel: 2,
@@ -2773,6 +2899,7 @@ export const POIS = [
   {
     id: "es_hue_lepe",
     nombre: "Lepe (nudo de la costa occidental onubense)",
+    emoji: "🏙️",
     lat: 37.254,
     lng: -7.204,
     nivel: 2,
@@ -2802,6 +2929,7 @@ export const POIS = [
   {
     id: "es_hue_bollullos_condado",
     nombre: "Bollullos Par del Condado (viñas y cruce interior)",
+    emoji: "🏙️",
     lat: 37.3413,
     lng: -6.5393,
     nivel: 3,
@@ -2820,6 +2948,7 @@ export const POIS = [
   {
     id: "es_hue_palma_condado",
     nombre: "La Palma del Condado (bisagra entre A-49 y Doñana)",
+    emoji: "🏙️",
     lat: 37.386,
     lng: -6.553,
     nivel: 3,
@@ -2839,6 +2968,7 @@ export const POIS = [
   {
     id: "es_mal_capital_malaga",
     nombre: "Málaga (capital mediterránea del sur)",
+    emoji: "🏛️",
     lat: 36.7213,
     lng: -4.4214,
     nivel: 1,
@@ -2877,6 +3007,7 @@ export const POIS = [
   {
     id: "es_mal_antequera",
     nombre: "Antequera (gran cruce andaluz entre A-45, A-92 y A-7)",
+    emoji: "🏰",
     lat: 37.0194,
     lng: -4.5614,
     nivel: 1,
@@ -2915,6 +3046,7 @@ export const POIS = [
   {
     id: "es_mal_ronda",
     nombre: "Ronda (gran garganta del interior, enlace hacia Cádiz y Sevilla)",
+    emoji: "🏰",
     lat: 36.742,
     lng: -5.167,
     nivel: 1,
@@ -2933,6 +3065,7 @@ export const POIS = [
   {
     id: "es_mal_caminito_rey",
     nombre: "Caminito del Rey (desfiladero de los Gaitanes)",
+    emoji: "🏔️",
     lat: 36.932,
     lng: -4.802,
     nivel: 1,
@@ -2951,6 +3084,7 @@ export const POIS = [
   {
     id: "es_mal_fuente_piedra",
     nombre: "Laguna de Fuente de Piedra (flamencos en el norte de Málaga)",
+    emoji: "🦩",
     lat: 37.104,
     lng: -4.736,
     nivel: 1,
@@ -2969,6 +3103,7 @@ export const POIS = [
   {
     id: "es_mal_nerja",
     nombre: "Nerja (balcón del Mediterráneo oriental)",
+    emoji: "⚓",
     lat: 36.746,
     lng: -3.879,
     nivel: 1,
@@ -2998,6 +3133,7 @@ export const POIS = [
   {
     id: "es_mal_marbella",
     nombre: "Marbella (nudo costero del oeste malagueño)",
+    emoji: "⚓",
     lat: 36.5099,
     lng: -4.8864,
     nivel: 1,
@@ -3016,6 +3152,7 @@ export const POIS = [
   {
     id: "es_mal_estepona",
     nombre: "Estepona (jardines, mar y transición hacia Cádiz)",
+    emoji: "⚓",
     lat: 36.427,
     lng: -5.146,
     nivel: 2,
@@ -3034,6 +3171,7 @@ export const POIS = [
   {
     id: "es_mal_velez_malaga",
     nombre: "Vélez-Málaga (capital de la Axarquía)",
+    emoji: "🏰",
     lat: 36.781,
     lng: -4.102,
     nivel: 2,
@@ -3052,6 +3190,7 @@ export const POIS = [
   {
     id: "es_mal_archidona",
     nombre: "Archidona (puerta oriental hacia Granada)",
+    emoji: "🏰",
     lat: 37.094,
     lng: -4.388,
     nivel: 2,
@@ -3070,6 +3209,7 @@ export const POIS = [
   {
     id: "es_mal_rincon_victoria",
     nombre: "Rincón de la Victoria y Cueva del Tesoro",
+    emoji: "⚓",
     lat: 36.717,
     lng: -4.286,
     nivel: 2,
@@ -3088,6 +3228,7 @@ export const POIS = [
   {
     id: "es_mal_ardales",
     nombre: "Ardales (embalses y puerta del desfiladero)",
+    emoji: "🏡",
     lat: 36.88,
     lng: -4.846,
     nivel: 2,
@@ -3106,6 +3247,7 @@ export const POIS = [
   {
     id: "es_mal_alora",
     nombre: "Álora (castillo sobre el valle del Guadalhorce)",
+    emoji: "🏰",
     lat: 36.823,
     lng: -4.706,
     nivel: 2,
@@ -3124,6 +3266,7 @@ export const POIS = [
   {
     id: "es_mal_campillos",
     nombre: "Campillos (alto del corredor interior hacia Sevilla y Cádiz)",
+    emoji: "🏙️",
     lat: 37.05,
     lng: -4.863,
     nivel: 3,
@@ -3142,6 +3285,7 @@ export const POIS = [
   {
     id: "es_mal_casabermeja",
     nombre: "Casabermeja (umbral de Málaga en la A-45)",
+    emoji: "🏡",
     lat: 36.892,
     lng: -4.428,
     nivel: 3,
@@ -3161,6 +3305,7 @@ export const POIS = [
   {
     id: "es_sev_capital_sevilla",
     nombre: "Sevilla (capital de provincia)",
+    emoji: "🏛️",
     lat: 37.39,
     lng: -5.99,
     nivel: 1,
@@ -3307,6 +3452,7 @@ export const POIS = [
   {
     id: "es_sev_real_jara",
     nombre: "El Real de la Jara (castillo en la puerta norte de Sevilla)",
+    emoji: "🏰",
     lat: 37.95,
     lng: -6.15,
     nivel: 3,
@@ -3325,6 +3471,7 @@ export const POIS = [
   {
     id: "es_sev_guillena",
     nombre: "Guillena (puerta metropolitana hacia Sevilla)",
+    emoji: "🏙️",
     lat: 37.533,
     lng: -6.05,
     nivel: 3,
@@ -3343,6 +3490,7 @@ export const POIS = [
   {
     id: "es_sev_almaden_plata",
     nombre: "Almadén de la Plata (camino, dehesa y agua)",
+    emoji: "🏡",
     lat: 37.8667,
     lng: -6.0667,
     nivel: 3,
@@ -3361,6 +3509,7 @@ export const POIS = [
   {
     id: "es_sev_ronquillo",
     nombre: "El Ronquillo (bosque mediterráneo y embalses)",
+    emoji: "🏡",
     lat: 37.717,
     lng: -6.167,
     nivel: 3,
@@ -3379,6 +3528,7 @@ export const POIS = [
   {
     id: "es_sev_castillo_guardas",
     nombre: "El Castillo de las Guardas (sierra y minería)",
+    emoji: "🏡",
     lat: 37.683,
     lng: -6.3,
     nivel: 3,
@@ -3397,6 +3547,7 @@ export const POIS = [
   {
     id: "es_ara_hue_ordesa",
     nombre: "Parque Nacional de Ordesa y Monte Perdido",
+    emoji: "🌲",
     lat: 42.65,
     lng: -0.05,
     nivel: 1,
@@ -3416,6 +3567,7 @@ export const POIS = [
   {
     id: "es_ara_hue_huesca_capital",
     nombre: "Huesca (capital de provincia)",
+    emoji: "🏛️",
     lat: 42.1362,
     lng: -0.4087,
     nivel: 1,
@@ -3434,6 +3586,7 @@ export const POIS = [
   {
     id: "es_ara_hue_fraga",
     nombre: "Fraga, entrada oriental de Aragón por la A-2",
+    emoji: "🏰",
     lat: 41.5229,
     lng: 0.3489,
     nivel: 1,
@@ -3452,6 +3605,7 @@ export const POIS = [
   {
     id: "es_ara_hue_loarre",
     nombre: "Castillo de Loarre",
+    emoji: "🏰",
     lat: 42.3241,
     lng: -0.6222,
     nivel: 1,
@@ -3470,6 +3624,7 @@ export const POIS = [
   {
     id: "es_ara_hue_riglos",
     nombre: "Mallos de Riglos",
+    emoji: "🪨",
     lat: 42.3472,
     lng: -0.7268,
     nivel: 1,
@@ -3488,6 +3643,7 @@ export const POIS = [
   {
     id: "es_ara_hue_alquezar",
     nombre: "Alquézar",
+    emoji: "🏰",
     lat: 42.1716,
     lng: -0.023,
     nivel: 1,
@@ -3506,6 +3662,7 @@ export const POIS = [
   {
     id: "es_ara_hue_jaca",
     nombre: "Jaca",
+    emoji: "🏰",
     lat: 42.569,
     lng: -0.549,
     nivel: 1,
@@ -3535,6 +3692,7 @@ export const POIS = [
   {
     id: "es_ara_hue_canfranc",
     nombre: "Canfranc Estación",
+    emoji: "🚂",
     lat: 42.7507,
     lng: -0.5147,
     nivel: 1,
@@ -3553,6 +3711,7 @@ export const POIS = [
   {
     id: "es_ara_hue_san_juan_pena",
     nombre: "Monasterio de San Juan de la Peña",
+    emoji: "⛪",
     lat: 42.5086,
     lng: -0.6734,
     nivel: 1,
@@ -3571,6 +3730,7 @@ export const POIS = [
   {
     id: "es_ara_hue_guara",
     nombre: "Parque Natural de la Sierra y los Cañones de Guara",
+    emoji: "🌿",
     lat: 42.2489,
     lng: -0.0704,
     nivel: 1,
@@ -3589,6 +3749,7 @@ export const POIS = [
   {
     id: "es_ara_hue_barbastro",
     nombre: "Barbastro",
+    emoji: "🏰",
     lat: 42.0346,
     lng: 0.1269,
     nivel: 1,
@@ -3607,6 +3768,7 @@ export const POIS = [
   {
     id: "es_ara_hue_ainsa",
     nombre: "Aínsa",
+    emoji: "🏰",
     lat: 42.4156,
     lng: 0.1402,
     nivel: 1,
@@ -3625,6 +3787,7 @@ export const POIS = [
   {
     id: "es_ara_hue_monzon",
     nombre: "Monzón",
+    emoji: "🏙️",
     lat: 41.9113,
     lng: 0.1941,
     nivel: 1,
@@ -3654,6 +3817,7 @@ export const POIS = [
   {
     id: "es_ara_hue_formigal",
     nombre: "Formigal",
+    emoji: "⛷️",
     lat: 42.7737,
     lng: -0.3614,
     nivel: 2,
@@ -3672,6 +3836,7 @@ export const POIS = [
   {
     id: "es_ara_hue_panticosa",
     nombre: "Panticosa",
+    emoji: "⛰️",
     lat: 42.7241,
     lng: -0.2821,
     nivel: 2,
@@ -3690,6 +3855,7 @@ export const POIS = [
   {
     id: "es_ara_hue_bolea",
     nombre: "Bolea y la colegiata de Santa María",
+    emoji: "🏰",
     lat: 42.2602,
     lng: -0.6713,
     nivel: 2,
@@ -3708,6 +3874,7 @@ export const POIS = [
   {
     id: "es_ara_hue_sabinanigo",
     nombre: "Sabiñánigo",
+    emoji: "🏙️",
     lat: 42.519,
     lng: -0.365,
     nivel: 2,
@@ -3726,6 +3893,7 @@ export const POIS = [
   {
     id: "es_ara_hue_ayerbe",
     nombre: "Ayerbe",
+    emoji: "🏡",
     lat: 42.2747,
     lng: -0.6887,
     nivel: 2,
@@ -3745,6 +3913,7 @@ export const POIS = [
   {
     id: "es_ter_teruel_capital",
     nombre: "Teruel (capital mudéjar del eje A-23)",
+    emoji: "🏛️",
     lat: 40.344,
     lng: -1.1069,
     nivel: 1,
@@ -3792,6 +3961,7 @@ export const POIS = [
   {
     id: "es_ter_albarracin",
     nombre: "Albarracín",
+    emoji: "🏰",
     lat: 40.4073,
     lng: -1.4445,
     nivel: 1,
@@ -3821,6 +3991,7 @@ export const POIS = [
   {
     id: "es_ter_alcaniz",
     nombre: "Alcañiz",
+    emoji: "🏰",
     lat: 41.05,
     lng: -0.1328,
     nivel: 1,
@@ -3850,6 +4021,7 @@ export const POIS = [
   {
     id: "es_ter_gallocanta",
     nombre: "Laguna de Gallocanta",
+    emoji: "🦩",
     lat: 40.9977,
     lng: -1.5071,
     nivel: 1,
@@ -3868,6 +4040,7 @@ export const POIS = [
   {
     id: "es_ter_valderrobres",
     nombre: "Valderrobres",
+    emoji: "🏰",
     lat: 40.8759,
     lng: 0.1558,
     nivel: 1,
@@ -3886,6 +4059,7 @@ export const POIS = [
   {
     id: "es_ter_mora_rubielos",
     nombre: "Mora de Rubielos",
+    emoji: "🏰",
     lat: 40.2534,
     lng: -0.7522,
     nivel: 1,
@@ -3904,6 +4078,7 @@ export const POIS = [
   {
     id: "es_ter_rubielos_mora",
     nombre: "Rubielos de Mora",
+    emoji: "🏰",
     lat: 40.1888,
     lng: -0.6516,
     nivel: 1,
@@ -3922,6 +4097,7 @@ export const POIS = [
   {
     id: "es_ter_organos_montoro",
     nombre: "Órganos de Montoro",
+    emoji: "🌿",
     lat: 40.8829,
     lng: -0.8188,
     nivel: 2,
@@ -3940,6 +4116,7 @@ export const POIS = [
   {
     id: "es_ter_peracense",
     nombre: "Castillo de Peracense",
+    emoji: "🏰",
     lat: 40.6421,
     lng: -1.4681,
     nivel: 2,
@@ -3958,6 +4135,7 @@ export const POIS = [
   {
     id: "es_ter_cantavieja",
     nombre: "Cantavieja",
+    emoji: "🏰",
     lat: 40.5282,
     lng: -0.405,
     nivel: 2,
@@ -3976,6 +4154,7 @@ export const POIS = [
   {
     id: "es_ter_mirambel",
     nombre: "Mirambel",
+    emoji: "🏰",
     lat: 40.5878,
     lng: -0.3421,
     nivel: 2,
@@ -3994,6 +4173,7 @@ export const POIS = [
   {
     id: "es_ter_puertomingalvo",
     nombre: "Puertomingalvo",
+    emoji: "🏰",
     lat: 40.2647,
     lng: -0.4562,
     nivel: 2,
@@ -4012,6 +4192,7 @@ export const POIS = [
   {
     id: "es_ter_linares_mora",
     nombre: "Linares de Mora",
+    emoji: "🏰",
     lat: 40.3218,
     lng: -0.5755,
     nivel: 2,
@@ -4030,6 +4211,7 @@ export const POIS = [
   {
     id: "es_ter_calanda",
     nombre: "Calanda (tambores y Buñuel)",
+    emoji: "🏡",
     lat: 40.94,
     lng: -0.2347,
     nivel: 2,
@@ -4048,6 +4230,7 @@ export const POIS = [
   {
     id: "es_ter_calamocha",
     nombre: "Calamocha (eje interior hacia Zaragoza y Levante)",
+    emoji: "🏡",
     lat: 40.9211,
     lng: -1.3009,
     nivel: 3,
@@ -4066,6 +4249,7 @@ export const POIS = [
   {
     id: "es_zar_monasterio_piedra",
     nombre: "Monasterio de Piedra (Nuévalos)",
+    emoji: "⛪",
     lat: 41.1932396,
     lng: -1.7851055,
     nivel: 1,
@@ -4096,6 +4280,7 @@ export const POIS = [
   {
     id: "es_zgz_zaragoza_capital",
     nombre: "Zaragoza (capital y gran nodo del valle del Ebro)",
+    emoji: "🏛️",
     lat: 41.6488,
     lng: -0.8891,
     nivel: 1,
@@ -4143,6 +4328,7 @@ export const POIS = [
   {
     id: "es_zgz_calatayud",
     nombre: "Calatayud (historia entre sierras y autovía)",
+    emoji: "🏰",
     lat: 41.3539,
     lng: -1.6432,
     nivel: 1,
@@ -4190,6 +4376,7 @@ export const POIS = [
   {
     id: "es_zgz_sos_rey_catolico",
     nombre: "Sos del Rey Católico",
+    emoji: "🏰",
     lat: 42.497,
     lng: -1.2157,
     nivel: 1,
@@ -4208,6 +4395,7 @@ export const POIS = [
   {
     id: "es_zgz_moncayo",
     nombre: "Parque Natural del Moncayo",
+    emoji: "🌿",
     lat: 41.7867,
     lng: -1.8295,
     nivel: 1,
@@ -4226,6 +4414,7 @@ export const POIS = [
   {
     id: "es_zgz_belchite_viejo",
     nombre: "Pueblo Viejo de Belchite",
+    emoji: "🏛️",
     lat: 41.305,
     lng: -0.7557,
     nivel: 1,
@@ -4244,6 +4433,7 @@ export const POIS = [
   {
     id: "es_zgz_tarazona",
     nombre: "Tarazona (ciudad monumental al pie del Moncayo)",
+    emoji: "🏰",
     lat: 41.9022,
     lng: -1.7251,
     nivel: 1,
@@ -4273,6 +4463,7 @@ export const POIS = [
   {
     id: "es_zgz_daroca",
     nombre: "Daroca (ciudad amurallada del eje interior)",
+    emoji: "🏰",
     lat: 41.1153,
     lng: -1.4148,
     nivel: 1,
@@ -4302,6 +4493,7 @@ export const POIS = [
   {
     id: "es_zar_embalse_tranquera",
     nombre: "Embalse de La Tranquera (cerca de Nuévalos)",
+    emoji: "💧",
     lat: 41.236636,
     lng: -1.8383977,
     nivel: 2,
@@ -4331,6 +4523,7 @@ export const POIS = [
   {
     id: "es_zgz_fuendetodos_goya",
     nombre: "Fuendetodos (pueblo natal de Goya)",
+    emoji: "🏰",
     lat: 41.3428,
     lng: -0.2883,
     nivel: 2,
@@ -4349,6 +4542,7 @@ export const POIS = [
   {
     id: "es_zgz_carinena",
     nombre: "Cariñena (capital del vino de la comarca)",
+    emoji: "🍷",
     lat: 41.3381,
     lng: -1.2248,
     nivel: 2,
@@ -4367,6 +4561,7 @@ export const POIS = [
   {
     id: "es_zgz_ejea",
     nombre: "Ejea de los Caballeros",
+    emoji: "🏘️",
     lat: 42.1292,
     lng: -1.1375,
     nivel: 2,
@@ -4385,6 +4580,7 @@ export const POIS = [
   {
     id: "es_zgz_mequinenza",
     nombre: "Mequinenza y el mar de Aragón",
+    emoji: "🌊",
     lat: 41.3774,
     lng: 0.3014,
     nivel: 2,
@@ -4403,6 +4599,7 @@ export const POIS = [
   {
     id: "es_zar_alhama_aragon",
     nombre: "Alhama de Aragón (balnearios y casco)",
+    emoji: "♨️",
     lat: 41.2967,
     lng: -1.8942,
     nivel: 2,
@@ -4421,6 +4618,7 @@ export const POIS = [
   {
     id: "es_zgz_caspe",
     nombre: "Caspe (embalse y cruce del este aragonés)",
+    emoji: "🏘️",
     lat: 41.2367,
     lng: -0.0407,
     nivel: 2,
@@ -4439,6 +4637,7 @@ export const POIS = [
   {
     id: "es_zgz_la_almunia",
     nombre: "La Almunia de Doña Godina",
+    emoji: "🏡",
     lat: 41.4767,
     lng: -1.3752,
     nivel: 2,
@@ -4457,6 +4656,7 @@ export const POIS = [
   {
     id: "es_zar_lago_termal_alhama",
     nombre: "Lago Termal de Alhama de Aragón",
+    emoji: "♨️",
     lat: 41.2948505,
     lng: -1.9000086,
     nivel: 2,
@@ -4475,6 +4675,7 @@ export const POIS = [
   {
     id: "es_zgz_alagon",
     nombre: "Alagón (puerta occidental de Zaragoza)",
+    emoji: "🏡",
     lat: 41.7705,
     lng: -1.1219,
     nivel: 3,
@@ -4493,6 +4694,7 @@ export const POIS = [
   {
     id: "es_zar_ateca",
     nombre: "Ateca (casco histórico)",
+    emoji: "🏡",
     lat: 41.3293183,
     lng: -1.7997732,
     nivel: 3,
@@ -4511,6 +4713,7 @@ export const POIS = [
   {
     id: "es_ast_covadonga",
     nombre: "Covadonga",
+    emoji: "🕍",
     lat: 43.3083,
     lng: -5.0512,
     nivel: 1,
@@ -4529,6 +4732,7 @@ export const POIS = [
   {
     id: "es_ast_somiedo",
     nombre: "Somiedo y su parque natural",
+    emoji: "🌿",
     lat: 43.0968,
     lng: -6.2571,
     nivel: 1,
@@ -4547,6 +4751,7 @@ export const POIS = [
   {
     id: "es_ast_cabo_penas",
     nombre: "Cabo Peñas",
+    emoji: "🏖️",
     lat: 43.6571,
     lng: -5.8487,
     nivel: 1,
@@ -4576,6 +4781,7 @@ export const POIS = [
   {
     id: "es_ast_redes",
     nombre: "Parque Natural de Redes",
+    emoji: "🌿",
     lat: 43.2013,
     lng: -5.3448,
     nivel: 1,
@@ -4594,6 +4800,7 @@ export const POIS = [
   {
     id: "es_ast_gijon_cimavilla",
     nombre: "Cimavilla y puerto de Gijón",
+    emoji: "🏰",
     lat: 43.5444,
     lng: -5.6635,
     nivel: 1,
@@ -4623,6 +4830,7 @@ export const POIS = [
   {
     id: "es_ast_oviedo_catedral",
     nombre: "Catedral de Oviedo",
+    emoji: "⛪",
     lat: 43.3619,
     lng: -5.8448,
     nivel: 1,
@@ -4661,6 +4869,7 @@ export const POIS = [
   {
     id: "es_ast_fitu",
     nombre: "Mirador del Fitu",
+    emoji: "🔭",
     lat: 43.449,
     lng: -5.1904,
     nivel: 1,
@@ -4679,6 +4888,7 @@ export const POIS = [
   {
     id: "es_ast_pozo_soton",
     nombre: "Pozo Sotón",
+    emoji: "🏭",
     lat: 43.2918,
     lng: -5.6535,
     nivel: 1,
@@ -4708,6 +4918,7 @@ export const POIS = [
   {
     id: "es_ast_bufones_pria",
     nombre: "Bufones de Pría",
+    emoji: "🌊",
     lat: 43.4442,
     lng: -4.9398,
     nivel: 1,
@@ -4726,6 +4937,7 @@ export const POIS = [
   {
     id: "es_ast_playa_silencio",
     nombre: "Playa del Silencio",
+    emoji: "🏖️",
     lat: 43.5639,
     lng: -6.308,
     nivel: 1,
@@ -4744,6 +4956,7 @@ export const POIS = [
   {
     id: "es_ast_cudillero",
     nombre: "Cudillero",
+    emoji: "⚓",
     lat: 43.5635,
     lng: -6.1458,
     nivel: 1,
@@ -4762,6 +4975,7 @@ export const POIS = [
   {
     id: "es_ast_cangas_onis_puente",
     nombre: "Cangas de Onís y su puente",
+    emoji: "🌉",
     lat: 43.3506,
     lng: -5.1288,
     nivel: 1,
@@ -4780,6 +4994,7 @@ export const POIS = [
   {
     id: "es_ast_santa_cristina_lena",
     nombre: "Santa Cristina de Lena",
+    emoji: "⛪",
     lat: 43.1588,
     lng: -5.8274,
     nivel: 1,
@@ -4798,6 +5013,7 @@ export const POIS = [
   {
     id: "es_ast_cabo_vidio",
     nombre: "Cabo Vidio",
+    emoji: "🏖️",
     lat: 43.5632,
     lng: -6.3827,
     nivel: 1,
@@ -4816,6 +5032,7 @@ export const POIS = [
   {
     id: "es_ast_taramundi",
     nombre: "Taramundi",
+    emoji: "⛰️",
     lat: 43.3613,
     lng: -7.1118,
     nivel: 1,
@@ -4834,6 +5051,7 @@ export const POIS = [
   {
     id: "es_ast_senda_oso",
     nombre: "Senda del Oso (Tuñón)",
+    emoji: "🥾",
     lat: 43.2406,
     lng: -5.9682,
     nivel: 1,
@@ -4852,6 +5070,7 @@ export const POIS = [
   {
     id: "es_ast_san_isidro",
     nombre: "Puerto de San Isidro",
+    emoji: "⛰️",
     lat: 43.0528,
     lng: -5.3413,
     nivel: 1,
@@ -4870,6 +5089,7 @@ export const POIS = [
   {
     id: "es_ast_colunga_muja",
     nombre: "Colunga y el Museo del Jurásico",
+    emoji: "🖼️",
     lat: 43.4857,
     lng: -5.2711,
     nivel: 2,
@@ -4899,6 +5119,7 @@ export const POIS = [
   {
     id: "es_ast_teverga_prehistoria",
     nombre: "Parque de la Prehistoria de Teverga",
+    emoji: "🔬",
     lat: 43.1581,
     lng: -6.1014,
     nivel: 2,
@@ -4917,6 +5138,7 @@ export const POIS = [
   {
     id: "es_ast_llanes",
     nombre: "Llanes y sus cubos de la memoria",
+    emoji: "🐚",
     lat: 43.4206,
     lng: -4.7544,
     nivel: 2,
@@ -4935,6 +5157,7 @@ export const POIS = [
   {
     id: "es_ast_ribadesella",
     nombre: "Ribadesella y el Sella",
+    emoji: "🐚",
     lat: 43.4612,
     lng: -5.0595,
     nivel: 2,
@@ -4953,6 +5176,7 @@ export const POIS = [
   {
     id: "es_ast_aviles_casco_historico",
     nombre: "Avilés (casco histórico)",
+    emoji: "🏰",
     lat: 43.5558,
     lng: -5.9248,
     nivel: 2,
@@ -4991,6 +5215,7 @@ export const POIS = [
   {
     id: "es_ast_tineo",
     nombre: "Tineo y el Camino Primitivo",
+    emoji: "🏰",
     lat: 43.3379,
     lng: -6.4142,
     nivel: 2,
@@ -5009,6 +5234,7 @@ export const POIS = [
   {
     id: "es_ast_tazones",
     nombre: "Tazones, puerto histórico de Villaviciosa",
+    emoji: "⚓",
     lat: 43.5381,
     lng: -5.392,
     nivel: 2,
@@ -5027,6 +5253,7 @@ export const POIS = [
   {
     id: "es_ast_tapia_casariego",
     nombre: "Tapia de Casariego",
+    emoji: "⚓",
     lat: 43.5691,
     lng: -6.9436,
     nivel: 2,
@@ -5045,6 +5272,7 @@ export const POIS = [
   {
     id: "es_ast_luarca",
     nombre: "Luarca, villa blanca de la costa verde",
+    emoji: "⚓",
     lat: 43.5455,
     lng: -6.5352,
     nivel: 2,
@@ -5063,6 +5291,7 @@ export const POIS = [
   {
     id: "es_ast_villaviciosa",
     nombre: "Villaviciosa y la ría",
+    emoji: "🐚",
     lat: 43.4813,
     lng: -5.4359,
     nivel: 2,
@@ -5081,6 +5310,7 @@ export const POIS = [
   {
     id: "es_ast_mieres",
     nombre: "Mieres y el valle minero",
+    emoji: "🌄",
     lat: 43.2508,
     lng: -5.775,
     nivel: 2,
@@ -5099,6 +5329,7 @@ export const POIS = [
   {
     id: "es_ast_grado",
     nombre: "Grado y el camino interior",
+    emoji: "🥾",
     lat: 43.3884,
     lng: -6.074,
     nivel: 3,
@@ -5117,6 +5348,7 @@ export const POIS = [
   {
     id: "es_can_altamira",
     nombre: "Cueva y museo de Altamira",
+    emoji: "🕳️",
     lat: 43.3772,
     lng: -4.1223,
     nivel: 1,
@@ -5146,6 +5378,7 @@ export const POIS = [
   {
     id: "es_can_costa_quebrada",
     nombre: "Costa Quebrada",
+    emoji: "🌊",
     lat: 43.4768,
     lng: -3.9187,
     nivel: 1,
@@ -5175,6 +5408,7 @@ export const POIS = [
   {
     id: "es_can_collados_ason",
     nombre: "Collados del Asón",
+    emoji: "🌄",
     lat: 43.1988,
     lng: -3.5955,
     nivel: 1,
@@ -5204,6 +5438,7 @@ export const POIS = [
   {
     id: "es_can_cabarceno",
     nombre: "Parque de la Naturaleza de Cabárceno",
+    emoji: "🌿",
     lat: 43.3483,
     lng: -3.8363,
     nivel: 1,
@@ -5222,6 +5457,7 @@ export const POIS = [
   {
     id: "es_can_santander_bahia",
     nombre: "Bahía y centro histórico de Santander",
+    emoji: "⛵",
     lat: 43.4627,
     lng: -3.805,
     nivel: 1,
@@ -5260,6 +5496,7 @@ export const POIS = [
   {
     id: "es_can_soplao",
     nombre: "Cueva El Soplao",
+    emoji: "🕳️",
     lat: 43.3008,
     lng: -4.4259,
     nivel: 1,
@@ -5278,6 +5515,7 @@ export const POIS = [
   {
     id: "es_can_oyambre",
     nombre: "Parque Natural de Oyambre",
+    emoji: "🌿",
     lat: 43.3913,
     lng: -4.3948,
     nivel: 1,
@@ -5307,6 +5545,7 @@ export const POIS = [
   {
     id: "es_can_ajo_faro",
     nombre: "Faro de Ajo y acantilados",
+    emoji: "🗼",
     lat: 43.4959,
     lng: -3.6079,
     nivel: 1,
@@ -5336,6 +5575,7 @@ export const POIS = [
   {
     id: "es_can_lierganes",
     nombre: "Liérganes",
+    emoji: "🏰",
     lat: 43.3426,
     lng: -3.7426,
     nivel: 1,
@@ -5354,6 +5594,7 @@ export const POIS = [
   {
     id: "es_can_hermida_desfiladero",
     nombre: "Desfiladero de La Hermida",
+    emoji: "🏔️",
     lat: 43.2495,
     lng: -4.658,
     nivel: 1,
@@ -5372,6 +5613,7 @@ export const POIS = [
   {
     id: "es_can_fontibre",
     nombre: "Fontibre, nacimiento del Ebro",
+    emoji: "💧",
     lat: 43.017,
     lng: -4.1566,
     nivel: 1,
@@ -5401,6 +5643,7 @@ export const POIS = [
   {
     id: "es_can_comillas",
     nombre: "Comillas",
+    emoji: "🐚",
     lat: 43.3858,
     lng: -4.2913,
     nivel: 1,
@@ -5430,6 +5673,7 @@ export const POIS = [
   {
     id: "es_can_ramales_cullalvera",
     nombre: "Ramales de la Victoria y cueva de Cullalvera",
+    emoji: "🕳️",
     lat: 43.2578,
     lng: -3.4656,
     nivel: 1,
@@ -5448,6 +5692,7 @@ export const POIS = [
   {
     id: "es_can_juliobriga",
     nombre: "Julióbriga y Retortillo",
+    emoji: "🏛️",
     lat: 42.9972,
     lng: -4.0217,
     nivel: 1,
@@ -5466,6 +5711,7 @@ export const POIS = [
   {
     id: "es_can_barcena_pie_concha",
     nombre: "Bárcena de Pie de Concha y la calzada romana",
+    emoji: "📜",
     lat: 43.1255,
     lng: -4.049,
     nivel: 1,
@@ -5484,6 +5730,7 @@ export const POIS = [
   {
     id: "es_can_santo_toribio",
     nombre: "Monasterio de Santo Toribio de Liébana",
+    emoji: "⛪",
     lat: 43.1513,
     lng: -4.6438,
     nivel: 1,
@@ -5502,6 +5749,7 @@ export const POIS = [
   {
     id: "es_can_potes",
     nombre: "Potes y la Liébana",
+    emoji: "⛰️",
     lat: 43.1531,
     lng: -4.6233,
     nivel: 1,
@@ -5520,6 +5768,7 @@ export const POIS = [
   {
     id: "es_can_castro_urdiales",
     nombre: "Castro Urdiales",
+    emoji: "🐚",
     lat: 43.3828,
     lng: -3.2196,
     nivel: 1,
@@ -5538,6 +5787,7 @@ export const POIS = [
   {
     id: "es_can_puente_viesgo",
     nombre: "Puente Viesgo y sus cuevas prehistóricas",
+    emoji: "🕳️",
     lat: 43.2985,
     lng: -3.964,
     nivel: 2,
@@ -5556,6 +5806,7 @@ export const POIS = [
   {
     id: "es_can_vega_pas",
     nombre: "Vega de Pas",
+    emoji: "⛰️",
     lat: 43.1576,
     lng: -3.7828,
     nivel: 2,
@@ -5574,6 +5825,7 @@ export const POIS = [
   {
     id: "es_can_santona_buciero",
     nombre: "Santoña y el monte Buciero",
+    emoji: "🐚",
     lat: 43.4454,
     lng: -3.4555,
     nivel: 2,
@@ -5592,6 +5844,7 @@ export const POIS = [
   {
     id: "es_can_cabezon_secuoyas",
     nombre: "Bosque de secuoyas de Cabezón de la Sal",
+    emoji: "🌲",
     lat: 43.3077,
     lng: -4.2326,
     nivel: 2,
@@ -5610,6 +5863,7 @@ export const POIS = [
   {
     id: "es_can_suances",
     nombre: "Suances y la ría de San Martín",
+    emoji: "🐚",
     lat: 43.4266,
     lng: -4.0433,
     nivel: 2,
@@ -5628,6 +5882,7 @@ export const POIS = [
   {
     id: "es_can_barcena_mayor",
     nombre: "Bárcena Mayor",
+    emoji: "🏡",
     lat: 43.1968,
     lng: -4.2163,
     nivel: 2,
@@ -5646,6 +5901,7 @@ export const POIS = [
   {
     id: "es_can_cartes",
     nombre: "Cartes, villa del Camino Real",
+    emoji: "🏰",
     lat: 43.3235,
     lng: -4.0689,
     nivel: 2,
@@ -5675,6 +5931,7 @@ export const POIS = [
   {
     id: "es_can_ampuero",
     nombre: "Ampuero y el valle bajo del Asón",
+    emoji: "🌊",
     lat: 43.3439,
     lng: -3.4173,
     nivel: 2,
@@ -5693,6 +5950,7 @@ export const POIS = [
   {
     id: "es_can_pechon",
     nombre: "Pechón y la Tina Mayor",
+    emoji: "🌊",
     lat: 43.3821,
     lng: -4.4898,
     nivel: 2,
@@ -5711,6 +5969,7 @@ export const POIS = [
   {
     id: "es_can_tudanca",
     nombre: "Tudanca",
+    emoji: "⛰️",
     lat: 43.153,
     lng: -4.3736,
     nivel: 2,
@@ -5729,6 +5988,7 @@ export const POIS = [
   {
     id: "es_can_laredo",
     nombre: "Laredo y su gran arenal",
+    emoji: "🐚",
     lat: 43.4113,
     lng: -3.413,
     nivel: 2,
@@ -5747,6 +6007,7 @@ export const POIS = [
   {
     id: "es_bur_santo_domingo_silos",
     nombre: "Monasterio de Santo Domingo de Silos",
+    emoji: "⛪",
     lat: 41.9626,
     lng: -3.4196,
     nivel: 1,
@@ -5765,6 +6026,7 @@ export const POIS = [
   {
     id: "es_bur_atapuerca",
     nombre: "Yacimientos de Atapuerca",
+    emoji: "🦕",
     lat: 42.378,
     lng: -3.5079,
     nivel: 1,
@@ -5783,6 +6045,7 @@ export const POIS = [
   {
     id: "es_bur_clunia",
     nombre: "Ciudad romana de Clunia Sulpicia",
+    emoji: "🏛️",
     lat: 41.8042,
     lng: -3.4781,
     nivel: 1,
@@ -5802,6 +6065,7 @@ export const POIS = [
   {
     id: "es_bur_capital_burgos",
     nombre: "Burgos (capital de provincia)",
+    emoji: "🏛️",
     lat: 42.3439,
     lng: -3.6969,
     nivel: 1,
@@ -5858,6 +6122,7 @@ export const POIS = [
   {
     id: "es_bur_lerma",
     nombre: "Lerma",
+    emoji: "🏰",
     lat: 42.0262,
     lng: -3.7586,
     nivel: 1,
@@ -5876,6 +6141,7 @@ export const POIS = [
   {
     id: "es_bur_aranda_duero",
     nombre: "Aranda de Duero",
+    emoji: "🏰",
     lat: 41.6717,
     lng: -3.6892,
     nivel: 1,
@@ -5894,6 +6160,7 @@ export const POIS = [
   {
     id: "es_bur_frias",
     nombre: "Frías",
+    emoji: "🏰",
     lat: 42.7608,
     lng: -3.2949,
     nivel: 1,
@@ -5912,6 +6179,7 @@ export const POIS = [
   {
     id: "es_bur_miranda_ebro",
     nombre: "Miranda de Ebro",
+    emoji: "🏰",
     lat: 42.6865,
     lng: -2.947,
     nivel: 1,
@@ -5930,6 +6198,7 @@ export const POIS = [
   {
     id: "es_bur_ona_san_salvador",
     nombre: "Monasterio de San Salvador de Oña",
+    emoji: "⛪",
     lat: 42.7356,
     lng: -3.4147,
     nivel: 2,
@@ -5948,6 +6217,7 @@ export const POIS = [
   {
     id: "es_bur_covarrubias",
     nombre: "Covarrubias",
+    emoji: "🏰",
     lat: 42.0598,
     lng: -3.5191,
     nivel: 2,
@@ -5966,6 +6236,7 @@ export const POIS = [
   {
     id: "es_bur_briviesca",
     nombre: "Briviesca",
+    emoji: "🏰",
     lat: 42.5492,
     lng: -3.3237,
     nivel: 2,
@@ -5984,6 +6255,7 @@ export const POIS = [
   {
     id: "es_bur_sasamon",
     nombre: "Sasamón",
+    emoji: "🏰",
     lat: 42.4173,
     lng: -4.0432,
     nivel: 2,
@@ -6002,6 +6274,7 @@ export const POIS = [
   {
     id: "es_bur_penaranda_duero",
     nombre: "Peñaranda de Duero",
+    emoji: "🏰",
     lat: 41.6886,
     lng: -3.4802,
     nivel: 2,
@@ -6020,6 +6293,7 @@ export const POIS = [
   {
     id: "es_bur_poza_sal",
     nombre: "Poza de la Sal",
+    emoji: "🏰",
     lat: 42.6654,
     lng: -3.5036,
     nivel: 2,
@@ -6038,6 +6312,7 @@ export const POIS = [
   {
     id: "es_bur_pancorbo_desfiladero",
     nombre: "Desfiladero de Pancorbo",
+    emoji: "🏔️",
     lat: 42.635,
     lng: -3.1108,
     nivel: 2,
@@ -6056,6 +6331,7 @@ export const POIS = [
   {
     id: "es_bur_orbaneja_castillo",
     nombre: "Orbaneja del Castillo",
+    emoji: "🪨",
     lat: 42.7572,
     lng: -3.7907,
     nivel: 2,
@@ -6075,6 +6351,7 @@ export const POIS = [
   {
     id: "es_leo_capital_leon",
     nombre: "León (capital de provincia)",
+    emoji: "🏛️",
     lat: 42.5987,
     lng: -5.5671,
     nivel: 1,
@@ -6113,6 +6390,7 @@ export const POIS = [
   {
     id: "es_leo_las_medulas",
     nombre: "Las Médulas",
+    emoji: "🌄",
     lat: 42.4614,
     lng: -6.7701,
     nivel: 1,
@@ -6131,6 +6409,7 @@ export const POIS = [
   {
     id: "es_leo_ponferrada",
     nombre: "Ponferrada",
+    emoji: "🏰",
     lat: 42.5463,
     lng: -6.5962,
     nivel: 1,
@@ -6160,6 +6439,7 @@ export const POIS = [
   {
     id: "es_leo_astorga",
     nombre: "Astorga",
+    emoji: "🏰",
     lat: 42.4588,
     lng: -6.056,
     nivel: 1,
@@ -6189,6 +6469,7 @@ export const POIS = [
   {
     id: "es_leo_villafranca_bierzo",
     nombre: "Villafranca del Bierzo",
+    emoji: "🏰",
     lat: 42.6074,
     lng: -6.81,
     nivel: 1,
@@ -6207,6 +6488,7 @@ export const POIS = [
   {
     id: "es_leo_carracedo",
     nombre: "Monasterio de Santa María de Carracedo",
+    emoji: "⛪",
     lat: 42.549,
     lng: -6.7368,
     nivel: 2,
@@ -6225,6 +6507,7 @@ export const POIS = [
   {
     id: "es_leo_hospital_orbigo",
     nombre: "Hospital de Órbigo",
+    emoji: "🏰",
     lat: 42.4635,
     lng: -5.8826,
     nivel: 2,
@@ -6243,6 +6526,7 @@ export const POIS = [
   {
     id: "es_leo_sahagun",
     nombre: "Sahagún",
+    emoji: "🏰",
     lat: 42.3721,
     lng: -5.0298,
     nivel: 2,
@@ -6261,6 +6545,7 @@ export const POIS = [
   {
     id: "es_leo_castrillo_polvazares",
     nombre: "Castrillo de los Polvazares",
+    emoji: "🏰",
     lat: 42.4629,
     lng: -6.1268,
     nivel: 2,
@@ -6279,6 +6564,7 @@ export const POIS = [
   {
     id: "es_leo_valencia_don_juan",
     nombre: "Valencia de Don Juan",
+    emoji: "🏰",
     lat: 42.2935,
     lng: -5.5207,
     nivel: 2,
@@ -6297,6 +6583,7 @@ export const POIS = [
   {
     id: "es_leo_mansilla_mulas",
     nombre: "Mansilla de las Mulas",
+    emoji: "🏰",
     lat: 42.4972,
     lng: -5.4176,
     nivel: 2,
@@ -6315,6 +6602,7 @@ export const POIS = [
   {
     id: "es_leo_la_baneza",
     nombre: "La Bañeza",
+    emoji: "🏰",
     lat: 42.3002,
     lng: -5.8977,
     nivel: 2,
@@ -6333,6 +6621,7 @@ export const POIS = [
   {
     id: "es_leo_hoces_vegacervera",
     nombre: "Hoces de Vegacervera",
+    emoji: "🏔️",
     lat: 42.9108,
     lng: -5.5401,
     nivel: 2,
@@ -6362,6 +6651,7 @@ export const POIS = [
   {
     id: "es_leo_puerto_pajares",
     nombre: "Puerto de Pajares",
+    emoji: "⛰️",
     lat: 42.9933,
     lng: -5.7596,
     nivel: 2,
@@ -6391,6 +6681,7 @@ export const POIS = [
   {
     id: "es_leo_bembibre",
     nombre: "Bembibre",
+    emoji: "📍",
     lat: 42.6171,
     lng: -6.415,
     nivel: 3,
@@ -6409,6 +6700,7 @@ export const POIS = [
   {
     id: "es_pal_villa_romana_olmeda",
     nombre: "Villa Romana La Olmeda",
+    emoji: "🏛️",
     lat: 42.0947,
     lng: -4.2588,
     nivel: 1,
@@ -6428,6 +6720,7 @@ export const POIS = [
   {
     id: "es_pal_capital_palencia",
     nombre: "Palencia (capital de provincia)",
+    emoji: "🏛️",
     lat: 42.0097,
     lng: -4.5288,
     nivel: 1,
@@ -6475,6 +6768,7 @@ export const POIS = [
   {
     id: "es_pal_aguilar_campoo",
     nombre: "Aguilar de Campoo",
+    emoji: "🏰",
     lat: 42.792,
     lng: -4.258,
     nivel: 1,
@@ -6504,6 +6798,7 @@ export const POIS = [
   {
     id: "es_pal_fromista",
     nombre: "Frómista",
+    emoji: "🏰",
     lat: 42.266,
     lng: -4.4069,
     nivel: 1,
@@ -6542,6 +6837,7 @@ export const POIS = [
   {
     id: "es_pal_carrion_condes",
     nombre: "Carrión de los Condes",
+    emoji: "🏰",
     lat: 42.3389,
     lng: -4.601,
     nivel: 1,
@@ -6560,6 +6856,7 @@ export const POIS = [
   {
     id: "es_pal_herrera_pisuerga",
     nombre: "Herrera de Pisuerga",
+    emoji: "🏰",
     lat: 42.5949,
     lng: -4.3301,
     nivel: 2,
@@ -6578,6 +6875,7 @@ export const POIS = [
   {
     id: "es_pal_ampudia",
     nombre: "Ampudia",
+    emoji: "🏰",
     lat: 41.9156,
     lng: -4.7808,
     nivel: 2,
@@ -6596,6 +6894,7 @@ export const POIS = [
   {
     id: "es_pal_villalcazar_sirga",
     nombre: "Villalcázar de Sirga",
+    emoji: "🏰",
     lat: 42.3154,
     lng: -4.5433,
     nivel: 2,
@@ -6614,6 +6913,7 @@ export const POIS = [
   {
     id: "es_pal_becerril_campos",
     nombre: "Becerril de Campos",
+    emoji: "🏰",
     lat: 42.1088,
     lng: -4.6396,
     nivel: 2,
@@ -6632,6 +6932,7 @@ export const POIS = [
   {
     id: "es_pal_baltanas",
     nombre: "Baltanás",
+    emoji: "🏰",
     lat: 41.9371,
     lng: -4.2462,
     nivel: 2,
@@ -6650,6 +6951,7 @@ export const POIS = [
   {
     id: "es_pal_saldana",
     nombre: "Saldaña",
+    emoji: "🏰",
     lat: 42.5216,
     lng: -4.735,
     nivel: 2,
@@ -6668,6 +6970,7 @@ export const POIS = [
   {
     id: "es_pal_paredes_nava",
     nombre: "Paredes de Nava",
+    emoji: "🏰",
     lat: 42.1524,
     lng: -4.692,
     nivel: 2,
@@ -6686,6 +6989,7 @@ export const POIS = [
   {
     id: "es_pal_duenas",
     nombre: "Dueñas",
+    emoji: "🏰",
     lat: 41.876,
     lng: -4.5455,
     nivel: 2,
@@ -6704,6 +7008,7 @@ export const POIS = [
   {
     id: "es_pal_cervera_pisuerga",
     nombre: "Cervera de Pisuerga",
+    emoji: "⛰️",
     lat: 42.8654,
     lng: -4.4992,
     nivel: 2,
@@ -6722,6 +7027,7 @@ export const POIS = [
   {
     id: "es_sal_castro_yecla",
     nombre: "Castro vetón de Yecla la Vieja",
+    emoji: "🏕️",
     lat: 40.9558,
     lng: -6.4906,
     nivel: 1,
@@ -6740,6 +7046,7 @@ export const POIS = [
   {
     id: "es_sal_siega_verde",
     nombre: "Yacimiento rupestre de Siega Verde",
+    emoji: "🎨",
     lat: 40.8864,
     lng: -6.6135,
     nivel: 1,
@@ -6759,6 +7066,7 @@ export const POIS = [
   {
     id: "es_sal_capital_salamanca",
     nombre: "Salamanca (capital de provincia)",
+    emoji: "🏛️",
     lat: 40.9701,
     lng: -5.6635,
     nivel: 1,
@@ -6788,6 +7096,7 @@ export const POIS = [
   {
     id: "es_sal_ciudad_rodrigo",
     nombre: "Ciudad Rodrigo",
+    emoji: "🏰",
     lat: 40.5972,
     lng: -6.5226,
     nivel: 1,
@@ -6806,6 +7115,7 @@ export const POIS = [
   {
     id: "es_sal_bejar",
     nombre: "Béjar",
+    emoji: "🏰",
     lat: 40.3864,
     lng: -5.7635,
     nivel: 1,
@@ -6835,6 +7145,7 @@ export const POIS = [
   {
     id: "es_sal_pena_francia",
     nombre: "Santuario de la Peña de Francia",
+    emoji: "🔭",
     lat: 40.492,
     lng: -6.1732,
     nivel: 1,
@@ -6873,6 +7184,7 @@ export const POIS = [
   {
     id: "es_sal_san_esteban_sierra",
     nombre: "San Esteban de la Sierra",
+    emoji: "🏰",
     lat: 40.5074,
     lng: -5.9068,
     nivel: 2,
@@ -6891,6 +7203,7 @@ export const POIS = [
   {
     id: "es_sal_san_martin_castanar",
     nombre: "San Martín del Castañar",
+    emoji: "🏰",
     lat: 40.5235,
     lng: -6.0642,
     nivel: 2,
@@ -6909,6 +7222,7 @@ export const POIS = [
   {
     id: "es_sal_mogarraz",
     nombre: "Mogarraz",
+    emoji: "🏰",
     lat: 40.4927,
     lng: -6.0538,
     nivel: 2,
@@ -6927,6 +7241,7 @@ export const POIS = [
   {
     id: "es_sal_alba_tormes",
     nombre: "Alba de Tormes",
+    emoji: "🏰",
     lat: 40.8278,
     lng: -5.5133,
     nivel: 2,
@@ -6945,6 +7260,7 @@ export const POIS = [
   {
     id: "es_sal_ledesma",
     nombre: "Ledesma",
+    emoji: "🏰",
     lat: 41.0924,
     lng: -6.0017,
     nivel: 2,
@@ -6963,6 +7279,7 @@ export const POIS = [
   {
     id: "es_sal_penaranda_bramonte",
     nombre: "Peñaranda de Bracamonte",
+    emoji: "🏰",
     lat: 40.901,
     lng: -5.2015,
     nivel: 2,
@@ -6981,6 +7298,7 @@ export const POIS = [
   {
     id: "es_sal_ruta_vino_sierra",
     nombre: "Viñedos de la Sierra de Salamanca",
+    emoji: "🍷",
     lat: 40.47,
     lng: -5.95,
     nivel: 2,
@@ -7010,6 +7328,7 @@ export const POIS = [
   {
     id: "es_sal_guijuelo",
     nombre: "Guijuelo",
+    emoji: "🍽️",
     lat: 40.5568,
     lng: -5.6702,
     nivel: 3,
@@ -7028,6 +7347,7 @@ export const POIS = [
   {
     id: "es_sal_fuentes_onoro",
     nombre: "Fuentes de Oñoro",
+    emoji: "🚩",
     lat: 40.5926,
     lng: -6.8106,
     nivel: 3,
@@ -7046,6 +7366,7 @@ export const POIS = [
   {
     id: "es_seg_castillo_coca",
     nombre: "Castillo de Coca",
+    emoji: "🏰",
     lat: 41.2168,
     lng: -4.5206,
     nivel: 1,
@@ -7076,6 +7397,7 @@ export const POIS = [
   {
     id: "es_seg_capital_segovia",
     nombre: "Segovia (capital de provincia)",
+    emoji: "🏛️",
     lat: 40.9481,
     lng: -4.1184,
     nivel: 1,
@@ -7141,6 +7463,7 @@ export const POIS = [
   {
     id: "es_seg_pedraza",
     nombre: "Pedraza",
+    emoji: "🏰",
     lat: 41.1303,
     lng: -3.8097,
     nivel: 1,
@@ -7159,6 +7482,7 @@ export const POIS = [
   {
     id: "es_seg_sepulveda",
     nombre: "Sepúlveda",
+    emoji: "🏰",
     lat: 41.2976,
     lng: -3.7487,
     nivel: 1,
@@ -7177,6 +7501,7 @@ export const POIS = [
   {
     id: "es_seg_cuellar",
     nombre: "Cuéllar",
+    emoji: "🏰",
     lat: 41.4028,
     lng: -4.3163,
     nivel: 1,
@@ -7206,6 +7531,7 @@ export const POIS = [
   {
     id: "es_seg_hoces_duraton",
     nombre: "Hoces del Río Duratón",
+    emoji: "🌿",
     lat: 41.308,
     lng: -3.8827,
     nivel: 1,
@@ -7224,6 +7550,7 @@ export const POIS = [
   {
     id: "es_seg_turegano",
     nombre: "Turégano",
+    emoji: "🏰",
     lat: 41.1547,
     lng: -4.0077,
     nivel: 2,
@@ -7242,6 +7569,7 @@ export const POIS = [
   {
     id: "es_seg_riaza",
     nombre: "Riaza",
+    emoji: "🏰",
     lat: 41.2788,
     lng: -3.4775,
     nivel: 2,
@@ -7260,6 +7588,7 @@ export const POIS = [
   {
     id: "es_seg_ayllon",
     nombre: "Ayllón",
+    emoji: "🏰",
     lat: 41.4198,
     lng: -3.3748,
     nivel: 2,
@@ -7278,6 +7607,7 @@ export const POIS = [
   {
     id: "es_seg_sotosalbos",
     nombre: "Sotosalbos",
+    emoji: "🏰",
     lat: 41.0356,
     lng: -3.942,
     nivel: 2,
@@ -7296,6 +7626,7 @@ export const POIS = [
   {
     id: "es_seg_santa_maria_nieva",
     nombre: "Santa María la Real de Nieva",
+    emoji: "🏰",
     lat: 41.0686,
     lng: -4.4042,
     nivel: 2,
@@ -7314,6 +7645,7 @@ export const POIS = [
   {
     id: "es_seg_navafria",
     nombre: "Puerto y Bosque de Navafría",
+    emoji: "🌲",
     lat: 41.0507,
     lng: -3.8056,
     nivel: 2,
@@ -7332,6 +7664,7 @@ export const POIS = [
   {
     id: "es_seg_villacastin",
     nombre: "Villacastín",
+    emoji: "🛣️",
     lat: 40.7798,
     lng: -4.4143,
     nivel: 3,
@@ -7350,6 +7683,7 @@ export const POIS = [
   {
     id: "es_sor_santa_maria_huerta",
     nombre: "Monasterio de Santa María de Huerta",
+    emoji: "⛪",
     lat: 41.2615,
     lng: -2.1795,
     nivel: 1,
@@ -7368,6 +7702,7 @@ export const POIS = [
   {
     id: "es_sor_medinaceli",
     nombre: "Medinaceli (villa histórica)",
+    emoji: "🏰",
     lat: 41.1721,
     lng: -2.436,
     nivel: 1,
@@ -7397,6 +7732,7 @@ export const POIS = [
   {
     id: "es_sor_gormaz",
     nombre: "Castillo de Gormaz",
+    emoji: "🏰",
     lat: 41.4913,
     lng: -3.0047,
     nivel: 1,
@@ -7416,6 +7752,7 @@ export const POIS = [
   {
     id: "es_sor_capital_soria",
     nombre: "Soria (capital de provincia)",
+    emoji: "🏛️",
     lat: 41.7636,
     lng: -2.4663,
     nivel: 1,
@@ -7463,6 +7800,7 @@ export const POIS = [
   {
     id: "es_sor_burgo_osma",
     nombre: "El Burgo de Osma",
+    emoji: "🏰",
     lat: 41.5865,
     lng: -3.0666,
     nivel: 1,
@@ -7481,6 +7819,7 @@ export const POIS = [
   {
     id: "es_sor_canon_rio_lobos",
     nombre: "Cañón del Río Lobos",
+    emoji: "🌿",
     lat: 41.7709,
     lng: -3.0457,
     nivel: 1,
@@ -7510,6 +7849,7 @@ export const POIS = [
   {
     id: "es_sor_laguna_negra",
     nombre: "Laguna Negra",
+    emoji: "🏔️",
     lat: 41.9717,
     lng: -2.8668,
     nivel: 1,
@@ -7539,6 +7879,7 @@ export const POIS = [
   {
     id: "es_sor_berlanga_duero",
     nombre: "Berlanga de Duero",
+    emoji: "🏰",
     lat: 41.4655,
     lng: -2.8611,
     nivel: 2,
@@ -7557,6 +7898,7 @@ export const POIS = [
   {
     id: "es_sor_yanguas",
     nombre: "Yanguas",
+    emoji: "🏰",
     lat: 42.101,
     lng: -2.339,
     nivel: 2,
@@ -7575,6 +7917,7 @@ export const POIS = [
   {
     id: "es_sor_san_esteban_gormaz",
     nombre: "San Esteban de Gormaz",
+    emoji: "🏰",
     lat: 41.5749,
     lng: -3.2057,
     nivel: 2,
@@ -7593,6 +7936,7 @@ export const POIS = [
   {
     id: "es_sor_vinuesa",
     nombre: "Vinuesa",
+    emoji: "🏰",
     lat: 41.9151,
     lng: -2.7631,
     nivel: 2,
@@ -7611,6 +7955,7 @@ export const POIS = [
   {
     id: "es_sor_calatanazor",
     nombre: "Calatañazor",
+    emoji: "🏰",
     lat: 41.7004,
     lng: -2.8179,
     nivel: 2,
@@ -7629,6 +7974,7 @@ export const POIS = [
   {
     id: "es_sor_almazan",
     nombre: "Almazán",
+    emoji: "🏰",
     lat: 41.4852,
     lng: -2.5336,
     nivel: 2,
@@ -7647,6 +7993,7 @@ export const POIS = [
   {
     id: "es_sor_arcos_jalon",
     nombre: "Arcos de Jalón (valle y paso histórico)",
+    emoji: "🏡",
     lat: 41.2149,
     lng: -2.2717,
     nivel: 3,
@@ -7666,6 +8013,7 @@ export const POIS = [
   {
     id: "es_val_capital_valladolid",
     nombre: "Valladolid (capital de provincia)",
+    emoji: "🏛️",
     lat: 41.6523,
     lng: -4.7245,
     nivel: 1,
@@ -7722,6 +8070,7 @@ export const POIS = [
   {
     id: "es_val_medina_campo",
     nombre: "Medina del Campo",
+    emoji: "🏰",
     lat: 41.3124,
     lng: -4.9151,
     nivel: 1,
@@ -7751,6 +8100,7 @@ export const POIS = [
   {
     id: "es_val_tordesillas",
     nombre: "Tordesillas",
+    emoji: "🏰",
     lat: 41.502,
     lng: -4.9991,
     nivel: 1,
@@ -7769,6 +8119,7 @@ export const POIS = [
   {
     id: "es_val_uruena",
     nombre: "Urueña",
+    emoji: "🏰",
     lat: 41.7285,
     lng: -5.0271,
     nivel: 1,
@@ -7787,6 +8138,7 @@ export const POIS = [
   {
     id: "es_val_penafiel",
     nombre: "Peñafiel",
+    emoji: "🏰",
     lat: 41.5944,
     lng: -4.1183,
     nivel: 1,
@@ -7816,6 +8168,7 @@ export const POIS = [
   {
     id: "es_val_castronuno",
     nombre: "Reserva Natural de Riberas de Castronuño",
+    emoji: "🦅",
     lat: 41.388,
     lng: -5.262,
     nivel: 1,
@@ -7834,6 +8187,7 @@ export const POIS = [
   {
     id: "es_val_olmedo",
     nombre: "Olmedo",
+    emoji: "🏰",
     lat: 41.2871,
     lng: -4.6848,
     nivel: 2,
@@ -7852,6 +8206,7 @@ export const POIS = [
   {
     id: "es_val_medina_rioseco",
     nombre: "Medina de Rioseco",
+    emoji: "🏰",
     lat: 41.8858,
     lng: -5.0423,
     nivel: 2,
@@ -7870,6 +8225,7 @@ export const POIS = [
   {
     id: "es_val_villalba_alcores",
     nombre: "Villalba de los Alcores",
+    emoji: "🏰",
     lat: 41.8643,
     lng: -4.8615,
     nivel: 2,
@@ -7888,6 +8244,7 @@ export const POIS = [
   {
     id: "es_val_nava_rey",
     nombre: "Nava del Rey",
+    emoji: "🏰",
     lat: 41.3316,
     lng: -5.0805,
     nivel: 2,
@@ -7906,6 +8263,7 @@ export const POIS = [
   {
     id: "es_val_villalon_campos",
     nombre: "Villalón de Campos",
+    emoji: "🏰",
     lat: 42.0995,
     lng: -5.0345,
     nivel: 2,
@@ -7924,6 +8282,7 @@ export const POIS = [
   {
     id: "es_val_tudela_duero",
     nombre: "Tudela de Duero",
+    emoji: "🏰",
     lat: 41.5848,
     lng: -4.5815,
     nivel: 2,
@@ -7942,6 +8301,7 @@ export const POIS = [
   {
     id: "es_val_portillo",
     nombre: "Castillo de Portillo",
+    emoji: "🏰",
     lat: 41.479,
     lng: -4.5881,
     nivel: 2,
@@ -7960,6 +8320,7 @@ export const POIS = [
   {
     id: "es_val_rueda",
     nombre: "Rueda",
+    emoji: "🍷",
     lat: 41.4144,
     lng: -4.957,
     nivel: 2,
@@ -7978,6 +8339,7 @@ export const POIS = [
   {
     id: "es_zam_castrotorafe",
     nombre: "Despoblado y castillo de Castrotorafe",
+    emoji: "🏰",
     lat: 41.7924,
     lng: -5.669,
     nivel: 1,
@@ -7996,6 +8358,7 @@ export const POIS = [
   {
     id: "es_zam_san_pedro_nave",
     nombre: "Iglesia de San Pedro de la Nave",
+    emoji: "⛪",
     lat: 41.7275,
     lng: -5.6931,
     nivel: 1,
@@ -8015,6 +8378,7 @@ export const POIS = [
   {
     id: "es_zam_capital_zamora",
     nombre: "Zamora (capital de provincia)",
+    emoji: "🏛️",
     lat: 41.5035,
     lng: -5.7468,
     nivel: 1,
@@ -8033,6 +8397,7 @@ export const POIS = [
   {
     id: "es_zam_puebla_sanabria",
     nombre: "Puebla de Sanabria",
+    emoji: "🏰",
     lat: 42.0547,
     lng: -6.6335,
     nivel: 1,
@@ -8051,6 +8416,7 @@ export const POIS = [
   {
     id: "es_zam_benavente",
     nombre: "Benavente",
+    emoji: "🏰",
     lat: 42.0021,
     lng: -5.6783,
     nivel: 1,
@@ -8069,6 +8435,7 @@ export const POIS = [
   {
     id: "es_zam_toro",
     nombre: "Toro",
+    emoji: "🏰",
     lat: 41.5218,
     lng: -5.395,
     nivel: 1,
@@ -8098,6 +8465,7 @@ export const POIS = [
   {
     id: "es_zam_arribes_duero",
     nombre: "Arribes del Duero (miradores zamoranos)",
+    emoji: "🌿",
     lat: 41.285,
     lng: -6.423,
     nivel: 1,
@@ -8127,6 +8495,7 @@ export const POIS = [
   {
     id: "es_zam_lago_sanabria",
     nombre: "Lago de Sanabria",
+    emoji: "🏔️",
     lat: 42.1173,
     lng: -6.729,
     nivel: 1,
@@ -8156,6 +8525,7 @@ export const POIS = [
   {
     id: "es_zam_moreruela",
     nombre: "Monasterio de Santa María de Moreruela",
+    emoji: "⛪",
     lat: 41.7003,
     lng: -5.7052,
     nivel: 2,
@@ -8174,6 +8544,7 @@ export const POIS = [
   {
     id: "es_zam_fuentesauco",
     nombre: "Fuentesaúco",
+    emoji: "🏰",
     lat: 41.2288,
     lng: -5.495,
     nivel: 2,
@@ -8192,6 +8563,7 @@ export const POIS = [
   {
     id: "es_zam_tabara",
     nombre: "Tábara",
+    emoji: "🏰",
     lat: 41.8259,
     lng: -5.9608,
     nivel: 2,
@@ -8210,6 +8582,7 @@ export const POIS = [
   {
     id: "es_zam_villardeciervos",
     nombre: "Villardeciervos",
+    emoji: "🏰",
     lat: 41.9411,
     lng: -6.2854,
     nivel: 2,
@@ -8228,6 +8601,7 @@ export const POIS = [
   {
     id: "es_zam_villalpando",
     nombre: "Villalpando",
+    emoji: "🏰",
     lat: 41.865,
     lng: -5.411,
     nivel: 2,
@@ -8246,6 +8620,7 @@ export const POIS = [
   {
     id: "es_zam_alcanices",
     nombre: "Alcañices",
+    emoji: "🏰",
     lat: 41.6995,
     lng: -6.3468,
     nivel: 2,
@@ -8264,6 +8639,7 @@ export const POIS = [
   {
     id: "es_zam_castro_sanabria",
     nombre: "Castro de Sanabria",
+    emoji: "🏰",
     lat: 42.015,
     lng: -6.6306,
     nivel: 2,
@@ -8282,6 +8658,7 @@ export const POIS = [
   {
     id: "es_zam_santa_marta_tera",
     nombre: "Santa Marta de Tera",
+    emoji: "🏰",
     lat: 41.9957,
     lng: -5.9307,
     nivel: 2,
@@ -8300,6 +8677,7 @@ export const POIS = [
   {
     id: "es_zam_mombuey",
     nombre: "Mombuey",
+    emoji: "📍",
     lat: 42.0228,
     lng: -6.3304,
     nivel: 3,
@@ -8319,6 +8697,7 @@ export const POIS = [
   {
     id: "es_avi_capital_avila",
     nombre: "Ávila (capital de provincia)",
+    emoji: "🏛️",
     lat: 40.6566,
     lng: -4.7004,
     nivel: 1,
@@ -8366,6 +8745,7 @@ export const POIS = [
   {
     id: "es_avi_arevalo",
     nombre: "Arévalo",
+    emoji: "🏰",
     lat: 41.0648,
     lng: -4.7204,
     nivel: 1,
@@ -8395,6 +8775,7 @@ export const POIS = [
   {
     id: "es_avi_plataforma_gredos",
     nombre: "Plataforma de Gredos",
+    emoji: "🌲",
     lat: 40.2597,
     lng: -5.2703,
     nivel: 1,
@@ -8424,6 +8805,7 @@ export const POIS = [
   {
     id: "es_avi_valle_iruelas",
     nombre: "Reserva Natural del Valle de Iruelas",
+    emoji: "🦅",
     lat: 40.368,
     lng: -4.5755,
     nivel: 1,
@@ -8453,6 +8835,7 @@ export const POIS = [
   {
     id: "es_avi_barco_avila",
     nombre: "El Barco de Ávila",
+    emoji: "🏰",
     lat: 40.3587,
     lng: -5.523,
     nivel: 2,
@@ -8471,6 +8854,7 @@ export const POIS = [
   {
     id: "es_avi_navas_marques",
     nombre: "Las Navas del Marqués",
+    emoji: "🏰",
     lat: 40.6033,
     lng: -4.334,
     nivel: 2,
@@ -8500,6 +8884,7 @@ export const POIS = [
   {
     id: "es_avi_mombeltran",
     nombre: "Mombeltrán",
+    emoji: "🏰",
     lat: 40.2608,
     lng: -5.0145,
     nivel: 2,
@@ -8518,6 +8903,7 @@ export const POIS = [
   {
     id: "es_avi_cebreros",
     nombre: "Cebreros",
+    emoji: "🏰",
     lat: 40.4569,
     lng: -4.4655,
     nivel: 2,
@@ -8536,6 +8922,7 @@ export const POIS = [
   {
     id: "es_avi_tiemblo",
     nombre: "El Tiemblo",
+    emoji: "🏰",
     lat: 40.416,
     lng: -4.5027,
     nivel: 2,
@@ -8554,6 +8941,7 @@ export const POIS = [
   {
     id: "es_avi_madrigal_altas_torres",
     nombre: "Madrigal de las Altas Torres",
+    emoji: "🏰",
     lat: 41.0891,
     lng: -4.9979,
     nivel: 2,
@@ -8572,6 +8960,7 @@ export const POIS = [
   {
     id: "es_avi_castillo_adrada",
     nombre: "Castillo de La Adrada",
+    emoji: "🏰",
     lat: 40.2986,
     lng: -4.6343,
     nivel: 2,
@@ -8590,6 +8979,7 @@ export const POIS = [
   {
     id: "es_avi_puerto_pico",
     nombre: "Puerto del Pico",
+    emoji: "⛰️",
     lat: 40.3553,
     lng: -5.0107,
     nivel: 2,
@@ -8608,6 +8998,7 @@ export const POIS = [
   {
     id: "es_avi_adanero_nudo",
     nombre: "Adanero (nudo histórico de la A-6 y AP-6)",
+    emoji: "🛣️",
     lat: 40.9448,
     lng: -4.6045,
     nivel: 3,
@@ -8627,6 +9018,7 @@ export const POIS = [
   {
     id: "es_clm_alb_albacete_capital",
     nombre: "Albacete (capital funcional del gran corredor hacia Alicante y Valencia)",
+    emoji: "🏛️",
     lat: 38.9942,
     lng: -1.8585,
     nivel: 1,
@@ -8645,6 +9037,7 @@ export const POIS = [
   {
     id: "es_clm_alb_almansa",
     nombre: "Almansa (castillo y gran cruce entre Castilla-La Mancha, Murcia y Valencia)",
+    emoji: "🏰",
     lat: 38.868,
     lng: -1.0975,
     nivel: 1,
@@ -8663,6 +9056,7 @@ export const POIS = [
   {
     id: "es_clm_alb_alcala_jucar",
     nombre: "Alcalá del Júcar (uno de los pueblos más espectaculares del este peninsular)",
+    emoji: "🏰",
     lat: 39.193,
     lng: -1.4302,
     nivel: 1,
@@ -8692,6 +9086,7 @@ export const POIS = [
   {
     id: "es_clm_alb_nacimiento_rio_mundo",
     nombre: "Nacimiento del Río Mundo (gran icono natural del sur de Albacete)",
+    emoji: "🌄",
     lat: 38.4732,
     lng: -2.4236,
     nivel: 1,
@@ -8721,6 +9116,7 @@ export const POIS = [
   {
     id: "es_clm_alb_chinchilla",
     nombre: "Chinchilla de Montearagón (balcón amurallado sobre Albacete)",
+    emoji: "🏰",
     lat: 38.921,
     lng: -1.7221,
     nivel: 1,
@@ -8739,6 +9135,7 @@ export const POIS = [
   {
     id: "es_clm_alb_ayna",
     nombre: "Ayna (la Suiza manchega en el cañón del Mundo)",
+    emoji: "🌄",
     lat: 38.5531,
     lng: -2.0701,
     nivel: 1,
@@ -8757,6 +9154,7 @@ export const POIS = [
   {
     id: "es_clm_alb_hellin",
     nombre: "Hellín (gran enlace del sureste y ciudad de tambor)",
+    emoji: "🛤️",
     lat: 38.5106,
     lng: -1.7007,
     nivel: 1,
@@ -8786,6 +9184,7 @@ export const POIS = [
   {
     id: "es_clm_alb_la_roda",
     nombre: "La Roda (parada clásica de la A-31 entre Madrid y Levante)",
+    emoji: "🛤️",
     lat: 39.2074,
     lng: -2.1575,
     nivel: 2,
@@ -8804,6 +9203,7 @@ export const POIS = [
   {
     id: "es_clm_alb_villarrobledo",
     nombre: "Villarrobledo (vino, tinajas y gran nudo del noroeste albaceteño)",
+    emoji: "🛤️",
     lat: 39.2683,
     lng: -2.6011,
     nivel: 2,
@@ -8822,6 +9222,7 @@ export const POIS = [
   {
     id: "es_clm_alb_lietor",
     nombre: "Liétor (balcones y callejas sobre el valle del Mundo)",
+    emoji: "🏰",
     lat: 38.5412,
     lng: -1.9536,
     nivel: 2,
@@ -8840,6 +9241,7 @@ export const POIS = [
   {
     id: "es_clm_alb_casas_ibanez",
     nombre: "Casas-Ibáñez (cabecera de la Manchuela y enlace hacia el valle del Cabriel)",
+    emoji: "🛤️",
     lat: 39.2851,
     lng: -1.4713,
     nivel: 2,
@@ -8869,6 +9271,7 @@ export const POIS = [
   {
     id: "es_clm_alb_montealegre_castillo",
     nombre: "Montealegre del Castillo (perfil fortificado junto a la A-31)",
+    emoji: "🏰",
     lat: 38.7875,
     lng: -1.3253,
     nivel: 2,
@@ -8887,6 +9290,7 @@ export const POIS = [
   {
     id: "es_clm_alb_caudete",
     nombre: "Caudete (último gran enclave antes del Vinalopó)",
+    emoji: "🏰",
     lat: 38.7064,
     lng: -0.9887,
     nivel: 2,
@@ -8905,6 +9309,7 @@ export const POIS = [
   {
     id: "es_clm_alb_minaya",
     nombre: "Minaya (llanura manchega junto al corredor principal)",
+    emoji: "🛤️",
     lat: 39.2712,
     lng: -2.3198,
     nivel: 3,
@@ -8923,6 +9328,7 @@ export const POIS = [
   {
     id: "es_clm_alb_la_gineta",
     nombre: "La Gineta (tramo de llanura y tradición en la A-31)",
+    emoji: "🛤️",
     lat: 39.1123,
     lng: -1.996,
     nivel: 3,
@@ -8941,6 +9347,7 @@ export const POIS = [
   {
     id: "es_clm_alb_bonete",
     nombre: "Bonete (llanuras de transición en la autovía hacia Levante)",
+    emoji: "🛤️",
     lat: 38.8897,
     lng: -1.3486,
     nivel: 3,
@@ -8960,6 +9367,7 @@ export const POIS = [
   {
     id: "es_clm_cue_cuenca_capital",
     nombre: "Cuenca (ciudad histórica y gran desvío recomendado desde la A-3)",
+    emoji: "🏛️",
     lat: 40.0704,
     lng: -2.1374,
     nivel: 1,
@@ -8998,6 +9406,7 @@ export const POIS = [
   {
     id: "es_clm_cue_segobriga",
     nombre: "Segóbriga (gran ciudad romana muy cerca del corredor A-3/A-40)",
+    emoji: "🏛️",
     lat: 40.0315,
     lng: -2.8127,
     nivel: 1,
@@ -9027,6 +9436,7 @@ export const POIS = [
   {
     id: "es_clm_cue_alarcon",
     nombre: "Alarcón (villa amurallada sobre el embalse)",
+    emoji: "🏰",
     lat: 39.5469,
     lng: -2.0848,
     nivel: 1,
@@ -9056,6 +9466,7 @@ export const POIS = [
   {
     id: "es_clm_cue_tarancon",
     nombre: "Tarancón (nudo clave de la A-3 y puerta occidental de Cuenca)",
+    emoji: "🛤️",
     lat: 40.01,
     lng: -3.01,
     nivel: 1,
@@ -9085,6 +9496,7 @@ export const POIS = [
   {
     id: "es_clm_cue_ciudad_encantada",
     nombre: "Ciudad Encantada (formaciones kársticas icónicas de la Serranía)",
+    emoji: "🪨",
     lat: 40.2243,
     lng: -2.0226,
     nivel: 1,
@@ -9114,6 +9526,7 @@ export const POIS = [
   {
     id: "es_clm_cue_belmonte",
     nombre: "Belmonte (castillo cinematográfico en la conexión con la A-3)",
+    emoji: "🏰",
     lat: 39.5599,
     lng: -2.708,
     nivel: 1,
@@ -9132,6 +9545,7 @@ export const POIS = [
   {
     id: "es_clm_cue_san_clemente",
     nombre: "San Clemente (gran villa renacentista del suroeste conquense)",
+    emoji: "🏰",
     lat: 39.4012,
     lng: -2.4283,
     nivel: 2,
@@ -9150,6 +9564,7 @@ export const POIS = [
   {
     id: "es_clm_cue_castillo_garcimunoz",
     nombre: "Castillo de Garcimuñoz (fortaleza junto al eje A-3/A-43)",
+    emoji: "🏰",
     lat: 39.6598,
     lng: -2.3818,
     nivel: 2,
@@ -9168,6 +9583,7 @@ export const POIS = [
   {
     id: "es_clm_cue_huete",
     nombre: "Huete (conventos y patrimonio en el enlace hacia la A-40)",
+    emoji: "🏰",
     lat: 40.1459,
     lng: -2.6908,
     nivel: 2,
@@ -9186,6 +9602,7 @@ export const POIS = [
   {
     id: "es_clm_cue_las_pedroneras",
     nombre: "Las Pedroñeras (capital del ajo morado en el corredor manchego)",
+    emoji: "🍽️",
     lat: 39.45,
     lng: -2.6808,
     nivel: 2,
@@ -9204,6 +9621,7 @@ export const POIS = [
   {
     id: "es_clm_cue_motilla_palancar",
     nombre: "Motilla del Palancar (cruce estratégico hacia la Manchuela)",
+    emoji: "🛤️",
     lat: 39.5657,
     lng: -1.9121,
     nivel: 2,
@@ -9222,6 +9640,7 @@ export const POIS = [
   {
     id: "es_clm_cue_minglanilla",
     nombre: "Minglanilla (último gran balcón conquense antes de Valencia)",
+    emoji: "🛤️",
     lat: 39.5338,
     lng: -1.6009,
     nivel: 2,
@@ -9240,6 +9659,7 @@ export const POIS = [
   {
     id: "es_clm_cue_honrubia",
     nombre: "Honrubia (paso histórico de llanuras y ventas hacia Levante)",
+    emoji: "🛤️",
     lat: 39.6131,
     lng: -2.284,
     nivel: 2,
@@ -9258,6 +9678,7 @@ export const POIS = [
   {
     id: "es_clm_cue_sisante",
     nombre: "Sisante (desvío manchego con trazado tradicional)",
+    emoji: "🛤️",
     lat: 39.4099,
     lng: -2.202,
     nivel: 2,
@@ -9276,6 +9697,7 @@ export const POIS = [
   {
     id: "es_gua_siguenca_casco",
     nombre: "Sigüenza (casco medieval)",
+    emoji: "🏰",
     lat: 41.0666189,
     lng: -2.6524928,
     nivel: 1,
@@ -9324,6 +9746,7 @@ export const POIS = [
   {
     id: "es_clm_gua_guadalajara_capital",
     nombre: "Guadalajara (gran puerta de entrada desde Madrid por la A-2)",
+    emoji: "🏛️",
     lat: 40.6337,
     lng: -3.1669,
     nivel: 1,
@@ -9380,6 +9803,7 @@ export const POIS = [
   {
     id: "es_clm_gua_alto_tajo",
     nombre: "Parque Natural del Alto Tajo (gran reserva de cañones y pinares)",
+    emoji: "🌿",
     lat: 40.896,
     lng: -1.896,
     nivel: 1,
@@ -9409,6 +9833,7 @@ export const POIS = [
   {
     id: "es_clm_gua_brihuega",
     nombre: "Brihuega (jardines, murallas y la Alcarria más conocida)",
+    emoji: "🏰",
     lat: 40.7595,
     lng: -2.8705,
     nivel: 1,
@@ -9438,6 +9863,7 @@ export const POIS = [
   {
     id: "es_clm_gua_recopolis",
     nombre: "Recópolis (ciudad visigoda junto al Tajo)",
+    emoji: "🏛️",
     lat: 40.3378,
     lng: -2.8818,
     nivel: 1,
@@ -9467,6 +9893,7 @@ export const POIS = [
   {
     id: "es_clm_gua_pastrana",
     nombre: "Pastrana (duques, conventos y trazado histórico)",
+    emoji: "🏰",
     lat: 40.4191,
     lng: -2.9227,
     nivel: 1,
@@ -9496,6 +9923,7 @@ export const POIS = [
   {
     id: "es_clm_gua_atienza",
     nombre: "Atienza (fortaleza de frontera y silueta medieval)",
+    emoji: "🏰",
     lat: 41.1978,
     lng: -2.87,
     nivel: 2,
@@ -9514,6 +9942,7 @@ export const POIS = [
   {
     id: "es_clm_gua_torija",
     nombre: "Torija (castillo y hito clásico del corredor A-2)",
+    emoji: "🏰",
     lat: 40.744,
     lng: -3.0302,
     nivel: 2,
@@ -9543,6 +9972,7 @@ export const POIS = [
   {
     id: "es_clm_gua_entrepenas",
     nombre: "Embalse de Entrepeñas (gran horizonte de agua de la Alcarria)",
+    emoji: "💧",
     lat: 40.486,
     lng: -2.717,
     nivel: 2,
@@ -9581,6 +10011,7 @@ export const POIS = [
   {
     id: "es_clm_gua_jadraque",
     nombre: "Jadraque (castillo del Cid sobre el valle del Henares)",
+    emoji: "🏰",
     lat: 40.9256,
     lng: -2.9251,
     nivel: 2,
@@ -9599,6 +10030,7 @@ export const POIS = [
   {
     id: "es_clm_gua_tamajon",
     nombre: "Tamajón (puerta de la arquitectura negra)",
+    emoji: "🛤️",
     lat: 40.9999,
     lng: -3.2487,
     nivel: 2,
@@ -9617,6 +10049,7 @@ export const POIS = [
   {
     id: "es_clm_gua_trillo",
     nombre: "Trillo (río, cascadas urbanas y energía)",
+    emoji: "🌊",
     lat: 40.7004,
     lng: -2.5931,
     nivel: 2,
@@ -9635,6 +10068,7 @@ export const POIS = [
   {
     id: "es_clm_gua_hita",
     nombre: "Hita (villa medieval junto al eje Madrid-Zaragoza)",
+    emoji: "🏰",
     lat: 40.8248,
     lng: -3.0492,
     nivel: 2,
@@ -9653,6 +10087,7 @@ export const POIS = [
   {
     id: "es_clm_gua_cogolludo",
     nombre: "Cogolludo (palacio renacentista en la sierra norte)",
+    emoji: "🏰",
     lat: 40.946,
     lng: -3.0896,
     nivel: 2,
@@ -9671,6 +10106,7 @@ export const POIS = [
   {
     id: "es_clm_gua_cifuentes",
     nombre: "Cifuentes (manantiales, plaza mayor y señorío)",
+    emoji: "🏰",
     lat: 40.7865,
     lng: -2.622,
     nivel: 2,
@@ -9689,6 +10125,7 @@ export const POIS = [
   {
     id: "es_gua_salinas_imon",
     nombre: "Salinas de Imón (patrimonio salinero)",
+    emoji: "🧂",
     lat: 41.1600875,
     lng: -2.7391867,
     nivel: 3,
@@ -9707,6 +10144,7 @@ export const POIS = [
   {
     id: "es_gua_alcolea_pinar_nudo",
     nombre: "Alcolea del Pinar (nudo A2 / N-211)",
+    emoji: "🏡",
     lat: 41.0355,
     lng: -2.467,
     nivel: 3,
@@ -9726,6 +10164,7 @@ export const POIS = [
   {
     id: "es_cat_bar_barcelona",
     nombre: "Barcelona (capital de provincia)",
+    emoji: "🏛️",
     lat: 41.3874,
     lng: 2.1686,
     nivel: 1,
@@ -9755,6 +10194,7 @@ export const POIS = [
   {
     id: "es_cat_bar_montserrat_monasterio",
     nombre: "Monasterio de Montserrat",
+    emoji: "⛪",
     lat: 41.5933,
     lng: 1.8372,
     nivel: 1,
@@ -9773,6 +10213,7 @@ export const POIS = [
   {
     id: "es_cat_bar_cardona",
     nombre: "Cardona y su castillo",
+    emoji: "🏰",
     lat: 41.913,
     lng: 1.681,
     nivel: 1,
@@ -9791,6 +10232,7 @@ export const POIS = [
   {
     id: "es_cat_bar_montseny",
     nombre: "Parque Natural del Montseny",
+    emoji: "🌿",
     lat: 41.775,
     lng: 2.464,
     nivel: 1,
@@ -9809,6 +10251,7 @@ export const POIS = [
   {
     id: "es_cat_bar_sitges",
     nombre: "Sitges",
+    emoji: "🐚",
     lat: 41.235,
     lng: 1.8119,
     nivel: 1,
@@ -9827,6 +10270,7 @@ export const POIS = [
   {
     id: "es_cat_bar_vic",
     nombre: "Vic",
+    emoji: "🏘️",
     lat: 41.93,
     lng: 2.254,
     nivel: 2,
@@ -9845,6 +10289,7 @@ export const POIS = [
   {
     id: "es_cat_bar_colonia_guell",
     nombre: "Colònia Güell y la cripta de Gaudí",
+    emoji: "🏭",
     lat: 41.3617,
     lng: 2.0289,
     nivel: 2,
@@ -9863,6 +10308,7 @@ export const POIS = [
   {
     id: "es_cat_bar_sant_sadurni_cava",
     nombre: "Sant Sadurní d’Anoia y la cultura del cava",
+    emoji: "🍷",
     lat: 41.425,
     lng: 1.785,
     nivel: 2,
@@ -9881,6 +10327,7 @@ export const POIS = [
   {
     id: "es_cat_bar_terrassa",
     nombre: "Terrassa y el modernismo industrial",
+    emoji: "🏙️",
     lat: 41.5632,
     lng: 2.0089,
     nivel: 2,
@@ -9899,6 +10346,7 @@ export const POIS = [
   {
     id: "es_cat_bar_manresa",
     nombre: "Manresa",
+    emoji: "🏙️",
     lat: 41.726,
     lng: 1.823,
     nivel: 2,
@@ -9917,6 +10365,7 @@ export const POIS = [
   {
     id: "es_cat_bar_vilafranca_penedes",
     nombre: "Vilafranca del Penedès",
+    emoji: "🏘️",
     lat: 41.345,
     lng: 1.699,
     nivel: 2,
@@ -9935,6 +10384,7 @@ export const POIS = [
   {
     id: "es_cat_bar_mataro",
     nombre: "Mataró",
+    emoji: "🏘️",
     lat: 41.5381,
     lng: 2.4445,
     nivel: 2,
@@ -9953,6 +10403,7 @@ export const POIS = [
   {
     id: "es_cat_bar_garraf",
     nombre: "Parque del Garraf",
+    emoji: "🌿",
     lat: 41.31,
     lng: 1.87,
     nivel: 2,
@@ -9971,6 +10422,7 @@ export const POIS = [
   {
     id: "es_cat_bar_castelldefels",
     nombre: "Castelldefels y su castillo",
+    emoji: "⚓",
     lat: 41.28,
     lng: 1.976,
     nivel: 2,
@@ -9989,6 +10441,7 @@ export const POIS = [
   {
     id: "es_cat_bar_granollers",
     nombre: "Granollers",
+    emoji: "🏙️",
     lat: 41.6079,
     lng: 2.2877,
     nivel: 2,
@@ -10018,6 +10471,7 @@ export const POIS = [
   {
     id: "es_cat_bar_caldes_montbui",
     nombre: "Caldes de Montbui",
+    emoji: "♨️",
     lat: 41.6322,
     lng: 2.1649,
     nivel: 2,
@@ -10036,6 +10490,7 @@ export const POIS = [
   {
     id: "es_cat_bar_sabadell",
     nombre: "Sabadell",
+    emoji: "🏙️",
     lat: 41.5463,
     lng: 2.1086,
     nivel: 2,
@@ -10054,6 +10509,7 @@ export const POIS = [
   {
     id: "es_cat_bar_igualada",
     nombre: "Igualada",
+    emoji: "🏙️",
     lat: 41.5788,
     lng: 1.6172,
     nivel: 2,
@@ -10073,6 +10529,7 @@ export const POIS = [
   {
     id: "es_cat_gi_girona",
     nombre: "Girona (capital de provincia)",
+    emoji: "🏛️",
     lat: 41.9794,
     lng: 2.8214,
     nivel: 1,
@@ -10091,6 +10548,7 @@ export const POIS = [
   {
     id: "es_cat_gi_garrotxa",
     nombre: "Parque Natural de la Zona Volcánica de la Garrotxa",
+    emoji: "🌿",
     lat: 42.155,
     lng: 2.513,
     nivel: 1,
@@ -10120,6 +10578,7 @@ export const POIS = [
   {
     id: "es_cat_gi_besalu",
     nombre: "Besalú",
+    emoji: "🏰",
     lat: 42.2,
     lng: 2.6997,
     nivel: 1,
@@ -10138,6 +10597,7 @@ export const POIS = [
   {
     id: "es_cat_gi_ripoll",
     nombre: "Ripoll",
+    emoji: "🏰",
     lat: 42.2007,
     lng: 2.1903,
     nivel: 1,
@@ -10156,6 +10616,7 @@ export const POIS = [
   {
     id: "es_cat_gi_figueres",
     nombre: "Figueres",
+    emoji: "🏙️",
     lat: 42.2666,
     lng: 2.9616,
     nivel: 1,
@@ -10194,6 +10655,7 @@ export const POIS = [
   {
     id: "es_cat_gi_cadaques",
     nombre: "Cadaqués",
+    emoji: "🐚",
     lat: 42.2887,
     lng: 3.2784,
     nivel: 1,
@@ -10212,6 +10674,7 @@ export const POIS = [
   {
     id: "es_cat_gi_tossa",
     nombre: "Tossa de Mar",
+    emoji: "🐚",
     lat: 41.7206,
     lng: 2.9323,
     nivel: 1,
@@ -10230,6 +10693,7 @@ export const POIS = [
   {
     id: "es_cat_gi_pals",
     nombre: "Pals",
+    emoji: "🏰",
     lat: 41.9703,
     lng: 3.1481,
     nivel: 1,
@@ -10248,6 +10712,7 @@ export const POIS = [
   {
     id: "es_cat_gi_banyoles",
     nombre: "Banyoles y su lago",
+    emoji: "🏞️",
     lat: 42.1167,
     lng: 2.7667,
     nivel: 2,
@@ -10266,6 +10731,7 @@ export const POIS = [
   {
     id: "es_cat_gi_camprodon",
     nombre: "Camprodon",
+    emoji: "⛰️",
     lat: 42.3128,
     lng: 2.364,
     nivel: 2,
@@ -10284,6 +10750,7 @@ export const POIS = [
   {
     id: "es_cat_gi_castello_empuries",
     nombre: "Castelló d’Empúries",
+    emoji: "🏰",
     lat: 42.258,
     lng: 3.075,
     nivel: 2,
@@ -10302,6 +10769,7 @@ export const POIS = [
   {
     id: "es_cat_gi_portbou",
     nombre: "Portbou",
+    emoji: "🚩",
     lat: 42.4276,
     lng: 3.1593,
     nivel: 2,
@@ -10320,6 +10788,7 @@ export const POIS = [
   {
     id: "es_cat_gi_puigcerda",
     nombre: "Puigcerdà",
+    emoji: "🏘️",
     lat: 42.4314,
     lng: 1.9287,
     nivel: 2,
@@ -10338,6 +10807,7 @@ export const POIS = [
   {
     id: "es_cat_gi_roses",
     nombre: "Roses",
+    emoji: "⚓",
     lat: 42.2629,
     lng: 3.1748,
     nivel: 2,
@@ -10356,6 +10826,7 @@ export const POIS = [
   {
     id: "es_cat_gi_sant_feliu",
     nombre: "Sant Feliu de Guíxols",
+    emoji: "⚓",
     lat: 41.7807,
     lng: 3.0307,
     nivel: 2,
@@ -10374,6 +10845,7 @@ export const POIS = [
   {
     id: "es_cat_gi_hostalric",
     nombre: "Hostalric y su fortaleza",
+    emoji: "🏰",
     lat: 41.7468,
     lng: 2.6356,
     nivel: 2,
@@ -10392,6 +10864,7 @@ export const POIS = [
   {
     id: "es_cat_gi_bisbal_emporda",
     nombre: "La Bisbal d’Empordà",
+    emoji: "🏙️",
     lat: 41.9606,
     lng: 3.0419,
     nivel: 2,
@@ -10411,6 +10884,7 @@ export const POIS = [
   {
     id: "es_cat_lle_lleida",
     nombre: "Lleida (capital de provincia)",
+    emoji: "🏛️",
     lat: 41.6176,
     lng: 0.62,
     nivel: 1,
@@ -10440,6 +10914,7 @@ export const POIS = [
   {
     id: "es_cat_lle_mont_rebei",
     nombre: "Congost de Mont-rebei",
+    emoji: "🏔️",
     lat: 42.0731,
     lng: 0.7386,
     nivel: 1,
@@ -10458,6 +10933,7 @@ export const POIS = [
   {
     id: "es_cat_lle_vall_boi",
     nombre: "Vall de Boí",
+    emoji: "🌄",
     lat: 42.504,
     lng: 0.803,
     nivel: 1,
@@ -10487,6 +10963,7 @@ export const POIS = [
   {
     id: "es_cat_lle_seu_urgell",
     nombre: "La Seu d’Urgell",
+    emoji: "🏘️",
     lat: 42.3567,
     lng: 1.4636,
     nivel: 1,
@@ -10505,6 +10982,7 @@ export const POIS = [
   {
     id: "es_cat_lle_vielha",
     nombre: "Vielha e Mijaran",
+    emoji: "🏘️",
     lat: 42.7014,
     lng: 0.7956,
     nivel: 1,
@@ -10523,6 +11001,7 @@ export const POIS = [
   {
     id: "es_cat_lle_cervera",
     nombre: "Cervera",
+    emoji: "🏰",
     lat: 41.6683,
     lng: 1.2752,
     nivel: 2,
@@ -10541,6 +11020,7 @@ export const POIS = [
   {
     id: "es_cat_lle_solsona",
     nombre: "Solsona",
+    emoji: "🏰",
     lat: 41.9949,
     lng: 1.5171,
     nivel: 2,
@@ -10559,6 +11039,7 @@ export const POIS = [
   {
     id: "es_cat_lle_sort",
     nombre: "Sort",
+    emoji: "⛰️",
     lat: 42.4103,
     lng: 1.1302,
     nivel: 2,
@@ -10577,6 +11058,7 @@ export const POIS = [
   {
     id: "es_cat_lle_guimera",
     nombre: "Guimerà",
+    emoji: "🏰",
     lat: 41.566,
     lng: 1.1857,
     nivel: 2,
@@ -10595,6 +11077,7 @@ export const POIS = [
   {
     id: "es_cat_lle_estany_ivars",
     nombre: "Estany d’Ivars i Vila-sana",
+    emoji: "🌿",
     lat: 41.6807,
     lng: 0.9912,
     nivel: 2,
@@ -10613,6 +11096,7 @@ export const POIS = [
   {
     id: "es_cat_lle_balaguer",
     nombre: "Balaguer",
+    emoji: "🏙️",
     lat: 41.7892,
     lng: 0.805,
     nivel: 2,
@@ -10631,6 +11115,7 @@ export const POIS = [
   {
     id: "es_cat_lle_tremp",
     nombre: "Tremp",
+    emoji: "🏙️",
     lat: 42.1676,
     lng: 0.894,
     nivel: 2,
@@ -10649,6 +11134,7 @@ export const POIS = [
   {
     id: "es_cat_lle_tarrega",
     nombre: "Tàrrega",
+    emoji: "🏙️",
     lat: 41.6469,
     lng: 1.1392,
     nivel: 2,
@@ -10667,6 +11153,7 @@ export const POIS = [
   {
     id: "es_cat_lle_borges_blanques",
     nombre: "Les Borges Blanques",
+    emoji: "🏘️",
     lat: 41.5218,
     lng: 0.8692,
     nivel: 2,
@@ -10685,6 +11172,7 @@ export const POIS = [
   {
     id: "es_cat_lle_agramunt",
     nombre: "Agramunt",
+    emoji: "🏰",
     lat: 41.7864,
     lng: 1.0988,
     nivel: 2,
@@ -10703,6 +11191,7 @@ export const POIS = [
   {
     id: "es_cat_lle_ponts",
     nombre: "Ponts",
+    emoji: "🏡",
     lat: 41.9157,
     lng: 1.184,
     nivel: 2,
@@ -10721,6 +11210,7 @@ export const POIS = [
   {
     id: "es_cat_lle_artesa_segre",
     nombre: "Artesa de Segre",
+    emoji: "🏡",
     lat: 41.8947,
     lng: 1.0469,
     nivel: 2,
@@ -10739,6 +11229,7 @@ export const POIS = [
   {
     id: "es_cat_lle_mollerussa",
     nombre: "Mollerussa",
+    emoji: "🏙️",
     lat: 41.63,
     lng: 0.894,
     nivel: 2,
@@ -10758,6 +11249,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_tarragona",
     nombre: "Tarragona (capital de provincia)",
+    emoji: "🏛️",
     lat: 41.1189,
     lng: 1.2445,
     nivel: 1,
@@ -10814,6 +11306,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_delta_ebre",
     nombre: "Parque Natural del Delta de l’Ebre",
+    emoji: "🌿",
     lat: 40.719,
     lng: 0.706,
     nivel: 1,
@@ -10832,6 +11325,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_poblet",
     nombre: "Monasterio de Poblet",
+    emoji: "⛪",
     lat: 41.3797,
     lng: 1.0802,
     nivel: 1,
@@ -10850,6 +11344,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_montblanc",
     nombre: "Montblanc",
+    emoji: "🏰",
     lat: 41.3768,
     lng: 1.1616,
     nivel: 1,
@@ -10868,6 +11363,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_miravet",
     nombre: "Miravet",
+    emoji: "🏰",
     lat: 41.0406,
     lng: 0.5978,
     nivel: 1,
@@ -10886,6 +11382,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_reus",
     nombre: "Reus",
+    emoji: "🏙️",
     lat: 41.154,
     lng: 1.108,
     nivel: 1,
@@ -10904,6 +11401,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_siurana",
     nombre: "Siurana",
+    emoji: "🔭",
     lat: 41.2604,
     lng: 0.9318,
     nivel: 1,
@@ -10922,6 +11420,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_tortosa",
     nombre: "Tortosa",
+    emoji: "🏙️",
     lat: 40.8123,
     lng: 0.5216,
     nivel: 1,
@@ -10940,6 +11439,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_santes_creus",
     nombre: "Monasterio de Santes Creus",
+    emoji: "⛪",
     lat: 41.3816,
     lng: 1.3606,
     nivel: 1,
@@ -10958,6 +11458,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_falset",
     nombre: "Falset y el Priorat",
+    emoji: "🍷",
     lat: 41.1468,
     lng: 0.8202,
     nivel: 2,
@@ -10976,6 +11477,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_valls",
     nombre: "Valls",
+    emoji: "🏙️",
     lat: 41.2869,
     lng: 1.2499,
     nivel: 2,
@@ -10994,6 +11496,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_amposta",
     nombre: "Amposta",
+    emoji: "🏙️",
     lat: 40.7095,
     lng: 0.579,
     nivel: 2,
@@ -11012,6 +11515,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_cambrils",
     nombre: "Cambrils",
+    emoji: "⚓",
     lat: 41.0671,
     lng: 1.0565,
     nivel: 2,
@@ -11030,6 +11534,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_vendrell",
     nombre: "El Vendrell",
+    emoji: "🏙️",
     lat: 41.2204,
     lng: 1.5348,
     nivel: 2,
@@ -11048,6 +11553,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_torredembarra",
     nombre: "Torredembarra",
+    emoji: "⚓",
     lat: 41.1448,
     lng: 1.3986,
     nivel: 2,
@@ -11066,6 +11572,7 @@ export const POIS = [
   {
     id: "es_cat_tarr_hospitalet_infant",
     nombre: "L’Hospitalet de l’Infant",
+    emoji: "🐚",
     lat: 40.9928,
     lng: 0.9218,
     nivel: 2,
@@ -11085,6 +11592,7 @@ export const POIS = [
   {
     id: "es_cval_ali_capital_alicante",
     nombre: "Alicante (capital, puerto y gran parada del litoral)",
+    emoji: "🏛️",
     lat: 38.3452,
     lng: -0.481,
     nivel: 1,
@@ -11123,6 +11631,7 @@ export const POIS = [
   {
     id: "es_cval_ali_villena",
     nombre: "Villena, puerta de Alicante por la A-31",
+    emoji: "🏰",
     lat: 38.637,
     lng: -0.8657,
     nivel: 1,
@@ -11152,6 +11661,7 @@ export const POIS = [
   {
     id: "es_cval_ali_elche",
     nombre: "Elche",
+    emoji: "🏰",
     lat: 38.2699,
     lng: -0.7126,
     nivel: 1,
@@ -11181,6 +11691,7 @@ export const POIS = [
   {
     id: "es_cval_ali_orihuela",
     nombre: "Orihuela",
+    emoji: "🏰",
     lat: 38.0848,
     lng: -0.944,
     nivel: 1,
@@ -11199,6 +11710,7 @@ export const POIS = [
   {
     id: "es_cval_ali_calpe",
     nombre: "Calpe y el Peñón de Ifach",
+    emoji: "⚓",
     lat: 38.6446,
     lng: 0.0445,
     nivel: 1,
@@ -11217,6 +11729,7 @@ export const POIS = [
   {
     id: "es_cval_ali_denia",
     nombre: "Dénia",
+    emoji: "⚓",
     lat: 38.8408,
     lng: 0.1057,
     nivel: 1,
@@ -11235,6 +11748,7 @@ export const POIS = [
   {
     id: "es_cval_ali_benidorm",
     nombre: "Benidorm",
+    emoji: "⚓",
     lat: 38.5411,
     lng: -0.1225,
     nivel: 1,
@@ -11253,6 +11767,7 @@ export const POIS = [
   {
     id: "es_cval_ali_altea",
     nombre: "Altea",
+    emoji: "🐚",
     lat: 38.5989,
     lng: -0.0516,
     nivel: 1,
@@ -11271,6 +11786,7 @@ export const POIS = [
   {
     id: "es_cval_ali_santa_pola",
     nombre: "Santa Pola",
+    emoji: "⚓",
     lat: 38.1917,
     lng: -0.555,
     nivel: 1,
@@ -11289,6 +11805,7 @@ export const POIS = [
   {
     id: "es_cval_ali_alcoy",
     nombre: "Alcoy, enclave industrial del eje interior por A-7",
+    emoji: "🏰",
     lat: 38.6984,
     lng: -0.4731,
     nivel: 1,
@@ -11307,6 +11824,7 @@ export const POIS = [
   {
     id: "es_cval_ali_torrevieja",
     nombre: "Torrevieja",
+    emoji: "⚓",
     lat: 37.9779,
     lng: -0.6832,
     nivel: 1,
@@ -11325,6 +11843,7 @@ export const POIS = [
   {
     id: "es_cval_ali_guardamar",
     nombre: "Guardamar del Segura",
+    emoji: "⚓",
     lat: 38.0903,
     lng: -0.6556,
     nivel: 1,
@@ -11343,6 +11862,7 @@ export const POIS = [
   {
     id: "es_cval_ali_elda_petrer",
     nombre: "Elda y Petrer, nudo interior entre A-31 y A-7",
+    emoji: "🏙️",
     lat: 38.4778,
     lng: -0.7916,
     nivel: 1,
@@ -11361,6 +11881,7 @@ export const POIS = [
   {
     id: "es_cval_ali_villajoyosa",
     nombre: "La Vila Joiosa",
+    emoji: "⚓",
     lat: 38.5079,
     lng: -0.2328,
     nivel: 1,
@@ -11379,6 +11900,7 @@ export const POIS = [
   {
     id: "es_cval_ali_novelda",
     nombre: "Novelda",
+    emoji: "🏙️",
     lat: 38.3853,
     lng: -0.767,
     nivel: 1,
@@ -11408,6 +11930,7 @@ export const POIS = [
   {
     id: "es_cval_cas_peniscola",
     nombre: "Peñíscola y su ciudadela sobre el mar",
+    emoji: "🏰",
     lat: 40.3579,
     lng: 0.4069,
     nivel: 1,
@@ -11426,6 +11949,7 @@ export const POIS = [
   {
     id: "es_cval_cas_morella",
     nombre: "Morella, gran fortaleza interior junto al eje de la N-232",
+    emoji: "🏰",
     lat: 40.619,
     lng: -0.0974,
     nivel: 1,
@@ -11445,6 +11969,7 @@ export const POIS = [
   {
     id: "es_cval_cas_capital_castellon",
     nombre: "Castellón de la Plana (capital y gran nodo del corredor mediterráneo)",
+    emoji: "🏛️",
     lat: 39.9864,
     lng: -0.0513,
     nivel: 1,
@@ -11483,6 +12008,7 @@ export const POIS = [
   {
     id: "es_cval_cas_vinaros",
     nombre: "Vinaròs (puerta norte de la Comunitat por AP-7/N-340)",
+    emoji: "⚓",
     lat: 40.4703,
     lng: 0.4756,
     nivel: 1,
@@ -11512,6 +12038,7 @@ export const POIS = [
   {
     id: "es_cval_cas_segorbe",
     nombre: "Segorbe, gran parada histórica del eje A-23",
+    emoji: "🏰",
     lat: 39.8529,
     lng: -0.4881,
     nivel: 1,
@@ -11541,6 +12068,7 @@ export const POIS = [
   {
     id: "es_cval_cas_desierto_palmas",
     nombre: "Desierto de las Palmas",
+    emoji: "🌿",
     lat: 40.0709,
     lng: 0.018,
     nivel: 1,
@@ -11570,6 +12098,7 @@ export const POIS = [
   {
     id: "es_cval_cas_arco_cabanes",
     nombre: "Arco romano de Cabanes",
+    emoji: "🏛️",
     lat: 40.1547,
     lng: 0.044,
     nivel: 1,
@@ -11588,6 +12117,7 @@ export const POIS = [
   {
     id: "es_cval_cas_sant_mateu",
     nombre: "Sant Mateu (enlace histórico del Maestrazgo hacia la N-232)",
+    emoji: "🏰",
     lat: 40.4634,
     lng: 0.1787,
     nivel: 1,
@@ -11606,6 +12136,7 @@ export const POIS = [
   {
     id: "es_cval_cas_prat_cabanes",
     nombre: "Parque Natural del Prat de Cabanes-Torreblanca",
+    emoji: "🌿",
     lat: 40.2506,
     lng: 0.214,
     nivel: 1,
@@ -11624,6 +12155,7 @@ export const POIS = [
   {
     id: "es_cval_cas_montanejos",
     nombre: "Montanejos (escapada natural desde el corredor interior)",
+    emoji: "🌿",
     lat: 40.068,
     lng: -0.5215,
     nivel: 1,
@@ -11642,6 +12174,7 @@ export const POIS = [
   {
     id: "es_cval_cas_jerica",
     nombre: "Jérica",
+    emoji: "🏰",
     lat: 39.9138,
     lng: -0.5719,
     nivel: 1,
@@ -11660,6 +12193,7 @@ export const POIS = [
   {
     id: "es_cval_cas_oropesa",
     nombre: "Oropesa del Mar",
+    emoji: "⚓",
     lat: 40.0927,
     lng: 0.1412,
     nivel: 1,
@@ -11678,6 +12212,7 @@ export const POIS = [
   {
     id: "es_cval_cas_coves_vinroma",
     nombre: "Les Coves de Vinromà (corredor interior de la A-7)",
+    emoji: "🏡",
     lat: 40.3078,
     lng: 0.122,
     nivel: 1,
@@ -11696,6 +12231,7 @@ export const POIS = [
   {
     id: "es_cval_cas_nules",
     nombre: "Nules",
+    emoji: "🏡",
     lat: 39.852,
     lng: -0.1548,
     nivel: 1,
@@ -11715,6 +12251,7 @@ export const POIS = [
   {
     id: "es_cval_val_capital_valencia",
     nombre: "Valencia (capital mediterránea y gran nodo del este)",
+    emoji: "🏛️",
     lat: 39.4699,
     lng: -0.3763,
     nivel: 1,
@@ -11753,6 +12290,7 @@ export const POIS = [
   {
     id: "es_cval_val_requena",
     nombre: "Requena, gran puerta de entrada por la A-3",
+    emoji: "🏰",
     lat: 39.4894,
     lng: -1.1012,
     nivel: 1,
@@ -11782,6 +12320,7 @@ export const POIS = [
   {
     id: "es_cval_val_sagunto",
     nombre: "Sagunto, llave histórica del corredor mediterráneo",
+    emoji: "🏰",
     lat: 39.6834,
     lng: -0.2734,
     nivel: 1,
@@ -11811,6 +12350,7 @@ export const POIS = [
   {
     id: "es_cval_val_xativa",
     nombre: "Xàtiva",
+    emoji: "🏰",
     lat: 38.9905,
     lng: -0.5186,
     nivel: 1,
@@ -11840,6 +12380,7 @@ export const POIS = [
   {
     id: "es_cval_val_albufera",
     nombre: "Parque Natural de la Albufera",
+    emoji: "🌿",
     lat: 39.3404,
     lng: -0.3345,
     nivel: 1,
@@ -11858,6 +12399,7 @@ export const POIS = [
   {
     id: "es_cval_val_bocairent",
     nombre: "Bocairent",
+    emoji: "🏰",
     lat: 38.7672,
     lng: -0.6087,
     nivel: 1,
@@ -11876,6 +12418,7 @@ export const POIS = [
   {
     id: "es_cval_val_gandia",
     nombre: "Gandía",
+    emoji: "⚓",
     lat: 38.968,
     lng: -0.1813,
     nivel: 1,
@@ -11905,6 +12448,7 @@ export const POIS = [
   {
     id: "es_cval_val_cheste_circuito",
     nombre: "Circuit Ricardo Tormo de Cheste",
+    emoji: "🏎️",
     lat: 39.4812,
     lng: -0.6291,
     nivel: 1,
@@ -11923,6 +12467,7 @@ export const POIS = [
   {
     id: "es_cval_val_utiel",
     nombre: "Utiel",
+    emoji: "🏙️",
     lat: 39.5675,
     lng: -1.2034,
     nivel: 1,
@@ -11941,6 +12486,7 @@ export const POIS = [
   {
     id: "es_cval_val_cullera",
     nombre: "Cullera",
+    emoji: "⚓",
     lat: 39.1651,
     lng: -0.2501,
     nivel: 1,
@@ -11959,6 +12505,7 @@ export const POIS = [
   {
     id: "es_cval_val_bunyol",
     nombre: "Buñol",
+    emoji: "🏰",
     lat: 39.4183,
     lng: -0.7901,
     nivel: 1,
@@ -11977,6 +12524,7 @@ export const POIS = [
   {
     id: "es_cval_val_alzira",
     nombre: "Alzira",
+    emoji: "🏙️",
     lat: 39.1516,
     lng: -0.4344,
     nivel: 1,
@@ -11995,6 +12543,7 @@ export const POIS = [
   {
     id: "es_cval_val_ontinyent",
     nombre: "Ontinyent",
+    emoji: "🏙️",
     lat: 38.8219,
     lng: -0.6064,
     nivel: 1,
@@ -12013,6 +12562,7 @@ export const POIS = [
   {
     id: "es_cval_val_chiva",
     nombre: "Chiva",
+    emoji: "🏡",
     lat: 39.4727,
     lng: -0.7172,
     nivel: 1,
@@ -12031,6 +12581,7 @@ export const POIS = [
   {
     id: "es_bad_merida",
     nombre: "Mérida (capital extremeña y ciudad romana)",
+    emoji: "🏰",
     lat: 38.9,
     lng: -6.333,
     nivel: 1,
@@ -12088,6 +12639,7 @@ export const POIS = [
   {
     id: "es_bad_capital_badajoz",
     nombre: "Badajoz (capital de provincia)",
+    emoji: "🏛️",
     lat: 38.88028,
     lng: -6.97528,
     nivel: 1,
@@ -12126,6 +12678,7 @@ export const POIS = [
   {
     id: "es_bad_zafra",
     nombre: "Zafra (la Sevilla chica)",
+    emoji: "🏰",
     lat: 38.417,
     lng: -6.417,
     nivel: 1,
@@ -12155,6 +12708,7 @@ export const POIS = [
   {
     id: "es_bad_medellin",
     nombre: "Medellín (villa histórica)",
+    emoji: "🏰",
     lat: 38.96306,
     lng: -5.95778,
     nivel: 2,
@@ -12184,6 +12738,7 @@ export const POIS = [
   {
     id: "es_bad_almendralejo",
     nombre: "Almendralejo (vino y Tierra de Barros)",
+    emoji: "🏙️",
     lat: 38.68,
     lng: -6.41,
     nivel: 2,
@@ -12202,6 +12757,7 @@ export const POIS = [
   {
     id: "es_bad_monesterio",
     nombre: "Monesterio (jamón y puerta hacia Sierra Morena)",
+    emoji: "🏡",
     lat: 38.0875,
     lng: -6.27444,
     nivel: 2,
@@ -12220,6 +12776,7 @@ export const POIS = [
   {
     id: "es_bad_villafranca_barros",
     nombre: "Villafranca de los Barros",
+    emoji: "🏙️",
     lat: 38.56139,
     lng: -6.33917,
     nivel: 3,
@@ -12238,6 +12795,7 @@ export const POIS = [
   {
     id: "es_bad_fuente_cantos",
     nombre: "Fuente de Cantos (dehesa y Zurbarán)",
+    emoji: "🏡",
     lat: 38.24667,
     lng: -6.30917,
     nivel: 3,
@@ -12256,6 +12814,7 @@ export const POIS = [
   {
     id: "es_bad_montijo",
     nombre: "Montijo (Vegas Bajas del Guadiana)",
+    emoji: "🏙️",
     lat: 38.91,
     lng: -6.6175,
     nivel: 3,
@@ -12274,6 +12833,7 @@ export const POIS = [
   {
     id: "es_bad_talavera_real",
     nombre: "Talavera la Real (llanura y aviación)",
+    emoji: "🏡",
     lat: 38.5833,
     lng: -6.9,
     nivel: 3,
@@ -12292,6 +12852,7 @@ export const POIS = [
   {
     id: "es_bad_torremejia",
     nombre: "Torremejía (enlace natural hacia Tierra de Barros)",
+    emoji: "🏡",
     lat: 38.783,
     lng: -6.367,
     nivel: 3,
@@ -12310,6 +12871,7 @@ export const POIS = [
   {
     id: "es_bad_lobon",
     nombre: "Lobón (entre Mérida y Badajoz)",
+    emoji: "🏡",
     lat: 38.85,
     lng: -6.62417,
     nivel: 3,
@@ -12328,6 +12890,7 @@ export const POIS = [
   {
     id: "es_cac_trujillo_ciudad",
     nombre: "Trujillo (ciudad monumental)",
+    emoji: "🏰",
     lat: 39.46528,
     lng: -5.87889,
     nivel: 1,
@@ -12367,6 +12930,7 @@ export const POIS = [
   {
     id: "es_cac_capital_caceres",
     nombre: "Cáceres (capital de provincia)",
+    emoji: "🏛️",
     lat: 39.483,
     lng: -6.367,
     nivel: 1,
@@ -12405,6 +12969,7 @@ export const POIS = [
   {
     id: "es_cac_monfrague",
     nombre: "Parque Nacional de Monfragüe",
+    emoji: "🌲",
     lat: 39.84083,
     lng: -6.03,
     nivel: 1,
@@ -12443,6 +13008,7 @@ export const POIS = [
   {
     id: "es_cac_plasencia",
     nombre: "Plasencia (puerta del norte extremeño)",
+    emoji: "🏙️",
     lat: 40.033,
     lng: -6.1,
     nivel: 2,
@@ -12472,6 +13038,7 @@ export const POIS = [
   {
     id: "es_cac_navalmoral_mata",
     nombre: "Navalmoral de la Mata (puerta del Campo Arañuelo)",
+    emoji: "🏙️",
     lat: 39.89833,
     lng: -5.54028,
     nivel: 2,
@@ -12490,6 +13057,7 @@ export const POIS = [
   {
     id: "es_cac_los_barruecos",
     nombre: "Los Barruecos (berrocal, charcas y cigüeñas)",
+    emoji: "🌄",
     lat: 39.44556,
     lng: -6.50583,
     nivel: 2,
@@ -12508,6 +13076,7 @@ export const POIS = [
   {
     id: "es_cac_embalse_valdecanas",
     nombre: "Embalse de Valdecañas",
+    emoji: "💧",
     lat: 39.83167,
     lng: -5.40278,
     nivel: 2,
@@ -12546,6 +13115,7 @@ export const POIS = [
   {
     id: "es_cac_belvis_monroy",
     nombre: "Belvís de Monroy (castillo y señorío)",
+    emoji: "🏰",
     lat: 39.8192,
     lng: -5.6092,
     nivel: 3,
@@ -12564,6 +13134,7 @@ export const POIS = [
   {
     id: "es_cac_jaraicejo",
     nombre: "Jaraicejo (alto en la vieja ruta de Madrid a Lisboa)",
+    emoji: "🏰",
     lat: 39.1,
     lng: -5.133,
     nivel: 3,
@@ -12582,6 +13153,7 @@ export const POIS = [
   {
     id: "es_cac_almaraz",
     nombre: "Almaraz (Tajo, embalse y energía)",
+    emoji: "🏡",
     lat: 39.8,
     lng: -5.667,
     nivel: 3,
@@ -12600,6 +13172,7 @@ export const POIS = [
   {
     id: "es_cac_talayuela",
     nombre: "Talayuela (tabaco, dehesa y pinar)",
+    emoji: "🏡",
     lat: 39.9667,
     lng: -5.6,
     nivel: 3,
@@ -12618,6 +13191,7 @@ export const POIS = [
   {
     id: "es_gal_acoruna_torre_hercules",
     nombre: "Torre de Hércules (A Coruña)",
+    emoji: "🗼",
     lat: 43.3851,
     lng: -8.4064,
     nivel: 1,
@@ -12656,6 +13230,7 @@ export const POIS = [
   {
     id: "es_gal_fragas_eume_caaveiro",
     nombre: "Fragas do Eume y Monasterio de Caaveiro",
+    emoji: "🌿",
     lat: 43.435,
     lng: -8.098,
     nivel: 1,
@@ -12685,6 +13260,7 @@ export const POIS = [
   {
     id: "es_gal_santiago_ciudad_historica",
     nombre: "Ciudad histórica de Santiago",
+    emoji: "🏰",
     lat: 42.8815,
     lng: -8.5457,
     nivel: 1,
@@ -12723,6 +13299,7 @@ export const POIS = [
   {
     id: "es_gal_corrubedo_dunas",
     nombre: "Parque natural de Corrubedo",
+    emoji: "🌿",
     lat: 42.5528,
     lng: -9.0312,
     nivel: 1,
@@ -12741,6 +13318,7 @@ export const POIS = [
   {
     id: "es_gal_betanzos_casco_historico",
     nombre: "Betanzos (conjunto histórico)",
+    emoji: "🏰",
     lat: 43.28,
     lng: -8.214,
     nivel: 2,
@@ -12759,6 +13337,7 @@ export const POIS = [
   {
     id: "es_gal_ferrol_arsenal_modernista",
     nombre: "Ferrol: arsenal y arquitectura modernista",
+    emoji: "⚓",
     lat: 43.4845,
     lng: -8.2369,
     nivel: 2,
@@ -12777,6 +13356,7 @@ export const POIS = [
   {
     id: "es_gal_sobrado_monxes_monasterio",
     nombre: "Monasterio de Sobrado dos Monxes",
+    emoji: "⛪",
     lat: 43.0393,
     lng: -8.0276,
     nivel: 2,
@@ -12795,6 +13375,7 @@ export const POIS = [
   {
     id: "es_gal_padron_roseton_jacobeo",
     nombre: "Padrón y tradición jacobea",
+    emoji: "🏰",
     lat: 42.7386,
     lng: -8.6607,
     nivel: 2,
@@ -12813,6 +13394,7 @@ export const POIS = [
   {
     id: "es_gal_noia_casco_historico",
     nombre: "Noia (villa histórica)",
+    emoji: "🏰",
     lat: 42.7856,
     lng: -8.8879,
     nivel: 2,
@@ -12831,6 +13413,7 @@ export const POIS = [
   {
     id: "es_gal_ponte_maceira",
     nombre: "Ponte Maceira",
+    emoji: "🌉",
     lat: 42.9045,
     lng: -8.6628,
     nivel: 2,
@@ -12849,6 +13432,7 @@ export const POIS = [
   {
     id: "es_gal_muros_casco_historico",
     nombre: "Muros (villa marinera)",
+    emoji: "⚓",
     lat: 42.7764,
     lng: -9.0602,
     nivel: 2,
@@ -12867,6 +13451,7 @@ export const POIS = [
   {
     id: "es_gal_bergondo_pazo_marinan",
     nombre: "Pazo de Mariñán (Bergondo)",
+    emoji: "🏯",
     lat: 43.3175,
     lng: -8.2413,
     nivel: 3,
@@ -12885,6 +13470,7 @@ export const POIS = [
   {
     id: "es_gal_rianxo_paseo_mar",
     nombre: "Rianxo y la ría de Arousa norte",
+    emoji: "⚓",
     lat: 42.6508,
     lng: -8.8185,
     nivel: 3,
@@ -12903,6 +13489,7 @@ export const POIS = [
   {
     id: "es_gal_carballo_balneario",
     nombre: "Carballo y su tradición termal",
+    emoji: "♨️",
     lat: 43.213,
     lng: -8.691,
     nivel: 3,
@@ -12921,6 +13508,7 @@ export const POIS = [
   {
     id: "es_gal_sada_paseo_maritimo",
     nombre: "Sada y la bahía coruñesa",
+    emoji: "⚓",
     lat: 43.3564,
     lng: -8.2566,
     nivel: 3,
@@ -12939,6 +13527,7 @@ export const POIS = [
   {
     id: "es_gal_lugo_muralla_romana",
     nombre: "Muralla romana de Lugo (UNESCO)",
+    emoji: "🧱",
     lat: 43.0121,
     lng: -7.556,
     nivel: 1,
@@ -12977,6 +13566,7 @@ export const POIS = [
   {
     id: "es_gal_lugo_playa_catedrales",
     nombre: "Playa de las Catedrales",
+    emoji: "🏖️",
     lat: 43.5546,
     lng: -7.1572,
     nivel: 1,
@@ -12995,6 +13585,7 @@ export const POIS = [
   {
     id: "es_gal_o_cebreiro",
     nombre: "O Cebreiro",
+    emoji: "🏰",
     lat: 42.707,
     lng: -7.0447,
     nivel: 1,
@@ -13024,6 +13615,7 @@ export const POIS = [
   {
     id: "es_gal_lugo_mondonedo",
     nombre: "Mondoñedo y su catedral",
+    emoji: "🏰",
     lat: 43.4282,
     lng: -7.363,
     nivel: 2,
@@ -13042,6 +13634,7 @@ export const POIS = [
   {
     id: "es_gal_monforte_lemos",
     nombre: "Monforte de Lemos",
+    emoji: "🏰",
     lat: 42.5217,
     lng: -7.5141,
     nivel: 2,
@@ -13060,6 +13653,7 @@ export const POIS = [
   {
     id: "es_gal_samos_monasterio",
     nombre: "Monasterio de Samos",
+    emoji: "⛪",
     lat: 42.7306,
     lng: -7.3256,
     nivel: 2,
@@ -13078,6 +13672,7 @@ export const POIS = [
   {
     id: "es_gal_portomarin",
     nombre: "Portomarín y el Miño",
+    emoji: "🥾",
     lat: 42.8078,
     lng: -7.6158,
     nivel: 2,
@@ -13096,6 +13691,7 @@ export const POIS = [
   {
     id: "es_gal_sarria",
     nombre: "Sarria y el Camino Francés",
+    emoji: "🥾",
     lat: 42.7815,
     lng: -7.414,
     nivel: 2,
@@ -13114,6 +13710,7 @@ export const POIS = [
   {
     id: "es_gal_lugo_ribadeo",
     nombre: "Ribadeo y la ría del Eo",
+    emoji: "⚓",
     lat: 43.5375,
     lng: -7.04,
     nivel: 2,
@@ -13143,6 +13740,7 @@ export const POIS = [
   {
     id: "es_gal_castro_viladonga",
     nombre: "Castro de Viladonga",
+    emoji: "🏕️",
     lat: 43.0452,
     lng: -7.6695,
     nivel: 2,
@@ -13161,6 +13759,7 @@ export const POIS = [
   {
     id: "es_gal_lugo_vilalba",
     nombre: "Vilalba y la Torre dos Andrade",
+    emoji: "🗼",
     lat: 43.2959,
     lng: -7.6813,
     nivel: 2,
@@ -13179,6 +13778,7 @@ export const POIS = [
   {
     id: "es_gal_viveiro",
     nombre: "Viveiro (casco histórico)",
+    emoji: "⚓",
     lat: 43.6629,
     lng: -7.5936,
     nivel: 2,
@@ -13197,6 +13797,7 @@ export const POIS = [
   {
     id: "es_gal_belesar_canion_mino",
     nombre: "Belesar y cañón del Miño",
+    emoji: "🔭",
     lat: 42.603,
     lng: -7.81,
     nivel: 3,
@@ -13215,6 +13816,7 @@ export const POIS = [
   {
     id: "es_gal_foz",
     nombre: "Foz y la Mariña lucense",
+    emoji: "⚓",
     lat: 43.5695,
     lng: -7.2576,
     nivel: 3,
@@ -13233,6 +13835,7 @@ export const POIS = [
   {
     id: "es_gal_san_paio_narla",
     nombre: "Pazo y torre de San Paio de Narla",
+    emoji: "🗼",
     lat: 43.0333,
     lng: -7.8333,
     nivel: 3,
@@ -13251,6 +13854,7 @@ export const POIS = [
   {
     id: "es_gal_burela",
     nombre: "Burela, puerto pesquero",
+    emoji: "🐟",
     lat: 43.659,
     lng: -7.3616,
     nivel: 3,
@@ -13269,6 +13873,7 @@ export const POIS = [
   {
     id: "es_gal_baamonde_nudo_a6_a8",
     nombre: "Baamonde, nudo A-6 y A-8",
+    emoji: "🛣️",
     lat: 43.1675,
     lng: -7.7562,
     nivel: 3,
@@ -13287,6 +13892,7 @@ export const POIS = [
   {
     id: "es_gal_xures_lobios",
     nombre: "Baixa Limia y Serra do Xurés",
+    emoji: "🌿",
     lat: 41.9066,
     lng: -8.0788,
     nivel: 1,
@@ -13305,6 +13911,7 @@ export const POIS = [
   {
     id: "es_gal_cabezoas_canion_sil",
     nombre: "Cañón del Sil (mirador de Cabezoás)",
+    emoji: "🔭",
     lat: 42.385,
     lng: -7.615,
     nivel: 1,
@@ -13334,6 +13941,7 @@ export const POIS = [
   {
     id: "es_gal_monterrei_fortaleza",
     nombre: "Fortaleza de Monterrei",
+    emoji: "🏰",
     lat: 41.9478,
     lng: -7.4483,
     nivel: 1,
@@ -13363,6 +13971,7 @@ export const POIS = [
   {
     id: "es_gal_ourense_as_burgas",
     nombre: "As Burgas (Ourense)",
+    emoji: "♨️",
     lat: 42.3365,
     lng: -7.8641,
     nivel: 1,
@@ -13401,6 +14010,7 @@ export const POIS = [
   {
     id: "es_gal_ribadavia",
     nombre: "Ribadavia y la capital del Ribeiro",
+    emoji: "🏰",
     lat: 42.2879,
     lng: -8.1432,
     nivel: 2,
@@ -13430,6 +14040,7 @@ export const POIS = [
   {
     id: "es_gal_aquis_querquennis",
     nombre: "Aquis Querquennis",
+    emoji: "⚔️",
     lat: 42.0351,
     lng: -7.9588,
     nivel: 2,
@@ -13448,6 +14059,7 @@ export const POIS = [
   {
     id: "es_gal_celanova_monasterio",
     nombre: "Monasterio de San Salvador de Celanova",
+    emoji: "⛪",
     lat: 42.1535,
     lng: -7.9587,
     nivel: 2,
@@ -13466,6 +14078,7 @@ export const POIS = [
   {
     id: "es_gal_allariz",
     nombre: "Allariz (conjunto histórico)",
+    emoji: "🏰",
     lat: 42.1907,
     lng: -7.8016,
     nivel: 2,
@@ -13484,6 +14097,7 @@ export const POIS = [
   {
     id: "es_gal_castro_caldelas",
     nombre: "Castro Caldelas",
+    emoji: "🏰",
     lat: 42.3731,
     lng: -7.4118,
     nivel: 2,
@@ -13502,6 +14116,7 @@ export const POIS = [
   {
     id: "es_gal_carballino_veracruz",
     nombre: "Templo de la Veracruz (O Carballiño)",
+    emoji: "🏛️",
     lat: 42.4304,
     lng: -8.0761,
     nivel: 2,
@@ -13520,6 +14135,7 @@ export const POIS = [
   {
     id: "es_gal_o_barco_valdeorras",
     nombre: "O Barco de Valdeorras",
+    emoji: "🌄",
     lat: 42.4156,
     lng: -6.989,
     nivel: 2,
@@ -13538,6 +14154,7 @@ export const POIS = [
   {
     id: "es_gal_santuario_ermidas",
     nombre: "Santuario de As Ermidas",
+    emoji: "🕍",
     lat: 42.3762,
     lng: -7.0867,
     nivel: 2,
@@ -13567,6 +14184,7 @@ export const POIS = [
   {
     id: "es_gal_manzaneda",
     nombre: "Manzaneda y alta montaña ourensana",
+    emoji: "⛰️",
     lat: 42.3097,
     lng: -7.2358,
     nivel: 3,
@@ -13585,6 +14203,7 @@ export const POIS = [
   {
     id: "es_gal_xinzo_limia",
     nombre: "Xinzo de Limia y la llanura de A Limia",
+    emoji: "🌾",
     lat: 42.0634,
     lng: -7.7246,
     nivel: 3,
@@ -13603,6 +14222,7 @@ export const POIS = [
   {
     id: "es_gal_pontevedra_vigo_casco_vello",
     nombre: "Casco Vello de Vigo",
+    emoji: "🏰",
     lat: 42.2393,
     lng: -8.7266,
     nivel: 1,
@@ -13632,6 +14252,7 @@ export const POIS = [
   {
     id: "es_gal_pontevedra_centro_historico",
     nombre: "Pontevedra (centro histórico)",
+    emoji: "🏰",
     lat: 42.431,
     lng: -8.6443,
     nivel: 1,
@@ -13670,6 +14291,7 @@ export const POIS = [
   {
     id: "es_gal_tui_catedral",
     nombre: "Tui y su catedral fortaleza",
+    emoji: "⛪",
     lat: 42.046,
     lng: -8.6447,
     nivel: 1,
@@ -13699,6 +14321,7 @@ export const POIS = [
   {
     id: "es_gal_baiona_monterreal",
     nombre: "Baiona y el recinto de Monterreal",
+    emoji: "🏰",
     lat: 42.1195,
     lng: -8.8506,
     nivel: 1,
@@ -13728,6 +14351,7 @@ export const POIS = [
   {
     id: "es_gal_soutomaior_castillo",
     nombre: "Castillo de Soutomaior",
+    emoji: "🏰",
     lat: 42.3347,
     lng: -8.5708,
     nivel: 1,
@@ -13746,6 +14370,7 @@ export const POIS = [
   {
     id: "es_gal_cambados",
     nombre: "Cambados, capital del albariño",
+    emoji: "🍇",
     lat: 42.5138,
     lng: -8.8138,
     nivel: 1,
@@ -13775,6 +14400,7 @@ export const POIS = [
   {
     id: "es_gal_illa_arousa",
     nombre: "Illa de Arousa",
+    emoji: "🏝️",
     lat: 42.5634,
     lng: -8.8735,
     nivel: 2,
@@ -13793,6 +14419,7 @@ export const POIS = [
   {
     id: "es_gal_carboeiro_monasterio",
     nombre: "Monasterio de Carboeiro (Silleda)",
+    emoji: "⛪",
     lat: 42.7008,
     lng: -8.2537,
     nivel: 2,
@@ -13811,6 +14438,7 @@ export const POIS = [
   {
     id: "es_gal_ponte_sampaio",
     nombre: "Ponte Sampaio",
+    emoji: "🌉",
     lat: 42.3412,
     lng: -8.6457,
     nivel: 2,
@@ -13829,6 +14457,7 @@ export const POIS = [
   {
     id: "es_gal_redondela_viaductos",
     nombre: "Redondela y sus viaductos",
+    emoji: "🔭",
     lat: 42.2844,
     lng: -8.6077,
     nivel: 2,
@@ -13847,6 +14476,7 @@ export const POIS = [
   {
     id: "es_gal_lalin",
     nombre: "Lalín, corazón de Galicia",
+    emoji: "🛣️",
     lat: 42.6619,
     lng: -8.1114,
     nivel: 2,
@@ -13865,6 +14495,7 @@ export const POIS = [
   {
     id: "es_gal_o_porrino",
     nombre: "O Porriño y el granito",
+    emoji: "🏭",
     lat: 42.1611,
     lng: -8.6192,
     nivel: 3,
@@ -13883,6 +14514,7 @@ export const POIS = [
   {
     id: "es_gal_ponteareas",
     nombre: "Ponteareas y el valle del Tea",
+    emoji: "🌄",
     lat: 42.1766,
     lng: -8.5039,
     nivel: 3,
@@ -13901,6 +14533,7 @@ export const POIS = [
   {
     id: "es_gal_sanxenxo",
     nombre: "Sanxenxo y la ría de Pontevedra",
+    emoji: "🐚",
     lat: 42.4,
     lng: -8.806,
     nivel: 3,
@@ -13920,6 +14553,7 @@ export const POIS = [
   {
     id: "es_rioja_logrono",
     nombre: "Logroño, gran puerta riojana de la AP-68 y la A-12",
+    emoji: "🏛️",
     lat: 42.4627,
     lng: -2.4449,
     nivel: 1,
@@ -13958,6 +14592,7 @@ export const POIS = [
   {
     id: "es_rioja_san_millan",
     nombre: "San Millán de la Cogolla",
+    emoji: "⛪",
     lat: 42.328,
     lng: -2.861,
     nivel: 1,
@@ -13976,6 +14611,7 @@ export const POIS = [
   {
     id: "es_rioja_haro",
     nombre: "Haro, capital del vino riojano",
+    emoji: "🍷",
     lat: 42.577,
     lng: -2.8465,
     nivel: 1,
@@ -14014,6 +14650,7 @@ export const POIS = [
   {
     id: "es_rioja_santo_domingo",
     nombre: "Santo Domingo de la Calzada",
+    emoji: "🏰",
     lat: 42.441,
     lng: -2.9537,
     nivel: 1,
@@ -14032,6 +14669,7 @@ export const POIS = [
   {
     id: "es_rioja_calahorra",
     nombre: "Calahorra",
+    emoji: "🏰",
     lat: 42.3064,
     lng: -1.9651,
     nivel: 1,
@@ -14050,6 +14688,7 @@ export const POIS = [
   {
     id: "es_rioja_alfaro",
     nombre: "Alfaro",
+    emoji: "🏙️",
     lat: 42.1791,
     lng: -1.749,
     nivel: 1,
@@ -14068,6 +14707,7 @@ export const POIS = [
   {
     id: "es_rioja_najera",
     nombre: "Nájera",
+    emoji: "🏰",
     lat: 42.4161,
     lng: -2.7347,
     nivel: 1,
@@ -14097,6 +14737,7 @@ export const POIS = [
   {
     id: "es_rioja_clavijo",
     nombre: "Castillo de Clavijo",
+    emoji: "🏰",
     lat: 42.3497,
     lng: -2.4277,
     nivel: 1,
@@ -14126,6 +14767,7 @@ export const POIS = [
   {
     id: "es_rioja_san_vicente",
     nombre: "San Vicente de la Sonsierra",
+    emoji: "🏰",
     lat: 42.5627,
     lng: -2.7598,
     nivel: 2,
@@ -14155,6 +14797,7 @@ export const POIS = [
   {
     id: "es_rioja_ezcaray",
     nombre: "Ezcaray",
+    emoji: "⛰️",
     lat: 42.3269,
     lng: -3.012,
     nivel: 2,
@@ -14173,6 +14816,7 @@ export const POIS = [
   {
     id: "es_rioja_arnedillo",
     nombre: "Arnedillo",
+    emoji: "♨️",
     lat: 42.2098,
     lng: -2.235,
     nivel: 2,
@@ -14191,6 +14835,7 @@ export const POIS = [
   {
     id: "es_rioja_navarrete",
     nombre: "Navarrete",
+    emoji: "🏰",
     lat: 42.4304,
     lng: -2.5649,
     nivel: 2,
@@ -14209,6 +14854,7 @@ export const POIS = [
   {
     id: "es_rioja_arnedo",
     nombre: "Arnedo",
+    emoji: "🏙️",
     lat: 42.2278,
     lng: -2.1,
     nivel: 2,
@@ -14228,6 +14874,7 @@ export const POIS = [
   {
     id: "es_navarra_pamplona",
     nombre: "Pamplona / Iruña, gran nudo de la AP-15",
+    emoji: "🏛️",
     lat: 42.8125,
     lng: -1.6458,
     nivel: 1,
@@ -14266,6 +14913,7 @@ export const POIS = [
   {
     id: "es_navarra_bardenas",
     nombre: "Parque Natural de las Bardenas Reales",
+    emoji: "🌿",
     lat: 42.2707,
     lng: -1.5344,
     nivel: 1,
@@ -14284,6 +14932,7 @@ export const POIS = [
   {
     id: "es_navarra_olite",
     nombre: "Olite",
+    emoji: "🏰",
     lat: 42.4797,
     lng: -1.6519,
     nivel: 1,
@@ -14313,6 +14962,7 @@ export const POIS = [
   {
     id: "es_navarra_tudela",
     nombre: "Tudela",
+    emoji: "🏰",
     lat: 42.0639,
     lng: -1.6057,
     nivel: 1,
@@ -14331,6 +14981,7 @@ export const POIS = [
   {
     id: "es_navarra_roncesvalles",
     nombre: "Roncesvalles",
+    emoji: "🥾",
     lat: 43.0092,
     lng: -1.3192,
     nivel: 1,
@@ -14349,6 +15000,7 @@ export const POIS = [
   {
     id: "es_navarra_puente_reina",
     nombre: "Puente la Reina / Gares",
+    emoji: "🏰",
     lat: 42.672,
     lng: -1.8135,
     nivel: 1,
@@ -14367,6 +15019,7 @@ export const POIS = [
   {
     id: "es_navarra_estella",
     nombre: "Estella-Lizarra",
+    emoji: "🏰",
     lat: 42.6719,
     lng: -2.0319,
     nivel: 1,
@@ -14396,6 +15049,7 @@ export const POIS = [
   {
     id: "es_navarra_javier",
     nombre: "Castillo de Javier",
+    emoji: "🏰",
     lat: 42.5903,
     lng: -1.2089,
     nivel: 1,
@@ -14414,6 +15068,7 @@ export const POIS = [
   {
     id: "es_navarra_ujue",
     nombre: "Ujué, gran balcón de la Navarra media",
+    emoji: "🏰",
     lat: 42.5076,
     lng: -1.4992,
     nivel: 1,
@@ -14432,6 +15087,7 @@ export const POIS = [
   {
     id: "es_navarra_sanguesa",
     nombre: "Sangüesa / Zangoza",
+    emoji: "🏰",
     lat: 42.5755,
     lng: -1.282,
     nivel: 2,
@@ -14450,6 +15106,7 @@ export const POIS = [
   {
     id: "es_navarra_irurtzun",
     nombre: "Irurtzun, cruce natural entre la A-15 y la A-10",
+    emoji: "🛣️",
     lat: 42.9191,
     lng: -1.828,
     nivel: 2,
@@ -14468,6 +15125,7 @@ export const POIS = [
   {
     id: "es_navarra_leitza",
     nombre: "Leitza",
+    emoji: "⛰️",
     lat: 43.0785,
     lng: -1.914,
     nivel: 2,
@@ -14486,6 +15144,7 @@ export const POIS = [
   {
     id: "es_navarra_altsasu",
     nombre: "Altsasu / Alsasua, gran puerta occidental navarra",
+    emoji: "🏙️",
     lat: 42.8995,
     lng: -2.1688,
     nivel: 2,
@@ -14504,6 +15163,7 @@ export const POIS = [
   {
     id: "es_navarra_fitero",
     nombre: "Fitero",
+    emoji: "♨️",
     lat: 42.0569,
     lng: -1.8564,
     nivel: 2,
@@ -14522,6 +15182,7 @@ export const POIS = [
   {
     id: "es_navarra_corella",
     nombre: "Corella",
+    emoji: "🏰",
     lat: 42.1154,
     lng: -1.7865,
     nivel: 2,
@@ -14540,6 +15201,7 @@ export const POIS = [
   {
     id: "es_navarra_tafalla",
     nombre: "Tafalla",
+    emoji: "🏙️",
     lat: 42.5264,
     lng: -1.6745,
     nivel: 2,
@@ -14559,6 +15221,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_bilbao",
     nombre: "Bilbao, gran corazón de la ría",
+    emoji: "🏛️",
     lat: 43.263,
     lng: -2.935,
     nivel: 1,
@@ -14633,6 +15296,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_gaztelugatxe",
     nombre: "San Juan de Gaztelugatxe",
+    emoji: "🔭",
     lat: 43.4465,
     lng: -2.7846,
     nivel: 1,
@@ -14651,6 +15315,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_gernika",
     nombre: "Gernika-Lumo",
+    emoji: "🏰",
     lat: 43.3167,
     lng: -2.6781,
     nivel: 1,
@@ -14680,6 +15345,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_urkiola",
     nombre: "Parque Natural de Urkiola",
+    emoji: "🌿",
     lat: 43.0917,
     lng: -2.6461,
     nivel: 1,
@@ -14698,6 +15364,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_durango",
     nombre: "Durango",
+    emoji: "🏰",
     lat: 43.1714,
     lng: -2.6326,
     nivel: 1,
@@ -14716,6 +15383,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_balmaseda",
     nombre: "Balmaseda",
+    emoji: "🏰",
     lat: 43.1925,
     lng: -3.1954,
     nivel: 2,
@@ -14734,6 +15402,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_bermeo",
     nombre: "Bermeo",
+    emoji: "🐚",
     lat: 43.4208,
     lng: -2.7215,
     nivel: 2,
@@ -14763,6 +15432,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_lekeitio",
     nombre: "Lekeitio",
+    emoji: "🐚",
     lat: 43.3644,
     lng: -2.503,
     nivel: 2,
@@ -14781,6 +15451,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_elorrio",
     nombre: "Elorrio",
+    emoji: "🏰",
     lat: 43.1303,
     lng: -2.5423,
     nivel: 2,
@@ -14799,6 +15470,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_markina",
     nombre: "Markina-Xemein",
+    emoji: "🏡",
     lat: 43.2681,
     lng: -2.497,
     nivel: 3,
@@ -14817,6 +15489,7 @@ export const POIS = [
   {
     id: "es_pv_bizkaia_zalla",
     nombre: "Zalla y el valle de las Encartaciones",
+    emoji: "🏘️",
     lat: 43.2114,
     lng: -3.1357,
     nivel: 3,
@@ -14836,6 +15509,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_donostia",
     nombre: "Donostia / San Sebastián",
+    emoji: "🏛️",
     lat: 43.3183,
     lng: -1.9812,
     nivel: 1,
@@ -14883,6 +15557,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_zumaia_flysch",
     nombre: "Flysch de Zumaia",
+    emoji: "🏖️",
     lat: 43.2967,
     lng: -2.2606,
     nivel: 1,
@@ -14901,6 +15576,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_hondarribia",
     nombre: "Hondarribia",
+    emoji: "🐚",
     lat: 43.3686,
     lng: -1.7904,
     nivel: 1,
@@ -14930,6 +15606,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_loyola",
     nombre: "Santuario de Loyola (Azpeitia)",
+    emoji: "🕍",
     lat: 43.1776,
     lng: -2.2649,
     nivel: 1,
@@ -14948,6 +15625,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_zarautz",
     nombre: "Zarautz",
+    emoji: "🐚",
     lat: 43.2844,
     lng: -2.1699,
     nivel: 1,
@@ -14986,6 +15664,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_onati",
     nombre: "Oñati",
+    emoji: "🏰",
     lat: 43.0326,
     lng: -2.4113,
     nivel: 1,
@@ -15004,6 +15683,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_arrasate",
     nombre: "Arrasate / Mondragón",
+    emoji: "🏙️",
     lat: 43.0635,
     lng: -2.497,
     nivel: 2,
@@ -15022,6 +15702,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_eibar",
     nombre: "Eibar",
+    emoji: "🏙️",
     lat: 43.1847,
     lng: -2.4733,
     nivel: 2,
@@ -15040,6 +15721,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_tolosa",
     nombre: "Tolosa",
+    emoji: "🏰",
     lat: 43.1367,
     lng: -2.0781,
     nivel: 2,
@@ -15058,6 +15740,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_bergara",
     nombre: "Bergara",
+    emoji: "🏰",
     lat: 43.115,
     lng: -2.4175,
     nivel: 2,
@@ -15076,6 +15759,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_deba",
     nombre: "Deba",
+    emoji: "🐚",
     lat: 43.2954,
     lng: -2.3525,
     nivel: 2,
@@ -15094,6 +15778,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_ordizia",
     nombre: "Ordizia",
+    emoji: "🏰",
     lat: 43.0544,
     lng: -2.1769,
     nivel: 2,
@@ -15123,6 +15808,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_idiazabal",
     nombre: "Idiazabal",
+    emoji: "🏡",
     lat: 43.011,
     lng: -2.2354,
     nivel: 3,
@@ -15142,6 +15828,7 @@ export const POIS = [
   {
     id: "es_pv_alava_vitoria_gasteiz",
     nombre: "Vitoria-Gasteiz, gran nudo entre la A-1 y la AP-68",
+    emoji: "🏛️",
     lat: 42.8467,
     lng: -2.6726,
     nivel: 1,
@@ -15198,6 +15885,7 @@ export const POIS = [
   {
     id: "es_pv_alava_laguardia",
     nombre: "Laguardia, balcón de Rioja Alavesa",
+    emoji: "🏰",
     lat: 42.5547,
     lng: -2.585,
     nivel: 1,
@@ -15227,6 +15915,7 @@ export const POIS = [
   {
     id: "es_pv_alava_valle_salado",
     nombre: "Valle Salado de Añana",
+    emoji: "🧂",
     lat: 42.8019,
     lng: -2.9857,
     nivel: 1,
@@ -15256,6 +15945,7 @@ export const POIS = [
   {
     id: "es_pv_alava_salto_nervion",
     nombre: "Salto del Nervión",
+    emoji: "🔭",
     lat: 42.9709,
     lng: -3.0167,
     nivel: 1,
@@ -15285,6 +15975,7 @@ export const POIS = [
   {
     id: "es_pv_alava_gorbeia",
     nombre: "Parque Natural de Gorbeia, vertiente alavesa",
+    emoji: "🌿",
     lat: 42.979,
     lng: -2.769,
     nivel: 1,
@@ -15303,6 +15994,7 @@ export const POIS = [
   {
     id: "es_pv_alava_izki",
     nombre: "Parque Natural de Izki",
+    emoji: "🌿",
     lat: 42.7525,
     lng: -2.4433,
     nivel: 1,
@@ -15321,6 +16013,7 @@ export const POIS = [
   {
     id: "es_pv_alava_iruna_veleia",
     nombre: "Yacimiento de Iruña-Veleia",
+    emoji: "⛏️",
     lat: 42.826,
     lng: -2.808,
     nivel: 1,
@@ -15339,6 +16032,7 @@ export const POIS = [
   {
     id: "es_pv_alava_araia_aizkorri",
     nombre: "Araia y el acceso al parque de Aizkorri-Aratz",
+    emoji: "⛰️",
     lat: 42.894,
     lng: -2.3135,
     nivel: 2,
@@ -15357,6 +16051,7 @@ export const POIS = [
   {
     id: "es_pv_alava_agurain",
     nombre: "Agurain / Salvatierra, puerta oriental de Álava",
+    emoji: "🏰",
     lat: 42.8492,
     lng: -2.389,
     nivel: 2,
@@ -15375,6 +16070,7 @@ export const POIS = [
   {
     id: "es_pv_alava_laudio",
     nombre: "Laudio / Llodio",
+    emoji: "🏙️",
     lat: 43.1437,
     lng: -2.9626,
     nivel: 2,
@@ -15393,6 +16089,7 @@ export const POIS = [
   {
     id: "es_pv_alava_ullibarri_gamboa",
     nombre: "Embalse de Ullíbarri-Gamboa",
+    emoji: "💧",
     lat: 42.931,
     lng: -2.62,
     nivel: 2,
@@ -15411,6 +16108,7 @@ export const POIS = [
   {
     id: "es_pv_alava_amurrio",
     nombre: "Amurrio",
+    emoji: "🏡",
     lat: 43.052,
     lng: -3,
     nivel: 2,
@@ -15429,6 +16127,7 @@ export const POIS = [
   {
     id: "es_pv_alava_samaniego",
     nombre: "Samaniego",
+    emoji: "🏡",
     lat: 42.5693,
     lng: -2.6806,
     nivel: 3,
@@ -15448,6 +16147,7 @@ export const POIS = [
   {
     id: "es_mur_capital_murcia",
     nombre: "Murcia (capital y gran nudo de la A-30 y A-7)",
+    emoji: "🏛️",
     lat: 37.9922,
     lng: -1.1307,
     nivel: 1,
@@ -15486,6 +16186,7 @@ export const POIS = [
   {
     id: "es_mur_cartagena",
     nombre: "Cartagena, gran puerto histórico del sureste",
+    emoji: "🏰",
     lat: 37.6257,
     lng: -0.9966,
     nivel: 1,
@@ -15515,6 +16216,7 @@ export const POIS = [
   {
     id: "es_mur_lorca",
     nombre: "Lorca, gran ciudad histórica del eje A-7",
+    emoji: "🏰",
     lat: 37.671,
     lng: -1.7017,
     nivel: 1,
@@ -15544,6 +16246,7 @@ export const POIS = [
   {
     id: "es_mur_caravaca",
     nombre: "Caravaca de la Cruz",
+    emoji: "🏰",
     lat: 38.1056,
     lng: -1.8632,
     nivel: 1,
@@ -15562,6 +16265,7 @@ export const POIS = [
   {
     id: "es_mur_mar_menor",
     nombre: "Mar Menor y San Javier",
+    emoji: "🏖️",
     lat: 37.8063,
     lng: -0.8372,
     nivel: 1,
@@ -15580,6 +16284,7 @@ export const POIS = [
   {
     id: "es_mur_cabo_palos",
     nombre: "Cabo de Palos",
+    emoji: "🏖️",
     lat: 37.6335,
     lng: -0.6984,
     nivel: 1,
@@ -15598,6 +16303,7 @@ export const POIS = [
   {
     id: "es_mur_jumilla",
     nombre: "Jumilla (puerta norte por A-33)",
+    emoji: "🏙️",
     lat: 38.4792,
     lng: -1.325,
     nivel: 1,
@@ -15616,6 +16322,7 @@ export const POIS = [
   {
     id: "es_mur_bolnuevo",
     nombre: "Bolnuevo y las Gredas de Mazarrón",
+    emoji: "🌄",
     lat: 37.5616,
     lng: -1.3152,
     nivel: 1,
@@ -15634,6 +16341,7 @@ export const POIS = [
   {
     id: "es_mur_yecla",
     nombre: "Yecla",
+    emoji: "🏙️",
     lat: 38.6137,
     lng: -1.1147,
     nivel: 1,
@@ -15652,6 +16360,7 @@ export const POIS = [
   {
     id: "es_mur_union_minera",
     nombre: "La Unión y el Parque Minero",
+    emoji: "⛏️",
     lat: 37.6163,
     lng: -0.8788,
     nivel: 1,
@@ -15670,6 +16379,7 @@ export const POIS = [
   {
     id: "es_mur_cieza",
     nombre: "Cieza, gran paso frutal del eje A-30",
+    emoji: "🏙️",
     lat: 38.239,
     lng: -1.4199,
     nivel: 1,
@@ -15688,6 +16398,7 @@ export const POIS = [
   {
     id: "es_mur_aguilas",
     nombre: "Águilas",
+    emoji: "⚓",
     lat: 37.4065,
     lng: -1.5825,
     nivel: 1,
@@ -15706,6 +16417,7 @@ export const POIS = [
   {
     id: "es_mur_archena",
     nombre: "Archena y su balneario",
+    emoji: "♨️",
     lat: 38.1162,
     lng: -1.3014,
     nivel: 1,
@@ -15724,6 +16436,7 @@ export const POIS = [
   {
     id: "es_mur_calasparra",
     nombre: "Calasparra",
+    emoji: "🌿",
     lat: 38.2302,
     lng: -1.6992,
     nivel: 1,
@@ -15742,6 +16455,7 @@ export const POIS = [
   {
     id: "es_mur_totana",
     nombre: "Totana",
+    emoji: "🏡",
     lat: 37.769,
     lng: -1.5,
     nivel: 1,
@@ -15760,6 +16474,7 @@ export const POIS = [
   {
     id: "es_mur_puerto_lumbreras",
     nombre: "Puerto Lumbreras",
+    emoji: "🏡",
     lat: 37.5622,
     lng: -1.8104,
     nivel: 1,
@@ -15778,6 +16493,7 @@ export const POIS = [
   {
     id: "es_cac_presa_alcantara",
     nombre: "Presa de Alcántara y Embalse de José María Oriol",
+    emoji: "🌊",
     lat: 39.7275,
     lng: -6.8906,
     nivel: 1,
@@ -15796,6 +16512,7 @@ export const POIS = [
   {
     id: "es_sal_presa_almendra",
     nombre: "Presa de Almendra — la más alta de España",
+    emoji: "🌊",
     lat: 41.2619,
     lng: -6.3431,
     nivel: 1,
@@ -15814,6 +16531,7 @@ export const POIS = [
   {
     id: "es_bad_presa_la_serena",
     nombre: "Presa de La Serena — mayor embalse de España",
+    emoji: "🌊",
     lat: 38.8964,
     lng: -5.6983,
     nivel: 1,
@@ -15832,6 +16550,7 @@ export const POIS = [
   {
     id: "es_sal_presa_aldeadavila",
     nombre: "Presa de Aldeadávila — los Arribes del Duero",
+    emoji: "🌊",
     lat: 41.2303,
     lng: -6.5678,
     nivel: 2,
@@ -15850,6 +16569,7 @@ export const POIS = [
   {
     id: "es_hue_presa_canelles",
     nombre: "Presa de Canelles y Congost de Mont-rebei",
+    emoji: "🌊",
     lat: 42.0022,
     lng: 0.6839,
     nivel: 2,
@@ -15868,6 +16588,7 @@ export const POIS = [
   {
     id: "es_zgz_presa_mequinenza",
     nombre: "Presa de Mequinenza — el Mar de Aragón",
+    emoji: "🌊",
     lat: 41.3636,
     lng: 0.2953,
     nivel: 2,
@@ -15886,6 +16607,7 @@ export const POIS = [
   {
     id: "es_hue_presa_yesa",
     nombre: "Presa de Yesa — regulación del Aragón",
+    emoji: "🌊",
     lat: 42.6167,
     lng: -1.1358,
     nivel: 2,
@@ -15904,6 +16626,7 @@ export const POIS = [
   {
     id: "es_gua_presa_entrepeñas",
     nombre: "Presa de Entrepeñas — origen del Trasvase Tajo-Segura",
+    emoji: "🌊",
     lat: 40.5622,
     lng: -2.6939,
     nivel: 2,
@@ -15922,6 +16645,7 @@ export const POIS = [
   {
     id: "es_our_presa_lindoso_belesar",
     nombre: "Presa de Belesar — cañón del Miño",
+    emoji: "🌊",
     lat: 42.6175,
     lng: -7.8219,
     nivel: 2,
@@ -15940,6 +16664,7 @@ export const POIS = [
   {
     id: "es_cac_puente_alcantara",
     nombre: "Puente Romano de Alcántara — 2.000 años en pie",
+    emoji: "🌉",
     lat: 39.7265,
     lng: -6.8932,
     nivel: 1,
@@ -15958,6 +16683,7 @@ export const POIS = [
   {
     id: "es_bad_puente_lusitania",
     nombre: "Puente de Lusitania de Calatrava — Mérida",
+    emoji: "🌉",
     lat: 38.9151,
     lng: -6.3551,
     nivel: 2,
@@ -15976,6 +16702,7 @@ export const POIS = [
   {
     id: "es_biz_puente_colgante_vizcaya",
     nombre: "Puente Colgante de Bizkaia — primer transbordador del mundo",
+    emoji: "🚡",
     lat: 43.3244,
     lng: -3.0175,
     nivel: 1,
@@ -15994,6 +16721,7 @@ export const POIS = [
   {
     id: "es_mal_puente_nuevo_ronda",
     nombre: "Puente Nuevo de Ronda — 98 metros sobre el Tajo",
+    emoji: "🌉",
     lat: 36.7407,
     lng: -5.1657,
     nivel: 1,
@@ -16012,6 +16740,7 @@ export const POIS = [
   {
     id: "es_alb_puente_vicaria",
     nombre: "Puente de La Vicaria — arco sobre el embalse de Fuensanta",
+    emoji: "🌉",
     lat: 38.3822,
     lng: -2.1461,
     nivel: 2,
@@ -16030,6 +16759,7 @@ export const POIS = [
   {
     id: "es_gir_puente_besalu",
     nombre: "Puente Medieval de Besalú — siglo XI sobre el Fluviá",
+    emoji: "🌉",
     lat: 42.1989,
     lng: 2.7003,
     nivel: 2,
@@ -16048,6 +16778,7 @@ export const POIS = [
   {
     id: "es_zam_viaducto_pajares",
     nombre: "Viaducto de Barrios de Luna — arco de 440m",
+    emoji: "🌉",
     lat: 42.8681,
     lng: -5.9997,
     nivel: 2,
@@ -16066,6 +16797,7 @@ export const POIS = [
   {
     id: "es_tar_viaducto_millau_español",
     nombre: "Viaducto de Viaur — puente de hierro del siglo XIX",
+    emoji: "🌉",
     lat: 41.1908,
     lng: 2.1878,
     nivel: 2,
@@ -16084,6 +16816,7 @@ export const POIS = [
   {
     id: "es_sev_puente_alamillo",
     nombre: "Puente del Alamillo de Calatrava — Expo 92",
+    emoji: "🌉",
     lat: 37.4072,
     lng: -6.0039,
     nivel: 2,
@@ -16102,6 +16835,7 @@ export const POIS = [
   {
     id: "es_cac_nuclear_almaraz",
     nombre: "Central Nuclear de Almaraz — mayor potencia de España",
+    emoji: "☢️",
     lat: 39.8067,
     lng: -5.6981,
     nivel: 2,
@@ -16120,6 +16854,7 @@ export const POIS = [
   {
     id: "es_gua_nuclear_trillo",
     nombre: "Central Nuclear de Trillo — última construida en España",
+    emoji: "☢️",
     lat: 40.5511,
     lng: -2.5869,
     nivel: 2,
@@ -16138,6 +16873,7 @@ export const POIS = [
   {
     id: "es_bur_nuclear_garoña",
     nombre: "Central Nuclear de Santa María de Garoña — en desmantelamiento",
+    emoji: "☢️",
     lat: 42.7681,
     lng: -3.2006,
     nivel: 2,
@@ -16156,6 +16892,7 @@ export const POIS = [
   {
     id: "es_tar_nuclear_asco_vandellós",
     nombre: "Complejo Nuclear Ascó-Vandellós — 4 reactores en el Ebro",
+    emoji: "☢️",
     lat: 41.2017,
     lng: 0.5678,
     nivel: 2,
@@ -16174,6 +16911,7 @@ export const POIS = [
   {
     id: "es_val_nuclear_cofrentes",
     nombre: "Central Nuclear de Cofrentes — reactor BWR en el Júcar",
+    emoji: "☢️",
     lat: 39.2483,
     lng: -1.0628,
     nivel: 2,
@@ -16192,6 +16930,7 @@ export const POIS = [
   {
     id: "es_hue_minas_riotinto_complejo",
     nombre: "Minas de Riotinto — 5.000 años de minería",
+    emoji: "⛏️",
     lat: 37.7006,
     lng: -6.5833,
     nivel: 1,
@@ -16210,6 +16949,7 @@ export const POIS = [
   {
     id: "es_ast_cuenca_minera_central",
     nombre: "Cuenca Minera del Nalón y Caudal — corazón del carbón asturiano",
+    emoji: "⛏️",
     lat: 43.2897,
     lng: -5.8728,
     nivel: 2,
@@ -16228,6 +16968,7 @@ export const POIS = [
   {
     id: "es_leo_corta_cabana",
     nombre: "Corta Cabana y Cuenca del Bierzo — minería a cielo abierto",
+    emoji: "⛏️",
     lat: 42.6178,
     lng: -6.6058,
     nivel: 2,
@@ -16246,6 +16987,7 @@ export const POIS = [
   {
     id: "es_our_mina_penouta",
     nombre: "Mina de Penouta — mayor mina de estaño de Europa",
+    emoji: "⛏️",
     lat: 42.0836,
     lng: -6.9878,
     nivel: 2,
@@ -16264,6 +17006,7 @@ export const POIS = [
   {
     id: "es_hue_mina_aguas_tenidas",
     nombre: "Mina de Aguas Teñidas — cobre y zinc en la Faja Pirítica",
+    emoji: "⛏️",
     lat: 37.8072,
     lng: -7.01,
     nivel: 2,
@@ -16282,6 +17025,7 @@ export const POIS = [
   {
     id: "es_bar_minas_potasa_bages",
     nombre: "Minas de Potasa del Bages — sal y potasio bajo el Llobregat",
+    emoji: "⛏️",
     lat: 41.7194,
     lng: 1.8131,
     nivel: 2,
@@ -16300,6 +17044,7 @@ export const POIS = [
   {
     id: "es_sev_torre_pelli",
     nombre: "Torre Pelli de Sevilla — rascacielos más alto de Andalucía",
+    emoji: "🏢",
     lat: 37.4052,
     lng: -5.9935,
     nivel: 2,
@@ -16318,6 +17063,7 @@ export const POIS = [
   {
     id: "es_ter_viaducto_teruel",
     nombre: "Viaducto de Teruel — 1928 sobre el Turia",
+    emoji: "🌉",
     lat: 40.3442,
     lng: -1.1078,
     nivel: 2,
@@ -16336,6 +17082,7 @@ export const POIS = [
   {
     id: "es_seg_acueducto_segovia_ingenieria",
     nombre: "Acueducto de Segovia — ingeniería romana sin cemento",
+    emoji: "🏛️",
     lat: 40.9483,
     lng: -4.1186,
     nivel: 1,
@@ -16354,6 +17101,7 @@ export const POIS = [
   {
     id: "es_lle_tunel_vielha",
     nombre: "Túnel de Vielha — primer túnel de montaña de España",
+    emoji: "🚇",
     lat: 42.7253,
     lng: 0.8833,
     nivel: 2,
@@ -16372,6 +17120,7 @@ export const POIS = [
   {
     id: "es_mur_trasvase_tajo_segura_cabecera",
     nombre: "Trasvase Tajo-Segura — mayor obra hidráulica de España",
+    emoji: "💧",
     lat: 38.0833,
     lng: -1.3167,
     nivel: 2,
@@ -16390,6 +17139,7 @@ export const POIS = [
   {
     id: "es_alm_plataforma_solar_tabernas",
     nombre: "Plataforma Solar de Almería — mayor laboratorio solar de Europa",
+    emoji: "☀️",
     lat: 37.0894,
     lng: -2.3581,
     nivel: 2,
@@ -16408,6 +17158,7 @@ export const POIS = [
   {
     id: "es_nav_parque_eolico_navarra",
     nombre: "Cordillera Pirenaica Navarra — pionera mundial en eólica",
+    emoji: "💨",
     lat: 42.7833,
     lng: -1.65,
     nivel: 2,
@@ -16426,6 +17177,7 @@ export const POIS = [
   {
     id: "es_cor_presa_almodovar",
     nombre: "Central Hidroeléctrica de Iznájar — mayor embalse andaluz",
+    emoji: "🌊",
     lat: 37.2544,
     lng: -4.3053,
     nivel: 2,
@@ -16444,6 +17196,7 @@ export const POIS = [
   {
     id: "es_ast_central_salime",
     nombre: "Presa de Salime — la Capilla Sixtina de la hidroeléctrica española",
+    emoji: "🌊",
     lat: 43.2556,
     lng: -6.9853,
     nivel: 2,
@@ -16462,6 +17215,7 @@ export const POIS = [
   {
     id: "es_gip_tunel_san_adrian",
     nombre: "Túnel de San Adrián — paso medieval bajo el Aizkorri",
+    emoji: "🚇",
     lat: 42.9442,
     lng: -2.3711,
     nivel: 2,
@@ -16480,6 +17234,7 @@ export const POIS = [
   {
     id: "es_cant_faro_cabo_mayor",
     nombre: "Faro de Cabo Mayor — ingeniería de navegación del siglo XIX",
+    emoji: "🗼",
     lat: 43.4944,
     lng: -3.7819,
     nivel: 2,
@@ -16498,6 +17253,7 @@ export const POIS = [
   {
     id: "es_cor_torre_hercules_faro",
     nombre: "Torre de Hércules — único faro romano activo del mundo",
+    emoji: "🗼",
     lat: 43.3853,
     lng: -8.4003,
     nivel: 1,
@@ -16516,6 +17272,7 @@ export const POIS = [
   {
     id: "es_zgz_canal_imperial_aragon",
     nombre: "Canal Imperial de Aragón — 240 años regando el Ebro",
+    emoji: "⛵",
     lat: 41.6561,
     lng: -0.8781,
     nivel: 2,
@@ -16534,6 +17291,7 @@ export const POIS = [
   {
     id: "es_rio_presa_gonzalez_lacasa",
     nombre: "Presa González Lacasa — presa de doble bóveda del Iregua",
+    emoji: "🌊",
     lat: 42.3206,
     lng: -2.5628,
     nivel: 2,
@@ -16552,6 +17310,7 @@ export const POIS = [
   {
     id: "es_val_presa_contreras",
     nombre: "Presa de Contreras — arco en el cañón del Cabriel",
+    emoji: "🌊",
     lat: 39.5328,
     lng: -1.4769,
     nivel: 2,
@@ -16570,6 +17329,7 @@ export const POIS = [
   {
     id: "es_ast_tunel_pajares_ave",
     nombre: "Túnel de Pajares — 7º más largo de Europa (24,6 km)",
+    emoji: "🚇",
     lat: 43.0011,
     lng: -5.7833,
     nivel: 1,
@@ -16588,6 +17348,7 @@ export const POIS = [
   {
     id: "es_gir_tunel_perthus_ave",
     nombre: "Túnel del Pertús — AVE Figueres-Perpiñán bajo los Pirineos",
+    emoji: "🚇",
     lat: 42.4667,
     lng: 2.85,
     nivel: 2,
@@ -16606,6 +17367,7 @@ export const POIS = [
   {
     id: "es_gip_tunel_san_marcos_metro",
     nombre: "Túnel de Urola — AVE vasco bajo el Cantábrico",
+    emoji: "🚇",
     lat: 43.2,
     lng: -2.3667,
     nivel: 2,
@@ -16624,6 +17386,7 @@ export const POIS = [
   {
     id: "es_hue_tunel_somport",
     nombre: "Túnel de Somport — el más largo de carretera en España (8,6 km)",
+    emoji: "🚇",
     lat: 42.7897,
     lng: -0.5239,
     nivel: 1,
@@ -16642,6 +17405,7 @@ export const POIS = [
   {
     id: "es_lle_tunel_cadi",
     nombre: "Túnel del Cadí — la autopista bajo el Prepirineo (5 km)",
+    emoji: "🚇",
     lat: 42.2611,
     lng: 1.7317,
     nivel: 2,
@@ -16660,6 +17424,7 @@ export const POIS = [
   {
     id: "es_ast_tunel_negrón",
     nombre: "Túnel de Negrón — autovía del Cantábrico bajo la montaña",
+    emoji: "🚇",
     lat: 43.5256,
     lng: -5.8958,
     nivel: 2,
@@ -16678,6 +17443,7 @@ export const POIS = [
   {
     id: "es_gir_tunel_bracons",
     nombre: "Túnel de Bracons — Garrotxa y Osona bajo el alto de Bracons",
+    emoji: "🚇",
     lat: 42.0853,
     lng: 2.4622,
     nivel: 2,
@@ -16696,6 +17462,7 @@ export const POIS = [
   {
     id: "es_leo_tunel_pajares_carretera",
     nombre: "Túnel de Pajares AP-66 — el paso de montaña bajo la ruta de la Plata",
+    emoji: "🚇",
     lat: 42.9728,
     lng: -5.7861,
     nivel: 2,
@@ -16714,6 +17481,7 @@ export const POIS = [
   {
     id: "es_ala_tunel_isuskitza",
     nombre: "Túnel de Isuskitza — AP-1 entre Álava y Gipuzkoa",
+    emoji: "🚇",
     lat: 43.0167,
     lng: -2.5833,
     nivel: 2,
@@ -16732,6 +17500,7 @@ export const POIS = [
   {
     id: "es_seg_tunel_alto_leon",
     nombre: "Túnel de Alto del León — A-6 entre Madrid y Galicia",
+    emoji: "🚇",
     lat: 40.6833,
     lng: -4.15,
     nivel: 2,
@@ -16750,6 +17519,7 @@ export const POIS = [
   {
     id: "es_mal_tunel_malaga_puerto",
     nombre: "Túneles de Málaga — la M-30 andaluza bajo el monte Gibralfaro",
+    emoji: "🚇",
     lat: 36.7256,
     lng: -4.4158,
     nivel: 2,
@@ -16768,6 +17538,7 @@ export const POIS = [
   {
     id: "es_nav_tunel_irurzun",
     nombre: "Túnel de Almandoz — N-121 bajo la sierra de Aralar",
+    emoji: "🚇",
     lat: 43.0833,
     lng: -1.7167,
     nivel: 2,
@@ -16786,6 +17557,7 @@ export const POIS = [
   {
     id: "es_pon_tunel_folgoso_autovia",
     nombre: "Túnel de Folgoso — A-57 bajo el Monte Castrove",
+    emoji: "🚇",
     lat: 42.5,
     lng: -8.65,
     nivel: 2,
@@ -16804,6 +17576,7 @@ export const POIS = [
   {
     id: "es_hue_tunel_monrepós",
     nombre: "Túnel de Monrepós — A-23 bajo el Prepirineo oscense",
+    emoji: "🚇",
     lat: 42.2722,
     lng: -0.35,
     nivel: 2,
@@ -16822,6 +17595,7 @@ export const POIS = [
   {
     id: "es_bar_tunel_tibidabo_metro",
     nombre: "Túneles del Metro de Barcelona — 110 km bajo la ciudad",
+    emoji: "🚇",
     lat: 41.3878,
     lng: 2.1611,
     nivel: 2,
@@ -16840,6 +17614,7 @@ export const POIS = [
   {
     id: "es_lle_tunel_vielha_old_new",
     nombre: "Túneles de Vielha I y II — Val d'Aran comunicado todo el año",
+    emoji: "🚇",
     lat: 42.7253,
     lng: 0.8833,
     nivel: 2,
@@ -16858,6 +17633,7 @@ export const POIS = [
   {
     id: "es_cad_tunel_suma",
     nombre: "Túnel de Gibraltar — el sueño del paso bajo el Estrecho",
+    emoji: "🚇",
     lat: 36,
     lng: -5.35,
     nivel: 2,

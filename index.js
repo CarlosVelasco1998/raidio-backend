@@ -1052,9 +1052,18 @@ app.get("/voices", async (req, res) => {
 // ================== ENDPOINT TTS ELEVENLABS ==================
 const DEFAULT_VOICE_ID = process.env.ELEVEN_VOICE_ID;
 
+// Voice settings by mood — lower stability = more expressive, higher style = more emotion
+const VOICE_SETTINGS_BY_MOOD = {
+  batalla:    { stability: 0.30, similarity_boost: 0.85, style: 0.75, use_speaker_boost: true },
+  historia:   { stability: 0.40, similarity_boost: 0.82, style: 0.55, use_speaker_boost: true },
+  naturaleza: { stability: 0.50, similarity_boost: 0.80, style: 0.35, use_speaker_boost: true },
+  practico:   { stability: 0.60, similarity_boost: 0.78, style: 0.15, use_speaker_boost: true },
+  normal:     { stability: 0.55, similarity_boost: 0.80, style: 0.20, use_speaker_boost: true },
+};
+
 app.post("/tts", async (req, res) => {
   const apiKey = process.env.ELEVEN_API_KEY;
-  const { text, voiceId } = req.body;
+  const { text, voiceId, mood = "normal" } = req.body;
 
   try {
     if (!text || !text.trim()) {
@@ -1068,25 +1077,18 @@ app.post("/tts", async (req, res) => {
 
     const usedVoiceId = voiceId || DEFAULT_VOICE_ID;
     const url = `https://api.elevenlabs.io/v1/text-to-speech/${usedVoiceId}`;
+    const voiceSettings = VOICE_SETTINGS_BY_MOOD[mood] ?? VOICE_SETTINGS_BY_MOOD.normal;
 
     const payloadFlash = {
       text,
       model_id: "eleven_flash_v2_5",
-      voice_settings: {
-        stability: 0.55,
-        similarity_boost: 0.8,
-        style: 0.2,
-        use_speaker_boost: true,
-      },
+      voice_settings: voiceSettings,
     };
 
     const payloadFallback = {
       text,
       model_id: "eleven_multilingual_v2",
-      voice_settings: {
-        stability: 0.55,
-        similarity_boost: 0.8,
-      },
+      voice_settings: { stability: voiceSettings.stability, similarity_boost: voiceSettings.similarity_boost },
     };
 
     let elevenResp;

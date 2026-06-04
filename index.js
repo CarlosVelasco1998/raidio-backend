@@ -850,6 +850,7 @@ app.post("/ai/generate", async (req, res) => {
       timestamp = null,
       poiNombre = "",
       language = "es",
+      nivel = "normal",
     } = req.body || {};
 
     if (!prompt || typeof prompt !== "string") {
@@ -878,9 +879,12 @@ app.post("/ai/generate", async (req, res) => {
       temasTxt ? `Temas seleccionados: ${temasTxt}` : "",
     ].filter(Boolean).join("\n");
 
+    const maxTokensByNivel = { poco: 300, normal: 600, mucho: 1200 };
+    const maxTokens = maxTokensByNivel[nivel] ?? 600;
+
     const r = await anthropic.messages.create({
       model: ANTHROPIC_MODEL_FAST,
-      max_tokens: 800,
+      max_tokens: maxTokens,
       system: systemPrompt,
       messages: [{ role: "user", content: finalPrompt }],
     });

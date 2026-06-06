@@ -1091,15 +1091,21 @@ app.post("/tts", async (req, res) => {
       voice_settings: { stability: voiceSettings.stability, similarity_boost: voiceSettings.similarity_boost },
     };
 
+    const elevenHeaders = {
+      "xi-api-key": apiKey,
+      "Content-Type": "application/json",
+      "Accept": "audio/mpeg",
+      "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+      "Accept-Language": "es-ES,es;q=0.9",
+      "Origin": "https://elevenlabs.io",
+      "Referer": "https://elevenlabs.io/",
+    };
+
     let elevenResp;
 
     try {
       elevenResp = await axios.post(url, payloadFlash, {
-        headers: {
-          "xi-api-key": apiKey,
-          "Content-Type": "application/json",
-          Accept: "audio/mpeg",
-        },
+        headers: elevenHeaders,
         responseType: "arraybuffer",
         timeout: 30000,
       });
@@ -1111,11 +1117,7 @@ app.post("/tts", async (req, res) => {
       );
 
       elevenResp = await axios.post(url, payloadFallback, {
-        headers: {
-          "xi-api-key": apiKey,
-          "Content-Type": "application/json",
-          Accept: "audio/mpeg",
-        },
+        headers: elevenHeaders,
         responseType: "arraybuffer",
         timeout: 30000,
       });

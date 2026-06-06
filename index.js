@@ -316,12 +316,12 @@ async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp
       }
     }
 
-    // 2) Fallback: Claude con instrucción de incluir fechas concretas
+    // 2) Fallback: Claude — pide eventos con fechas si las conoce, pero no exige fechas para responder
     const r = await anthropic.messages.create({
       model: MODEL_FAST,
       max_tokens: 250,
-      system: "Eres un experto en eventos y fiestas locales de España. Responde SOLO con eventos reales y concretos que conozcas con seguridad. Si no conoces eventos con fechas concretas, responde únicamente: NINGUNO.",
-      messages: [{ role: "user", content: `¿Qué eventos, ferias o fiestas se celebran en ${zona} en ${mes} de ${año}? ${poi ? `El viajero está cerca de: ${poi}.` : ""} Incluye las fechas concretas si las conoces (día y mes). Solo eventos reales, máximo 2-3 frases.` }],
+      system: "Eres un experto en cultura, fiestas y tradiciones locales de España. Responde SOLO si conoces eventos reales. Si no conoces ninguno, responde únicamente: NINGUNO.",
+      messages: [{ role: "user", content: `¿Qué eventos, ferias, festivales o fiestas importantes se celebran en ${zona} durante ${mes}? ${poi ? `El viajero está cerca de: ${poi}.` : ""} Si conoces fechas concretas (día y mes), inclúyelas. Si no las conoces con seguridad, menciona el evento igualmente. Solo eventos reales, en 2-3 frases máximo.` }],
     });
 
     const text = r.content?.[0]?.text?.trim() ?? "";
@@ -351,6 +351,35 @@ INSTRUCCIONES PARA LA NARRACIÓN:
 
 // ─── TRUNCAR POR FRASES COMPLETAS ────────────────────────────────────────────
 // Recorta el texto al número máximo de palabras, siempre terminando en frase completa.
+// ─── CORRECCIÓN DE PRONUNCIACIÓN PARA ELEVENLABS ─────────────────────────────
+// Palabras españolas que ElevenLabs pronuncia mal en inglés → reemplazar por fonética
+const PRONUNCIACION = [
+  [/\bGeneralife\b/gi,   "Jenerali-fe"],
+  [/\bAlhambra\b/gi,     "Al-hambra"],
+  [/\bAlcázar\b/gi,      "Al-cá-zar"],
+  [/\bAlcazar\b/gi,      "Al-ca-zar"],
+  [/\bGuadalquivir\b/gi, "Guadalqui-vir"],
+  [/\bGuadarrama\b/gi,   "Guada-rrama"],
+  [/\bJaén\b/gi,         "Ja-én"],
+  [/\bJaen\b/gi,         "Ja-en"],
+  [/\bMálaga\b/gi,       "Má-laga"],
+  [/\bCórdoba\b/gi,      "Cór-doba"],
+  [/\bSevilla\b/gi,      "Se-villa"],
+  [/\bBilbao\b/gi,       "Bil-bao"],
+  [/\bCuenca\b/gi,       "Cuen-ca"],
+  [/\bSagunto\b/gi,      "Sa-gunto"],
+  [/\bNumancia\b/gi,     "Nu-mancia"],
+];
+
+function corregirPronunciacion(text) {
+  if (!text) return text;
+  let result = text;
+  for (const [pattern, replacement] of PRONUNCIACION) {
+    result = result.replace(pattern, replacement);
+  }
+  return result;
+}
+
 function truncarPorFrases(text, maxWords) {
   if (!text) return text;
   const words = text.trim().split(/\s+/);
@@ -454,7 +483,7 @@ app.post("/ai/generate", async (req, res) => {
     const finalPrompt = construirPromptConEventos({ prompt, liveEvents, liveContext });
 
     const systemPrompt = [
-      "Eres SANCHO, el copiloto de viaje. Hablas como ese amigo que sabe mucho de por donde pasas y te lo cuenta de forma amena, sin rollos académicos. Responde en español, sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta mientras se conduce.",
+      "Eres SANCHO, el copiloto de viaje. Explicas los lugares de forma clara y con rigor, pero sin tecnicismos ni lenguaje académico — como un buen divulgador, no como un historiador ni como un colega informal. Usa vocabulario preciso y correcto. Evita expresiones vagas, coloquialismos burdos o imprecisiones. Responde en español, sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta mientras se conduce.",
       temasTxt ? `Temas activados: ${temasTxt}` : "",
     ].filter(Boolean).join("\n");
 
@@ -489,9 +518,10 @@ app.post("/tts", async (req, res) => {
     const voiceSettings  = VOICE_SETTINGS_BY_MOOD[mood] ?? VOICE_SETTINGS_BY_MOOD.normal;
     const url            = `https://api.elevenlabs.io/v1/text-to-speech/${usedVoiceId}`;
     const headers        = { "xi-api-key": apiKey, "Content-Type": "application/json", "Accept": "audio/mpeg" };
+    const cleanText      = corregirPronunciacion(text);
 
-    const payloadFlash    = { text, model_id: "eleven_flash_v2_5",      voice_settings: voiceSettings };
-    const payloadFallback = { text, model_id: "eleven_multilingual_v2", voice_settings: { stability: voiceSettings.stability, similarity_boost: voiceSettings.similarity_boost } };
+    const payloadFlash    = { text: cleanText, model_id: "eleven_flash_v2_5",      voice_settings: voiceSettings };
+    const payloadFallback = { text: cleanText, model_id: "eleven_multilingual_v2", voice_settings: { stability: voiceSettings.stability, similarity_boost: voiceSettings.similarity_boost } };
 
     let elevenResp;
     try {

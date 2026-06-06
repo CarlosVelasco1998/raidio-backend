@@ -28,7 +28,8 @@ const SPAIN_INFO_URL    = "https://www.spain.info/es/agenda/";
 const DEFAULT_VOICE_ID  = process.env.ELEVEN_VOICE_ID;
 
 // max_tokens por nivel de narración (poco/normal/mucho)
-const MAX_TOKENS_BY_NIVEL = { poco: 300, normal: 600, mucho: 1200 };
+// ~1.4 tokens/palabra español + margen del 20%
+const MAX_TOKENS_BY_NIVEL = { poco: 400, normal: 600, mucho: 800 };
 
 // Voice settings de ElevenLabs por tipo de narración
 // stability bajo = más expresivo | style alto = más emoción

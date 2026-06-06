@@ -387,7 +387,7 @@ app.post("/ai/generate", async (req, res) => {
     const finalPrompt = construirPromptConEventos({ prompt, liveEvents, liveContext });
 
     const systemPrompt = [
-      "Eres SANCHO, un copiloto IA que narra lugares mientras se viaja por España. Responde en español, sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta.",
+      "Eres SANCHO, el copiloto de viaje. Hablas como ese amigo que sabe mucho de por donde pasas y te lo cuenta de forma amena, sin rollos académicos. Responde en español, sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta mientras se conduce.",
       temasTxt ? `Temas activados: ${temasTxt}` : "",
     ].filter(Boolean).join("\n");
 

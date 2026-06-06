@@ -28,8 +28,8 @@ const SPAIN_INFO_URL    = "https://www.spain.info/es/agenda/";
 const DEFAULT_VOICE_ID  = process.env.ELEVEN_VOICE_ID;
 
 // max_tokens por nivel de narración (poco/normal/mucho)
-// 80/130/180 palabras × 1.5 tokens/palabra + 20 margen para cerrar frase
-const MAX_TOKENS_BY_NIVEL = { poco: 140, normal: 215, mucho: 290 };
+// Damos margen amplio al modelo — el truncado lo hace truncarPorFrases()
+const MAX_TOKENS_BY_NIVEL = { poco: 400, normal: 600, mucho: 800 };
 
 // Voice settings de ElevenLabs por tipo de narración
 // stability bajo = más expresivo | style alto = más emoción
@@ -310,6 +310,34 @@ function construirPromptConEventos({ prompt, liveEvents, liveContext }) {
   return `${prompt}\n\nCONTEXTO LOCAL (eventos y ferias de la zona):\n${liveContext}\n\nINSTRUCCIONES:\n- Menciona este evento brevemente y de forma natural.\n- No inventes detalles que no estén en el contexto.\n- Máximo 1 frase sobre el evento.`;
 }
 
+// ─── TRUNCAR POR FRASES COMPLETAS ────────────────────────────────────────────
+// Recorta el texto al número máximo de palabras, siempre terminando en frase completa.
+function truncarPorFrases(text, maxWords) {
+  if (!text) return text;
+  const words = text.trim().split(/\s+/);
+  if (words.length <= maxWords) return text.trim();
+
+  // Buscar el último punto/signo de cierre dentro del límite
+  const chunk = words.slice(0, maxWords).join(" ");
+  const lastSentenceEnd = Math.max(
+    chunk.lastIndexOf(". "),
+    chunk.lastIndexOf("! "),
+    chunk.lastIndexOf("? "),
+    chunk.lastIndexOf(".\n"),
+    chunk.lastIndexOf("!\n"),
+    chunk.lastIndexOf("?\n"),
+  );
+
+  if (lastSentenceEnd > 0) {
+    return chunk.slice(0, lastSentenceEnd + 1).trim();
+  }
+
+  // Si no hay frase completa dentro del límite, devolver el chunk tal cual
+  return chunk.trim();
+}
+
+const MAX_WORDS_BY_NIVEL = { poco: 80, normal: 130, mucho: 180 };
+
 // ─── DEEZER ──────────────────────────────────────────────────────────────────
 function deezerQuery(genre) {
   const g = (genre || "").toLowerCase();
@@ -398,7 +426,11 @@ app.post("/ai/generate", async (req, res) => {
       messages: [{ role: "user", content: finalPrompt }],
     });
 
-    res.json({ text: r.content?.[0]?.text ?? "", model_used: r.model, usage: r.usage, live_events_enabled: asBool(liveEvents), live_context_used: Boolean(liveContext?.trim()) });
+    const rawText  = r.content?.[0]?.text ?? "";
+    const maxWords = MAX_WORDS_BY_NIVEL[nivel] ?? MAX_WORDS_BY_NIVEL.normal;
+    const text     = truncarPorFrases(rawText, maxWords);
+
+    res.json({ text, model_used: r.model, usage: r.usage, live_events_enabled: asBool(liveEvents), live_context_used: Boolean(liveContext?.trim()) });
   } catch (e) {
     console.error("ERROR /ai/generate:", e.message);
     res.status(500).json({ error: "ai_generate_failed", detail: e.message });

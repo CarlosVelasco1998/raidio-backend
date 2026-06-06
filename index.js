@@ -28,8 +28,8 @@ const SPAIN_INFO_URL    = "https://www.spain.info/es/agenda/";
 const DEFAULT_VOICE_ID  = process.env.ELEVEN_VOICE_ID;
 
 // max_tokens por nivel de narración (poco/normal/mucho)
-// Damos margen amplio al modelo — el truncado lo hace truncarPorFrases()
-const MAX_TOKENS_BY_NIVEL = { poco: 400, normal: 600, mucho: 800 };
+// max_tokens alto para que el modelo nunca se corte — truncarPorFrases() controla la longitud real
+const MAX_TOKENS_BY_NIVEL = { poco: 1000, normal: 1000, mucho: 1000 };
 
 // Voice settings de ElevenLabs por tipo de narración
 // stability bajo = más expresivo | style alto = más emoción
@@ -336,7 +336,7 @@ function truncarPorFrases(text, maxWords) {
   return chunk.trim();
 }
 
-const MAX_WORDS_BY_NIVEL = { poco: 80, normal: 130, mucho: 180 };
+const MAX_WORDS_BY_NIVEL = { poco: 130, normal: 200, mucho: 270 };
 
 // ─── DEEZER ──────────────────────────────────────────────────────────────────
 function deezerQuery(genre) {

@@ -268,14 +268,15 @@ async function buscarEventos({ province, nowDate }) {
   }
 }
 
-// ─── CONTEXTO DE EVENTOS EN VIVO (Claude Haiku) ──────────────────────────────
+// ─── CONTEXTO DE EVENTOS EN VIVO ─────────────────────────────────────────────
+// Estrategia: 1) Spain.info (fechas reales) → 2) Claude con fechas explícitas
 async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp, poiNombre, language = "es" }) {
   if (!asBool(liveEvents)) return "";
   const lat = asNum(latitude);
   const lng = asNum(longitude);
   if (lat === null || lng === null) return "";
 
-  const now  = parseFecha(timestamp);
+  const now   = parseFecha(timestamp);
   const place = await geocodeInverso(lat, lng, limpiar(language) || "es");
   const zona  = [place.city, place.province].filter(Boolean).join(", ");
   if (!zona) return "";
@@ -288,15 +289,44 @@ async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp
   if (cached !== null) return cached;
 
   try {
+    // 1) Intentar Spain.info para fechas reales
+    const province = place.province;
+    if (province) {
+      const eventos = await buscarEventos({ province, nowDate: now });
+      if (eventos.length > 0) {
+        // Ordenar por puntuación y tomar los 2 mejores
+        const ranked = eventos
+          .map(ev => ({ ...ev, score: puntuarEvento(ev, now, place) }))
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 2);
+
+        const lines = ranked.map(ev => {
+          const inicio = ev.startDate ? fechaEs(ev.startDate.toISOString()) : null;
+          const fin    = ev.endDate && ev.endDate.getTime() !== ev.startDate?.getTime()
+            ? fechaEs(ev.endDate.toISOString()) : null;
+          const fechaTxt = inicio
+            ? (fin ? `del ${inicio} al ${fin}` : `el ${inicio}`)
+            : "";
+          return `- ${ev.title}${fechaTxt ? ` (${fechaTxt})` : ""}${ev.isOngoing ? " — en curso ahora mismo" : ""}`;
+        }).join("\n");
+
+        const context = `Eventos reales en ${zona} (fuente: Spain.info):\n${lines}`;
+        setCache(key, context);
+        return context;
+      }
+    }
+
+    // 2) Fallback: Claude con instrucción de incluir fechas concretas
     const r = await anthropic.messages.create({
       model: MODEL_FAST,
-      max_tokens: 200,
-      system: "Eres un experto en cultura y tradiciones locales de España. Responde SOLO si conoces eventos reales y concretos. Si no estás seguro, responde con: NINGUNO.",
-      messages: [{ role: "user", content: `¿Qué eventos importantes suelen ocurrir en ${zona} durante ${mes}? ${poi ? `El viajero está cerca de: ${poi}.` : ""} Solo eventos reales y conocidos, en 1-2 frases.` }],
+      max_tokens: 250,
+      system: "Eres un experto en eventos y fiestas locales de España. Responde SOLO con eventos reales y concretos que conozcas con seguridad. Si no conoces eventos con fechas concretas, responde únicamente: NINGUNO.",
+      messages: [{ role: "user", content: `¿Qué eventos, ferias o fiestas se celebran en ${zona} en ${mes} de ${año}? ${poi ? `El viajero está cerca de: ${poi}.` : ""} Incluye las fechas concretas si las conoces (día y mes). Solo eventos reales, máximo 2-3 frases.` }],
     });
+
     const text = r.content?.[0]?.text?.trim() ?? "";
     if (!text || text.toUpperCase().includes("NINGUNO")) { setCache(key, ""); return ""; }
-    const context = `Contexto de eventos locales en ${zona} (${mes} ${año}): ${text}`;
+    const context = `Eventos en ${zona} (${mes} ${año}):\n${text}`;
     setCache(key, context);
     return context;
   } catch (e) {
@@ -307,7 +337,16 @@ async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp
 
 function construirPromptConEventos({ prompt, liveEvents, liveContext }) {
   if (!asBool(liveEvents) || !liveContext?.trim()) return prompt;
-  return `${prompt}\n\nCONTEXTO LOCAL (eventos y ferias de la zona):\n${liveContext}\n\nINSTRUCCIONES:\n- Menciona este evento brevemente y de forma natural.\n- No inventes detalles que no estén en el contexto.\n- Máximo 1 frase sobre el evento.`;
+  return `${prompt}
+
+INFORMACIÓN EN VIVO — EVENTOS CERCANOS:
+${liveContext}
+
+INSTRUCCIONES PARA LA NARRACIÓN:
+- Menciona el evento de forma natural dentro de la narración.
+- Si tienes fechas concretas, inclúyelas en el texto (escríbelas con palabras, nunca con números).
+- No inventes detalles que no estén en el contexto anterior.
+- Máximo 1-2 frases sobre el evento.`;
 }
 
 // ─── TRUNCAR POR FRASES COMPLETAS ────────────────────────────────────────────

@@ -353,22 +353,9 @@ INSTRUCCIONES PARA LA NARRACIÓN:
 // Recorta el texto al número máximo de palabras, siempre terminando en frase completa.
 // ─── CORRECCIÓN DE PRONUNCIACIÓN PARA ELEVENLABS ─────────────────────────────
 // Palabras españolas que ElevenLabs pronuncia mal en inglés → reemplazar por fonética
+// Solo palabras que ElevenLabs pronuncia mal en inglés — no tocar las que ya suenan bien
 const PRONUNCIACION = [
-  [/\bGeneralife\b/gi,   "Jenerali-fe"],
-  [/\bAlhambra\b/gi,     "Al-hambra"],
-  [/\bAlcázar\b/gi,      "Al-cá-zar"],
-  [/\bAlcazar\b/gi,      "Al-ca-zar"],
-  [/\bGuadalquivir\b/gi, "Guadalqui-vir"],
-  [/\bGuadarrama\b/gi,   "Guada-rrama"],
-  [/\bJaén\b/gi,         "Ja-én"],
-  [/\bJaen\b/gi,         "Ja-en"],
-  [/\bMálaga\b/gi,       "Má-laga"],
-  [/\bCórdoba\b/gi,      "Cór-doba"],
-  [/\bSevilla\b/gi,      "Se-villa"],
-  [/\bBilbao\b/gi,       "Bil-bao"],
-  [/\bCuenca\b/gi,       "Cuen-ca"],
-  [/\bSagunto\b/gi,      "Sa-gunto"],
-  [/\bNumancia\b/gi,     "Nu-mancia"],
+  [/\bGeneralife\b/gi, "Jenerali-fe"],
 ];
 
 function corregirPronunciacion(text) {

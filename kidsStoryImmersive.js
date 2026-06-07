@@ -215,7 +215,16 @@ export async function generateKidsStoryImmersive(req, res) {
       messages: [{ role: "user", content: prompt }],
     });
 
-    const parsed   = JSON.parse(claudeResp.content[0].text);
+    let rawText = claudeResp.content[0].text.trim();
+    rawText = rawText.replace(/^```(?:json)?\s*/i, "").replace(/\s*```\s*$/i, "");
+    let parsed;
+    try {
+      parsed = JSON.parse(rawText);
+    } catch {
+      const match = rawText.match(/\{[\s\S]*\}/);
+      if (match) parsed = JSON.parse(match[0]);
+      else throw new Error("No se pudo parsear el JSON del cuento: " + rawText.slice(0, 200));
+    }
     const segments = parsed.segments ?? [];
     const title    = parsed.title ?? "Cuento";
 

@@ -605,7 +605,7 @@ for (const row of rows) {
   const sponsorCell = getVal(row, ["sponsor", "Sponsor"], 14);
   const eventosCell = getVal(row, ["eventos", "Eventos"], 15);
   const subPoisCell = getVal(row, ["sub_pois", "subPois", "SubPois", "sub_poi"], 16);
-  const imagenUrl = toStr(getVal(row, ["imagenUrl", "imagen_url", "ImagenUrl", "imagen"], null));
+  const imagenUrl = toStr(getVal(row, ["imageUrl", "imagenUrl", "imagen_url", "ImagenUrl", "imagen"], null));
 
   const sponsor = parseSponsorOrNull(sponsorCell, row);
   const eventos = parseEventosOrNull(eventosCell);

@@ -26,8 +26,11 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 80,
     intereses: ["guerra_independencia", "batalla", "paso_montana", "logistica", "terreno"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-de-somosierra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-de-somosierra.png",
   },
 
   // ✅ CAPITAL
@@ -75,7 +78,9 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 90,
     intereses: ["arquitectura", "siglo_xx", "memoria_historica", "contexto_guerra_civil", "construccion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valle-de-los-caidos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -88,6 +93,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valle-de-los-caidos.png",
   },
 
   {
@@ -105,7 +111,9 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 70,
     intereses: ["cervantes", "literatura", "universidad", "arquitectura", "unesco"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/centro-historico-de-alcala-de-henares.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -118,6 +126,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/centro-historico-de-alcala-de-henares.png",
   },
 
   {
@@ -135,8 +144,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["palacio", "jardines", "arte", "monarquia", "unesco", "paisaje_cultural"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/palacio-real-y-jardines-de-aranjuez.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/palacio-real-y-jardines-de-aranjuez.png",
   },
 
   {
@@ -154,8 +166,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["bosque", "hayedo", "unesco", "biodiversidad", "otoño", "sendero"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hayedo-de-montejo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hayedo-de-montejo.png",
   },
 
   {
@@ -173,7 +188,9 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 45,
     intereses: ["senderismo", "cumbres", "miradores", "fauna", "flora", "clima", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-la-sierra-de-guadarrama.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -231,6 +248,7 @@ export const POIS = [
         "radio": 1500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-la-sierra-de-guadarrama.png",
   },
 
   {
@@ -248,8 +266,11 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 90,
     intereses: ["guerra_civil", "batalla", "frentes", "consecuencias"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/brunete.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/brunete.png",
   },
 
   {
@@ -267,8 +288,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 40,
     intereses: ["muralla", "fortificacion", "edad_media", "río", "pueblo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/muralla-y-castillo-de-buitrago-del-lozoya.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/muralla-y-castillo-de-buitrago-del-lozoya.png",
   },
 
   {
@@ -286,8 +310,11 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 40,
     intereses: ["castillo", "señorios", "arquitectura", "pueblo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-la-coracera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-la-coracera.png",
   },
 
   {
@@ -305,7 +332,9 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["monasterio", "valle", "rio", "senderismo", "pueblo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rascafria-y-monasterio-de-el-paular.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -318,6 +347,7 @@ export const POIS = [
         "radio": 1500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rascafria-y-monasterio-de-el-paular.png",
   },
 
   {
@@ -335,8 +365,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["plaza_mayor", "gastronomia", "pueblo", "patrimonio", "plan_rapido"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chinchon-y-su-plaza-mayor.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chinchon-y-su-plaza-mayor.png",
   },
 
   {
@@ -354,8 +387,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 40,
     intereses: ["barroco", "industrializacion", "urbanismo", "arquitectura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nuevo-baztan.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nuevo-baztan.png",
   },
 
   {
@@ -373,8 +409,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["arquitectura_negra", "pueblo", "paseo", "foto", "gastronomia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/patones-de-arriba.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/patones-de-arriba.png",
   },
 
   {
@@ -392,8 +431,11 @@ export const POIS = [
     prioridad: 98,
     cooldownMin: 65,
     intereses: ["28km_tunel_ferroviario_mas_largo_españa_6o_europa_9o_mundo", "dos_tubos_paralelos_diametro_9_5m", "profundidad_maxima_992m_bajo_sierra", "AVE_madrid_valladolid_1219_millones_euros", "5_tuneladoras_trabajando_simultaneamente", "granito_y_gneis_perforado_con_explosivos_y_TBM"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-guadarrama-el-mas-largo-de-espana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-guadarrama-el-mas-largo-de-espana.png",
   },
 
   {
@@ -411,8 +453,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 58,
     intereses: ["7844m_mayor_tunel_urbano_espana", "dos_tubos_3_carriles_cada_uno_bajo_rio_manzanares", "soterramiento_m30_3900_millones_euros_2007", "transformó_ribera_manzanares_en_parque_madrid_rio", "premio_obra_civil_mejor_mundo_2009_ICE"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bypass-sur-m-30-el-mayor-tunel-urbano-de-espana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bypass-sur-m-30-el-mayor-tunel-urbano-de-espana.png",
   },
 
   // =====================================================================
@@ -495,7 +540,9 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 70,
     intereses: ["molinos", "quijote", "vistas", "paisaje", "viento"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/molinos-de-consuegra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -508,6 +555,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/molinos-de-consuegra.png",
   },
 
   {
@@ -525,8 +573,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 50,
     intereses: ["geologia", "miradores", "foto", "aves", "sendero_corto"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-barrancas-de-burujon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-barrancas-de-burujon.png",
   },
 
   {
@@ -544,8 +595,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 60,
     intereses: ["visigodo", "religion", "arte", "arquitectura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-maria-de-melque.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-maria-de-melque.png",
   },
 
   {
@@ -563,8 +617,11 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["paisaje", "sierra", "fauna", "senderismo", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montes-de-toledo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montes-de-toledo.png",
   },
 
   {
@@ -582,8 +639,11 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["castillo", "tajo", "frontera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-escalona.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-escalona.png",
   },
 
   {
@@ -601,8 +661,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["castillo", "edad_media", "señorio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-orgaz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-orgaz.png",
   },
 
   {
@@ -620,7 +683,9 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 45,
     intereses: ["muralla", "defensa", "arquitectura", "ciudad", "Joselito el Gallo", "Cerámica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/murallas-y-torres-de-talavera-de-la-reina.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -633,6 +698,7 @@ export const POIS = [
         "radio": 2000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/murallas-y-torres-de-talavera-de-la-reina.png",
   },
 
   {
@@ -650,8 +716,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 45,
     intereses: ["romano", "villa", "mosaicos", "vida_cotidiana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villa-romana-de-el-saucedo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villa-romana-de-el-saucedo.png",
   },
 
   {
@@ -669,8 +738,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["castillo", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-dos-hermanas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-dos-hermanas.png",
   },
 
   {
@@ -688,8 +760,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 45,
     intereses: ["arqueologia", "rupestre", "cuevas", "religion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuevas-y-ermitas-rupestres-de-huecas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuevas-y-ermitas-rupestres-de-huecas.png",
   },
 
   {
@@ -707,8 +782,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["castillo", "tajo", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-malpica-de-tajo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-malpica-de-tajo.png",
   },
 
   {
@@ -726,8 +804,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["castillo", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-san-jose.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-san-jose.png",
   },
 
   {
@@ -745,8 +826,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 45,
     intereses: ["prehistoria", "cuevas", "arqueologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuevas-del-chiquero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuevas-del-chiquero.png",
   },
 
   {
@@ -764,8 +848,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 45,
     intereses: ["tradiciones", "museo", "curiosidades", "cultura_local"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/museo-del-pecado-mortal.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/museo-del-pecado-mortal.png",
   },
 
   // =====================================================================
@@ -787,8 +874,11 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 60,
     intereses: ["fauna", "berrea", "observacion", "paisaje", "senderismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-cabaneros.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-cabaneros.png",
   },
 
   // ✅ CAPITAL
@@ -807,7 +897,9 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "cultura", "mancha"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-real.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -820,6 +912,7 @@ export const POIS = [
         "radio": 9000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-real.png",
   },
 
   {
@@ -837,8 +930,11 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 60,
     intereses: ["humedal", "aves", "observacion", "sendero", "ecosistema"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-las-tablas-de-daimiel.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-las-tablas-de-daimiel.png",
   },
 
   {
@@ -856,7 +952,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["teatro", "corral_de_comedias", "arquitectura", "pueblo", "plan_cultural"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almagro-y-su-plaza-mayor-corral-de-comedias.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -878,6 +976,7 @@ export const POIS = [
         "radio": 4000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almagro-y-su-plaza-mayor-corral-de-comedias.png",
   },
 
   {
@@ -895,8 +994,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["ordenes_militares", "castillo", "defensa", "reconquista"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-calatrava-la-nueva.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-calatrava-la-nueva.png",
   },
 
   {
@@ -914,8 +1016,11 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 60,
     intereses: ["lagunas", "agua", "rutas", "baño", "fauna", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-las-lagunas-de-ruidera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-las-lagunas-de-ruidera.png",
   },
 
   {
@@ -933,8 +1038,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 60,
     intereses: ["quijote", "ventas", "cervantes", "pueblo", "parada_viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-lapice.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-lapice.png",
   },
 
   {
@@ -952,8 +1060,11 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 50,
     intereses: ["vino", "cultura_local", "gastronomia", "historia_napoleonica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valdepenas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valdepenas.png",
   },
 
   {
@@ -971,8 +1082,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 60,
     intereses: ["pueblo", "patrimonio", "mancha", "plan_paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villanueva-de-los-infantes.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villanueva-de-los-infantes.png",
   },
 
   {
@@ -990,8 +1104,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 60,
     intereses: ["mancha", "rutas", "comunicaciones", "historia_local"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/manzanares.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/manzanares.png",
   },
 
   {
@@ -1009,8 +1126,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 90,
     intereses: ["prehistoria", "arqueologia", "yacimiento", "agua", "ingenieria_antigua"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/motilla-del-azuer.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/motilla-del-azuer.png",
   },
 
   {
@@ -1028,8 +1148,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 60,
     intereses: ["renacimiento", "arte", "arquitectura", "palacio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/palacio-del-marques-de-santa-cruz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/palacio-del-marques-de-santa-cruz.png",
   },
 
   {
@@ -1047,8 +1170,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 60,
     intereses: ["industria", "mineria", "historia_economica", "siglo_xix_xx"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puertollano.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puertollano.png",
   },
 
   {
@@ -1066,8 +1192,11 @@ export const POIS = [
     prioridad: 92,
     cooldownMin: 65,
     intereses: ["mayor_yacimiento_mercurio_mundo_2000_años_explotacion", "patrimonio_humanidad_unesco_2012", "mercurio_financiaba_extraccion_plata_potosi_bolivia", "teatro_minero_siglo_XVIII_dentro_mina", "esclavos_romanos_y_presos_trabajaban_en_ella"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minas-de-almaden-mayor-yacimiento-mercurio-del-mundo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minas-de-almaden-mayor-yacimiento-mercurio-del-mundo.png",
   },
 
   // =====================================================================
@@ -1089,8 +1218,11 @@ export const POIS = [
     prioridad: 160,
     cooldownMin: 180,
     intereses: ["reconquista", "batalla", "terreno", "logistica", "consecuencias"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-navas-de-tolosa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-navas-de-tolosa.png",
   },
 
   {
@@ -1108,8 +1240,11 @@ export const POIS = [
     prioridad: 150,
     cooldownMin: 120,
     intereses: ["guerra_independencia", "batalla", "consecuencias", "logistica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bailen.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bailen.png",
   },
 
   {
@@ -1128,10 +1263,10 @@ export const POIS = [
     cooldownMin: 120,
     intereses: ["renacimiento", "unesco", "arquitectura", "arte", "historia"],
     sponsor: {
-      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ubeda-y-baeza.png"
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baeza.png"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ubeda-y-baeza.png",
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baeza.png",
   },
 
   {
@@ -1150,10 +1285,10 @@ export const POIS = [
     cooldownMin: 120,
     intereses: ["renacimiento", "unesco", "arquitectura", "arte", "urbanismo"],
     sponsor: {
-      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ubeda-y-baeza.png"
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ubeda.png"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ubeda-y-baeza.png",
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ubeda.png",
   },
 
   {
@@ -1171,8 +1306,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["fauna", "senderismo", "ríos", "bosques", "miradores", "naturaleza"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-sierras-de-cazorla-segura-y-las-villas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-sierras-de-cazorla-segura-y-las-villas.png",
   },
 
   {
@@ -1190,8 +1328,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 60,
     intereses: ["geologia", "desfiladero", "paisaje", "paso_natural", "fauna", "rutas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-despenaperros.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-despenaperros.png",
   },
 
   // ✅ CAPITAL
@@ -1210,7 +1351,9 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 120,
     intereses: ["aceite", "cultura", "historia_urbana", "capitalidad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jaen.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -1223,6 +1366,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jaen.png",
   },
 
   {
@@ -1240,8 +1384,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["castillo", "pueblo", "edad_media", "plan_visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/banos-de-la-encina-y-castillo-de-burgalimar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/banos-de-la-encina-y-castillo-de-burgalimar.png",
   },
 
   {
@@ -1259,8 +1406,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["mirador", "frontera_medieval", "paisaje", "castillos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/martos-y-la-pena.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/martos-y-la-pena.png",
   },
 
   {
@@ -1278,8 +1428,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["ilustracion", "poblamiento", "reformas", "siglo_xviii"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-carolina.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-carolina.png",
   },
 
   {
@@ -1297,8 +1450,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 90,
     intereses: ["mineria", "industria", "patrimonio", "siglo_xix_xx"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/linares.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/linares.png",
   },
 
   {
@@ -1316,8 +1472,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 90,
     intereses: ["religion", "santuario", "paisaje", "romeria", "rutas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/andujar-y-santuario-de-la-virgen-de-la-cabeza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/andujar-y-santuario-de-la-virgen-de-la-cabeza.png",
   },
 
   {
@@ -1335,8 +1494,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 120,
     intereses: ["iberos", "andalusi", "arqueologia", "contexto"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arjona.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arjona.png",
   },
 
   {
@@ -1354,8 +1516,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 90,
     intereses: ["aceite", "paisaje", "agricultura", "cultura_local"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mar-de-olivos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mar-de-olivos.png",
   },
 
   {
@@ -1373,8 +1538,11 @@ export const POIS = [
     prioridad: 70,
     cooldownMin: 50,
     intereses: ["tunel_AVE_mas_largo_españa_8_km_bajo_sierra_morena", "desnivel_400m_resuelto_en_8km", "geologia_cuarcita_y_pizarra_muy_dura_perforacion_TBM", "separa_meseta_castellana_de_andalucia", "infraestructura_clave_madrid_sevilla_bajo_30_min"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/paso-ferroviario-de-despenaperros-via-de-alta-velocidad.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/paso-ferroviario-de-despenaperros-via-de-alta-velocidad.png",
   },
 
   {
@@ -1392,8 +1560,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 55,
     intereses: ["7_8km_tunel_sierra_morena_linea_AVE_madrid_sevilla", "cuarcita_y_pizarra_paleozoica_extremadamente_dura", "soluciona_el_mayor_obstaculo_orografico_entre_meseta_y_andalucia", "inaugurado_1992_expo_sevilla", "pendiente_maxima_25_por_mil"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-despenaperros-ave-sierra-morena-perforada.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-despenaperros-ave-sierra-morena-perforada.png",
   },
 
   // =====================================================================
@@ -1415,8 +1586,11 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 90,
     intereses: ["montaña", "senderismo", "nieve", "vistas", "fauna", "altitud"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sierra-nevada.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sierra-nevada.png",
   },
 
   // ✅ CAPITAL
@@ -1504,8 +1678,11 @@ export const POIS = [
     prioridad: 135,
     cooldownMin: 120,
     intereses: ["reconquista", "boabdil", "paso_montana", "paisaje", "cronica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-del-suspiro-del-moro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-del-suspiro-del-moro.png",
   },
 
   {
@@ -1523,7 +1700,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["paisaje", "rutas", "pueblos", "agua", "historia_morisca"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-alpujarras-y-lanjaron.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -1536,6 +1715,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-alpujarras-y-lanjaron.png",
   },
 
   {
@@ -1553,8 +1733,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["cuevas", "arquitectura", "catedral", "plan_visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guadix.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guadix.png",
   },
 
   {
@@ -1572,8 +1755,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 90,
     intereses: ["frontera_nazari", "castillo", "vigilancia", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/moclin.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/moclin.png",
   },
 
   {
@@ -1591,8 +1777,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 90,
     intereses: ["lorca", "literatura", "cultura", "pueblo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuente-vaqueros.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuente-vaqueros.png",
   },
 
   {
@@ -1610,8 +1799,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 90,
     intereses: ["frontera", "reconquista", "ruta", "ciudad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/loja.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/loja.png",
   },
 
   // =====================================================================
@@ -1634,7 +1826,9 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 90,
     intereses: ["a7", "puerto", "mediterraneo", "alcazaba", "sureste"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almeria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -1647,6 +1841,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almeria.png",
   },
 
   {
@@ -1664,8 +1859,11 @@ export const POIS = [
     prioridad: 134,
     cooldownMin: 85,
     intereses: ["volcanismo", "parque_natural", "calas", "aridez", "mediterraneo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-de-gata.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-de-gata.png",
   },
 
   {
@@ -1683,7 +1881,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 80,
     intereses: ["badlands", "aridez", "rodajes", "ramblas", "a92"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desierto-de-tabernas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -1705,6 +1905,7 @@ export const POIS = [
         "radio": 6000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desierto-de-tabernas.png",
   },
 
   {
@@ -1722,7 +1923,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 75,
     intereses: ["yesos", "cuevas", "karst", "geologia", "sorbas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/karst-en-yesos-de-sorbas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -1735,6 +1938,7 @@ export const POIS = [
         "radio": 5500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/karst-en-yesos-de-sorbas.png",
   },
 
   {
@@ -1752,8 +1956,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 75,
     intereses: ["acantilados", "agua_clara", "cabo_de_gata", "sendero", "mirador"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/playa-de-los-muertos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/playa-de-los-muertos.png",
   },
 
   {
@@ -1771,8 +1978,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 80,
     intereses: ["a7", "levante", "pueblo_blanco", "miradores", "costa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mojacar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mojacar.png",
   },
 
   {
@@ -1790,7 +2000,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 75,
     intereses: ["castillo", "los_veles", "marmol", "a92", "renacimiento"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/velez-blanco-y-castillo-de-los-fajardo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -1803,6 +2015,7 @@ export const POIS = [
         "radio": 6500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/velez-blanco-y-castillo-de-los-fajardo.png",
   },
 
   {
@@ -1820,8 +2033,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 70,
     intereses: ["cabo_de_gata", "calas", "puerto", "a7", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-jose.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-jose.png",
   },
 
   {
@@ -1839,8 +2055,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 70,
     intereses: ["a7", "poniente", "litoral", "invernaderos", "mediterraneo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/roquetas-de-mar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/roquetas-de-mar.png",
   },
 
   {
@@ -1858,8 +2077,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 70,
     intereses: ["ceramica", "cabo_de_gata", "a7", "artesania", "sierra_alhamilla"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nijar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nijar.png",
   },
 
   {
@@ -1877,8 +2099,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 70,
     intereses: ["almanzora", "castillo", "a7", "levante", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuevas-del-almanzora.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuevas-del-almanzora.png",
   },
 
   {
@@ -1896,8 +2121,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 70,
     intereses: ["a7", "levante", "puerto", "cabo_de_gata", "litoral"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/carboneras.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/carboneras.png",
   },
 
   {
@@ -1915,8 +2143,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 70,
     intereses: ["a7", "levante", "costa", "interior", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vera.png",
   },
 
   {
@@ -1934,8 +2165,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 70,
     intereses: ["a7", "a91", "corredor_levantino", "almanzora", "transito"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/huercal-overa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/huercal-overa.png",
   },
 
   {
@@ -1953,8 +2187,11 @@ export const POIS = [
     prioridad: 86,
     cooldownMin: 60,
     intereses: ["a92", "sierra_filabres", "puerto", "viaje", "estepa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/gergal.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/gergal.png",
   },
 
   // ✅ CAPITAL
@@ -2024,7 +2261,9 @@ export const POIS = [
     prioridad: 136,
     cooldownMin: 90,
     intereses: ["ap4", "a4", "a382", "vino", "flamenco", "caballos", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jerez-de-la-frontera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -2046,6 +2285,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jerez-de-la-frontera.png",
   },
 
   {
@@ -2063,8 +2303,11 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 85,
     intereses: ["roma", "garum", "bolonia", "estrecho", "arqueologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baelo-claudia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baelo-claudia.png",
   },
 
   {
@@ -2082,8 +2325,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 85,
     intereses: ["a382", "pueblos_blancos", "miradores", "campina", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arcos-de-la-frontera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arcos-de-la-frontera.png",
   },
 
   {
@@ -2101,8 +2347,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 85,
     intereses: ["estrecho", "viento", "africa", "murallas", "a7"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarifa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarifa.png",
   },
 
   {
@@ -2120,7 +2369,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 85,
     intereses: ["puerto", "a7", "estrecho", "logistica", "gibraltar"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/algeciras.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -2133,6 +2384,7 @@ export const POIS = [
         "radio": 5500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/algeciras.png",
   },
 
   {
@@ -2150,8 +2402,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 80,
     intereses: ["a381", "a390", "romanos", "medieval", "dulces", "mirador"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medina-sidonia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medina-sidonia.png",
   },
 
   {
@@ -2169,8 +2424,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 80,
     intereses: ["a48", "n340", "pueblos_blancos", "murallas", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vejer-de-la-frontera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vejer-de-la-frontera.png",
   },
 
   {
@@ -2188,8 +2446,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 70,
     intereses: ["chipiona", "rocio_jurado", "copla", "flamenco", "costa_noroeste", "cadiz"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chipiona.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chipiona.png",
   },
 
   {
@@ -2207,8 +2468,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 70,
     intereses: ["a382", "sierra_de_grazalema", "embalse", "miradores", "pueblos_blancos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zahara-de-la-sierra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zahara-de-la-sierra.png",
   },
 
   {
@@ -2226,8 +2490,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 70,
     intereses: ["salinas", "arsenal", "islas", "bahia", "defensa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-fernando.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-fernando.png",
   },
 
   {
@@ -2245,8 +2512,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 70,
     intereses: ["castillo", "parque_natural", "alcornocales", "campo_de_gibraltar", "mirador"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castellar-de-la-frontera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castellar-de-la-frontera.png",
   },
 
   {
@@ -2264,8 +2534,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 65,
     intereses: ["a48", "costa_de_la_luz", "playas", "bahia", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chiclana-de-la-frontera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chiclana-de-la-frontera.png",
   },
 
   {
@@ -2283,8 +2556,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 70,
     intereses: ["alcornocales", "castillo", "sierra", "a405", "ruta"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jimena-de-la-frontera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jimena-de-la-frontera.png",
   },
 
   {
@@ -2302,8 +2578,11 @@ export const POIS = [
     prioridad: 88,
     cooldownMin: 60,
     intereses: ["a384", "embalse", "sierra", "pueblos_blancos", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bornos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bornos.png",
   },
 
   // ✅ CAPITAL
@@ -2373,7 +2652,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 80,
     intereses: ["karst", "olivar", "senderismo", "caliza", "subbetica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-sierras-subbeticas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -2386,6 +2667,7 @@ export const POIS = [
         "radio": 5500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-sierras-subbeticas.png",
   },
 
   {
@@ -2403,8 +2685,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 80,
     intereses: ["a4", "guadalquivir", "casas_rojas", "miradores", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montoro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montoro.png",
   },
 
   {
@@ -2422,8 +2707,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 80,
     intereses: ["barroco", "subbetica", "manantiales", "a333", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/priego-de-cordoba.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/priego-de-cordoba.png",
   },
 
   {
@@ -2441,8 +2729,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 75,
     intereses: ["a431", "guadalquivir", "castillo", "vega", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almodovar-del-rio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almodovar-del-rio.png",
   },
 
   {
@@ -2460,8 +2751,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 75,
     intereses: ["a45", "a318", "sefardi", "barroco", "subbetica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lucena.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lucena.png",
   },
 
   {
@@ -2479,8 +2773,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 75,
     intereses: ["dehesa", "lince", "sierra_morena", "fauna", "bosque_mediterraneo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-cardena-montoro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-cardena-montoro.png",
   },
 
   {
@@ -2498,8 +2795,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 70,
     intereses: ["genil", "a318", "campina", "ferrocarril", "conexion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-genil.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-genil.png",
   },
 
   {
@@ -2517,8 +2817,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 70,
     intereses: ["vino", "a45", "campina_sur", "bodegas", "montilla_moriles"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montilla.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montilla.png",
   },
 
   {
@@ -2536,8 +2839,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 70,
     intereses: ["aceite", "n432", "campina", "castillo", "tambor"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baena.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baena.png",
   },
 
   {
@@ -2555,8 +2861,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 70,
     intereses: ["subbetica", "via_verde", "barroco", "a339", "sierras"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabra.png",
   },
 
   {
@@ -2574,8 +2883,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 70,
     intereses: ["embalse", "miradores", "a333", "sur_de_cordoba", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/iznajar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/iznajar.png",
   },
 
   {
@@ -2593,8 +2905,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 70,
     intereses: ["a45", "campina", "vino", "castillo", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aguilar-de-la-frontera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aguilar-de-la-frontera.png",
   },
 
   {
@@ -2612,8 +2927,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 65,
     intereses: ["vega", "guadalquivir", "genil", "a431", "occidente"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/palma-del-rio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/palma-del-rio.png",
   },
 
   {
@@ -2631,8 +2949,11 @@ export const POIS = [
     prioridad: 86,
     cooldownMin: 60,
     intereses: ["a4", "campina", "torres", "viaje", "cordoba_oriental"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bujalance.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bujalance.png",
   },
 
   {
@@ -2650,8 +2971,11 @@ export const POIS = [
     prioridad: 84,
     cooldownMin: 60,
     intereses: ["sierra_morena", "n420", "olivar", "dehesa", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/adamuz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/adamuz.png",
   },
 
   // ✅ CAPITAL
@@ -2670,7 +2994,9 @@ export const POIS = [
     prioridad: 136,
     cooldownMin: 90,
     intereses: ["a49", "atlantico", "rio_tinto", "puerto", "descubrimientos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/huelva.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -2701,6 +3027,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/huelva.png",
   },
 
   {
@@ -2718,8 +3045,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 80,
     intereses: ["donana", "romeria", "marismas", "caballos", "arena"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-rocio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-rocio.png",
   },
 
   {
@@ -2737,7 +3067,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 80,
     intereses: ["sierra_de_aracena", "n433", "jamon", "castillo", "cueva"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aracena.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -2750,6 +3082,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aracena.png",
   },
 
   {
@@ -2767,8 +3100,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 80,
     intereses: ["mineria", "cobre", "paisaje_marciano", "n435", "industrial"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minas-de-riotinto.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minas-de-riotinto.png",
   },
 
   {
@@ -2786,8 +3122,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 80,
     intereses: ["a49", "murallas", "puerta_del_condado", "andalusi", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/niebla.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/niebla.png",
   },
 
   {
@@ -2805,8 +3144,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 80,
     intereses: ["guadiana", "frontera", "portugal", "a49", "estuario"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayamonte.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayamonte.png",
   },
 
   {
@@ -2824,8 +3166,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 75,
     intereses: ["megalitismo", "prehistoria", "condado", "trigueros", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/dolmen-de-soto.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/dolmen-de-soto.png",
   },
 
   {
@@ -2843,8 +3188,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 70,
     intereses: ["donana", "a483", "romeria", "marismas", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almonte.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almonte.png",
   },
 
   {
@@ -2862,7 +3210,9 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 70,
     intereses: ["juan_ramon_jimenez", "vino", "condado", "campina", "a494"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/moguer.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -2875,6 +3225,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/moguer.png",
   },
 
   {
@@ -2892,8 +3243,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 70,
     intereses: ["donana", "costa", "playa", "a483", "dunas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/matalascanas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/matalascanas.png",
   },
 
   {
@@ -2911,8 +3265,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 70,
     intereses: ["pesca", "salinas", "marismas", "litoral", "atlantico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/isla-cristina.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/isla-cristina.png",
   },
 
   {
@@ -2930,7 +3287,9 @@ export const POIS = [
     prioridad: 98,
     cooldownMin: 65,
     intereses: ["a49", "isla_antilla", "fresa", "litoral", "conexion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lepe.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -2943,6 +3302,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lepe.png",
   },
 
   {
@@ -2960,8 +3320,11 @@ export const POIS = [
     prioridad: 86,
     cooldownMin: 60,
     intereses: ["condado", "vino", "a483", "campina", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bollullos-par-del-condado.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bollullos-par-del-condado.png",
   },
 
   {
@@ -2979,8 +3342,11 @@ export const POIS = [
     prioridad: 84,
     cooldownMin: 60,
     intereses: ["a49", "condado", "campina", "corredor", "sevilla"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-palma-del-condado.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-palma-del-condado.png",
   },
 
   // ✅ CAPITAL
@@ -2999,7 +3365,9 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 95,
     intereses: ["puerto", "museos", "costa_del_sol", "a7", "guadalmedina"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/malaga.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -3021,6 +3389,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/malaga.png",
   },
 
   {
@@ -3038,7 +3407,9 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 90,
     intereses: ["a45", "a92", "a92m", "cruce_andaluz", "dolmenes", "torcal"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/antequera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -3060,6 +3431,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/antequera.png",
   },
 
   {
@@ -3077,8 +3449,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 85,
     intereses: ["tajo", "serrania", "a367", "cádiz", "puente_nuevo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ronda.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ronda.png",
   },
 
   {
@@ -3096,8 +3471,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 80,
     intereses: ["gaitanes", "pasarela", "vertigo", "embalses", "senderismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caminito-del-rey.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caminito-del-rey.png",
   },
 
   {
@@ -3115,8 +3493,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 75,
     intereses: ["flamencos", "humedal", "a92", "aves", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguna-de-fuente-de-piedra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguna-de-fuente-de-piedra.png",
   },
 
   {
@@ -3134,7 +3515,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 75,
     intereses: ["a7", "balcon_de_europa", "costa", "cuevas", "mediterraneo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nerja.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -3147,6 +3530,7 @@ export const POIS = [
         "radio": 5500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nerja.png",
   },
 
   {
@@ -3164,8 +3548,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 75,
     intereses: ["a7", "costa_del_sol", "puerto", "casco_historico", "turismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/marbella.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/marbella.png",
   },
 
   {
@@ -3183,8 +3570,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 70,
     intereses: ["a7", "litoral_oeste", "mediterraneo", "paso_a_cadiz", "puerto"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/estepona.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/estepona.png",
   },
 
   {
@@ -3202,8 +3592,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 70,
     intereses: ["axarquia", "a7", "fortaleza", "camino_costero", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/velez-malaga.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/velez-malaga.png",
   },
 
   {
@@ -3221,8 +3614,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 70,
     intereses: ["a92", "plaza_ochavada", "cerro", "camino_real", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/archidona.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/archidona.png",
   },
 
   {
@@ -3240,8 +3636,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 65,
     intereses: ["a7", "cueva", "litoral", "axarquia", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rincon-de-la-victoria-y-cueva-del-tesoro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rincon-de-la-victoria-y-cueva-del-tesoro.png",
   },
 
   {
@@ -3259,8 +3658,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 65,
     intereses: ["embalses", "desfiladero", "gaitanes", "a357", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ardales.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ardales.png",
   },
 
   {
@@ -3278,8 +3680,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 65,
     intereses: ["guadalhorce", "castillo", "valle", "a343", "ruta"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alora.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alora.png",
   },
 
   {
@@ -3297,8 +3702,11 @@ export const POIS = [
     prioridad: 86,
     cooldownMin: 60,
     intereses: ["a92", "campina", "cruce", "interior", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/campillos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/campillos.png",
   },
 
   {
@@ -3316,8 +3724,11 @@ export const POIS = [
     prioridad: 84,
     cooldownMin: 60,
     intereses: ["a45", "pedrizas", "puerta_de_malaga", "montes", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/casabermeja.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/casabermeja.png",
   },
 
   // ✅ CAPITAL
@@ -3486,8 +3897,11 @@ export const POIS = [
     prioridad: 88,
     cooldownMin: 65,
     intereses: ["sierra_norte", "frontera", "castillo", "a66", "paso"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-real-de-la-jara.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-real-de-la-jara.png",
   },
 
   {
@@ -3505,8 +3919,11 @@ export const POIS = [
     prioridad: 86,
     cooldownMin: 55,
     intereses: ["corredor", "entrada_a_sevilla", "guadalquivir", "transito", "a66"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guillena.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guillena.png",
   },
 
   {
@@ -3524,8 +3941,11 @@ export const POIS = [
     prioridad: 86,
     cooldownMin: 60,
     intereses: ["dehesa", "ruta_de_la_plata", "agua", "sierra_norte", "senderismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almaden-de-la-plata.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almaden-de-la-plata.png",
   },
 
   {
@@ -3543,8 +3963,11 @@ export const POIS = [
     prioridad: 84,
     cooldownMin: 55,
     intereses: ["embalses", "bosque_mediterraneo", "sierra", "a66", "aire_libre"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-ronquillo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-ronquillo.png",
   },
 
   {
@@ -3562,8 +3985,11 @@ export const POIS = [
     prioridad: 82,
     cooldownMin: 60,
     intereses: ["sierra_norte", "mineria", "dehesa", "patrimonio", "ruta"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-castillo-de-las-guardas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-castillo-de-las-guardas.png",
   },
 
   {
@@ -3582,10 +4008,10 @@ export const POIS = [
     cooldownMin: 90,
     intereses: ["ordesa", "pirineo", "glaciarismo", "senderismo"],
     sponsor: {
-      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ordesa-y-monte-perdido.png"
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-ordesa-y-monte-perdido.png"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ordesa-y-monte-perdido.png",
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-ordesa-y-monte-perdido.png",
   },
 
   // ✅ CAPITAL
@@ -3604,8 +4030,11 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 90,
     intereses: ["a23", "a22", "capitalidad", "san_lorenzo", "casco_historico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/huesca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/huesca.png",
   },
 
   {
@@ -3623,8 +4052,11 @@ export const POIS = [
     prioridad: 133,
     cooldownMin: 70,
     intereses: ["a2", "cinca", "frontera_aragon", "puerta_de_entrada"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fraga-entrada-oriental-de-aragon-por-la-a-2.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fraga-entrada-oriental-de-aragon-por-la-a-2.png",
   },
 
   {
@@ -3642,8 +4074,11 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 70,
     intereses: ["romanico", "fortaleza", "prepirineo", "cine"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-loarre.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-loarre.png",
   },
 
   {
@@ -3661,8 +4096,11 @@ export const POIS = [
     prioridad: 131,
     cooldownMin: 75,
     intereses: ["conglomerados", "escalada", "aves_rapaces", "prepirineo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mallos-de-riglos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mallos-de-riglos.png",
   },
 
   {
@@ -3680,8 +4118,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 70,
     intereses: ["somontano", "pasarelas", "rio_vero", "colegiata"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alquezar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alquezar.png",
   },
 
   {
@@ -3699,7 +4140,9 @@ export const POIS = [
     prioridad: 129,
     cooldownMin: 70,
     intereses: ["a23", "pirineo", "camino_de_santiago", "frontera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jaca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -3712,6 +4155,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jaca.png",
   },
 
   {
@@ -3729,8 +4173,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 65,
     intereses: ["frontera", "tunel", "pirineo", "estacion_internacional"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/canfranc-estacion.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/canfranc-estacion.png",
   },
 
   {
@@ -3748,8 +4195,11 @@ export const POIS = [
     prioridad: 127,
     cooldownMin: 65,
     intereses: ["romanico", "aragón_medieval", "bosque", "panteon_real"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-san-juan-de-la-pena.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-san-juan-de-la-pena.png",
   },
 
   {
@@ -3767,8 +4217,11 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 80,
     intereses: ["barrancos", "cañones", "guara", "buitres"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-la-sierra-y-los-canones-de-guara.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-la-sierra-y-los-canones-de-guara.png",
   },
 
   {
@@ -3786,8 +4239,11 @@ export const POIS = [
     prioridad: 123,
     cooldownMin: 60,
     intereses: ["somontano", "a22", "catedral", "rio_vero"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/barbastro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/barbastro.png",
   },
 
   {
@@ -3805,8 +4261,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 65,
     intereses: ["sobrarbe", "plaza_mayor", "pirineo", "murallas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ainsa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ainsa.png",
   },
 
   {
@@ -3824,7 +4283,9 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 55,
     intereses: ["a22", "cinca", "castillo", "eje_huesca_lleida"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monzon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -3837,6 +4298,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monzon.png",
   },
 
   {
@@ -3854,8 +4316,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 60,
     intereses: ["esqui", "pirineo", "portalet", "a136"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/formigal.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/formigal.png",
   },
 
   {
@@ -3873,8 +4338,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 55,
     intereses: ["pirineo", "balneario", "esqui", "ibones"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/panticosa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/panticosa.png",
   },
 
   {
@@ -3892,8 +4360,11 @@ export const POIS = [
     prioridad: 107,
     cooldownMin: 45,
     intereses: ["colegiata", "hoya_de_huesca", "olivos", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bolea-y-la-colegiata-de-santa-maria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bolea-y-la-colegiata-de-santa-maria.png",
   },
 
   {
@@ -3911,8 +4382,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 45,
     intereses: ["a23", "gallego", "puerta_del_pirineo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sabinanigo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sabinanigo.png",
   },
 
   {
@@ -3930,8 +4404,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 40,
     intereses: ["a132", "ramon_y_cajal", "paso_hacia_riglos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayerbe.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayerbe.png",
   },
 
   // ✅ CAPITAL
@@ -3950,7 +4427,9 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 120,
     intereses: ["a23", "mudejar", "amantes", "capitalidad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/teruel.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -3981,6 +4460,7 @@ export const POIS = [
         "radio": 6000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/teruel.png",
   },
 
   {
@@ -3998,7 +4478,9 @@ export const POIS = [
     prioridad: 136,
     cooldownMin: 90,
     intereses: ["murallas", "medieval", "rodeno", "sierra"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/albarracin.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4011,6 +4493,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/albarracin.png",
   },
 
   {
@@ -4028,7 +4511,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 90,
     intereses: ["n232", "bajo_aragon", "castillo", "motorland"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcaniz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4041,6 +4526,7 @@ export const POIS = [
         "radio": 6000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcaniz.png",
   },
 
   {
@@ -4058,8 +4544,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 75,
     intereses: ["grullas", "migracion", "humedal", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguna-de-gallocanta.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguna-de-gallocanta.png",
   },
 
   {
@@ -4077,8 +4566,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 75,
     intereses: ["matarraña", "puente", "castillo", "piedra"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valderrobres.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valderrobres.png",
   },
 
   {
@@ -4096,8 +4588,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 75,
     intereses: ["a23", "gudar_javalambre", "castillo", "parada"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mora-de-rubielos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mora-de-rubielos.png",
   },
 
   {
@@ -4115,8 +4610,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 75,
     intereses: ["medieval", "portales", "gudar_javalambre"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rubielos-de-mora.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rubielos-de-mora.png",
   },
 
   {
@@ -4134,8 +4632,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 60,
     intereses: ["roca", "maestrazgo", "miradores", "geologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/organos-de-montoro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/organos-de-montoro.png",
   },
 
   {
@@ -4153,8 +4654,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 60,
     intereses: ["fortaleza", "piedra_roja", "sierra_menera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-peracense.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-peracense.png",
   },
 
   {
@@ -4172,8 +4676,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["maestrazgo", "plaza", "altiplano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cantavieja.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cantavieja.png",
   },
 
   {
@@ -4191,8 +4698,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["maestrazgo", "murallas", "silencio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mirambel.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mirambel.png",
   },
 
   {
@@ -4210,8 +4720,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["medieval", "castillo", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puertomingalvo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puertomingalvo.png",
   },
 
   {
@@ -4229,8 +4742,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 60,
     intereses: ["sierra", "casco_historico", "gudar"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/linares-de-mora.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/linares-de-mora.png",
   },
 
   {
@@ -4248,8 +4764,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 60,
     intereses: ["semana_santa", "tambor", "bunuel"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calanda.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calanda.png",
   },
 
   {
@@ -4267,8 +4786,11 @@ export const POIS = [
     prioridad: 96,
     cooldownMin: 45,
     intereses: ["a23", "jiloca", "paso"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calamocha.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calamocha.png",
   },
 
   {
@@ -4286,7 +4808,9 @@ export const POIS = [
     prioridad: 170,
     cooldownMin: 240,
     intereses: ["cister", "Desamortizción de Mendizábal", "Don Pablo Muntadas Campeny", "cascadas", "jardines", "paseo", "fotografia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-piedra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4299,6 +4823,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-piedra.png",
   },
 
   // ✅ CAPITAL
@@ -4317,7 +4842,9 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 120,
     intereses: ["a2", "a68", "ap2", "ebro", "mudéjar", "capitalidad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zaragoza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4348,6 +4875,7 @@ export const POIS = [
         "radio": 4000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zaragoza.png",
   },
 
   {
@@ -4365,7 +4893,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 90,
     intereses: ["a2", "mudéjar", "fortalezas", "juderia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calatayud.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4396,6 +4926,7 @@ export const POIS = [
         "radio": 4000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calatayud.png",
   },
 
   {
@@ -4413,8 +4944,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 75,
     intereses: ["medieval", "fernando_el_catolico", "piedra"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sos-del-rey-catolico.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sos-del-rey-catolico.png",
   },
 
   {
@@ -4432,8 +4966,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 75,
     intereses: ["moncayo", "senderismo", "bosques", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-moncayo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-moncayo.png",
   },
 
   {
@@ -4451,8 +4988,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 90,
     intereses: ["guerra_civil", "ruinas", "memoria_historica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pueblo-viejo-de-belchite.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pueblo-viejo-de-belchite.png",
   },
 
   {
@@ -4470,7 +5010,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 75,
     intereses: ["catedral", "mudéjar", "moncayo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarazona.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4483,6 +5025,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarazona.png",
   },
 
   {
@@ -4500,7 +5043,9 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 75,
     intereses: ["murallas", "colegiata", "a23", "camino_historico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/daroca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4513,6 +5058,7 @@ export const POIS = [
         "radio": 1000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/daroca.png",
   },
 
   {
@@ -4530,7 +5076,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["embalse", "paisaje", "foto", "agua"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/embalse-de-la-tranquera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4543,6 +5091,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/embalse-de-la-tranquera.png",
   },
 
   {
@@ -4560,8 +5109,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["goya", "pintura", "grabado", "arte_aragones"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuendetodos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuendetodos.png",
   },
 
   {
@@ -4579,8 +5131,11 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 60,
     intereses: ["vino", "denominacion_origen", "a23", "campo_de_carinena"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/carinena.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/carinena.png",
   },
 
   {
@@ -4598,8 +5153,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 60,
     intereses: ["cinco_villas", "aragón_interior", "románico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ejea-de-los-caballeros.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ejea-de-los-caballeros.png",
   },
 
   {
@@ -4617,8 +5175,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 60,
     intereses: ["ebro", "segre", "embalses", "pesca"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mequinenza-y-el-mar-de-aragon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mequinenza-y-el-mar-de-aragon.png",
   },
 
   {
@@ -4636,8 +5197,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 120,
     intereses: ["balneario", "aguas_termales", "descanso", "parada_viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alhama-de-aragon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alhama-de-aragon.png",
   },
 
   {
@@ -4655,8 +5219,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 60,
     intereses: ["embalse", "mar_de_aragon", "n232", "compromiso_de_caspe"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caspe.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caspe.png",
   },
 
   {
@@ -4674,8 +5241,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 45,
     intereses: ["a2", "valdejalon", "paso"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-almunia-de-dona-godina.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-almunia-de-dona-godina.png",
   },
 
   {
@@ -4693,8 +5263,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 120,
     intereses: ["aguas_termales", "baño", "paisaje", "relax"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lago-termal-de-alhama-de-aragon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lago-termal-de-alhama-de-aragon.png",
   },
 
   {
@@ -4712,8 +5285,11 @@ export const POIS = [
     prioridad: 96,
     cooldownMin: 45,
     intereses: ["a68", "ebro", "paso"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alagon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alagon.png",
   },
 
   {
@@ -4731,8 +5307,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 90,
     intereses: ["pueblo", "parada_viaje", "paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ateca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ateca.png",
   },
 
   {
@@ -4750,8 +5329,11 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 60,
     intereses: ["reconquista", "santuario", "picos_de_europa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/covadonga.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/covadonga.png",
   },
 
   {
@@ -4769,8 +5351,11 @@ export const POIS = [
     prioridad: 123,
     cooldownMin: 60,
     intereses: ["osos", "brañas", "lagos", "montana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/somiedo-y-su-parque-natural.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/somiedo-y-su-parque-natural.png",
   },
 
   {
@@ -4788,7 +5373,9 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 60,
     intereses: ["cantabrico", "acantilados", "faro", "viento", "geologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-penas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4801,6 +5388,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-penas.png",
   },
 
   {
@@ -4818,8 +5406,11 @@ export const POIS = [
     prioridad: 121,
     cooldownMin: 55,
     intereses: ["reserva_biosfera", "hayedos", "rios", "senderismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-redes.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-redes.png",
   },
 
   {
@@ -4837,7 +5428,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["puerto", "historia_urbana", "cantabrico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cimavilla-y-puerto-de-gijon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4850,6 +5443,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cimavilla-y-puerto-de-gijon.png",
   },
 
   {
@@ -4867,7 +5461,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["camino_primitivo", "reliquias", "gótico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/catedral-de-oviedo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4889,6 +5485,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/catedral-de-oviedo.png",
   },
 
   {
@@ -4906,8 +5503,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 55,
     intereses: ["picos_de_europa", "costa", "vistas", "panoramica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mirador-del-fitu.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mirador-del-fitu.png",
   },
 
   {
@@ -4925,7 +5525,9 @@ export const POIS = [
     prioridad: 119,
     cooldownMin: 55,
     intereses: ["mineria", "pozo", "revolucion_industrial", "cuencas_mineras"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pozo-soton.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -4938,6 +5540,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pozo-soton.png",
   },
 
   {
@@ -4955,8 +5558,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 50,
     intereses: ["oleaje", "karst", "acantilados", "mar"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bufones-de-pria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bufones-de-pria.png",
   },
 
   {
@@ -4974,8 +5580,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 50,
     intereses: ["acantilados", "miradores", "costa_verde"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/playa-del-silencio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/playa-del-silencio.png",
   },
 
   {
@@ -4993,8 +5602,11 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 50,
     intereses: ["casas_colgantes", "puerto", "cantabrico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cudillero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cudillero.png",
   },
 
   {
@@ -5012,8 +5624,11 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 50,
     intereses: ["puente_romano", "oriente_asturiano", "sella"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cangas-de-onis-y-su-puente.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cangas-de-onis-y-su-puente.png",
   },
 
   {
@@ -5031,8 +5646,11 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 50,
     intereses: ["prerromanico", "unesco", "puerto_pajares"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-cristina-de-lena.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-cristina-de-lena.png",
   },
 
   {
@@ -5050,8 +5668,11 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 50,
     intereses: ["faro", "mar", "vistas", "acantilados"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-vidio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-vidio.png",
   },
 
   {
@@ -5069,8 +5690,11 @@ export const POIS = [
     prioridad: 113,
     cooldownMin: 55,
     intereses: ["cuchilleria", "etnografia", "aldeas", "occidente"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/taramundi.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/taramundi.png",
   },
 
   {
@@ -5088,8 +5712,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 50,
     intereses: ["bicicleta", "sendas", "oseras", "bosque"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/senda-del-oso.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/senda-del-oso.png",
   },
 
   {
@@ -5107,8 +5734,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 50,
     intereses: ["cordillera", "nieve", "frontera", "vistas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-de-san-isidro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-de-san-isidro.png",
   },
 
   {
@@ -5126,7 +5756,9 @@ export const POIS = [
     prioridad: 103,
     cooldownMin: 45,
     intereses: ["dinosaurios", "jurásico", "costa_jurásica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/colunga-y-el-museo-del-jurasico.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5139,6 +5771,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/colunga-y-el-museo-del-jurasico.png",
   },
 
   {
@@ -5156,8 +5789,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["arte_rupestre", "prehistoria", "cuevas", "familia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-de-la-prehistoria-de-teverga.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-de-la-prehistoria-de-teverga.png",
   },
 
   {
@@ -5175,8 +5811,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["puerto", "arte_publico", "oriente_asturiano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/llanes-y-sus-cubos-de-la-memoria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/llanes-y-sus-cubos-de-la-memoria.png",
   },
 
   {
@@ -5194,8 +5833,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["sella", "cueva_tito_bustillo", "desembocadura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ribadesella-y-el-sella.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ribadesella-y-el-sella.png",
   },
 
   {
@@ -5213,7 +5855,9 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 40,
     intereses: ["arcadas", "puerto", "industria_y_patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aviles.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5235,6 +5879,7 @@ export const POIS = [
         "radio": 4200
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aviles.png",
   },
 
   {
@@ -5252,8 +5897,11 @@ export const POIS = [
     prioridad: 97,
     cooldownMin: 40,
     intereses: ["camino_primitivo", "occidente", "peregrinacion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tineo-y-el-camino-primitivo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tineo-y-el-camino-primitivo.png",
   },
 
   {
@@ -5271,8 +5919,11 @@ export const POIS = [
     prioridad: 97,
     cooldownMin: 40,
     intereses: ["carlos_v", "ria", "gastronomia", "historia_marina"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tazones-puerto-historico-de-villaviciosa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tazones-puerto-historico-de-villaviciosa.png",
   },
 
   {
@@ -5290,8 +5941,11 @@ export const POIS = [
     prioridad: 96,
     cooldownMin: 40,
     intereses: ["mar", "surf", "puerto", "occidente"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tapia-de-casariego.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tapia-de-casariego.png",
   },
 
   {
@@ -5309,8 +5963,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["puerto", "costa_verde", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/luarca-villa-blanca-de-la-costa-verde.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/luarca-villa-blanca-de-la-costa-verde.png",
   },
 
   {
@@ -5328,8 +5985,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["sidra", "ría", "románico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villaviciosa-y-la-ria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villaviciosa-y-la-ria.png",
   },
 
   {
@@ -5347,8 +6007,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["mineria", "valle_del_caudal", "a_66"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mieres-y-el-valle-minero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mieres-y-el-valle-minero.png",
   },
 
   {
@@ -5366,8 +6029,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 30,
     intereses: ["camino_primitivo", "mercados", "vega"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/grado-y-el-camino-interior.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/grado-y-el-camino-interior.png",
   },
 
   {
@@ -5385,7 +6051,9 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 60,
     intereses: ["prehistoria", "unesco", "arte_rupestre"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cueva-y-museo-de-altamira.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5398,6 +6066,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cueva-y-museo-de-altamira.png",
   },
 
   {
@@ -5415,7 +6084,9 @@ export const POIS = [
     prioridad: 123,
     cooldownMin: 55,
     intereses: ["flysch", "acantilados", "geologia", "oleaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/costa-quebrada.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5428,6 +6099,7 @@ export const POIS = [
         "radio": 5500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/costa-quebrada.png",
   },
 
   {
@@ -5445,7 +6117,9 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 60,
     intereses: ["nacimiento_del_ason", "miradores", "caliza", "senderismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/collados-del-ason.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5458,6 +6132,7 @@ export const POIS = [
         "radio": 5500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/collados-del-ason.png",
   },
 
   {
@@ -5475,8 +6150,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["fauna", "mina_a_cielo_abierto", "familias"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-de-la-naturaleza-de-cabarceno.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-de-la-naturaleza-de-cabarceno.png",
   },
 
   {
@@ -5494,7 +6172,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["bahia", "puerto", "historia_urbana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bahia-y-centro-historico-de-santander.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5516,6 +6196,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bahia-y-centro-historico-de-santander.png",
   },
 
   {
@@ -5533,8 +6214,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 55,
     intereses: ["espeleologia", "excéntricas", "mineria", "karst"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cueva-el-soplao.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cueva-el-soplao.png",
   },
 
   {
@@ -5552,7 +6236,9 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 55,
     intereses: ["playas", "marismas", "aves", "occidente"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-oyambre.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5565,6 +6251,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-oyambre.png",
   },
 
   {
@@ -5582,7 +6269,9 @@ export const POIS = [
     prioridad: 117,
     cooldownMin: 50,
     intereses: ["costa_oriental", "aves", "acantilados", "mar"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/faro-de-ajo-y-acantilados.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5595,6 +6284,7 @@ export const POIS = [
         "radio": 4200
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/faro-de-ajo-y-acantilados.png",
   },
 
   {
@@ -5612,8 +6302,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 55,
     intereses: ["leyenda_hombre_pez", "pasiegos", "arquitectura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lierganes.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lierganes.png",
   },
 
   {
@@ -5631,8 +6324,11 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 55,
     intereses: ["deva", "paredes_calizas", "acceso_a_liebana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desfiladero-de-la-hermida.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desfiladero-de-la-hermida.png",
   },
 
   {
@@ -5650,7 +6346,9 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 50,
     intereses: ["ebro", "manantial", "campoo", "hidrologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fontibre-nacimiento-del-ebro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5663,6 +6361,7 @@ export const POIS = [
         "radio": 4000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fontibre-nacimiento-del-ebro.png",
   },
 
   {
@@ -5680,7 +6379,9 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 50,
     intereses: ["modernismo", "universidad_pontificia", "costa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/comillas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5693,6 +6394,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/comillas.png",
   },
 
   {
@@ -5710,8 +6412,11 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 50,
     intereses: ["karst", "cuevas", "oriente", "geologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ramales-de-la-victoria-y-cueva-de-cullalvera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ramales-de-la-victoria-y-cueva-de-cullalvera.png",
   },
 
   {
@@ -5729,8 +6434,11 @@ export const POIS = [
     prioridad: 113,
     cooldownMin: 50,
     intereses: ["cantabros", "roma", "campoo", "arqueologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/juliobriga-y-retortillo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/juliobriga-y-retortillo.png",
   },
 
   {
@@ -5748,8 +6456,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 50,
     intereses: ["romanizacion", "besaya", "camino", "montana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/barcena-de-pie-de-concha-y-la-calzada-romana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/barcena-de-pie-de-concha-y-la-calzada-romana.png",
   },
 
   {
@@ -5767,8 +6478,11 @@ export const POIS = [
     prioridad: 111,
     cooldownMin: 50,
     intereses: ["liebana", "jubileo", "lignum_crucis", "peregrinacion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santo-toribio-de-liebana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santo-toribio-de-liebana.png",
   },
 
   {
@@ -5786,8 +6500,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 50,
     intereses: ["liebana", "torres", "picos_de_europa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/potes-y-la-liebana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/potes-y-la-liebana.png",
   },
 
   {
@@ -5805,8 +6522,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 50,
     intereses: ["bahia", "iglesia_gotica", "castillo_faro"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-urdiales.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-urdiales.png",
   },
 
   {
@@ -5824,8 +6544,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["cuevas_del_monte_castillo", "arte_rupestre", "besaya"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-viesgo-y-sus-cuevas-prehistoricas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-viesgo-y-sus-cuevas-prehistoricas.png",
   },
 
   {
@@ -5843,8 +6566,11 @@ export const POIS = [
     prioridad: 99,
     cooldownMin: 45,
     intereses: ["pasiegos", "cabañas", "sobaos", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vega-de-pas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vega-de-pas.png",
   },
 
   {
@@ -5862,8 +6588,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["anchoas", "marismas", "fortes"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santona-y-el-monte-buciero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santona-y-el-monte-buciero.png",
   },
 
   {
@@ -5881,8 +6610,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["secuoyas", "reforestacion", "cantabrico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bosque-de-secuoyas-de-cabezon-de-la-sal.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bosque-de-secuoyas-de-cabezon-de-la-sal.png",
   },
 
   {
@@ -5900,8 +6632,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["playas", "sur", "ria", "cantabrico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/suances-y-la-ria-de-san-martin.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/suances-y-la-ria-de-san-martin.png",
   },
 
   {
@@ -5919,8 +6654,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["saja_besaya", "arquitectura_popular", "montaña"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/barcena-mayor.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/barcena-mayor.png",
   },
 
   {
@@ -5938,7 +6676,9 @@ export const POIS = [
     prioridad: 94,
     cooldownMin: 40,
     intereses: ["camino_real", "casco_historico", "besaya"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cartes-villa-del-camino-real.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -5951,6 +6691,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cartes-villa-del-camino-real.png",
   },
 
   {
@@ -5968,8 +6709,11 @@ export const POIS = [
     prioridad: 93,
     cooldownMin: 40,
     intereses: ["ason", "valles", "oriente", "puente"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ampuero-y-el-valle-bajo-del-ason.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ampuero-y-el-valle-bajo-del-ason.png",
   },
 
   {
@@ -5987,8 +6731,11 @@ export const POIS = [
     prioridad: 91,
     cooldownMin: 40,
     intereses: ["tina_mayor", "desembocadura", "frontera", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pechon-y-la-tina-mayor.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pechon-y-la-tina-mayor.png",
   },
 
   {
@@ -6006,8 +6753,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["valles", "casas_montanesas", "saja_nansa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tudanca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tudanca.png",
   },
 
   {
@@ -6025,8 +6775,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["playas", "puerto", "bahia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laredo-y-su-gran-arenal.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laredo-y-su-gran-arenal.png",
   },
 
   {
@@ -6044,8 +6797,11 @@ export const POIS = [
     prioridad: 145,
     cooldownMin: 180,
     intereses: ["monasterio", "arte", "arquitectura", "religion", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santo-domingo-de-silos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santo-domingo-de-silos.png",
   },
 
   {
@@ -6063,8 +6819,11 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 150,
     intereses: ["arqueologia", "poblamiento", "historia_antigua", "patrimonio", "visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yacimientos-de-atapuerca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yacimientos-de-atapuerca.png",
   },
 
   {
@@ -6082,8 +6841,11 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 150,
     intereses: ["arqueologia", "poblamiento", "historia_antigua", "patrimonio", "visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-romana-de-clunia-sulpicia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-romana-de-clunia-sulpicia.png",
   },
 
   // ✅ CAPITAL
@@ -6162,8 +6924,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "duques_de_lerma"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lerma.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lerma.png",
   },
 
   {
@@ -6181,8 +6946,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "ribera_del_duero"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aranda-de-duero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aranda-de-duero.png",
   },
 
   {
@@ -6200,8 +6968,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "ciudad_medieval", "ebro"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/frias.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/frias.png",
   },
 
   {
@@ -6219,8 +6990,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "nudo_logistico", "ebro", "ap1"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/miranda-de-ebro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/miranda-de-ebro.png",
   },
 
   {
@@ -6238,8 +7012,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 120,
     intereses: ["monasterio", "arte", "arquitectura", "religion", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-san-salvador-de-ona.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-san-salvador-de-ona.png",
   },
 
   {
@@ -6257,8 +7034,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "arleanza", "castilla_medieval"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/covarrubias.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/covarrubias.png",
   },
 
   {
@@ -6276,8 +7056,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "la_bureba"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/briviesca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/briviesca.png",
   },
 
   {
@@ -6295,8 +7078,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_a62", "origen_romano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sasamon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sasamon.png",
   },
 
   {
@@ -6314,8 +7100,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "castillo", "ribera_del_duero"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/penaranda-de-duero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/penaranda-de-duero.png",
   },
 
   {
@@ -6333,8 +7122,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "felix_rodriguez_de_la_fuente", "sal"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/poza-de-la-sal.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/poza-de-la-sal.png",
   },
 
   {
@@ -6352,8 +7144,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "paso_natural", "a1", "cantabrico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desfiladero-de-pancorbo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desfiladero-de-pancorbo.png",
   },
 
   {
@@ -6371,8 +7166,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "karst", "cascada", "cañones"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/orbaneja-del-castillo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/orbaneja-del-castillo.png",
   },
 
   // ✅ CAPITAL
@@ -6391,7 +7189,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/leon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -6413,6 +7213,7 @@ export const POIS = [
         "radio": 1800
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/leon.png",
   },
 
   {
@@ -6430,8 +7231,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "romanos", "oro", "unesco"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-medulas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-medulas.png",
   },
 
   {
@@ -6449,7 +7253,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "bierzo", "a6"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponferrada.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -6462,6 +7268,7 @@ export const POIS = [
         "radio": 2200
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponferrada.png",
   },
 
   {
@@ -6479,7 +7286,9 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "camino_de_santiago"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/astorga.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -6492,6 +7301,7 @@ export const POIS = [
         "radio": 1800
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/astorga.png",
   },
 
   {
@@ -6509,8 +7319,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago", "a6"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villafranca-del-bierzo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villafranca-del-bierzo.png",
   },
 
   {
@@ -6528,8 +7341,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 120,
     intereses: ["monasterio", "arte", "arquitectura", "religion", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santa-maria-de-carracedo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santa-maria-de-carracedo.png",
   },
 
   {
@@ -6547,8 +7363,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "puente", "camino_de_santiago", "a6"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hospital-de-orbigo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hospital-de-orbigo.png",
   },
 
   {
@@ -6566,8 +7385,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a231", "mudejar", "camino_de_santiago"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sahagun.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sahagun.png",
   },
 
   {
@@ -6585,8 +7407,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "maragateria", "arrieros"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castrillo-de-los-polvazares.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castrillo-de-los-polvazares.png",
   },
 
   {
@@ -6605,10 +7430,10 @@ export const POIS = [
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "esla", "sur_leones"],
     sponsor: {
-      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valencia.png"
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valencia-de-don-juan.png"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valencia.png",
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valencia-de-don-juan.png",
   },
 
   {
@@ -6626,8 +7451,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago", "murallas", "a60"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mansilla-de-las-mulas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mansilla-de-las-mulas.png",
   },
 
   {
@@ -6645,8 +7473,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "cruce_camino"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-baneza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-baneza.png",
   },
 
   {
@@ -6664,7 +7495,9 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "caliza", "desfiladero", "cuevas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hoces-de-vegacervera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -6677,6 +7510,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hoces-de-vegacervera.png",
   },
 
   {
@@ -6694,7 +7528,9 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "a66", "puerto", "paso_asturias"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-de-pajares.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -6707,6 +7543,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-de-pajares.png",
   },
 
   {
@@ -6724,8 +7561,11 @@ export const POIS = [
     prioridad: 88,
     cooldownMin: 70,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "bierzo", "parada_viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bembibre.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bembibre.png",
   },
 
   {
@@ -6743,8 +7583,11 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 150,
     intereses: ["arqueologia", "poblamiento", "historia_antigua", "patrimonio", "visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villa-romana-la-olmeda.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villa-romana-la-olmeda.png",
   },
 
   // ✅ CAPITAL
@@ -6763,7 +7606,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/palencia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -6794,6 +7639,7 @@ export const POIS = [
         "radio": 1600
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/palencia.png",
   },
 
   {
@@ -6811,7 +7657,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a67", "montana_palentina"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aguilar-de-campoo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -6824,6 +7672,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aguilar-de-campoo.png",
   },
 
   {
@@ -6841,7 +7690,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago", "canal"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fromista.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -6863,6 +7714,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fromista.png",
   },
 
   {
@@ -6880,8 +7732,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/carrion-de-los-condes.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/carrion-de-los-condes.png",
   },
 
   {
@@ -6899,8 +7754,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "legion_romana", "a67"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/herrera-de-pisuerga.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/herrera-de-pisuerga.png",
   },
 
   {
@@ -6918,8 +7776,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ampudia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ampudia.png",
   },
 
   {
@@ -6937,8 +7798,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "templarios", "camino_de_santiago"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalcazar-de-sirga.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalcazar-de-sirga.png",
   },
 
   {
@@ -6956,8 +7820,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/becerril-de-campos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/becerril-de-campos.png",
   },
 
   {
@@ -6975,8 +7842,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "cerrato", "bodegas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baltanas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baltanas.png",
   },
 
   {
@@ -6994,8 +7864,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "vega_carrion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/saldana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/saldana.png",
   },
 
   {
@@ -7013,8 +7886,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos", "arte"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/paredes-de-nava.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/paredes-de-nava.png",
   },
 
   {
@@ -7032,8 +7908,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a62", "camino_del_pisuerga"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/duenas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/duenas.png",
   },
 
   {
@@ -7051,8 +7930,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "montaña_palentina", "embalses"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cervera-de-pisuerga.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cervera-de-pisuerga.png",
   },
 
   {
@@ -7070,8 +7952,11 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 150,
     intereses: ["arqueologia", "poblamiento", "historia_antigua", "patrimonio", "visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-veton-de-yecla-la-vieja.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-veton-de-yecla-la-vieja.png",
   },
 
   {
@@ -7089,8 +7974,11 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 150,
     intereses: ["arqueologia", "poblamiento", "historia_antigua", "patrimonio", "visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yacimiento-rupestre-de-siega-verde.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yacimiento-rupestre-de-siega-verde.png",
   },
 
   // ✅ CAPITAL
@@ -7109,7 +7997,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/salamanca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -7122,6 +8012,7 @@ export const POIS = [
         "radio": 1800
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/salamanca.png",
   },
 
   {
@@ -7139,8 +8030,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a62", "frontera", "fortificaciones"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-rodrigo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-rodrigo.png",
   },
 
   {
@@ -7158,7 +8052,9 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a66", "sierra"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bejar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -7171,6 +8067,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bejar.png",
   },
 
   {
@@ -7188,7 +8085,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["mirador", "vistas", "paisaje", "foto", "parada"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santuario-de-la-pena-de-francia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -7210,6 +8109,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santuario-de-la-pena-de-francia.png",
   },
 
   {
@@ -7227,8 +8127,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra", "vino"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-esteban-de-la-sierra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-esteban-de-la-sierra.png",
   },
 
   {
@@ -7246,8 +8149,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra_de_francia", "camino"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-martin-del-castanar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-martin-del-castanar.png",
   },
 
   {
@@ -7265,8 +8171,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "retratos", "sierra_de_francia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mogarraz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mogarraz.png",
   },
 
   {
@@ -7284,8 +8193,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "rio_tormes", "ruta_a50"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alba-de-tormes.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alba-de-tormes.png",
   },
 
   {
@@ -7303,8 +8215,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "fortaleza", "tormes"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ledesma.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ledesma.png",
   },
 
   {
@@ -7322,8 +8237,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a50", "llanura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/penaranda-de-bracamonte.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/penaranda-de-bracamonte.png",
   },
 
   {
@@ -7341,7 +8259,9 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 60,
     intereses: ["vino", "bodegas", "paisaje", "gastronomia", "tradicion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vinedos-de-la-sierra-de-salamanca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -7354,6 +8274,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vinedos-de-la-sierra-de-salamanca.png",
   },
 
   {
@@ -7371,8 +8292,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 70,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "jamon", "a66", "industria_alimentaria"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guijuelo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guijuelo.png",
   },
 
   {
@@ -7390,8 +8314,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 70,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a62", "portugal", "parada_viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuentes-de-onoro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuentes-de-onoro.png",
   },
 
   {
@@ -7409,7 +8336,9 @@ export const POIS = [
     prioridad: 136,
     cooldownMin: 120,
     intereses: ["castillo", "edad_media", "fortificacion", "arquitectura", "linajes", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-coca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -7422,6 +8351,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-coca.png",
   },
 
   // ✅ CAPITAL
@@ -7509,8 +8439,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "villa_medieval", "a1"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pedraza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pedraza.png",
   },
 
   {
@@ -7528,8 +8461,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "duraton"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sepulveda.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sepulveda.png",
   },
 
   {
@@ -7547,7 +8483,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a601", "murallas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuellar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -7560,6 +8498,7 @@ export const POIS = [
         "radio": 2200
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuellar.png",
   },
 
   {
@@ -7577,8 +8516,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "buitres", "cañon"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hoces-del-rio-duraton.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hoces-del-rio-duraton.png",
   },
 
   {
@@ -7596,8 +8538,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "castillo_iglesia", "centro_provincia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/turegano.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/turegano.png",
   },
 
   {
@@ -7615,8 +8560,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "sierra"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/riaza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/riaza.png",
   },
 
   {
@@ -7634,8 +8582,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "frontera_historica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayllon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayllon.png",
   },
 
   {
@@ -7653,8 +8604,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra", "románico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sotosalbos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sotosalbos.png",
   },
 
   {
@@ -7672,8 +8626,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "claustro"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-maria-la-real-de-nieva.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-maria-la-real-de-nieva.png",
   },
 
   {
@@ -7691,8 +8648,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "senderismo", "pinares"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-y-bosque-de-navafria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-y-bosque-de-navafria.png",
   },
 
   {
@@ -7710,8 +8670,11 @@ export const POIS = [
     prioridad: 88,
     cooldownMin: 70,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "ap6", "a6", "parada_viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villacastin.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villacastin.png",
   },
 
   {
@@ -7729,8 +8692,11 @@ export const POIS = [
     prioridad: 145,
     cooldownMin: 180,
     intereses: ["monasterio", "arte", "arquitectura", "religion", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santa-maria-de-huerta.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santa-maria-de-huerta.png",
   },
 
   {
@@ -7748,7 +8714,9 @@ export const POIS = [
     prioridad: 145,
     cooldownMin: 180,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a2", "cerro_testigo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medinaceli.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -7761,6 +8729,7 @@ export const POIS = [
         "radio": 1800
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medinaceli.png",
   },
 
   {
@@ -7778,8 +8747,11 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 120,
     intereses: ["castillo", "edad_media", "fortificacion", "arquitectura", "linajes", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-gormaz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-gormaz.png",
   },
 
   // ✅ CAPITAL
@@ -7798,7 +8770,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/soria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -7829,6 +8803,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/soria.png",
   },
 
   {
@@ -7846,8 +8821,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n122", "catedral"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-burgo-de-osma.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-burgo-de-osma.png",
   },
 
   {
@@ -7865,7 +8843,9 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "buitres", "cañon", "ermita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/canon-del-rio-lobos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -7878,6 +8858,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/canon-del-rio-lobos.png",
   },
 
   {
@@ -7895,7 +8876,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "glaciarismo", "senderismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguna-negra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -7908,6 +8891,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguna-negra.png",
   },
 
   {
@@ -7925,8 +8909,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a11", "colegiata"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/berlanga-de-duero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/berlanga-de-duero.png",
   },
 
   {
@@ -7944,8 +8931,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camero_viejo", "frontera_historica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yanguas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yanguas.png",
   },
 
   {
@@ -7963,8 +8953,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "duero", "n122"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-esteban-de-gormaz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-esteban-de-gormaz.png",
   },
 
   {
@@ -7982,8 +8975,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "pinares", "embalses"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vinuesa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vinuesa.png",
   },
 
   {
@@ -8001,8 +8997,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "medieval", "sabinares"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calatanazor.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calatanazor.png",
   },
 
   {
@@ -8020,8 +9019,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n111", "plaza_mayor"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almazan.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almazan.png",
   },
 
   {
@@ -8039,8 +9041,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "valle_jalon", "parada_viaje", "a2"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arcos-de-jalon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arcos-de-jalon.png",
   },
 
   // ✅ CAPITAL
@@ -8059,7 +9064,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valladolid.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8099,6 +9106,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valladolid.png",
   },
 
   {
@@ -8116,7 +9124,9 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "ferias", "historia_comercial"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medina-del-campo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8129,6 +9139,7 @@ export const POIS = [
         "radio": 2200
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medina-del-campo.png",
   },
 
   {
@@ -8146,8 +9157,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a62", "tratado", "duero"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tordesillas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tordesillas.png",
   },
 
   {
@@ -8165,8 +9179,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "murallas", "villa_del_libro"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/uruena.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/uruena.png",
   },
 
   {
@@ -8184,7 +9201,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n122", "ribera_del_duero"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/penafiel.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8197,6 +9216,7 @@ export const POIS = [
         "radio": 2200
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/penafiel.png",
   },
 
   {
@@ -8214,8 +9234,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "duero", "aves", "humedal"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/reserva-natural-de-riberas-de-castronuno.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/reserva-natural-de-riberas-de-castronuno.png",
   },
 
   {
@@ -8233,8 +9256,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "mudejar", "a6"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/olmedo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/olmedo.png",
   },
 
   {
@@ -8252,8 +9278,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "canal_de_castilla", "campos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medina-de-rioseco.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medina-de-rioseco.png",
   },
 
   {
@@ -8271,8 +9300,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "castillo", "campos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalba-de-los-alcores.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalba-de-los-alcores.png",
   },
 
   {
@@ -8290,8 +9322,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "vino"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nava-del-rey.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nava-del-rey.png",
   },
 
   {
@@ -8309,8 +9344,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos", "mercados"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalon-de-campos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalon-de-campos.png",
   },
 
   {
@@ -8328,8 +9366,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "duero", "entorno_valladolid"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tudela-de-duero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tudela-de-duero.png",
   },
 
   {
@@ -8347,8 +9388,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 70,
     intereses: ["castillo", "edad_media", "fortificacion", "arquitectura", "linajes", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-portillo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-portillo.png",
   },
 
   {
@@ -8366,8 +9410,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 60,
     intereses: ["vino", "bodegas", "paisaje", "gastronomia", "tradicion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rueda.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rueda.png",
   },
 
   {
@@ -8385,8 +9432,11 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 150,
     intereses: ["arqueologia", "poblamiento", "historia_antigua", "patrimonio", "visita"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/despoblado-y-castillo-de-castrotorafe.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/despoblado-y-castillo-de-castrotorafe.png",
   },
 
   {
@@ -8404,8 +9454,11 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 150,
     intereses: ["patrimonio", "arquitectura", "historia", "visita", "visigodo", "embalse"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/iglesia-de-san-pedro-de-la-nave.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/iglesia-de-san-pedro-de-la-nave.png",
   },
 
   // ✅ CAPITAL
@@ -8424,8 +9477,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zamora.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zamora.png",
   },
 
   {
@@ -8443,8 +9499,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a52", "castillo", "frontera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puebla-de-sanabria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puebla-de-sanabria.png",
   },
 
   {
@@ -8462,8 +9521,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "a66", "a52", "nudo_viario"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/benavente.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/benavente.png",
   },
 
   {
@@ -8481,7 +9543,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a11", "vino", "duero"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/toro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8494,6 +9558,7 @@ export const POIS = [
         "radio": 1800
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/toro.png",
   },
 
   {
@@ -8511,7 +9576,9 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "duero", "cañones"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arribes-del-duero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8524,6 +9591,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arribes-del-duero.png",
   },
 
   {
@@ -8541,7 +9609,9 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "lago", "glaciar", "playas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lago-de-sanabria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8554,6 +9624,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lago-de-sanabria.png",
   },
 
   {
@@ -8571,8 +9642,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 120,
     intereses: ["monasterio", "arte", "arquitectura", "religion", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santa-maria-de-moreruela.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santa-maria-de-moreruela.png",
   },
 
   {
@@ -8590,8 +9664,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a66", "llanura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuentesauco.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuentesauco.png",
   },
 
   {
@@ -8609,8 +9686,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a52", "mozárabe"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tabara.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tabara.png",
   },
 
   {
@@ -8628,8 +9708,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra_de_la_culebra", "bosques"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villardeciervos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villardeciervos.png",
   },
 
   {
@@ -8647,8 +9730,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos", "a6"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalpando.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalpando.png",
   },
 
   {
@@ -8666,8 +9752,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n122", "frontera_portugal"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcanices.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcanices.png",
   },
 
   {
@@ -8685,8 +9774,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sanabria", "castillo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-de-sanabria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-de-sanabria.png",
   },
 
   {
@@ -8704,8 +9796,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_sanabres", "románico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-marta-de-tera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-marta-de-tera.png",
   },
 
   {
@@ -8723,8 +9818,11 @@ export const POIS = [
     prioridad: 86,
     cooldownMin: 70,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a52", "sierra_culebra", "parada_viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mombuey.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mombuey.png",
   },
 
   // ✅ CAPITAL
@@ -8743,7 +9841,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/avila.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8774,6 +9874,7 @@ export const POIS = [
         "radio": 6000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/avila.png",
   },
 
   {
@@ -8791,7 +9892,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "mudejar", "ruta_a6"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arevalo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8804,6 +9907,7 @@ export const POIS = [
         "radio": 2200
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arevalo.png",
   },
 
   {
@@ -8821,7 +9925,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "gredos", "circos_glaciares", "senderismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/plataforma-de-gredos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8834,6 +9940,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/plataforma-de-gredos.png",
   },
 
   {
@@ -8851,7 +9958,9 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "buitres", "embalse", "bosque"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/reserva-natural-del-valle-de-iruelas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8864,6 +9973,7 @@ export const POIS = [
         "radio": 1800
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/reserva-natural-del-valle-de-iruelas.png",
   },
 
   {
@@ -8881,8 +9991,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "rio_tormes", "puerta_gredos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-barco-de-avila.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-barco-de-avila.png",
   },
 
   {
@@ -8900,7 +10013,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra_oeste", "ruta_ap6"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-navas-del-marques.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -8913,6 +10028,7 @@ export const POIS = [
         "radio": 2500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-navas-del-marques.png",
   },
 
   {
@@ -8930,8 +10046,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "valle_del_tietar", "sierra"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mombeltran.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mombeltran.png",
   },
 
   {
@@ -8949,8 +10068,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "transicion_meseta", "n403"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cebreros.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cebreros.png",
   },
 
   {
@@ -8968,8 +10090,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n403", "sierra"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-tiemblo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-tiemblo.png",
   },
 
   {
@@ -8987,8 +10112,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 90,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "isabel_la_catolica", "muralla"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/madrigal-de-las-altas-torres.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/madrigal-de-las-altas-torres.png",
   },
 
   {
@@ -9006,8 +10134,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["castillo", "edad_media", "fortificacion", "arquitectura", "linajes", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-la-adrada.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-la-adrada.png",
   },
 
   {
@@ -9025,8 +10156,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 70,
     intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "trashumancia", "calzada_romana", "gargantas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-del-pico.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-del-pico.png",
   },
 
   {
@@ -9044,8 +10178,11 @@ export const POIS = [
     prioridad: 82,
     cooldownMin: 70,
     intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "ruta_a6", "parada_viaje", "nudo_viario"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/adanero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/adanero.png",
   },
 
   // ✅ CAPITAL
@@ -9064,8 +10201,11 @@ export const POIS = [
     prioridad: 136,
     cooldownMin: 110,
     intereses: ["a31", "a32", "a30", "cuchilleria", "llanura", "nudo_logistico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/albacete.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/albacete.png",
   },
 
   {
@@ -9083,8 +10223,11 @@ export const POIS = [
     prioridad: 133,
     cooldownMin: 100,
     intereses: ["a31", "a35", "batalla_de_almansa", "castillo", "frontera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almansa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almansa.png",
   },
 
   {
@@ -9102,7 +10245,9 @@ export const POIS = [
     prioridad: 131,
     cooldownMin: 100,
     intereses: ["jucar", "cuevas", "hoz", "miradores", "manchuela"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcala-del-jucar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9115,6 +10260,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcala-del-jucar.png",
   },
 
   {
@@ -9132,7 +10278,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 100,
     intereses: ["rio_mundo", "cascada", "karst", "sierra_del_segura", "excursion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nacimiento-del-rio-mundo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9145,6 +10293,7 @@ export const POIS = [
         "radio": 8500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nacimiento-del-rio-mundo.png",
   },
 
   {
@@ -9162,8 +10311,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 95,
     intereses: ["a31", "castillo", "cuevas", "miradores", "medieval"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chinchilla-de-montearagon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chinchilla-de-montearagon.png",
   },
 
   {
@@ -9181,8 +10333,11 @@ export const POIS = [
     prioridad: 127,
     cooldownMin: 95,
     intereses: ["canon", "rio_mundo", "miradores", "paisaje", "amanece_que_no_es_poco"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayna.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayna.png",
   },
 
   {
@@ -9200,7 +10355,9 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 90,
     intereses: ["a30", "a31", "tamborada", "sureste_manchego"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hellin.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9213,6 +10370,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hellin.png",
   },
 
   {
@@ -9230,8 +10388,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 80,
     intereses: ["a31", "miguelitos", "parada_util", "corredor_levante"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-roda.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-roda.png",
   },
 
   {
@@ -9249,8 +10410,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 80,
     intereses: ["a43", "vino", "tinajas", "mancha"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villarrobledo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villarrobledo.png",
   },
 
   {
@@ -9268,8 +10432,11 @@ export const POIS = [
     prioridad: 107,
     cooldownMin: 80,
     intereses: ["rio_mundo", "sierra", "balcones", "a30"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lietor.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lietor.png",
   },
 
   {
@@ -9287,7 +10454,9 @@ export const POIS = [
     prioridad: 103,
     cooldownMin: 75,
     intereses: ["n322", "manchuela", "cabriel", "enlace_valencia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/casas-ibanez.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9300,6 +10469,7 @@ export const POIS = [
         "radio": 6000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/casas-ibanez.png",
   },
 
   {
@@ -9317,8 +10487,11 @@ export const POIS = [
     prioridad: 103,
     cooldownMin: 70,
     intereses: ["a31", "castillos", "frontera_interior", "altiplano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montealegre-del-castillo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montealegre-del-castillo.png",
   },
 
   {
@@ -9336,8 +10509,11 @@ export const POIS = [
     prioridad: 101,
     cooldownMin: 70,
     intereses: ["a31", "levante", "frontera_regional", "sierras"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caudete.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caudete.png",
   },
 
   {
@@ -9355,8 +10531,11 @@ export const POIS = [
     prioridad: 92,
     cooldownMin: 60,
     intereses: ["a31", "mancha", "camino_a_levante"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minaya.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minaya.png",
   },
 
   {
@@ -9374,8 +10553,11 @@ export const POIS = [
     prioridad: 91,
     cooldownMin: 60,
     intereses: ["a31", "parada_corta", "llanura_manchega"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-gineta.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-gineta.png",
   },
 
   {
@@ -9393,8 +10575,11 @@ export const POIS = [
     prioridad: 89,
     cooldownMin: 60,
     intereses: ["a31", "meseta", "viento", "camino_hacia_almansa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bonete.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bonete.png",
   },
 
   // ✅ CAPITAL
@@ -9413,7 +10598,9 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 120,
     intereses: ["a40", "casas_colgadas", "hoces", "unesco", "medieval"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuenca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9435,6 +10622,7 @@ export const POIS = [
         "radio": 8500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuenca.png",
   },
 
   {
@@ -9452,7 +10640,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 100,
     intereses: ["romanos", "anfiteatro", "mineria", "a3", "a40"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/segobriga.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9465,6 +10655,7 @@ export const POIS = [
         "radio": 8500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/segobriga.png",
   },
 
   {
@@ -9482,7 +10673,9 @@ export const POIS = [
     prioridad: 131,
     cooldownMin: 100,
     intereses: ["a3", "embalse", "murallas", "castillo", "desvio_recomendado"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alarcon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9495,6 +10688,7 @@ export const POIS = [
         "radio": 8000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alarcon.png",
   },
 
   {
@@ -9512,7 +10706,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 100,
     intereses: ["a3", "tarancon", "conexion_madrid_valencia", "paradas_utiles"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarancon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9525,6 +10721,7 @@ export const POIS = [
         "radio": 6500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarancon.png",
   },
 
   {
@@ -9542,7 +10739,9 @@ export const POIS = [
     prioridad: 129,
     cooldownMin: 110,
     intereses: ["karst", "serrania", "formas_rocosas", "a40", "excursion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-encantada.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9555,6 +10754,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-encantada.png",
   },
 
   {
@@ -9572,8 +10772,11 @@ export const POIS = [
     prioridad: 127,
     cooldownMin: 95,
     intereses: ["castillo", "mancha", "cine", "a43", "desvio_recomendado"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/belmonte.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/belmonte.png",
   },
 
   {
@@ -9591,8 +10794,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 80,
     intereses: ["a43", "renacimiento", "mancha", "desvio_util"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-clemente.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-clemente.png",
   },
 
   {
@@ -9610,8 +10816,11 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 75,
     intereses: ["a3", "a43", "castillos", "jorge_manrique"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-garcimunoz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-garcimunoz.png",
   },
 
   {
@@ -9629,8 +10838,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 75,
     intereses: ["a40", "n320", "conventos", "alcarria_conquense"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/huete.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/huete.png",
   },
 
   {
@@ -9648,8 +10860,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 75,
     intereses: ["ajo_morado", "a43", "mancha", "producto_local"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-pedroneras.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-pedroneras.png",
   },
 
   {
@@ -9667,8 +10882,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 70,
     intereses: ["a3", "n420", "manchuela", "parada_util"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/motilla-del-palancar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/motilla-del-palancar.png",
   },
 
   {
@@ -9686,8 +10904,11 @@ export const POIS = [
     prioridad: 101,
     cooldownMin: 70,
     intereses: ["a3", "cabriel", "entrada_a_valencia", "parada_corta"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minglanilla.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minglanilla.png",
   },
 
   {
@@ -9705,8 +10926,11 @@ export const POIS = [
     prioridad: 97,
     cooldownMin: 65,
     intereses: ["a3", "camino_real", "ventas", "mancha_oriental"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/honrubia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/honrubia.png",
   },
 
   {
@@ -9724,8 +10948,11 @@ export const POIS = [
     prioridad: 96,
     cooldownMin: 65,
     intereses: ["a43", "a3", "mancha", "arquitectura_popular"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sisante.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sisante.png",
   },
 
   {
@@ -9743,7 +10970,9 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 150,
     intereses: ["medieval", "catedral", "castillo_parador", "paseo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/siguenza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9774,6 +11003,7 @@ export const POIS = [
         "radio": 6000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/siguenza.png",
   },
 
   // ✅ CAPITAL
@@ -9792,7 +11022,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 100,
     intereses: ["a2", "n320", "a40", "palacios", "medieval", "renacimiento", "viaje_hacia_aragon"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guadalajara.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9832,6 +11064,7 @@ export const POIS = [
         "radio": 4000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guadalajara.png",
   },
 
   {
@@ -9849,7 +11082,9 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 110,
     intereses: ["alto_tajo", "cañones", "pinares", "fauna", "serrania"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-alto-tajo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9862,6 +11097,7 @@ export const POIS = [
         "radio": 9000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-alto-tajo.png",
   },
 
   {
@@ -9879,7 +11115,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 90,
     intereses: ["alcarria", "murallas", "jardines", "lavanda", "n2", "desvios_recomendados"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/brihuega.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9892,6 +11130,7 @@ export const POIS = [
         "radio": 11000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/brihuega.png",
   },
 
   {
@@ -9909,7 +11148,9 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 95,
     intereses: ["visigodos", "arqueologia", "tajo", "ciudad_antigua", "n320"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/recopolis.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9922,6 +11163,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/recopolis.png",
   },
 
   {
@@ -9939,7 +11181,9 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 90,
     intereses: ["n320", "alcarria", "santa_teresa", "evoli", "palacio_ducal"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pastrana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -9952,6 +11196,7 @@ export const POIS = [
         "radio": 12000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pastrana.png",
   },
 
   {
@@ -9969,8 +11214,11 @@ export const POIS = [
     prioridad: 109,
     cooldownMin: 80,
     intereses: ["frontera_castellana", "medieval", "castillo", "serrania"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/atienza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/atienza.png",
   },
 
   {
@@ -9988,7 +11236,9 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 70,
     intereses: ["a2", "castillos", "camino_real", "viajeros", "alcarria"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torija.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -10001,6 +11251,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torija.png",
   },
 
   {
@@ -10018,7 +11269,9 @@ export const POIS = [
     prioridad: 107,
     cooldownMin: 80,
     intereses: ["a40", "embalses", "tajo", "miradores", "ingenieria_hidraulica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/embalse-de-entrepenas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -10040,6 +11293,7 @@ export const POIS = [
         "radio": 6500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/embalse-de-entrepenas.png",
   },
 
   {
@@ -10057,8 +11311,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 70,
     intereses: ["castillo", "henares", "a2", "miradores", "frontera_medieval"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jadraque.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jadraque.png",
   },
 
   {
@@ -10076,8 +11333,11 @@ export const POIS = [
     prioridad: 103,
     cooldownMin: 75,
     intereses: ["arquitectura_negra", "sierra", "pizarra", "escapadas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tamajon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tamajon.png",
   },
 
   {
@@ -10095,8 +11355,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 75,
     intereses: ["rio_tajo", "cascadas", "energia", "n320", "alcarria"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/trillo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/trillo.png",
   },
 
   {
@@ -10114,8 +11377,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 65,
     intereses: ["arcipreste", "medieval", "a2", "cerros", "literatura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hita.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hita.png",
   },
 
   {
@@ -10133,8 +11399,11 @@ export const POIS = [
     prioridad: 101,
     cooldownMin: 70,
     intereses: ["palacio", "mendoza", "renacimiento", "sierra_norte"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cogolludo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cogolludo.png",
   },
 
   {
@@ -10152,8 +11421,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 70,
     intereses: ["n320", "manantiales", "alcarria", "plaza_mayor"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cifuentes.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cifuentes.png",
   },
 
   {
@@ -10171,8 +11443,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 120,
     intereses: ["sal", "industria_historica", "patrimonio", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/salinas-de-imon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/salinas-de-imon.png",
   },
 
   {
@@ -10190,8 +11465,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 90,
     intereses: ["parada_viaje", "servicios", "nudo_carreteras"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcolea-del-pinar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcolea-del-pinar.png",
   },
 
   // ✅ CAPITAL
@@ -10243,8 +11521,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 90,
     intereses: ["monasterio", "moreneta", "montaña", "peregrinación", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-montserrat.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-montserrat.png",
   },
 
   {
@@ -10262,8 +11543,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["castillo", "sal", "frontera_medieval", "fortaleza", "valle"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cardona-y-su-castillo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cardona-y-su-castillo.png",
   },
 
   {
@@ -10281,8 +11565,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["bosques", "senderismo", "fauna", "miradores", "reserva_biosfera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-montseny.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-montseny.png",
   },
 
   {
@@ -10300,8 +11587,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["playas", "casco_historico", "modernismo", "cine", "paseo_maritimo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sitges.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sitges.png",
   },
 
   {
@@ -10319,8 +11609,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 50,
     intereses: ["plaza_mayor", "embutidos", "obispado", "mercados", "románico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vic.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vic.png",
   },
 
   {
@@ -10338,8 +11631,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 50,
     intereses: ["gaudi", "colonia_industrial", "cripta", "modernismo", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/colonia-guell-y-la-cripta-de-gaudi.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/colonia-guell-y-la-cripta-de-gaudi.png",
   },
 
   {
@@ -10357,8 +11653,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 50,
     intereses: ["cava", "bodegas", "viñedo", "enoturismo", "tradición"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sant-sadurni-danoia-y-la-cultura-del-cava.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sant-sadurni-danoia-y-la-cultura-del-cava.png",
   },
 
   {
@@ -10376,8 +11675,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 50,
     intereses: ["modernismo", "industria_textil", "seu_d_egara", "patrimonio", "valles"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/terrassa-y-el-modernismo-industrial.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/terrassa-y-el-modernismo-industrial.png",
   },
 
   {
@@ -10395,8 +11697,11 @@ export const POIS = [
     prioridad: 107,
     cooldownMin: 50,
     intereses: ["seo", "ignacio_de_loyola", "puente", "cataluna_central", "camino"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/manresa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/manresa.png",
   },
 
   {
@@ -10414,8 +11719,11 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 50,
     intereses: ["penedes", "vino", "castellers", "ferias", "casco_historico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vilafranca-del-penedes.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vilafranca-del-penedes.png",
   },
 
   {
@@ -10433,8 +11741,11 @@ export const POIS = [
     prioridad: 103,
     cooldownMin: 45,
     intereses: ["costa", "romano", "modernismo", "maresme", "puerto"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mataro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mataro.png",
   },
 
   {
@@ -10452,8 +11763,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 45,
     intereses: ["senderos", "paisaje_calizo", "mediterraneo", "cuevas", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-del-garraf.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-del-garraf.png",
   },
 
   {
@@ -10471,8 +11785,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 45,
     intereses: ["castillo", "playa", "delta_llobregat", "aeropuerto", "torres_defensivas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castelldefels-y-su-castillo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castelldefels-y-su-castillo.png",
   },
 
   {
@@ -10490,7 +11807,9 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 45,
     intereses: ["porxada", "mercados", "valles_oriental", "ruta_francia", "historia_local"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/granollers.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -10503,6 +11822,7 @@ export const POIS = [
         "radio": 6000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/granollers.png",
   },
 
   {
@@ -10520,8 +11840,11 @@ export const POIS = [
     prioridad: 101,
     cooldownMin: 45,
     intereses: ["termalismo", "romano", "balnearios", "agua_caliente", "casco_antiguo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caldes-de-montbui.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caldes-de-montbui.png",
   },
 
   {
@@ -10539,8 +11862,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["industria_textil", "valles", "plazas", "arquitectura", "movilidad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sabadell.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sabadell.png",
   },
 
   {
@@ -10558,8 +11884,11 @@ export const POIS = [
     prioridad: 98,
     cooldownMin: 45,
     intereses: ["curtidos", "museos", "anoia", "modernismo", "aerostacion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/igualada.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/igualada.png",
   },
 
   // ✅ CAPITAL
@@ -10578,8 +11907,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 120,
     intereses: ["casco_historico", "murallas", "onyar", "juderia", "catedral"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/girona.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/girona.png",
   },
 
   {
@@ -10597,7 +11929,9 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 60,
     intereses: ["conos_volcanicos", "hayedo", "senderismo", "fauna", "geologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-la-zona-volcanica-de-la-garrotxa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -10610,6 +11944,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-la-zona-volcanica-de-la-garrotxa.png",
   },
 
   {
@@ -10627,8 +11962,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["puente", "juderia", "edad_media", "garrotxa", "románico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/besalu.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/besalu.png",
   },
 
   {
@@ -10646,8 +11984,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["monasterio", "origen_cataluña", "románico", "pirineo", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ripoll.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ripoll.png",
   },
 
   {
@@ -10665,7 +12006,9 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["dali", "emporda", "museos", "fortaleza", "frontera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/figueres.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -10687,6 +12030,7 @@ export const POIS = [
         "radio": 6500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/figueres.png",
   },
 
   {
@@ -10704,8 +12048,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 60,
     intereses: ["dali", "mediterraneo", "cala", "casas_blancas", "cap_de_creus"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cadaques.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cadaques.png",
   },
 
   {
@@ -10723,8 +12070,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 50,
     intereses: ["vila_vella", "murallas", "calas", "costa_brava", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tossa-de-mar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tossa-de-mar.png",
   },
 
   {
@@ -10742,8 +12092,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 50,
     intereses: ["torre", "emporda", "arroz", "calles_piedra", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pals.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pals.png",
   },
 
   {
@@ -10761,8 +12114,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 50,
     intereses: ["estany", "remo", "karst", "paseos", "leyendas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/banyoles-y-su-lago.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/banyoles-y-su-lago.png",
   },
 
   {
@@ -10780,8 +12136,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 50,
     intereses: ["pirineo", "puente_románico", "valles", "montaña", "rio_ter"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/camprodon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/camprodon.png",
   },
 
   {
@@ -10799,8 +12158,11 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 50,
     intereses: ["emporda", "basilica", "amedieval", "aiguamolls", "canales"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castello-dempuries.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castello-dempuries.png",
   },
 
   {
@@ -10818,8 +12180,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 45,
     intereses: ["francia", "frontera", "tren", "walter_benjamin", "cala"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/portbou.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/portbou.png",
   },
 
   {
@@ -10837,8 +12202,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 45,
     intereses: ["cerdanya", "frontera", "lago", "esqui", "pirineo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puigcerda.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puigcerda.png",
   },
 
   {
@@ -10856,8 +12224,11 @@ export const POIS = [
     prioridad: 103,
     cooldownMin: 45,
     intereses: ["golfo_de_roses", "ciudadela", "playas", "bahia", "vacaciones"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/roses.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/roses.png",
   },
 
   {
@@ -10875,8 +12246,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["costa_brava", "puerto", "monasterio", "paseo", "calas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sant-feliu-de-guixols.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sant-feliu-de-guixols.png",
   },
 
   {
@@ -10894,8 +12268,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["fortaleza", "ap7", "paso_estrategico", "murallas", "selva"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hostalric-y-su-fortaleza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hostalric-y-su-fortaleza.png",
   },
 
   {
@@ -10913,8 +12290,11 @@ export const POIS = [
     prioridad: 98,
     cooldownMin: 45,
     intereses: ["ceramica", "emporda", "artesania", "mercados", "castillo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-bisbal-demporda.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-bisbal-demporda.png",
   },
 
   // ✅ CAPITAL
@@ -10933,7 +12313,9 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 120,
     intereses: ["segre", "seo_vella", "poniente", "catedral", "ciudad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lleida.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -10946,6 +12328,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lleida.png",
   },
 
   {
@@ -10963,8 +12346,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 60,
     intereses: ["congost", "senderos", "pasarelas", "geologia", "vistas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/congost-de-mont-rebei.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/congost-de-mont-rebei.png",
   },
 
   {
@@ -10982,7 +12368,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["románico", "boi_taull", "unesco", "pirineo", "valles"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vall-de-boi.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -10995,6 +12383,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vall-de-boi.png",
   },
 
   {
@@ -11012,8 +12401,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 60,
     intereses: ["andorra", "catedral", "olimpiadas", "pirineo", "frontera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-seu-durgell.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-seu-durgell.png",
   },
 
   {
@@ -11031,8 +12423,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 60,
     intereses: ["aran", "valle", "gastronomia", "esqui", "túnel_de_viella"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vielha-e-mijaran.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vielha-e-mijaran.png",
   },
 
   {
@@ -11050,8 +12445,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 50,
     intereses: ["universidad", "segarra", "murallas", "a2", "barroco"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cervera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cervera.png",
   },
 
   {
@@ -11069,8 +12467,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 50,
     intereses: ["solsones", "gigantes", "catedral", "casco_historico", "fiestas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/solsona.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/solsona.png",
   },
 
   {
@@ -11088,8 +12489,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 45,
     intereses: ["rafting", "loteria", "pallars", "noguera_pallaresa", "pirineo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sort.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sort.png",
   },
 
   {
@@ -11107,8 +12511,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 45,
     intereses: ["urgel", "calles_piedra", "torre", "rio_corb", "edad_media"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guimera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guimera.png",
   },
 
   {
@@ -11126,8 +12533,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 45,
     intereses: ["humedal", "aves", "recuperacion_ambiental", "pla_d_urgell", "paseos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/estany-divars-i-vila-sana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/estany-divars-i-vila-sana.png",
   },
 
   {
@@ -11145,8 +12555,11 @@ export const POIS = [
     prioridad: 101,
     cooldownMin: 45,
     intereses: ["rio_segre", "murallas", "mercado", "noguera", "plaza"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/balaguer.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/balaguer.png",
   },
 
   {
@@ -11164,8 +12577,11 @@ export const POIS = [
     prioridad: 101,
     cooldownMin: 45,
     intereses: ["pallars_jussa", "dinosaurios", "sierras", "embalses", "senderos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tremp.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tremp.png",
   },
 
   {
@@ -11183,8 +12599,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["urgell", "ferias", "calles_historicas", "a2", "mercados"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarrega.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarrega.png",
   },
 
   {
@@ -11202,8 +12621,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["aceite_de_oliva", "garrigues", "ferias", "ap2", "cooperativas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/les-borges-blanques.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/les-borges-blanques.png",
   },
 
   {
@@ -11221,8 +12643,11 @@ export const POIS = [
     prioridad: 98,
     cooldownMin: 45,
     intereses: ["turron", "sio", "casco_historico", "urgell", "dulces"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/agramunt.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/agramunt.png",
   },
 
   {
@@ -11240,8 +12665,11 @@ export const POIS = [
     prioridad: 96,
     cooldownMin: 40,
     intereses: ["c14", "paso_natural", "embutidos", "noguera", "puente"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponts.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponts.png",
   },
 
   {
@@ -11259,8 +12687,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["noguera", "montsec", "paso_interior", "rios", "embalses"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/artesa-de-segre.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/artesa-de-segre.png",
   },
 
   {
@@ -11278,8 +12709,11 @@ export const POIS = [
     prioridad: 94,
     cooldownMin: 40,
     intereses: ["pla_d_urgell", "ferias", "regadio", "nudo_logistico", "a2"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mollerussa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mollerussa.png",
   },
 
   // ✅ CAPITAL
@@ -11298,7 +12732,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 120,
     intereses: ["romano", "anfiteatro", "mediterraneo", "circo", "murallas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarragona.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -11338,6 +12774,7 @@ export const POIS = [
         "radio": 6500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarragona.png",
   },
 
   {
@@ -11355,8 +12792,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 60,
     intereses: ["arrozales", "flamencos", "humedales", "bahias", "biodiversidad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-delta-de-lebre.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-delta-de-lebre.png",
   },
 
   {
@@ -11374,8 +12814,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 60,
     intereses: ["cister", "reyes_de_aragon", "unesco", "bosque", "silencio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-poblet.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-poblet.png",
   },
 
   {
@@ -11393,8 +12836,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["murallas", "sant_jordi", "conca_de_barbera", "casco_historico", "leyendas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montblanc.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montblanc.png",
   },
 
   {
@@ -11412,8 +12858,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["castillo_templario", "ebro", "ceramica", "barca", "murallas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/miravet.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/miravet.png",
   },
 
   {
@@ -11431,8 +12880,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 60,
     intereses: ["gaudi", "vermú", "modernismo", "comercio", "camp_de_tarragona"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/reus.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/reus.png",
   },
 
   {
@@ -11450,8 +12902,11 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 50,
     intereses: ["acantilados", "miradores", "escalada", "priorat", "leyenda_reina_mora"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/siurana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/siurana.png",
   },
 
   {
@@ -11469,8 +12924,11 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 60,
     intereses: ["ebro", "castillo", "renacimiento", "puentes", "catedral"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tortosa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tortosa.png",
   },
 
   {
@@ -11488,8 +12946,11 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 50,
     intereses: ["cister", "claustro", "alt_camp", "reyes", "piedra"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santes-creus.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santes-creus.png",
   },
 
   {
@@ -11507,8 +12968,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 50,
     intereses: ["priorat", "vino", "sierras", "cooperativas", "enoturismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/falset-y-el-priorat.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/falset-y-el-priorat.png",
   },
 
   {
@@ -11526,8 +12990,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 45,
     intereses: ["calçots", "castellers", "alt_camp", "fiestas", "tradicion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valls.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valls.png",
   },
 
   {
@@ -11545,8 +13012,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 45,
     intereses: ["puente_colgante", "delta", "arroz", "ebro", "montsia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/amposta.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/amposta.png",
   },
 
   {
@@ -11564,8 +13034,11 @@ export const POIS = [
     prioridad: 101,
     cooldownMin: 45,
     intereses: ["puerto_pesquero", "playas", "cocina_marinera", "familias", "costa_daurada"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cambrils.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cambrils.png",
   },
 
   {
@@ -11583,8 +13056,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["pau_casals", "baix_penedes", "n340", "playas", "museos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-vendrell.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-vendrell.png",
   },
 
   {
@@ -11602,8 +13078,11 @@ export const POIS = [
     prioridad: 96,
     cooldownMin: 40,
     intereses: ["faro", "playas", "puerto", "costa_daurada", "n340"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torredembarra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torredembarra.png",
   },
 
   {
@@ -11621,8 +13100,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["ap7", "calas", "vandellos", "costa", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lhospitalet-de-linfant.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lhospitalet-de-linfant.png",
   },
 
   // ✅ CAPITAL
@@ -11641,7 +13123,9 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 80,
     intereses: ["capitalidad", "puerto", "a7", "mediterraneo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alicante.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -11663,6 +13147,7 @@ export const POIS = [
         "radio": 6500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alicante.png",
   },
 
   {
@@ -11680,7 +13165,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 75,
     intereses: ["a31", "castillo", "interior", "meseta"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villena-puerta-de-alicante-por-la-a-31.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -11693,6 +13180,7 @@ export const POIS = [
         "radio": 5500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villena-puerta-de-alicante-por-la-a-31.png",
   },
 
   {
@@ -11710,7 +13198,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 70,
     intereses: ["palmeral", "misteri", "a7", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/elche.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -11723,6 +13213,7 @@ export const POIS = [
         "radio": 6000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/elche.png",
   },
 
   {
@@ -11740,8 +13231,11 @@ export const POIS = [
     prioridad: 121,
     cooldownMin: 60,
     intereses: ["vega_baja", "poeta_miguel_hernandez", "a7", "sur"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/orihuela.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/orihuela.png",
   },
 
   {
@@ -11759,8 +13253,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 55,
     intereses: ["ifach", "escalada", "litoral", "ap7"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calpe-y-el-penon-de-ifach.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calpe-y-el-penon-de-ifach.png",
   },
 
   {
@@ -11778,8 +13275,11 @@ export const POIS = [
     prioridad: 119,
     cooldownMin: 55,
     intereses: ["ferry", "montgo", "litoral", "mediterraneo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/denia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/denia.png",
   },
 
   {
@@ -11797,8 +13297,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 55,
     intereses: ["rascacielos", "playa", "ap7", "turismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/benidorm.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/benidorm.png",
   },
 
   {
@@ -11816,8 +13319,11 @@ export const POIS = [
     prioridad: 117,
     cooldownMin: 50,
     intereses: ["casco_blanco", "iglesia", "mediterraneo", "n332"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/altea.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/altea.png",
   },
 
   {
@@ -11835,8 +13341,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 50,
     intereses: ["salinas", "isla_tabarca", "pesca", "ap7"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-pola.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-pola.png",
   },
 
   {
@@ -11854,8 +13363,11 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 50,
     intereses: ["a7", "modernismo", "monta%C3%B1a", "industria"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcoy-enclave-industrial-del-eje-interior-por-a-7.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcoy-enclave-industrial-del-eje-interior-por-a-7.png",
   },
 
   {
@@ -11873,8 +13385,11 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 50,
     intereses: ["salinas", "n332", "ap7", "litoral_sur"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torrevieja.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torrevieja.png",
   },
 
   {
@@ -11892,8 +13407,11 @@ export const POIS = [
     prioridad: 113,
     cooldownMin: 45,
     intereses: ["dunas", "segura", "n332", "ap7"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guardamar-del-segura.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guardamar-del-segura.png",
   },
 
   {
@@ -11911,8 +13429,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 50,
     intereses: ["calzado", "a31", "a7", "vinalopo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/elda-y-petrer-nudo-interior-entre-a-31-y-a-7.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/elda-y-petrer-nudo-interior-entre-a-31-y-a-7.png",
   },
 
   {
@@ -11930,8 +13451,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 45,
     intereses: ["casas_de_colores", "chocolate", "litoral", "ap7"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-vila-joiosa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-vila-joiosa.png",
   },
 
   {
@@ -11949,7 +13473,9 @@ export const POIS = [
     prioridad: 111,
     cooldownMin: 45,
     intereses: ["uvas", "marmol", "a31", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/novelda.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -11962,6 +13488,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/novelda.png",
   },
 
   {
@@ -11979,8 +13506,11 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 80,
     intereses: ["castillo", "templarios", "murallas", "mediterraneo", "cine"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/peniscola-y-su-ciudadela-sobre-el-mar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/peniscola-y-su-ciudadela-sobre-el-mar.png",
   },
 
   {
@@ -11998,8 +13528,11 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 90,
     intereses: ["castillo", "murallas", "maestrazgo", "n232", "mirador"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/morella-gran-fortaleza-interior-junto-al-eje-de-la-n-232.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/morella-gran-fortaleza-interior-junto-al-eje-de-la-n-232.png",
   },
 
   // ✅ CAPITAL
@@ -12018,7 +13551,9 @@ export const POIS = [
     prioridad: 134,
     cooldownMin: 75,
     intereses: ["capitalidad", "a7", "ap7", "puerto", "llanura_costera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castellon-de-la-plana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12040,6 +13575,7 @@ export const POIS = [
         "radio": 6500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castellon-de-la-plana.png",
   },
 
   {
@@ -12057,7 +13593,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 75,
     intereses: ["ap7", "n340", "puerta_norte", "mediterraneo", "pesca"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vinaros.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12070,6 +13608,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vinaros.png",
   },
 
   {
@@ -12087,7 +13626,9 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 70,
     intereses: ["a23", "via_verde", "obispado", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/segorbe-gran-parada-historica-del-eje-a-23.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12100,6 +13641,7 @@ export const POIS = [
         "radio": 6500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/segorbe-gran-parada-historica-del-eje-a-23.png",
   },
 
   {
@@ -12117,7 +13659,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 65,
     intereses: ["miradores", "sierra", "benicassim", "castellon"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desierto-de-las-palmas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12130,6 +13674,7 @@ export const POIS = [
         "radio": 7000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desierto-de-las-palmas.png",
   },
 
   {
@@ -12147,8 +13692,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 55,
     intereses: ["via_augusta", "romano", "a7", "ap7"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arco-romano-de-cabanes.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arco-romano-de-cabanes.png",
   },
 
   {
@@ -12166,8 +13714,11 @@ export const POIS = [
     prioridad: 121,
     cooldownMin: 60,
     intereses: ["maestrazgo", "n232", "casco_historico", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sant-mateu.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sant-mateu.png",
   },
 
   {
@@ -12185,8 +13736,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["humedal", "aves", "litoral", "ap7", "a7"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-prat-de-cabanes-torreblanca.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-prat-de-cabanes-torreblanca.png",
   },
 
   {
@@ -12204,8 +13758,11 @@ export const POIS = [
     prioridad: 119,
     cooldownMin: 60,
     intereses: ["termas", "barranco", "cv20", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montanejos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montanejos.png",
   },
 
   {
@@ -12223,8 +13780,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 55,
     intereses: ["a23", "torre_mudejar", "palancia", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jerica.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jerica.png",
   },
 
   {
@@ -12242,8 +13802,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 50,
     intereses: ["playa", "ap7", "vacaciones", "litoral"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/oropesa-del-mar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/oropesa-del-mar.png",
   },
 
   {
@@ -12261,8 +13824,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 45,
     intereses: ["a7", "llanura_litoral", "interior", "mediterraneo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/les-coves-de-vinroma.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/les-coves-de-vinroma.png",
   },
 
   {
@@ -12280,8 +13846,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 45,
     intereses: ["a7", "citrico", "plana", "mediterraneo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nules.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nules.png",
   },
 
   // ✅ CAPITAL
@@ -12342,7 +13911,9 @@ export const POIS = [
     prioridad: 136,
     cooldownMin: 80,
     intereses: ["a3", "meseta", "bodega", "murallas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/requena-gran-puerta-de-entrada-por-la-a-3.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12355,6 +13926,7 @@ export const POIS = [
         "radio": 8500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/requena-gran-puerta-de-entrada-por-la-a-3.png",
   },
 
   {
@@ -12372,7 +13944,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 75,
     intereses: ["ap7", "a7", "romano", "castillo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sagunto-llave-historica-del-corredor-mediterraneo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12385,6 +13959,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sagunto-llave-historica-del-corredor-mediterraneo.png",
   },
 
   {
@@ -12402,7 +13977,9 @@ export const POIS = [
     prioridad: 129,
     cooldownMin: 70,
     intereses: ["borja", "a7", "casco_historico", "interior_sur"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/xativa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12415,6 +13992,7 @@ export const POIS = [
         "radio": 5500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/xativa.png",
   },
 
   {
@@ -12432,8 +14010,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 70,
     intereses: ["arrozales", "aves", "lago", "saler"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-la-albufera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-la-albufera.png",
   },
 
   {
@@ -12451,8 +14032,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 55,
     intereses: ["casco_medieval", "a7", "barranco", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bocairent.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bocairent.png",
   },
 
   {
@@ -12470,7 +14054,9 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 55,
     intereses: ["duques", "playa", "ap7", "mediterraneo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/gandia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12483,6 +14069,7 @@ export const POIS = [
         "radio": 6500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/gandia.png",
   },
 
   {
@@ -12500,8 +14087,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 60,
     intereses: ["motogp", "a3", "motor", "cheste"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/circuit-ricardo-tormo-de-cheste.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/circuit-ricardo-tormo-de-cheste.png",
   },
 
   {
@@ -12519,8 +14109,11 @@ export const POIS = [
     prioridad: 117,
     cooldownMin: 55,
     intereses: ["a3", "utiel_requena", "vi%C3%B1edo", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/utiel.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/utiel.png",
   },
 
   {
@@ -12538,8 +14131,11 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 50,
     intereses: ["jucar", "playa", "monta%C3%B1a", "ap7"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cullera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cullera.png",
   },
 
   {
@@ -12557,8 +14153,11 @@ export const POIS = [
     prioridad: 113,
     cooldownMin: 50,
     intereses: ["tomatina", "a3", "castillo", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bunol.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bunol.png",
   },
 
   {
@@ -12576,8 +14175,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 45,
     intereses: ["a7", "jucar", "huerta", "ribera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alzira.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alzira.png",
   },
 
   {
@@ -12595,8 +14197,11 @@ export const POIS = [
     prioridad: 109,
     cooldownMin: 45,
     intereses: ["a7", "vall_dalbaida", "textil", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ontinyent.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ontinyent.png",
   },
 
   {
@@ -12614,8 +14219,11 @@ export const POIS = [
     prioridad: 109,
     cooldownMin: 45,
     intereses: ["a3", "sierra", "interior", "paso_hacia_valencia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chiva.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chiva.png",
   },
 
   {
@@ -12694,7 +14302,9 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 120,
     intereses: ["frontera", "portugal", "alcazaba", "guadiana", "ciudad_amurallada"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/badajoz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12716,6 +14326,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/badajoz.png",
   },
 
   {
@@ -12733,7 +14344,9 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 90,
     intereses: ["ferias", "plaza_grande", "plaza_chica", "duques_de_feria", "ruta_de_la_plata"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zafra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12746,6 +14359,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zafra.png",
   },
 
   {
@@ -12763,7 +14377,9 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 85,
     intereses: ["metellinum", "romanidad", "conquistadores", "cerro", "guadiana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medellin.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12776,6 +14392,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medellin.png",
   },
 
   {
@@ -12793,8 +14410,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 80,
     intereses: ["vino", "tierra_de_barros", "industria", "ruta_de_la_plata", "cava"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almendralejo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almendralejo.png",
   },
 
   {
@@ -12812,8 +14432,11 @@ export const POIS = [
     prioridad: 98,
     cooldownMin: 70,
     intereses: ["jamon", "sierra_morena", "dehesa", "a66", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monesterio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monesterio.png",
   },
 
   {
@@ -12831,8 +14454,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 65,
     intereses: ["barros", "vino", "paso", "campina", "extremadura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villafranca-de-los-barros.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villafranca-de-los-barros.png",
   },
 
   {
@@ -12850,8 +14476,11 @@ export const POIS = [
     prioridad: 86,
     cooldownMin: 65,
     intereses: ["zurbaran", "dehesa", "campina", "sur_extremeno", "ruta"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuente-de-cantos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuente-de-cantos.png",
   },
 
   {
@@ -12869,8 +14498,11 @@ export const POIS = [
     prioridad: 84,
     cooldownMin: 60,
     intereses: ["vegas_bajas", "guadiana", "regadio", "paso", "extremadura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montijo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montijo.png",
   },
 
   {
@@ -12888,8 +14520,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 55,
     intereses: ["llanura", "aviacion", "guadiana", "paso", "campina"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/talavera-la-real.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/talavera-la-real.png",
   },
 
   {
@@ -12907,8 +14542,11 @@ export const POIS = [
     prioridad: 78,
     cooldownMin: 55,
     intereses: ["a66", "tierra_de_barros", "transito", "llanura", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torremejia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torremejia.png",
   },
 
   {
@@ -12926,8 +14564,11 @@ export const POIS = [
     prioridad: 78,
     cooldownMin: 55,
     intereses: ["guadiana", "vegas_bajas", "a5", "paso", "llanura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lobon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lobon.png",
   },
 
   {
@@ -12945,7 +14586,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 100,
     intereses: ["conquistadores", "renacimiento", "plaza_mayor", "murallas", "castillo", "fortaleza", "medieval", "alcazaba", "plaza_mayor", "francisco_pizarro", "soportales"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/trujillo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -12967,6 +14610,7 @@ export const POIS = [
         "radio": 10
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/trujillo.png",
   },
 
   // ✅ CAPITAL
@@ -13027,7 +14671,9 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 60,
     intereses: ["aves_rapaces", "tajo", "tietar", "miradores", "bosque_mediterraneo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-monfrague.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -13049,6 +14695,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-monfrague.png",
   },
 
   {
@@ -13066,7 +14713,9 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 90,
     intereses: ["jerte", "murallas", "catedrales", "norte_extremadura", "via_plata"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/plasencia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -13079,6 +14728,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/plasencia.png",
   },
 
   {
@@ -13096,8 +14746,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 75,
     intereses: ["a5", "campo_aranuelo", "cruce_de_caminos", "historia_local", "viaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/navalmoral-de-la-mata.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/navalmoral-de-la-mata.png",
   },
 
   {
@@ -13115,8 +14768,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 55,
     intereses: ["granito", "charcas", "ciguenas", "paisaje", "rodajes"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/los-barruecos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/los-barruecos.png",
   },
 
   {
@@ -13134,7 +14790,9 @@ export const POIS = [
     prioridad: 98,
     cooldownMin: 55,
     intereses: ["agua", "tajo", "embalse", "aves", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/embalse-de-valdecanas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -13156,6 +14814,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/embalse-de-valdecanas.png",
   },
 
   {
@@ -13173,8 +14832,11 @@ export const POIS = [
     prioridad: 92,
     cooldownMin: 75,
     intereses: ["castillo", "senorio", "tierra_de_frontera", "a5", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/belvis-de-monroy.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/belvis-de-monroy.png",
   },
 
   {
@@ -13192,8 +14854,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 70,
     intereses: ["n_v", "a5", "ruta_historica", "viajeros", "parada"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jaraicejo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jaraicejo.png",
   },
 
   {
@@ -13211,8 +14876,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 65,
     intereses: ["tajo", "embalse", "energia", "infraestructura", "extremadura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almaraz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almaraz.png",
   },
 
   {
@@ -13230,8 +14898,11 @@ export const POIS = [
     prioridad: 88,
     cooldownMin: 60,
     intereses: ["tabaco", "dehesa", "pinar", "agricultura", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/talayuela.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/talayuela.png",
   },
 
   {
@@ -13249,7 +14920,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 70,
     intereses: ["faro", "romanos", "unesco", "oceano", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torre-de-hercules.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -13271,6 +14944,7 @@ export const POIS = [
         "radio": 2500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torre-de-hercules.png",
   },
 
   {
@@ -13288,7 +14962,9 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 60,
     intereses: ["bosque_atlantico", "senderismo", "monasterio", "río"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fragas-do-eume-y-monasterio-de-caaveiro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -13301,6 +14977,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fragas-do-eume-y-monasterio-de-caaveiro.png",
   },
 
   {
@@ -13318,7 +14995,9 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 90,
     intereses: ["plazas", "soportales", "universidad", "camino"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-historica-de-santiago.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -13340,6 +15019,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-historica-de-santiago.png",
   },
 
   {
@@ -13357,8 +15037,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["dunas", "lagunas", "atlántico", "aves"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-corrubedo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-corrubedo.png",
   },
 
   {
@@ -13376,8 +15059,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 45,
     intereses: ["galicia_medieval", "iglesias", "plazas", "rutas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/betanzos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/betanzos.png",
   },
 
   {
@@ -13395,8 +15081,11 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["arsenal", "ilustracion", "modernismo", "ria"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ferrol-arsenal-y-arquitectura-modernista.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ferrol-arsenal-y-arquitectura-modernista.png",
   },
 
   {
@@ -13414,8 +15103,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["cister", "camino_del_norte", "arquitectura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-sobrado-dos-monxes.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-sobrado-dos-monxes.png",
   },
 
   {
@@ -13433,8 +15125,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 40,
     intereses: ["camino_portugues", "tradicion_jacobea", "río_sar"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/padron-y-tradicion-jacobea.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/padron-y-tradicion-jacobea.png",
   },
 
   {
@@ -13452,8 +15147,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["ria_de_muros_noia", "gremios", "puerto"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/noia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/noia.png",
   },
 
   {
@@ -13471,8 +15169,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 35,
     intereses: ["puente", "camino", "paisaje_fluvial"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponte-maceira.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponte-maceira.png",
   },
 
   {
@@ -13490,8 +15191,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["casco_historico", "ria", "piedra", "mar"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/muros.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/muros.png",
   },
 
   {
@@ -13509,8 +15213,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 35,
     intereses: ["pazo", "jardines", "rías_altas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pazo-de-marinan.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pazo-de-marinan.png",
   },
 
   {
@@ -13528,8 +15235,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["ria_de_arousa", "literatura", "marisqueo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rianxo-y-la-ria-de-arousa-norte.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rianxo-y-la-ria-de-arousa-norte.png",
   },
 
   {
@@ -13547,8 +15257,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 30,
     intereses: ["termalismo", "comarca_de_bergantinos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/carballo-y-su-tradicion-termal.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/carballo-y-su-tradicion-termal.png",
   },
 
   {
@@ -13566,8 +15279,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 30,
     intereses: ["bahia", "navegacion", "paseo_maritimo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sada-y-la-bahia-corunesa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sada-y-la-bahia-corunesa.png",
   },
 
   {
@@ -13585,7 +15301,9 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 90,
     intereses: ["romanos", "unesco", "urbanismo", "muralla"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/muralla-romana-de-lugo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -13607,6 +15325,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/muralla-romana-de-lugo.png",
   },
 
   {
@@ -13624,8 +15343,11 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 60,
     intereses: ["acantilados", "mareas", "erosion", "cantabrico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/playa-de-las-catedrales.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/playa-de-las-catedrales.png",
   },
 
   {
@@ -13643,7 +15365,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["camino_frances", "montaña", "pallozas", "leyendas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/o-cebreiro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -13656,6 +15380,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/o-cebreiro.png",
   },
 
   {
@@ -13673,8 +15398,11 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["catedral", "camino_del_norte", "valle"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mondonedo-y-su-catedral.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mondonedo-y-su-catedral.png",
   },
 
   {
@@ -13692,8 +15420,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["condado_de_lemos", "río_cabe", "monasterios"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monforte-de-lemos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monforte-de-lemos.png",
   },
 
   {
@@ -13711,8 +15442,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["benedictinos", "camino", "arte_religioso"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-samos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-samos.png",
   },
 
   {
@@ -13730,8 +15464,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["camino_frances", "embalse", "iglesia_fortaleza"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/portomarin-y-el-mino.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/portomarin-y-el-mino.png",
   },
 
   {
@@ -13749,8 +15486,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["peregrinos", "camino_frances", "últimos_100_km"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sarria-y-el-camino-frances.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sarria-y-el-camino-frances.png",
   },
 
   {
@@ -13768,7 +15508,9 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["ría_del_eo", "frontera", "puerto"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ribadeo-y-la-ria-del-eo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -13781,6 +15523,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ribadeo-y-la-ria-del-eo.png",
   },
 
   {
@@ -13798,8 +15541,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["castros", "galicia_prerromana", "museo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-de-viladonga.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-de-viladonga.png",
   },
 
   {
@@ -13817,8 +15563,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["linajes", "terra_cha", "fortaleza"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vilalba-y-la-torre-dos-andrade.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vilalba-y-la-torre-dos-andrade.png",
   },
 
   {
@@ -13836,8 +15585,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["puertas_medievales", "ría", "semana_santa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/viveiro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/viveiro.png",
   },
 
   {
@@ -13855,8 +15607,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["cañon_del_miño", "terrazas", "ribeira_sacra"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/belesar-y-canon-del-mino.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/belesar-y-canon-del-mino.png",
   },
 
   {
@@ -13874,8 +15629,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["cantabrico", "playas", "mariña"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/foz-y-la-marina-lucense.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/foz-y-la-marina-lucense.png",
   },
 
   {
@@ -13893,8 +15651,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["casa_fuerte", "museo", "galicia_rural"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pazo-y-torre-de-san-paio-de-narla.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pazo-y-torre-de-san-paio-de-narla.png",
   },
 
   {
@@ -13912,8 +15673,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["pesca", "cantabrico", "bonito"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/burela-puerto-pesquero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/burela-puerto-pesquero.png",
   },
 
   {
@@ -13931,8 +15695,11 @@ export const POIS = [
     prioridad: 70,
     cooldownMin: 30,
     intereses: ["a_6", "a_8", "cruce_de_caminos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baamonde-nudo-a-6-y-a-8.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baamonde-nudo-a-6-y-a-8.png",
   },
 
   {
@@ -13950,8 +15717,11 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 70,
     intereses: ["senderismo", "frontera", "biodiversidad", "termalismo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baixa-limia-y-serra-do-xures.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baixa-limia-y-serra-do-xures.png",
   },
 
   {
@@ -13969,7 +15739,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["ribeira_sacra", "cañon", "sil", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/canon-del-sil.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -13982,6 +15754,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/canon-del-sil.png",
   },
 
   {
@@ -13999,7 +15772,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["frontera", "castillo", "acropolis_gallega"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fortaleza-de-monterrei.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14012,6 +15787,7 @@ export const POIS = [
         "radio": 4000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fortaleza-de-monterrei.png",
   },
 
   {
@@ -14029,7 +15805,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["aguas_termales", "romanizacion", "ciudad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/as-burgas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14051,6 +15829,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/as-burgas.png",
   },
 
   {
@@ -14068,7 +15847,9 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["ribeiro", "juderia", "castillo", "viñedos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ribadavia-y-la-capital-del-ribeiro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14081,6 +15862,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ribadavia-y-la-capital-del-ribeiro.png",
   },
 
   {
@@ -14098,8 +15880,11 @@ export const POIS = [
     prioridad: 105,
     cooldownMin: 45,
     intereses: ["via_nova", "campamento_romano", "embalse"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aquis-querquennis.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aquis-querquennis.png",
   },
 
   {
@@ -14117,8 +15902,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["mozárabe", "arte_religioso", "san_miguel"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-san-salvador-de-celanova.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-san-salvador-de-celanova.png",
   },
 
   {
@@ -14136,8 +15924,11 @@ export const POIS = [
     prioridad: 100,
     cooldownMin: 45,
     intereses: ["arnoya", "villas_medievales", "recuperacion_urbana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/allariz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/allariz.png",
   },
 
   {
@@ -14155,8 +15946,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["ribeira_sacra", "montaña", "fortaleza"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-caldelas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-caldelas.png",
   },
 
   {
@@ -14174,8 +15968,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["modernidad", "piedra", "ribeiro"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/templo-de-la-veracruz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/templo-de-la-veracruz.png",
   },
 
   {
@@ -14193,8 +15990,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["valdeorras", "pizarra", "sil"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/o-barco-de-valdeorras.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/o-barco-de-valdeorras.png",
   },
 
   {
@@ -14212,7 +16012,9 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["cañones", "barroco", "río_bibei"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santuario-de-as-ermidas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14225,6 +16027,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santuario-de-as-ermidas.png",
   },
 
   {
@@ -14242,8 +16045,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 40,
     intereses: ["alta_montaña", "invierno", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/manzaneda-y-alta-montana-ourensana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/manzaneda-y-alta-montana-ourensana.png",
   },
 
   {
@@ -14261,8 +16067,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 30,
     intereses: ["a_limia", "llanura", "carnaval"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/xinzo-de-limia-y-la-llanura-de-a-limia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/xinzo-de-limia-y-la-llanura-de-a-limia.png",
   },
 
   {
@@ -14280,7 +16089,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["ría_de_vigo", "puerto", "historia_urbana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/casco-vello-de-vigo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14293,6 +16104,7 @@ export const POIS = [
         "radio": 4000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/casco-vello-de-vigo.png",
   },
 
   {
@@ -14310,7 +16122,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["plazas", "peatonalizacion", "casco_historico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pontevedra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14332,6 +16146,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pontevedra.png",
   },
 
   {
@@ -14349,7 +16164,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["camino_portugues", "miño", "frontera_portuguesa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tui-y-su-catedral-fortaleza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14362,6 +16179,7 @@ export const POIS = [
         "radio": 6000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tui-y-su-catedral-fortaleza.png",
   },
 
   {
@@ -14379,7 +16197,9 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 50,
     intereses: ["carabela_pinta", "murallas", "atlántico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baiona-y-el-recinto-de-monterreal.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14392,6 +16212,7 @@ export const POIS = [
         "radio": 3500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baiona-y-el-recinto-de-monterreal.png",
   },
 
   {
@@ -14409,8 +16230,11 @@ export const POIS = [
     prioridad: 115,
     cooldownMin: 50,
     intereses: ["fortaleza", "jardines", "rías_baixas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-soutomaior.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-soutomaior.png",
   },
 
   {
@@ -14428,7 +16252,9 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 45,
     intereses: ["albariño", "ría_de_arousa", "pazos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cambados-capital-del-albarino.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14441,6 +16267,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cambados-capital-del-albarino.png",
   },
 
   {
@@ -14458,8 +16285,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["arenales", "ría_de_arousa", "parque_natural"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/illa-de-arousa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/illa-de-arousa.png",
   },
 
   {
@@ -14477,8 +16307,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 40,
     intereses: ["romanico", "deza", "valle"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-carboeiro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-carboeiro.png",
   },
 
   {
@@ -14496,8 +16329,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 35,
     intereses: ["guerra_de_la_independencia", "verdugo", "puente"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponte-sampaio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponte-sampaio.png",
   },
 
   {
@@ -14515,8 +16351,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 35,
     intereses: ["viaductos", "ría_de_vigo", "camino_portugues"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/redondela-y-sus-viaductos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/redondela-y-sus-viaductos.png",
   },
 
   {
@@ -14534,8 +16373,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 35,
     intereses: ["ap_53", "cocido", "deza"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lalin-corazon-de-galicia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lalin-corazon-de-galicia.png",
   },
 
   {
@@ -14553,8 +16395,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 35,
     intereses: ["granito", "antonio_palacios", "nudo_a52"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/o-porrino-y-el-granito.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/o-porrino-y-el-granito.png",
   },
 
   {
@@ -14572,8 +16417,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 30,
     intereses: ["tea", "interior_pontevedres", "camino"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponteareas-y-el-valle-del-tea.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponteareas-y-el-valle-del-tea.png",
   },
 
   {
@@ -14591,8 +16439,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 30,
     intereses: ["playas", "verano", "ría"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sanxenxo-y-la-ria-de-pontevedra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sanxenxo-y-la-ria-de-pontevedra.png",
   },
 
   // ✅ CAPITAL
@@ -14611,7 +16462,9 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 80,
     intereses: ["ap68", "a12", "ebro", "casco_historico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/logrono-gran-puerta-riojana-de-la-ap-68-y-la-a-12.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14633,6 +16486,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/logrono-gran-puerta-riojana-de-la-ap-68-y-la-a-12.png",
   },
 
   {
@@ -14650,8 +16504,11 @@ export const POIS = [
     prioridad: 136,
     cooldownMin: 80,
     intereses: ["castellano", "emilianenses", "patrimonio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-millan-de-la-cogolla.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-millan-de-la-cogolla.png",
   },
 
   {
@@ -14669,7 +16526,9 @@ export const POIS = [
     prioridad: 134,
     cooldownMin: 75,
     intereses: ["ap68", "bodegas", "ebro"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/haro-capital-del-vino-riojano.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14691,6 +16550,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/haro-capital-del-vino-riojano.png",
   },
 
   {
@@ -14708,8 +16568,11 @@ export const POIS = [
     prioridad: 130,
     cooldownMin: 70,
     intereses: ["a12", "camino_de_santiago", "catedral", "milagro_del_gallo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santo-domingo-de-la-calzada.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santo-domingo-de-la-calzada.png",
   },
 
   {
@@ -14727,8 +16590,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 70,
     intereses: ["ap68", "ebro", "romano", "catedral"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calahorra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calahorra.png",
   },
 
   {
@@ -14746,8 +16612,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 70,
     intereses: ["cigueñas", "ebro", "ap68", "ciguenas_de_san_miguel"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alfaro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alfaro.png",
   },
 
   {
@@ -14765,7 +16634,9 @@ export const POIS = [
     prioridad: 123,
     cooldownMin: 65,
     intereses: ["a12", "reino_de_najera", "camino_de_santiago"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/najera.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14778,6 +16649,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/najera.png",
   },
 
   {
@@ -14795,7 +16667,9 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["leyenda", "sierra", "panoramica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-clavijo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14808,6 +16682,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-clavijo.png",
   },
 
   {
@@ -14825,7 +16700,9 @@ export const POIS = [
     prioridad: 113,
     cooldownMin: 55,
     intereses: ["rioja_alta", "fortaleza", "viñedo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-vicente-de-la-sonsierra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14838,6 +16715,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-vicente-de-la-sonsierra.png",
   },
 
   {
@@ -14855,8 +16733,11 @@ export const POIS = [
     prioridad: 113,
     cooldownMin: 55,
     intereses: ["ojacastro", "sierras", "gastronomia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ezcaray.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ezcaray.png",
   },
 
   {
@@ -14874,8 +16755,11 @@ export const POIS = [
     prioridad: 111,
     cooldownMin: 55,
     intereses: ["termas", "valle_del_cidacos", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arnedillo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arnedillo.png",
   },
 
   {
@@ -14893,8 +16777,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 50,
     intereses: ["a12", "camino_de_santiago", "ceramica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/navarrete.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/navarrete.png",
   },
 
   {
@@ -14912,8 +16799,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 50,
     intereses: ["calzado", "autovia_del_camino", "cidacos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arnedo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arnedo.png",
   },
 
   // ✅ CAPITAL
@@ -14932,7 +16822,9 @@ export const POIS = [
     prioridad: 139,
     cooldownMin: 80,
     intereses: ["ap15", "a15", "murallas", "sanfermines"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pamplona-iruna-gran-nudo-de-la-ap-15.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -14954,6 +16846,7 @@ export const POIS = [
         "radio": 1800
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pamplona-iruna-gran-nudo-de-la-ap-15.png",
   },
 
   {
@@ -14971,8 +16864,11 @@ export const POIS = [
     prioridad: 134,
     cooldownMin: 85,
     intereses: ["badlands", "paisaje", "sur_de_navarra", "n121"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-las-bardenas-reales.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-las-bardenas-reales.png",
   },
 
   {
@@ -14990,7 +16886,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 75,
     intereses: ["ap15", "navarra_media", "vino"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/olite.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15003,6 +16901,7 @@ export const POIS = [
         "radio": 2800
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/olite.png",
   },
 
   {
@@ -15020,8 +16919,11 @@ export const POIS = [
     prioridad: 129,
     cooldownMin: 75,
     intereses: ["ap68", "ebro", "huerta", "mudejar"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tudela.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tudela.png",
   },
 
   {
@@ -15039,8 +16941,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 75,
     intereses: ["pirineo", "camino_de_santiago", "a21"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/roncesvalles.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/roncesvalles.png",
   },
 
   {
@@ -15058,8 +16963,11 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 70,
     intereses: ["a12", "camino_de_santiago", "románico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-la-reina-gares.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-la-reina-gares.png",
   },
 
   {
@@ -15077,7 +16985,9 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 70,
     intereses: ["a12", "camino_de_santiago", "románico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/estella-lizarra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15090,6 +17000,7 @@ export const POIS = [
         "radio": 3000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/estella-lizarra.png",
   },
 
   {
@@ -15107,8 +17018,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 65,
     intereses: ["san_francisco_javier", "a21", "fortaleza"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-javier.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-javier.png",
   },
 
   {
@@ -15126,8 +17040,11 @@ export const POIS = [
     prioridad: 121,
     cooldownMin: 60,
     intereses: ["cerro", "románico", "panoramica"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ujue-gran-balcon-de-la-navarra-media.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ujue-gran-balcon-de-la-navarra-media.png",
   },
 
   {
@@ -15145,8 +17062,11 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 55,
     intereses: ["a21", "aragon", "camino_de_santiago"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sanguesa-zangoza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sanguesa-zangoza.png",
   },
 
   {
@@ -15164,8 +17084,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 55,
     intereses: ["a15", "a10", "sakana", "paso"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/irurtzun-cruce-natural-entre-la-a-15-y-la-a-10.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/irurtzun-cruce-natural-entre-la-a-15-y-la-a-10.png",
   },
 
   {
@@ -15183,8 +17106,11 @@ export const POIS = [
     prioridad: 111,
     cooldownMin: 55,
     intereses: ["a15", "leitzaran", "atlántico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/leitza.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/leitza.png",
   },
 
   {
@@ -15202,8 +17128,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 55,
     intereses: ["a1", "sakana", "paso_hacia_pais_vasco"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/altsasu-alsasua-gran-puerta-occidental-navarra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/altsasu-alsasua-gran-puerta-occidental-navarra.png",
   },
 
   {
@@ -15221,8 +17150,11 @@ export const POIS = [
     prioridad: 109,
     cooldownMin: 55,
     intereses: ["ap68", "balneario", "monasterio"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fitero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fitero.png",
   },
 
   {
@@ -15240,8 +17172,11 @@ export const POIS = [
     prioridad: 107,
     cooldownMin: 50,
     intereses: ["ap68", "sur_de_navarra", "palacios"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/corella.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/corella.png",
   },
 
   {
@@ -15259,8 +17194,11 @@ export const POIS = [
     prioridad: 107,
     cooldownMin: 50,
     intereses: ["ap15", "navarra_media", "paso"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tafalla.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tafalla.png",
   },
 
   // ✅ CAPITAL
@@ -15280,7 +17218,7 @@ export const POIS = [
     cooldownMin: 85,
     intereses: ["a8", "ap68", "ría", "transformacion_urbana"],
     sponsor: {
-      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bilbao.png"
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bilbao-gran-corazon-de-la-ria.png"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -15339,7 +17277,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
-    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bilbao.png",
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bilbao-gran-corazon-de-la-ria.png",
   },
 
   {
@@ -15357,8 +17295,11 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 85,
     intereses: ["islote", "escalinata", "costa", "mirador"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-juan-de-gaztelugatxe.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-juan-de-gaztelugatxe.png",
   },
 
   {
@@ -15376,7 +17317,9 @@ export const POIS = [
     prioridad: 134,
     cooldownMin: 80,
     intereses: ["bombardeo", "libertades_vascas", "urdaibai", "a8"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/gernika-lumo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15389,6 +17332,7 @@ export const POIS = [
         "radio": 2500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/gernika-lumo.png",
   },
 
   {
@@ -15406,8 +17350,11 @@ export const POIS = [
     prioridad: 125,
     cooldownMin: 75,
     intereses: ["senderismo", "caliza", "duranguesado", "ap8"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-urkiola.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-urkiola.png",
   },
 
   {
@@ -15425,8 +17372,11 @@ export const POIS = [
     prioridad: 120,
     cooldownMin: 60,
     intereses: ["ap8", "duranguesado", "casco_historico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/durango.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/durango.png",
   },
 
   {
@@ -15444,8 +17394,11 @@ export const POIS = [
     prioridad: 114,
     cooldownMin: 55,
     intereses: ["encartaciones", "ap68", "camino", "puente_viejo"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/balmaseda.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/balmaseda.png",
   },
 
   {
@@ -15463,7 +17416,9 @@ export const POIS = [
     prioridad: 111,
     cooldownMin: 55,
     intereses: ["costa", "pesca", "urdaibai"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bermeo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15476,6 +17431,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bermeo.png",
   },
 
   {
@@ -15493,8 +17449,11 @@ export const POIS = [
     prioridad: 109,
     cooldownMin: 55,
     intereses: ["cantabrico", "puerto", "islote"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lekeitio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lekeitio.png",
   },
 
   {
@@ -15512,8 +17471,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 50,
     intereses: ["duranguesado", "torres", "ap8"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/elorrio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/elorrio.png",
   },
 
   {
@@ -15531,8 +17493,11 @@ export const POIS = [
     prioridad: 94,
     cooldownMin: 40,
     intereses: ["interior_bizkaino", "pelota", "costa_interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/markina-xemein.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/markina-xemein.png",
   },
 
   {
@@ -15550,8 +17515,11 @@ export const POIS = [
     prioridad: 93,
     cooldownMin: 40,
     intereses: ["encartaciones", "ap68", "paisaje"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zalla-y-el-valle-de-las-encartaciones.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zalla-y-el-valle-de-las-encartaciones.png",
   },
 
   // ✅ CAPITAL
@@ -15570,7 +17538,9 @@ export const POIS = [
     prioridad: 140,
     cooldownMin: 85,
     intereses: ["a8", "bahia", "gastronomia", "playa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/donostia-san-sebastian.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15601,6 +17571,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/donostia-san-sebastian.png",
   },
 
   {
@@ -15618,8 +17589,11 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 80,
     intereses: ["flysch", "costa", "acantilados", "geologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/flysch-de-zumaia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/flysch-de-zumaia.png",
   },
 
   {
@@ -15637,7 +17611,9 @@ export const POIS = [
     prioridad: 131,
     cooldownMin: 75,
     intereses: ["frontera", "bahia_de_txingudi", "murallas", "a8"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hondarribia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15650,6 +17626,7 @@ export const POIS = [
         "radio": 6000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hondarribia.png",
   },
 
   {
@@ -15667,8 +17644,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 65,
     intereses: ["ignacio_de_loyola", "urola", "barroco"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santuario-de-loyola.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santuario-de-loyola.png",
   },
 
   {
@@ -15686,7 +17666,9 @@ export const POIS = [
     prioridad: 123,
     cooldownMin: 60,
     intereses: ["surf", "a8", "litoral", "playa_larga"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zarautz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15708,6 +17690,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zarautz.png",
   },
 
   {
@@ -15725,8 +17708,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 65,
     intereses: ["renacimiento", "alto_deba", "santuario"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/onati.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/onati.png",
   },
 
   {
@@ -15744,8 +17730,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 60,
     intereses: ["ap1", "mondragon", "cooperativas", "alto_deba"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arrasate-mondragon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arrasate-mondragon.png",
   },
 
   {
@@ -15763,8 +17752,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 50,
     intereses: ["armas", "industria", "ap8", "deba"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/eibar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/eibar.png",
   },
 
   {
@@ -15782,8 +17774,11 @@ export const POIS = [
     prioridad: 107,
     cooldownMin: 50,
     intereses: ["oria", "a1", "alubia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tolosa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tolosa.png",
   },
 
   {
@@ -15801,8 +17796,11 @@ export const POIS = [
     prioridad: 107,
     cooldownMin: 50,
     intereses: ["real_seminario", "deba", "ap1"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bergara.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bergara.png",
   },
 
   {
@@ -15820,8 +17818,11 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 45,
     intereses: ["litoral", "costa_vasca", "a8"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/deba.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/deba.png",
   },
 
   {
@@ -15839,7 +17840,9 @@ export const POIS = [
     prioridad: 102,
     cooldownMin: 45,
     intereses: ["a1", "goierri", "mercado_tradicional"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ordizia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15852,6 +17855,7 @@ export const POIS = [
         "radio": 4000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ordizia.png",
   },
 
   {
@@ -15869,8 +17873,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["queso", "goierri", "a1"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/idiazabal.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/idiazabal.png",
   },
 
   // ✅ CAPITAL
@@ -15889,7 +17896,9 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 80,
     intereses: ["a1", "ap68", "llanada_alavesa", "capital_verde", "casco_historico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vitoria-gasteiz-gran-nudo-entre-la-a-1-y-la-ap-68.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15929,6 +17938,7 @@ export const POIS = [
         "radio": 1800
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vitoria-gasteiz-gran-nudo-entre-la-a-1-y-la-ap-68.png",
   },
 
   {
@@ -15946,7 +17956,9 @@ export const POIS = [
     prioridad: 136,
     cooldownMin: 80,
     intereses: ["rioja_alavesa", "ap68", "bodegas", "miradores"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguardia-balcon-de-rioja-alavesa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15959,6 +17971,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguardia-balcon-de-rioja-alavesa.png",
   },
 
   {
@@ -15976,7 +17989,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 70,
     intereses: ["sal", "ap68", "tradicion", "geologia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valle-salado-de-anana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -15989,6 +18004,7 @@ export const POIS = [
         "radio": 4500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valle-salado-de-anana.png",
   },
 
   {
@@ -16006,7 +18022,9 @@ export const POIS = [
     prioridad: 128,
     cooldownMin: 75,
     intereses: ["cascada", "valle_de_ayala", "mirador", "frontera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/salto-del-nervion.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -16019,6 +18037,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/salto-del-nervion.png",
   },
 
   {
@@ -16036,8 +18055,11 @@ export const POIS = [
     prioridad: 126,
     cooldownMin: 70,
     intereses: ["gorbeia", "hayedos", "senderismo", "n622"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-gorbeia-vertiente-alavesa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-gorbeia-vertiente-alavesa.png",
   },
 
   {
@@ -16055,8 +18077,11 @@ export const POIS = [
     prioridad: 123,
     cooldownMin: 70,
     intereses: ["roble_marojal", "montaña_alavesa", "senderismo", "a132"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-izki.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-izki.png",
   },
 
   {
@@ -16074,8 +18099,11 @@ export const POIS = [
     prioridad: 121,
     cooldownMin: 60,
     intereses: ["roma", "zadorra", "alava", "n622"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yacimiento-de-iruna-veleia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yacimiento-de-iruna-veleia.png",
   },
 
   {
@@ -16093,8 +18121,11 @@ export const POIS = [
     prioridad: 110,
     cooldownMin: 55,
     intereses: ["a1", "senderismo", "aizkorri", "sierras"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/araia-y-el-acceso-al-parque-de-aizkorri-aratz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/araia-y-el-acceso-al-parque-de-aizkorri-aratz.png",
   },
 
   {
@@ -16112,8 +18143,11 @@ export const POIS = [
     prioridad: 109,
     cooldownMin: 50,
     intereses: ["a1", "murallas", "llanada", "camino"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/agurain-salvatierra-puerta-oriental-de-alava.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/agurain-salvatierra-puerta-oriental-de-alava.png",
   },
 
   {
@@ -16131,8 +18165,11 @@ export const POIS = [
     prioridad: 107,
     cooldownMin: 45,
     intereses: ["a625", "bilbao", "corredor_del_nervion", "industria"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laudio-llodio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laudio-llodio.png",
   },
 
   {
@@ -16150,8 +18187,11 @@ export const POIS = [
     prioridad: 104,
     cooldownMin: 50,
     intereses: ["agua", "deporte", "llanada", "vistas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/embalse-de-ullibarri-gamboa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/embalse-de-ullibarri-gamboa.png",
   },
 
   {
@@ -16169,8 +18209,11 @@ export const POIS = [
     prioridad: 101,
     cooldownMin: 45,
     intereses: ["n622", "ayala", "paso_hacia_bilbao"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/amurrio.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/amurrio.png",
   },
 
   {
@@ -16188,8 +18231,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 40,
     intereses: ["rioja_alavesa", "viñedo", "ap68"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/samaniego.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/samaniego.png",
   },
 
   // ✅ CAPITAL
@@ -16208,7 +18254,9 @@ export const POIS = [
     prioridad: 138,
     cooldownMin: 80,
     intereses: ["capitalidad", "segura", "a30", "a7", "huerta"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/murcia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -16230,6 +18278,7 @@ export const POIS = [
         "radio": 6500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/murcia.png",
   },
 
   {
@@ -16247,7 +18296,9 @@ export const POIS = [
     prioridad: 136,
     cooldownMin: 80,
     intereses: ["puerto", "arsenal", "cartagineses", "romano"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cartagena-gran-puerto-historico-del-sureste.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -16260,6 +18311,7 @@ export const POIS = [
         "radio": 5000
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cartagena-gran-puerto-historico-del-sureste.png",
   },
 
   {
@@ -16277,7 +18329,9 @@ export const POIS = [
     prioridad: 132,
     cooldownMin: 75,
     intereses: ["a7", "barroco", "castillo", "guadalentin"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lorca-gran-ciudad-historica-del-eje-a-7.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
       {
@@ -16290,6 +18344,7 @@ export const POIS = [
         "radio": 5500
       }
     ],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lorca-gran-ciudad-historica-del-eje-a-7.png",
   },
 
   {
@@ -16307,8 +18362,11 @@ export const POIS = [
     prioridad: 124,
     cooldownMin: 65,
     intereses: ["a%C3%B1o_jubilar", "santuario", "interior", "rm15"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caravaca-de-la-cruz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caravaca-de-la-cruz.png",
   },
 
   {
@@ -16326,8 +18384,11 @@ export const POIS = [
     prioridad: 123,
     cooldownMin: 60,
     intereses: ["laguna_salada", "n332", "ap7", "deporte_nautico"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mar-menor-y-san-javier.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mar-menor-y-san-javier.png",
   },
 
   {
@@ -16345,8 +18406,11 @@ export const POIS = [
     prioridad: 122,
     cooldownMin: 55,
     intereses: ["faro", "reserva_marina", "mediterraneo", "ap7"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-de-palos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-de-palos.png",
   },
 
   {
@@ -16364,8 +18428,11 @@ export const POIS = [
     prioridad: 121,
     cooldownMin: 60,
     intereses: ["a33", "bodegas", "altiplano", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jumilla.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jumilla.png",
   },
 
   {
@@ -16383,8 +18450,11 @@ export const POIS = [
     prioridad: 119,
     cooldownMin: 55,
     intereses: ["erosion", "mazarron", "gredas", "costa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bolnuevo-y-las-gredas-de-mazarron.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bolnuevo-y-las-gredas-de-mazarron.png",
   },
 
   {
@@ -16402,8 +18472,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 55,
     intereses: ["a33", "mueble", "altiplano", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yecla.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yecla.png",
   },
 
   {
@@ -16421,8 +18494,11 @@ export const POIS = [
     prioridad: 118,
     cooldownMin: 55,
     intereses: ["mineria", "sierra_minera", "cartagena", "ap7"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-union-y-el-parque-minero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-union-y-el-parque-minero.png",
   },
 
   {
@@ -16440,8 +18516,11 @@ export const POIS = [
     prioridad: 117,
     cooldownMin: 50,
     intereses: ["a30", "segura", "frutales", "floracion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cieza-gran-paso-frutal-del-eje-a-30.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cieza-gran-paso-frutal-del-eje-a-30.png",
   },
 
   {
@@ -16459,8 +18538,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 50,
     intereses: ["castillo", "litoral", "mediterraneo", "sur"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aguilas.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aguilas.png",
   },
 
   {
@@ -16478,8 +18560,11 @@ export const POIS = [
     prioridad: 116,
     cooldownMin: 50,
     intereses: ["balneario", "a30", "termalismo", "segura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/archena-y-su-balneario.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/archena-y-su-balneario.png",
   },
 
   {
@@ -16497,8 +18582,11 @@ export const POIS = [
     prioridad: 112,
     cooldownMin: 50,
     intereses: ["arroz", "ca%C3%B1on_del_segura", "interior", "a30"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calasparra.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calasparra.png",
   },
 
   {
@@ -16516,8 +18604,11 @@ export const POIS = [
     prioridad: 108,
     cooldownMin: 45,
     intereses: ["a7", "sierra_espu%C3%B1a", "paso_sur", "interior"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/totana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/totana.png",
   },
 
   {
@@ -16535,8 +18626,11 @@ export const POIS = [
     prioridad: 106,
     cooldownMin: 45,
     intereses: ["a7", "andalucia", "corredor_mediterraneo", "frontera"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-lumbreras.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-lumbreras.png",
   },
 
   {
@@ -16554,8 +18648,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 60,
     intereses: ["presa_contrafuertes", "3162_hm3_segundo_embalse_espana", "central_hidroelectrica_alcantara_II_1900MW", "rio_tajo", "puente_romano_2000_años"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-alcantara-y-embalse-de-jose-maria-oriol.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-alcantara-y-embalse-de-jose-maria-oriol.png",
   },
 
   {
@@ -16573,8 +18670,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 60,
     intereses: ["202_metros_altura_record_espana", "presa_boveda", "rio_tormes", "2684_hm3_capacidad", "inaugurada_1970_iberdrola"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-almendra-la-mas-alta-de-espana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-almendra-la-mas-alta-de-espana.png",
   },
 
   {
@@ -16592,8 +18692,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 60,
     intereses: ["3219_hm3_mayor_embalse_espana", "tercer_mayor_europa_occidental", "presa_gravedad_90m_altura", "rio_zujar_afluente_guadiana", "13000_hectareas_superficie_lleno"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-la-serena-mayor-embalse-de-espana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-la-serena-mayor-embalse-de-espana.png",
   },
 
   {
@@ -16611,8 +18714,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 55,
     intereses: ["arco_gravedad_139m_altura", "cañon_granitico_rio_duero", "12108_m3_s_capacidad_aliviadero", "frontera_portugal", "construida_1956_1963"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-aldeadavila-los-arribes-del-duero.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-aldeadavila-los-arribes-del-duero.png",
   },
 
   {
@@ -16630,8 +18736,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 55,
     intereses: ["1551_hm3_mayor_embalse_aragon", "presa_boveda_150m_altura", "rio_noguera_ribagorzana", "congost_mont_rebei_sin_carretera", "construida_1958_1960"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-canelles-y-congost-de-mont-rebei.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-canelles-y-congost-de-mont-rebei.png",
   },
 
   {
@@ -16649,8 +18758,11 @@ export const POIS = [
     prioridad: 78,
     cooldownMin: 55,
     intereses: ["1530_hm3_mayor_embalse_ebro", "presa_gravedad_79m_altura", "sumergió_pueblo_viejo_1964", "lucioperca_y_siluro_pesca_record_europa", "central_hidro_324MW"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-mequinenza-el-mar-de-aragon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-mequinenza-el-mar-de-aragon.png",
   },
 
   {
@@ -16668,8 +18780,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 50,
     intereses: ["recrecimiento_polemico_30_años_debate", "475_hm3_capacidad", "presa_gravedad_rio_aragon", "trasvase_bardenas_reales", "pueblos_inundados_ruesta_undues"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-yesa-regulacion-del-aragon.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-yesa-regulacion-del-aragon.png",
   },
 
   {
@@ -16687,8 +18802,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 55,
     intereses: ["inicio_trasvase_tajo_segura_1979", "837_hm3_capacidad", "presa_contrafuertes_rio_tajo", "conflicto_castilla_levante_agua", "menor_nivel_activa_alarma_nacional"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-entrepenas-origen-del-trasvase-tajo-segura.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-entrepenas-origen-del-trasvase-tajo-segura.png",
   },
 
   {
@@ -16706,8 +18824,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 50,
     intereses: ["presa_arco_gravedad_128m", "pueblo_portomarín_trasladado_piedra_a_piedra_1962", "iglesia_romanica_desmontada_y_reconstruida", "rio_mino_140_hm3", "turbinas_kaplan_reversibles"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-belesar-canon-del-mino.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-belesar-canon-del-mino.png",
   },
 
   {
@@ -16725,8 +18846,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 60,
     intereses: ["6_arcos_de_medio_punto_48m_vano_central", "construido_104_106_dC_trajano", "inscripcion_durate_in_saecula_para_siempre", "194m_longitud_9m_anchura", "arco_de_triunfo_en_centro_unico_en_puentes_romanos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-romano-de-alcantara-2000-anos-en-pie.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-romano-de-alcantara-2000-anos-en-pie.png",
   },
 
   {
@@ -16744,8 +18868,11 @@ export const POIS = [
     prioridad: 82,
     cooldownMin: 55,
     intereses: ["arco_atirantado_sobre_tablero_190m_vano", "santiago_calatrava_1991", "480m_longitud_total", "dialogo_con_puente_romano_2000_años_al_lado", "hormigon_blanco_postesado"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-de-lusitania-de-calatrava-merida.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-de-lusitania-de-calatrava-merida.png",
   },
 
   {
@@ -16763,8 +18890,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 60,
     intereses: ["primer_puente_transbordador_del_mundo_1893", "gondola_transporta_coches_y_personas_sin_tocar_el_agua", "160m_longitud_45m_altura", "patrimonio_humanidad_unesco_2006", "diseño_alberto_palacio_discipulo_eiffel"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-colgante-de-bizkaia-primer-transbordador-del-mundo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-colgante-de-bizkaia-primer-transbordador-del-mundo.png",
   },
 
   {
@@ -16782,8 +18912,11 @@ export const POIS = [
     prioridad: 90,
     cooldownMin: 55,
     intereses: ["98m_sobre_el_tajo_del_guadalevin", "construido_1793_jose_martin_aldehuela", "primer_intento_1735_colapsó_50_muertos", "camara_interior_usada_como_carcel_guerra_civil", "arco_central_de_34m_de_luz"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-nuevo-de-ronda-98-metros-sobre-el-tajo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-nuevo-de-ronda-98-metros-sobre-el-tajo.png",
   },
 
   {
@@ -16801,8 +18934,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 50,
     intereses: ["arco_superior_tablero_intermedio", "conecta_yeste_y_letur_separados_desde_1932", "puente_cuelga_sobre_el_embalse", "hormigon_armado_vano_130m", "zona_inundada_por_presa_fuensanta"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-de-la-vicaria-arco-sobre-el-embalse-de-fuensanta.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-de-la-vicaria-arco-sobre-el-embalse-de-fuensanta.png",
   },
 
   {
@@ -16820,8 +18956,11 @@ export const POIS = [
     prioridad: 78,
     cooldownMin: 50,
     intereses: ["7_arcos_romanicos_siglo_XI", "torre_hexagonal_defensiva_en_centro", "135m_longitud_reconstruido_tras_guerra_civil", "puerta_de_entrada_a_la_ciudad_medieval", "unica_torre_de_puente_medieval_en_pie_cataluña"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-medieval-de-besalu-siglo-xi-sobre-el-fluvia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-medieval-de-besalu-siglo-xi-sobre-el-fluvia.png",
   },
 
   {
@@ -16839,8 +18978,11 @@ export const POIS = [
     prioridad: 78,
     cooldownMin: 50,
     intereses: ["440m_vano_mayor_arco_hormigon_pretensado_europa_1983", "68m_sobre_embalse_barrios_luna", "autovia_a66_via_plata", "record_mundial_vano_libre_hormigon_al_inaugurarse", "construido_1979_1983"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/viaducto-de-barrios-de-luna-arco-de-440m.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/viaducto-de-barrios-de-luna-arco-de-440m.png",
   },
 
   {
@@ -16858,8 +19000,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 50,
     intereses: ["puente_del_alamillo_calatrava_1992_olimpiadas", "arco_200m_vano_cable_unico", "exposicion_universal_sevilla", "influencia_eiffel_en_diseño_estructural", "primer_puente_calatrava_mundialmente_reconocido"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/viaducto-de-viaur-puente-de-hierro-del-siglo-xix.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/viaducto-de-viaur-puente-de-hierro-del-siglo-xix.png",
   },
 
   {
@@ -16877,8 +19022,11 @@ export const POIS = [
     prioridad: 82,
     cooldownMin: 55,
     intereses: ["pylon_inclinado_142m_sin_contrapeso_opuesto", "200m_vano_principal_13_pares_cables", "disenado_expo_92_isla_cartuja", "hormigon_blanco_acero_inoxidable", "primer_puente_tipo_arpa_de_calatrava"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-del-alamillo-de-calatrava-expo-92.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-del-alamillo-de-calatrava-expo-92.png",
   },
 
   {
@@ -16896,8 +19044,11 @@ export const POIS = [
     prioridad: 88,
     cooldownMin: 65,
     intereses: ["2_reactores_PWR_agua_presion_1918MW_total", "mayor_central_nuclear_españa", "refrigerada_embalse_arrocampo_rio_tajo", "cierre_previsto_2027_2028", "produce_20pct_electricidad_extremadura"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/central-nuclear-de-almaraz-mayor-potencia-de-espana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/central-nuclear-de-almaraz-mayor-potencia-de-espana.png",
   },
 
   {
@@ -16915,8 +19066,11 @@ export const POIS = [
     prioridad: 82,
     cooldownMin: 60,
     intereses: ["ultima_central_nuclear_construida_españa_1988", "1066MW_reactor_PWR", "refrigerada_rio_tajo", "almacenamiento_combustible_seco_desde_2002", "cierre_previsto_2035"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/central-nuclear-de-trillo-ultima-construida-en-espana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/central-nuclear-de-trillo-ultima-construida-en-espana.png",
   },
 
   {
@@ -16934,8 +19088,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 55,
     intereses: ["primer_reactor_BWR_agua_ebullicion_españa", "466MW_operativa_1971_2012", "desmantelamiento_40_años_proceso", "gemela_diseño_fukushima_daiichi_japon", "gorge_burgalés_ebro_naciente"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/central-nuclear-de-santa-maria-de-garona-en-desmantelamiento.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/central-nuclear-de-santa-maria-de-garona-en-desmantelamiento.png",
   },
 
   {
@@ -16953,8 +19110,11 @@ export const POIS = [
     prioridad: 85,
     cooldownMin: 60,
     intereses: ["4_reactores_nucleares_en_50km_mayor_concentracion_españa", "refrigeracion_rio_ebro_agua_dulce", "asco_I_II_PWR_1806MW_total", "vandellós_II_1087MW_vandellós_I_desmantelamiento", "accidente_vandellós_I_1989_nivel_3_INES"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/complejo-nuclear-asco-vandellos-4-reactores-en-el-ebro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/complejo-nuclear-asco-vandellos-4-reactores-en-el-ebro.png",
   },
 
   {
@@ -16972,8 +19132,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 60,
     intereses: ["reactor_BWR_agua_ebullicion_1064MW", "refrigerada_embalse_embarcaderos_rio_jucar", "unica_central_nuclear_valencia", "cierre_previsto_2030", "genera_mas_electricidad_que_consume_toda_la_provincia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/central-nuclear-de-cofrentes-reactor-bwr-en-el-jucar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/central-nuclear-de-cofrentes-reactor-bwr-en-el-jucar.png",
   },
 
   {
@@ -16991,8 +19154,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 65,
     intereses: ["5000_años_explotacion_continua_mina_mas_antigua_mundo", "corta_atalaya_1300m_diametro_340m_profundidad", "rio_tinto_rojo_por_acidos_y_bacterias_quimioautotrofas", "rio_tinto_company_inglesa_trajo_futbol_a_españa", "nasa_estudia_bacterias_del_rio_para_buscar_vida_en_marte"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minas-de-riotinto-5000-anos-de-mineria.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minas-de-riotinto-5000-anos-de-mineria.png",
   },
 
   {
@@ -17010,8 +19176,11 @@ export const POIS = [
     prioridad: 82,
     cooldownMin: 60,
     intereses: ["900m_bajo_nivel_del_mar_pozos_mas_profundos_españa", "huelga_1934_y_1962_cambiaron_historia_españa", "MUMI_museo_mineria_unico_en_mina_real", "carbon_asturiano_alimentó_siderurgia_española_150_años", "ultimo_pozo_cerrado_2018"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuenca-minera-del-nalon-y-caudal-corazon-del-carbon-asturiano.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuenca-minera-del-nalon-y-caudal-corazon-del-carbon-asturiano.png",
   },
 
   {
@@ -17029,8 +19198,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 55,
     intereses: ["explotacion_a_cielo_abierto_antracita_bierzo", "paisaje_transformado_por_cortas_gigantes", "central_termica_compostilla_consumia_toda_produccion", "cierre_2018_plan_carbón_europeo", "recuperacion_ambiental_en_curso"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/corta-cabana-y-cuenca-del-bierzo-mineria-a-cielo-abierto.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/corta-cabana-y-cuenca-del-bierzo-mineria-a-cielo-abierto.png",
   },
 
   {
@@ -17048,8 +19220,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 50,
     intereses: ["mayor_mina_estaño_europa_occidental", "tambien_extrae_tantalo_y_columbita_minerales_criticos", "mineral_critico_union_europea_para_electronica", "explotacion_opencast_galeria_recuperada_2017", "reservas_estimadas_30_años"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mina-de-penouta-mayor-mina-de-estano-de-europa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mina-de-penouta-mayor-mina-de-estano-de-europa.png",
   },
 
   {
@@ -17067,8 +19242,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 50,
     intereses: ["mina_subterranea_800m_profundidad", "faja_piritica_iberica_mayor_deposito_sulfuros_mundo", "extrae_cobre_zinc_plomo_oro_plata", "rampa_camiones_6km_para_subir_mineral", "produccion_2_millones_toneladas_año"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mina-de-aguas-tenidas-cobre-y-zinc-en-la-faja-piritica.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mina-de-aguas-tenidas-cobre-y-zinc-en-la-faja-piritica.png",
   },
 
   {
@@ -17086,8 +19264,11 @@ export const POIS = [
     prioridad: 70,
     cooldownMin: 50,
     intereses: ["potasa_se_extrae_600m_profundidad", "fertilizante_agricola_exportado_50_paises", "800km_galerías_subterraneas_bajo_bages", "sal_gema_explotada_desde_epoca_romana", "mayor_complejo_minero_subterraneo_españa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minas-de-potasa-del-bages-sal-y-potasio-bajo-el-llobregat.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minas-de-potasa-del-bages-sal-y-potasio-bajo-el-llobregat.png",
   },
 
   {
@@ -17105,8 +19286,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 50,
     intereses: ["180m_altura_torre_mas_alta_andalucia", "cesar_pelli_arquitecto_petronas_torres_gemelas", "polémica_visibilidad_giralda_2015", "fachada_vidrio_lamas_acero_ventilacion_natural", "cimentacion_200_pilotes_30m_profundidad"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torre-pelli-de-sevilla-rascacielos-mas-alto-de-andalucia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torre-pelli-de-sevilla-rascacielos-mas-alto-de-andalucia.png",
   },
 
   {
@@ -17124,8 +19308,11 @@ export const POIS = [
     prioridad: 70,
     cooldownMin: 50,
     intereses: ["puente_arco_hormigon_armado_1928", "60m_sobre_rio_turia", "jose_maria_fuster_diseñador", "estilo_neomudéjar_columnas_arabizantes", "parte_del_acceso_historico_al_casco_medieval"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/viaducto-de-teruel-1928-sobre-el-turia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/viaducto-de-teruel-1928-sobre-el-turia.png",
   },
 
   {
@@ -17143,8 +19330,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 60,
     intereses: ["167_arcos_20400_bloques_granito_sin_mortero_ni_cemento", "2000_años_llevando_agua_17km_sierra", "arcos_dobles_28m_altura_maxima", "grado_cero_de_la_topografia_romana", "funciono_hasta_siglo_XIX"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/acueducto-de-segovia-ingenieria-romana-sin-cemento.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/acueducto-de-segovia-ingenieria-romana-sin-cemento.png",
   },
 
   {
@@ -17162,8 +19352,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 50,
     intereses: ["primer_tunel_montaña_españa_1948", "5230m_longitud_bajo_macizo_de_maladeta", "construido_con_trabajo_presos_politicos_franquismo", "antes_del_tunel_val_d_aran_incomunicada_invierno", "tunel_de_vielha_II_1999_paralelo_y_mas_moderno"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-vielha-primer-tunel-de-montana-de-espana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-vielha-primer-tunel-de-montana-de-espana.png",
   },
 
   {
@@ -17181,8 +19374,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 60,
     intereses: ["286km_canal_que_cruza_españa_meseta_a_mediterraneo", "eleva_agua_247m_bombeos_cascada_energia_enorme", "inaugurado_1979_riega_300000_hectareas", "conflicto_permanente_castilla_vs_levante_agua", "mayor_obra_hidraulica_española_siglo_XX"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/trasvase-tajo-segura-mayor-obra-hidraulica-de-espana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/trasvase-tajo-segura-mayor-obra-hidraulica-de-espana.png",
   },
 
   {
@@ -17200,8 +19396,11 @@ export const POIS = [
     prioridad: 80,
     cooldownMin: 55,
     intereses: ["mayor_laboratorio_solar_europa_desde_1981", "heliostat_campo_espejos_2700_unidades", "torre_solar_80m_concentra_luz_en_receptor", "2800_horas_sol_año_desierto_tabernas_ideal", "CIEMAT_investiga_hidrogeno_solar_y_desalacion"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/plataforma-solar-de-almeria-mayor-laboratorio-solar-de-europa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/plataforma-solar-de-almeria-mayor-laboratorio-solar-de-europa.png",
   },
 
   {
@@ -17219,8 +19418,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 55,
     intereses: ["navarra_primera_region_mundo_100pct_electrica_renovable_1_año_2023", "1300MW_instalados_eolica_pequeña_region", "parques_eolicos_1994_pioneros_españa", "molinos_500m_altura_viento_cantabrico_sin_obstaculos", "exporta_electricidad_al_resto_españa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cordillera-pirenaica-navarra-pionera-mundial-en-eolica.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cordillera-pirenaica-navarra-pionera-mundial-en-eolica.png",
   },
 
   {
@@ -17238,8 +19440,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 55,
     intereses: ["981_hm3_mayor_embalse_andalucia", "presa_arco_gravedad_122m_rio_genil", "abastece_agua_granada_malaga_cordoba", "construida_1960_69_plan_hidrologico_franquista", "turismo_nautico_surf_kayak_en_embalse"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/central-hidroelectrica-de-iznajar-mayor-embalse-andaluz.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/central-hidroelectrica-de-iznajar-mayor-embalse-andaluz.png",
   },
 
   {
@@ -17257,8 +19462,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 55,
     intereses: ["presa_boveda_doble_curvatura_127m_altura", "murales_genesio_diaz_arte_dentro_galeria_presa", "museo_etnografico_pueblos_sumergidos_bajo_embalse", "rio_navia_1954_inauguracion", "primera_presa_de_doble_boveda_en_españa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-salime-la-capilla-sixtina-de-la-hidroelectrica-espanola.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-salime-la-capilla-sixtina-de-la-hidroelectrica-espanola.png",
   },
 
   {
@@ -17276,8 +19484,11 @@ export const POIS = [
     prioridad: 70,
     cooldownMin: 50,
     intereses: ["tunel_natural_caliza_40m_longitud_970m_altitud", "camino_santiago_del_norte_durante_siglos", "ermita_rupestre_siglo_XI_en_interior", "primer_paso_natural_conocido_aizkorri", "ruta_jacobea_alternativa_a_la_costa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-san-adrian-paso-medieval-bajo-el-aizkorri.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-san-adrian-paso-medieval-bajo-el-aizkorri.png",
   },
 
   {
@@ -17295,8 +19506,11 @@ export const POIS = [
     prioridad: 68,
     cooldownMin: 50,
     intereses: ["faro_primera_orden_1839_luz_visible_26_millas_nauticas", "fresnel_lente_original_conservada", "automatizado_1983_antes_farero_vivia_dentro", "acantilado_calizo_90m_sobre_mar", "centro_arte_en_antiguos_cuarteles_farero"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/faro-de-cabo-mayor-ingenieria-de-navegacion-del-siglo-xix.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/faro-de-cabo-mayor-ingenieria-de-navegacion-del-siglo-xix.png",
   },
 
   {
@@ -17314,8 +19528,11 @@ export const POIS = [
     prioridad: 95,
     cooldownMin: 60,
     intereses: ["unico_faro_romano_activo_mundo_2000_años", "34m_torre_romana_mas_10m_añadidos_siglo_XVIII", "luz_LED_actual_visible_32_millas_nauticas", "patrimonio_humanidad_UNESCO_2009", "cimientos_sistema_rampa_helicoideal_sin_escaleras_original"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torre-de-hercules-unico-faro-romano-activo-del-mundo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torre-de-hercules-unico-faro-romano-activo-del-mundo.png",
   },
 
   {
@@ -17333,8 +19550,11 @@ export const POIS = [
     prioridad: 78,
     cooldownMin: 55,
     intereses: ["100km_canal_construido_1770_1790_ilustracion_española", "toma_agua_rio_aragon_en_navarra_riega_aragon", "primer_canal_navegable_de_españa", "esclusas_y_acueductos_obra_maestra_hidraulica_XVIII", "riego_30000_hectareas_y_agua_potable_zaragoza"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/canal-imperial-de-aragon-240-anos-regando-el-ebro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/canal-imperial-de-aragon-240-anos-regando-el-ebro.png",
   },
 
   {
@@ -17352,8 +19572,11 @@ export const POIS = [
     prioridad: 65,
     cooldownMin: 50,
     intereses: ["presa_doble_boveda_110m_altura_1947", "diseño_lorenzo_pardo_padre_hidraulica_española", "rio_iregua_afluente_ebro", "abastece_agua_logroño_200000_personas", "encañonada_sierras_cameros_caliza"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-gonzalez-lacasa-presa-de-doble-boveda-del-iregua.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-gonzalez-lacasa-presa-de-doble-boveda-del-iregua.png",
   },
 
   {
@@ -17371,8 +19594,11 @@ export const POIS = [
     prioridad: 68,
     cooldownMin: 50,
     intereses: ["presa_arco_120m_altura_rio_cabriel", "858_hm3_capacidad_regadio_levante", "viaducto_A3_sobre_el_embalse_250m_altura_obra_arte", "cañon_cabriel_LIC_espacio_natural", "inaugurada_1973_abastece_cuenca_del_jucar"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-contreras-arco-en-el-canon-del-cabriel.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-contreras-arco-en-el-canon-del-cabriel.png",
   },
 
   {
@@ -17390,8 +19616,11 @@ export const POIS = [
     prioridad: 97,
     cooldownMin: 65,
     intereses: ["24_6km_segundo_mas_largo_españa_septimo_europa", "profundidad_maxima_1005m_bajo_cordillera_cantabrica", "4000_millones_euros_inaugurado_noviembre_2023", "20_anos_construccion_con_filtraciones_agua_catastroficas", "5_tuneladoras_y_5000_trabajadores_simultaneos", "21_formaciones_geologicas_distintas_perforadas"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-pajares-7-mas-largo-de-europa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-pajares-7-mas-largo-de-europa.png",
   },
 
   {
@@ -17409,8 +19638,11 @@ export const POIS = [
     prioridad: 88,
     cooldownMin: 60,
     intereses: ["8_3km_tunel_AVE_transfronterizo_espana_francia", "conecta_red_ibérica_con_TGV_frances_2013", "primer_enlace_ferroviario_alta_velocidad_pirineos", "gestion_compartida_ADIF_y_RFF_france", "velocidad_maxima_300kmh_bajo_los_pirineos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-del-pertus-ave-figueres-perpinan-bajo-los-pirineos.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-del-pertus-ave-figueres-perpinan-bajo-los-pirineos.png",
   },
 
   {
@@ -17428,8 +19660,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 55,
     intereses: ["tunel_bidasoa_8km_Y_vasca_alta_velocidad", "arcillas_y_areniscas_flysch_tectonicamente_complejas", "Y_vasca_conecta_bilbao_donostia_vitoria", "presupuesto_4600_millones_toda_Y_vasca", "conexion_futura_TGV_frances_por_irun"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-urola-ave-vasco-bajo-el-cantabrico.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-urola-ave-vasco-bajo-el-cantabrico.png",
   },
 
   {
@@ -17447,8 +19682,11 @@ export const POIS = [
     prioridad: 92,
     cooldownMin: 60,
     intereses: ["8608m_tunel_carretera_mas_largo_españa", "une_jaca_espana_con_pau_francia_bajo_pirineos", "construccion_12_años_1992_2003", "unico_tubo_bidireccional_medida_de_seguridad_critica", "salida_emergencia_cada_400m_ventilacion_longitudinal", "reemplaza_al_peligroso_puerto_de_somport"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-somport-el-mas-largo-de-carretera-en-espana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-somport-el-mas-largo-de-carretera-en-espana.png",
   },
 
   {
@@ -17466,8 +19704,11 @@ export const POIS = [
     prioridad: 78,
     cooldownMin: 55,
     intereses: ["5026m_tercer_tunel_carretera_mas_largo_espana", "conecta_barcelona_con_val_de_aran_y_cerdanya", "abierto_1984_caliza_y_pizarra_sierra_cadi", "dos_tubos_unidireccionales_con_galeria_de_seguridad_central", "peaje_unico_tunel_montaña_cataluña"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-del-cadi-la-autopista-bajo-el-prepirineo.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-del-cadi-la-autopista-bajo-el-prepirineo.png",
   },
 
   {
@@ -17485,8 +19726,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 50,
     intereses: ["4102m_tunel_carretera_mas_largo_asturias", "autovía_A8_del_cantabrico", "caliza_carbonífera_extremamente_fracturada", "accidente_2009_reformas_seguridad_posteriores", "une_oviedo_con_costa_occidental_asturiana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-negron-autovia-del-cantabrico-bajo-la-montana.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-negron-autovia-del-cantabrico-bajo-la-montana.png",
   },
 
   {
@@ -17504,8 +19748,11 @@ export const POIS = [
     prioridad: 68,
     cooldownMin: 50,
     intereses: ["4556m_segundo_tunel_carretera_mas_largo_girona", "conecta_comarca_garrotxa_osona_sin_pasar_alto_bracons", "volcanes_y_basaltos_garrotxa_zona_volcanica_unica", "c17_carretera_vic_olot", "reduce_15_minutos_y_elimina_curvas_peligrosas_en_nieve"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-bracons-garrotxa-y-osona-bajo-el-alto-de-bracons.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-bracons-garrotxa-y-osona-bajo-el-alto-de-bracons.png",
   },
 
   {
@@ -17523,8 +19770,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 52,
     intereses: ["4144m_autopista_AP66_via_de_la_plata", "alternativa_al_peligroso_puerto_de_pajares_N630", "inaugurado_en_dos_fases_1992_y_1997", "caliza_cambrica_con_multiples_acuiferos_activos", "salva_550m_desnivel_entre_meseta_y_asturias"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-pajares-ap-66-el-paso-de-montana-bajo-la-ruta-de-la-plata.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-pajares-ap-66-el-paso-de-montana-bajo-la-ruta-de-la-plata.png",
   },
 
   {
@@ -17542,8 +19792,11 @@ export const POIS = [
     prioridad: 68,
     cooldownMin: 50,
     intereses: ["3377m_autopista_AP1_vitoria_san_sebastian", "cruza_limite_provincial_alava_gipuzkoa_bajo_sierra_aizkorri", "dos_tubos_circulares_con_galeria_peatonal_evacuacion", "flysch_eoceno_ardilla_y_margas_dificil_impermeabilizacion", "nudo_burgos_irun_corredor_mas_transitado_norte_espana"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-isuskitza-ap-1-entre-alava-y-gipuzkoa.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-isuskitza-ap-1-entre-alava-y-gipuzkoa.png",
   },
 
   {
@@ -17561,8 +19814,11 @@ export const POIS = [
     prioridad: 70,
     cooldownMin: 50,
     intereses: ["2900m_tunel_carretera_sierra_guadarrama_A6", "evita_el_paso_por_el_puerto_de_los_leones_1.511m", "dos_tubos_paralelos_inaugurados_1972_y_2005", "granito_y_gneis_con_cobertura_400m", "corredor_madrid_galicia_mas_de_100000_vehiculos_dia"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-alto-del-leon-a-6-entre-madrid-y-galicia.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-alto-del-leon-a-6-entre-madrid-y-galicia.png",
   },
 
   {
@@ -17580,8 +19836,11 @@ export const POIS = [
     prioridad: 68,
     cooldownMin: 50,
     intereses: ["sistema_3_tuneles_bajo_gibralfaro_y_monte_victoria", "soterramiento_ronda_ciudad_norte_2002_2007", "descongestiono_malaga_centro_eliminando_22km_atascos", "caliza_triasica_y_filitas_geologicamente_complejas", "conecta_puerto_con_aeropuerto_sin_semaforos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tuneles-de-malaga-la-m-30-andaluza-bajo-el-monte-gibralfaro.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tuneles-de-malaga-la-m-30-andaluza-bajo-el-monte-gibralfaro.png",
   },
 
   {
@@ -17599,8 +19858,11 @@ export const POIS = [
     prioridad: 65,
     cooldownMin: 48,
     intereses: ["2765m_under_sierra_aralar_N121_pamplona_san_sebastian", "caliza_muy_karstificada_grandes_cavidades_encontradas", "evita_el_sinuoso_paso_almandoz_con_nieve_peligroso", "inaugurado_2001_unico_tubo_bidireccional", "conecta_navarra_con_gipuzkoa_por_valle_del_bidasoa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-almandoz-n-121-bajo-la-sierra-de-aralar.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-almandoz-n-121-bajo-la-sierra-de-aralar.png",
   },
 
   {
@@ -17618,8 +19880,11 @@ export const POIS = [
     prioridad: 65,
     cooldownMin: 48,
     intereses: ["3500m_uno_de_los_tuneles_mas_largos_galicia", "autovía_A57_pontevedra_marin", "granito_hercinico_gallego_muy_fracturado", "evita_el_paso_por_cumbre_castrove_400m", "parte_del_corredor_atlantico_ferroviario_y_viario"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-folgoso-a-57-bajo-el-monte-castrove.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-folgoso-a-57-bajo-el-monte-castrove.png",
   },
 
   {
@@ -17637,8 +19902,11 @@ export const POIS = [
     prioridad: 68,
     cooldownMin: 50,
     intereses: ["3005m_autovia_A23_huesca_jaca_bajo_sierra_guara", "evita_el_peligroso_puerto_monrepos_1085m_frecuentes_nevadas", "inaugurado_2002_caliza_y_yesos_triasicos", "conecta_zaragoza_con_pirineos_y_valle_de_arán", "entrada_a_los_grandes_macizos_pirenaicos_oscenses"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-monrepos-a-23-bajo-el-prepirineo-oscense.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-monrepos-a-23-bajo-el-prepirineo-oscense.png",
   },
 
   {
@@ -17656,8 +19924,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 52,
     intereses: ["110km_tuneles_bajo_barcelona_mayor_red_metro_espana", "tuneladoras_EPB_presion_tierra_en_limos_delta_llobregat", "linea_9_metro_mas_profundo_40m_y_mas_largo_47km", "roca_granitica_y_arenas_deltaicas_misma_ciudad", "primera_linea_metro_1924_la_primera_del_sur_europa"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tuneles-del-metro-de-barcelona-110-km-bajo-la-ciudad.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tuneles-del-metro-de-barcelona-110-km-bajo-la-ciudad.png",
   },
 
   {
@@ -17675,8 +19946,11 @@ export const POIS = [
     prioridad: 75,
     cooldownMin: 52,
     intereses: ["tunel_I_5230m_primer_tunel_montaña_espana_1948_presos_politicos", "tunel_II_5952m_inaugurado_1999_paralelo_al_original", "val_d_aran_incomunicado_cada_invierno_antes_de_1948", "macizo_maladeta_granito_y_pizarra_perforado_bajo_2000m_roca", "unica_comarca_española_con_territorio_vertiente_norte_pirineos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tuneles-de-vielha-i-y-ii-val-daran-comunicado-todo-el-ano.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tuneles-de-vielha-i-y-ii-val-daran-comunicado-todo-el-ano.png",
   },
 
   {
@@ -17694,8 +19968,11 @@ export const POIS = [
     prioridad: 72,
     cooldownMin: 55,
     intereses: ["proyecto_estudio_38km_bajo_estrecho_espana_marruecos", "profundidad_300m_mayor_desafio_geologico_mundial", "canal_estrecho_5km_ancho_minimo_corrientes_extremas", "estudios_desde_1980_sin_proyecto_definitivo_aun", "conectaría_europa_con_africa_en_tren_30_minutos"],
-    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    sponsor: {
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-gibraltar-el-sueno-del-paso-bajo-el-estrecho.png"
+    },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-gibraltar-el-sueno-del-paso-bajo-el-estrecho.png",
   },
 
 ];

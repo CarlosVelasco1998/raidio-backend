@@ -8,6 +8,9 @@ import dotenv from "dotenv";
 import axios from "axios";
 import * as cheerio from "cheerio";
 import Anthropic from "@anthropic-ai/sdk";
+import { createHash } from "crypto";
+import { promises as fs } from "fs";
+import path from "path";
 
 import { POIS } from "./pois_db.js";
 import { generateKidsStoryImmersive } from "./kidsStoryImmersive.js";
@@ -47,6 +50,100 @@ const TTL = {
   events:      1000 * 60 * 20,       // 20min eventos
   bienvenida:  1000 * 60 * 60 * 24,  // 24h bienvenida provincia
 };
+
+// ─── CACHÉ DE NARRACIONES EN DISCO ──────────────────────────────────────────
+// Directorio: /data/narration-cache (Render Persistent Disk) o fallback local
+const NARRATION_CACHE_DIR = process.env.NARRATION_CACHE_DIR
+  || (process.env.RENDER ? "/data/narration-cache" : "./narration-cache");
+const CACHE_TTL_DAYS = Number(process.env.CACHE_TTL_DAYS ?? 14);
+const CACHE_TTL_MS   = CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
+
+const CACHE_TXT_DIR = path.join(NARRATION_CACHE_DIR, "txt");
+const CACHE_MP3_DIR = path.join(NARRATION_CACHE_DIR, "mp3");
+
+async function initNarrationCache() {
+  await fs.mkdir(CACHE_TXT_DIR, { recursive: true });
+  await fs.mkdir(CACHE_MP3_DIR, { recursive: true });
+  await cleanExpiredCache();
+  console.log(`✅ Narration cache ready — dir: ${NARRATION_CACHE_DIR}, TTL: ${CACHE_TTL_DAYS} días`);
+}
+
+function narrationHash(str) {
+  return createHash("sha256").update(str).digest("hex").slice(0, 16);
+}
+
+async function getCachedText(key) {
+  const file = path.join(CACHE_TXT_DIR, `${narrationHash(key)}.json`);
+  try {
+    const stat = await fs.stat(file);
+    if (Date.now() - stat.mtimeMs > CACHE_TTL_MS) { await fs.unlink(file).catch(() => {}); return null; }
+    const data = JSON.parse(await fs.readFile(file, "utf8"));
+    return data.text ?? null;
+  } catch { return null; }
+}
+
+async function setCachedText(key, text) {
+  const file = path.join(CACHE_TXT_DIR, `${narrationHash(key)}.json`);
+  await fs.writeFile(file, JSON.stringify({ key, text, ts: Date.now() })).catch(() => {});
+}
+
+async function getCachedMp3(key) {
+  const file = path.join(CACHE_MP3_DIR, `${narrationHash(key)}.mp3`);
+  try {
+    const stat = await fs.stat(file);
+    if (Date.now() - stat.mtimeMs > CACHE_TTL_MS) { await fs.unlink(file).catch(() => {}); return null; }
+    return await fs.readFile(file);
+  } catch { return null; }
+}
+
+async function setCachedMp3(key, buffer) {
+  const file = path.join(CACHE_MP3_DIR, `${narrationHash(key)}.mp3`);
+  await fs.writeFile(file, buffer).catch(() => {});
+}
+
+async function cleanExpiredCache() {
+  const now = Date.now();
+  for (const dir of [CACHE_TXT_DIR, CACHE_MP3_DIR]) {
+    try {
+      const files = await fs.readdir(dir);
+      for (const f of files) {
+        try {
+          const fp = path.join(dir, f);
+          const stat = await fs.stat(fp);
+          if (now - stat.mtimeMs > CACHE_TTL_MS) await fs.unlink(fp);
+        } catch {}
+      }
+    } catch {}
+  }
+}
+
+async function cacheStats() {
+  let txtCount = 0, mp3Count = 0, totalBytes = 0, oldest = Date.now();
+  for (const [dir, label] of [[CACHE_TXT_DIR, "txt"], [CACHE_MP3_DIR, "mp3"]]) {
+    try {
+      const files = await fs.readdir(dir);
+      for (const f of files) {
+        try {
+          const stat = await fs.stat(path.join(dir, f));
+          totalBytes += stat.size;
+          if (stat.mtimeMs < oldest) oldest = stat.mtimeMs;
+          label === "txt" ? txtCount++ : mp3Count++;
+        } catch {}
+      }
+    } catch {}
+  }
+  return {
+    txt_entries: txtCount,
+    mp3_entries: mp3Count,
+    total_size_mb: (totalBytes / 1048576).toFixed(2),
+    oldest_entry_days: txtCount + mp3Count > 0
+      ? ((Date.now() - oldest) / 86400000).toFixed(1) : 0,
+    cache_ttl_days: CACHE_TTL_DAYS,
+    cache_dir: NARRATION_CACHE_DIR,
+  };
+}
+
+initNarrationCache().catch(e => console.error("⚠️ Error iniciando caché:", e.message));
 
 // ─── MIDDLEWARE ───────────────────────────────────────────────────────────────
 app.use(cors());
@@ -409,6 +506,29 @@ function deezerQuery(genre) {
 // ENDPOINTS
 // ═══════════════════════════════════════════════════════════════════════════════
 
+// ─── CACHÉ — STATS Y CONTROL ─────────────────────────────────────────────────
+app.get("/cache/stats", async (_req, res) => {
+  try { res.json(await cacheStats()); }
+  catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.delete("/cache/clear", async (req, res) => {
+  const secret = process.env.CACHE_ADMIN_SECRET;
+  if (!secret || req.query.secret !== secret)
+    return res.status(401).json({ error: "secret inválido o no configurado" });
+  try {
+    let deleted = 0;
+    for (const dir of [CACHE_TXT_DIR, CACHE_MP3_DIR]) {
+      const files = await fs.readdir(dir).catch(() => []);
+      for (const f of files) {
+        await fs.unlink(path.join(dir, f)).catch(() => {});
+        deleted++;
+      }
+    }
+    res.json({ deleted, message: "Caché limpiado" });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // ─── SALUD ───────────────────────────────────────────────────────────────────
 app.get("/healthz", (_req, res) => res.status(200).send("ok"));
 app.get("/",        (_req, res) => res.send("Backend Sancho funcionando ✔️"));
@@ -460,9 +580,19 @@ app.post("/ai/generate", async (req, res) => {
   try {
     if (!process.env.ANTHROPIC_API_KEY) return res.status(500).json({ error: "Falta ANTHROPIC_API_KEY" });
 
-    const { prompt, temas, liveEvents = false, latitude = null, longitude = null, timestamp = null, poiNombre = "", language = "es", nivel = "normal" } = req.body || {};
+    const { prompt, temas, liveEvents = false, latitude = null, longitude = null, timestamp = null, poiNombre = "", language = "es", nivel = "normal", poiCacheKey = null } = req.body || {};
 
     if (!prompt || typeof prompt !== "string") return res.status(400).json({ error: "prompt requerido (string)" });
+
+    // ── Caché de texto (solo cuando no hay eventos en vivo y hay clave de POI) ──
+    const useTextCache = poiCacheKey && !asBool(liveEvents);
+    if (useTextCache) {
+      const cached = await getCachedText(poiCacheKey);
+      if (cached) {
+        console.log(`📦 Text cache HIT: ${poiCacheKey}`);
+        return res.json({ text: cached, cache: "hit" });
+      }
+    }
 
     const maxTokens   = MAX_TOKENS_BY_NIVEL[nivel] ?? MAX_TOKENS_BY_NIVEL.normal;
     const temasTxt    = Array.isArray(temas) ? temas.filter(Boolean).join(", ") : "";
@@ -485,7 +615,12 @@ app.post("/ai/generate", async (req, res) => {
     const maxWords = MAX_WORDS_BY_NIVEL[nivel] ?? MAX_WORDS_BY_NIVEL.normal;
     const text     = truncarPorFrases(rawText, maxWords);
 
-    res.json({ text, model_used: r.model, usage: r.usage, live_events_enabled: asBool(liveEvents), live_context_used: Boolean(liveContext?.trim()) });
+    if (useTextCache && text) {
+      setCachedText(poiCacheKey, text).catch(() => {});
+      console.log(`💾 Text cache SET: ${poiCacheKey}`);
+    }
+
+    res.json({ text, model_used: r.model, usage: r.usage, live_events_enabled: asBool(liveEvents), live_context_used: Boolean(liveContext?.trim()), cache: "miss" });
   } catch (e) {
     console.error("ERROR /ai/generate:", e.message);
     res.status(500).json({ error: "ai_generate_failed", detail: e.message });
@@ -501,12 +636,22 @@ app.post("/tts", async (req, res) => {
     if (!text?.trim())               return res.status(400).json({ error: "text requerido" });
     if (!apiKey || !DEFAULT_VOICE_ID) return res.status(500).json({ error: "Falta ELEVEN_API_KEY o ELEVEN_VOICE_ID en env" });
 
-    const usedVoiceId    = voiceId || DEFAULT_VOICE_ID;
-    const voiceSettings  = VOICE_SETTINGS_BY_MOOD[mood] ?? VOICE_SETTINGS_BY_MOOD.normal;
-    const url            = `https://api.elevenlabs.io/v1/text-to-speech/${usedVoiceId}`;
-    const headers        = { "xi-api-key": apiKey, "Content-Type": "application/json", "Accept": "audio/mpeg" };
-    const cleanText      = corregirPronunciacion(text);
+    const usedVoiceId = voiceId || DEFAULT_VOICE_ID;
+    const cleanText   = corregirPronunciacion(text);
 
+    // ── Caché de audio: misma voz + texto → mismo MP3 ──────────────────────
+    const mp3CacheKey = `${usedVoiceId}|${mood}|${cleanText}`;
+    const cachedMp3   = await getCachedMp3(mp3CacheKey);
+    if (cachedMp3) {
+      console.log(`🎵 MP3 cache HIT (${(cachedMp3.length / 1024).toFixed(0)}KB)`);
+      res.set("Content-Type", "audio/mpeg");
+      res.set("X-Cache", "HIT");
+      return res.send(cachedMp3);
+    }
+
+    const voiceSettings   = VOICE_SETTINGS_BY_MOOD[mood] ?? VOICE_SETTINGS_BY_MOOD.normal;
+    const url             = `https://api.elevenlabs.io/v1/text-to-speech/${usedVoiceId}`;
+    const headers         = { "xi-api-key": apiKey, "Content-Type": "application/json", "Accept": "audio/mpeg" };
     const payloadFlash    = { text: cleanText, model_id: "eleven_flash_v2_5",      voice_settings: voiceSettings };
     const payloadFallback = { text: cleanText, model_id: "eleven_multilingual_v2", voice_settings: { stability: voiceSettings.stability, similarity_boost: voiceSettings.similarity_boost } };
 
@@ -518,8 +663,13 @@ app.post("/tts", async (req, res) => {
       elevenResp = await axios.post(url, payloadFallback, { headers, responseType: "arraybuffer", timeout: 30000 });
     }
 
+    const audioBuffer = Buffer.from(elevenResp.data);
+    setCachedMp3(mp3CacheKey, audioBuffer).catch(() => {});
+    console.log(`🎵 MP3 cache SET (${(audioBuffer.length / 1024).toFixed(0)}KB)`);
+
     res.set("Content-Type", "audio/mpeg");
-    res.send(elevenResp.data);
+    res.set("X-Cache", "MISS");
+    res.send(audioBuffer);
   } catch (e) {
     const status = e.response?.status;
     let body = e.response?.data;

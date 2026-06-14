@@ -28,6 +28,8 @@ const VOICE_LIBRARY = {
   magical_f:    { id: "Xb7hH8MSUJpSbSDYk0k2", name: "Alice",     s: { stability: 0.50, similarity_boost: 0.80, style: 0.40, use_speaker_boost: true } },
   magical_m:    { id: "onwK4e9ZLuTAKqWW03F9", name: "Daniel",    s: { stability: 0.50, similarity_boost: 0.80, style: 0.35, use_speaker_boost: true } },
   nature:       { id: "pNInz6obpgDQGcFmaJgB", name: "Adam",      s: { stability: 0.75, similarity_boost: 0.70, style: 0.15, use_speaker_boost: true } },
+  narrator_f_en: { id: "Xb7hH8MSUJpSbSDYk0k2", name: "Alice",  s: { stability: 0.50, similarity_boost: 0.80, style: 0.30, use_speaker_boost: true } },
+  narrator_m_en: { id: "onwK4e9ZLuTAKqWW03F9", name: "Daniel", s: { stability: 0.50, similarity_boost: 0.80, style: 0.35, use_speaker_boost: true } },
 };
 
 const GIRL_KEYS = ["child_girl_1", "child_girl_2", "child_girl_3"];
@@ -48,8 +50,11 @@ function assignChildVoices(kids) {
 }
 
 // ================== PROMPT PARA OPENAI ==================
-function buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voiceAssignments }) {
-  const narratorKey = narratorGender === "m" ? "narrator_m" : "narrator_f";
+function buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voiceAssignments, language = "es" }) {
+  const isEN = language === "en";
+  const narratorKey = isEN
+    ? (narratorGender === "m" ? "narrator_m_en" : "narrator_f_en")
+    : (narratorGender === "m" ? "narrator_m" : "narrator_f");
   const wpm = Math.min(Math.max(120 + (age - 3) * 5, 115), 165);
   // ElevenLabs habla más rápido que un narrador humano — compensamos con factor 1.7
   const targetWords = Math.round(targetMinutes * wpm * 1.7);
@@ -57,16 +62,65 @@ function buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voic
   const maxWords = Math.round(targetWords * 1.15);
 
   const kidsList = kids
-    .map((k) => `${k.name} → voz: ${voiceAssignments[k.name]}`)
+    .map((k) => `${k.name} → voice: ${voiceAssignments[k.name]}`)
     .join(", ");
 
   const secondaryVoices = Object.keys(VOICE_LIBRARY)
     .filter((k) => !k.startsWith("narrator") && !k.startsWith("child"))
     .join(", ");
 
+  if (isEN) {
+    return `You are an expert children's storyteller. Create an ORIGINAL story in English for ${age}-year-olds travelling by car with their family.
+
+MAIN CHARACTERS (with assigned voice): ${kidsList}
+NARRATOR VOICE: ${narratorKey}
+IDEA: "${idea || "Invent an original and entertaining adventure."}"
+TARGET LENGTH: between ${minWords} and ${maxWords} words in total.
+
+AVAILABLE VOICES for secondary characters: ${secondaryVoices}
+Only use the ones you need for the story's characters.
+
+REQUIRED STORY STRUCTURE:
+1. INTRODUCTION (first segments): set the scene calmly. Describe where we are, who the main characters are, what they like, what they were doing. Let the children picture the scene. Example: "Once upon a time, driving along the road, [name], who loved [thing], and [name2], who always carried [object]..."
+2. TRIGGER: something unexpected happens that starts the adventure.
+3. DEVELOPMENT: the characters face the problem with humour, cleverness or bravery. Include 1 or 2 moments where story characters play a joke on or ask something funny directly to the main characters by name.
+4. RESOLUTION: resolved in a satisfying way, no forced moral.
+
+STYLE:
+- Simple and friendly language, suitable for the indicated age.
+- The narrator ALWAYS introduces who speaks before each dialogue: "said [character]:", "replied [character]:", "asked [character] with a smile:".
+- Gentle humour, absurd or surprising situations. Children should want to hear what happens next.
+- No violence. No forced moral. No rainbows and cotton clouds at the end.
+- Never mention that you are an AI.
+
+SOUND EFFECTS:
+- Use ONLY 2 or 3 sound effects at very specific, meaningful moments.
+- Place them where they really add value (a door opening, a thunderclap, an animal appearing). Do not put them between every segment.
+
+RESPONSE FORMAT — reply EXCLUSIVELY with valid JSON, no text before or after:
+
+{
+  "title": "Story title",
+  "segments": [
+    { "type": "narration", "voice": "${narratorKey}", "text": "Once upon a time... [scene and character introduction]" },
+    { "type": "narration", "voice": "${narratorKey}", "text": "Suddenly... [narration ending with: 'said the dragon:']" },
+    { "type": "dialogue", "voice": "animal_large", "character": "Dragon", "text": "Hey, you! Can [name] really do [funny thing]?" },
+    { "type": "sfx", "description": "precise sound effect in english, max 10 words" },
+    { "type": "narration", "voice": "${narratorKey}", "text": "Continue the narration..." }
+  ]
+}
+
+FORMAT RULES:
+- "narration" → voice always "${narratorKey}". End with an introduction of the next speaker when appropriate: "said X:", "replied Y:", "asked Z:".
+- "dialogue"  → what the character says, without including their name.
+- "sfx"       → ALWAYS in English, very specific (e.g. "large dragon roaring", "heavy wooden door slamming shut", "tiny bell ringing twice").
+- Each text segment: maximum 60 words.
+- The JSON must be complete and valid.`;
+  }
+
   return `Eres un cuentacuentos experto para niños. Crea un cuento ORIGINAL en español castellano para niños de ${age} años que van en coche con su familia.
 
-PROTAGONISTAS (con su voz asignada): ${kidsList}
+PROTAGONISTAS (con su voz asignada): ${kidsList.replace(/voice:/g, "voz:")}
 VOZ NARRADOR/A: ${narratorKey}
 IDEA: "${idea || "Inventa una aventura original y entretenida."}"
 DURACIÓN OBJETIVO: entre ${minWords} y ${maxWords} palabras en total.
@@ -193,6 +247,7 @@ export async function generateKidsStoryImmersive(req, res) {
     age            = 7,
     targetMinutes  = 3,
     idea           = "",
+    language       = "es",
   } = req.body ?? {};
 
   if (!Array.isArray(kids) || kids.length === 0) {
@@ -205,13 +260,17 @@ export async function generateKidsStoryImmersive(req, res) {
     console.log("🎭 Voces asignadas:", voiceAssignments);
 
     // 2 — Generar cuento estructurado con Claude
-    const prompt = buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voiceAssignments });
+    const prompt = buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voiceAssignments, language });
     console.log("✍️  Generando cuento con Claude...");
+
+    const systemPrompt = language === "en"
+      ? "You are an expert children's storyteller. You ALWAYS respond with complete, valid JSON and nothing else."
+      : "Eres un experto cuentacuentos infantil. Respondes SIEMPRE con JSON válido y completo, sin texto adicional.";
 
     const claudeResp = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 4000,
-      system: "Eres un experto cuentacuentos infantil. Respondes SIEMPRE con JSON válido y completo, sin texto adicional.",
+      system: systemPrompt,
       messages: [{ role: "user", content: prompt }],
     });
 
@@ -245,7 +304,10 @@ export async function generateKidsStoryImmersive(req, res) {
 
         } else if (seg.type === "narration" || seg.type === "dialogue") {
           if (!seg.text?.trim()) continue;
-          const voiceKey  = seg.voice ?? (narratorGender === "m" ? "narrator_m" : "narrator_f");
+          const defaultNarrator = language === "en"
+            ? (narratorGender === "m" ? "narrator_m_en" : "narrator_f_en")
+            : (narratorGender === "m" ? "narrator_m" : "narrator_f");
+          const voiceKey  = seg.voice ?? defaultNarrator;
           const voiceName = VOICE_LIBRARY[voiceKey]?.name ?? voiceKey;
           console.log(`  ${tag} — ${voiceName}: "${seg.text.slice(0, 45)}..."`);
           audioBuffers.push(await callTTS(elevenKey, voiceKey, seg.text.trim()));
@@ -261,12 +323,13 @@ export async function generateKidsStoryImmersive(req, res) {
 
     // Coletilla final siempre presente
     try {
-      const narratorKey = narratorGender === "m" ? "narrator_m" : "narrator_f";
-      const closingBuf = await callTTS(
-        elevenKey,
-        narratorKey,
-        "Y colorín colorado, este cuento ha terminado. ¡Hasta la próxima aventura, chicos!"
-      );
+      const narratorKey = language === "en"
+        ? (narratorGender === "m" ? "narrator_m_en" : "narrator_f_en")
+        : (narratorGender === "m" ? "narrator_m" : "narrator_f");
+      const closingText = language === "en"
+        ? "And that's the end of our story! Until the next adventure, kids!"
+        : "Y colorín colorado, este cuento ha terminado. ¡Hasta la próxima aventura, chicos!";
+      const closingBuf = await callTTS(elevenKey, narratorKey, closingText);
       audioBuffers.push(closingBuf);
     } catch (_) {}
 

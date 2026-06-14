@@ -566,6 +566,21 @@ function deezerQuery(genre) {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 // ─── QUIZ QUESTION POOL ──────────────────────────────────────────────────────
+app.get("/quiz/pool/stats", async (_req, res) => {
+  try {
+    const files = await fs.readdir(QUIZ_POOL_DIR).catch(() => []);
+    const pools = [];
+    for (const f of files.filter(f => f.endsWith(".json"))) {
+      try {
+        const data = JSON.parse(await fs.readFile(path.join(QUIZ_POOL_DIR, f), "utf8"));
+        pools.push({ file: f, questions: data.length, sample: data[0]?.question?.slice(0, 80) ?? "" });
+      } catch { pools.push({ file: f, questions: "?", sample: "" }); }
+    }
+    pools.sort((a, b) => String(a.file).localeCompare(String(b.file)));
+    res.json({ total_pools: pools.length, pools });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 app.post("/quiz/question", async (req, res) => {
   try {
     const { topic = "cultura_general", difficulty = "easy", usedIds = [], customTopic = "" } = req.body || {};

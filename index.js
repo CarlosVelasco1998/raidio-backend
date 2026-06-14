@@ -76,19 +76,20 @@ async function initQuizPool() {
   console.log(`✅ Quiz pool ready — dir: ${QUIZ_POOL_DIR}`);
 }
 
-function quizPoolFile(topic, difficulty) {
+function quizPoolFile(topic, difficulty, lang = "es") {
   const safe = topic.replace(/[^a-z0-9_]/gi, "_").slice(0, 60);
-  return path.join(QUIZ_POOL_DIR, `${safe}_${difficulty}.json`);
+  const langSuffix = lang === "en" ? "_en" : "";
+  return path.join(QUIZ_POOL_DIR, `${safe}_${difficulty}${langSuffix}.json`);
 }
 
-async function loadQuizPool(topic, difficulty) {
+async function loadQuizPool(topic, difficulty, lang = "es") {
   try {
-    return JSON.parse(await fs.readFile(quizPoolFile(topic, difficulty), "utf8"));
+    return JSON.parse(await fs.readFile(quizPoolFile(topic, difficulty, lang), "utf8"));
   } catch { return []; }
 }
 
-async function saveQuizPool(topic, difficulty, pool) {
-  await fs.writeFile(quizPoolFile(topic, difficulty), JSON.stringify(pool));
+async function saveQuizPool(topic, difficulty, pool, lang = "es") {
+  await fs.writeFile(quizPoolFile(topic, difficulty, lang), JSON.stringify(pool));
 }
 
 const TOPIC_PROMPTS = {
@@ -99,10 +100,24 @@ const TOPIC_PROMPTS = {
   mezcla:             "mezcla de cultura general, historia, ciencia, música y curiosidades",
 };
 
+const TOPIC_PROMPTS_EN = {
+  cultura_general:    "general knowledge",
+  historia_espana:    "history of Spain",
+  cine_series:        "movies and TV series",
+  ciencia_naturaleza: "science and nature",
+  mezcla:             "a mix of general knowledge, history, science, music and curiosities",
+};
+
 const DIFFICULTY_HINTS = {
   easy:   "FÁCIL: preguntas muy accesibles, hechos conocidos o fáciles de deducir, distractores claros, sin trampas.",
   medium: "MEDIA: requiere cultura general, debe costar un poco, distractores plausibles.",
   hard:   "DIFÍCIL: pregunta específica, detalle preciso, distractores muy plausibles, nada evidente ni escolar.",
+};
+
+const DIFFICULTY_HINTS_EN = {
+  easy:   "EASY: very accessible questions, well-known facts or easy to deduce, clear distractors, no tricks.",
+  medium: "MEDIUM: requires general knowledge, should take some thought, plausible distractors.",
+  hard:   "HARD: specific question, precise detail, very plausible distractors, nothing obvious.",
 };
 
 function buildQuizPrompt(topicText, difficulty, existingQuestions = []) {
@@ -123,6 +138,27 @@ Reglas:
 - Números y romanos en texto para lectura en voz alta.
 - Dificultad: ${diff}
 - Tema: ${topicText}
+${avoid}`;
+}
+
+function buildQuizPromptEN(topicText, difficulty, existingQuestions = []) {
+  const diff = DIFFICULTY_HINTS_EN[difficulty] || DIFFICULTY_HINTS_EN.medium;
+  const avoid = existingQuestions.length > 0
+    ? `\nAvoid repeating or rephrasing any of these existing questions:\n- ${existingQuestions.slice(-40).join("\n- ")}\n`
+    : "";
+  return `Return ONLY valid JSON, no markdown or extra text, with this EXACT schema:
+{"question":"...","options":["...","...","...","..."],"correct_index":0,"explanation":"..."}
+
+Rules:
+- English.
+- EXACTLY 4 options.
+- Only 1 correct. correct_index between 0 and 3.
+- explanation: 1-2 short sentences.
+- Do NOT always place the correct answer in the same position.
+- Plausible but incorrect distractors.
+- Write numbers and Roman numerals as words for text-to-speech readability.
+- Difficulty: ${diff}
+- Topic: ${topicText}
 ${avoid}`;
 }
 
@@ -583,31 +619,36 @@ app.get("/quiz/pool/stats", async (_req, res) => {
 
 app.post("/quiz/question", async (req, res) => {
   try {
-    const { topic = "cultura_general", difficulty = "easy", usedIds = [], customTopic = "" } = req.body || {};
+    const { topic = "cultura_general", difficulty = "easy", usedIds = [], customTopic = "", lang = "es" } = req.body || {};
+
+    const isEN = lang === "en";
+    const topicPrompts = isEN ? TOPIC_PROMPTS_EN : TOPIC_PROMPTS;
 
     // Temas personalizados no se poolizan — demasiado únicos
     const isCustom = topic === "personalizado";
     const topicText = isCustom
-      ? (customTopic.trim() || "cultura general")
-      : (TOPIC_PROMPTS[topic] || "cultura general");
+      ? (customTopic.trim() || (isEN ? "general knowledge" : "cultura general"))
+      : (topicPrompts[topic] || (isEN ? "general knowledge" : "cultura general"));
 
     if (!isCustom) {
-      const pool = await loadQuizPool(topic, difficulty);
+      const pool = await loadQuizPool(topic, difficulty, lang);
       const usedSet = new Set(usedIds);
       const available = pool.filter(q => !usedSet.has(q.id));
 
       if (available.length > 0) {
         const q = available[Math.floor(Math.random() * available.length)];
-        console.log(`🎯 Quiz HIT: ${topic}/${difficulty} (pool:${pool.length} disp:${available.length})`);
+        console.log(`🎯 Quiz HIT [${lang}]: ${topic}/${difficulty} (pool:${pool.length} disp:${available.length})`);
         return res.json({ ...q, fromPool: true });
       }
-      console.log(`🤖 Quiz MISS: generando para ${topic}/${difficulty} (pool:${pool.length} usadas:${usedIds.length})`);
+      console.log(`🤖 Quiz MISS [${lang}]: generando para ${topic}/${difficulty} (pool:${pool.length} usadas:${usedIds.length})`);
     }
 
     // Generar nueva pregunta con Claude
-    const pool = isCustom ? [] : await loadQuizPool(topic, difficulty);
+    const pool = isCustom ? [] : await loadQuizPool(topic, difficulty, lang);
     const existingQuestions = pool.map(q => q.question);
-    const prompt = buildQuizPrompt(topicText, difficulty, existingQuestions);
+    const prompt = isEN
+      ? buildQuizPromptEN(topicText, difficulty, existingQuestions)
+      : buildQuizPrompt(topicText, difficulty, existingQuestions);
 
     const r = await anthropic.messages.create({
       model: MODEL_FAST,
@@ -627,7 +668,7 @@ app.post("/quiz/question", async (req, res) => {
       throw new Error(`Formato inválido: ${raw.slice(0, 200)}`);
     }
 
-    const id = narrationHash(`${topic}|${difficulty}|${parsed.question}`);
+    const id = narrationHash(`${lang}|${topic}|${difficulty}|${parsed.question}`);
     const newQ = {
       id,
       question: parsed.question,
@@ -641,8 +682,8 @@ app.post("/quiz/question", async (req, res) => {
       // Añadir al pool evitando duplicados
       if (!pool.find(p => p.id === id)) {
         pool.push(newQ);
-        saveQuizPool(topic, difficulty, pool).catch(e => console.error("Error guardando quiz pool:", e.message));
-        console.log(`💾 Quiz SET: ${topic}/${difficulty} (pool size: ${pool.length})`);
+        saveQuizPool(topic, difficulty, pool, lang).catch(e => console.error("Error guardando quiz pool:", e.message));
+        console.log(`💾 Quiz SET [${lang}]: ${topic}/${difficulty} (pool size: ${pool.length})`);
       }
     }
 
@@ -732,11 +773,14 @@ app.post("/ai/generate", async (req, res) => {
     if (!prompt || typeof prompt !== "string") return res.status(400).json({ error: "prompt requerido (string)" });
 
     // ── Caché de texto (solo cuando no hay eventos en vivo y hay clave de POI) ──
-    const useTextCache = poiCacheKey && !asBool(liveEvents);
+    // El sufijo de idioma evita colisiones entre narraciones ES y EN del mismo POI
+    const langSuffix = language === "en" ? "|en" : "";
+    const resolvedCacheKey = poiCacheKey ? `${poiCacheKey}${langSuffix}` : null;
+    const useTextCache = resolvedCacheKey && !asBool(liveEvents);
     if (useTextCache) {
-      const cached = await getCachedText(poiCacheKey);
+      const cached = await getCachedText(resolvedCacheKey);
       if (cached) {
-        console.log(`📦 Text cache HIT: ${poiCacheKey}`);
+        console.log(`📦 Text cache HIT [${language}]: ${resolvedCacheKey}`);
         return res.json({ text: cached, cache: "hit" });
       }
     }
@@ -746,10 +790,16 @@ app.post("/ai/generate", async (req, res) => {
     const liveContext = await getLiveEventsContext({ liveEvents, latitude, longitude, timestamp, poiNombre, language });
     const finalPrompt = construirPromptConEventos({ prompt, liveEvents, liveContext });
 
-    const systemPrompt = [
-      "Eres SANCHO, el copiloto de viaje. Explicas los lugares de forma clara y con rigor, pero sin tecnicismos ni lenguaje académico — como un buen divulgador, no como un historiador ni como un colega informal. Usa vocabulario preciso y correcto. Evita expresiones vagas, coloquialismos burdos o imprecisiones. Responde en español, sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta mientras se conduce.",
-      temasTxt ? `Temas activados: ${temasTxt}` : "",
-    ].filter(Boolean).join("\n");
+    const isEN = language === "en";
+    const systemPrompt = isEN
+      ? [
+          "You are SANCHO, a road trip co-pilot app. Explain places clearly and with accuracy, but without academic language — like a great storyteller, not a historian. Use precise vocabulary. Avoid vague phrases, slang or inaccuracies. Reply in English, no lists, no emojis, no headings. Natural text designed to sound great out loud while driving.",
+          temasTxt ? `Active topics: ${temasTxt}` : "",
+        ].filter(Boolean).join("\n")
+      : [
+          "Eres SANCHO, el copiloto de viaje. Explicas los lugares de forma clara y con rigor, pero sin tecnicismos ni lenguaje académico — como un buen divulgador, no como un historiador ni como un colega informal. Usa vocabulario preciso y correcto. Evita expresiones vagas, coloquialismos burdos o imprecisiones. Responde en español, sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta mientras se conduce.",
+          temasTxt ? `Temas activados: ${temasTxt}` : "",
+        ].filter(Boolean).join("\n");
 
     const r = await anthropic.messages.create({
       model: MODEL_FAST,
@@ -763,8 +813,8 @@ app.post("/ai/generate", async (req, res) => {
     const text     = truncarPorFrases(rawText, maxWords);
 
     if (useTextCache && text) {
-      setCachedText(poiCacheKey, text).catch(() => {});
-      console.log(`💾 Text cache SET: ${poiCacheKey}`);
+      setCachedText(resolvedCacheKey, text).catch(() => {});
+      console.log(`💾 Text cache SET [${language}]: ${resolvedCacheKey}`);
     }
 
     res.json({ text, model_used: r.model, usage: r.usage, live_events_enabled: asBool(liveEvents), live_context_used: Boolean(liveContext?.trim()), cache: "miss" });
@@ -777,13 +827,16 @@ app.post("/ai/generate", async (req, res) => {
 // ─── TTS (ELEVENLABS) ────────────────────────────────────────────────────────
 app.post("/tts", async (req, res) => {
   const apiKey = process.env.ELEVEN_API_KEY;
-  const { text, voiceId, mood = "normal" } = req.body || {};
+  const { text, voiceId, mood = "normal", lang = "es" } = req.body || {};
 
   try {
     if (!text?.trim())               return res.status(400).json({ error: "text requerido" });
     if (!apiKey || !DEFAULT_VOICE_ID) return res.status(500).json({ error: "Falta ELEVEN_API_KEY o ELEVEN_VOICE_ID en env" });
 
-    const usedVoiceId = voiceId || DEFAULT_VOICE_ID;
+    const defaultVoice = lang === "en"
+      ? (process.env.ELEVEN_VOICE_ID_EN || DEFAULT_VOICE_ID)
+      : DEFAULT_VOICE_ID;
+    const usedVoiceId = voiceId || defaultVoice;
     const cleanText   = corregirPronunciacion(text);
 
     // ── Caché de audio: misma voz + texto → mismo MP3 ──────────────────────
@@ -842,10 +895,12 @@ app.get("/voices", async (_req, res) => {
 // ─── ASISTENTE DE VOZ ────────────────────────────────────────────────────────
 app.post("/assistant", async (req, res) => {
   try {
-    const { messages = [], screen = "home", context: ctx = {}, step = null } = req.body || {};
+    const { messages = [], screen = "home", context: ctx = {}, step = null, lang = "es" } = req.body || {};
     if (!Array.isArray(messages) || messages.length === 0) return res.status(400).json({ error: "messages requerido" });
 
-    const screenLabels = {
+    const isEN = lang === "en";
+
+    const screenLabelsES = {
       home:                "menú principal de SANCHO",
       games:               "menú de juegos (Adivina la Canción, Quiz Show, Cuentos para Niños)",
       guess_song:          "configuración del juego Adivina la Canción",
@@ -858,7 +913,79 @@ app.post("/assistant", async (req, res) => {
       learn:               "configuración de SANCHO Aprende (narración automática de POIs)",
     };
 
-    const systemPrompt = `Eres el asistente de voz de SANCHO, una app de copiloto para viajes en coche. El usuario conduce — sé muy conciso, máximo 2 frases.
+    const screenLabelsEN = {
+      home:                "SANCHO main menu",
+      games:               "games menu (Guess the Song, Quiz Show, Kids Stories)",
+      guess_song:          "Guess the Song game setup",
+      guess_song_round:    "playing Guess the Song",
+      kids_stories:        "Kids Stories setup",
+      kids_story_playing:  "listening to a kids story",
+      quiz:                "Quiz Show setup",
+      quiz_playing:        "playing Quiz Show",
+      map:                 "route map with points of interest",
+      learn:               "SANCHO Learn setup (automatic POI narration)",
+    };
+
+    const screenLabels = isEN ? screenLabelsEN : screenLabelsES;
+
+    const systemPrompt = isEN
+      ? `You are the voice assistant for SANCHO, a road trip co-pilot app. The user is driving — be very concise, maximum 2 sentences.
+Screen: "${screenLabels[screen] || screen}" | Step: "${step || "none"}" | Context: ${JSON.stringify(ctx)}
+
+Always reply with valid JSON (no text outside the JSON):
+{ "speech": "what you say out loud, no emojis", "action": "action_name or null", "params": {} }
+
+━━━ HOW STEPS WORK ━━━
+When "step" is NOT "none": the user just answered the question for that step.
+→ Extract the info from their message and call the indicated action.
+→ Include in "speech" the NEXT question in the flow.
+→ If the user said something irrelevant, briefly repeat the question.
+
+⛔ NEVER narrate stories, songs or quiz questions.
+
+━━━ NAVIGATION ━━━
+"learn" / "narrate" / "tell me" → navigate_learn, speech includes "What topics? History, curiosities, nature, live events or where to stop."
+"song" / "guess" / "music" → navigate_guess_song, speech includes "What genre? Indie, pop, rock, Disney, classics or Spanish pop."
+"stories" / "story" / "kids" → navigate_kids_stories, speech includes "What are the kids' names and are they a boy or a girl?"
+"quiz" / "trivia" / "questions" → navigate_quiz, speech includes "What are the players' names?"
+"map" → navigate_map
+"stop" / "quiet" / "shut up" → stop_audio
+"what's nearby" / "tell me about here" → trigger_poi
+"thanks" / "bye" / "done" / "cancel" → close_assistant
+home screen → navigate_home; games → navigate_games
+
+━━━ GUESS THE SONG ━━━
+step=song_category → Extract genre. indie→"indie", pop→"pop", rock→"rock", disney→"disney", classics→"Clásicos de siempre España", spanish pop→"Pop España 2026".
+  Call: set_guess_song_category { key: "..." }  speech: "Got it! What are the players' names?"
+step=song_players → Extract names.
+  Call: set_guess_song_players { players: ["name1","name2",...] }  speech: "Difficulty: easy, normal or hard?"
+step=song_difficulty → easy→"easy", normal→"normal", hard→"hard".
+  Call: note_song_difficulty { difficulty: "easy"|"normal"|"hard" }  speech: "Ready! Shall we start?"
+step=song_confirm → Call: start_guess_song { difficulty: "${ctx.difficulty || 'normal'}" }  speech: "Let's go! Good luck everyone!"
+During game (screen=guess_song_round): "reveal" → reveal_song | "yes"/"correct" → answer_correct | "no"/"wrong" → answer_wrong | "next" → next_round
+
+━━━ KIDS STORIES ━━━
+step=story_protagonists → Extract name and gender (boy/girl).
+  Call: set_story_protagonists { kids: [{name:"...",gender:"boy"|"girl"},...] }  speech: "Great! What is the story about?"
+step=story_idea → Extract idea.
+  Call: set_story_idea { idea: "..." }  speech: "How many minutes? Between 1 and 5."
+step=story_duration → Extract minutes.
+  Call: note_story_duration { minutes: N }  speech: "Perfect! Shall we start the story?"
+step=story_confirm → Call: start_story { minutes: ${ctx.minutes || 3} }  speech: "Here we go! Enjoy!"
+
+━━━ QUIZ ━━━
+step=quiz_players → Extract names.
+  Call: set_quiz_players { players: [...] }  speech: "Topic? General knowledge, history of Spain, movies, science or mix."
+step=quiz_topic → general→"cultura_general", history→"historia_espana", movies→"cine_series", science→"ciencia_naturaleza", mix→"mezcla".
+  Call: note_quiz_topic { topic: "..." }  speech: "How many questions per player? Between 3 and 5."
+step=quiz_questions → Extract number.
+  Call: note_quiz_questions { questions: N }  speech: "Perfect! Shall we start?"
+step=quiz_confirm → Call: start_quiz { topic: "${ctx.topic || 'cultura_general'}", questions: ${ctx.questions || 3} }  speech: "Let the quiz begin!"
+
+━━━ LEARN ━━━
+step=learn_topics → Map to booleans.
+  Call: set_learn_topics { dondeParar: bool, historia: bool, datosCuriosos: bool, naturaleza: bool, eventosEnVivo: bool, ingenieria: bool }`
+      : `Eres el asistente de voz de SANCHO, una app de copiloto para viajes en coche. El usuario conduce — sé muy conciso, máximo 2 frases.
 Pantalla: "${screenLabels[screen] || screen}" | Paso: "${step || "ninguno"}" | Contexto: ${JSON.stringify(ctx)}
 
 Responde SIEMPRE con JSON válido (sin texto fuera del JSON):
@@ -936,7 +1063,10 @@ paso=learn_topics → Mapea a booleans.
     res.json(parsed);
   } catch (e) {
     console.error("ERROR /assistant:", e.message);
-    res.status(200).json({ speech: "Lo siento, ha habido un error. Inténtalo de nuevo.", action: null, params: {} });
+    const errSpeech = (req.body?.lang === "en")
+      ? "Sorry, something went wrong. Please try again."
+      : "Lo siento, ha habido un error. Inténtalo de nuevo.";
+    res.status(200).json({ speech: errSpeech, action: null, params: {} });
   }
 });
 
@@ -974,23 +1104,35 @@ app.post("/narrate/bienvenida-provincia", async (req, res) => {
   try {
     if (!process.env.ANTHROPIC_API_KEY) return res.status(500).json({ error: "Falta ANTHROPIC_API_KEY" });
 
-    const { provincia, comunidad, timestamp } = req.body || {};
+    const { provincia, comunidad, timestamp, language = "es" } = req.body || {};
     if (!provincia) return res.status(400).json({ error: "provincia requerida" });
 
-    const key = `bienvenida|${provincia}`;
+    const isEN = language === "en";
+    const key = `bienvenida|${provincia}${isEN ? "|en" : ""}`;
     const cached = getCache(key, TTL.bienvenida);
     if (cached) return res.json({ text: cached });
 
     const now      = parseFecha(timestamp);
-    const mes      = now.toLocaleString("es-ES", { month: "long", timeZone: TIMEZONE });
     const m        = now.getMonth() + 1;
-    const estacion = m >= 3 && m <= 5 ? "primavera" : m >= 6 && m <= 8 ? "verano" : m >= 9 && m <= 11 ? "otoño" : "invierno";
+
+    let systemPrompt, userPrompt;
+    if (isEN) {
+      const month    = now.toLocaleString("en-US", { month: "long", timeZone: TIMEZONE });
+      const season   = m >= 3 && m <= 5 ? "spring" : m >= 6 && m <= 8 ? "summer" : m >= 9 && m <= 11 ? "autumn" : "winter";
+      systemPrompt   = "You are SANCHO, a road trip co-pilot app. You narrate with warmth, like a friend who knows Spain well. No lists, no emojis, no headings. Natural text designed to sound great out loud while driving.";
+      userPrompt     = `The traveller has just entered the province of ${provincia}${comunidad ? `, in the region of ${comunidad}` : ""}. It is ${month}, ${season}.\n\nWelcome them in 3-5 paragraphs:\n1. Something visual or sensory they notice as they enter.\n2. The identity of ${provincia} — what makes it unique.\n3. Two or three things they will discover, at least one surprising.\n4. A hook at the end that makes them want to pay attention.\n\nWarm, personal tone with character.`;
+    } else {
+      const mes      = now.toLocaleString("es-ES", { month: "long", timeZone: TIMEZONE });
+      const estacion = m >= 3 && m <= 5 ? "primavera" : m >= 6 && m <= 8 ? "verano" : m >= 9 && m <= 11 ? "otoño" : "invierno";
+      systemPrompt   = "Eres el copiloto de carretera SANCHO. Narras con calidez, como un amigo que conoce bien España. Sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta.";
+      userPrompt     = `El viajero acaba de entrar en la provincia de ${provincia}${comunidad ? `, comunidad de ${comunidad}` : ""}. Es ${mes}, ${estacion}.\n\nDale la bienvenida en 3-5 párrafos:\n1. Algo visual o sensorial que el viajero percibe al entrar.\n2. La identidad de ${provincia} — qué la hace única.\n3. Dos o tres cosas que va a encontrar, al menos una sorprendente.\n4. Un cierre con gancho que invite a estar atento.\n\nTono cercano, cálido, con personalidad.`;
+    }
 
     const r = await anthropic.messages.create({
       model: MODEL_SMART,
       max_tokens: 600,
-      system: "Eres el copiloto de carretera SANCHO. Narras con calidez, como un amigo que conoce bien España. Sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta.",
-      messages: [{ role: "user", content: `El viajero acaba de entrar en la provincia de ${provincia}${comunidad ? `, comunidad de ${comunidad}` : ""}. Es ${mes}, ${estacion}.\n\nDale la bienvenida en 3-5 párrafos:\n1. Algo visual o sensorial que el viajero percibe al entrar.\n2. La identidad de ${provincia} — qué la hace única.\n3. Dos o tres cosas que va a encontrar, al menos una sorprendente.\n4. Un cierre con gancho que invite a estar atento.\n\nTono cercano, cálido, con personalidad.` }],
+      system: systemPrompt,
+      messages: [{ role: "user", content: userPrompt }],
     });
 
     const text = r.content?.[0]?.text?.trim() ?? "";

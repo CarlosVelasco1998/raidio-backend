@@ -68,6 +68,64 @@ async function initNarrationCache() {
   console.log(`✅ Narration cache ready — dir: ${NARRATION_CACHE_DIR}, TTL: ${CACHE_TTL_DAYS} días`);
 }
 
+// ─── POOL DE PREGUNTAS DE QUIZ ───────────────────────────────────────────────
+const QUIZ_POOL_DIR = path.join(NARRATION_CACHE_DIR, "quiz-pool");
+
+async function initQuizPool() {
+  await fs.mkdir(QUIZ_POOL_DIR, { recursive: true });
+  console.log(`✅ Quiz pool ready — dir: ${QUIZ_POOL_DIR}`);
+}
+
+function quizPoolFile(topic, difficulty) {
+  const safe = topic.replace(/[^a-z0-9_]/gi, "_").slice(0, 60);
+  return path.join(QUIZ_POOL_DIR, `${safe}_${difficulty}.json`);
+}
+
+async function loadQuizPool(topic, difficulty) {
+  try {
+    return JSON.parse(await fs.readFile(quizPoolFile(topic, difficulty), "utf8"));
+  } catch { return []; }
+}
+
+async function saveQuizPool(topic, difficulty, pool) {
+  await fs.writeFile(quizPoolFile(topic, difficulty), JSON.stringify(pool));
+}
+
+const TOPIC_PROMPTS = {
+  cultura_general:    "cultura general",
+  historia_espana:    "historia de España",
+  cine_series:        "cine y series",
+  ciencia_naturaleza: "ciencia y naturaleza",
+  mezcla:             "mezcla de cultura general, historia, ciencia, música y curiosidades",
+};
+
+const DIFFICULTY_HINTS = {
+  easy:   "FÁCIL: preguntas muy accesibles, hechos conocidos o fáciles de deducir, distractores claros, sin trampas.",
+  medium: "MEDIA: requiere cultura general, debe costar un poco, distractores plausibles.",
+  hard:   "DIFÍCIL: pregunta específica, detalle preciso, distractores muy plausibles, nada evidente ni escolar.",
+};
+
+function buildQuizPrompt(topicText, difficulty, existingQuestions = []) {
+  const diff = DIFFICULTY_HINTS[difficulty] || DIFFICULTY_HINTS.medium;
+  const avoid = existingQuestions.length > 0
+    ? `\nEvita repetir o reformular cualquiera de estas preguntas ya existentes:\n- ${existingQuestions.slice(-40).join("\n- ")}\n`
+    : "";
+  return `Devuelve SOLO un JSON válido, sin markdown ni texto extra, con este esquema EXACTO:
+{"question":"...","options":["...","...","...","..."],"correct_index":0,"explanation":"..."}
+
+Reglas:
+- Español.
+- EXACTAMENTE 4 opciones.
+- Solo 1 correcta. correct_index entre 0 y 3.
+- explanation: 1-2 frases breves.
+- NO pongas siempre la correcta en la misma posición.
+- Distractores plausibles pero incorrectos.
+- Números y romanos en texto para lectura en voz alta.
+- Dificultad: ${diff}
+- Tema: ${topicText}
+${avoid}`;
+}
+
 function narrationHash(str) {
   return createHash("sha256").update(str).digest("hex").slice(0, 16);
 }
@@ -144,6 +202,7 @@ async function cacheStats() {
 }
 
 initNarrationCache().catch(e => console.error("⚠️ Error iniciando caché:", e.message));
+initQuizPool().catch(e => console.error("⚠️ Error iniciando quiz pool:", e.message));
 
 // ─── MIDDLEWARE ───────────────────────────────────────────────────────────────
 app.use(cors());
@@ -505,6 +564,79 @@ function deezerQuery(genre) {
 // ═══════════════════════════════════════════════════════════════════════════════
 // ENDPOINTS
 // ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── QUIZ QUESTION POOL ──────────────────────────────────────────────────────
+app.post("/quiz/question", async (req, res) => {
+  try {
+    const { topic = "cultura_general", difficulty = "easy", usedIds = [], customTopic = "" } = req.body || {};
+
+    // Temas personalizados no se poolizan — demasiado únicos
+    const isCustom = topic === "personalizado";
+    const topicText = isCustom
+      ? (customTopic.trim() || "cultura general")
+      : (TOPIC_PROMPTS[topic] || "cultura general");
+
+    if (!isCustom) {
+      const pool = await loadQuizPool(topic, difficulty);
+      const usedSet = new Set(usedIds);
+      const available = pool.filter(q => !usedSet.has(q.id));
+
+      if (available.length > 0) {
+        const q = available[Math.floor(Math.random() * available.length)];
+        console.log(`🎯 Quiz HIT: ${topic}/${difficulty} (pool:${pool.length} disp:${available.length})`);
+        return res.json({ ...q, fromPool: true });
+      }
+      console.log(`🤖 Quiz MISS: generando para ${topic}/${difficulty} (pool:${pool.length} usadas:${usedIds.length})`);
+    }
+
+    // Generar nueva pregunta con Claude
+    const pool = isCustom ? [] : await loadQuizPool(topic, difficulty);
+    const existingQuestions = pool.map(q => q.question);
+    const prompt = buildQuizPrompt(topicText, difficulty, existingQuestions);
+
+    const r = await anthropic.messages.create({
+      model: MODEL_FAST,
+      max_tokens: 600,
+      messages: [{ role: "user", content: prompt }],
+    });
+
+    const raw = r.content?.[0]?.text ?? "";
+    let jsonStr = raw.trim().replace(/```json|```/g, "").trim();
+    const start = jsonStr.indexOf("{");
+    const end = jsonStr.lastIndexOf("}");
+    if (start === -1 || end === -1) throw new Error(`No JSON in response: ${raw.slice(0, 200)}`);
+    jsonStr = jsonStr.slice(start, end + 1);
+
+    const parsed = JSON.parse(jsonStr);
+    if (!parsed.question || !Array.isArray(parsed.options) || parsed.options.length !== 4) {
+      throw new Error(`Formato inválido: ${raw.slice(0, 200)}`);
+    }
+
+    const id = narrationHash(`${topic}|${difficulty}|${parsed.question}`);
+    const newQ = {
+      id,
+      question: parsed.question,
+      options: parsed.options,
+      correct_index: typeof parsed.correct_index === "number" ? parsed.correct_index : 0,
+      explanation: parsed.explanation ?? "",
+      createdAt: new Date().toISOString(),
+    };
+
+    if (!isCustom) {
+      // Añadir al pool evitando duplicados
+      if (!pool.find(p => p.id === id)) {
+        pool.push(newQ);
+        saveQuizPool(topic, difficulty, pool).catch(e => console.error("Error guardando quiz pool:", e.message));
+        console.log(`💾 Quiz SET: ${topic}/${difficulty} (pool size: ${pool.length})`);
+      }
+    }
+
+    res.json({ ...newQ, fromPool: false });
+  } catch (e) {
+    console.error("❌ /quiz/question error:", e.message);
+    res.status(500).json({ error: "quiz_question_failed", detail: e.message });
+  }
+});
 
 // ─── CACHÉ — STATS Y CONTROL ─────────────────────────────────────────────────
 app.get("/cache/stats", async (_req, res) => {

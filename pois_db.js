@@ -1212,7 +1212,7 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "batallas", "reconquista", "datosCuriosos"],
     tipo: "campo_batalla",
-    radioActivacionMetros: 8000,
+    radioActivacionMetros: 16000,
 
     perfil: "historia",
     prioridad: 160,
@@ -1460,7 +1460,7 @@ export const POIS = [
   {
     id: "es_ja_andujar_santuario_cabeza",
     nombre: "Andújar y Santuario de la Virgen de la Cabeza",
-    emoji: "🕍",
+    emoji: "⛪️",
     lat: 38.039,
     lng: -4.054,
     nivel: 3,
@@ -1580,7 +1580,7 @@ export const POIS = [
     nivel: 1,
     categorias: ["naturaleza", "montaña", "paisaje", "datosCuriosos"],
     tipo: "parque_natural",
-    radioActivacionMetros: 12000,
+    radioActivacionMetros: 24000,
 
     perfil: "naturaleza",
     prioridad: 140,
@@ -5317,7 +5317,7 @@ export const POIS = [
   {
     id: "es_ast_covadonga",
     nombre: "Covadonga",
-    emoji: "🕍",
+    emoji: "⛪️",
     lat: 43.3083,
     lng: -5.0512,
     nivel: 1,
@@ -16000,7 +16000,7 @@ export const POIS = [
   {
     id: "es_gal_santuario_ermidas",
     nombre: "Santuario de As Ermidas",
-    emoji: "🕍",
+    emoji: "⛪️",
     lat: 42.3762,
     lng: -7.0867,
     nivel: 2,
@@ -17632,7 +17632,7 @@ export const POIS = [
   {
     id: "es_pv_gipuzkoa_loyola",
     nombre: "Santuario de Loyola (Azpeitia)",
-    emoji: "🕍",
+    emoji: "⛪️",
     lat: 43.1776,
     lng: -2.2649,
     nivel: 1,

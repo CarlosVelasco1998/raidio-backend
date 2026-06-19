@@ -2,6 +2,9 @@ node_modules
 .env
 *.env
 .DS_Store
+analytics.db
+analytics.db-wal
+analytics.db-shm
 ~$*.xlsx
 Ejecutar Pois_excel a Pois_js.txt
 excel_to_pois_db.mjs

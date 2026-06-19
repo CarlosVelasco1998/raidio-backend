@@ -14,6 +14,7 @@ import path from "path";
 
 import { POIS } from "./pois_db.js";
 import { generateKidsStoryImmersive } from "./kidsStoryImmersive.js";
+import { mountAnalytics } from "./analytics.js";
 
 dotenv.config();
 
@@ -258,6 +259,9 @@ initQuizPool().catch(e => console.error("⚠️ Error iniciando quiz pool:", e.m
 // ─── MIDDLEWARE ───────────────────────────────────────────────────────────────
 app.use(cors());
 app.use(express.json({ limit: "2mb" }));
+
+// ─── ANALYTICS (SQLite + dashboard) ───────────────────────────────────────────
+mountAnalytics(app);
 process.on("SIGTERM", () => process.exit(0));
 process.on("SIGINT",  () => process.exit(0));
 

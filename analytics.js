@@ -24,7 +24,7 @@ const ALLOWED_EVENTS = new Set([
   "app_open", "raidio_app_open",
   "trip_started", "trip_ended",
   "learn_enabled",
-  "poi_narration_started", "poi_narration_completed",
+  "poi_narration_started", "poi_narration_completed", "poi_narration_replayed",
   "sponsor_injected", "sponsor_navigation_opened",
   "game_started", "game_finished",
   "province_welcome",
@@ -269,6 +269,8 @@ function buildSummary(days, opts = {}) {
       `SELECT COUNT(*) c FROM events WHERE event_name='trip_started' ${W}`).c || 0,
     partidas: one(
       `SELECT COUNT(*) c FROM events WHERE event_name='game_started' ${W}`).c || 0,
+    reescuchas: one(
+      `SELECT COUNT(*) c FROM events WHERE event_name='poi_narration_replayed' ${W}`).c || 0,
   };
 
   const timeseries = all(
@@ -485,6 +487,7 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
       <div class="card kpi"><div class="icon">⏱️</div><div class="label">Minutos de audio</div><div class="num" id="k_min">—</div></div>
       <div class="card kpi"><div class="icon">🚗</div><div class="label">Sesiones de viaje</div><div class="num" id="k_ses">—</div></div>
       <div class="card kpi"><div class="icon">🎮</div><div class="label">Partidas jugadas</div><div class="num" id="k_par">—</div></div>
+      <div class="card kpi"><div class="icon">🔁</div><div class="label">Reescuchas</div><div class="num" id="k_rep">—</div></div>
     </section>
 
     <section class="grid">
@@ -587,6 +590,7 @@ function renderGlobal(d){
   $('k_min').textContent=nf.format(d.kpis.minutos_audio);
   $('k_ses').textContent=nf.format(d.kpis.sesiones);
   $('k_par').textContent=nf.format(d.kpis.partidas);
+  $('k_rep').textContent=nf.format(d.kpis.reescuchas||0);
   d.timeseries.length ? lineChart('c_time',d.timeseries.map(x=>x.day),d.timeseries.map(x=>x.c)) : empty('c_time');
   d.idioma.length ? doughnut('c_lang',d.idioma.map(x=>langMap[x.label]||x.label),d.idioma.map(x=>x.c)) : empty('c_lang');
   d.topPois.length ? barChart('c_pois',d.topPois.map(x=>x.label),d.topPois.map(x=>x.c),true) : empty('c_pois');

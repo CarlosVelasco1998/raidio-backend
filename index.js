@@ -55,15 +55,30 @@ const TTL = {
 // Directorio: /data/narration-cache (Render Persistent Disk) o fallback local
 const NARRATION_CACHE_DIR = process.env.NARRATION_CACHE_DIR
   || (process.env.RENDER ? "/data/narration-cache" : "./narration-cache");
-const CACHE_TTL_DAYS = Number(process.env.CACHE_TTL_DAYS ?? 14);
-const CACHE_TTL_MS   = CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
+let CACHE_TTL_DAYS = Number(process.env.CACHE_TTL_DAYS ?? 14);
+let CACHE_TTL_MS   = CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
 
-const CACHE_TXT_DIR = path.join(NARRATION_CACHE_DIR, "txt");
-const CACHE_MP3_DIR = path.join(NARRATION_CACHE_DIR, "mp3");
+const CACHE_TXT_DIR    = path.join(NARRATION_CACHE_DIR, "txt");
+const CACHE_MP3_DIR    = path.join(NARRATION_CACHE_DIR, "mp3");
+const CACHE_CONFIG_FILE = path.join(NARRATION_CACHE_DIR, "admin-config.json");
+
+async function readCacheConfig() {
+  try { return JSON.parse(await fs.readFile(CACHE_CONFIG_FILE, "utf8")); }
+  catch { return {}; }
+}
+async function writeCacheConfig(cfg) {
+  await fs.writeFile(CACHE_CONFIG_FILE, JSON.stringify(cfg, null, 2), "utf8");
+}
 
 async function initNarrationCache() {
   await fs.mkdir(CACHE_TXT_DIR, { recursive: true });
   await fs.mkdir(CACHE_MP3_DIR, { recursive: true });
+  // Leer TTL override desde disco persistente
+  const cfg = await readCacheConfig();
+  if (cfg.ttl_days && Number.isInteger(cfg.ttl_days) && cfg.ttl_days > 0) {
+    CACHE_TTL_DAYS = cfg.ttl_days;
+    CACHE_TTL_MS   = CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
+  }
   await cleanExpiredCache();
   console.log(`✅ Narration cache ready — dir: ${NARRATION_CACHE_DIR}, TTL: ${CACHE_TTL_DAYS} días`);
 }
@@ -698,6 +713,19 @@ app.post("/quiz/question", async (req, res) => {
 app.get("/cache/stats", async (_req, res) => {
   try { res.json(await cacheStats()); }
   catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post("/cache/config", async (req, res) => {
+  const secret = process.env.CACHE_ADMIN_SECRET;
+  if (!secret || req.query.secret !== secret)
+    return res.status(401).json({ error: "secret inválido o no configurado" });
+  const ttl_days = Number(req.body?.ttl_days);
+  if (!Number.isInteger(ttl_days) || ttl_days < 1)
+    return res.status(400).json({ error: "ttl_days debe ser un entero positivo" });
+  CACHE_TTL_DAYS = ttl_days;
+  CACHE_TTL_MS   = ttl_days * 24 * 60 * 60 * 1000;
+  await writeCacheConfig({ ttl_days });
+  res.json({ ttl_days, message: `TTL actualizado a ${ttl_days} días` });
 });
 
 app.delete("/cache/clear", async (req, res) => {

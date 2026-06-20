@@ -15,12 +15,30 @@ const DB_PATH = process.env.ANALYTICS_DB_PATH
 
 const DASHBOARD_KEY = process.env.DASHBOARD_KEY || "sancho-dev";
 
-// Presupuestos mensuales (cuota) para el panel de consumo de IA.
+// Panel de consumo de IA.
+//   CLAUDE_CREDIT_USD          -> saldo prepago de la API de Claude (USD) que quedaba
+//                                 en el momento del deploy. El "restante" = crédito - gasto acumulado.
+//   ELEVEN_MONTHLY_CHAR_BUDGET -> caracteres de ElevenLabs/mes (fallback si falla su API).
 // Si no se configuran, el dashboard muestra solo lo consumido (sin "restante").
-//   CLAUDE_MONTHLY_TOKEN_BUDGET  -> tokens (in+out) de Claude permitidos al mes
-//   ELEVEN_MONTHLY_CHAR_BUDGET   -> caracteres de ElevenLabs permitidos al mes
-const CLAUDE_TOKEN_BUDGET = Number(process.env.CLAUDE_MONTHLY_TOKEN_BUDGET) || null;
-const ELEVEN_CHAR_BUDGET  = Number(process.env.ELEVEN_MONTHLY_CHAR_BUDGET)  || null;
+const CLAUDE_CREDIT_USD  = Number(process.env.CLAUDE_CREDIT_USD)          || null;
+const ELEVEN_CHAR_BUDGET = Number(process.env.ELEVEN_MONTHLY_CHAR_BUDGET) || null;
+
+// Precios de Claude en USD por millón de tokens (entrada/salida). Si cambian las
+// tarifas de Anthropic, actualiza esta tabla. Fuente: precios oficiales Anthropic.
+const CLAUDE_PRICES = {
+  haiku:  { in: 1.00, out: 5.00 },   // claude-haiku-4-5
+  sonnet: { in: 3.00, out: 15.00 },  // claude-sonnet-4-6
+  opus:   { in: 5.00, out: 25.00 },  // claude-opus-4-x
+};
+function claudeCost(model, tokensIn, tokensOut) {
+  const m = String(model || "").toLowerCase();
+  const p = m.includes("haiku")  ? CLAUDE_PRICES.haiku
+          : m.includes("sonnet") ? CLAUDE_PRICES.sonnet
+          : m.includes("opus")   ? CLAUDE_PRICES.opus
+          : CLAUDE_PRICES.haiku;   // por defecto, el más barato
+  return ((tokensIn || 0) / 1e6) * p.in + ((tokensOut || 0) / 1e6) * p.out;
+}
+const round4 = (n) => Math.round(n * 10000) / 10000;
 
 // Tope de eventos por petición (anti-spam) y de longitud de campos de texto.
 const MAX_BATCH = 500;
@@ -304,45 +322,49 @@ function buildSponsorDetail(sponsor, W, p) {
   };
 }
 
-// Consumo de IA del MES EN CURSO (zona Europe/Madrid), independiente del rango.
-// Claude por modelo (tokens in/out) + ElevenLabs (caracteres), con cuota/restante.
+// Consumo de IA para el panel.
+// Claude: gasto en USD (saldo prepago que se agota) — acumulado + mes en curso,
+//   con desglose de coste por modelo. ElevenLabs: caracteres del mes (plan mensual).
 function buildUsage() {
   const month = dayMadrid(Date.now()).slice(0, 7); // 'YYYY-MM'
-  const p = { month };
-  const one = (sql) => db.prepare(sql).get(p) || {};
-  const all = (sql) => db.prepare(sql).all(p) || [];
-  const M = "substr(day,1,7)=@month";
 
-  const claudeTot = one(
-    `SELECT COALESCE(SUM(tokens_in),0) ti, COALESCE(SUM(tokens_out),0) to_, COUNT(*) c
-     FROM events WHERE event_name='ai_tokens' AND ${M}`);
-  const claudePorModelo = all(
-    `SELECT COALESCE(model,'¿?') label,
-            COALESCE(SUM(tokens_in),0) tin, COALESCE(SUM(tokens_out),0) tout,
-            COALESCE(SUM(tokens_in+tokens_out),0) total, COUNT(*) c
-     FROM events WHERE event_name='ai_tokens' AND ${M}
-     GROUP BY model ORDER BY total DESC`);
-  const elevenTot = one(
+  // Tokens de Claude por modelo: acumulado (toda la vida) y del mes en curso.
+  // El coste depende del modelo, así que se calcula en JS sobre estas sumas.
+  const rowsAll = db.prepare(
+    `SELECT COALESCE(model,'¿?') model, COALESCE(SUM(tokens_in),0) ti,
+            COALESCE(SUM(tokens_out),0) to_, COUNT(*) c
+     FROM events WHERE event_name='ai_tokens' GROUP BY model`).all();
+  const rowsMonth = db.prepare(
+    `SELECT COALESCE(model,'¿?') model, COALESCE(SUM(tokens_in),0) ti, COALESCE(SUM(tokens_out),0) to_
+     FROM events WHERE event_name='ai_tokens' AND substr(day,1,7)=? GROUP BY model`).all(month);
+
+  const porModelo = rowsAll.map((r) => ({
+    model: r.model,
+    tokensIn: r.ti, tokensOut: r.to_, llamadas: r.c,
+    coste: round4(claudeCost(r.model, r.ti, r.to_)),
+  })).sort((a, b) => b.coste - a.coste);
+
+  const costeTotal = round4(rowsAll.reduce((s, r) => s + claudeCost(r.model, r.ti, r.to_), 0));
+  const costeMes   = round4(rowsMonth.reduce((s, r) => s + claudeCost(r.model, r.ti, r.to_), 0));
+  const llamadas   = rowsAll.reduce((s, r) => s + r.c, 0);
+
+  // ElevenLabs: caracteres del mes en curso (se enriquece con la suscripción real en la ruta).
+  const ev = db.prepare(
     `SELECT COALESCE(SUM(chars),0) chars, COUNT(*) c
-     FROM events WHERE event_name='tts_chars' AND ${M}`);
-
-  const claudeTotal = (claudeTot.ti || 0) + (claudeTot.to_ || 0);
-  const elevenChars = elevenTot.chars || 0;
+     FROM events WHERE event_name='tts_chars' AND substr(day,1,7)=?`).get(month) || {};
+  const elevenChars = ev.chars || 0;
 
   return {
     month,
     claude: {
-      tokensIn: claudeTot.ti || 0,
-      tokensOut: claudeTot.to_ || 0,
-      tokensTotal: claudeTotal,
-      llamadas: claudeTot.c || 0,
-      budget: CLAUDE_TOKEN_BUDGET,
-      restante: CLAUDE_TOKEN_BUDGET ? Math.max(0, CLAUDE_TOKEN_BUDGET - claudeTotal) : null,
-      porModelo: claudePorModelo,
+      costeTotal, costeMes, llamadas,
+      credito: CLAUDE_CREDIT_USD,
+      restante: CLAUDE_CREDIT_USD != null ? Math.max(0, round4(CLAUDE_CREDIT_USD - costeTotal)) : null,
+      porModelo,
     },
     eleven: {
       chars: elevenChars,
-      llamadas: elevenTot.c || 0,
+      llamadas: ev.c || 0,
       budget: ELEVEN_CHAR_BUDGET,
       restante: ELEVEN_CHAR_BUDGET ? Math.max(0, ELEVEN_CHAR_BUDGET - elevenChars) : null,
       // 'real' se rellena en la ruta /analytics/summary con la suscripción de ElevenLabs.
@@ -668,10 +690,10 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
       <div class="sec-title"><h2>Consumo de IA</h2><span class="mon" id="u_month"></span></div>
 
       <div class="card panel span6">
-        <h2>Claude · tokens</h2><div class="hint" id="u_claude_hint">Consumo del mes</div>
+        <h2>Claude · gasto (USD)</h2><div class="hint" id="u_claude_hint">Crédito prepago · gasto acumulado</div>
         <div class="usage-head">
-          <div><div class="big" id="u_claude_used">—</div><div class="lbl">Consumidos</div></div>
-          <div><div class="big" id="u_claude_left">—</div><div class="lbl">Restantes</div></div>
+          <div><div class="big" id="u_claude_used">—</div><div class="lbl">Gastado</div></div>
+          <div><div class="big" id="u_claude_left">—</div><div class="lbl">Restante</div></div>
         </div>
         <div class="bar"><span id="u_claude_bar"></span></div>
         <div class="usage-sub" id="u_claude_sub"></div>
@@ -796,18 +818,18 @@ function renderUsage(u){
   if(!u) return;
   $('u_month').textContent='· '+u.month;
 
-  // ── Claude (tokens) ──
+  // ── Claude (gasto USD, saldo prepago acumulado) ──
   const c=u.claude;
-  $('u_claude_used').textContent=nf.format(c.tokensTotal);
-  $('u_claude_left').textContent = c.restante!=null ? nf.format(c.restante) : '—';
-  setBar('u_claude_bar', c.tokensTotal, c.budget||0);
+  const usd = v => (v==null ? '—' : '$'+Number(v).toFixed(2));
+  $('u_claude_used').textContent = usd(c.costeTotal);
+  $('u_claude_left').textContent = c.credito!=null ? usd(c.restante) : '—';
+  setBar('u_claude_bar', c.costeTotal, c.credito||0);
   $('u_claude_sub').innerHTML =
-    'Entrada <b>'+nf.format(c.tokensIn)+'</b> · Salida <b>'+nf.format(c.tokensOut)+'</b> · '
-    + nf.format(c.llamadas)+' llamadas'
-    + (c.budget ? ' · Cuota '+nf.format(c.budget) : ' · <i>sin cuota configurada</i>');
+    'Este mes <b>'+usd(c.costeMes)+'</b> · '+nf.format(c.llamadas)+' llamadas'
+    + (c.credito!=null ? ' · Crédito '+usd(c.credito) : ' · <i>configura CLAUDE_CREDIT_USD</i>');
   c.porModelo.length
-    ? barChart('c_usemodel', c.porModelo.map(x=>prettyModel(x.label)), c.porModelo.map(x=>x.total), true)
-    : empty('c_usemodel','Sin consumo este mes');
+    ? barChart('c_usemodel', c.porModelo.map(x=>prettyModel(x.model)), c.porModelo.map(x=>x.coste), true)
+    : empty('c_usemodel','Sin consumo todavía');
 
   // ── ElevenLabs (caracteres) — prioriza la suscripción real si está disponible ──
   const e=u.eleven, real=e.real;

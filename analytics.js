@@ -458,16 +458,27 @@ function buildSummary(days, opts = {}) {
 // Suscripción real de ElevenLabs (consumo/limite del ciclo de facturación).
 // Cacheada 60s. Devuelve null si no hay API key o falla la llamada.
 let _elevenCache = { at: 0, data: null };
+let _elevenLastError = null; // último motivo de fallo (para /analytics/eleven-debug)
+
+// Llama a ElevenLabs y devuelve {status, ok, body}. No cachea ni transforma.
+async function rawElevenSubscription() {
+  const key = process.env.ELEVEN_API_KEY;
+  if (!key) return { status: 0, ok: false, body: "ELEVEN_API_KEY no está en el entorno" };
+  const r = await fetch("https://api.elevenlabs.io/v1/user/subscription", {
+    headers: { "xi-api-key": key },
+  });
+  let body;
+  try { body = await r.json(); } catch { body = await r.text().catch(() => null); }
+  return { status: r.status, ok: r.ok, body };
+}
+
 async function fetchElevenSubscription() {
   const key = process.env.ELEVEN_API_KEY;
-  if (!key) return null;
+  if (!key) { _elevenLastError = "ELEVEN_API_KEY no está en el entorno"; return null; }
   if (Date.now() - _elevenCache.at < 60000) return _elevenCache.data;
   try {
-    const r = await fetch("https://api.elevenlabs.io/v1/user/subscription", {
-      headers: { "xi-api-key": key },
-    });
-    if (!r.ok) throw new Error("HTTP " + r.status);
-    const s = await r.json();
+    const { status, ok, body: s } = await rawElevenSubscription();
+    if (!ok) throw new Error("HTTP " + status + (typeof s?.detail === "string" ? ` — ${s.detail}` : ""));
     const data = {
       used: s.character_count ?? null,
       limit: s.character_limit ?? null,
@@ -477,9 +488,11 @@ async function fetchElevenSubscription() {
         ? s.next_character_count_reset_unix * 1000 : null,
       tier: s.tier ?? null,
     };
+    _elevenLastError = null;
     _elevenCache = { at: Date.now(), data };
     return data;
   } catch (e) {
+    _elevenLastError = e.message;
     console.error("ERROR fetchElevenSubscription:", e.message);
     _elevenCache = { at: Date.now(), data: null };
     return null;
@@ -531,6 +544,31 @@ export function mountAnalytics(app) {
     } catch (e) {
       console.error("ERROR /analytics/summary:", e.message);
       res.status(500).json({ error: "summary_failed" });
+    }
+  });
+
+  // Diagnóstico de ElevenLabs — protegido por key. Muestra qué responde su API.
+  app.get("/analytics/eleven-debug", async (req, res) => {
+    if (req.query.key !== DASHBOARD_KEY) return res.status(401).json({ error: "no autorizado" });
+    const keyPresent = Boolean(process.env.ELEVEN_API_KEY);
+    try {
+      const raw = await rawElevenSubscription();
+      res.json({
+        keyPresent,
+        keyTail: keyPresent ? "…" + process.env.ELEVEN_API_KEY.slice(-4) : null,
+        status: raw.status,
+        ok: raw.ok,
+        // si es objeto, devolvemos solo campos relevantes; si es texto de error, lo mostramos entero
+        body: (raw.body && typeof raw.body === "object")
+          ? { tier: raw.body.tier, character_count: raw.body.character_count,
+              character_limit: raw.body.character_limit,
+              next_character_count_reset_unix: raw.body.next_character_count_reset_unix,
+              detail: raw.body.detail }
+          : raw.body,
+        lastError: _elevenLastError,
+      });
+    } catch (e) {
+      res.json({ keyPresent, error: e.message, lastError: _elevenLastError });
     }
   });
 

@@ -31,6 +31,7 @@ export const POIS = [
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-de-somosierra.png",
+    musica: "reconquista",
   },
 
   // ✅ CAPITAL
@@ -1285,6 +1286,7 @@ export const POIS = [
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-navas-de-tolosa.png",
+    musica: "reconquista",
   },
 
   {
@@ -1307,6 +1309,7 @@ export const POIS = [
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bailen.png",
+    musica: "reconquista",
   },
 
   {
@@ -1769,6 +1772,7 @@ export const POIS = [
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-del-suspiro-del-moro.png",
+    musica: "rendicion",
   },
 
   {
@@ -20768,6 +20772,7 @@ export const POIS = [
     intereses: ["numancia", "asedio", "escipion", "celtiberos", "resistencia_numantina", "soria", "roma", "garray"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    musica: "asedio",
   },
 
   {

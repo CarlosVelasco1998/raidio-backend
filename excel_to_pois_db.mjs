@@ -606,6 +606,8 @@ for (const row of rows) {
   const eventosCell = getVal(row, ["eventos", "Eventos"], 15);
   const subPoisCell = getVal(row, ["sub_pois", "subPois", "SubPois", "sub_poi"], 16);
   const imagenUrl = toStr(getVal(row, ["imageUrl", "imagenUrl", "imagen_url", "ImagenUrl", "imagen"], null));
+  // Música de fondo: clave manual (nombre de fichero sin extensión en assets/audio/music/)
+  const musica = stripWrappingQuotes(toStr(getVal(row, ["musica", "Musica", "música", "Música", "pista", "track", "cancion", "canción"], null)));
 
   const sponsor = parseSponsorOrNull(sponsorCell, row);
   const eventos = parseEventosOrNull(eventosCell);
@@ -641,6 +643,7 @@ for (const row of rows) {
     eventos,
     subPois,
     imagenUrl: imagenUrl || null,
+    musica: musica || null,
   });
 }
 
@@ -720,6 +723,10 @@ function poiToBlock(p) {
 
   if (p.imagenUrl) {
     lines.push(`    imagenUrl: ${jsString(p.imagenUrl)},`);
+  }
+
+  if (p.musica) {
+    lines.push(`    musica: ${jsString(p.musica)},`);
   }
 
   lines.push("  },");

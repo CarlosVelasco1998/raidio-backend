@@ -15,6 +15,13 @@ const DB_PATH = process.env.ANALYTICS_DB_PATH
 
 const DASHBOARD_KEY = process.env.DASHBOARD_KEY || "sancho-dev";
 
+// Presupuestos mensuales (cuota) para el panel de consumo de IA.
+// Si no se configuran, el dashboard muestra solo lo consumido (sin "restante").
+//   CLAUDE_MONTHLY_TOKEN_BUDGET  -> tokens (in+out) de Claude permitidos al mes
+//   ELEVEN_MONTHLY_CHAR_BUDGET   -> caracteres de ElevenLabs permitidos al mes
+const CLAUDE_TOKEN_BUDGET = Number(process.env.CLAUDE_MONTHLY_TOKEN_BUDGET) || null;
+const ELEVEN_CHAR_BUDGET  = Number(process.env.ELEVEN_MONTHLY_CHAR_BUDGET)  || null;
+
 // Tope de eventos por petición (anti-spam) y de longitud de campos de texto.
 const MAX_BATCH = 500;
 const MAX_TEXT  = 300;
@@ -67,6 +74,10 @@ function initDb() {
       duration_seconds INTEGER,
       audio_seconds    INTEGER,
       value            REAL,
+      tokens_in        INTEGER,
+      tokens_out       INTEGER,
+      chars            INTEGER,
+      model            TEXT,
       params           TEXT
     );
     CREATE INDEX IF NOT EXISTS idx_events_name      ON events(event_name);
@@ -77,19 +88,27 @@ function initDb() {
     CREATE INDEX IF NOT EXISTS idx_events_ts        ON events(ts);
   `);
 
+  // Migración aditiva: añade las columnas de consumo si la tabla ya existía sin ellas.
+  // (ALTER TABLE ADD COLUMN falla si la columna ya existe → se ignora el error.)
+  for (const col of ["tokens_in INTEGER", "tokens_out INTEGER", "chars INTEGER", "model TEXT"]) {
+    try { db.exec(`ALTER TABLE events ADD COLUMN ${col}`); } catch { /* ya existe */ }
+  }
+
   insertStmt = db.prepare(`
     INSERT INTO events (
       event_name, ts, client_ts, day,
       user_id, trip_id, platform, lang,
       poi_id, poi_nombre, poi_perfil, provincia,
       game, sponsor_name,
-      duration_seconds, audio_seconds, value, params
+      duration_seconds, audio_seconds, value,
+      tokens_in, tokens_out, chars, model, params
     ) VALUES (
       @event_name, @ts, @client_ts, @day,
       @user_id, @trip_id, @platform, @lang,
       @poi_id, @poi_nombre, @poi_perfil, @provincia,
       @game, @sponsor_name,
-      @duration_seconds, @audio_seconds, @value, @params
+      @duration_seconds, @audio_seconds, @value,
+      @tokens_in, @tokens_out, @chars, @model, @params
     )
   `);
 
@@ -132,6 +151,8 @@ function toRow(ev) {
     client_ts: clientTs,
     day: dayMadrid(effTs),
     user_id: str(userId),
+    // Columnas de consumo de IA: solo se rellenan en eventos server-side (recordUsage).
+    tokens_in: null, tokens_out: null, chars: null, model: null,
     params: null,
   };
   for (const c of HOT_COLS) {
@@ -147,6 +168,45 @@ function toRow(ev) {
   try { row.params = JSON.stringify(rest).slice(0, 4000); } catch { row.params = null; }
 
   return row;
+}
+
+// ─── REGISTRO DE CONSUMO DE IA (server-side) ─────────────────────────────────
+// Se llama desde el backend tras cada llamada real a una API de pago.
+// NO pasa por la whitelist pública: nadie puede falsear consumo desde la app.
+//   recordUsage({ provider:'claude', model, tokensIn, tokensOut, context, lang })
+//   recordUsage({ provider:'eleven', model, chars, context, lang })
+export function recordUsage(u) {
+  if (!db || !insertStmt || !u) return;
+  try {
+    const provider = u.provider === "eleven" ? "eleven" : "claude";
+    const ts = Date.now();
+    insertStmt.run({
+      event_name: provider === "eleven" ? "tts_chars" : "ai_tokens",
+      ts,
+      client_ts: null,
+      day: dayMadrid(ts),
+      user_id: null,
+      trip_id: null,
+      platform: "server",
+      lang: str(u.lang),
+      poi_id: null,
+      poi_nombre: null,
+      poi_perfil: null,
+      provincia: null,
+      game: str(u.context),       // reutilizamos 'game' como etiqueta de origen (narracion, quiz, cuento…)
+      sponsor_name: null,
+      duration_seconds: null,
+      audio_seconds: null,
+      value: null,
+      tokens_in: provider === "claude" ? (num(u.tokensIn) ?? 0) : null,
+      tokens_out: provider === "claude" ? (num(u.tokensOut) ?? 0) : null,
+      chars: provider === "eleven" ? (num(u.chars) ?? 0) : null,
+      model: str(u.model),
+      params: null,
+    });
+  } catch (e) {
+    console.error("ERROR recordUsage:", e.message);
+  }
 }
 
 // ─── AGREGACIONES (summary) ──────────────────────────────────────────────────
@@ -244,6 +304,53 @@ function buildSponsorDetail(sponsor, W, p) {
   };
 }
 
+// Consumo de IA del MES EN CURSO (zona Europe/Madrid), independiente del rango.
+// Claude por modelo (tokens in/out) + ElevenLabs (caracteres), con cuota/restante.
+function buildUsage() {
+  const month = dayMadrid(Date.now()).slice(0, 7); // 'YYYY-MM'
+  const p = { month };
+  const one = (sql) => db.prepare(sql).get(p) || {};
+  const all = (sql) => db.prepare(sql).all(p) || [];
+  const M = "substr(day,1,7)=@month";
+
+  const claudeTot = one(
+    `SELECT COALESCE(SUM(tokens_in),0) ti, COALESCE(SUM(tokens_out),0) to_, COUNT(*) c
+     FROM events WHERE event_name='ai_tokens' AND ${M}`);
+  const claudePorModelo = all(
+    `SELECT COALESCE(model,'¿?') label,
+            COALESCE(SUM(tokens_in),0) tin, COALESCE(SUM(tokens_out),0) tout,
+            COALESCE(SUM(tokens_in+tokens_out),0) total, COUNT(*) c
+     FROM events WHERE event_name='ai_tokens' AND ${M}
+     GROUP BY model ORDER BY total DESC`);
+  const elevenTot = one(
+    `SELECT COALESCE(SUM(chars),0) chars, COUNT(*) c
+     FROM events WHERE event_name='tts_chars' AND ${M}`);
+
+  const claudeTotal = (claudeTot.ti || 0) + (claudeTot.to_ || 0);
+  const elevenChars = elevenTot.chars || 0;
+
+  return {
+    month,
+    claude: {
+      tokensIn: claudeTot.ti || 0,
+      tokensOut: claudeTot.to_ || 0,
+      tokensTotal: claudeTotal,
+      llamadas: claudeTot.c || 0,
+      budget: CLAUDE_TOKEN_BUDGET,
+      restante: CLAUDE_TOKEN_BUDGET ? Math.max(0, CLAUDE_TOKEN_BUDGET - claudeTotal) : null,
+      porModelo: claudePorModelo,
+    },
+    eleven: {
+      chars: elevenChars,
+      llamadas: elevenTot.c || 0,
+      budget: ELEVEN_CHAR_BUDGET,
+      restante: ELEVEN_CHAR_BUDGET ? Math.max(0, ELEVEN_CHAR_BUDGET - elevenChars) : null,
+      // 'real' se rellena en la ruta /analytics/summary con la suscripción de ElevenLabs.
+      real: null,
+    },
+  };
+}
+
 function buildSummary(days, opts = {}) {
   // Filtro temporal por ts (epoch ms). days<=0 => todo el histórico.
   const hasRange = Number.isFinite(days) && days > 0;
@@ -322,7 +429,39 @@ function buildSummary(days, opts = {}) {
     totalEventos,
     kpis, timeseries, topPois, porProvincia,
     juegos, sponsors, idioma, bienvenidas,
+    uso: buildUsage(),
   };
+}
+
+// Suscripción real de ElevenLabs (consumo/limite del ciclo de facturación).
+// Cacheada 60s. Devuelve null si no hay API key o falla la llamada.
+let _elevenCache = { at: 0, data: null };
+async function fetchElevenSubscription() {
+  const key = process.env.ELEVEN_API_KEY;
+  if (!key) return null;
+  if (Date.now() - _elevenCache.at < 60000) return _elevenCache.data;
+  try {
+    const r = await fetch("https://api.elevenlabs.io/v1/user/subscription", {
+      headers: { "xi-api-key": key },
+    });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const s = await r.json();
+    const data = {
+      used: s.character_count ?? null,
+      limit: s.character_limit ?? null,
+      restante: (s.character_limit != null && s.character_count != null)
+        ? Math.max(0, s.character_limit - s.character_count) : null,
+      nextReset: s.next_character_count_reset_unix
+        ? s.next_character_count_reset_unix * 1000 : null,
+      tier: s.tier ?? null,
+    };
+    _elevenCache = { at: Date.now(), data };
+    return data;
+  } catch (e) {
+    console.error("ERROR fetchElevenSubscription:", e.message);
+    _elevenCache = { at: Date.now(), data: null };
+    return null;
+  }
 }
 
 // ─── RUTAS ───────────────────────────────────────────────────────────────────
@@ -355,13 +494,18 @@ export function mountAnalytics(app) {
   });
 
   // Resumen JSON — protegido por key.
-  app.get("/analytics/summary", (req, res) => {
+  app.get("/analytics/summary", async (req, res) => {
     if (req.query.key !== DASHBOARD_KEY) return res.status(401).json({ error: "no autorizado" });
     try {
       const days = req.query.days === "all" ? 0 : parseInt(req.query.days || "30", 10);
       const poi = (req.query.poi || "").toString().trim() || null;
       const sponsor = (req.query.sponsor || "").toString().trim() || null;
-      res.json(buildSummary(days, { poi, sponsor }));
+      const summary = buildSummary(days, { poi, sponsor });
+      // Enriquecer consumo de ElevenLabs con su suscripción real (solo vista global).
+      if (summary.mode === "global" && summary.uso) {
+        summary.uso.eleven.real = await fetchElevenSubscription();
+      }
+      res.json(summary);
     } catch (e) {
       console.error("ERROR /analytics/summary:", e.message);
       res.status(500).json({ error: "summary_failed" });
@@ -455,6 +599,18 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
   .detail-head{display:flex; align-items:baseline; gap:14px; margin-bottom:18px}
   .detail-head .tag{font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--dorado)}
   .detail-head h2{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(22px,3vw,32px)}
+  .sec-title{grid-column:span 12; display:flex; align-items:baseline; gap:12px; margin-top:14px}
+  .sec-title h2{font-family:'Fraunces',serif; font-weight:500; font-size:21px}
+  .sec-title .mon{color:var(--crema-dim); font-size:13px; letter-spacing:1px}
+  .usage-head{display:flex; gap:34px; margin:8px 0 14px}
+  .usage-head .big{font-family:'Fraunces',serif; font-size:clamp(30px,4vw,40px); color:var(--dorado); line-height:1.05}
+  .usage-head .lbl{font-size:11px; color:var(--crema-dim); text-transform:uppercase; letter-spacing:.6px; margin-top:2px}
+  .bar{height:10px; border-radius:6px; background:rgba(245,236,208,.10); overflow:hidden}
+  .bar span{display:block; height:100%; width:0; border-radius:6px; background:linear-gradient(90deg,var(--dorado),#E8C57A); transition:width .45s ease}
+  .bar span.warn{background:linear-gradient(90deg,#C98A3A,#B07A8A)}
+  .bar span.over{background:linear-gradient(90deg,#A83246,#8A4060)}
+  .usage-sub{color:var(--crema-dim); font-size:12px; margin-top:10px; line-height:1.6}
+  .usage-sub b{color:var(--crema); font-weight:600}
   .hidden{display:none}
   footer{margin-top:34px; text-align:center; color:var(--crema-dim); font-size:12px}
 </style>
@@ -506,6 +662,32 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
       </div>
       <div class="card panel span4"><h2>Bienvenidas</h2><div class="hint">Provincias más visitadas</div><div class="chart-wrap"><canvas id="c_bien"></canvas></div></div>
     </section>
+
+    <!-- ░░ CONSUMO DE IA (mes en curso) ░░ -->
+    <section class="grid">
+      <div class="sec-title"><h2>Consumo de IA</h2><span class="mon" id="u_month"></span></div>
+
+      <div class="card panel span6">
+        <h2>Claude · tokens</h2><div class="hint" id="u_claude_hint">Consumo del mes</div>
+        <div class="usage-head">
+          <div><div class="big" id="u_claude_used">—</div><div class="lbl">Consumidos</div></div>
+          <div><div class="big" id="u_claude_left">—</div><div class="lbl">Restantes</div></div>
+        </div>
+        <div class="bar"><span id="u_claude_bar"></span></div>
+        <div class="usage-sub" id="u_claude_sub"></div>
+        <div class="chart-wrap" style="min-height:150px;margin-top:14px"><canvas id="c_usemodel"></canvas></div>
+      </div>
+
+      <div class="card panel span6">
+        <h2>ElevenLabs · caracteres</h2><div class="hint" id="u_eleven_hint">Consumo del mes</div>
+        <div class="usage-head">
+          <div><div class="big" id="u_eleven_used">—</div><div class="lbl">Consumidos</div></div>
+          <div><div class="big" id="u_eleven_left">—</div><div class="lbl">Restantes</div></div>
+        </div>
+        <div class="bar"><span id="u_eleven_bar"></span></div>
+        <div class="usage-sub" id="u_eleven_sub"></div>
+      </div>
+    </section>
   </section>
 
   <!-- ░░ VISTA DETALLE (POI o Sponsor) ░░ -->
@@ -539,6 +721,12 @@ const nf=new Intl.NumberFormat('es-ES');
 const langMap={es:'Español',en:'English'};
 const gameMap={quiz:'Quiz en Ruta',adivina:'Adivina la Canción',cuentos:'Cuentos'};
 const $=id=>document.getElementById(id);
+function prettyModel(m){ if(!m) return '¿?'; const s=String(m).toLowerCase();
+  if(s.includes('haiku')) return 'Haiku'; if(s.includes('sonnet')) return 'Sonnet';
+  if(s.includes('opus')) return 'Opus'; return m; }
+function pct(used,total){ return total>0 ? Math.min(100, Math.round(used/total*100)) : 0; }
+function setBar(id,used,total){ const el=$(id); const p=pct(used,total);
+  el.style.width=(total>0?p:0)+'%'; el.className=''; if(p>=100) el.classList.add('over'); else if(p>=80) el.classList.add('warn'); }
 
 function destroy(id){ if(charts[id]){charts[id].destroy(); delete charts[id];} }
 function lineChart(id,labels,data){
@@ -601,6 +789,45 @@ function renderGlobal(d){
   $('s_ctr').textContent=imp? Math.round(nav/imp*100)+'%':'—';
   d.sponsors.top.length ? barChart('c_spons',d.sponsors.top.map(x=>x.label),d.sponsors.top.map(x=>x.c),true) : empty('c_spons');
   d.bienvenidas.length ? barChart('c_bien',d.bienvenidas.map(x=>x.label),d.bienvenidas.map(x=>x.c),true) : empty('c_bien');
+  renderUsage(d.uso);
+}
+
+function renderUsage(u){
+  if(!u) return;
+  $('u_month').textContent='· '+u.month;
+
+  // ── Claude (tokens) ──
+  const c=u.claude;
+  $('u_claude_used').textContent=nf.format(c.tokensTotal);
+  $('u_claude_left').textContent = c.restante!=null ? nf.format(c.restante) : '—';
+  setBar('u_claude_bar', c.tokensTotal, c.budget||0);
+  $('u_claude_sub').innerHTML =
+    'Entrada <b>'+nf.format(c.tokensIn)+'</b> · Salida <b>'+nf.format(c.tokensOut)+'</b> · '
+    + nf.format(c.llamadas)+' llamadas'
+    + (c.budget ? ' · Cuota '+nf.format(c.budget) : ' · <i>sin cuota configurada</i>');
+  c.porModelo.length
+    ? barChart('c_usemodel', c.porModelo.map(x=>prettyModel(x.label)), c.porModelo.map(x=>x.total), true)
+    : empty('c_usemodel','Sin consumo este mes');
+
+  // ── ElevenLabs (caracteres) — prioriza la suscripción real si está disponible ──
+  const e=u.eleven, real=e.real;
+  const used  = real ? real.used  : e.chars;
+  const limit = real ? real.limit : e.budget;
+  const left  = real ? real.restante : e.restante;
+  $('u_eleven_used').textContent = used!=null ? nf.format(used) : '—';
+  $('u_eleven_left').textContent = left!=null ? nf.format(left) : '—';
+  setBar('u_eleven_bar', used||0, limit||0);
+  if(real){
+    $('u_eleven_hint').textContent='Datos reales de ElevenLabs · ciclo de facturación';
+    let s='Plan <b>'+(real.tier||'?')+'</b> · Límite '+nf.format(real.limit)
+        + ' · '+nf.format(e.llamadas)+' llamadas propias registradas';
+    if(real.nextReset) s+=' · Reinicia '+new Date(real.nextReset).toLocaleDateString('es-ES');
+    $('u_eleven_sub').innerHTML=s;
+  } else {
+    $('u_eleven_hint').textContent='Consumo del mes (registrado por el backend)';
+    $('u_eleven_sub').innerHTML = nf.format(e.llamadas)+' llamadas'
+      + (e.budget ? ' · Cuota '+nf.format(e.budget) : ' · <i>sin cuota configurada</i>');
+  }
 }
 
 function renderDetailCommon(tag, title, idioma, ts, tsHint){

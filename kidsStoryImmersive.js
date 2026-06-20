@@ -6,6 +6,7 @@ import path from "path";
 import os from "os";
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegPath from "ffmpeg-static";
+import { recordUsage } from "./analytics.js";
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
@@ -178,6 +179,7 @@ async function callTTS(apiKey, voiceKey, text) {
       timeout: 35000,
     }
   );
+  recordUsage({ provider: "eleven", model: "eleven_multilingual_v2", chars: (text || "").length, context: "cuento" });
   return Buffer.from(resp.data);
 }
 
@@ -272,6 +274,14 @@ export async function generateKidsStoryImmersive(req, res) {
       max_tokens: 4000,
       system: systemPrompt,
       messages: [{ role: "user", content: prompt }],
+    });
+    recordUsage({
+      provider: "claude",
+      model: claudeResp?.model,
+      tokensIn: claudeResp?.usage?.input_tokens,
+      tokensOut: claudeResp?.usage?.output_tokens,
+      context: "cuento",
+      lang: language,
     });
 
     let rawText = claudeResp.content[0].text.trim();

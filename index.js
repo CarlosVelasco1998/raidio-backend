@@ -14,7 +14,7 @@ import path from "path";
 
 import { POIS } from "./pois_db.js";
 import { generateKidsStoryImmersive } from "./kidsStoryImmersive.js";
-import { mountAnalytics } from "./analytics.js";
+import { mountAnalytics, recordUsage } from "./analytics.js";
 
 dotenv.config();
 
@@ -25,6 +25,19 @@ const PORT = process.env.PORT || 3000;
 // ─── MODELOS ─────────────────────────────────────────────────────────────────
 const MODEL_FAST  = "claude-haiku-4-5-20251001"; // narración, live events
 const MODEL_SMART = "claude-sonnet-4-6";          // assistant, bienvenida provincia
+
+// Registra el consumo de tokens de una respuesta de Claude en analytics (no bloqueante).
+function logClaude(r, context, lang = null) {
+  try {
+    recordUsage({
+      provider: "claude",
+      model: r?.model,
+      tokensIn: r?.usage?.input_tokens,
+      tokensOut: r?.usage?.output_tokens,
+      context, lang,
+    });
+  } catch (_) {}
+}
 
 // ─── CONFIGURACIÓN ───────────────────────────────────────────────────────────
 const TIMEZONE          = "Europe/Madrid";
@@ -534,6 +547,7 @@ async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp
       system: "Eres un experto en cultura, fiestas y tradiciones locales de España. Responde SOLO si conoces eventos reales. Si no conoces ninguno, responde únicamente: NINGUNO.",
       messages: [{ role: "user", content: `¿Qué eventos, ferias, festivales o fiestas importantes se celebran en ${zona} durante ${mes}? ${poi ? `El viajero está cerca de: ${poi}.` : ""} Si conoces fechas concretas (día y mes), inclúyelas. Si no las conoces con seguridad, menciona el evento igualmente. Solo eventos reales, en 2-3 frases máximo.` }],
     });
+    logClaude(r, "eventos_vivo");
 
     const text = r.content?.[0]?.text?.trim() ?? "";
     if (!text || text.toUpperCase().includes("NINGUNO")) { setCache(key, ""); return ""; }
@@ -674,6 +688,7 @@ app.post("/quiz/question", async (req, res) => {
       max_tokens: 600,
       messages: [{ role: "user", content: prompt }],
     });
+    logClaude(r, "quiz", lang);
 
     const raw = r.content?.[0]?.text ?? "";
     let jsonStr = raw.trim().replace(/```json|```/g, "").trim();
@@ -839,6 +854,7 @@ app.post("/ai/generate", async (req, res) => {
       system: systemPrompt,
       messages: [{ role: "user", content: finalPrompt }],
     });
+    logClaude(r, "narracion", language);
 
     const rawText  = r.content?.[0]?.text ?? "";
     const maxWords = MAX_WORDS_BY_NIVEL[nivel] ?? MAX_WORDS_BY_NIVEL.normal;
@@ -898,6 +914,7 @@ app.post("/tts", async (req, res) => {
     const audioBuffer = Buffer.from(elevenResp.data);
     setCachedMp3(mp3CacheKey, audioBuffer).catch(() => {});
     console.log(`🎵 MP3 cache SET (${(audioBuffer.length / 1024).toFixed(0)}KB)`);
+    recordUsage({ provider: "eleven", model: "eleven_flash_v2_5", chars: cleanText.length, context: "tts", lang });
 
     res.set("Content-Type", "audio/mpeg");
     res.set("X-Cache", "MISS");
@@ -1080,6 +1097,7 @@ paso=learn_topics → Mapea a booleans.
       system: systemPrompt + "\n\nResponde SIEMPRE con JSON válido, sin texto fuera del JSON.",
       messages,
     });
+    logClaude(response, "assistant", req.body?.lang);
 
     let parsed = {};
     try {
@@ -1166,6 +1184,7 @@ app.post("/narrate/bienvenida-provincia", async (req, res) => {
       system: systemPrompt,
       messages: [{ role: "user", content: userPrompt }],
     });
+    logClaude(r, "bienvenida", language);
 
     const text = r.content?.[0]?.text?.trim() ?? "";
     setCache(key, text);

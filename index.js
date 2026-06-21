@@ -881,8 +881,11 @@ app.post("/tts", async (req, res) => {
     if (!text?.trim())               return res.status(400).json({ error: "text requerido" });
     if (!apiKey || !DEFAULT_VOICE_ID) return res.status(500).json({ error: "Falta ELEVEN_API_KEY o ELEVEN_VOICE_ID en env" });
 
+    // Voz por defecto en inglés: voz británica (Daniel) aunque no esté la env
+    // configurada, para no caer nunca en la voz española hablando inglés.
+    const DEFAULT_VOICE_ID_EN = "onwK4e9ZLuTAKqWW03F9"; // Daniel (UK)
     const defaultVoice = lang === "en"
-      ? (process.env.ELEVEN_VOICE_ID_EN || DEFAULT_VOICE_ID)
+      ? (process.env.ELEVEN_VOICE_ID_EN || DEFAULT_VOICE_ID_EN)
       : DEFAULT_VOICE_ID;
     const usedVoiceId = voiceId || defaultVoice;
     const cleanText   = corregirPronunciacion(text);

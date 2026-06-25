@@ -1012,7 +1012,11 @@ step=song_category → Extract genre. indie→"indie", pop→"pop", rock→"rock
 step=song_players → Extract names.
   Call: set_guess_song_players { players: ["name1","name2",...] }  speech: "Difficulty: easy, normal or hard?"
 step=song_difficulty → easy→"easy", normal→"normal", hard→"hard".
-  Call: note_song_difficulty { difficulty: "easy"|"normal"|"hard" }  speech: "Ready! Shall we start?"
+  Call: note_song_difficulty { difficulty: "easy"|"normal"|"hard" }  speech: "Answer by voice? Yes or no."
+step=song_voice → yes→true, no→false.
+  Call: note_song_voice { voice: true|false }  speech: "How many seconds to answer? Between 10 and 60."
+step=song_time → Extract the number of seconds (10-60).
+  Call: note_song_time { seconds: N }  speech: "Ready! Shall we start?"
 step=song_confirm → Call: start_guess_song { difficulty: "${ctx.difficulty || 'normal'}" }  speech: "Let's go! Good luck everyone!"
 During game (screen=guess_song_round): "reveal" → reveal_song | "yes"/"correct" → answer_correct | "no"/"wrong" → answer_wrong | "next" → next_round
 
@@ -1068,7 +1072,11 @@ paso=song_category → Extrae género. indie→"indie", pop→"pop", rock→"roc
 paso=song_players → Extrae nombres.
   Llama: set_guess_song_players { players: ["nombre1","nombre2",...] }  speech: "¿Dificultad: fácil, normal o difícil?"
 paso=song_difficulty → fácil→"easy", normal→"normal", difícil→"hard".
-  Llama: note_song_difficulty { difficulty: "easy"|"normal"|"hard" }  speech: "¡Listo! ¿Empezamos?"
+  Llama: note_song_difficulty { difficulty: "easy"|"normal"|"hard" }  speech: "¿Queréis responder por voz? Sí o no."
+paso=song_voice → sí→true, no→false.
+  Llama: note_song_voice { voice: true|false }  speech: "¿Cuántos segundos para responder? Entre 10 y 60."
+paso=song_time → Extrae el número de segundos (10-60).
+  Llama: note_song_time { seconds: N }  speech: "¡Listo! ¿Empezamos?"
 paso=song_confirm → Llama: start_guess_song { difficulty: "${ctx.difficulty || 'normal'}" }  speech: "¡Hecho! ¡Suerte a todos!"
 Durante partida (screen=guess_song_round): "revela" → reveal_song | "sí"/"acertado" → answer_correct | "no"/"fallado" → answer_wrong | "siguiente" → next_round
 

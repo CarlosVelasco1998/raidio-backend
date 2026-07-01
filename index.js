@@ -121,6 +121,112 @@ async function saveQuizPool(topic, difficulty, pool, lang = "es") {
   await fs.writeFile(quizPoolFile(topic, difficulty, lang), JSON.stringify(pool));
 }
 
+// ─── POOL DE ROSCOS (juego "El Rosco", estilo Pasapalabra) ───────────────────
+const ROSCO_POOL_DIR = path.join(NARRATION_CACHE_DIR, "rosco-pool");
+
+// Letras del rosco. ES: 25 letras sin K/W (incluye Ñ). EN: alfabeto A-Z.
+const ROSCO_LETTERS_ES = ["A","B","C","D","E","F","G","H","I","J","L","M","N","Ñ","O","P","Q","R","S","T","U","V","X","Y","Z"];
+const ROSCO_LETTERS_EN = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
+const ROSCO_DIFFICULTY_ES = {
+  easy:   "FÁCIL: palabras comunes del día a día, definiciones directas.",
+  medium: "MEDIA: cultura general, alguna palabra menos frecuente.",
+  hard:   "DIFÍCIL: vocabulario rico, términos específicos, definiciones más sutiles.",
+};
+const ROSCO_DIFFICULTY_EN = {
+  easy:   "EASY: common everyday words, direct definitions.",
+  medium: "MEDIUM: general knowledge, some less frequent words.",
+  hard:   "HARD: rich vocabulary, specific terms, subtler definitions.",
+};
+
+async function initRoscoPool() {
+  await fs.mkdir(ROSCO_POOL_DIR, { recursive: true });
+  console.log(`✅ Rosco pool ready — dir: ${ROSCO_POOL_DIR}`);
+}
+
+function roscoPoolFile(difficulty, lang = "es") {
+  const safe = String(difficulty).replace(/[^a-z0-9_]/gi, "_").slice(0, 20);
+  const langSuffix = lang === "en" ? "_en" : "";
+  return path.join(ROSCO_POOL_DIR, `${safe}${langSuffix}.json`);
+}
+
+async function loadRoscoPool(difficulty, lang = "es") {
+  try { return JSON.parse(await fs.readFile(roscoPoolFile(difficulty, lang), "utf8")); }
+  catch { return []; }
+}
+
+async function saveRoscoPool(difficulty, pool, lang = "es") {
+  await fs.writeFile(roscoPoolFile(difficulty, lang), JSON.stringify(pool));
+}
+
+// Minúsculas sin acentos, PERO conservando la ñ (letra propia del rosco español).
+function roscoNormalize(s) {
+  // minúsculas y sin tildes, pero conservando la ñ (letra propia del rosco).
+  return String(s || "")
+    .toLowerCase()
+    .replace(/[áàä]/g, "a")
+    .replace(/[éèë]/g, "e")
+    .replace(/[íìï]/g, "i")
+    .replace(/[óòö]/g, "o")
+    .replace(/[úùü]/g, "u")
+    .trim();
+}
+
+// Valida que la respuesta cumple de verdad la condición de su letra.
+function roscoEntryValid(entry) {
+  if (!entry) return false;
+  const letter = roscoNormalize(entry.letter);
+  const clue   = roscoNormalize(entry.clue);
+  const answer = roscoNormalize(entry.answer);
+  if (!letter || !clue || !answer) return false;
+  // La pista no puede delatar la respuesta: se compara por palabras completas
+  // (no subcadena), para no rechazar p. ej. "barca" por aparecer en "embarcación".
+  const clueWords = clue.split(/[^a-zñ]+/).filter(Boolean);
+  if (clueWords.includes(answer)) return false;
+  const mode = entry.mode === "contains" ? "contains" : "starts";
+  return mode === "starts"
+    ? answer.startsWith(letter)
+    : answer.replace(/\s+/g, "").includes(letter);
+}
+
+function buildRoscoPrompt(letters, difficulty, existingAnswers = []) {
+  const diff = ROSCO_DIFFICULTY_ES[difficulty] || ROSCO_DIFFICULTY_ES.medium;
+  const avoid = existingAnswers.length > 0
+    ? `\nEvita estas respuestas ya usadas: ${existingAnswers.slice(-120).join(", ")}.\n`
+    : "";
+  return `Genera un rosco tipo "Pasapalabra" en ESPAÑOL. Devuelve SOLO un JSON válido (un array), sin markdown ni texto extra, con este esquema EXACTO:
+[{"letter":"A","mode":"starts","clue":"...","answer":"..."}]
+
+Reglas:
+- Una entrada por CADA letra de esta lista, EN ESTE ORDEN: ${letters.join(", ")}.
+- "answer": UNA sola palabra común en español, sin artículos, en minúsculas.
+- "mode": "starts" si la respuesta EMPIEZA por la letra; "contains" si la CONTIENE. Usa "contains" solo cuando apenas existan palabras que empiecen por esa letra. La letra Ñ SIEMPRE "contains".
+- "clue": una definición breve (1 frase), estilo locutor de concurso, que NO incluya la palabra respuesta ni la delate.
+- La respuesta debe cumplir DE VERDAD la condición de su letra (empezar/contener).
+- Números escritos con palabras.
+- Dificultad: ${diff}
+${avoid}`;
+}
+
+function buildRoscoPromptEN(letters, difficulty, existingAnswers = []) {
+  const diff = ROSCO_DIFFICULTY_EN[difficulty] || ROSCO_DIFFICULTY_EN.medium;
+  const avoid = existingAnswers.length > 0
+    ? `\nAvoid these already-used answers: ${existingAnswers.slice(-120).join(", ")}.\n`
+    : "";
+  return `Generate a "Pasapalabra"-style word ring in ENGLISH. Return ONLY valid JSON (an array), no markdown or extra text, with this EXACT schema:
+[{"letter":"A","mode":"starts","clue":"...","answer":"..."}]
+
+Rules:
+- One entry per EACH letter in this list, IN THIS ORDER: ${letters.join(", ")}.
+- "answer": ONE single common English word, no articles, lowercase.
+- "mode": "starts" if the answer STARTS WITH the letter; "contains" if it CONTAINS it. Use "contains" only when very few common words start with that letter.
+- "clue": a short definition (1 sentence), game-show host style, that does NOT include the answer word or give it away.
+- The answer must REALLY satisfy its letter condition (start/contain).
+- Write numbers as words.
+- Difficulty: ${diff}
+${avoid}`;
+}
+
 const TOPIC_PROMPTS = {
   cultura_general:    "cultura general",
   historia_espana:    "historia de España",
@@ -268,6 +374,7 @@ async function cacheStats() {
 
 initNarrationCache().catch(e => console.error("⚠️ Error iniciando caché:", e.message));
 initQuizPool().catch(e => console.error("⚠️ Error iniciando quiz pool:", e.message));
+initRoscoPool().catch(e => console.error("⚠️ Error iniciando rosco pool:", e.message));
 
 // ─── MIDDLEWARE ───────────────────────────────────────────────────────────────
 app.use(cors());
@@ -725,6 +832,97 @@ app.post("/quiz/question", async (req, res) => {
   } catch (e) {
     console.error("❌ /quiz/question error:", e.message);
     res.status(500).json({ error: "quiz_question_failed", detail: e.message });
+  }
+});
+
+// ─── ROSCO (juego "El Rosco") ────────────────────────────────────────────────
+app.get("/rosco/pool/stats", async (_req, res) => {
+  try {
+    const files = await fs.readdir(ROSCO_POOL_DIR).catch(() => []);
+    const pools = [];
+    for (const f of files.filter(f => f.endsWith(".json"))) {
+      try {
+        const data = JSON.parse(await fs.readFile(path.join(ROSCO_POOL_DIR, f), "utf8"));
+        pools.push({ file: f, sets: data.length, letters: data[0]?.letters?.length ?? 0 });
+      } catch { pools.push({ file: f, sets: "?", letters: 0 }); }
+    }
+    pools.sort((a, b) => String(a.file).localeCompare(String(b.file)));
+    res.json({ total_pools: pools.length, pools });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.post("/rosco/set", async (req, res) => {
+  try {
+    const { difficulty = "medium", usedIds = [], lang = "es" } = req.body || {};
+    const isEN = lang === "en";
+    const letters = isEN ? ROSCO_LETTERS_EN : ROSCO_LETTERS_ES;
+
+    // Pool hit: devolver un rosco ya generado que el cliente no haya visto.
+    const pool = await loadRoscoPool(difficulty, lang);
+    const usedSet = new Set(usedIds);
+    const available = pool.filter(s => !usedSet.has(s.id));
+    if (available.length > 0) {
+      const s = available[Math.floor(Math.random() * available.length)];
+      console.log(`🎯 Rosco HIT [${lang}]: ${difficulty} (pool:${pool.length} disp:${available.length})`);
+      return res.json({ ...s, fromPool: true });
+    }
+    console.log(`🤖 Rosco MISS [${lang}]: generando ${difficulty} (pool:${pool.length})`);
+
+    const existingAnswers = pool.flatMap(s => (s.letters || []).map(l => l.answer));
+
+    async function generate() {
+      const prompt = isEN
+        ? buildRoscoPromptEN(letters, difficulty, existingAnswers)
+        : buildRoscoPrompt(letters, difficulty, existingAnswers);
+      const r = await anthropic.messages.create({
+        model: MODEL_SMART,
+        max_tokens: 2000,
+        messages: [{ role: "user", content: prompt }],
+      });
+      logClaude(r, "rosco", lang);
+      const raw = r.content?.[0]?.text ?? "";
+      let jsonStr = raw.trim().replace(/```json|```/g, "").trim();
+      const start = jsonStr.indexOf("[");
+      const end = jsonStr.lastIndexOf("]");
+      if (start === -1 || end === -1) throw new Error(`No JSON array: ${raw.slice(0, 200)}`);
+      const parsed = JSON.parse(jsonStr.slice(start, end + 1));
+      if (!Array.isArray(parsed)) throw new Error("La respuesta no es un array");
+      return parsed;
+    }
+
+    // Genera y valida; un reintento si demasiadas entradas inválidas.
+    let entries = [];
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const parsed = await generate();
+      entries = parsed
+        .map(e => ({
+          letter: String(e.letter || "").toUpperCase(),
+          mode: e.mode === "contains" ? "contains" : "starts",
+          clue: String(e.clue || "").trim(),
+          answer: String(e.answer || "").trim().toLowerCase(),
+        }))
+        .filter(roscoEntryValid);
+      if (entries.length >= Math.floor(letters.length * 0.8)) break;
+      console.log(`⚠️ Rosco válidas ${entries.length}/${letters.length}, reintentando…`);
+    }
+
+    if (entries.length < Math.floor(letters.length * 0.6)) {
+      throw new Error(`Rosco inválido: solo ${entries.length}/${letters.length} válidas`);
+    }
+
+    const id = narrationHash(`${lang}|${difficulty}|${entries.map(e => e.answer).join(",")}`);
+    const set = { id, lang, difficulty, letters: entries, createdAt: new Date().toISOString() };
+
+    if (!pool.find(p => p.id === id)) {
+      pool.push(set);
+      saveRoscoPool(difficulty, pool, lang).catch(e => console.error("Error guardando rosco pool:", e.message));
+      console.log(`💾 Rosco SET [${lang}]: ${difficulty} (pool:${pool.length}, letras:${entries.length})`);
+    }
+
+    res.json({ ...set, fromPool: false });
+  } catch (e) {
+    console.error("❌ /rosco/set error:", e.message);
+    res.status(500).json({ error: "rosco_set_failed", detail: e.message });
   }
 });
 

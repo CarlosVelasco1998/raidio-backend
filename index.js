@@ -145,7 +145,7 @@ async function initRoscoPool() {
 }
 
 // Versión del pool: súbela para descartar sets antiguos al mejorar el prompt.
-const ROSCO_POOL_VERSION = "v2";
+const ROSCO_POOL_VERSION = "v3";
 
 function roscoPoolFile(difficulty, lang = "es") {
   const safe = String(difficulty).replace(/[^a-z0-9_]/gi, "_").slice(0, 20);
@@ -190,6 +190,56 @@ function roscoEntryValid(entry) {
   return mode === "starts"
     ? answer.startsWith(letter)
     : answer.replace(/\s+/g, "").includes(letter);
+}
+
+// Extrae el primer array JSON de una respuesta de Claude (tolera ```fences```).
+function parseRoscoArray(raw) {
+  let s = String(raw || "").trim().replace(/```json|```/g, "").trim();
+  const a = s.indexOf("[");
+  const b = s.lastIndexOf("]");
+  if (a === -1 || b === -1) throw new Error(`No JSON array: ${String(raw).slice(0, 200)}`);
+  const parsed = JSON.parse(s.slice(a, b + 1));
+  if (!Array.isArray(parsed)) throw new Error("La respuesta no es un array");
+  return parsed;
+}
+
+// Normaliza el array crudo a entradas {letter,mode,clue,answer} y descarta las
+// que no cumplen su letra.
+function mapRoscoEntries(parsed) {
+  return parsed
+    .map(e => ({
+      letter: String(e.letter || "").toUpperCase(),
+      mode: e.mode === "contains" ? "contains" : "starts",
+      clue: String(e.clue || "").trim(),
+      answer: String(e.answer || "").trim().toLowerCase(),
+    }))
+    .filter(roscoEntryValid);
+}
+
+function buildRoscoReviewPrompt(letters, draft) {
+  return `Eres un revisor experto de un rosco tipo "Pasapalabra" en ESPAÑOL. Te doy un BORRADOR (array JSON de {letter,mode,clue,answer}). Devuelve SOLO el array JSON COMPLETO y corregido, sin markdown ni texto extra.
+
+Tu trabajo:
+1. Corrige TODA pista que no defina con exactitud su "answer": cambia la pista o la respuesta para que encajen a la perfección. Fíjate en errores típicos (definir un martillo pero poner "hacha"; decir que Diana es diosa "griega" cuando es romana; poner una respuesta que no es lo que describe la pista).
+2. AÑADE una entrada por cada letra que falte de esta lista, EN ESTE ORDEN: ${letters.join(", ")}. Debe haber una entrada por CADA letra (incluida la Ñ, siempre "contains").
+3. Cada "answer" debe ser UNA palabra común en minúsculas que cumpla su letra (empieza/contiene) y la pista NO puede contener la respuesta.
+4. Prioriza la EXACTITUD por encima de todo.
+
+BORRADOR:
+${JSON.stringify(draft)}`;
+}
+
+function buildRoscoReviewPromptEN(letters, draft) {
+  return `You are an expert reviewer of a "Pasapalabra"-style word ring in ENGLISH. I give you a DRAFT (JSON array of {letter,mode,clue,answer}). Return ONLY the COMPLETE, corrected JSON array, no markdown or extra text.
+
+Your job:
+1. Fix EVERY clue that does not precisely define its "answer": change the clue or the answer so they match perfectly. Watch for typical errors (defining a hammer but writing "axe"; an answer that is not what the clue describes).
+2. ADD an entry for each missing letter from this list, IN THIS ORDER: ${letters.join(", ")}. There must be one entry per letter.
+3. Each "answer" must be ONE common lowercase word that satisfies its letter (start/contain), and the clue must NOT contain the answer.
+4. Prioritize ACCURACY above all.
+
+DRAFT:
+${JSON.stringify(draft)}`;
 }
 
 function buildRoscoPrompt(letters, difficulty, existingAnswers = []) {
@@ -889,30 +939,37 @@ app.post("/rosco/set", async (req, res) => {
         messages: [{ role: "user", content: prompt }],
       });
       logClaude(r, "rosco", lang);
-      const raw = r.content?.[0]?.text ?? "";
-      let jsonStr = raw.trim().replace(/```json|```/g, "").trim();
-      const start = jsonStr.indexOf("[");
-      const end = jsonStr.lastIndexOf("]");
-      if (start === -1 || end === -1) throw new Error(`No JSON array: ${raw.slice(0, 200)}`);
-      const parsed = JSON.parse(jsonStr.slice(start, end + 1));
-      if (!Array.isArray(parsed)) throw new Error("La respuesta no es un array");
-      return parsed;
+      return parseRoscoArray(r.content?.[0]?.text ?? "");
     }
 
-    // Genera y valida; un reintento si demasiadas entradas inválidas.
+    // Primer pase: genera y valida; un reintento si demasiadas inválidas.
     let entries = [];
     for (let attempt = 0; attempt < 2; attempt++) {
-      const parsed = await generate();
-      entries = parsed
-        .map(e => ({
-          letter: String(e.letter || "").toUpperCase(),
-          mode: e.mode === "contains" ? "contains" : "starts",
-          clue: String(e.clue || "").trim(),
-          answer: String(e.answer || "").trim().toLowerCase(),
-        }))
-        .filter(roscoEntryValid);
+      entries = mapRoscoEntries(await generate());
       if (entries.length >= Math.floor(letters.length * 0.8)) break;
       console.log(`⚠️ Rosco válidas ${entries.length}/${letters.length}, reintentando…`);
+    }
+
+    // Segundo pase: Claude revisa/corrige los pares y rellena las letras que
+    // falten. Solo se paga en generación nueva (los aciertos del pool no pasan
+    // por aquí). Si algo falla, nos quedamos con el primer pase.
+    try {
+      const reviewPrompt = isEN
+        ? buildRoscoReviewPromptEN(letters, entries)
+        : buildRoscoReviewPrompt(letters, entries);
+      const rr = await anthropic.messages.create({
+        model: MODEL_SMART,
+        max_tokens: 2500,
+        messages: [{ role: "user", content: reviewPrompt }],
+      });
+      logClaude(rr, "rosco_review", lang);
+      const reviewed = mapRoscoEntries(parseRoscoArray(rr.content?.[0]?.text ?? ""));
+      if (reviewed.length >= entries.length) {
+        console.log(`🔎 Rosco review [${lang}]: ${entries.length} → ${reviewed.length} válidas`);
+        entries = reviewed;
+      }
+    } catch (e) {
+      console.error("Rosco review error (se usa el primer pase):", e.message);
     }
 
     if (entries.length < Math.floor(letters.length * 0.6)) {

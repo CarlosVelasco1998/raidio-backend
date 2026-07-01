@@ -144,10 +144,13 @@ async function initRoscoPool() {
   console.log(`✅ Rosco pool ready — dir: ${ROSCO_POOL_DIR}`);
 }
 
+// Versión del pool: súbela para descartar sets antiguos al mejorar el prompt.
+const ROSCO_POOL_VERSION = "v2";
+
 function roscoPoolFile(difficulty, lang = "es") {
   const safe = String(difficulty).replace(/[^a-z0-9_]/gi, "_").slice(0, 20);
   const langSuffix = lang === "en" ? "_en" : "";
-  return path.join(ROSCO_POOL_DIR, `${safe}${langSuffix}.json`);
+  return path.join(ROSCO_POOL_DIR, `${safe}${langSuffix}_${ROSCO_POOL_VERSION}.json`);
 }
 
 async function loadRoscoPool(difficulty, lang = "es") {
@@ -198,11 +201,14 @@ function buildRoscoPrompt(letters, difficulty, existingAnswers = []) {
 [{"letter":"A","mode":"starts","clue":"...","answer":"..."}]
 
 Reglas:
-- Una entrada por CADA letra de esta lista, EN ESTE ORDEN: ${letters.join(", ")}.
+- Una entrada por CADA letra de esta lista, EN ESTE ORDEN: ${letters.join(", ")}. No te saltes ninguna, incluida la Ñ.
 - "answer": UNA sola palabra común en español, sin artículos, en minúsculas.
 - "mode": "starts" si la respuesta EMPIEZA por la letra; "contains" si la CONTIENE. Usa "contains" solo cuando apenas existan palabras que empiecen por esa letra. La letra Ñ SIEMPRE "contains".
-- "clue": una definición breve (1 frase), estilo locutor de concurso, que NO incluya la palabra respuesta ni la delate.
+- "clue": una definición breve y PRECISA (1 frase), estilo locutor de concurso.
+- CRÍTICO — EXACTITUD: la definición debe describir EXACTAMENTE la palabra de "answer", y esa palabra debe ser la ÚNICA que encaje de forma natural con la pista. No confundas conceptos parecidos (p. ej. hacha≠martillo, fábula≠personificación, zarza≠lima, y Diana es diosa romana, no griega). Si no puedes definir bien una palabra, elige otra más segura para esa letra.
+- La pista NO puede incluir la palabra respuesta ni delatarla.
 - La respuesta debe cumplir DE VERDAD la condición de su letra (empezar/contener).
+- Antes de devolver el JSON, revisa cada par: ¿la definición lleva sin ambigüedad a esa palabra concreta? ¿la palabra cumple su letra?
 - Números escritos con palabras.
 - Dificultad: ${diff}
 ${avoid}`;
@@ -217,11 +223,14 @@ function buildRoscoPromptEN(letters, difficulty, existingAnswers = []) {
 [{"letter":"A","mode":"starts","clue":"...","answer":"..."}]
 
 Rules:
-- One entry per EACH letter in this list, IN THIS ORDER: ${letters.join(", ")}.
+- One entry per EACH letter in this list, IN THIS ORDER: ${letters.join(", ")}. Do not skip any.
 - "answer": ONE single common English word, no articles, lowercase.
 - "mode": "starts" if the answer STARTS WITH the letter; "contains" if it CONTAINS it. Use "contains" only when very few common words start with that letter.
-- "clue": a short definition (1 sentence), game-show host style, that does NOT include the answer word or give it away.
+- "clue": a short, PRECISE definition (1 sentence), game-show host style.
+- CRITICAL — ACCURACY: the definition must describe EXACTLY the "answer" word, and that word must be the ONLY one that naturally fits the clue. Do not confuse similar concepts (e.g. axe≠hammer, fable≠personification). If you cannot define a word well, pick a safer word for that letter.
+- The clue must NOT include the answer word or give it away.
 - The answer must REALLY satisfy its letter condition (start/contain).
+- Before returning the JSON, check each pair: does the definition unambiguously lead to that exact word? Does the word satisfy its letter?
 - Write numbers as words.
 - Difficulty: ${diff}
 ${avoid}`;

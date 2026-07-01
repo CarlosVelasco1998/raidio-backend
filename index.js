@@ -145,7 +145,7 @@ async function initRoscoPool() {
 }
 
 // Versión del pool: súbela para descartar sets antiguos al mejorar el prompt.
-const ROSCO_POOL_VERSION = "v5";
+const ROSCO_POOL_VERSION = "v6";
 
 function roscoPoolFile(difficulty, lang = "es") {
   const safe = String(difficulty).replace(/[^a-z0-9_]/gi, "_").slice(0, 20);
@@ -233,26 +233,30 @@ function dedupeAndOrderRosco(entries, letters) {
 }
 
 function buildRoscoReviewPrompt(letters, draft) {
-  return `Eres un revisor experto de un rosco tipo "Pasapalabra" en ESPAÑOL. Te doy un BORRADOR (array JSON de {letter,mode,clue,answer}). Devuelve SOLO el array JSON COMPLETO y corregido, sin markdown ni texto extra.
+  return `Eres un lexicógrafo revisando un rosco de concurso en ESPAÑOL. Te doy un BORRADOR (array JSON de {letter,mode,clue,answer}). Devuelve SOLO el array JSON COMPLETO y corregido, sin markdown ni texto extra.
 
-Tu trabajo:
-1. Corrige TODA pista que no defina con exactitud su "answer": cambia la pista o la respuesta para que encajen a la perfección. Fíjate en errores típicos (definir un martillo pero poner "hacha"; decir que Diana es diosa "griega" cuando es romana; poner una respuesta que no es lo que describe la pista).
-2. AÑADE una entrada por cada letra que falte de esta lista, EN ESTE ORDEN: ${letters.join(", ")}. Debe haber una entrada por CADA letra (incluida la Ñ, siempre "contains").
-3. Cada "answer" debe ser UNA palabra común en minúsculas que cumpla su letra (empieza/contiene) y la pista NO puede contener la respuesta.
-4. Prioriza la EXACTITUD por encima de todo.
+Revisa CADA entrada, una por una, y aplica:
+1. La "answer" debe ser una palabra REAL y CONOCIDA del español de uso corriente. Si es rara, un tecnicismo oscuro, un nombre propio poco común o dudoso, SUSTITÚYELA por otra palabra más común para esa MISMA letra.
+2. La "clue" debe ser una definición CORRECTA y precisa de esa palabra, de modo que la respuesta sea la ÚNICA solución natural. Si la pista es vaga, ambigua, incorrecta o describe otra cosa, REESCRÍBELA (o cambia la respuesta) hasta que encajen a la perfección. Ejemplos de fallo a corregir: definir un martillo y poner "hacha"; decir que Diana es diosa "griega" (es romana); una respuesta que no es lo que la pista describe.
+3. Debe haber UNA entrada por CADA letra de esta lista, EN ESTE ORDEN: ${letters.join(", ")} (incluida la Ñ, siempre "contains"). Añade las que falten.
+4. Cada respuesta cumple su letra (empieza/contiene) y la pista NUNCA contiene la palabra respuesta.
+
+REGLA DE ORO: ante cualquier duda de si pista y respuesta encajan perfectamente, cámbialas por un par SENCILLO, común e indiscutible. Prefiere lo correcto y conocido antes que lo ingenioso.
 
 BORRADOR:
 ${JSON.stringify(draft)}`;
 }
 
 function buildRoscoReviewPromptEN(letters, draft) {
-  return `You are an expert reviewer of a "Pasapalabra"-style word ring in ENGLISH. I give you a DRAFT (JSON array of {letter,mode,clue,answer}). Return ONLY the COMPLETE, corrected JSON array, no markdown or extra text.
+  return `You are a lexicographer reviewing a quiz-show word ring in ENGLISH. I give you a DRAFT (JSON array of {letter,mode,clue,answer}). Return ONLY the COMPLETE, corrected JSON array, no markdown or extra text.
 
-Your job:
-1. Fix EVERY clue that does not precisely define its "answer": change the clue or the answer so they match perfectly. Watch for typical errors (defining a hammer but writing "axe"; an answer that is not what the clue describes).
-2. ADD an entry for each missing letter from this list, IN THIS ORDER: ${letters.join(", ")}. There must be one entry per letter.
-3. Each "answer" must be ONE common lowercase word that satisfies its letter (start/contain), and the clue must NOT contain the answer.
-4. Prioritize ACCURACY above all.
+Review EACH entry, one by one, and apply:
+1. The "answer" must be a REAL, WELL-KNOWN, everyday English word. If it is obscure, an unusual technical term, a rare proper noun, or doubtful, REPLACE it with a more common word for the SAME letter.
+2. The "clue" must be a CORRECT, precise definition of that word, so the answer is the ONLY natural solution. If a clue is vague, ambiguous, wrong, or describes something else, REWRITE it (or change the answer) until they match perfectly. Typical errors to fix: defining a hammer but writing "axe"; an answer that is not what the clue describes.
+3. There must be ONE entry per EACH letter in this list, IN THIS ORDER: ${letters.join(", ")}. Add any that are missing.
+4. Each answer satisfies its letter (start/contain), and the clue NEVER contains the answer word.
+
+GOLDEN RULE: whenever in any doubt that clue and answer match perfectly, swap them for a SIMPLE, common, indisputable pair. Prefer correct and well-known over clever.
 
 DRAFT:
 ${JSON.stringify(draft)}`;
@@ -292,6 +296,7 @@ async function fillMissingLetters(entries, letters, difficulty, lang, isEN) {
     const r = await anthropic.messages.create({
       model: MODEL_SMART,
       max_tokens: 900,
+      temperature: 0.3,
       messages: [{ role: "user", content: prompt }],
     });
     logClaude(r, "rosco_fill", lang);
@@ -1013,9 +1018,13 @@ app.post("/rosco/set", async (req, res) => {
       console.log(`⚠️ Rosco válidas ${entries.length}/${letters.length}, reintentando…`);
     }
 
-    // Segundo pase: Claude revisa/corrige los pares y rellena las letras que
-    // falten. Solo se paga en generación nueva (los aciertos del pool no pasan
-    // por aquí). Si algo falla, nos quedamos con el primer pase.
+    // Relleno dirigido de las letras que falten ANTES de revisar, para que la
+    // revisión pula también las letras rellenadas.
+    entries = await fillMissingLetters(entries, letters, difficulty, lang, isEN);
+
+    // Pase FINAL de revisión, con temperatura baja para máxima precisión:
+    // corrige cualquier pista que no defina con exactitud su palabra sobre el
+    // rosco ya completo. Si algo falla, nos quedamos con lo anterior.
     try {
       const reviewPrompt = isEN
         ? buildRoscoReviewPromptEN(letters, entries)
@@ -1023,6 +1032,7 @@ app.post("/rosco/set", async (req, res) => {
       const rr = await anthropic.messages.create({
         model: MODEL_SMART,
         max_tokens: 2500,
+        temperature: 0.3,
         messages: [{ role: "user", content: reviewPrompt }],
       });
       logClaude(rr, "rosco_review", lang);
@@ -1033,11 +1043,8 @@ app.post("/rosco/set", async (req, res) => {
         entries = reviewed;
       }
     } catch (e) {
-      console.error("Rosco review error (se usa el primer pase):", e.message);
+      console.error("Rosco review error (se usa lo anterior):", e.message);
     }
-
-    // Relleno dirigido de las letras que aún falten → rosco completo.
-    entries = await fillMissingLetters(entries, letters, difficulty, lang, isEN);
 
     if (entries.length < Math.floor(letters.length * 0.6)) {
       throw new Error(`Rosco inválido: solo ${entries.length}/${letters.length} válidas`);

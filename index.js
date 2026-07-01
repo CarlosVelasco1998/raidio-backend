@@ -145,7 +145,7 @@ async function initRoscoPool() {
 }
 
 // Versión del pool: súbela para descartar sets antiguos al mejorar el prompt.
-const ROSCO_POOL_VERSION = "v3";
+const ROSCO_POOL_VERSION = "v4";
 
 function roscoPoolFile(difficulty, lang = "es") {
   const safe = String(difficulty).replace(/[^a-z0-9_]/gi, "_").slice(0, 20);
@@ -214,6 +214,22 @@ function mapRoscoEntries(parsed) {
       answer: String(e.answer || "").trim().toLowerCase(),
     }))
     .filter(roscoEntryValid);
+}
+
+// Garantiza UNA entrada por letra y en el orden canónico de `letters`: descarta
+// repetidas (Claude a veces devuelve la misma letra varias veces) y letras que
+// no estén en la lista.
+function dedupeAndOrderRosco(entries, letters) {
+  const byLetter = new Map();
+  for (const e of entries) {
+    const L = String(e.letter || "").toUpperCase();
+    if (!byLetter.has(L)) byLetter.set(L, { ...e, letter: L });
+  }
+  const out = [];
+  for (const L of letters) {
+    if (byLetter.has(L)) out.push(byLetter.get(L));
+  }
+  return out;
 }
 
 function buildRoscoReviewPrompt(letters, draft) {
@@ -942,10 +958,10 @@ app.post("/rosco/set", async (req, res) => {
       return parseRoscoArray(r.content?.[0]?.text ?? "");
     }
 
-    // Primer pase: genera y valida; un reintento si demasiadas inválidas.
+    // Primer pase: genera, valida y deduplica por letra; un reintento si faltan.
     let entries = [];
     for (let attempt = 0; attempt < 2; attempt++) {
-      entries = mapRoscoEntries(await generate());
+      entries = dedupeAndOrderRosco(mapRoscoEntries(await generate()), letters);
       if (entries.length >= Math.floor(letters.length * 0.8)) break;
       console.log(`⚠️ Rosco válidas ${entries.length}/${letters.length}, reintentando…`);
     }
@@ -963,7 +979,8 @@ app.post("/rosco/set", async (req, res) => {
         messages: [{ role: "user", content: reviewPrompt }],
       });
       logClaude(rr, "rosco_review", lang);
-      const reviewed = mapRoscoEntries(parseRoscoArray(rr.content?.[0]?.text ?? ""));
+      const reviewed = dedupeAndOrderRosco(
+        mapRoscoEntries(parseRoscoArray(rr.content?.[0]?.text ?? "")), letters);
       if (reviewed.length >= entries.length) {
         console.log(`🔎 Rosco review [${lang}]: ${entries.length} → ${reviewed.length} válidas`);
         entries = reviewed;

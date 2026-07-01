@@ -145,7 +145,7 @@ async function initRoscoPool() {
 }
 
 // Versión del pool: súbela para descartar sets antiguos al mejorar el prompt.
-const ROSCO_POOL_VERSION = "v4";
+const ROSCO_POOL_VERSION = "v5";
 
 function roscoPoolFile(difficulty, lang = "es") {
   const safe = String(difficulty).replace(/[^a-z0-9_]/gi, "_").slice(0, 20);
@@ -256,6 +256,53 @@ Your job:
 
 DRAFT:
 ${JSON.stringify(draft)}`;
+}
+
+// Prompt para rellenar SOLO las letras que faltan (llamada corta y rápida).
+function buildRoscoFillPrompt(missing, difficulty) {
+  const diff = ROSCO_DIFFICULTY_ES[difficulty] || ROSCO_DIFFICULTY_ES.medium;
+  return `Completa un rosco tipo "Pasapalabra" en ESPAÑOL. Devuelve SOLO un array JSON, sin markdown ni texto extra, con UNA entrada por CADA una de estas letras: ${missing.join(", ")}.
+Esquema por entrada: {"letter":"A","mode":"starts","clue":"...","answer":"..."}
+Reglas:
+- "answer": UNA palabra común en español, en minúsculas, que EMPIEZA por su letra (mode "starts"); usa "contains" solo si casi no hay palabras que empiecen por ella (la Ñ SIEMPRE "contains").
+- "clue": definición breve y PRECISA que describa EXACTAMENTE esa palabra; no incluyas la respuesta.
+- Dificultad: ${diff}`;
+}
+
+function buildRoscoFillPromptEN(missing, difficulty) {
+  const diff = ROSCO_DIFFICULTY_EN[difficulty] || ROSCO_DIFFICULTY_EN.medium;
+  return `Complete a "Pasapalabra"-style word ring in ENGLISH. Return ONLY a JSON array, no markdown or extra text, with ONE entry per EACH of these letters: ${missing.join(", ")}.
+Per-entry schema: {"letter":"A","mode":"starts","clue":"...","answer":"..."}
+Rules:
+- "answer": ONE common lowercase English word that STARTS WITH its letter (mode "starts"); use "contains" only if very few words start with it.
+- "clue": a short, PRECISE definition describing EXACTLY that word; do not include the answer.
+- Difficulty: ${diff}`;
+}
+
+// Si tras generar/revisar faltan letras, hace una llamada corta para SOLO esas
+// letras y las fusiona. Garantiza roscos completos. Si falla, deja lo que había.
+async function fillMissingLetters(entries, letters, difficulty, lang, isEN) {
+  const present = new Set(entries.map(e => String(e.letter).toUpperCase()));
+  const missing = letters.filter(L => !present.has(L));
+  if (missing.length === 0) return entries;
+  try {
+    const prompt = isEN
+      ? buildRoscoFillPromptEN(missing, difficulty)
+      : buildRoscoFillPrompt(missing, difficulty);
+    const r = await anthropic.messages.create({
+      model: MODEL_SMART,
+      max_tokens: 900,
+      messages: [{ role: "user", content: prompt }],
+    });
+    logClaude(r, "rosco_fill", lang);
+    const extra = mapRoscoEntries(parseRoscoArray(r.content?.[0]?.text ?? ""));
+    const merged = dedupeAndOrderRosco([...entries, ...extra], letters);
+    console.log(`🧩 Rosco fill [${lang}]: faltaban ${missing.length} → ${merged.length}/${letters.length}`);
+    return merged;
+  } catch (e) {
+    console.error("Rosco fill error:", e.message);
+    return entries;
+  }
 }
 
 function buildRoscoPrompt(letters, difficulty, existingAnswers = []) {
@@ -988,6 +1035,9 @@ app.post("/rosco/set", async (req, res) => {
     } catch (e) {
       console.error("Rosco review error (se usa el primer pase):", e.message);
     }
+
+    // Relleno dirigido de las letras que aún falten → rosco completo.
+    entries = await fillMissingLetters(entries, letters, difficulty, lang, isEN);
 
     if (entries.length < Math.floor(letters.length * 0.6)) {
       throw new Error(`Rosco inválido: solo ${entries.length}/${letters.length} válidas`);

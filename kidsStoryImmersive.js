@@ -168,30 +168,35 @@ REGLAS DE FORMATO:
 }
 
 // ================== TTS POR SEGMENTO ==================
-async function callTTS(apiKey, voiceKey, text) {
+async function callTTS(apiKey, voiceKey, text, modelId = "eleven_multilingual_v2") {
   const voice = VOICE_LIBRARY[voiceKey] ?? VOICE_LIBRARY["narrator_f"];
+  // eleven_v3 usa stability discreta (0/0.5/1) y no admite 'style'; adaptamos.
+  const isV3 = modelId === "eleven_v3";
+  const voiceSettings = isV3
+    ? { stability: 0.5, use_speaker_boost: true }
+    : voice.s;
   const resp = await axios.post(
     `https://api.elevenlabs.io/v1/text-to-speech/${voice.id}`,
-    { text, model_id: "eleven_multilingual_v2", voice_settings: voice.s },
+    { text, model_id: modelId, voice_settings: voiceSettings },
     {
       headers: { "xi-api-key": apiKey, "Content-Type": "application/json", Accept: "audio/mpeg" },
       responseType: "arraybuffer",
-      timeout: 35000,
+      timeout: isV3 ? 90000 : 35000, // v3 es más lento
     }
   );
-  recordUsage({ provider: "eleven", model: "eleven_multilingual_v2", chars: (text || "").length, context: "cuento" });
+  recordUsage({ provider: "eleven", model: modelId, chars: (text || "").length, context: "cuento" });
   return Buffer.from(resp.data);
 }
 
-// ================== EFECTO DE SONIDO ==================
-async function callSFX(apiKey, description) {
+// ================== EFECTO DE SONIDO / MÚSICA ==================
+async function callSFX(apiKey, description, durationSeconds = 2.0) {
   const resp = await axios.post(
     "https://api.elevenlabs.io/v1/sound-generation",
-    { text: description, duration_seconds: 2.0, prompt_influence: 0.5 },
+    { text: description, duration_seconds: durationSeconds, prompt_influence: 0.4 },
     {
       headers: { "xi-api-key": apiKey, "Content-Type": "application/json", Accept: "audio/mpeg" },
       responseType: "arraybuffer",
-      timeout: 35000,
+      timeout: 60000,
     }
   );
   return Buffer.from(resp.data);
@@ -240,7 +245,7 @@ export async function renderImmersiveSegments(req, res) {
   const elevenKey = process.env.ELEVEN_API_KEY;
   if (!elevenKey) return res.status(500).json({ error: "No ELEVEN_API_KEY" });
 
-  const { segments = [] } = req.body ?? {};
+  const { segments = [], model = "eleven_multilingual_v2" } = req.body ?? {};
   if (!Array.isArray(segments) || segments.length === 0) {
     return res.status(400).json({ error: "segments[] requerido" });
   }
@@ -252,10 +257,10 @@ export async function renderImmersiveSegments(req, res) {
       try {
         if (seg.type === "sfx") {
           if (!seg.description?.trim()) continue;
-          audioBuffers.push(await callSFX(elevenKey, seg.description.trim()));
+          audioBuffers.push(await callSFX(elevenKey, seg.description.trim(), seg.duration || 2.0));
         } else if (seg.text?.trim()) {
           const voiceKey = seg.voice ?? "narrator_f";
-          audioBuffers.push(await callTTS(elevenKey, voiceKey, seg.text.trim()));
+          audioBuffers.push(await callTTS(elevenKey, voiceKey, seg.text.trim(), model));
         }
       } catch (segErr) {
         console.warn(`render-immersive seg ${i + 1} (${seg.type}) fallido: ${segErr.message}`);

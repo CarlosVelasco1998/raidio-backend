@@ -233,6 +233,52 @@ async function concatenateBuffers(buffers) {
   return result;
 }
 
+// ================== RENDER DE SEGMENTOS YA ESCRITOS ==================
+// Para "Cuento Aventura": rendero guiones FIJOS (sin Claude) — multi-voz + SFX +
+// concatenado — y devuelvo el MP3. Body: { segments: [{type,voice,text}|{type:'sfx',description}] }.
+export async function renderImmersiveSegments(req, res) {
+  const elevenKey = process.env.ELEVEN_API_KEY;
+  if (!elevenKey) return res.status(500).json({ error: "No ELEVEN_API_KEY" });
+
+  const { segments = [] } = req.body ?? {};
+  if (!Array.isArray(segments) || segments.length === 0) {
+    return res.status(400).json({ error: "segments[] requerido" });
+  }
+
+  try {
+    const audioBuffers = [];
+    for (let i = 0; i < segments.length; i++) {
+      const seg = segments[i];
+      try {
+        if (seg.type === "sfx") {
+          if (!seg.description?.trim()) continue;
+          audioBuffers.push(await callSFX(elevenKey, seg.description.trim()));
+        } else if (seg.text?.trim()) {
+          const voiceKey = seg.voice ?? "narrator_f";
+          audioBuffers.push(await callTTS(elevenKey, voiceKey, seg.text.trim()));
+        }
+      } catch (segErr) {
+        console.warn(`render-immersive seg ${i + 1} (${seg.type}) fallido: ${segErr.message}`);
+      }
+    }
+    if (audioBuffers.length === 0) {
+      return res.status(500).json({ error: "No se generó audio" });
+    }
+    const finalAudio = audioBuffers.length === 1
+      ? audioBuffers[0]
+      : await concatenateBuffers(audioBuffers);
+    res.set("Content-Type", "audio/mpeg");
+    res.send(finalAudio);
+    console.log(`✅ render-immersive: ${segments.length} segs → ${(finalAudio.length / 1024).toFixed(0)} KB`);
+  } catch (err) {
+    const detail = err.response?.data
+      ? (Buffer.isBuffer(err.response.data) ? err.response.data.toString("utf8") : err.response.data)
+      : err.message;
+    console.error("❌ render-immersive error:", detail);
+    res.status(500).json({ error: "render_failed", detail });
+  }
+}
+
 // ================== HANDLER PRINCIPAL ==================
 export async function generateKidsStoryImmersive(req, res) {
   const elevenKey = process.env.ELEVEN_API_KEY;

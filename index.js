@@ -13,7 +13,7 @@ import { promises as fs } from "fs";
 import path from "path";
 
 import { POIS } from "./pois_db.js";
-import { generateKidsStoryImmersive } from "./kidsStoryImmersive.js";
+import { generateKidsStoryImmersive, renderImmersiveSegments } from "./kidsStoryImmersive.js";
 import { mountAnalytics, recordUsage } from "./analytics.js";
 
 dotenv.config();
@@ -1108,6 +1108,7 @@ app.get("/",        (_req, res) => res.send("Backend Sancho funcionando ✔️")
 
 // ─── CUENTOS INMERSIVOS ───────────────────────────────────────────────────────
 app.post("/kids-story-immersive", generateKidsStoryImmersive);
+app.post("/render-immersive", renderImmersiveSegments);
 
 // ─── POIS CERCANOS ────────────────────────────────────────────────────────────
 app.get("/pois-nearby", (req, res) => {

@@ -582,11 +582,33 @@ function mesSlugEs(date) {
 }
 
 // ─── GEOCODIFICACIÓN INVERSA (Nominatim) ─────────────────────────────────────
+// Fallback de geocodificación inversa: BigDataCloud (gratis, sin API key, permite
+// uso desde servidor). Nominatim bloquea/limita las IPs de Render, así que cuando
+// falla o devuelve ciudad vacía recurrimos aquí.
+async function geocodeBigDataCloud(lat, lng, lang = "es") {
+  const r = await axios.get("https://api.bigdatacloud.net/data/reverse-geocode-client", {
+    params: { latitude: lat, longitude: lng, localityLanguage: lang },
+    timeout: 12000,
+  });
+  const d = r.data || {};
+  const admin = (d.localityInfo && d.localityInfo.administrative) || [];
+  // En España el nivel administrativo 6 es la provincia (p.ej. "Segovia").
+  const nivel6 = admin.find((a) => a.adminLevel === 6);
+  return {
+    city:        limpiar(d.city || d.locality || ""),
+    province:    limpiar((nivel6 && nivel6.name) || d.principalSubdivision || ""),
+    country:     limpiar(d.countryName || ""),
+    countryCode: limpiar((d.countryCode || "").toUpperCase()),
+    raw:         d,
+  };
+}
+
 async function geocodeInverso(lat, lng, lang = "es") {
   const key = `geo|${lat.toFixed(3)}|${lng.toFixed(3)}|${lang}`;
   const cached = getCache(key, TTL.reverse);
   if (cached) return cached;
 
+  let result = null;
   try {
     const r = await axios.get("https://nominatim.openstreetmap.org/reverse", {
       params: { format: "jsonv2", lat, lon: lng, zoom: 10, addressdetails: 1, "accept-language": lang },
@@ -594,19 +616,34 @@ async function geocodeInverso(lat, lng, lang = "es") {
       timeout: 15000,
     });
     const addr = r.data?.address || {};
-    const result = {
+    result = {
       city:        limpiar(addr.city || addr.town || addr.village || addr.municipality || addr.hamlet || ""),
       province:    limpiar(addr.state_district || addr.province || addr.state || ""),
       country:     limpiar(addr.country || ""),
       countryCode: limpiar((addr.country_code || "").toUpperCase()),
       raw:         r.data || null,
     };
-    setCache(key, result);
-    return result;
   } catch (e) {
-    console.error("ERROR geocodeInverso:", e.message);
-    return { city: "", province: "", country: "", countryCode: "", raw: null };
+    console.error("ERROR geocodeInverso (nominatim):", e.message);
   }
+
+  // Fallback si Nominatim falló o no resolvió la ciudad (habitual en Render).
+  if (!result || !result.city) {
+    try {
+      const bdc = await geocodeBigDataCloud(lat, lng, lang);
+      if (bdc.city) {
+        console.log(`geocodeInverso: fallback BigDataCloud -> ${bdc.city}, ${bdc.province}`);
+        result = bdc;
+      }
+    } catch (e) {
+      console.error("ERROR geocodeInverso (bigdatacloud):", e.message);
+    }
+  }
+
+  if (!result) result = { city: "", province: "", country: "", countryCode: "", raw: null };
+  // Solo cacheamos resultados con ciudad; asi un fallo puntual no se fija 12 h.
+  if (result.city) setCache(key, result);
+  return result;
 }
 
 // ─── HAVERSINE ───────────────────────────────────────────────────────────────

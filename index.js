@@ -726,8 +726,51 @@ async function buscarEventos({ province, nowDate }) {
   }
 }
 
+// ─── EVENTOS EN VIVO VÍA GEMINI (grounding con Google Search) ────────────────
+// Fuente principal: Gemini busca en Google en tiempo real y filtra por relevancia.
+// Tope diario de seguridad + caché por zona/día (en getLiveEventsContext) para
+// que el gasto no se dispare. Sin GEMINI_API_KEY, devuelve null (fallback).
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_DAILY_CAP = 800; // máximo de llamadas a Gemini por día
+let _geminiDay = "";
+let _geminiCount = 0;
+
+async function buscarEventosGemini({ zona, now, lang, poi }) {
+  if (!GEMINI_API_KEY) return null;
+  const today = now.toISOString().slice(0, 10);
+  if (_geminiDay !== today) { _geminiDay = today; _geminiCount = 0; }
+  if (_geminiCount >= GEMINI_DAILY_CAP) return null;
+
+  const isEN = lang === "en";
+  const fecha = now.toLocaleDateString(isEN ? "en-GB" : "es-ES",
+    { day: "numeric", month: "long", year: "numeric", timeZone: TIMEZONE });
+  const cerca = poi
+    ? (isEN ? ` The traveller is near: ${poi}.` : ` El viajero está cerca de: ${poi}.`)
+    : "";
+  const prompt = isEN
+    ? `You are a road-trip co-pilot in Spain. Today is ${fecha}. List ONLY real, notable events (local fiestas, fairs, festivals, big concerts) happening in ${zona} (Spain) these days or the coming week.${cerca} Only what a traveller would care about, with dates. Nothing small or obscure. If nothing notable, reply EXACTLY "NINGUNO". Max 3, short plain lines like "- Name (date): one short detail". No intro, no filler.`
+    : `Eres el copiloto de un viaje por carretera en España. Hoy es ${fecha}. Lista SOLO eventos reales y destacados (fiestas populares, ferias, festivales, conciertos grandes) que haya estos días o la próxima semana en ${zona} (España).${cerca} Solo lo que le interesaría a un viajero, con su fecha. Nada pequeño ni raro. Si no hay nada destacado, responde EXACTAMENTE "NINGUNO". Máximo 3, en líneas cortas como "- Nombre (fecha): un detalle breve". Sin introducción ni relleno.`;
+
+  try {
+    _geminiCount++;
+    const resp = await axios.post(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+      { contents: [{ parts: [{ text: prompt }] }], tools: [{ google_search: {} }] },
+      { headers: { "Content-Type": "application/json" }, timeout: 20000 }
+    );
+    const cand = resp.data?.candidates?.[0];
+    const text = (cand?.content?.parts || []).map(p => p.text).filter(Boolean).join("").trim();
+    const norm = text.toUpperCase();
+    if (!text || norm === "NINGUNO" || norm.startsWith("NINGUNO")) return null;
+    return text;
+  } catch (e) {
+    console.error("Gemini eventos error:", e.response?.data?.error?.message || e.message);
+    return null;
+  }
+}
+
 // ─── CONTEXTO DE EVENTOS EN VIVO ─────────────────────────────────────────────
-// Estrategia: 1) Spain.info (fechas reales) → 2) Claude con fechas explícitas
+// Estrategia: 0) Gemini (Google Search en vivo) → 1) Spain.info → 2) Claude
 async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp, poiNombre, language = "es" }) {
   if (!asBool(liveEvents)) return "";
   const lat = asNum(latitude);
@@ -747,6 +790,16 @@ async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp
   if (cached !== null) return cached;
 
   try {
+    // 0) Fuente principal: Gemini con grounding de Google Search (actual al día).
+    const geminiTexto = await buscarEventosGemini({
+      zona, now, lang: limpiar(language) || "es", poi,
+    });
+    if (geminiTexto) {
+      const context = `Eventos reales cerca (${zona}):\n${geminiTexto}`;
+      setCache(key, context);
+      return context;
+    }
+
     // 1) Intentar Spain.info para fechas reales
     const province = place.province;
     if (province) {

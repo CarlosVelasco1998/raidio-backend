@@ -390,6 +390,10 @@ function buildSummary(days, opts = {}) {
   if (opts.sponsor) return { mode: "sponsor", ...meta, detail: buildSponsorDetail(opts.sponsor, W, p) };
 
   const kpis = {
+    usuarios_unicos: one(
+      `SELECT COUNT(DISTINCT user_id) c FROM events WHERE user_id IS NOT NULL AND user_id<>'' AND user_id<>'anonymous' ${W}`).c || 0,
+    aperturas: one(
+      `SELECT COUNT(*) c FROM events WHERE event_name='raidio_app_open' ${W}`).c || 0,
     narraciones: one(
       `SELECT COUNT(*) c FROM events WHERE event_name='poi_narration_completed' ${W}`).c || 0,
     minutos_audio: Math.round((one(
@@ -422,6 +426,11 @@ function buildSummary(days, opts = {}) {
      WHERE event_name='game_started' ${W}
      GROUP BY game ORDER BY c DESC`);
 
+  const juegosFin = all(
+    `SELECT COALESCE(game,'¿?') label, COUNT(*) c FROM events
+     WHERE event_name='game_finished' ${W}
+     GROUP BY game ORDER BY c DESC`);
+
   const sponsors = {
     impresiones: one(
       `SELECT COUNT(*) c FROM events WHERE event_name='sponsor_injected' ${W}`).c || 0,
@@ -450,7 +459,7 @@ function buildSummary(days, opts = {}) {
     ...meta,
     totalEventos,
     kpis, timeseries, topPois, porProvincia,
-    juegos, sponsors, idioma, bienvenidas,
+    juegos, juegosFin, sponsors, idioma, bienvenidas,
     uso: buildUsage(),
   };
 }
@@ -699,6 +708,8 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
   <!-- ░░ VISTA GLOBAL ░░ -->
   <section id="globalView">
     <section class="kpis">
+      <div class="card kpi"><div class="icon">👤</div><div class="label">Usuarios únicos</div><div class="num" id="k_users">—</div></div>
+      <div class="card kpi"><div class="icon">📲</div><div class="label">Aperturas de app</div><div class="num" id="k_open">—</div></div>
       <div class="card kpi"><div class="icon">🎙️</div><div class="label">Narraciones</div><div class="num" id="k_narr">—</div></div>
       <div class="card kpi"><div class="icon">⏱️</div><div class="label">Minutos de audio</div><div class="num" id="k_min">—</div></div>
       <div class="card kpi"><div class="icon">🚗</div><div class="label">Sesiones de viaje</div><div class="num" id="k_ses">—</div></div>
@@ -711,7 +722,14 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
       <div class="card panel span4"><h2>Idioma</h2><div class="hint">Reparto ES / EN</div><div class="chart-wrap"><canvas id="c_lang"></canvas></div></div>
       <div class="card panel span6"><h2>Top POIs</h2><div class="hint">Los 10 más escuchados</div><div class="chart-wrap"><canvas id="c_pois"></canvas></div></div>
       <div class="card panel span6"><h2>POIs por provincia</h2><div class="hint">Distribución geográfica</div><div class="chart-wrap"><canvas id="c_prov"></canvas></div></div>
-      <div class="card panel span4"><h2>Juegos</h2><div class="hint">Partidas por juego</div><div class="chart-wrap"><canvas id="c_games"></canvas></div></div>
+      <div class="card panel span4"><h2>Juegos</h2><div class="hint">Iniciadas vs. finalizadas por juego</div>
+        <div class="spons">
+          <div><div class="big" id="g_ini">—</div><div class="lbl">Iniciadas</div></div>
+          <div><div class="big" id="g_fin">—</div><div class="lbl">Finalizadas</div></div>
+          <div><div class="big" id="g_rate">—</div><div class="lbl">Finalización</div></div>
+        </div>
+        <div class="chart-wrap" style="min-height:170px;margin-top:10px"><canvas id="c_games"></canvas></div>
+      </div>
       <div class="card panel span4"><h2>Sponsors</h2><div class="hint">Impresiones y navegaciones</div>
         <div class="spons">
           <div><div class="big" id="s_imp">—</div><div class="lbl">Impresiones</div></div>
@@ -779,7 +797,7 @@ Chart.defaults.color=DIM; Chart.defaults.font.family="Outfit, sans-serif";
 Chart.defaults.borderColor='rgba(214,168,71,.12)';
 const nf=new Intl.NumberFormat('es-ES');
 const langMap={es:'Español',en:'English'};
-const gameMap={quiz:'Quiz en Ruta',adivina:'Adivina la Canción',cuentos:'Cuentos'};
+const gameMap={quiz:'Concurso en Ruta',rosco:'El Rosco'};
 const $=id=>document.getElementById(id);
 function prettyModel(m){ if(!m) return '¿?'; const s=String(m).toLowerCase();
   if(s.includes('haiku')) return 'Haiku'; if(s.includes('sonnet')) return 'Sonnet';
@@ -808,6 +826,14 @@ function doughnut(id,labels,data){
   charts[id]=new Chart($(id),{type:'doughnut',data:{labels,datasets:[{data,backgroundColor:PALETTE,borderColor:'rgba(74,16,41,.6)',borderWidth:2}]},
     options:{cutout:'62%',plugins:{legend:{position:'bottom',labels:{padding:14,usePointStyle:true}}},maintainAspectRatio:false}});
 }
+function groupedBar(id,labels,seriesA,seriesB,nameA,nameB){
+  destroy(id);
+  charts[id]=new Chart($(id),{type:'bar',data:{labels,datasets:[
+    {label:nameA,data:seriesA,backgroundColor:GOLD,borderRadius:6,maxBarThickness:26},
+    {label:nameB,data:seriesB,backgroundColor:'#B07A8A',borderRadius:6,maxBarThickness:26}]},
+    options:{plugins:{legend:{display:true,position:'bottom',labels:{padding:12,usePointStyle:true}}},
+    scales:{x:{grid:{display:false}},y:{beginAtZero:true,grid:{color:'rgba(214,168,71,.1)'}}},maintainAspectRatio:false}});
+}
 function empty(id,msg){ destroy(id); const c=$(id); const ctx=c.getContext('2d');
   ctx.clearRect(0,0,c.width,c.height); ctx.fillStyle=DIM; ctx.font="14px Outfit"; ctx.textAlign="center";
   ctx.fillText(msg||'Sin datos todavía', c.width/2, c.height/2); }
@@ -834,6 +860,8 @@ function setKpi(i,icon,label,val){ $('dic'+i).textContent=icon; $('dl'+i).textCo
 function renderGlobal(d){
   $('globalView').classList.remove('hidden');
   $('detailView').classList.add('hidden');
+  $('k_users').textContent=nf.format(d.kpis.usuarios_unicos||0);
+  $('k_open').textContent=nf.format(d.kpis.aperturas||0);
   $('k_narr').textContent=nf.format(d.kpis.narraciones);
   $('k_min').textContent=nf.format(d.kpis.minutos_audio);
   $('k_ses').textContent=nf.format(d.kpis.sesiones);
@@ -843,7 +871,18 @@ function renderGlobal(d){
   d.idioma.length ? doughnut('c_lang',d.idioma.map(x=>langMap[x.label]||x.label),d.idioma.map(x=>x.c)) : empty('c_lang');
   d.topPois.length ? barChart('c_pois',d.topPois.map(x=>x.label),d.topPois.map(x=>x.c),true) : empty('c_pois');
   d.porProvincia.length ? barChart('c_prov',d.porProvincia.map(x=>x.label),d.porProvincia.map(x=>x.c),true) : empty('c_prov');
-  d.juegos.length ? doughnut('c_games',d.juegos.map(x=>gameMap[x.label]||x.label),d.juegos.map(x=>x.c)) : empty('c_games');
+  // Juegos: iniciadas vs. finalizadas (con tasa de finalización)
+  const gStart=d.juegos||[], gFin=d.juegosFin||[];
+  const iniMap=Object.fromEntries(gStart.map(x=>[x.label,x.c]));
+  const finMap=Object.fromEntries(gFin.map(x=>[x.label,x.c]));
+  const gLabels=[...new Set([...gStart.map(x=>x.label),...gFin.map(x=>x.label)])];
+  const totIni=gStart.reduce((s,x)=>s+x.c,0), totFin=gFin.reduce((s,x)=>s+x.c,0);
+  $('g_ini').textContent=nf.format(totIni);
+  $('g_fin').textContent=nf.format(totFin);
+  $('g_rate').textContent=totIni? Math.round(totFin/totIni*100)+'%':'—';
+  gLabels.length
+    ? groupedBar('c_games', gLabels.map(l=>gameMap[l]||l), gLabels.map(l=>iniMap[l]||0), gLabels.map(l=>finMap[l]||0), 'Iniciadas','Finalizadas')
+    : empty('c_games');
   const imp=d.sponsors.impresiones, nav=d.sponsors.navegaciones;
   $('s_imp').textContent=nf.format(imp); $('s_nav').textContent=nf.format(nav);
   $('s_ctr').textContent=imp? Math.round(nav/imp*100)+'%':'—';

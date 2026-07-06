@@ -30,7 +30,7 @@ const CLAUDE_PRICES = {
   sonnet: { in: 3.00, out: 15.00 },  // claude-sonnet-4-6
   opus:   { in: 5.00, out: 25.00 },  // claude-opus-4-x
 };
-function claudeCost(model, tokensIn, tokensOut) {
+export function claudeCost(model, tokensIn, tokensOut) {
   const m = String(model || "").toLowerCase();
   const p = m.includes("haiku")  ? CLAUDE_PRICES.haiku
           : m.includes("sonnet") ? CLAUDE_PRICES.sonnet

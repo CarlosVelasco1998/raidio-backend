@@ -14,7 +14,7 @@ import path from "path";
 
 import { POIS } from "./pois_db.js";
 import { generateKidsStoryImmersive, renderImmersiveSegments } from "./kidsStoryImmersive.js";
-import { mountAnalytics, recordUsage } from "./analytics.js";
+import { mountAnalytics, recordUsage, claudeCost } from "./analytics.js";
 
 dotenv.config();
 
@@ -37,6 +37,7 @@ function logClaude(r, context, lang = null) {
       context, lang,
     });
   } catch (_) {}
+  addClaudeSpend(r); // suma al tope de gasto diario (circuit breaker)
 }
 
 // ─── CONFIGURACIÓN ───────────────────────────────────────────────────────────
@@ -47,6 +48,72 @@ const DEFAULT_VOICE_ID  = process.env.ELEVEN_VOICE_ID;
 // max_tokens por nivel de narración (poco/normal/mucho)
 // max_tokens alto para que el modelo nunca se corte — truncarPorFrases() controla la longitud real
 const MAX_TOKENS_BY_NIVEL = { poco: 1000, normal: 1000, mucho: 1000 };
+
+// ─── PROTECCIÓN DE ENDPOINTS CAROS ───────────────────────────────────────────
+// 3 capas: (A) secreto compartido app↔backend, (B) rate-limit por IP/dispositivo,
+// (C) tope de gasto diario (circuit breaker). Todo configurable por entorno.
+const APP_SHARED_SECRET     = process.env.APP_SHARED_SECRET || "";      // vacío = capa A desactivada
+const RL_IP_PER_MIN         = Number(process.env.RL_IP_PER_MIN         || 60);
+const RL_IP_PER_DAY         = Number(process.env.RL_IP_PER_DAY         || 1500);
+const RL_DEV_PER_MIN        = Number(process.env.RL_DEV_PER_MIN        || 40);
+const RL_DEV_PER_DAY        = Number(process.env.RL_DEV_PER_DAY        || 800);
+const CLAUDE_DAILY_USD_CAP  = Number(process.env.CLAUDE_DAILY_USD_CAP  || 5);       // $/día
+const ELEVEN_DAILY_CHAR_CAP = Number(process.env.ELEVEN_DAILY_CHAR_CAP || 200000); // caracteres/día
+
+// Contadores de gasto del día (memoria; se reinician al cambiar de día en Madrid).
+const _spendDayFmt = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Madrid" });
+let _spendDay = _spendDayFmt.format(new Date());
+let _claudeUsdToday = 0, _elevenCharsToday = 0;
+function _rollSpendDay() {
+  const d = _spendDayFmt.format(new Date());
+  if (d !== _spendDay) { _spendDay = d; _claudeUsdToday = 0; _elevenCharsToday = 0; }
+}
+function addClaudeSpend(r) {
+  try { _rollSpendDay(); _claudeUsdToday += claudeCost(r?.model, r?.usage?.input_tokens, r?.usage?.output_tokens); } catch (_) {}
+}
+function addElevenSpend(chars) { _rollSpendDay(); _elevenCharsToday += (chars || 0); }
+
+// Rate-limit en memoria (ventana fija). Limpieza periódica para no crecer sin fin.
+const _rl = new Map();
+function _overLimit(key, max, windowMs) {
+  const now = Date.now();
+  let e = _rl.get(key);
+  if (!e || now - e.start >= windowMs) { e = { count: 0, start: now }; _rl.set(key, e); }
+  e.count++;
+  return e.count > max;
+}
+setInterval(() => {
+  const now = Date.now();
+  for (const [k, e] of _rl) if (now - e.start > 86400000) _rl.delete(k);
+}, 3600000).unref?.();
+
+function clientIp(req) {
+  const xf = (req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  return xf || req.ip || req.socket?.remoteAddress || "unknown";
+}
+
+// Middleware que protege los endpoints caros (Claude / ElevenLabs).
+function guard(req, res, next) {
+  // Capa A — secreto compartido (solo se exige si está configurado en el entorno).
+  if (APP_SHARED_SECRET && req.get("x-app-key") !== APP_SHARED_SECRET) {
+    return res.status(401).json({ error: "no autorizado" });
+  }
+  // Capa C — tope de gasto diario: corta ANTES de gastar más.
+  _rollSpendDay();
+  if (_claudeUsdToday >= CLAUDE_DAILY_USD_CAP || _elevenCharsToday >= ELEVEN_DAILY_CHAR_CAP) {
+    return res.status(503).json({ error: "servicio en pausa por hoy" });
+  }
+  // Capa B — rate-limit por IP y por dispositivo.
+  const ip = clientIp(req);
+  if (_overLimit("ipm:" + ip, RL_IP_PER_MIN, 60000) || _overLimit("ipd:" + ip, RL_IP_PER_DAY, 86400000)) {
+    return res.status(429).json({ error: "demasiadas peticiones" });
+  }
+  const dev = req.get("x-device-id");
+  if (dev && (_overLimit("dvm:" + dev, RL_DEV_PER_MIN, 60000) || _overLimit("dvd:" + dev, RL_DEV_PER_DAY, 86400000))) {
+    return res.status(429).json({ error: "demasiadas peticiones" });
+  }
+  next();
+}
 
 // Voice settings de ElevenLabs por tipo de narración
 // stability bajo = más expresivo | style alto = más emoción
@@ -974,7 +1041,7 @@ app.get("/quiz/pool/stats", async (_req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-app.post("/quiz/question", async (req, res) => {
+app.post("/quiz/question", guard, async (req, res) => {
   try {
     const { topic = "cultura_general", difficulty = "easy", usedIds = [], customTopic = "", lang = "es" } = req.body || {};
 
@@ -1068,7 +1135,7 @@ app.get("/rosco/pool/stats", async (_req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-app.post("/rosco/set", async (req, res) => {
+app.post("/rosco/set", guard, async (req, res) => {
   try {
     const { difficulty = "medium", usedIds = [], lang = "es" } = req.body || {};
     const isEN = lang === "en";
@@ -1197,8 +1264,8 @@ app.get("/healthz", (_req, res) => res.status(200).send("ok"));
 app.get("/",        (_req, res) => res.send("Backend Sancho funcionando ✔️"));
 
 // ─── CUENTOS INMERSIVOS ───────────────────────────────────────────────────────
-app.post("/kids-story-immersive", generateKidsStoryImmersive);
-app.post("/render-immersive", renderImmersiveSegments);
+app.post("/kids-story-immersive", guard, generateKidsStoryImmersive);
+app.post("/render-immersive", guard, renderImmersiveSegments);
 
 // ─── POIS CERCANOS ────────────────────────────────────────────────────────────
 app.get("/pois-nearby", (req, res) => {
@@ -1240,7 +1307,7 @@ app.get("/pois-all", (_req, res) => {
 });
 
 // ─── GENERACIÓN IA ───────────────────────────────────────────────────────────
-app.post("/ai/generate", async (req, res) => {
+app.post("/ai/generate", guard, async (req, res) => {
   try {
     if (!process.env.ANTHROPIC_API_KEY) return res.status(500).json({ error: "Falta ANTHROPIC_API_KEY" });
 
@@ -1302,7 +1369,7 @@ app.post("/ai/generate", async (req, res) => {
 });
 
 // ─── TTS (ELEVENLABS) ────────────────────────────────────────────────────────
-app.post("/tts", async (req, res) => {
+app.post("/tts", guard, async (req, res) => {
   const apiKey = process.env.ELEVEN_API_KEY;
   const { text, voiceId, mood = "normal", lang = "es" } = req.body || {};
 
@@ -1347,6 +1414,7 @@ app.post("/tts", async (req, res) => {
     setCachedMp3(mp3CacheKey, audioBuffer).catch(() => {});
     console.log(`🎵 MP3 cache SET (${(audioBuffer.length / 1024).toFixed(0)}KB)`);
     recordUsage({ provider: "eleven", model: "eleven_flash_v2_5", chars: cleanText.length, context: "tts", lang });
+    addElevenSpend(cleanText.length); // suma al tope de gasto diario
 
     res.set("Content-Type", "audio/mpeg");
     res.set("X-Cache", "MISS");

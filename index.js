@@ -57,8 +57,8 @@ const RL_IP_PER_MIN         = Number(process.env.RL_IP_PER_MIN         || 60);
 const RL_IP_PER_DAY         = Number(process.env.RL_IP_PER_DAY         || 1500);
 const RL_DEV_PER_MIN        = Number(process.env.RL_DEV_PER_MIN        || 40);
 const RL_DEV_PER_DAY        = Number(process.env.RL_DEV_PER_DAY        || 800);
-const CLAUDE_DAILY_USD_CAP  = Number(process.env.CLAUDE_DAILY_USD_CAP  || 5);       // $/día
-const ELEVEN_DAILY_CHAR_CAP = Number(process.env.ELEVEN_DAILY_CHAR_CAP || 200000); // caracteres/día
+let CLAUDE_DAILY_USD_CAP  = Number(process.env.CLAUDE_DAILY_USD_CAP  || 5);       // $/día (editable desde el panel)
+let ELEVEN_DAILY_CHAR_CAP = Number(process.env.ELEVEN_DAILY_CHAR_CAP || 200000); // caracteres/día (editable desde el panel)
 
 // Contadores de gasto del día (memoria; se reinician al cambiar de día en Madrid).
 const _spendDayFmt = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Madrid" });
@@ -151,9 +151,27 @@ async function writeCacheConfig(cfg) {
   await fs.writeFile(CACHE_CONFIG_FILE, JSON.stringify(cfg, null, 2), "utf8");
 }
 
+// ── Topes de gasto editables desde el panel (persisten en disco) ──────────────
+const ADMIN_LIMITS_FILE = path.join(NARRATION_CACHE_DIR, "admin-limits.json");
+async function loadAdminLimits() {
+  try {
+    const j = JSON.parse(await fs.readFile(ADMIN_LIMITS_FILE, "utf8"));
+    if (Number.isFinite(j.claudeDailyUsdCap)  && j.claudeDailyUsdCap  > 0) CLAUDE_DAILY_USD_CAP  = j.claudeDailyUsdCap;
+    if (Number.isFinite(j.elevenDailyCharCap) && j.elevenDailyCharCap > 0) ELEVEN_DAILY_CHAR_CAP = j.elevenDailyCharCap;
+    console.log(`Topes cargados de disco: Claude $${CLAUDE_DAILY_USD_CAP}/día, Eleven ${ELEVEN_DAILY_CHAR_CAP} chars/día`);
+  } catch { /* sin overrides en disco: se usan env/defaults */ }
+}
+async function saveAdminLimits() {
+  await fs.writeFile(ADMIN_LIMITS_FILE, JSON.stringify({
+    claudeDailyUsdCap: CLAUDE_DAILY_USD_CAP,
+    elevenDailyCharCap: ELEVEN_DAILY_CHAR_CAP,
+  }, null, 2), "utf8");
+}
+
 async function initNarrationCache() {
   await fs.mkdir(CACHE_TXT_DIR, { recursive: true });
   await fs.mkdir(CACHE_MP3_DIR, { recursive: true });
+  await loadAdminLimits(); // topes de gasto guardados desde el panel
   // Leer TTL override desde disco persistente
   const cfg = await readCacheConfig();
   if (cfg.ttl_days && Number.isInteger(cfg.ttl_days) && cfg.ttl_days > 0) {
@@ -1227,6 +1245,49 @@ app.post("/rosco/set", guard, async (req, res) => {
 app.get("/cache/stats", async (_req, res) => {
   try { res.json(await cacheStats()); }
   catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// ─── PANEL DE ADMIN (estado + topes editables) ───────────────────────────────
+function adminOk(req) {
+  const secret = process.env.CACHE_ADMIN_SECRET;
+  return Boolean(secret) && req.query.secret === secret;
+}
+
+// Estado general para el cuadro de mandos.
+app.get("/admin/status", (req, res) => {
+  if (!adminOk(req)) return res.status(401).json({ error: "secret inválido o no configurado" });
+  _rollSpendDay();
+  res.json({
+    poiCount: POIS.length,
+    spend: {
+      day: _spendDay,
+      claudeUsdToday: Math.round(_claudeUsdToday * 10000) / 10000,
+      claudeDailyUsdCap: CLAUDE_DAILY_USD_CAP,
+      elevenCharsToday: _elevenCharsToday,
+      elevenDailyCharCap: ELEVEN_DAILY_CHAR_CAP,
+    },
+    rateLimits: { ipPerMin: RL_IP_PER_MIN, ipPerDay: RL_IP_PER_DAY, devPerMin: RL_DEV_PER_MIN, devPerDay: RL_DEV_PER_DAY },
+    secretActive: Boolean(APP_SHARED_SECRET),
+    gemini: { callsToday: _geminiCount, dailyCap: GEMINI_DAILY_CAP },
+    uptimeSec: Math.round(process.uptime()),
+  });
+});
+
+// Ver los topes de gasto actuales.
+app.get("/admin/limits", (req, res) => {
+  if (!adminOk(req)) return res.status(401).json({ error: "secret inválido o no configurado" });
+  res.json({ claudeDailyUsdCap: CLAUDE_DAILY_USD_CAP, elevenDailyCharCap: ELEVEN_DAILY_CHAR_CAP });
+});
+
+// Editar los topes de gasto (persisten en disco).
+app.post("/admin/limits", async (req, res) => {
+  if (!adminOk(req)) return res.status(401).json({ error: "secret inválido o no configurado" });
+  const c = Number(req.body?.claudeDailyUsdCap);
+  const e = Number(req.body?.elevenDailyCharCap);
+  if (Number.isFinite(c) && c > 0) CLAUDE_DAILY_USD_CAP  = c;
+  if (Number.isFinite(e) && e > 0) ELEVEN_DAILY_CHAR_CAP = e;
+  try { await saveAdminLimits(); } catch (err) { return res.status(500).json({ error: err.message }); }
+  res.json({ claudeDailyUsdCap: CLAUDE_DAILY_USD_CAP, elevenDailyCharCap: ELEVEN_DAILY_CHAR_CAP, message: "Topes actualizados" });
 });
 
 app.post("/cache/config", async (req, res) => {

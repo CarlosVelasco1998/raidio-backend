@@ -1194,29 +1194,6 @@ app.delete("/cache/clear", async (req, res) => {
 
 // ─── SALUD ───────────────────────────────────────────────────────────────────
 app.get("/healthz", (_req, res) => res.status(200).send("ok"));
-
-// Diagnóstico de "Información en vivo": llama a Gemini FRESCO (sin caché) para
-// unas coordenadas y devuelve la zona + lo que encuentra. Uso: /debug-events?lat=&lng=
-app.get("/debug-events", async (req, res) => {
-  try {
-    const lat = Number(req.query.lat), lng = Number(req.query.lng);
-    if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-      return res.status(400).json({ error: "lat/lng requeridos" });
-    }
-    const now = new Date();
-    const place = await geocodeInverso(lat, lng, "es");
-    const zona = [place.city, place.province].filter(Boolean).join(", ");
-    const gemini = await buscarEventosGemini({ zona, now, lang: "es", poi: "" });
-    res.json({
-      hasKey: Boolean(GEMINI_API_KEY),
-      zona: zona || "(vacía)",
-      geminiCallsToday: _geminiCount,
-      gemini: gemini || "NINGUNO/null",
-    });
-  } catch (e) {
-    res.status(500).json({ error: e.message });
-  }
-});
 app.get("/",        (_req, res) => res.send("Backend Sancho funcionando ✔️"));
 
 // ─── CUENTOS INMERSIVOS ───────────────────────────────────────────────────────

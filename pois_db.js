@@ -703,6 +703,30 @@ export const POIS = [
   },
 
   {
+    id: "es_to_area_puerta_mancha",
+    nombre: "Gasolinera BP Salida 81",
+    emoji: "⛽",
+    lat: 39.4667,
+    lng: -3.5333,
+    nivel: 1,
+    categorias: ["parada", "servicio"],
+    tipo: "area_servicio",
+    radioActivacionMetros: 2000,
+
+    perfil: "parada",
+    prioridad: 85,
+    cooldownMin: 60,
+    intereses: ["repostaje", "cafe", "descanso", "a4", "la_mancha"],
+    sponsor: {
+      "sponsorId": "spon_a4_puertalamancha",
+      "sponsorNombre": "Área Puerta de La Mancha",
+      "mensaje": "puedes repostar, estirar las piernas y tomar un café antes de seguir cruzando La Mancha",
+      "url": "https://www.google.com/maps/place/bp/@39.7962272,-3.4832534,16.66z/data=!4m10!1m2!2m1!1sgasolinera!3m6!1s0xd41b264b254703d:0x15cdc224f522c607!8m2!3d39.7946537!4d-3.4819269!15sCgpnYXNvbGluZXJhWgwiCmdhc29saW5lcmGSAQtnYXNfc3RhdGlvbpoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQycG9kR0pZUWs5VFYxWjJaVWQ0TUdKNlNsbFhiR3gwVkVSTmQwNUlZeEFC4AEA-gEECAAQNQ!16s%2Fg%2F11b75pyx_k?entry=ttu&g_ep=EgoyMDI2MDcwNi4wIKXMDSoASAFQAw%3D%3D"
+    },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+  },
+
+  {
     id: "es_tol_torrejon_c_romana",
     nombre: "Villa romana de El Saucedo (Talavera la Nueva)",
     emoji: "🏛️",
@@ -1520,6 +1544,30 @@ export const POIS = [
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/linares.png",
+  },
+
+  {
+    id: "es_ja_area_el_olivar",
+    nombre: "Estación de Servicio Repsol Salida 12 Jabalquinto",
+    emoji: "⛽",
+    lat: 38.0310671,
+    lng: -3.77468,
+    nivel: 1,
+    categorias: ["parada", "servicio"],
+    tipo: "area_servicio",
+    radioActivacionMetros: 2000,
+
+    perfil: "parada",
+    prioridad: 85,
+    cooldownMin: 60,
+    intereses: ["repostaje", "cafe", "aceite_jaen", "descanso", "a4"],
+    sponsor: {
+      "sponsorId": "spon_a4_Jabalquinto",
+      "sponsorNombre": "E.S. Jabalquinto",
+      "mensaje": "repostas, descansas y pruebas el primer aceite de oliva de Jaén recién catado, ya en plena tierra del olivo",
+      "url": "https://www.google.com/maps/place/Gasolinera+Repsol/@38.0207004,-3.7892213,15.17z/data=!4m10!1m2!2m1!1sgasolinera!3m6!1s0xd6c299f51727a85:0x3c3b246577bad203!8m2!3d38.0234334!4d-3.77986!15sCgpnYXNvbGluZXJhWgwiCmdhc29saW5lcmGSAQtnYXNfc3RhdGlvbpoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VObE5sODNkM0puUlJBQuABAPoBBAgAEDM!16s%2Fg%2F11bx5pm6bw?entry=ttu&g_ep=EgoyMDI2MDcwNi4wIKXMDSoASAFQAw%3D%3D"
+    },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
   {

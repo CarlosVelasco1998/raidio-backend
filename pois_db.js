@@ -1299,7 +1299,7 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "batallas", "reconquista", "datosCuriosos"],
     tipo: "campo_batalla",
-    radioActivacionMetros: 16000,
+    radioActivacionMetros: 18000,
 
     perfil: "historia",
     prioridad: 160,

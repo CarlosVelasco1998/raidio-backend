@@ -51,10 +51,7 @@ export const POIS = [
     cooldownMin: 120,
     intereses: ["capitalidad", "historia_urbana", "monarquia", "cultura", "museos", "siglo_xvi_xvii"],
     sponsor: {
-      "sponsorId": "bar_001",
-      "sponsorNombre": "Bar Manolo",
-      "mensaje": "Bocadillos y terraza y cocks",
-      "url": "https://www.google.com/maps/place/Bernab%C3%A9u/@40.4544295,-3.6877974,17z/data=!3m1!5s0xd4228e2361e11b7:0x67f5c76cf9a0be21!4m6!3m5!1s0xd4228e23705d39f:0xa8fff6d26e2b1988!8m2!3d40.4530196!4d-3.6883748!16zL20vMDFneGx0?entry=ttu&g_ep=EgoyMDI2MDMyMi4wIKXMDSoASAFQAw%3D%3D"
+      "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/madrid.png"
     },
     eventos: [
       {

@@ -70,7 +70,7 @@ export const POIS = [
     nivel: 1,
     categorias: ["historia", "guerra_civil", "memoria", "arquitectura", "datosCuriosos"],
     tipo: "memorial",
-    radioActivacionMetros: 8000,
+    radioActivacionMetros: 12000,
 
     perfil: "historia",
     prioridad: 125,

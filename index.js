@@ -1376,11 +1376,14 @@ app.post("/ai/generate", guard, async (req, res) => {
 
     if (!prompt || typeof prompt !== "string") return res.status(400).json({ error: "prompt requerido (string)" });
 
-    // ── Caché de texto (solo cuando no hay eventos en vivo y hay clave de POI) ──
-    // El sufijo de idioma evita colisiones entre narraciones ES y EN del mismo POI
+    // ── Caché de texto (cuando hay clave de POI) ──
+    // El sufijo de idioma evita colisiones entre narraciones ES y EN del mismo POI.
+    // Con eventos en vivo, el cliente manda una clave con "bucket" diario
+    // (…|live|YYYY-MM-DD), así se cachea 24h y refresca cada día en vez de
+    // regenerar en cada paso. Sin clave (p.ej. peticiones antiguas) no se cachea.
     const langSuffix = language === "en" ? "|en" : "";
     const resolvedCacheKey = poiCacheKey ? `${poiCacheKey}${langSuffix}` : null;
-    const useTextCache = resolvedCacheKey && !asBool(liveEvents);
+    const useTextCache = !!resolvedCacheKey;
     if (useTextCache) {
       const cached = await getCachedText(resolvedCacheKey);
       if (cached) {

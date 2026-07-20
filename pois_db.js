@@ -68,14 +68,14 @@ export const POIS = [
     lat: 40.6419103,
     lng: -4.1508807,
     nivel: 1,
-    categorias: ["historia", "guerra_civil", "memoria", "arquitectura", "datosCuriosos"],
+    categorias: ["historia", "memoria", "religión cristiana", "arquitectura", "datosCuriosos"],
     tipo: "memorial",
     radioActivacionMetros: 11000,
 
     perfil: "historia",
     prioridad: 125,
     cooldownMin: 90,
-    intereses: ["arquitectura", "siglo_xx", "memoria_historica", "contexto_guerra_civil", "construccion"],
+    intereses: ["Cruz_mas_grande", "siglo_xx", "contexto_guerra_civil", "construccion", "reconocimiento\"."],
     sponsor: {
       "url": "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valle-de-los-caidos.png"
     },

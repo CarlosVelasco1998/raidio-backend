@@ -374,17 +374,38 @@ function buildUsage() {
 }
 
 function buildSummary(days, opts = {}) {
-  // Filtro temporal por ts (epoch ms). days<=0 => todo el histórico.
-  const hasRange = Number.isFinite(days) && days > 0;
-  const since = hasRange ? Date.now() - days * 86400000 : 0;
-  const W = hasRange ? "AND COALESCE(client_ts, ts) >= @since" : "";
-  const p = { since };
+  // Filtro temporal: por RANGO de fechas (opts.from/opts.to, 'YYYY-MM-DD', sobre
+  // la columna 'day' en zona Madrid) o, si no hay rango, por ventana móvil de
+  // 'days' (days<=0 => todo el histórico). from==to => un solo día.
+  const from = opts.from || null;
+  const to   = opts.to   || null;
+  const hasDateRange = Boolean(from || to);
+  const hasDays = !hasDateRange && Number.isFinite(days) && days > 0;
+  const since = hasDays ? Date.now() - days * 86400000 : 0;
+
+  let W = "";
+  const p = {};
+  if (hasDateRange) {
+    W = "AND day >= @dayFrom AND day <= @dayTo";
+    p.dayFrom = from || "0000-00-00";
+    p.dayTo   = to   || "9999-12-31";
+  } else if (hasDays) {
+    W = "AND COALESCE(client_ts, ts) >= @since";
+    p.since = since;
+  }
+  // Misma condición con prefijo WHERE, para consultas sin otro filtro previo.
+  const Wtot = W ? "WHERE " + W.slice(4) : "";
 
   const one = (sql) => db.prepare(sql).get(p) || {};
   const all = (sql) => db.prepare(sql).all(p) || [];
 
   const filters = buildFilters(W, p);
-  const meta = { generatedAt: new Date().toISOString(), days: hasRange ? days : null, filters };
+  const meta = {
+    generatedAt: new Date().toISOString(),
+    days: hasDays ? days : null,
+    from, to,
+    filters,
+  };
 
   if (opts.poi)     return { mode: "poi",     ...meta, detail: buildPoiDetail(opts.poi, W, p) };
   if (opts.sponsor) return { mode: "sponsor", ...meta, detail: buildSponsorDetail(opts.sponsor, W, p) };
@@ -452,7 +473,7 @@ function buildSummary(days, opts = {}) {
      WHERE event_name='province_welcome' AND provincia IS NOT NULL ${W}
      GROUP BY provincia ORDER BY c DESC LIMIT 15`);
 
-  const totalEventos = one(`SELECT COUNT(*) c FROM events ${hasRange ? "WHERE COALESCE(client_ts, ts) >= @since" : ""}`).c || 0;
+  const totalEventos = one(`SELECT COUNT(*) c FROM events ${Wtot}`).c || 0;
 
   return {
     mode: "global",
@@ -542,9 +563,12 @@ export function mountAnalytics(app) {
     if (req.query.key !== DASHBOARD_KEY) return res.status(401).json({ error: "no autorizado" });
     try {
       const days = req.query.days === "all" ? 0 : parseInt(req.query.days || "30", 10);
+      const dayRe = /^\d{4}-\d{2}-\d{2}$/;
+      const from = dayRe.test((req.query.from || "").trim()) ? req.query.from.trim() : null;
+      const to   = dayRe.test((req.query.to   || "").trim()) ? req.query.to.trim()   : null;
       const poi = (req.query.poi || "").toString().trim() || null;
       const sponsor = (req.query.sponsor || "").toString().trim() || null;
-      const summary = buildSummary(days, { poi, sponsor });
+      const summary = buildSummary(days, { poi, sponsor, from, to });
       // Enriquecer consumo de ElevenLabs con su suscripción real (solo vista global).
       if (summary.mode === "global" && summary.uso) {
         summary.uso.eleven.real = await fetchElevenSubscription();
@@ -619,6 +643,11 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
   .brand h1{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(28px,4vw,42px); letter-spacing:.5px}
   .brand .dot{color:var(--dorado)}
   .brand span.sub{color:var(--crema-dim); font-size:14px; letter-spacing:3px; text-transform:uppercase}
+  .drange{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+  .drange input[type=date]{background:var(--burdeos2); color:var(--crema); border:1px solid var(--line); border-radius:9px; padding:7px 9px; font:inherit; color-scheme:dark}
+  .drange .darrow{color:var(--crema-dim)}
+  .drange button{background:var(--dorado); color:var(--burdeos); border:0; border-radius:9px; padding:7px 12px; font:inherit; font-weight:600; cursor:pointer}
+  .drange button.ghost{background:transparent; color:var(--crema); border:1px solid var(--line); font-weight:400}
   .ranges{display:flex; gap:8px; background:var(--glass); border:1px solid var(--line); padding:6px; border-radius:14px}
   .ranges button{
     font-family:'Outfit'; font-size:13px; font-weight:600; color:var(--crema-dim);
@@ -695,6 +724,14 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
       <button data-d="30" class="active">30 días</button>
       <button data-d="90">90 días</button>
       <button data-d="all">Todo</button>
+    </div>
+    <div class="drange" id="drange">
+      <input type="date" id="dFrom" title="Desde">
+      <span class="darrow">→</span>
+      <input type="date" id="dTo" title="Hasta">
+      <button id="dApply">Ver</button>
+      <button id="dHoy" class="ghost">Hoy</button>
+      <button id="dAyer" class="ghost">Ayer</button>
     </div>
   </header>
 
@@ -791,7 +828,7 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
 const GOLD='#D6A847', CREMA='#F5ECD0', DIM='rgba(245,236,208,.55)';
 const PALETTE=['#D6A847','#E8C57A','#B07A8A','#8A4060','#C98A3A','#6E2A48','#E0B85F','#9C5A72'];
 const KEY=new URLSearchParams(location.search).get('key')||'';
-const cur={days:'30', poi:'', sponsor:''};
+const cur={days:'30', from:'', to:'', poi:'', sponsor:''};
 let charts={};
 Chart.defaults.color=DIM; Chart.defaults.font.family="Outfit, sans-serif";
 Chart.defaults.borderColor='rgba(214,168,71,.12)';
@@ -963,7 +1000,9 @@ function renderSponsor(det){
 }
 
 async function load(){
-  const qs=new URLSearchParams({key:KEY, days:cur.days});
+  const qs=new URLSearchParams({key:KEY});
+  if(cur.from||cur.to){ if(cur.from) qs.set('from',cur.from); if(cur.to) qs.set('to',cur.to); }
+  else qs.set('days',cur.days);
   if(cur.poi) qs.set('poi',cur.poi);
   else if(cur.sponsor) qs.set('sponsor',cur.sponsor);
   let d;
@@ -986,8 +1025,27 @@ async function load(){
 $('ranges').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
   document.querySelectorAll('#ranges button').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active'); cur.days=b.dataset.d; load();
+  b.classList.add('active'); cur.days=b.dataset.d;
+  cur.from=''; cur.to=''; $('dFrom').value=''; $('dTo').value=''; // un preset anula el rango de fechas
+  load();
 });
+
+// ── Selección por fecha / rango ──────────────────────────────────────────────
+function ymdLocal(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function aplicarRango(){
+  const f=$('dFrom').value, t=$('dTo').value;
+  if(!f && !t) return;
+  // Si solo se rellena uno, se usa como día único.
+  let from=f||t, to=t||f;
+  if(from>to){ const tmp=from; from=to; to=tmp; } // por si se invierten
+  cur.from=from; cur.to=to; cur.days='';
+  document.querySelectorAll('#ranges button').forEach(x=>x.classList.remove('active'));
+  load();
+}
+$('dApply').addEventListener('click',aplicarRango);
+$('dFrom').addEventListener('change',()=>{ if(!$('dTo').value) $('dTo').value=$('dFrom').value; });
+$('dHoy').addEventListener('click',()=>{ const t=ymdLocal(new Date()); $('dFrom').value=t; $('dTo').value=t; aplicarRango(); });
+$('dAyer').addEventListener('click',()=>{ const t=ymdLocal(new Date(Date.now()-86400000)); $('dFrom').value=t; $('dTo').value=t; aplicarRango(); });
 $('fPoi').addEventListener('change',e=>{ cur.poi=e.target.value; cur.sponsor=''; $('fSpon').value=''; load(); });
 $('fSpon').addEventListener('change',e=>{ cur.sponsor=e.target.value; cur.poi=''; $('fPoi').value=''; load(); });
 $('fClear').addEventListener('click',()=>{ cur.poi=''; cur.sponsor=''; $('fPoi').value=''; $('fSpon').value=''; load(); });

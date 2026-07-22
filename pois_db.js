@@ -8881,6 +8881,25 @@ export const POIS = [
   },
 
   {
+    id: "es_Castillejo_Gasolinera",
+    nombre: "Estación de Servicio Repsol Salida 107 Castillejo de Mesleón",
+    emoji: "⛽️",
+    lat: 41.2592268,
+    lng: -3.7534036,
+    nivel: 2,
+    categorias: ["parada", "servicio"],
+    tipo: "area_servicio",
+    radioActivacionMetros: 2000,
+
+    perfil: "parada",
+    prioridad: 85,
+    cooldownMin: 60,
+    intereses: ["repostaje", "cafe", "El_pincho_de_tortilla_es_excelente", "descanso", "a1"],
+    // sponsor: { sponsorId, sponsorNombre, mensaje, url },
+    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+  },
+
+  {
     id: "es_seg_riaza",
     nombre: "Riaza",
     emoji: "🏰",

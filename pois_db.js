@@ -8884,7 +8884,7 @@ export const POIS = [
     id: "es_Castillejo_Gasolinera",
     nombre: "Estación de Servicio Repsol Salida 107 Castillejo de Mesleón",
     emoji: "⛽️",
-    lat: 4.1259408633897,
+    lat: 41.259408633897,
     lng: -3.59157939542433,
     nivel: 2,
     categorias: ["parada", "servicio"],

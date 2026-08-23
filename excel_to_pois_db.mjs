@@ -338,6 +338,11 @@ function buildSponsorFromSeparateColumns(row) {
     ])
   );
 
+  // Un patrocinador REAL necesita identidad (id/nombre/mensaje). Si solo hay
+  // "url", casi siempre es la columna imageUrl colada por el match parcial de
+  // findKeyCaseInsensitive ("imageurl".includes("url")) → NO es un sponsor.
+  if (!sponsorId && !sponsorNombre && !mensaje) return null;
+
   const sponsor = removeEmptyFields({
     sponsorId,
     sponsorNombre,

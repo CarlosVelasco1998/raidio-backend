@@ -602,7 +602,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 39.85796,
         "lng": -4.02062,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: En el torreón occidental se conserva labrado el escudo de los Reyes Católicos, esculpido antes de 1492, por lo que carece de la granada al no haberse completado aún la Reconquista.",
+          "Historia: De origen romano (siglo III d. C.), fue uno de los accesos principales a Toledo sobre el río Tajo. Su nombre proviene del árabe «al-qantara», que significa literalmente «el puente».",
+          "Ingeniería: Debido a su mal estado de conservación, el torreón oriental de origen medieval fue derribado en 1721 y reemplazado por un arco triunfal de estilo barroco construido en piedra y ladrillo.",
+          "Historia: Su estructura sufrió graves daños por guerras y riadas a lo largo de los siglos, requiriendo importantes reconstrucciones en época andalusí bajo el mandato de Almanzor y en el siglo XIII con Alfonso X."
+        ]
       },
       {
         "id": "es_tol_puente_san_martin",
@@ -611,7 +618,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 39.8589,
         "lng": -4.0331,
-        "radio": 2500
+        "radio": 2500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Fue dañado a mediados del siglo XIV durante la guerra fratricida entre Pedro I y Enrique de Trastámara, tras lo cual el arzobispo Pedro Tenorio ordenó su gran reconstrucción a finales de ese mismo siglo.",
+          "Ingeniería: Estructuralmente consta de cinco arcos ligeramente apuntados labrados en sillería, destacando un amplio ojo central proyectado para salvar el cauce del río Tajo en la franja occidental de la ciudad.",
+          "Cultura: En sus extremos conserva torreones defensivos almenados; el torreón exterior destaca por su planta hexagonal, sus bóvedas nervadas de ladrillo y un pasaje fortificado provisto de buhardas y rastrillo.",
+          "Curiosidad: Una popular leyenda toledana narra que la esposa del alarife quemó de noche la cimbra de madera para encubrir un fallo de cálculo de su marido y permitir que rehiciera la obra con solidez."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/toledo.png",
@@ -642,7 +656,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 39.4631,
         "lng": -3.6084,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El 15 de agosto de 1097, durante la batalla de Consuegra contra las tropas almorávides, murió Diego Rodríguez, el único hijo varón del Cid Campeador.",
+          "Cultura: Alfonso VIII cedió la fortificación en 1183 a la Orden de San Juan de Jerusalén, convirtiendo el recinto en la sede y centro administrativo de su Gran Priorato en La Mancha.",
+          "Curiosidad: A mediados del siglo XVII funcionó como prisión de estado, albergando como recluso a Fernando de Valenzuela, valido de los Austrias, tras el golpe de Juan José de Austria.",
+          "Historia: En 1813, durante la Guerra de la Independencia, las tropas napoleónicas volaron parte de las estructuras de la fortaleza al retirarse tras cuatro años de ocupación militar.",
+          "Ingeniería: De arquitectura de tipo montano, se adapta al perfil rocoso del cerro defensivo mediante tres recintos murados independientes con lienzos de hasta cuatro metros y medio de grosor."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/molinos-de-consuegra.png",
@@ -662,7 +684,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 50,
-    intereses: ["geologia", "miradores", "foto", "aves", "sendero_corto"],
+    intereses: ["Naturaleza: Los acantilados arcillosos de tonalidades rojizas superan los 100 metros de altura en el Pico del Cambrón. Se formaron por la erosión del río Tajo sobre sedimentos del Mioceno y se asoman al embalse de Castrejón.", "Naturaleza: La Senda Ecológica de las Barrancas recorre 4,4 kilómetros de itinerario entre terrenos agrícolas y miradores como el Mirador del Cambrón y el Mirador de los Enebros, ofreciendo perspectivas panorámicas sobre el desfiladero y el embalse.", "Naturaleza: Situado entre 420 y 561 metros de altitud, el clima semiárido de escasas pero intensas lluvias torrenciales acelera la erosión de las frágiles arcillas miocenas, impidiendo la fijación de suelo arbolado y creando un paisaje de cárcavas.", "Naturaleza: Protegido como Monumento Natural y ZEPA, este espacio alberga vegetación de ribera y plantas mediterráneas como la efedra y el enebro. Sirve de refugio a rapaces rupícolas amenazadas como el águila perdicera y el búho real.", "Curiosidad: Este paisaje rojizo ha servido de escenario para conocidos rodajes publicitarios de marcas como Coca-Cola y Volkswagen, además de producciones cinematográficas como la película «Tiempo después» del director José Luis Cuerda.", "geologia", "miradores", "foto", "aves", "sendero_corto"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-barrancas-de-burujon.png",
@@ -1172,7 +1194,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 125,
     cooldownMin: 60,
-    intereses: ["fauna", "berrea", "observacion", "paisaje", "senderismo"],
+    intereses: ["Naturaleza: La ruta del Boquerón del Estena recorre un trayecto llano de unos 3 kilómetros de ida bordeando el río Estena desde Navas de Estena, permitiendo observar fósiles marinos del Ordovícico de más de 400 millones de años.", "Naturaleza: La raña es una llanura pedregosa de unas 8000 hectáreas donde cada otoño acontece la berrea del ciervo ibérico y nidifican rapaces amenazadas como el buitre negro y el águila imperial ibérica.", "Historia: En 1983 el Gobierno proyectó instalar un campo de tiro militar en la finca, pero la movilización ecologista y social frenó el proyecto, propiciando su declaración como Parque Natural en 1988 y Parque Nacional en 1995.", "Naturaleza: El pico Rocigalgo, cumbre más alta de los Montes de Toledo con 1448 metros de altitud, domina las sierras de cuarcita del parque, mientras los ríos Bullaque y Estena articulan la red hidrográfica hacia la cuenca del Guadiana.", "Naturaleza: El clima mediterráneo continentalizado registra precipitaciones medias anuales entre 550 y 600 milímetros con acusada sequía estival, condicionando una vegetación dominada por cuatro especies del género Quercus: encina, alcornoque, quejigo y rebollo.", "fauna", "berrea", "observacion", "paisaje", "senderismo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-cabaneros.png",
@@ -1193,7 +1215,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 125,
     cooldownMin: 120,
-    intereses: ["capitalidad", "historia_urbana", "cultura", "mancha"],
+    intereses: ["Historia: Alfonso X el Sabio fundó Villa Real en 1255 sobre la aldea del Pozuelo de Don Gil para contrarrestar el creciente poder militar y territorial de la Orden de Calatrava en la comarca manchega.", "Ingeniería: La catedral de Santa María del Prado posee una nave única de 53 metros de longitud y 18 metros de anchura, siendo la segunda nave única gótica más ancha de España tras la catedral de Gerona.", "Historia: En 1494 los Reyes Católicos establecieron en la ciudad la Real Chancillería, máximo tribunal de justicia al sur del río Tajo, antes de trasladar definitivamente su sede a Granada en 1505.", "Cultura: La Puerta de Toledo, finalizada en 1328 en estilo gótico-mudéjar con arcos ojivales y de herradura, es la única superviviente de las siete puertas que integraban la muralla medieval de la ciudad.", "Curiosidad: En la Plaza Mayor, la Casa del Arco alberga un reloj carillón instalado en 2005 cuyas figuras autómatas de Miguel de Cervantes, Don Quijote y Sancho Panza salen al exterior a determinadas horas.", "capitalidad", "historia_urbana", "cultura", "mancha"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -1204,7 +1226,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 38.946,
         "lng": -3.9,
-        "radio": 9000
+        "radio": 9000,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: La UNESCO reconoció en 2024 la comarca como Geoparque Mundial «Volcanes de Calatrava. Ciudad Real», albergando más de 300 edificios volcánicos nacidos en un periodo que abarca desde hace 8,5 millones hasta hace 6500 años.",
+          "Naturaleza: El maar de Hoya de Cervera es una depresión volcánica con un cráter de 1000 metros de diámetro mayor y 140 metros de profundidad máxima, originado por explosiones freatomagmáticas al entrar en contacto el agua subterránea con el magma.",
+          "Naturaleza: En Granátula de Calatrava se ubica el cono de escorias Cerro Gordo, con 831 metros de altitud, que cuenta con una ruta acondicionada e itinerario con pasarelas para recorrer el interior musealizado de su cráter.",
+          "Naturaleza: La desgasificación profunda de dióxido de carbono de origen magmático genera los hervideros y fuentes de agua agria, surgencias donde las burbujas simulan ebullición y cargan el agua de minerales.",
+          "Naturaleza: El clima mediterráneo continentalizado, con precipitaciones medias anuales de unos 400 l/m² y elevada evaporación estival, determina el carácter estacional de las lagunas volcánicas situadas en las hoyas y maares de la comarca."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-real.png",
@@ -1224,7 +1254,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 125,
     cooldownMin: 60,
-    intereses: ["humedal", "aves", "observacion", "sendero", "ecosistema"],
+    intereses: ["Naturaleza: Las Tablas se forman en la confluencia del río Gigüela, de aguas salobres procedentes de la serranía conquense, y el río Guadiana, de aguas dulces subterráneas, originando un ecosistema de tablas fluviales único en Europa.", "Naturaleza: El subsuelo del humedal alberga un extenso karst fisurado de piedra caliza vinculado al acuífero de la Mancha Occidental, cuya descarga histórica por el subsuelo originaba las célebres surgencias conocidas como los Ojos del Guadiana.", "Naturaleza: El Itinerario de la Isla del Pan, de color amarillo, recorre 2,5 kilómetros llanos a través de pasarelas de madera que conectan cinco islas interiores como la del Descanso y la del Pan.", "Naturaleza: Con precipitaciones escasas de unos 400 mm anuales e inviernos fríos, la elevada evapotranspiración del humedal genera un microclima local con más humedad y nieblas frecuentes en comparación con la aridez de la llanura manchega circundante.", "Cultura: El infante Don Juan Manuel mencionó este paraje en 1325 en su «Libro de la Caza», mientras que Felipe II detalló el uso del humedal en sus «Relaciones Topográficas» de 1575.", "humedal", "aves", "observacion", "sendero", "ecosistema"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-las-tablas-de-daimiel.png",
@@ -1244,7 +1274,7 @@ export const POIS = [
     perfil: "parada",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["teatro", "corral_de_comedias", "arquitectura", "pueblo", "plan_cultural"],
+    intereses: ["Cultura: El Corral de Comedias de Almagro, erigido en 1628 por Leonardo de Oviedo, es el único teatro barroco del siglo XVII de esta tipología conservado íntegramente y en activo en toda Europa.", "Curiosidad: Las características galerías acristaladas de color verde turquesa eran originalmente balconcillos abiertos y públicos para presenciar festejos como corridas de toros, hasta que en el siglo XIX se privatizaron y cerramientaron con cristal.", "Ingeniería: La Plaza Mayor mide 104,5 por 37 metros y se apoya sobre 81 columnas toscanas de piedra caliza que sostienen dos plantas de galerías corridas.", "Historia: La llegada de los Fúcar (los banqueros alemanes Fugger) en el siglo XVI, tras obtener el arrendamiento de las minas de mercurio de Almadén, impulsó la arquitectura urbana de Almagro y la influencia del norte de Europa.", "Curiosidad: El Corral de Comedias permaneció oculto tras funcionar como posada hasta que en 1954 se redescubrió su estructura barroca original durante unas reformas de la finca.", "teatro", "corral_de_comedias", "arquitectura", "pueblo", "plan_cultural"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -1255,7 +1285,14 @@ export const POIS = [
         "nivel": 3,
         "lat": 38.8894,
         "lng": -3.7068,
-        "radio": 8000
+        "radio": 8000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1158, tras la renuncia de los templarios a defender la fortaleza de Calatrava frente al avance almohade, el abad Raimundo de Fitero y el monje Diego Velázquez asumieron su defensa, dando origen a la Orden de Calatrava.",
+          "Historia: En el siglo XIII, tras la victoria cristiana en las Navas de Tolosa (1212), los maestres de la Orden eligieron Almagro como residencia y centro neurálgico de gobierno administrativo y político de su extenso territorio.",
+          "Cultura: Los antiguos Palacios Maestrales de Almagro, residencia oficial y sede del poder político de los maestres calatravos en la villa, albergan en la actualidad el Museo Nacional del Teatro.",
+          "Historia: En 1487, con la muerte del último maestre electo, el maestrazgo de la Orden de Calatrava se incorporó de forma perpetua a la Corona de Castilla por disposición del papa Inocencio VIII a los Reyes Católicos."
+        ]
       },
       {
         "id": "es_cr_castillo_dona_berenguela",
@@ -1264,7 +1301,14 @@ export const POIS = [
         "nivel": 3,
         "lat": 38.9063,
         "lng": -3.6675,
-        "radio": 4000
+        "radio": 4000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Alfonso VIII entregó la fortaleza a su hija Berenguela de Castilla como regalo de bodas. En 1229, la reina donó el castillo a la Orden de Calatrava, consolidándolo como enclave estratégico en la repoblación del Campo de Calatrava.",
+          "Curiosidad: Existe la tradición local de que en esta fortaleza nació el rey Fernando III el Santo, hijo de la reina Doña Berenguela, aunque carece de confirmación documental y la historiografía sitúa el hecho en el monasterio zamorano de Valparaíso.",
+          "Historia: En 2003, unas excavaciones arqueológicas en el recinto interior sacaron a la luz vestigios de época musulmana, entre ellos los restos de un antiguo foso defensivo excavado en la roca, baños medievales y un aljibe.",
+          "Cultura: Tras perder su uso militar e ingresar en manos privadas en el siglo XIX, el patio interior diáfano del castillo fue utilizado como plaza para celebrar corridas de toros antes de pasar a propiedad pública a mediados del siglo XX."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almagro-y-su-plaza-mayor-corral-de-comedias.png",
@@ -1284,7 +1328,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["ordenes_militares", "castillo", "defensa", "reconquista"],
+    intereses: ["Historia: Tras la victoria de las Navas de Tolosa en 1212, la Orden de Calatrava trasladó aquí su sede principal desde Calatrava la Vieja, convirtiendo este castillo convento en su gran centro militar y espiritual durante siglos.", "Cultura: En la fachada de la iglesia cisterciense destaca un gran rosetón gótico tallado en piedra volcánica roja típica del Campo de Calatrava, diseñado para iluminar directamente la nave central.", "Historia: El actual camino empedrado que asciende por la ladera del cerro fue remodelado en 1560 con motivo de la visita del rey Felipe II y su esposa Isabel de Valois.", "Naturaleza: La fortaleza se alza sobre el cerro Alacranejo a más de 920 metros de altitud, una elevación de origen volcánico que permitía controlar el puerto natural de paso hacia Andalucía por Sierra Morena.", "ordenes_militares", "castillo", "defensa", "reconquista"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-calatrava-la-nueva.png",
@@ -1304,7 +1348,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 115,
     cooldownMin: 60,
-    intereses: ["lagunas", "agua", "rutas", "baño", "fauna", "paisaje"],
+    intereses: ["Naturaleza: El complejo fluviolacustre consta de quince lagunas conectadas a lo largo de 35 kilómetros en el valle del Alto Guadiana. Salvan un desnivel acumulado superior a 140 metros entre la laguna Blanca y el embalse de Peñarroya.", "Naturaleza: Las lagunas se deben al represamiento fluvial por barreras tobáceas de carbonato cálcico. Un evento clave fue la gran crecida de 1545, que rompió la barrera de la laguna del Rey y creó la cascada del Hundimiento.", "Cultura: La Cueva de Montesinos es una cavidad kárstica de unos 80 metros de profundidad en Ossa de Montiel. Miguel de Cervantes situó en su interior el famoso episodio del encantamiento de Don Quijote en la segunda parte de la obra.", "Naturaleza: La Senda del Pie de Enmedio es una ruta oficial circular de 6 kilómetros con 75 metros de desnivel. Comienza en la ermita de San Pedro y rodea las lagunas Tomilla, Tinaja y San Pedro.", "Naturaleza: Ubicado en el altiplano del Campo de Montiel entre 700 y 1.000 metros de altitud, el acuífero kárstico absorbe las escasas lluvias continentales. El agua infiltrada tarda meses en aflorar por manantiales como las Hazadillas o el Ponzoñón.", "lagunas", "agua", "rutas", "baño", "fauna", "paisaje"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-las-lagunas-de-ruidera.png",
@@ -1661,7 +1705,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 130,
     cooldownMin: 90,
-    intereses: ["fauna", "senderismo", "ríos", "bosques", "miradores", "naturaleza"],
+    intereses: ["Naturaleza: Con 2.107 metros de altitud, el pico Empanadas es el punto más elevado del macizo. En este abrupto relieve kárstico nacen los ríos Guadalquivir y Segura, alimentando una extensa red hidrográfica.", "Naturaleza: Con casi 210.000 hectáreas, es el espacio protegido más extenso de España. En sus cantiles rocosos habita la violeta de Cazorla (Viola cazorlensis), una singular planta de flor rosada endémica de estas sierras.", "Cultura: La Ruta Félix Rodríguez de la Fuente abarca 18 kilómetros balizados bordeando el embalse del Tranco, rememorando los escenarios naturales donde el célebre divulgador rodó secuencias memorables de la serie 'El hombre y la tierra'.", "Naturaleza: La orografía condiciona un clima con precipitaciones de unos 500 mm en zonas bajas que superan los 1.600 mm anuales en las cumbres, donde las nevadas son habituales por encima de los 1.200 metros.", "Naturaleza: La ruta del Río Borosa es una de las más célebres del parque. Sus 23,5 kilómetros de ida y vuelta atraviesan la Cerrada de Elías y ascienden hasta el embalse de Aguas Negras y la laguna de Valdeazores.", "fauna", "senderismo", "ríos", "bosques", "miradores", "naturaleza"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-sierras-de-cazorla-segura-y-las-villas.png",
@@ -1681,7 +1725,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 130,
     cooldownMin: 60,
-    intereses: ["geologia", "desfiladero", "paisaje", "paso_natural", "fauna", "rutas"],
+    intereses: ["Naturaleza: El desfiladero excavado por el río Despeñaperros alcanza desniveles de más de 500 metros de altura, constituyendo la principal vía de paso natural entre la Meseta castellana y Andalucía en el municipio de Santa Elena.", "Naturaleza: El Monumento Natural Los Órganos abarca 84,8 hectáreas de crestas de cuarcita armoricana formadas hace 500 millones de años bajo el mar, cuyas estrías verticales simulan tubos de órgano catedralicio debido a la erosión diferencial.", "Naturaleza: El Sendero del Barranco de Valdeazores recorre 6,5 kilómetros lineales hasta el mirador de Los Órganos, situado a 981 metros de altitud, desde donde se observan panorámicas del desfiladero y la vegetación de umbría.", "Naturaleza: El clima mediterráneo templado registra 680 mm anuales de precipitación media, alcanzando 920 mm en la franja central más elevada, lo que favorece un microclima húmedo propicio para robledales de quejigos y melojos en umbría.", "geologia", "desfiladero", "paisaje", "paso_natural", "fauna", "rutas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-despenaperros.png",
@@ -1702,7 +1746,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 125,
     cooldownMin: 120,
-    intereses: ["aceite", "cultura", "historia_urbana", "capitalidad"],
+    intereses: ["Ingeniería: La Catedral de Jaén fue proyectada por Andrés de Vandelvira con planta de salón y bóvedas vaídas a la misma altura. Este diseño unificado sirvió de modelo arquitectónico para la edificación de diversas catedrales en Hispanoamérica.", "Historia: Los Baños Árabes del siglo XI, situados bajo el Palacio de Villardompardo, abarcan 450 metros cuadrados y constituyen uno de los conjuntos de hammam medievales mejor conservados y más grandes visitables de España.", "Historia: Tras la conquista de Jaén en 1246, el rey Fernando III ordenó construir el Alcázar Nuevo en el cerro sobre la antigua alcazaba islámica y levantar una capilla dedicada a Santa Catalina de Alejandría.", "Curiosidad: La reliquia del Santo Rostro, conservada en la Catedral de Jaén, motivó desde el siglo XIV la transformación del templo gótico original en un gran centro de peregrinación de la Corona de Castilla.", "aceite", "cultura", "historia_urbana", "capitalidad"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -1713,7 +1757,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.7654,
         "lng": -3.7922,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1246, tras rinderse la ciudad, el rey musulmán Alhamar entregó la fortaleza a Fernando III el Santo, quien mandó construir el alcázar cristiano adaptado a la cresta rocosa del cerro.",
+          "Historia: Durante la Guerra de la Independencia, las tropas napoleónicas ocuparon la fortaleza entre 1810 y 1812, transformando parte del recinto defensivo en cuartel, prisión, hospital e incluso polvorín militar.",
+          "Ingeniería: La Torre de las Troneras destaca por albergar las antiguas letrinas de la guarnición, diseñadas con un avanzado sistema de evacuación por gravedad y conductos verticales de ventilación.",
+          "Curiosidad: En el extremo del cerro se alza una gran cruz monumental que evoca la tradición según la cual Fernando III mandó colocar allí una cruz tras conquistar la fortaleza en el siglo XIII.",
+          "Cultura: El recinto amurallado original estaba integrado por tres fortalezas: el Alcázar Viejo, el Alcázar Nuevo cristiano y el castillo Abrehuí. Sobre los restos de las dos primeras se erigió el Parador Nacional en 1965."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jaen.png",
@@ -1733,7 +1785,7 @@ export const POIS = [
     perfil: "parada",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["castillo", "pueblo", "edad_media", "plan_visita"],
+    intereses: ["Historia: Ordenado construir por el califa omeya Alhakén II en el año 968, se conserva prácticamente íntegro como uno de los conjuntos fortificados islámicos del siglo X mejor preservados de toda Europa.", "Ingeniería: El recinto amurallado se construyó con la técnica del tapial o tabiyya, una resistente mezcla de arcilla, cal, arena y piedras apisonadas en moldes de madera que resistió más de un milenio intacta.", "Curiosidad: Su lápida fundacional en árabe, que detalla que la fortaleza se terminó en el mes de ramadán del año 357 de la Hégira, se conserva en el Museo Arqueológico Nacional de Madrid.", "Curiosidad: Desde 1969 ondea en su Torre del Homenaje la bandera del Consejo de Europa, un privilegio concedido con motivo del milenio de su construcción que comparte con pocos monumentos en el continente.", "Historia: Se le conoce como la fortaleza de los siete reyes porque hospedó a monarcas como Alfonso VII, Alfonso VIII, Alfonso IX, Pedro II, Sancho VII, Fernando III y Fernando el Católico durante la Reconquista.", "castillo", "pueblo", "edad_media", "plan_visita"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/banos-de-la-encina-y-castillo-de-burgalimar.png",
@@ -2034,7 +2086,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["reino_nazari", "renacimiento", "cultura", "historia_urbana"],
+    intereses: ["Ingeniería: Para abastecer la colina seca de la Sabika, los ingenieros nazaríes construyeron en el siglo XIII la Acequia Real, un canal de seis kilómetros desde el río Darro con túneles y una pendiente precisa del dos al tres por mil.", "Historia: Los Reyes Católicos ordenaron en 1504 ser enterrados en Granada. El escultor Domenico Fancelli labró en mármol de Carrara su mausoleo exento, completado en 1517 y situado sobre la cripta donde reposan sus féretros de plomo.", "Cultura: La Catedral de Granada fue concebida en 1528 por Diego de Siloé al sustituir el diseño gótico inicial por uno renacentista. De las dos torres previstas de 81 metros, solo se levantó una hasta los 57 metros.", "Historia: Fundada en 1349 por el sultán Yusuf I, la Madraza de Granada fue la primera universidad pública estatal de al-Ándalus. Su oratorio del siglo XIV es el único espacio nazarí de su tipo conservado en la península ibérica.", "Historia: Entre 1923 y 1936, el arquitecto Leopoldo Torres Balbás transformó la conservación de la Alhambra al implantar criterios científicos que frenaron las restauraciones fantasiosas, recuperando estancias clave como el Palacio de los Leones o el Partal.", "reino_nazari", "renacimiento", "cultura", "historia_urbana"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -2045,7 +2097,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 37.1761,
         "lng": -3.5881,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: En 1238, el fundador Muhammad I construyó la Acequia Real, una canalización de seis kilómetros desde el río Darro que elevó el agua hasta la colina de la Sabika, permitiendo abastecer a la ciudad palatina y sus huertas.",
+          "Ingeniería: Para regar las huertas más elevadas del Generalife, los ingenieros nazaríes diseñaron el complejo de los Albercones, con una galería subterránea, un pozo profundo y una noria de tracción animal que elevaba el agua captada de la acequia.",
+          "Historia: El esplendor arquitectónico del conjunto palatino se alcanzó en el siglo XIV bajo los reinados de Yusuf I y Muhammad V, impulsores de la edificación del Palacio de Comares y el Palacio de los Leones.",
+          "Cultura: Las decoraciones de yesería en los muros palatinos forman tapices ornamentales con inscripciones poéticas y religiosas, destacando la repetición del lema dinástico nazarí «Solo Dios es vencedor», reproducido cientos de veces sobre el revestimiento.",
+          "Curiosidad: El Generalife funcionaba como una almunia o villa agrícola de descanso para los sultanes, estructurada en cuatro grandes huertas medievales delimitadas por muros de contención que conservan hasta hoy sus nombres históricos tradicionales."
+        ]
       },
       {
         "id": "es_gr_catedral_capilla_real",
@@ -2054,7 +2114,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 37.1764,
         "lng": -3.5995,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: La reina Isabel I de Castilla ordenó mediante Real Cédula en 1504 edificar la Capilla Real para alojar su sepulcro y el de Fernando II. Sus restos descansan allí desde 1521, tras ser trasladados solemnemente desde el convento de San Francisco.",
+          "Ingeniería: Diego de Siloé adaptó en 1528 la cimentación gótica de Enrique Egas ideando pilares acanalados con dos pisos de entablamentos. Esta solución permitió elevar las naves hasta los 34,5 metros respetando la proporción clásica del Renacimiento.",
+          "Cultura: El escultor italiano Domenico Fancelli labró en mármol de Carrara el sepulcro exento de los Reyes Católicos en 1517. Representa al rey militarizado con armadura y espada, y a la reina vestida con sencillez y manos superpuestas.",
+          "Curiosidad: Felipe II trasladó en la década de 1570 varios restos de la familia imperial desde Granada hacia El Escorial. En la Capilla Real permanecieron únicamente los féretros de los Reyes Católicos, Juana I, Felipe I y el príncipe Miguel.",
+          "Ingeniería: El proyecto original preveía dos torres simétricas de 81 metros de altura, pero solo se levantó parcialmente la torre izquierda debido a problemas de cimentación y limitaciones presupuestarias del cabildo catedralicio."
+        ]
       },
       {
         "id": "es_gr_albaicin_san_nicolas",
@@ -2063,7 +2131,13 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.1806,
         "lng": -3.594,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: En julio de 1997, el expresidente estadounidense Bill Clinton contempló el atardecer desde el barrio durante una visita oficial, dando pie a la famosa atribución popular de haber presenciado «la puesta de sol más hermosa del mundo».",
+          "Cultura: Durante sus años universitarios, Federico García Lorca solía subir con sus amigos a la plazoleta de San Nicolás a contemplar la Alhambra iluminada por la luna y leer a poetas como Rubén Darío o Lope de Vega hasta el amanecer.",
+          "Historia: La Iglesia de San Nicolás, levantada en 1535 por el maestro Rodrigo Hernández sobre los restos de la antigua mezquita Azitini, dio su nombre a la conocida plaza y al mirador panorámico adyacente."
+        ]
       },
       {
         "id": "es_gr_sacromonte_cuevas",
@@ -2072,7 +2146,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.1835,
         "lng": -3.5858,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1595 se hallaron en el cerro de Valparaíso los Libros Plúmbeos, 22 planchas de plomo escritas en árabe. Su falso origen apostólico buscaba conciliar islam y cristianismo, impulsando la construcción de la Abadía del Sacromonte.",
+          "Cultura: La zambra gitana surgió en el Sacromonte de la fusión entre tradiciones moriscas y gitanas tras la conquista nazarí. Prohibida por la Inquisición en el siglo XVI por considerarse indecente, sobrevivió en la clandestinidad dentro de las cuevas.",
+          "Ingeniería: Excavadas en la arcilla blanda del barranco de los Negros, las cuevas trogloditas funcionan como arquitectura bioclimática natural. Sus muros encalados y la masa terrestre garantizan una temperatura interior constante de 18 °C durante todo el año.",
+          "Curiosidad: A partir de mediados del siglo XX, bailaoras como María la Canastera convirtieron sus viviendas excavadas en tablaos permanentes, atrayendo a intelectuales y celebridades internacionales fascinados por el ambiente místico del barrio troglodita."
+        ]
       },
       {
         "id": "es_gr_reino_nazari_contexto",
@@ -2081,7 +2162,15 @@ export const POIS = [
         "nivel": 3,
         "lat": 37.1773,
         "lng": -3.5986,
-        "radio": 10000
+        "radio": 10000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Fundado en 1238 por Muhammad I, el Reino Nazarí perduró más de dos siglos y medio como el último Estado musulmán de la Península Ibérica, sobreviviendo mediante el pago de tributos a la Corona de Castilla.",
+          "Ingeniería: Para abastecer de agua la colina de la Sabika y construir la Alhambra, Muhammad I diseñó en el siglo XIII la Acequia Real, captando agua del río Darro en la Presa Real a unos 6 kilómetros de distancia.",
+          "Curiosidad: La entrega de la Alhambra por parte de Boabdil a los Reyes Católicos el 2 de enero de 1492 marcó el fin de la dinastía nazarí y culminó casi ocho siglos de presencia islámica en la península.",
+          "Historia: El Tratado de Jaén de 1246, firmado tras el asedio de Jaén, fijó las fronteras del Reino Nazarí y convirtió a Muhammad I en vasallo del rey Fernando III de Castilla para asegurar la paz del emirato.",
+          "Cultura: Durante los reinados de Yusuf I y Muhammad V en el siglo XIV, la arquitectura nazarí alcanzó su cúspide edilicia con la construcción de obras como la Puerta de la Justicia y el Palacio de los Leones."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/granada.png",
@@ -2101,7 +2190,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 135,
     cooldownMin: 120,
-    intereses: ["reconquista", "boabdil", "paso_montana", "paisaje", "cronica"],
+    intereses: ["Historia: La célebre escena del lamento de Boabdil y el reproche de su madre Aixa (no llores como mujer lo que no supiste defender como hombre) es una leyenda popularizada por Fray Antonio de Guevara en 1539 y fijada toponímicamente por Henríquez de Jorquera en el siglo XVII.", "Cultura: Antes de la denominación castellana, los moriscos llamaban al paso Feg Allah huakbar («Dios es el más grande»), topónimo recogido por el cronista Luis del Mármol Carvajal en el siglo XVI.", "Naturaleza: Geográficamente constituye el último punto en la ruta meridional tradicional desde el que resulta visible la Alhambra antes de que la orografía oculte la cuenca de Granada.", "Naturaleza: Situado a 865 metros de altitud en el municipio de Villa de Otura, este puerto de montaña actúa como paso natural entre la Vega de Granada y el Valle de Lecrín.", "Cultura: El puerto señala el punto de inicio de la Ruta de Boabdil, itinerario cultural y turístico que recorre veinticinco municipios desde Otura hasta el puerto de Adra en Almería.", "reconquista", "boabdil", "paso_montana", "paisaje", "cronica"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puerto-del-suspiro-del-moro.png",
@@ -2122,7 +2211,7 @@ export const POIS = [
     perfil: "parada",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["paisaje", "rutas", "pueblos", "agua", "historia_morisca"],
+    intereses: ["Naturaleza: El sendero homologado PR-A 345 es una ruta circular de 12,4 kilómetros con inicio y fin en Lanjarón. Su itinerario discurre por antiguos caminos de herradura, alineaciones de castaños, ermitas y miradores del valle.", "Naturaleza: El brusco desnivel alpujarreño alberga todos los pisos bioclimáticos mediterráneos, alcanzando en cotas superiores a 2.900 metros el crioromediterráneo, marcado por la ausencia de árboles, pastizales de cumbre e intensas heladas durante gran parte del año.", "Historia: Durante la rebelión mudéjar del año 1500, Fernando el Católico dirigió personalmente el asedio para tomar el castillo de Lanjarón, una fortificación medieval emplazada sobre un risco rocoso al pie de la localidad.", "paisaje", "rutas", "pueblos", "agua", "historia_morisca"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -2133,7 +2222,14 @@ export const POIS = [
         "nivel": 3,
         "lat": 36.8338,
         "lng": -3.5169,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: Los manantiales del Nacimiento filtran agua subterránea de Sierra de Lújar y depositan toba calcárea en el tajo del municipio, modelando una pared de travertino con cascadas y grutas naturales.",
+          "Naturaleza: El río Guadalfeo vertebra el valle de Vélez de Benaudalla, donde la presa de Rules alcanza 94 metros de altura sobre el cauce y retiene un embalse de 114 hectómetros cúbicos de capacidad.",
+          "Naturaleza: El Sendero de la Cámara del Agua realiza un recorrido circular de 11 kilómetros desde el municipio hacia el Guadalfeo, ascendiendo entre bancales de aguacates hasta el depósito que da nombre a la ruta.",
+          "Naturaleza: El microclima del valle, protegido por Sierra Nevada y Sierra de Lújar, registra mínimas invernales que raras veces bajan de 10 °C, permitiendo el cultivo de frutales subtropicales como el aguacate y la chirimoya."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-alpujarras-y-lanjaron.png",
@@ -2233,7 +2329,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 128,
     cooldownMin: 85,
-    intereses: ["costa_tropical", "n340", "fenicios", "chirimoya", "aguacate", "mediterraneo", "sexi"],
+    intereses: ["Naturaleza: El Paraje Natural Acantilados de Maro-Cerro Gordo protege fondos marinos con praderas de Posidonia oceanica y acantilados de caliza, siendo un punto de referencia mediterráneo para la práctica del submarinismo y el esnórquel.", "Cultura: La comarca alberga la Denominación de Origen Protegida Chirimoya de la Costa Tropical de Granada-Málaga, siendo el principal productor mundial de la variedad Fino de Jete gracias a las temperaturas suaves exentas de heladas.", "Naturaleza: El río Guadalfeo nace en Sierra Nevada a más de 2500 metros de altitud y recorre 71 kilómetros hasta desembocar en el mar Mediterráneo entre Salobreña y Motril, formando una fértil vega litoral.", "Naturaleza: El Sendero del Río Verde en Otívar propone un recorrido de 7,8 kilómetros por el valle fluvial, atravesando pozas de aguas cristalinas, cañones e impresionantes cascadas en el Parque Natural Sierra de Tejeda, Almijara y Alhama.", "Naturaleza: La Costa Tropical disfruta de un microclima subtropical con más de 320 días de sol al año y una temperatura media anual de 20 °C, resguardada de los vientos fríos del norte por Sierra Nevada.", "costa_tropical", "n340", "fenicios", "chirimoya", "aguacate", "mediterraneo", "sexi"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -2244,7 +2340,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 36.744,
         "lng": -3.587,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Durante la dinastía nazarí, la alcazaba del castillo funcionó como residencia estival y prisión real para miembros de la familia gobernante caídos en desgracia, entre ellos el futuro sultán Yusuf III, recluido durante casi once años.",
+          "Naturaleza: El río Guadalfeo drena 1290 km² desde Sierra Nevada; sus sedimentos aluviales unieron la antigua isla rocosa de Salobreña a tierra firme, configurando una vega fértil a los pies del promontorio de 68 metros de altitud.",
+          "Naturaleza: La Ruta de los Miradores del Cielo abarca nueve puntos panorámicos en el casco antiguo, destacando el Paseo de las Flores, un voladizo ajardinado bajo la muralla con vistas a la vega, el mar y Sierra Nevada.",
+          "Naturaleza: Protegida de los vientos del norte por Sierra Nevada, la zona presenta un microclima subtropical con una temperatura media superior a 17 °C y 300 días de sol al año, apto para frutales tropicales.",
+          "Naturaleza: El Peñón de Salobreña, promontorio calcáreo de 24 metros sobre el mar, alberga cuatro hábitats litorales donde sobrevive Senecio leucanthemifolius, endemismo botánico que motivó la propuesta de crear allí una microreserva de flora."
+        ]
       },
       {
         "id": "es_gr_motril",
@@ -2253,7 +2357,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 36.745,
         "lng": -3.519,
-        "radio": 5500
+        "radio": 5500,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: El rey Balduino de Bélgica falleció el 31 de julio de 1993 en su residencia veraniega de Villa Astrida, ubicada en Playa Granada, donde solía pasar largos periodos de descanso junto a su esposa la reina Fabiola.",
+          "Naturaleza: La Reserva Natural Concertada Charca de Suárez ocupa 13,5 hectáreas en la vega del río Guadalfeo. Se alimenta del acuífero subterráneo Motril-Salobreña y constituye el humedal costero más relevante de la provincia de Granada.",
+          "Naturaleza: La Sierra de Lújar se alza tras el municipio hasta alcanzar los 1878 metros de altitud en el pico de Los Pelaos. Este macizo montañoso actúa como barrera natural frente a las masas de aire frío procedentes del interior.",
+          "Naturaleza: El sendero circular del Cerro del Toro recorre unos 10 kilómetros entre pinares y antiguas explotaciones mineras. Sus miradores ofrecen vistas panorámicas de la vega motrileña, el núcleo urbano y la franja litoral.",
+          "Naturaleza: Motril disfruta de un microclima subtropical protegido por Sierra Nevada y Sierra de Lújar, con más de 300 días de sol anuales y una media de 20 °C, condiciones que permiten el cultivo de chirimoya, mango y aguacate."
+        ]
       },
       {
         "id": "es_gr_la_herradura",
@@ -2262,7 +2374,14 @@ export const POIS = [
         "nivel": 3,
         "lat": 36.728,
         "lng": -3.728,
-        "radio": 4000
+        "radio": 4000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: La franja marina protegida hasta una milla de la costa destaca por sus grutas sumergidas y sus praderas de posidonia, albergando una relevante población de coral naranja (Astroides calycularis), especie amenazada en el Mediterráneo.",
+          "Historia: El 19 de octubre de 1562, una borrasca atrapó en la bahía a la flota de galeras de Felipe II mandada por Juan de Mendoza, hundiendo 25 naves y provocando la muerte de unas 5.000 personas.",
+          "Naturaleza: La bahía se encuadra en el Paraje Natural Acantilados de Maro-Cerro Gordo, una franja litoral de 12 kilómetros cuyos paredones de caliza marmórea alcanzan desniveles de hasta 150 metros sobre el mar.",
+          "Naturaleza: La bahía disfruta de un microclima subtropical con una temperatura media anual superior a 18 °C y mínimas invernales de 10 °C, favoreciendo el cultivo de frutos exóticos como la chirimoya o el mango en sus laderas."
+        ]
       }
     ],
   },
@@ -2300,7 +2419,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 118,
     cooldownMin: 80,
-    intereses: ["capitulaciones_1492", "reyes_catolicos", "colon", "a92", "vega_de_granada", "campamento_militar"],
+    intereses: ["Historia: El 17 de abril de 1492, los Reyes Católicos y Cristóbal Colón firmaron las Capitulaciones de Santa Fe en este campamento militar, acuerdo que otorgó al navegante el título de almirante y virrey para emprender su expedición a América.", "Historia: La ciudad nació en 1491 como cuartel general de piedra y ladrillo para el asedio a Granada, construido en solo unos meses tras un devastador incendio accidental que destruyó las tiendas de campaña iniciales de Isabel la Católica.", "Curiosidad: Antes de autorizar el viaje transatlántico, los Reyes Católicos firmaron en Santa Fe las capitulaciones para la rendición pacífica y entrega de la Granada nazarí con el rey Boabdil el 25 de noviembre de 1491.", "Cultura: Su trazado urbano en cuadrícula ortogonal con cuatro puertas de acceso monumentales inspiró el diseño de numerosas ciudades hispanoamericanas fundadas durante el periodo colonial.", "capitulaciones_1492", "reyes_catolicos", "colon", "a92", "vega_de_granada", "campamento_militar"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -2476,7 +2595,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 134,
     cooldownMin: 85,
-    intereses: ["volcanismo", "parque_natural", "calas", "aridez", "mediterraneo"],
+    intereses: ["Naturaleza: Con una precipitación media anual inferior a los 160 milímetros, el entorno del cabo registra los índices pluviométricos más bajos de Europa continental, configurando un clima mediterráneo subdesértico.", "Naturaleza: Las Salinas de Cabo de Gata ocupan 400 hectáreas separadas del mar por una barra arenosa de 5 kilómetros, constituyendo la única salina en explotación comercial de Andalucía Oriental y refugio de aves acuáticas.", "Naturaleza: El Cerro del Fraile es el techo volcánico del parque natural, alzándose a 493 metros de altitud como residuo de un antiguo estratovolcán cuyo colapso submarino ocurrió hace unos ocho millones de años.", "Naturaleza: El sendero oficial entre Los Escullos y La Isleta del Moro recorre 1,6 kilómetros de franja litoral acantilada y formaciones de origen volcánico con una dificultad baja.", "Historia: Las antiguas referencias cartográficas romanas denominaron a este promontorio como Promontorium Charidemi y posteriormente Jugum Veneris, albergando en el Cerro de la Testa un templo dedicado a la diosa Venus.", "volcanismo", "parque_natural", "calas", "aridez", "mediterraneo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-de-gata.png",
@@ -2496,7 +2615,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 132,
     cooldownMin: 80,
-    intereses: ["badlands", "aridez", "rodajes", "ramblas", "a92"],
+    intereses: ["Naturaleza: Con menos de 250 milímetros de lluvia anuales y más de 3000 horas de sol, las sierras circundantes frenan los frentes húmedos mediante el efecto Foehn, consolidando el clima subárido más seco del continente europeo.", "Naturaleza: La cuenca del desierto queda enmarcada entre la Sierra de los Filabres y Sierra Alhamilla, donde destaca el monte Alfaro con 744 metros de altitud y la Rambla de Tabernas como cauce torrencial principal del paraje.", "Naturaleza: El Sendero del Desierto (PR-A 269) es una ruta circular de entre 9 y 14 kilómetros que arranca junto a Oasys Mini-Hollywood, recorriendo los lechos de la Ramblilla de Genaro y la Rambla de Tabernas.", "Naturaleza: Las cárcavas y badlands emergieron del fondo marino hace unos ocho millones de años; sus margas y areniscas erosionadas por lluvias torrenciales albergan la planta 'Euzomodendron bourgaeanum', un endemismo botánico exclusivo de esta zona almeriense.", "badlands", "aridez", "rodajes", "ramblas", "a92"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -2507,7 +2626,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.005,
         "lng": -2.377,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Diseñado en 1965 por el escenógrafo Carlo Simi para la película «La muerte tenía un precio», de Sergio Leone, este poblado decorado convirtió al desierto almeriense en el plató emblemático del género spaghetti western.",
+          "Naturaleza: Asentado sobre las margas y areniscas del Paraje Natural Desierto de Tabernas, entre Sierra de los Filabres y Sierra Alhamilla, se ubica en un terreno erosionado por ramblas caracterizado por sus paisajes de badlands.",
+          "Naturaleza: El entorno registra más de 3000 horas de sol anuales y lluvias escasas de unos 240 mm al año, configurando las condiciones climáticas del único desierto propiamente dicho de Europa continental.",
+          "Naturaleza: Su reserva zoológica, abierta en 1997, alberga a más de 800 animales de 200 especies en un espacio acondicionado con vegetación adaptada y un jardín botánico con 250 especies de cactus.",
+          "Naturaleza: Ubicado junto al kilómetro 464 de la carretera N-340a, el parque abarca un recorrido a pie por 30 hectáreas que conecta las ramblas desérticas con las distintas áreas temáticas del recinto."
+        ]
       },
       {
         "id": "es_alm_tabernas",
@@ -2516,7 +2643,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.05,
         "lng": -2.39,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: El efecto Foehn generado por las sierras circundantes bloquea las masas de aire húmedo y reduce las precipitaciones medias a unos 243 mm anuales, convirtiendo a Tabernas en uno de los lugares más secos y soleados de Europa.",
+          "Naturaleza: La depresión intermontañosa queda delimitada al norte por Sierra Bermeja y la Sierra de los Filabres y al sur por Sierra Alhamilla; su red fluvial principal es la rambla de Tabernas, que drena hacia el río Andarax.",
+          "Naturaleza: El Sendero del Desierto PR-A 269 recorre un itinerario circular de unos 9 kilómetros con inicio tras la oficina de turismo de Tabernas, descendiendo a la rambla de Genaro hasta la rambla de Tabernas y el Paraje del Cautivo.",
+          "Naturaleza: Las escasas lluvias torrenciales erosionan los suelos margosos desprovistos de cubierta vegetal, esculpiendo un relieve característico de cárcavas o badlands y chimeneas de faldas al pie del cerro Alfaro.",
+          "Historia: El castillo de Tabernas, alcazaba hispanomusulmana de época medieval ubicada en un cerro a unos 400 metros de altitud, sirvió de residencia al rey nazarí El Zagal antes de capitular ante los Reyes Católicos en 1489."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desierto-de-tabernas.png",
@@ -2536,7 +2671,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 126,
     cooldownMin: 75,
-    intereses: ["yesos", "cuevas", "karst", "geologia", "sorbas"],
+    intereses: ["Naturaleza: El río Aguas atraviesa el karst y alimenta el sistema subterráneo de la Cueva del Agua, con casi 8.500 metros de desarrollo, siendo la mayor cavidad en yesos de España.", "Naturaleza: El subsuelo alberga más de 1.000 cavidades en yeso superpuestas en siete niveles con cristales de estalactitas y bolas de yeso, sirviendo de refugio a la tortuga mora.", "Naturaleza: El sendero del Nacimiento del Río Aguas realiza un recorrido de unos 4 kilómetros desde la aldea de Los Molinos hasta el manantial del río, atravesando el cañón de yesos.", "Naturaleza: El clima mediterráneo árido de Sorbas presenta precipitaciones anuales inferiores a 250 mm y más de 3.000 horas de sol, condicionando un paisaje subdesértico dominado por tomillares adaptados a la sequía.", "Cultura: En el cañón del río Aguas se conservan los restos de antiguos molinos hidráulicos construidos para moler cereal y oliva aprovechando las surgencias de los manantiales kársticos.", "yesos", "cuevas", "karst", "geologia", "sorbas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -2547,7 +2682,13 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.098,
         "lng": -2.126,
-        "radio": 5500
+        "radio": 5500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: El Paraje Natural Karst en Yesos de Sorbas abarca unas 2.357 hectáreas de terreno en las que se contabilizan más de 1.000 entradas a cuevas y galerías labradas en estratos de yeso.",
+          "Naturaleza: Sorbas se asienta a 410 metros de altitud sobre el barranco del Afa, un vertiginoso acantilado rocoso tallado por el cauce del río Aguas y un antiguo meandro de la zona.",
+          "Cultura: Conocido coloquialmente como la «Cuenca chica», el casco urbano de Sorbas destaca por sus viviendas colgadas al filo del cortado del Afa, observables en panorámica desde el mirador del Porche o del Castillo."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/karst-en-yesos-de-sorbas.png",
@@ -2567,7 +2708,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 124,
     cooldownMin: 75,
-    intereses: ["acantilados", "agua_clara", "cabo_de_gata", "sendero", "mirador"],
+    intereses: ["Naturaleza: El lecho marino presenta un pronunciado desnivel nada más entrar al agua, donde la finura de las gravas sin limo evita la suspensión de partículas, favoreciendo una claridad del agua con alta visibilidad para el buceo.", "Historia: El topónimo de la playa proviene de las corrientes marinas convergentes en este punto, que históricamente arrastraban hasta la orilla los cadáveres de marineros y navegantes víctimas de los naufragios en el litoral almeriense.", "Naturaleza: Esta playa rectilínea de 1.160 metros de longitud se caracteriza por sus cantos rodados de cuarzo arrastrados desde Sierra Cabrera, delimitada por acantilados volcánicos de tonos ocres y la prominente Punta de los Muertos.", "Naturaleza: El acceso a pie desde la carretera AL-5106 se realiza por un sendero empinado de 700 metros de longitud y unos 50 metros de desnivel, que conecta en su tramo superior con un mirador hacia la ensenada y Mesa Roldán.", "Naturaleza: Bajo un clima mediterráneo semiárido con escasas precipitaciones, los vientos dominantes de Levante inducen una intensa deriva litoral que acumula las gravas costeras y genera corrientes marinas de fuerte arrastre frente a la orilla.", "acantilados", "agua_clara", "cabo_de_gata", "sendero", "mirador"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/playa-de-los-muertos.png",
@@ -2607,7 +2748,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 75,
-    intereses: ["castillo", "los_veles", "marmol", "a92", "renacimiento"],
+    intereses: ["Cultura: El Patio de Honor, tallado en mármol blanco de Macael por artesanos lombardos, se vendió en 1904 tras el abandono del fortín y acabó reconstruido en el Museo Metropolitano de Arte de Nueva York.", "Cultura: En el término municipal se encuentra la Cueva de los Letreros, donde se conserva la pintura rupestre del Indalo, figura antropomorfa del Neolítico que se ha convertido en el símbolo oficial de Almería.", "Historia: El castillo fue erigido entre 1506 y 1515 por Pedro Fajardo y Chacón, primer marqués de los Vélez, sobre los restos de la antigua alcazaba islámica para asentar el poder del señorío tras la Reconquista.", "Ingeniería: El patio renacentista combinaba de forma singular trazados de tradición hispánica con galerías asimétricas, arcos escarzanos y una estructura de más de dos mil piezas labradas apoyadas sobre aljibes medievales excavados en la roca.", "castillo", "los_veles", "marmol", "a92", "renacimiento"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -2618,7 +2759,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.648,
         "lng": -2.073,
-        "radio": 6500
+        "radio": 6500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Tras el terremoto de 1751 que destruyó la antigua iglesia de San Pedro, el décimo marqués de los Vélez financió la reconstrucción de la población con el levantamiento de un nuevo templo monumental dedicado a la Encarnación.",
+          "Cultura: La Iglesia de la Encarnación alberga un órgano histórico construido en 1796 por el organero francés Guillermo D'Enoyer, realizado en madera de pino rojo sin policromar y considerado de los mejor conservados de Almería.",
+          "Cultura: El Museo Comarcal Velezano Miguel Guirao ocupa el antiguo Hospital Real de 1765, edificio barroco civil de dos plantas articulado alrededor de un patio interior con ocho columnas toscanas y arcos de medio punto rebajados.",
+          "Ingeniería: Diseñada por el monje jerónimo fray Pedro de San Agustín, la iglesia de la Encarnación presenta dos torres cuadradas de 37 metros de altura rematadas por cuerpos octogonales y una cúpula sobre pechinas en el crucero."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/velez-blanco-y-castillo-de-los-fajardo.png",
@@ -2916,7 +3064,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 132,
     cooldownMin: 85,
-    intereses: ["roma", "garum", "bolonia", "estrecho", "arqueologia"],
+    intereses: ["Cultura: El motor económico principal de la ciudad era la industria de salazón de pescado y la fabricación de garum, una codiciada salsa romana elaborada en piletas situadas a pie de playa.", "Naturaleza: Estudios arqueosismológicos han documentado que fuertes terremotos y un posterior evento marino extremo afectaron severamente a las infraestructuras de Baelo Claudia en la Antigüedad tardía, acelerando el abandono de la ciudad.", "Historia: Entre 1917 y 1921, el arqueólogo hispano-británico George Bonsor y el francés Pierre Paris excavaron por primera vez de forma sistemática el yacimiento, sacando a la luz el foro, el capitolio, el teatro y la necrópolis.", "Cultura: Baelo Claudia conserva el trazado urbano completo de una ciudad del Imperio romano, albergando el foro, la basílica, templos capitolinos, un mercado, termas, teatro y sus murallas perimetrales junto al mar.", "roma", "garum", "bolonia", "estrecho", "arqueologia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baelo-claudia.png",
@@ -2936,7 +3084,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 130,
     cooldownMin: 85,
-    intereses: ["a382", "pueblos_blancos", "miradores", "campina", "patrimonio"],
+    intereses: ["Naturaleza: El centro histórico se sitúa sobre la Peña de Arcos, un cortado de calcarenitas con más de 100 metros de altura y un kilómetro y medio de longitud moldeado por la erosión del río Guadalete.", "Historia: Durante el periodo andalusí, la villa llegó a constituirse en el siglo XI como la capital de su propio reino independiente, la Taifa de Arcos, antes de ser integrada en la Taifa de Sevilla.", "Historia: El Castillo Ducal, erigido sobre el antiguo alcázar andalusí de la peña, conserva un gran arco de herradura del siglo XI y pasó a ser residencia señorial de los duques de Arcos tras la Reconquista.", "Curiosidad: El mirador de la Plaza del Cabildo es conocido popularmente entre los vecinos como «el balcón del coño», debido a la exclamación que suelen lanzar los visitantes al asomarse de golpe al abismo del tajo.", "a382", "pueblos_blancos", "miradores", "campina", "patrimonio"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arcos-de-la-frontera.png",
@@ -2956,7 +3104,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 128,
     cooldownMin: 85,
-    intereses: ["estrecho", "viento", "africa", "murallas", "a7"],
+    intereses: ["Naturaleza: La Isla de las Palomas, unida a Tarifa por un espigón, constituye el punto más meridional de la Europa continental y alberga un faro de 33 metros de altura erigido en la segunda mitad del siglo XVIII.", "Naturaleza: El sendero Colada de la Costa recorre más de 12 kilómetros de acantilados entre Tarifa y la torre de Guadalmesí, siguiendo una antigua vía pecuaria con vistas frontales a la costa del continente africano.", "Historia: El castillo de Guzmán el Bueno fue levantado en el año 960 por orden del califa Abderramán III como alcazaba omeya, concebida para vigilar el paso marítimo y defender la frontera sur del califato de Córdoba.", "Naturaleza: El estrecho de Gibraltar actúa como un embudo geográfico donde el efecto Venturi acelera el viento, provocando que Tarifa registre más de 300 días eólicos al año, dominados por las corrientes de levante y poniente.", "Naturaleza: Al ser el paso más estrecho entre Europa y África, la zona es un embudo migratorio donde miles de aves rapaces y cigüeñas se concentran para cruzar los 14 kilómetros de mar aprovechando las térmicas continentales.", "estrecho", "viento", "africa", "murallas", "a7"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarifa.png",
@@ -2976,7 +3124,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 126,
     cooldownMin: 85,
-    intereses: ["puerto", "a7", "estrecho", "logistica", "gibraltar"],
+    intereses: ["Ingeniería: El Mercado Ingeniero Torroja, obra de Eduardo Torroja y Manuel Sánchez Arcas inaugurada en 1935, cuenta con una cúpula laminar de hormigón de casi 48 metros de diámetro apoyada en solo ocho pilares perimetrales.", "Cultura: Algeciras es la cuna del virtuoso guitarrista Paco de Lucía, nacido en 1947 en el barrio de La Bajadilla, cuya memoria y legado musical se divulgan en el Centro de Interpretación Paco de Lucía.", "Historia: Entre enero y abril de 1906, la ciudad acogió la Conferencia de Algeciras, donde representantes de trece potencias internacionales negociaron el destino colonial y la influencia política sobre Marruecos.", "Ingeniería: El Acueducto de los Arcos, proyectado en el siglo XVIII por Pablo Casaus para abastecer a la población desde el manantial de Las Minillas, conserva un imponente tramo levantado en la barriada de El Cobre.", "puerto", "a7", "estrecho", "logistica", "gibraltar"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -3014,7 +3162,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 126,
     cooldownMin: 80,
-    intereses: ["a381", "a390", "romanos", "medieval", "dulces", "mirador"],
+    intereses: ["Ingeniería: Bajo la actual calle Álamo discurre una calzada romana del siglo I d.C. de cinco metros de ancho, que canalizaba sus aguas residuales mediante galerías subterráneas de sillería impermeabilizadas con una mezcla de cal y cerámica triturada.", "Historia: En la cumbre del cerro histórico a 380 metros de altitud se superponen tres recintos fortificados de distintas épocas: los restos de un castellum militar romano, un alcázar islámico califal y la fortaleza medieval con sus murallas.", "Curiosidad: Sobre las losas de la acera de la calzada romana de Asido Caesarina se conservan incisos varios tableros de juego romanos (tabulae lusoriae), grabados por los habitantes de la ciudad para entretenerse en la vía pública.", "Cultura: El alfajor de Medina Sidonia cuenta con la distinción de Indicación Geográfica Protegida; su receta artesanal a base de miel, frutos secos y especias se transmite de forma inalterada y consta documentada al menos desde el año 1487.", "Historia: Las excavaciones en el Cerro del Castillo sacaron a la luz retratos esculpidos en mármol pertenecientes al Alto Imperio romano, entre los que figuran bustos oficiales asociados a la familia imperial de Augusto, como los de Germánico y Popea.", "a381", "a390", "romanos", "medieval", "dulces", "mirador"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medina-sidonia.png",
@@ -3034,7 +3182,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 124,
     cooldownMin: 80,
-    intereses: ["a48", "n340", "pueblos_blancos", "murallas", "miradores"],
+    intereses: ["Curiosidad: Las Hazas de la Suerte son parcelas comunales cuya renta se sortea entre vecinos cada cuatro años bisiestos. Su origen deriva de la victoria judicial del vejeriego Juan Relinque frente a la Casa de Medina Sidonia en 1556.", "Cultura: La cobijada es el traje tradicional femenino que cubre todo el cuerpo y el rostro, dejando solo un ojo al descubierto. Aunque se relacionó popularmente con el pasado islámico, sus patrones responden a la vestimenta castellana de manto y saya.", "Historia: El castillo medieval se sitúa en el punto más alto del recinto amurallado urbano. Conserva un arco de herradura del siglo XI de época islámica con alfiz, que da paso a su patio principal y al patio de armas.", "Historia: El casco antiguo se asienta sobre un cerro a 200 metros de altitud y conserva su recinto amurallado de cuatro hectáreas. Mantiene cuatro puertas medievales: el Arco de la Segur, de la Villa, Sancho IV y Puerta Cerrada.", "a48", "n340", "pueblos_blancos", "murallas", "miradores"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vejer-de-la-frontera.png",
@@ -3266,7 +3414,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 126,
     cooldownMin: 80,
-    intereses: ["karst", "olivar", "senderismo", "caliza", "subbetica"],
+    intereses: ["Naturaleza: Reconocido como Geoparque Mundial por la UNESCO, conserva numerosos fósiles marinos de ammonites en su relieve kárstico y la Cueva de los Murciélagos en Zuheros, cavidad a 980 metros de altitud declarada Monumento Natural.", "Naturaleza: La Sierra Horconera alberga el Pico de la Tiñosa, máxima altitud de la provincia de Córdoba con 1570 metros, mientras el río Bailón ha labrado un profundo cañón de roca caliza en su descenso hacia Zuheros.", "Naturaleza: El Sendero del Río Bailón es una ruta oficial de 12 kilómetros lineales y dificultad media que une Cabra y Zuheros, atravesando la depresión calcárea del Poljé de la Nava y el cañón fluvial.", "Naturaleza: El Parque presenta un clima mediterráneo continentalizado de influencia atlántica con precipitaciones que superan los 1000 mm anuales en las cumbres, generando microclimas frescos que sirven de refugio a especies de latitudes más frías.", "Historia: En 1927, las Sierras Subbéticas fueron declaradas Sitio de Interés Natural por la Junta Central de Parques Nacionales tras la visita de campo de los geólogos participantes en el XIV Congreso Internacional de Geología de 1926.", "karst", "olivar", "senderismo", "caliza", "subbetica"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -3277,7 +3425,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 37.543,
         "lng": -4.316,
-        "radio": 5500
+        "radio": 5500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: En el Geoparque de la UNESCO destaca la Cueva de los Murciélagos a 976 metros de altitud, célebre por su estalagmita «El Espárrago», de 4 metros de altura alimentada sorprendentemente por una estalactita de solo 10 centímetros.",
+          "Historia: En la Cueva de los Murciélagos de Zuheros se descubrió un esqueleto neolítico datado en 7245 años de antigüedad, identificado mediante análisis de ADN en 2018 como uno de los primeros agricultores del sur de la península ibérica.",
+          "Naturaleza: El Cañón del Río Bailón esculpe farallones calizos a los pies de Zuheros, donde el río discurre desde la Nava de Cabra hasta la Depresión del Guadalquivir tras atravesar rocas formadas bajo el mar hace 170 millones de años.",
+          "Naturaleza: El Sendero oficial del Río Bailón ofrece un recorrido lineal de 12 kilómetros de dificultad media entre Cabra y Zuheros, discurriendo por el desfiladero kárstico y el robledal de quejigos conocido como el bosque encantado.",
+          "Naturaleza: Situado a 659 metros de altitud, el enclave presenta temperaturas invernales de hasta -1 °C; la frescura de sus cumbres serranas sirvió de refugio climático a especies de latitudes frías como la cabra montés."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-sierras-subbeticas.png",
@@ -3297,7 +3453,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 80,
-    intereses: ["a4", "guadalquivir", "casas_rojas", "miradores", "viaje"],
+    intereses: ["Naturaleza: El Guadalquivir abraza Montoro a lo largo de casi cinco kilómetros en un pronunciado meandro epigénico encajonado en rocas paleozoicas de Sierra Morena, protegido como Monumento Natural desde 2011.", "Historia: El Puente Mayor o de las Donadas se comenzó a construir en 1498 para unir el casco urbano con la barriada del Retamar y los caminos hacia la Meseta.", "Curiosidad: Según la tradición popular local, el Puente Mayor se apoda «de las Donadas» o «de las Doncellas» porque las mujeres del municipio donaron sus joyas y alhajas para financiar las obras.", "Cultura: La piedra molinaza, una arenisca de color rojizo vivo extraída de canteras locales, da a la arquitectura de Montoro su tono característico en fachadas, zócalos, molinos y puentes.", "Ingeniería: El trazado del meandro ralentiza la fuerza del agua del Guadalquivir, lo que propició la edificación histórica de numerosos complejos de molinos hidráulicos y aceñas a lo largo del cauce.", "a4", "guadalquivir", "casas_rojas", "miradores", "viaje"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montoro.png",
@@ -3317,7 +3473,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 124,
     cooldownMin: 80,
-    intereses: ["barroco", "subbetica", "manantiales", "a333", "miradores"],
+    intereses: ["Cultura: La Fuente del Rey, terminada en 1803 por Remigio del Mármol, combina tres estanques escalonados y 139 caños decorados con mascarones, con esculturas neoclásicas atribuidas a José Álvarez Cubero como el león luchando con una serpiente.", "Historia: En el siglo XVIII, el auge de la industria textil de la seda financió la construcción de sus abundantes iglesias y palacios, convirtiendo a Priego de Córdoba en una de las capitales del barroco andaluz.", "Naturaleza: El Balcón del Adarve se suspende sobre un tajo natural de unos 55 metros de altura que actuó como defensa inexpugnable, ofreciendo amplias panorámicas sobre el río Salado y las huertas de la Subbética.", "Historia: En la calle Río se conserva la casa natal de Niceto Alcalá-Zamora, primer presidente de la Segunda República española, transformada en museo y patronato de investigación sobre el siglo XX español.", "barroco", "subbetica", "manantiales", "a333", "miradores"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/priego-de-cordoba.png",
@@ -3337,7 +3493,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 120,
     cooldownMin: 75,
-    intereses: ["a431", "guadalquivir", "castillo", "vega", "viaje"],
+    intereses: ["Historia: Entre 1901 y 1936, Rafael Desmaissières, XII conde de Torralva, invirtió su fortuna personal en restaurar la fortaleza en ruinas, obra dirigida por el arquitecto Adolfo Fernández Casanova que empleó a cientos de obreros locales.", "Historia: Construido por los omeyas hacia el año 740 sobre un antiguo asentamiento romano, este castillo fortificado protegía la navegación por el río Guadalquivir y el acceso militar a la ciudad de Córdoba.", "Ingeniería: La torre del homenaje, de 33 metros de altura, se encuentra exenta del recinto fortificado y se conecta únicamente mediante un puente de piedra, diseñado para aislar completamente la torre en caso de asedio.", "Curiosidad: El castillo sirvió como escenario de la serie Juego de Tronos durante su séptima temporada, representando el bastión de Altojardín de la Casa Tyrell y las mazmorras de Roca Casterly.", "Historia: Durante el siglo XIV, el rey Pedro I de Castilla utilizó la fortaleza como residencia real, depósito seguro del tesoro de la Corona y prisión para prominentes prisioneros como Doña Juana de Lara.", "a431", "guadalquivir", "castillo", "vega", "viaje"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almodovar-del-rio.png",
@@ -3357,7 +3513,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 118,
     cooldownMin: 75,
-    intereses: ["a45", "a318", "sefardi", "barroco", "subbetica"],
+    intereses: ["Historia: Entre los siglos IX y XII, la antigua Eliossana estuvo habitada predominantemente por judíos. En ella floreció una destacada escuela talmúdica y se conserva la necrópolis judía excavada más extensa de la península ibérica.", "Historia: Tras ser derrotado en la batalla de Lucena en 1483, el emir nazarí Boabdil fue capturado por las tropas castellanas e ingresado como prisionero en la Torre del Homenaje del Castillo del Moral de la localidad.", "Cultura: La Capilla del Sagrario en la Iglesia de San Mateo, proyectada en el siglo XVIII por Leonardo Antonio de Castro, destaca por su planta octogonal, sus abigarradas yeserías policromadas y su tabernáculo labrado por Pedro de Mena.", "Curiosidad: Iniciada en 1498 bajo la traza de Hernán Ruiz I, la Iglesia de San Mateo se levantó sobre la antigua sinagoga mayor y posterior mezquita; su campanario aún conserva en lo alto tres remates esféricos del antiguo yamur.", "a45", "a318", "sefardi", "barroco", "subbetica"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lucena.png",
@@ -3649,7 +3805,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 80,
-    intereses: ["donana", "romeria", "marismas", "caballos", "arena"],
+    intereses: ["Naturaleza: Cada 26 de junio se celebra la Saca de las Yeguas, cuando los ganaderos reúnen a más de mil ejemplares de yegua marismeña criados semilibres en Doñana para conducirlos en manada ante la ermita del Rocío.", "Naturaleza: El arroyo de la Rocina desemboca en el Charco de la Boca junto a la aldea, originando el caño de la Madre de las Marismas, un curso fluvial de 30 km que drena el sector occidental de Doñana.", "Naturaleza: Desde el centro de visitantes La Rocina parte el sendero circular Charco de la Boca, de 3,8 kilómetros, equipado con observatorios de madera sobre la masa de agua para divisar aves acuáticas y migratorias.", "Naturaleza: El entorno registra 575 mm de precipitación media anual pero una evapotranspiración potencial de 840 mm/año, lo que genera un gran déficit hídrico estival y causa la desecación veraniega de la marisma.", "donana", "romeria", "marismas", "caballos", "arena"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-rocio.png",
@@ -3669,7 +3825,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 80,
-    intereses: ["sierra_de_aracena", "n433", "jamon", "castillo", "cueva"],
+    intereses: ["Naturaleza: Bajo el Cerro del Castillo se halla la Gruta de las Maravillas, cavidad kárstica con un desarrollo de 2130 metros y 1400 visitables, repleta de espeleotemas y amplios lagos subterráneos.", "Naturaleza: El sendero homologado PR-A 48 une Aracena con Linares de la Sierra mediante un trazado de unos 5 kilómetros de ida por dehesas de encinas y faldas montañosas.", "Naturaleza: Por su altitud de 682 metros y su orientación a frentes atlánticos, Aracena alcanza precipitaciones medias cercanas a 1000 mm anuales, sustentando extensos castañares y dehesas de alcornoques.", "Naturaleza: El Parque Natural Sierra de Aracena y Picos de Aroche fue declarado Reserva de la Biosfera en 2002 gracias a la conservación de sus dehesas de encinas y alcornoques.", "sierra_de_aracena", "n433", "jamon", "castillo", "cueva"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -3680,7 +3836,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 37.8915,
         "lng": -6.558,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: Sus aguas de alta mineralización en sulfatos han favorecido formaciones kársticas singulares como excéntricas, gours y aragonitos azules, cuyo tono procede de la presencia de restos de cobre en la roca.",
+          "Naturaleza: Esta cavidad kárstica excavada en mármoles y calizas bajo el Cerro del Castillo abarca una red de 2.130 metros de galerías horizontales y acuíferos subterráneos estructurados en tres niveles superpuestos.",
+          "Naturaleza: El recorrido acondicionado de 1.200 metros permite explorar a pie salas como la Sala de las Conchas, el Gran Salón y la Sala de la Catedral, bordeando sus lagos subterráneos.",
+          "Naturaleza: El microclima del interior de la cueva mantiene unas condiciones constantes todo el año, con una temperatura entre los 16 y 19 °C y una humedad relativa que oscila entre el 98 % y el 100 %.",
+          "Historia: Localizada a mediados del siglo XIX durante prospecciones mineras en busca de plata, la Gruta de las Maravillas se acondicionó y abrió al público en 1914, siendo la primera cueva turística habilitada en España."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aracena.png",
@@ -3700,7 +3864,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 124,
     cooldownMin: 80,
-    intereses: ["mineria", "cobre", "paisaje_marciano", "n435", "industrial"],
+    intereses: ["Ingeniería: Corta Atalaya fue una de las mayores minas de cobre a cielo abierto de Europa, excavada con una forma elíptica de 1200 metros de largo, 900 metros de ancho y 345 metros de profundidad.", "Naturaleza: Las aguas del río Tinto presentan una acidez extrema con un pH entre 1,7 y 2,7 y alta concentración de hierro y sulfatos. El Centro de Astrobiología y la NASA estudian sus microorganismos extremófilos como modelo análogo a Marte.", "Ingeniería: La compañía británica Rio Tinto Company Limited inauguró en 1875 un ferrocarril minero de vía estrecha con casi 84 kilómetros de trazado para trasladar directamente el mineral desde las minas hasta el puerto de Huelva.", "Cultura: En 1885 se construyó el barrio residencial de Bella Vista para la dirección británica de la mina. La colonia mantuvo arquitectura y costumbres victorianas e impulsó la práctica del fútbol pionera en España.", "Historia: Durante el Imperio romano la cuenca fue un centro intensivo de extracción de cobre y plata, donde los ingenieros de la época instalaron norias hidráulicas de madera para evacuar agua del subsuelo.", "mineria", "cobre", "paisaje_marciano", "n435", "industrial"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/minas-de-riotinto.png",
@@ -3720,7 +3884,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 124,
     cooldownMin: 80,
-    intereses: ["a49", "murallas", "puerta_del_condado", "andalusi", "viaje"],
+    intereses: ["Historia: Durante el sitio de Niebla en 1262 por Alfonso X el Sabio, las crónicas medievales recogen uno de los primeros usos documentados de la pólvora con fines militares en la península ibérica.", "Ingeniería: El recinto amurallado abarca unos dos kilómetros de perímetro levantados con tapial de arcilla roja local, contando con alrededor de cincuenta torreones y cinco puertas principales, origen del nombre andalusí Lebla Al-Hamra (la Roja).", "Historia: En el siglo XV, Enrique de Guzmán derrumbó la antigua alcazaba islámica del extremo norte del recinto para construir el nuevo alcázar señorial, conocido hoy como el castillo de los Guzmanes.", "Historia: En agosto de 1812, durante la Guerra de la Independencia, las tropas napoleónicas en retirada volaron la torre del homenaje y varios tramos del castillo, dejándolo en ruinas hasta el inicio de las restauraciones del siglo XX.", "a49", "murallas", "puerta_del_condado", "andalusi", "viaje"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/niebla.png",
@@ -3740,7 +3904,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 122,
     cooldownMin: 80,
-    intereses: ["guadiana", "frontera", "portugal", "a49", "estuario"],
+    intereses: ["Cultura: Joaquín Sorolla concluyó en Ayamonte en junio de 1919 su célebre lienzo «La pesca del atún», pintura perteneciente a la serie «Visión de España» encargada por la Hispanic Society of America para su sede en Nueva York.", "Ingeniería: Inaugurado en 1991 y diseñado por el ingeniero José Luis Cancio Martins, el Puente Internacional del Guadiana mide 666 metros de longitud. Su pilar en el lado español se apoya sobre una isla artificial construida en el lecho del río.", "Historia: Tres vecinos de Ayamonte —González de Aguilar, Juan de Zamora y Rodrigo de Xerez— integraron la tripulación de Cristóbal Colón en el viaje del Descubrimiento de América en 1492.", "Curiosidad: Tras el devastador terremoto y maremoto de Lisboa de 1755, el Cabildo secular y el clero nombraron a la Virgen de las Angustias como patrona oficial de Ayamonte en enero de 1756 en acción de gracias por la salvación de la villa.", "guadiana", "frontera", "portugal", "a49", "estuario"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayamonte.png",
@@ -3760,7 +3924,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 122,
     cooldownMin: 75,
-    intereses: ["megalitismo", "prehistoria", "condado", "trigueros", "patrimonio"],
+    intereses: ["Curiosidad: Fue descubierto en 1923 por Armando de Soto mientras excavaba buscando la sepultura del sabio árabe Ben Muza, a quien la tradición local atribuía erróneamente la invención del álgebra.", "Ingeniería: Su galería cubierta mide 21,5 metros de longitud y está orientada hacia el este, permitiendo que los primeros rayos de sol durante los equinoccios se adentren por el corredor hasta iluminar la cámara posterior.", "Historia: Investigaciones recientes revelaron que en el sitio existía antes un círculo neolítico de piedras de 60 metros de diámetro. Las comunidades posteriores reutilizaron sus menhires y estelas para levantar las paredes del dolmen.", "Cultura: Durante las excavaciones iniciales solo se hallaron ocho cuerpos colocados en posición de cuclillas. Cada difunto estaba apoyado en una piedra vertical donde se grabó su efigie, sus armas o un símbolo protector.", "Historia: Tras la carta de aviso del propietario, el arqueólogo Hugo Obermaier examinó el yacimiento e impulsó en 1924 la primera publicación científica sobre el monumento, lo que derivó en su declaración como Monumento Nacional en 1931.", "megalitismo", "prehistoria", "condado", "trigueros", "patrimonio"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/dolmen-de-soto.png",
@@ -4052,7 +4216,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 85,
-    intereses: ["tajo", "serrania", "a367", "cádiz", "puente_nuevo"],
+    intereses: ["Ingeniería: El Puente Nuevo, diseñado por José Martín de Aldehuela y finalizado en 1793 tras cuatro décadas de obras, mide 98 metros de altura y utilizó piedra extraída directamente del propio desfiladero.", "Curiosidad: Las cenizas del cineasta estadounidense Orson Welles reposan desde 1987 en un antiguo pozo de la finca El Recreo de San Cayetano, en Ronda, en la propiedad de su amigo el torero Antonio Ordóñez.", "Historia: En 1735 se construyó un primer puente de un solo arco sobre la garganta, pero colapsó seis años después provocando unas cincuenta víctimas mortales y motivando el diseño de una estructura más sólida.", "Naturaleza: El Tajo de Ronda es un desfiladero de unos cien metros de profundidad modelado por la erosión del río Guadalevín sobre areniscas y conglomerados del Mioceno, protegido como Monumento Natural de Andalucía.", "Cultura: Inaugurada en 1785 y promovida por la Real Maestranza de Caballería, la Plaza de Toros de Ronda destaca por su arquería neoclásica de piedra arenisca y por la influencia de la dinastía taurina de los Romero.", "tajo", "serrania", "a367", "cádiz", "puente_nuevo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ronda.png",
@@ -4072,7 +4236,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 130,
     cooldownMin: 80,
-    intereses: ["gaitanes", "pasarela", "vertigo", "embalses", "senderismo"],
+    intereses: ["Naturaleza: El río Guadalhorce ha excavado en el Desfiladero de los Gaitanes un cañón de tres kilómetros de longitud, con paredes verticales de hasta 300 metros de altura y tramos angostos de apenas diez metros de anchura.", "Naturaleza: El Caminito del Rey realiza un recorrido lineal descendente de 7,7 kilómetros desde el acceso norte en Ardales hasta la barriada de El Chorro en Álora, discurriendo unos tres kilómetros sobre pasarelas colgadas en la pared rocosa.", "Ingeniería: Diseñado en 1901 por el ingeniero Rafael Benjumea para conectar los saltos hidroeléctricos de Gaitanejo y El Chorro, el camino fue bautizado como Caminito del Rey tras recorrerlo el rey Alfonso XIII en 1921.", "Naturaleza: Su clima mediterráneo, con una precipitación media anual de 491 mm en la estación del embalse del Guadalhorce y marcada aridez estival, favorece el desarrollo de sabinares de sabina negral y pinares de pino carrasco.", "Naturaleza: El paraje está catalogado como Zona de Especial Protección para las Aves (ZEPA) por albergar colonias nidificantes de buitre leonado y rapaces como el águila perdicera en los grietones de sus cortados calizos.", "gaitanes", "pasarela", "vertigo", "embalses", "senderismo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caminito-del-rey.png",
@@ -4092,7 +4256,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 124,
     cooldownMin: 75,
-    intereses: ["flamencos", "humedal", "a92", "aves", "paisaje"],
+    intereses: ["Naturaleza: Alberga la mayor colonia reproductora de flamenco común de la península ibérica y la segunda de Europa. En primaveras lluviosas se han registrado más de 20.000 parejas anidando en sus islotes de barro y sal.", "Naturaleza: Con 1.400 hectáreas y 6,5 kilómetros de longitud, es la laguna salada más grande de Andalucía. Se nutre de lluvias, acuíferos y de los arroyos Santillán y El Humilladero en una cuenca endorreica de 150 km².", "Naturaleza: El Sendero de Las Albinas recorre 2,4 kilómetros lineales desde el Centro de Visitantes del Cerro del Palo bordeando el sector norte de la laguna hasta alcanzar el Mirador de La Vicaría, un punto idóneo para observar avifauna.", "Naturaleza: Con precipitaciones medias anuales de 460 mm y temperaturas estivales superiores a 35 °C, la intensa evaporación vacía casi por completo la laguna en verano, haciendo cristalizar la sal y formando una llamativa corteza blanca en el fondo.", "Historia: Explotada como salina comercial desde la época romana hasta la década de 1950, sus antiguos diques, canales y estanques de evaporación abandonados sirven hoy como estructuras clave de anidación para los flamencos y otras aves acuáticas.", "flamencos", "humedal", "a92", "aves", "paisaje"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguna-de-fuente-de-piedra.png",
@@ -4112,7 +4276,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 75,
-    intereses: ["a7", "balcon_de_europa", "costa", "cuevas", "mediterraneo"],
+    intereses: ["Naturaleza: La ruta fluvial de los Cahorros del río Chillar recorre hasta ocho kilómetros por el cauce de agua, atravesando desfiladeros calizos tan angostos que permiten tocar ambas paredes con los brazos extendidos antes de alcanzar la poza del Vado de los Patos.", "Naturaleza: El pico Navachica, con 1.831 metros de altitud en la sierra de Almijara, se sitúa a solo diez kilómetros del litoral acantilado de Nerja, conformando un fuerte desnivel montañoso que desciende bruscamente hasta las calas mediterráneas.", "Naturaleza: La barrera natural de la sierra de Almijara bloquea los vientos del norte y otorga a Nerja un microclima subtropical con una temperatura media anual de 20 °C, propiciando el cultivo extensivo de frutos como el aguacate y el mango.", "a7", "balcon_de_europa", "costa", "cuevas", "mediterraneo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -4123,7 +4287,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 36.791,
         "lng": -3.898,
-        "radio": 5500
+        "radio": 5500,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: El antiguo Palacio de los Condes alberga la fábrica Nuestra Señora del Carmen, en funcionamiento desde 1725. Constituye la única instalación industrial de la Europa continental dedicada a la producción tradicional de miel de caña.",
+          "Historia: En junio de 1569, el comendador Luis de Requesens dirigió a más de 5.000 soldados reales, incluidos tercios desembarcados desde Italia, para sofocar la rebelión morisca atrincherada en las cumbres del Peñón de Frigiliana.",
+          "Cultura: A lo largo del laberíntico Barrio Alto o Barribarto se distribuyen doce paneles cerámicos vidriados que narran, a modo de romance, los acontecimientos y el desenlace del levantamiento morisco de la Axarquía.",
+          "Cultura: Cada mes de agosto, el municipio celebra el Festival Frigiliana Tres Culturas, un evento que evoca la herencia histórica cristiana, musulmana y sefardí mediante actuaciones musicales, gastronomía y actividades que transforman todo su casco antiguo."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nerja.png",
@@ -4143,7 +4314,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 118,
     cooldownMin: 75,
-    intereses: ["a7", "costa_del_sol", "puerto", "casco_historico", "turismo"],
+    intereses: ["Cultura: El aristócrata Alfonso de Hohenlohe transformó una finca rústica de higueras y pinos en el hotel Marbella Club en 1954, atrayendo a la jet set internacional y cambiando el destino turístico del municipio.", "Historia: Tras la conquista cristiana de 1485, se demolió parte de la antigua medina árabe para abrir la Plaza de los Naranjos, centro del poder civil renacentista presidido por el Ayuntamiento y la Casa del Corregidor.", "a7", "costa_del_sol", "puerto", "casco_historico", "turismo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/marbella.png",
@@ -4335,7 +4506,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 37.38619,
         "lng": -5.99242,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: La subida al alminar almohade de la Giralda se realiza mediante 35 rampas interiores continuas sin escalones, diseñadas para que el muecín pudiera ascender a caballo a realizar la llamada a la oración.",
+          "Ingeniería: El Giraldillo, colosal estatua de bronce de cuatro metros de altura y más de una tonelada colocada en 1568 como veleta sobre el remate renacentista de Hernán Ruiz II, simboliza el Triunfo de la Fe.",
+          "Ingeniería: La catedral se levantó sobre el solar de la mezquita aljama almohade manteniendo su planta rectangular, lo que la convirtió en el templo gótico de mayor superficie del mundo con sus cinco naves paralelas.",
+          "Historia: En 1184 el arquitecto Ahmad ibn Baso proyectó la base del alminar empleando grandes sillares de piedra de procedencia romana en sus cimientos antes de continuar la torre en ladrillo.",
+          "Curiosidad: Restauraciones e investigaciones recientes han documentado que el exterior de la Giralda no lucía el ladrillo visto original, sino que estuvo revestido de policromía roja durante la época almohade y renacentista."
+        ]
       },
       {
         "id": "es_sev_alcazar",
@@ -4344,7 +4523,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 37.38389,
         "lng": -5.99139,
-        "radio": 6500
+        "radio": 6500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El complejo palaciego es la residencia real en uso más antigua de Europa, ya que continúa siendo la estancia oficial de la familia real española durante sus visitas a la ciudad de Sevilla.",
+          "Historia: En 1526, el Real Alcázar albergó el enlace matrimonial entre el emperador Carlos V e Isabel de Portugal, un evento dinástico y político de alcance europeo que transformó la vida cortesana de Sevilla.",
+          "Ingeniería: Bajo el Patio del Crucero se ubica un aljibe subterráneo abovedado de tres naves. Esta infraestructura hidráulica lograba reducir la temperatura interior hasta diez grados respecto al exterior.",
+          "Curiosidad: La tradición popular denomina a la cripta del aljibe «Baños de María de Padilla» en referencia a la amante del rey Pedro I, aunque originalmente no fue concebida como baño privado sino como depósito de agua."
+        ]
       },
       {
         "id": "es_sev_italica",
@@ -4353,7 +4539,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 37.44389,
         "lng": -6.04667,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Publio Cornelio Escipión fundó Itálica en el año 206 a. C. para asentar a los soldados heridos tras la batalla de Ilipa, convirtiéndola en la primera ciudad romana establecida fuera de la península itálica.",
+          "Historia: Fue el lugar de nacimiento de Trajano y origen familiar de Adriano, convirtiéndose en la cuna de los primeros emperadores romanos procedentes de una provincia exterior a la península itálica.",
+          "Ingeniería: Su anfiteatro, levantado en época adrianea para unos 25.000 espectadores, aprovechó una vaguada natural del terreno y albergó un foso de servicio subterráneo bajo la tarima de madera de la arena para espectáculos de fieras y gladiadores.",
+          "Cultura: La zona excavada de la ampliación adrianea conserva lujosas viviendas privadas, como la Casa de los Pájaros y la del Planetario, famosas por sus elaborados pavimentos de mosaico decorados con motivos mitológicos."
+        ]
       },
       {
         "id": "es_sev_plaza_espana",
@@ -4388,7 +4581,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.38622,
         "lng": -6.00233,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: El Puente de Isabel II, conocido como Puente de Triana, se construyó entre 1845 y 1852 según el proyecto de Gustavo Steinacher y Ferdinand Bennetot. Es el puente de hierro fundido más antiguo conservado en España.",
+          "Historia: Bajo el Mercado de Triana yacen los restos del Castillo de San Jorge, fortaleza de origen medieval que fue sede e inquisición del Tribunal de la Santa Inquisición española en Sevilla entre 1481 y 1785.",
+          "Cultura: Triana ha sido históricamente el gran centro de producción de cerámica y azulejería sevillana. La antigua fábrica de Cerámica Santa Ana alberga el Centro Cerámica Triana, museo dedicado a su tradición alfarera.",
+          "Curiosidad: Antes del puente de hierro, la conexión sobre el Guadalquivir se realizó durante casi siete siglos mediante el antiguo Puente de Barcas, una estructura flotante de embarcaciones unidas con cadenas instalada por los almohades en 1171."
+        ]
       },
       {
         "id": "es_sev_santiponce",
@@ -4397,7 +4597,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.43528,
         "lng": -6.04333,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1603, una riada del Guadalquivir destruyó el antiguo pueblo. Los monjes de San Isidoro del Campo cedieron terrenos más elevados a los supervivientes, quienes refundaron la villa sobre las ruinas de la ciudad romana de Itálica.",
+          "Historia: En el municipio se encuentra el yacimiento de Itálica, fundada en el 206 a.C. por el general Escipión. Es la primera ciudad romana establecida en Hispania y fuera de la península itálica, cuna de los emperadores Trajano y Adriano.",
+          "Cultura: En el Monasterio de San Isidoro del Campo, monjes jerónimos del siglo XVI practicaron en secreto la Reforma protestante. Entre ellos, Casiodoro de Reina tradujo por primera vez la Biblia completa al castellano, la célebre Biblia del Oso.",
+          "Curiosidad: El nombre de Santiponce deriva de San Geroncio. Tras la Reconquista, el antiguo poblado se denominó inicialmente San Geroncio, término que evolucionó históricamente a través de formas como Sanctioronci hasta derivar en la denominación actual."
+        ]
       },
       {
         "id": "es_sev_torre_oro",
@@ -4406,7 +4613,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.38244,
         "lng": -5.99647,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: Su nombre proviene del brillo dorado que proyectaba sobre el Guadalquivir. En la restauración de 2005 se demostró que el destello se debía a una mezcla de mortero de cal y paja prensada, desmontando la hipótesis de los azulejos.",
+          "Historia: La torre albarrana fue mandada construir entre 1220 y 1221 por el gobernador almohade Abu l-Ula. Su función principal era defender el puerto fluvial, la entrada al Arenal y el puente de barcas sobre el río Guadalquivir.",
+          "Ingeniería: Posee tres cuerpos superpuestos: los dos inferiores son dodecagonales de época almohade y mudéjar. El remate cilíndrico superior con cúpula fue proyectado en 1760 por el ingeniero militar Sebastián Van der Borcht tras el terremoto de Lisboa.",
+          "Cultura: El edificio albergó desde 1944 el Museo Naval de Sevilla, dependiente de la Armada Española. Antes de su uso museístico funcionó como capilla, prisión nobiliaria, almacén de pólvora y sede de la Comandancia de Marina."
+        ]
       },
       {
         "id": "es_sev_setas",
@@ -4415,7 +4629,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.39325,
         "lng": -5.99188,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Diseñadas por el arquitecto Jürgen Mayer, las Setas miden 150 metros de largo por 70 de ancho y albergan 3500 piezas de madera microlaminada de abeto finés, siendo la estructura de madera unida por cola más grande del mundo.",
+          "Historia: Durante las obras emergieron restos romanos del siglo I d. C. y una casa islámica almohade de los siglos XII y XIII. Los vestigios se conservan en su emplazamiento original dentro del museo subterráneo Antiquarium.",
+          "Cultura: El diseño reticular de seis parasoles se inspiró en las bóvedas de la Catedral de Sevilla y en los ficus centenarios de la cercana plaza del Cristo de Burgos, concebido para generar sombra en el caluroso verano hispalense.",
+          "Curiosidad: El solar albergó el Mercado de la Encarnación desde el siglo XIX hasta su demolición en 1973 por problemas estructurales. Tras permanecer tres décadas como aparcamiento provisional, el Ayuntamiento convocó en 2004 el concurso para su renovación."
+        ]
       },
       {
         "id": "es_sev_san_isidoro_campo",
@@ -4433,7 +4654,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.39027,
         "lng": -5.987,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: Tras peregrinar a Jerusalén en 1519, Fadrique Enríquez de Ribera midió la distancia hasta el monte Calvario e instauró desde su palacio un Vía Crucis de idéntica longitud, origen del nombre del recinto y germen de la Semana Santa sevillana.",
+          "Cultura: El virrey de Nápoles Per Afán de Ribera reunió en el siglo XVI una de las colecciones privadas de escultura romana clásica más importantes de España, cuyos mármoles y bustos de emperadores decoran hoy las hornacinas del patio principal.",
+          "Ingeniería: El palacio conserva la mayor colección de azulejos de cuenca o arista del mundo, elaborados en el siglo XVI por los alfareros de Triana Diego y Juan Pulido mediante moldes que aceleraban la producción a dos mil piezas semanales.",
+          "Historia: Los cimientos del edificio se comenzaron a levantar en 1483 sobre solares incautados por la Inquisición, bajo la iniciativa de Pedro Enríquez de Quiñones y Catalina de Ribera, adentrándose en una evolución arquitectónica que abarcó varios siglos."
+        ]
       },
       {
         "id": "es_sev_parque_maria_luisa",
@@ -4442,7 +4670,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.37694,
         "lng": -5.98694,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1893, la infanta María Luisa Fernanda de Borbón donó a Sevilla más de 18 hectáreas de los jardines de su residencia en el Palacio de San Telmo, estableciendo como condición que permanecieran para siempre como parque público.",
+          "Cultura: El paisajista francés Jean-Claude Nicolas Forestier remodeló el espacio entre 1912 y 1922 adaptando el paisajismo romántico al clima sevillano e inspirándose en el Alhambra, el Generalife y los Reales Alcázares.",
+          "Historia: El recinto sirvió como núcleo central de la Exposición Iberoamericana de 1929, hito urbano para el que se construyeron monumentales plazas e icónicos pabellones internacionales y regionales en sus terrenos y alrededores.",
+          "Curiosidad: El parque alberga numerosas glorietas ornamentadas con cerámica polícroma sevillana dedicadas a figuras literarias y culturales, como las plazas conmemorativas de Gustavo Adolfo Bécquer, Miguel de Cervantes o los hermanos Álvarez Quintero."
+        ]
       },
       {
         "id": "es_sev_cartuja",
@@ -4451,7 +4686,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.38583,
         "lng": -5.99306,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Cristóbal Colón se alojó frecuentemente en el monasterio durante sus estancias en Sevilla. Tras su fallecimiento en Valladolid en 1506, sus restos fueron trasladados a la capilla de Santa Ana del cenobio, donde permanecieron enterrados aproximadamente treinta años.",
+          "Curiosidad: En 1841 el empresario inglés Charles Pickman instaló en el recinto desamortizado una célebre fábrica de loza y porcelana, añadiendo chimeneas industriales de ladrillo y hornos de cocción integrados entre los antiguos edificios conventuales.",
+          "Historia: Durante la Guerra de la Independencia, en 1810, las tropas napoleónicas expulsaron a la comunidad cartuja del monasterio y reconvirtieron el recinto en cuartel de caballería y fortificación militar.",
+          "Cultura: Tras su completa rehabilitación para la Exposición Universal de 1992, el conjunto monumental acoge las sedes del Centro Andaluz de Arte Contemporáneo (CAAC) y del Instituto Andaluz del Patrimonio Histórico (IAPH)."
+        ]
       },
       {
         "id": "es_sev_la_algaba",
@@ -4460,7 +4702,14 @@ export const POIS = [
         "nivel": 3,
         "lat": 37.45,
         "lng": -6,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El 29 de marzo de 1924, una riada del Guadalquivir provocó el derrumbe de tres arcos del puente Rodríguez de la Borbolla mientras unos doscientos vecinos contemplaban la crecida, causando quince víctimas mortales.",
+          "Ingeniería: El puente Rodríguez de la Borbolla se construyó para sustituir el paso de barcas sobre el Guadalquivir mediante una estructura metálica de celosía remachada de la siderometalúrgica Duro Felguera, apoyada en cuatro vanos de 40 metros.",
+          "Ingeniería: La torre de los Guzmanes, concluida en 1446 en estilo mudéjar con 27 metros de altura, cuenta con muros de ladrillo de dos metros de grosor en su base y sirvió de refugio vecinal durante las avenidas del río.",
+          "Cultura: El topónimo de La Algaba proviene del término árabe Al-Gaba, traducido como «el bosque», en alusión a la frondosa vegetación ribereña que caracterizaba la vega del Guadalquivir en época andalusí."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sevilla.png",
@@ -4641,7 +4890,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 132,
     cooldownMin: 70,
-    intereses: ["romanico", "fortaleza", "prepirineo", "cine"],
+    intereses: ["Cultura: El director de cine Ridley Scott eligió la fortaleza como escenario principal para recrear las Cruzadas del siglo XII en su película 'El reino de los cielos' (2005), protagonizada por Orlando Bloom y Eva Green.", "Historia: En el siglo XI, Sancho III el Mayor promovió su construcción sobre un espolón rocoso a 1071 metros de altitud para vigilar la llanura de la Hoya de Huesca y controlar la cercana plaza musulmana de Bolea.", "Historia: A finales del siglo XI, el rey Sancho Ramírez instaló en la fortaleza una comunidad de canónigos de San Agustín, transformando el enclave en un espacio mixto donde convivían la función defensiva militar y la abadía monástica.", "Naturaleza: En la sierra de Loarre, paleontólogos de la Universidad de Zaragoza hallaron en 2019 un yacimiento con más de 60 huevos fósiles de dinosaurios titanosaurios, hoy estudiados y expuestos en el laboratorio paleontológico del municipio.", "romanico", "fortaleza", "prepirineo", "cine"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-loarre.png",
@@ -4661,7 +4910,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 131,
     cooldownMin: 75,
-    intereses: ["conglomerados", "escalada", "aves_rapaces", "prepirineo"],
+    intereses: ["Naturaleza: Los Mallos de Riglos son imponentes farallones de conglomerado de hasta 300 metros de altura junto al río Gállego, alzándose en el Prepirineo hasta los 1179 metros de altitud en el cerro de San Cristóbal.", "Naturaleza: Las paredes verticales albergan una de las mayores colonias de buitre leonado de Europa, concentrando entre 70 y 100 parejas nidificantes en sectores rocosos como el Paredón de los Buitres o el mallo Arcaz.", "Naturaleza: El sendero «Camino del Cielo» realiza un recorrido circular de 5,4 kilómetros y 400 metros de desnivel desde Riglos, ofreciendo panorámicas de los colosos rocosos desde miradores como el de Espinalba.", "Naturaleza: Su clima de transición entre el valle del Ebro y el Prepirineo registra unos 600 mm de lluvia anuales y una media de 10 °C, con elevadas amplitudes térmicas que favorecen la presencia del carrascal mediterráneo.", "Historia: En 1097, el rey Pedro I de Aragón entregó Riglos y las poblaciones vecinas como dote matrimonial a su segunda esposa Berta, dando origen al territorio histórico conocido como el Reino de los Mallos.", "conglomerados", "escalada", "aves_rapaces", "prepirineo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mallos-de-riglos.png",
@@ -4681,7 +4930,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 70,
-    intereses: ["somontano", "pasarelas", "rio_vero", "colegiata"],
+    intereses: ["Naturaleza: El río Vero ha labrado en las calizas del Parque Natural de la Sierra y los Cañones de Guara un cañón con paredes de hasta 200 metros de altura y un recorrido continuo de unos 8 kilómetros.", "Naturaleza: La Ruta de las Pasarelas del Vero es un sendero circular de 3 kilómetros de longitud y 180 metros de desnivel que parte del Ayuntamiento de Alquézar y recorre las paredes del cañón hasta la antigua central hidroeléctrica.", "Naturaleza: En los manantiales y paredones húmedos del cañón habita la grasilla (Pinguicola grandiflora), una planta carnívora cuyas hojas segregan sustancias pegajosas y enzimas digestivas para atrapar y disolver pequeños insectos.", "Historia: A comienzos del siglo IX, el caudillo Jalaf ibn Rasid erigió la fortaleza musulmana de Al-Qasr sobre una peña rocosa, enclave que dio nombre a Alquézar y dio origen a la actual Colegiata de Santa María la Mayor.", "Naturaleza: Alquézar, situado a 660 metros de altitud en la falda meridional de la Sierra de Sevil, presenta un clima continental con una temperatura media anual de 11,3 °C y marcada amplitud térmica entre verano e invierno.", "somontano", "pasarelas", "rio_vero", "colegiata"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alquezar.png",
@@ -4701,7 +4950,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 129,
     cooldownMin: 70,
-    intereses: ["a23", "pirineo", "camino_de_santiago", "frontera"],
+    intereses: ["Historia: En 1077, el rey Sancho Ramírez promulgó el fuero de Jaca, convirtiendo la villa en la primera capital del Reino de Aragón y sede episcopal, lo que impulsó su crecimiento urbano en el Camino de Santiago.", "Ingeniería: Diseñada en 1592 por el ingeniero italiano Tiburcio Spannocchi por orden de Felipe II, la Ciudadela de Jaca es una fortaleza pentagonal de traza a la italiana ideada con muros bajos y baluartes para resistir la artillería.", "Cultura: La Catedral de San Pedro de Jaca, iniciada a finales del siglo XI, difundió el ajedrezado jaqués, un motivo decorativo de tacos rectangulares alternados que se extendió por los templos románicos de la ruta jacobea.", "Curiosidad: El foso de la Ciudadela de Jaca alberga desde los años 1970 una manada de ciervos comunes que vive libremente en su interior y se ha convertido en un elemento representativo de la fortificación.", "a23", "pirineo", "camino_de_santiago", "frontera"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -4712,7 +4961,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.5708,
         "lng": -0.5485,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Diseñada en 1592 por el italiano Tiburzio Spannocchi por encargo de Felipe II, es un pentágono regular con cinco baluartes en flecha. Constituye un ejemplo de fortificación de traza a la italiana conservado íntegro en Europa.",
+          "Curiosidad: Su foso seco, de 1060 metros de perímetro, alberga desde marzo de 1974 una manada de ciervos ibéricos. Los animales viven en el interior del foso y se han convertido en un símbolo distintivo del recinto.",
+          "Historia: En la guerra de la Independencia, fue ocupada por tropas francesas en 1809. Las fuerzas españolas al mando del general Francisco Espoz y Mina recuperaron la fortaleza el 17 de febrero de 1814 tras varios meses de asedio.",
+          "Cultura: En sus antiguos cuarteles se ubica el Museo de Miniaturas Militares, que expone más de 35 000 figuras de plomo en 23 dioramas. Muestra la evolución del armamento y las tácticas bélicas desde el Antiguo Egipto."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jaca.png",
@@ -4752,7 +5008,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 127,
     cooldownMin: 65,
-    intereses: ["romanico", "aragón_medieval", "bosque", "panteon_real"],
+    intereses: ["Ingeniería: El monasterio viejo está embutido bajo un enorme farallón de roca conglomerada que actúa como techumbre natural del claustro e iglesia, adaptando la arquitectura románica a la inclinación y cavidad de la montaña.", "Historia: Sirvió como panteón de los primeros reyes de Aragón, albergando las sepulturas de monarcas como Ramiro I, Sancho Ramírez y Pedro I. En 1770, Carlos III mandó construir el panteón real neoclásico sobre las tumbas medievales.", "Curiosidad: La tradición sostiene que el cenobio custodió el Santo Grial durante la Edad Media antes de ser trasladado a Zaragoza y, finalmente, a la catedral de Valencia.", "Cultura: El claustro conserva capiteles románicos del siglo XII atribuibles al anónimo Maestro de San Juan de la Peña o de Agüero, célebre por sus esculturas de ojos abultados con escenas del Génesis y de la vida de Jesús.", "Historia: Tras sufrir varios incendios devastadores, entre ellos el de 1675, la comunidad monástica abandonó las instalaciones originarias bajo el cortado y erigió en 1705 un nuevo monasterio barroco en la meseta superior de San Indalecio.", "romanico", "aragón_medieval", "bosque", "panteon_real"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-san-juan-de-la-pena.png",
@@ -4772,7 +5028,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 125,
     cooldownMin: 80,
-    intereses: ["barrancos", "cañones", "guara", "buitres"],
+    intereses: ["Naturaleza: Las paredes calizas albergan la Petrocoptis guarensis, una planta endémica de esta sierra. Al madurar, sus frutos curvan el pedúnculo hacia la pared rocosa para adherir las semillas a la grieta mediante un estrofíolo peloso.", "Naturaleza: El parque natural se extiende desde los 430 metros de altitud en el cauce del río Alcanadre hasta los 2077 metros del Tozal de Guara. Ríos como el Vero, Mascún y Flumen han labrado profundos cañones calizos.", "Naturaleza: La ruta a la ermita de San Martín de la Val d'Onsera recorre el cauce del barranco de San Salvador hasta un circo rocoso con una cascada de más de 30 metros y la ermita rupestre.", "Naturaleza: Su ubicación entre el Valle del Ebro y los Pirineos crea un fuerte contraste bioclimático: la vertiente norte húmeda alberga bosques de hayas y abetos, mientras la solana sur está dominada por carrascales y vegetación mediterránea.", "Cultura: En el entorno del río Vero se conservan más de 60 abrigos con arte rupestre paleolítico, levantino y esquemático, un conjunto integrado en el parque natural que está declarado Patrimonio Mundial por la UNESCO.", "barrancos", "cañones", "guara", "buitres"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-la-sierra-y-los-canones-de-guara.png",
@@ -4792,7 +5048,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 123,
     cooldownMin: 60,
-    intereses: ["somontano", "a22", "catedral", "rio_vero"],
+    intereses: ["Historia: El 11 de agosto de 1137 se firmaron en Barbastro las capitulaciones matrimoniales entre la infanta Petronila de Aragón y el conde Ramón Berenguer IV de Barcelona, documento clave que dio origen a la Corona de Aragón.", "Ingeniería: La Catedral de la Asunción, construida entre 1517 y 1533, destaca por su nave tipo salón sustentada por seis esbeltas columnas fasciculadas de unos 15 metros que se abren como palmeras en complejas bóvedas de crucería estrellada.", "Curiosidad: El campanario hexagonal de la Catedral de Barbastro se halla exento y separado de la nave principal, ya que se erigió aprovechando la cimentación y estructura del antiguo alminar de la mezquita mayor islámica previa.", "Cultura: El retablo mayor de la catedral combina un basamento renacentista labrado en alabastro por el célebre escultor Damián Forment con un cuerpo superior de madera policromada realizado a comienzos del siglo XVII por varios maestros locales.", "somontano", "a22", "catedral", "rio_vero"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/barbastro.png",
@@ -4812,7 +5068,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 122,
     cooldownMin: 65,
-    intereses: ["sobrarbe", "plaza_mayor", "pirineo", "murallas"],
+    intereses: ["Cultura: Cada dos años se representa en la Plaza Mayor «La Morisma», un drama teatral popular interpretado por cientos de vecinos que escenifica la mítica batalla del año 724 entre cristianos y musulmanes.", "Historia: En 1124, Alfonso I concedió a Aínsa la Carta Puebla basada en el Fuero de Jaca, consolidándola como villa real y principal eje defensivo y comercial del condado de Sobrarbe.", "Ingeniería: A finales del siglo XVI, el ingeniero Tiburcio Spanocchi transformó el castillo medieval adaptándolo a la artillería con bastiones y baluartes por orden de Felipe II para proteger la frontera pirenaica.", "Curiosidad: El monumento de la Cruz Cubierta resguarda desde 1650 un templete que conmemora la leyenda del año 724, según la cual una cruz de fuego sobre una carrasca guio a los cristianos hacia la victoria.", "sobrarbe", "plaza_mayor", "pirineo", "murallas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ainsa.png",
@@ -4832,7 +5088,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 118,
     cooldownMin: 55,
-    intereses: ["a22", "cinca", "castillo", "eje_huesca_lleida"],
+    intereses: ["Historia: Durante su infancia entre 1214 y 1217, el rey Jaime I el Conquistador residió y fue educado en el castillo de Monzón bajo la tutela del maestre templario Guillem de Mont-rodón.", "Historia: El castillo de Monzón se convirtió en 1143 en la encomienda templaria principal de la Corona de Aragón y fue una de las últimas fortificaciones en rendirse en 1309 tras la disolución de la orden.", "Historia: Entre los siglos XIII y XVII, la catedral de Santa María del Romeral de Monzón acogió en repetidas ocasiones las sesiones de las Cortes de la Corona de Aragón.", "Cultura: En Monzón nació en 1846 el jurista, economista y político Joaquín Costa, máximo exponente del regeneracionismo español y defensor de la célebre fórmula reformista «escuela y despensa».", "a22", "cinca", "castillo", "eje_huesca_lleida"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -4843,7 +5099,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.9093,
         "lng": 0.1928,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En este castillo creció y fue educado el futuro rey Jaime I el Conquistador. Tras la muerte de su padre Pedro II en la batalla de Muret, el niño quedó bajo la tutela del maestre templario Guillem de Mont-rodón.",
+          "Historia: Tras la orden de disolución de la Orden del Temple, los caballeros de Monzón se negaron a entregar la fortaleza y resistieron el asedio del ejército de Jaime II de Aragón hasta su capitulación en mayo de 1309.",
+          "Ingeniería: En la Edad Moderna la fortaleza medieval se adaptó a la artillería con murallas de ladrillo dispuestas en talud para absorber proyectiles y un acceso en zigzag que mantenía a los atacantes continuamente al alcance del fuego defensivo.",
+          "Historia: En 1083 la fortaleza musulmana fue tomada por Rodrigo Díaz de Vivar, el Cid Campeador, mientras prestaba servicio al rey de la taifa de Zaragoza, antes de su conquista cristiana definitiva en 1089 por Sancho Ramírez.",
+          "Historia: En 1143 Ramón Berenguer IV entregó el castillo a los templarios para resolver la disputa territorial derivada del testamento sin herederos de Alfonso I el Batallador, convirtiéndolo en la encomienda templaria principal de la Corona de Aragón."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monzon.png",
@@ -4863,7 +5127,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 116,
     cooldownMin: 60,
-    intereses: ["esqui", "pirineo", "portalet", "a136"],
+    intereses: ["Naturaleza: El Pico Anayet, situado en el dominio de Formigal, es el resto de una chimenea volcánica aragonesa de 2574 metros de altitud que modela el paisaje rocoso junto al río Gállego.", "Naturaleza: La ruta senderista hacia los ibones de Anayet parte del Corral de las Mulas a 1625 metros de altitud y asciende por el barranco de Culibillas hasta alcanzar la cubeta lacustre a 2227 metros.", "Historia: Fundada en mayo de 1964 por emprendedores locales e impulsada con la apertura del telesilla El Furco en 1965, la estación transformó la economía pastoril del Valle de Tena en motor turístico.", "esqui", "pirineo", "portalet", "a136"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/formigal.png",
@@ -5073,7 +5337,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 132,
     cooldownMin: 90,
-    intereses: ["n232", "bajo_aragon", "castillo", "motorland"],
+    intereses: ["Historia: En 1412, Alcañiz acogió las reuniones parlamentarias que concluyeron con la Concordia de Alcañiz, acuerdo que fijó el procedimiento legal para elegir al sucesor del rey Martín I mediante el posterior Compromiso de Caspe.", "Cultura: Entre 1965 y 2003, las calles del casco urbano acogieron el mítico Circuito Guadalope, una de las pruebas automovilísticas urbanas más destacadas de España, cuyo legado dio origen al actual complejo internacional MotorLand Aragón.", "Cultura: El castillo de los Calatravos conserva en la torre del Homenaje y el claustro un conjunto excepcional de pinturas murales del siglo XIV en estilo gótico lineal, con escenas históricas como la conquista de Valencia por Jaime I.", "Curiosidad: Bajo la plaza de España existe una red de pasadizos subterráneos excavados en roca arenisca que conectan una bodega medieval de sillería y una nevera urbana del siglo XVII donde se almacenaba nieve para la ciudad.", "n232", "bajo_aragon", "castillo", "motorland"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -5084,7 +5348,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.0789,
         "lng": -0.2048,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: El circuito de velocidad fue diseñado por el célebre arquitecto alemán Hermann Tilke con el asesoramiento técnico del expiloto de Fórmula 1 Pedro de la Rosa, quien sugirió incluir una recta de más de 1700 metros.",
+          "Curiosidad: En 2010 entró en el calendario de MotoGP como circuito reserva en sustitución del Gran Premio de Hungría y se convirtió en el primer trazado debutante en recibir el premio IRTA al mejor Gran Premio del año.",
+          "Historia: Nació para suceder al histórico circuito urbano de Guadalope, trazado por las calles de Alcañiz entre 1965 y 2003, preservando la vinculación de la localidad con el automovilismo en una instalación permanente de máxima seguridad.",
+          "Ingeniería: El complejo ocupa 350 hectáreas e integra un circuito de velocidad adaptado al relieve natural con 50 metros de desnivel, un circuito internacional de karting, cuatro trazados de tierra y un parque tecnológico de investigación automovilística."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcaniz.png",
@@ -5104,7 +5375,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 130,
     cooldownMin: 75,
-    intereses: ["grullas", "migracion", "humedal", "miradores"],
+    intereses: ["Naturaleza: Ocupa una cuenca endorreica sin salida al mar a casi 1.000 metros de altitud, con 7,5 km de longitud, 2,5 km de anchura y 1.924 hectáreas protegidas, siendo la mayor laguna salada natural de la Península Ibérica.", "Naturaleza: Es el principal punto de descanso en la ruta migratoria occidental de la grulla común (Grus grus) en Europa, llegándose a registrar picos récord de más de 111.000 ejemplares en una sola jornada.", "Naturaleza: El sendero circular PR-Z 33 rodea por completo la cuenca lacustre con un recorrido de 30,6 kilómetros que enlaza siete observatorios ornitológicos y la Ermita del Buen Acuerdo.", "Naturaleza: Su clima semiárido de altiplano registra extremas térmicas de -22,4 ºC a 39,7 ºC y una fuerte evaporación que supera la precipitación media anual de 458 mm, provocando drásticas oscilaciones del nivel hídrico.", "Historia: A orillas del humedal destaca la ermita de la Virgen del Buen Acuerdo, templo de origen románico del siglo XIII que sirvió históricamente como punto emblemático de devoción y mirador panorámico de la cuenca.", "grullas", "migracion", "humedal", "miradores"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguna-de-gallocanta.png",
@@ -5124,7 +5395,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 130,
     cooldownMin: 75,
-    intereses: ["matarraña", "puente", "castillo", "piedra"],
+    intereses: ["Historia: En 1429, el rey Alfonso V de Aragón convocó Cortes en Valderrobres. Las sesiones eclesiásticas tuvieron lugar en la iglesia de Santa María la Mayor y los banquetes se celebraron en el Salón de las Chimeneas del castillo.", "Ingeniería: El puente medieval de piedra sobre el río Matarraña fue proyectado con un perfil en «lomo de asno» y potentes tajamares en cuña para resistir las violentas riadas y el impacto de los troncos arrastrados por la corriente.", "Curiosidad: El castillo-palacio de Valderrobres y la iglesia parroquial de Santa María la Mayor forman un conjunto monumental gótico interconectado físicamente a través de un pasadizo aéreo elevado que comunicaba ambas estructuras.", "Curiosidad: A finales del siglo XVI, la entrada al casco histórico tras cruzar el puente de piedra quedó integrada en la propia estructura de la casa consistorial mediante la apertura del Portal de San Roque.", "matarraña", "puente", "castillo", "piedra"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valderrobres.png",
@@ -5144,7 +5415,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 128,
     cooldownMin: 75,
-    intereses: ["a23", "gudar_javalambre", "castillo", "parada"],
+    intereses: ["Curiosidad: En los muros de sillería de las mazmorras subterráneas del castillo aún se pueden observar grabados e inscripciones realizados por prisioneros maquis detenidos tras la Guerra Civil española.", "Historia: Tras la Guerra de los Dos Pedros en el siglo XIV, la familia Fernández de Heredia asumió el señorío de la villa y promovió la edificación del imponente castillo-palacio gótico como centro de su poder político y residencia.", "Ingeniería: El castillo abarca una superficie construida de unos 4.000 metros cuadrados y se articula en torno a un gran patio de armas porticado, con galerías decoradas por arcos apuntados sobre columnas de sección octogonal.", "Historia: A lo largo de su historia, el recinto de la fortaleza cambió de uso en múltiples ocasiones: funcionó como convento franciscano entre 1614 y 1835, cárcel de distrito y posterior cuartel militar.", "Cultura: La excolegiata de Santa María la Mayor, erigida en el siglo XV, destaca por albergar una sola nave de estilo gótico levantino con una extraordinaria anchura, catalogada entre las más amplias de España en su género.", "a23", "gudar_javalambre", "castillo", "parada"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mora-de-rubielos.png",
@@ -5164,7 +5435,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 124,
     cooldownMin: 75,
-    intereses: ["medieval", "portales", "gudar_javalambre"],
+    intereses: ["Naturaleza: El centro Región Ambarina de Dinópolis se sitúa sobre un antiguo depósito foseado o Konservat-Lagerstätte, donde se conservan fósiles lacustres e insectos atrapados en ámbar rojo de hace más de 20 millones de años.", "Historia: El rey Pedro IV de Aragón concedió el título de villa a Rubielos de Mora en 1366 en reconocimiento a la resistencia defensiva de la población durante los conflictos bélicos frente a las tropas castellanas.", "Ingeniería: La Casa Consistorial renacentista, finalizada en 1571, integra en su interior una lonja lonjil sustentada por arcos apoyados sobre columnas toscanas y una escalera de ángulo de 1630 que conduce a las dependencias municipales superiores.", "Cultura: Del recinto amurallado del siglo XIV que protegía la localidad se conservan únicamente dos accesos porticados monumentales: el Portal de San Antonio y el Portal del Carmen.", "medieval", "portales", "gudar_javalambre"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/rubielos-de-mora.png",
@@ -5184,7 +5455,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 122,
     cooldownMin: 60,
-    intereses: ["roca", "maestrazgo", "miradores", "geologia"],
+    intereses: ["Naturaleza: El río Guadalope ha erosionado estas agujas calizas que superan los 200 metros de altura vertical. El paraje protegido se extiende desde los 800 metros de altitud en el cauce fluvial hasta los 1183 metros en la Peña de los Órganos.", "Naturaleza: Declarado Monumento Natural con 187,6 hectáreas e integrado en el Geoparque Mundial UNESCO del Maestrazgo, sus estratos calizos del Cretácico superior fueron erguidos en posición subvertical por la orogenia alpina hasta configurar su perfil de crestas alineadas.", "Naturaleza: El Mirador de los Órganos de Montoro, acondicionado con paneles explicativos en el collado de Casa Mazuelos sobre la carretera A-1702, ofrece panorámicas directas de las agujas. A sus pies discurre el sendero fluvial del Guadalope, marcado como PR-TE 10.", "Naturaleza: Sometido a un clima continental de montaña con inviernos muy fríos y veranos suaves, la altitud favorece la presencia de sabina negra y carrascas en la masa forestal, mientras las grietas rocosas albergan especies de flora endémica adaptadas al cantil.", "Cultura: Su denominación proviene de la semejanza visual entre los tubos de un órgano musical y los estrechos monolitos rocosos, unida a la tradición local que dice que el viento produce silbidos al atravesar las fisuras de los acantilados.", "roca", "maestrazgo", "miradores", "geologia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/organos-de-montoro.png",
@@ -5204,7 +5475,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 122,
     cooldownMin: 60,
-    intereses: ["fortaleza", "piedra_roja", "sierra_menera"],
+    intereses: ["Naturaleza: Está construido con piedra de arenisca rojiza, conocida localmente como rodeno, tallada del propio peñasco sobre el que se apoya. Esto hace que sus murallas se mimeticen casi por completo con el paisaje rocoso de la sierra.", "Ingeniería: Para garantizar el suministro de agua a la guarnición en un peñasco aislado, los constructores esculpieron ingeniosos canalillos en la propia roca que conducían el agua de lluvia directamente hacia dos grandes aljibes.", "Historia: Durante la Guerra de los Dos Pedros en el siglo XIV, la fortaleza reforzó su papel estratégico defensivo en la frontera entre Aragón y Castilla, construyéndose una muralla exterior de tres metros de grosor resistente a la artillería.", "Curiosidad: El solar del castillo ha sido ocupado desde la Edad del Bronce. La presencia de asentamientos antiguos en este espolón responde tanto a su posición defensiva como a las abundantes vetas de mineral de hierro existentes en la zona.", "fortaleza", "piedra_roja", "sierra_menera"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-peracense.png",
@@ -5224,7 +5495,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["maestrazgo", "plaza", "altiplano"],
+    intereses: ["Historia: En 1836, el líder carlista Ramón Cabrera fijó en Cantavieja su cuartel general y capital militar, estableciendo en la villa una imprenta, hospital, fábrica de armas y academia de formación de reclutas.", "Curiosidad: En agosto de 1836 comenzó a editarse en la localidad el Boletín del Real Ejército del Reyno de Aragón, primer periódico oficial carlista de la región e impreso en los talleres locales del movimiento rebelde.", "Naturaleza: El casco histórico se asienta a 1300 metros de altitud sobre un promontorio calizo escarpado, lo que históricamente dificultó el transporte de tropas y la colocación de artillería enemiga alrededor de la villa.", "Cultura: Al concluir las obras de ampliación de la Iglesia de la Asunción en el siglo XVIII, el arquitecto Antonio Nadal afirmó públicamente que no existía «ni una igual en Roma».", "Cultura: En la iglesia gótica de San Miguel se conserva el sepulcro de alabastro del castellán Gonzalo de Funes, realizado en el siglo XV y considerado una pieza clave de la escultura gótica en Aragón.", "maestrazgo", "plaza", "altiplano"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cantavieja.png",
@@ -5244,7 +5515,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["maestrazgo", "murallas", "silencio"],
+    intereses: ["Ingeniería: El Portal de las Monjas integra una torre defensiva cilíndrica y tres pisos superiores de galerías cerradas con celosías artesanales de yeso y barro, constituyendo el acceso más característico del recinto amurallado.", "Cultura: El director británico Ken Loach rodó en Mirambel la película 'Tierra y libertad' (1995) sobre la Guerra Civil española, contando con numerosos vecinos como figurantes en escenas colectivas e improvisaciones.", "Historia: Durante las guerras carlistas del siglo XIX, Mirambel funcionó como capital administrativa del territorio insurgente, alojando la Junta Superior Gubernativa del Maestrazgo y su imprenta oficial.", "Curiosidad: El conjunto histórico amurallado de Mirambel fue galardonado en 1982 con el premio internacional Europa Nostra en reconocimiento a los trabajos de restauración y conservación de su trama urbana medieval.", "maestrazgo", "murallas", "silencio"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mirambel.png",
@@ -5264,7 +5535,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["medieval", "castillo", "miradores"],
+    intereses: ["Historia: Mencionado en 1202 como castillo de Avingalbón y ceditario al obispado de Zaragoza, tras su deterioro a partir del siglo XV el patio de armas de la fortaleza fue reutilizado durante siglos como cementerio de la villa.", "Cultura: Su casa consistorial del siglo XV constituye un hito del gótico civil aragonés. Edificada en sillería con alero de madera y ventanas geminadas con parteluz, alberga en sus antiguas mazmorras un centro de interpretación sobre castillos.", "Historia: El Portal Alto o de San Antón, erigido entre los siglos XIV y XV, preserva su paso cubierto con forjado de madera y dosel gótico labrado como una de las dos entradas conservadas de la muralla bajomedieval.", "Naturaleza: Asentado sobre un espolón calizo a 1.456 metros de altitud en la sierra del Pellejero, su emplazamiento determina un clima de montaña caracterizado por elevadas amplitudes térmicas e inviernos con precipitaciones en forma de nieve.", "medieval", "castillo", "miradores"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puertomingalvo.png",
@@ -5454,7 +5725,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 132,
     cooldownMin: 90,
-    intereses: ["a2", "mudéjar", "fortalezas", "juderia"],
+    intereses: ["Historia: El nombre de Calatayud proviene del árabe Qal'at Ayyub (castillo de Ayyub). Su conjunto fortificado, erigido a partir del siglo IX en la Marca Superior de al-Ándalus, es uno de los sistemas defensivos islámicos más antiguos de la Península.", "Ingeniería: La torre de la Colegiata de Santa María la Mayor alcanza 70 metros de altura, siendo la más alta conservada del mudéjar aragonés. Su diseño octogonal utiliza ladrillo y una estructura de doble torre con escalera interior.", "Cultura: A pocos kilómetros se halla el yacimiento romano de Bílbilis, una ciudad trazada sobre cerros que contó con foro, teatro y termas. En ella nació y falleció en el siglo I el poeta satírico latino Marco Valerio Marcial.", "a2", "mudéjar", "fortalezas", "juderia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -5465,7 +5736,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.3538,
         "lng": -1.6465,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: La torre campanario mudéjar mide más de 70 metros de altura, situándose entre las más altas de Aragón. Su estructura interna sigue el diseño de los alminares islámicos, con una torre central envuelta por una estructura exterior.",
+          "Historia: En 1415, el papa Benedicto XIII, conocido como el Papa Luna, fundó mediante bula pontificia el Estudio General de Calatayud con sede en el claustro de la colegiata, tomando como modelo la universidad francesa de Montpellier.",
+          "Cultura: La UNESCO declaró Patrimonio Mundial en 2001 el conjunto mudéjar de la colegiata, integrado por su ábside, el claustro y la torre octogonal, reconociéndolo como un exponente clave de la arquitectura mudéjar aragonesa.",
+          "Cultura: La portada principal del templo es una obra maestra plateresca del siglo XVI labrada en alabastro de la cercana localidad de Fuentes de Jiloca, diseñada como si se tratara de un retablo escultórico al aire libre.",
+          "Curiosidad: El claustro gótico-mudéjar presenta planta rectangular y su eje mayor está desviado unos 30 grados respecto al templo cristiano, orientándose hacia el sureste en dirección a la Meca por asentarse sobre el trazado de la antigua mezquita mayor."
+        ]
       },
       {
         "id": "es_zar_castillo_ayub",
@@ -5474,7 +5753,13 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.352,
         "lng": -1.64,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El castillo da nombre a Calatayud, cuya denominación deriva del árabe «Qalat Ayyub» (fortaleza de Ayub). Su origen se sitúa en el siglo IX, cuando el emir Muhammad I ordenó ampliar las defensas frente a los Banu Qasi.",
+          "Historia: Es el núcleo principal del recinto fortificado islámico de Calatayud, considerado uno de los sistemas defensivos andalusíes más antiguos y extensos de la Península Ibérica, con unos cuatro kilómetros de murallas interconectando cinco castillos.",
+          "Historia: En 1120 fue conquistado por el rey aragonés Alfonso I el Batallador tras la rendición musulmana. Siglos después sufrió graves daños al ser desmantelado parcialmente en 1705 durante la Guerra de Sucesión por orden de Felipe V."
+        ]
       },
       {
         "id": "es_zgz_bilbilis",
@@ -5483,7 +5768,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.3759,
         "lng": -1.6047,
-        "radio": 4000
+        "radio": 4000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Bílbilis es el lugar de nacimiento y muerte del poeta hispanorromano Marco Valerio Marcial, maestro del epigrama, quien tras pasar más de tres décadas en Roma regresó a su ciudad natal a finales del siglo I d. C.",
+          "Ingeniería: Para construir la ciudad en laderas con desniveles de hasta sesenta metros, los ingenieros romanos levantaron terrazas escalonadas sustentadas por complejos criptopórticos e instalaron cerca de cien cisternas subterráneas para almacenar agua de lluvia.",
+          "Cultura: El foro y el teatro se ubicaron deliberadamente en la zona más elevada para que actuaran como una monumental escenografía visible desde el valle del Jalón y la calzada romana entre Caesaraugusta y Emerita Augusta.",
+          "Curiosidad: Durante la Edad Media, las ruinas desiertas de Bílbilis sirvieron de cantera para construir la vecina ciudad de Calatayud, que heredó además de la urbe romana el gentilicio de sus habitantes, los bilbilitanos."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calatayud.png",
@@ -5503,7 +5795,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 130,
     cooldownMin: 75,
-    intereses: ["medieval", "fernando_el_catolico", "piedra"],
+    intereses: ["Historia: Juana Enríquez se desplazó en 1452 desde Navarra a Sos, el primer pueblo aragonés tras la frontera, para asegurar que el futuro Fernando el Católico naciera en tierras de la Corona de Aragón, parto ocurrido en el palacio de Sada.", "Cultura: Luis García Berlanga rodó en 1984 en Sos la película 'La Vaquilla', motivo por el cual la localidad cuenta con un itinerario urbano decorado con doce esculturas de sillas de director de cine hechas en bronce.", "Curiosidad: En el mercado de la villa aún se conserva esculpida en piedra la vara jaquesa, el patrón de medida oficial de 772 milímetros usado por los comerciantes locales antes del sistema métrico decimal.", "Historia: La villa de Sos añadión 'del Rey Católico' a su nombre oficial en 1925 tras solicitarlo formalmente al rey Alfonso XIII para conmemorar el nacimiento de Fernando II.", "medieval", "fernando_el_catolico", "piedra"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sos-del-rey-catolico.png",
@@ -5523,7 +5815,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 128,
     cooldownMin: 75,
-    intereses: ["moncayo", "senderismo", "bosques", "miradores"],
+    intereses: ["Naturaleza: Su acusado desnivel, desde los 600 metros en el río Huecha hasta los 2.315 metros de la cima, permite albergar cinco pisos bioclimáticos superpuestos, pasando del carrascal mediterráneo al bosque eurosiberiano y pastos de cumbre.", "Cultura: El poeta Gustavo Adolfo Bécquer redactó en 1864 su obra «Cartas desde mi celda» durante su retiro en el Monasterio de Veruela, inspirado por el clima, la atmósfera boscosa y las tradiciones populares del Moncayo.", "Naturaleza: Culmina en el cerro de San Miguel a 2.315 metros de altitud, el techo del Sistema Ibérico, y sus laderas nutren la cabecera de los ríos Queiles y Huecha al norte y del río Isuela al sur.", "Naturaleza: El sendero oficial S1 del Hayedo de Peña Roya realiza una ruta circular de 7,5 kilómetros y 280 metros de desnivel desde la Fuente de Sacristán, atravesando uno de los hayedos más meridionales de Europa.", "Naturaleza: Conserva huellas del modelado glaciar cuaternario en sus cotas altas, destacando circos, morrenas y depósitos de derrubios que constituyen las únicas formaciones de origen glaciar conservadas en este sector de la Cordillera Ibérica.", "moncayo", "senderismo", "bosques", "miradores"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-moncayo.png",
@@ -5543,7 +5835,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 128,
     cooldownMin: 90,
-    intereses: ["guerra_civil", "ruinas", "memoria_historica"],
+    intereses: ["Historia: Entre el 24 de agosto y el 6 de septiembre de 1937, Belchite sufrió una cruenta batalla urbana que devastó el municipio y dejó miles de bajas. Al finalizar la contienda, las ruinas se conservaron intactas como símbolo conmemorativo y propaganda.", "Cultura: El Convento de San Agustín conserva una imponente torre campanario de ladrillo de época moderna con clara influencia estética mudéjar, similar en estilo y estructura a la torre de La Seo de Zaragoza.", "Curiosidad: Las ruinas sirvieron como escenario exterior para producciones cinematográficas de renombre internacional, como Las aventuras del barón Munchausen, dirigida por Terry Gilliam, o El laberinto del fauno, de Guillermo del Toro.", "Cultura: En la puerta de la iglesia de San Martín de Tours figura escrita una famosa jota creada por el poeta local Natalio Baquero, en recuerdo al trágico destino y la memoria del pueblo viejo desgastado por la guerra.", "Curiosidad: El antiguo trujal, depósito agrícola subterráneo de prensado de oliva, sirvió durante el asedio de 1937 como fosa común improvisada ante la imposibilidad de trasladar los cuerpos al cementerio.", "guerra_civil", "ruinas", "memoria_historica"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pueblo-viejo-de-belchite.png",
@@ -5563,7 +5855,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 126,
     cooldownMin: 75,
-    intereses: ["catedral", "mudéjar", "moncayo"],
+    intereses: ["Ingeniería: Inaugurada en 1792, la Plaza de Toros Vieja posee una planta octogonal integrada por 32 viviendas de cuatro alturas. Sus balcones interiores funcionaban como palcos de alquiler durante los festejos taurinos que alojó hasta 1870.", "Cultura: Cada 27 de agosto, la figura arlequinada del Cipotegato da comienzo a las fiestas patronales cruzando la ciudad mientras la multitud le lanza tomates, en una tradición festiva declarada de Interés Turístico Nacional.", "Cultura: Iniciada en el siglo XIII con traza gótica francesa, la Catedral de Santa María de la Huerta sumó posteriormente cimborrio, claustro y torre mudéjares, además de decoración renacentista, tras los destrozos sufridos en el siglo XIV.", "catedral", "mudéjar", "moncayo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -5574,7 +5866,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.8596,
         "lng": -1.7331,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Fundado a mediados del siglo XII tras la donación de Pedro de Atarés, Veruela se convirtió en el primer monasterio cisterciense erigido en el antiguo Reino de Aragón.",
+          "Cultura: El poeta Gustavo Adolfo Bécquer se alojó en la hospedería del recinto entre 1863 y 1864 para reponerse de su enfermedad, lugar donde se inspiró para escribir la obra periodístico-literaria «Cartas desde mi celda».",
+          "Ingeniería: El recinto monástico está completamente rodeado por una muralla defensiva medieval de un kilómetro de perímetro, concebida para proteger las fuentes de agua, los molinos y los huertos interiores de la comunidad.",
+          "Curiosidad: La iglesia abacial de proporciones monumentalistas tardó unos 250 años en completarse, destacando arquitectónicamente por su cabecera románica dotada de girola y cinco absidiolos orientados al este."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarazona.png",
@@ -5594,7 +5893,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 122,
     cooldownMin: 75,
-    intereses: ["murallas", "colegiata", "a23", "camino_historico"],
+    intereses: ["Ingeniería: La Mina de Daroca es un túnel de unos 600 metros perforado entre 1555 y 1560 bajo la dirección de Pierres Bedel. Fue diseñado para desviar las destructivas avenidas torrenciales de la calle Mayor directamente al río Jiloca.", "Historia: El cinturón amurallado de Daroca, ampliado entre los siglos XIII y XVI, alcanza casi cuatro kilómetros de longitud y llegó a contar con 114 torreones. Su trazado escala los cerros circundantes para enlazar los tres recintos fortificados de la ciudad.", "Cultura: La Basílica Colegiata de Santa María alberga los Sagrados Corporales. Según la tradición aragonesa de la Reconquista, unos lienzos manchados de sangre eucarística en 1239 fueron transportados por una mula que caminó sin guía hasta caer a las puertas de Daroca.", "murallas", "colegiata", "a23", "camino_historico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -5605,7 +5904,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.1151,
         "lng": -1.4146,
-        "radio": 1000
+        "radio": 1000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: La Mina de Daroca, proyectada en 1555 por Pierres Vedel, es un túnel subterráneo de unos 600 metros de longitud construido para desviar las aguas torrenciales lejos del casco urbano hacia el río Jiloca.",
+          "Ingeniería: Para excavar la Mina de Daroca, dos cuadrillas de picadores avanzaron desde extremos opuestos del cerro de San Jorge durante cinco años hasta encontrarse en el interior de la montaña el 7 de septiembre de 1560.",
+          "Historia: El recinto amurallado de Daroca se desarrolló entre los siglos XIII y XVI hasta alcanzar cerca de cuatro kilómetros de trazado y 114 torreones defensivos adaptados al abrupto relieve que rodea la villa.",
+          "Historia: La Puerta Baja, reformada en el siglo XVI con dos torreones cuadrangulares de piedra de sillería, marcaba la entrada monumental a la calle Mayor desde el sur y mostraba el prestigio e importancia defensiva de Daroca."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/daroca.png",
@@ -5625,7 +5931,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["embalse", "paisaje", "foto", "agua"],
+    intereses: ["Naturaleza: El embalse recoge las aguas del río Piedra tras recibir los aportes de los ríos Mesa y Ortiz. Con una capacidad de 84 hectómetros cúbicos y 536 hectáreas de superficie, regula la cuenca para el abastecimiento y riego.", "Historia: Inaugurada en 1963 tras iniciarse en 1952, la presa de gravedad de 45 metros de altura anegó los pueblos de Somed y Cocos, asegurando el suministro de agua potable a Calatayud y el regadío comarcal.", "Naturaleza: A 688 metros de altitud, la zona presenta un clima mediterráneo continentalizado de gran amplitud térmica, con temperaturas invernales promedio de 1 °C que superan los 30 °C en verano y un régimen de lluvias escaso.", "Naturaleza: El sendero local SL-Z 50 asciende desde la zona de Nuévalos hasta el Cerro Colorado, a 840 metros de altitud. La ruta tiene un recorrido de 4,5 kilómetros y 175 metros de desnivel con vistas al embalse.", "Naturaleza: El vaso del embalse constituye un importante humedal artificial donde invernan y nidifican aves acuáticas como el ánade real, el porrón común, el cormorán y la garza real, atraídas por la tranquilidad de sus orillas.", "embalse", "paisaje", "foto", "agua"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -5636,7 +5942,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.1904357,
         "lng": -1.8872258,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: En el desfiladero emergen más de 80 fuentes de aguas termales a temperaturas constantes de entre 30 y 34 grados centígrados, aportando humedad constante al ecosistema de ribera.",
+          "Naturaleza: El cañón del río Mesa y el barranco de la Hoz Seca forman un relieve kárstico con murallones calcáreos verticales que superan los 100 metros de altura sobre el páramo.",
+          "Naturaleza: La ruta circular SL-Z 43 abarca cerca de dos kilómetros entre el Santuario de la Virgen de Jaraba y el Mirador del Mesa, permitiendo divisar los desfiladeros del cañón.",
+          "Naturaleza: Los acantilados de las Hoces del Mesa albergan una destacada colonia de buitre leonado, especie rupícola protegida mediante las figuras de ZEPA y LIC dentro de la Red Natura 2000.",
+          "Cultura: En una oquedad rocosa del barranco de la Hoz Seca se ubica el abrigo de Roca Benedí, con pinturas rupestres prehistóricas catalogadas con más de 7000 años de antigüedad."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/embalse-de-la-tranquera.png",
@@ -5656,7 +5970,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["goya", "pintura", "grabado", "arte_aragones"],
+    intereses: ["Historia: Francisco de Goya nació en Fuendetodos en 1746 porque su familia se trasladó al municipio mientras su padre, artesano dorador, trabajaba en el retablo mayor de la iglesia parroquial. Allí vivió los primeros seis años de su infancia.", "Cultura: El Museo del Grabado alberga las cuatro series completas de estampas grabadas por Goya: Los Caprichos, Los Desastres de la Guerra, La Tauromaquia y Los Disparates, donde el artista reflejó su visión crítica con total libertad creativa.", "Ingeniería: Fuendetodos conserva la Nevera de Culroya, una estructura del siglo XVII con cúpula cónica de piedra y pozo subterráneo de diez metros de diámetro, testimonio de cuando el pueblo era uno de los principales suministradores de hielo de Zaragoza.", "Curiosidad: La casa natal de Goya permaneció ignorada hasta 1913, cuando el pintor Ignacio Zuloaga la identificó y adquirió para protegerla. La placa conmemorativa de la fachada conserva una fecha tomada del registro de bautismo, ligeramente distinta a su nacimiento real.", "goya", "pintura", "grabado", "arte_aragones"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuendetodos.png",
@@ -5856,7 +6170,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 125,
     cooldownMin: 60,
-    intereses: ["reconquista", "santuario", "picos_de_europa"],
+    intereses: ["Naturaleza: En la Vega de Orandi, el río Las Mestas se sumerge en un ponor kárstico subterráneo bajo el monte Auseva y reaparece en la Santa Cueva de Covadonga, vertiéndose en una cascada de unos 20 metros.", "Historia: En las inmediaciones del monte Auseva aconteció en el año 722 la batalla de Covadonga, episodio donde las tropas de Pelayo vencieron al ejército musulmán, dando origen a la monarquía asturiana.", "Naturaleza: La ruta circular PR-PNPE 2 recorre 6 kilómetros partiendo del aparcamiento de Buferrera alrededor de los lagos glaciares Enol y Ercina, atravesando el hayedo de Palomberu y pasando por los miradores del Príncipe y Entrelagos.", "Naturaleza: El clima atlántico de montaña en la zona acumula precipitaciones anuales que alcanzan los 2000 mm, donde cerca del 20 % cae en forma de nieve en las cumbres del Macizo Occidental como Peña Santa de Enol.", "Naturaleza: En el entorno de los Lagos de Covadonga subsiste el lago temporal del Bricial, una masa de agua glaciar que solo se llena de forma intermitente durante el deshielo primaveral y tras intensas precipitaciones.", "reconquista", "santuario", "picos_de_europa"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/covadonga.png",
@@ -5876,7 +6190,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 123,
     cooldownMin: 60,
-    intereses: ["osos", "brañas", "lagos", "montana"],
+    intereses: ["Naturaleza: Somiedo acoge una de las mayores poblaciones de oso pardo cantábrico en Europa occidental y alberga la centaura de Somiedo (*Centaurium somedanum*), una especie de flora endémica exclusiva de estos roquedos calizos.", "Cultura: Las brañas de montaña conservan los teitos, cabañas ganaderas tradicionales de los vaqueiros de alzada levantadas con mampostería de piedra y techadas con cubiertas vegetales tejidas de escoba o piorno.", "Naturaleza: El parque alberga el Lago del Valle a 1580 metros de altitud, el lago natural más extenso de Asturias, y la cima del Cornón, que alcanza los 2194 metros sobre el nivel del mar.", "Naturaleza: La ruta de los Lagos de Saliencia inicia en el Alto de la Farrapona y recorre un itinerario de unos 8 kilómetros entre los lagos de Cueva, Cerveiriz, Calabazosa y la laguna de Almagrera.", "Naturaleza: El desnivel entre los 400 metros de Aguasmestas y los 2194 del Cornón provoca un marcado escalonamiento vegetal desde encinares hasta pastos alpinos, además de continuas nevadas invernales por encima de los 1200 metros.", "osos", "brañas", "lagos", "montana"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/somiedo-y-su-parque-natural.png",
@@ -5896,7 +6210,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 122,
     cooldownMin: 60,
-    intereses: ["cantabrico", "acantilados", "faro", "viento", "geologia"],
+    intereses: ["Naturaleza: Los acantilados de cuarcita armoricana del cabo superan los 100 metros de altura sobre el Cantábrico, destacando la Peña la Gaviera, punto más septentrional de Asturias a 94 metros sobre el nivel del mar.", "Naturaleza: La Senda del Cabo Peñas (PR-AS 25) recorre unos 16 kilómetros bordeando los acantilados de Gozón desde el faro de San Juan de Nieva hasta el faro de Peñas.", "Naturaleza: Por su relieve llano adentrado en el mar, registra uno de los índices de pluviosidad más bajos de Asturias, al no retener las masas de aire húmedas, manteniendo una media térmica anual de 14 °C.", "Naturaleza: En sus aguas salpica la isla de La Erbosa, el segundo islote más extenso de la costa asturiana, referente de nidificación para colonias de cormorán moñudo y gaviota patiamarilla.", "Ingeniería: El Faro de Cabo Peñas, operativo desde 1852 a 100 metros de altitud, constituye el más antiguo en servicio continuo de Asturias y proyecta luz hasta 21 millas náuticas de alcance.", "cantabrico", "acantilados", "faro", "viento", "geologia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -5907,7 +6221,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.615,
         "lng": -5.793,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: En la playa de La Ribera se celebra desde 1971 el Torneo Tenis Playa de Luanco, la única competición tenística del mundo disputada directamente sobre la arena mojada durante la bajamar.",
+          "Historia: La iglesia barroca de Santa María, erigida entre 1728 y 1735 junto al mar, se construyó hipotecando las casas de los propios vecinos y con la aportación del Gremio de Mareantes, que sufragó sus retablos.",
+          "Cultura: Fundado en 1948 por iniciativa popular, el Museo Marítimo de Asturias con sede en Luanco es el decano de los museos asturianos y custodia miles de fondos dedicados a la carpintería de ribera y la pesca.",
+          "Historia: Entre los siglos XVI y XVII Luanco fue un destacado puerto ballenero donde los cetáceos se descuartizaban en la playa, tradición marinera que en 1898 derivó en la creación de firmas conserveras históricas."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-penas.png",
@@ -5927,7 +6248,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 121,
     cooldownMin: 55,
-    intereses: ["reserva_biosfera", "hayedos", "rios", "senderismo"],
+    intereses: ["Naturaleza: La Ruta del Alba (PR-AS 62), declarada Monumento Natural, se inicia en Soto de Agües y recorre 14 kilómetros ida y vuelta con 400 metros de desnivel hasta la Cruz de los Ríos, atravesando las Foces de Llaímo.", "Naturaleza: En la Cueva Deboyo, una cavidad kárstica de 200 metros de longitud situada cerca de Les Yanes, el río Nalón discurre de forma subterránea atravesando el interior de la montaña y dando cobijo a diversas colonias de murciélagos.", "Naturaleza: Con una altitud máxima de 2.104 metros en el Pico Torres, el parque alberga el nacimiento del río Nalón en el puerto de Tarna, cuyo cauce atraviesa el territorio alimentando los embalses de Tanes y Rioseco.", "Naturaleza: Al situarse más del 50 % de su territorio por encima de 800 metros de altitud, el clima de montaña favorece que más del 40 % del parque esté cubierto por masas forestales, destacando sus extensos hayedos maduros.", "Cultura: El queso Casín, con Denominación de Origen Protegida y elaborado artesanalmente con leche de la raza autóctona vaca casina en los concejos del parque, es una de las especialidades queseras de mayor arraigo tradicional en Asturias.", "reserva_biosfera", "hayedos", "rios", "senderismo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-redes.png",
@@ -5947,7 +6268,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["puerto", "historia_urbana", "cantabrico"],
+    intereses: ["Curiosidad: El antiguo convento de las Agustinas Recoletas se transformó en 1843 en la Fábrica de Tabacos; sus trabajadoras, las cigarreras, protagonizaron en 1903 la primera huelga femenina de Asturias.", "Ingeniería: El Elogio del Horizonte, diseñado por Eduardo Chillida y proyectado junto al ingeniero José Antonio Fernández Ordóñez, requirió un encofrado de madera traído desde Guipúzcoa para verter 500 toneladas de hormigón armado.", "Cultura: Las termas romanas de Campo Valdés, construidas en el siglo I junto al mar, conservan el circuito de salas frías, templadas y cálidas que usaba la antigua población de Gigia.", "Historia: En el siglo XVII se levantó la batería militar del cerro de Santa Catalina para defender la costa de corsarios, recinto estratégico cuya cesión municipal permitió crear el parque actual.", "puerto", "historia_urbana", "cantabrico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -5958,7 +6279,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.5215,
         "lng": -5.6225,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Con más de 270.000 m² de superficie construida, es el edificio más grande de España. Fue proyectado en 1946 por el arquitecto Luis Moya Blanco como orfanato minero y complejo docente autárquico.",
+          "Ingeniería: El arquitecto Luis Moya Blanco y el ingeniero Ramiro Moya diseñaron para la iglesia una cúpula elíptica de ladrillo de 807 m², cuya estructura de 2.300 toneladas se sostiene sin pilares centrales.",
+          "Historia: Las obras se detuvieron repentinamente en 1957 tras el cese fulminante del ministro de Trabajo José Antonio Girón, lo que dejó el grandioso complejo inacabado hasta su reconversión cultural en 2007.",
+          "Curiosidad: Su torre de piedra de 130 metros de altura, inspirada en la Giralda de Sevilla y el Faro de Alejandría, constituye la construcción en piedra más alta de España."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cimavilla-y-puerto-de-gijon.png",
@@ -5978,7 +6306,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["camino_primitivo", "reliquias", "gótico"],
+    intereses: ["Historia: A las puertas del templo nació el Camino Primitivo de Santiago en el siglo IX, cuando el rey Alfonso II el Casto partió desde Oviedo tras conocer el hallazgo de la tumba del apóstol, convirtiéndose en el primer peregrino registrado.", "Historia: La Cámara Santa alberga el Santo Sudario, un lienzo de lino atribuido al rostro de Jesús traído a Asturias por protección. Esta reliquia solo se muestra públicamente tres días al año: Viernes Santo, 14 y 21 de septiembre.", "Ingeniería: La Cámara Santa prerrománica presenta una singular solución arquitectónica de dos capillas superpuestas e incomunicadas entre sí: la cripta inferior de Santa Leocadia y la capilla superior de San Miguel, reformada en el siglo XII con bóveda de cañón.", "Ingeniería: Su torre gótica cuenta con una subida de 184 peldaños por una estrecha escalera de caracol hasta el cuerpo renacentista y alberga a Wamba, una campana en activo fundida en 1219, considerada entre las más antiguas de Europa.", "Cultura: Un famoso refrán jacobeo dice «Quien va a Santiago y no al Salvador, visita al criado y olvida al Señor», recordando la tradición medieval de desviarse a Oviedo para venerar a las reliquias antes de llegar a Compostela.", "camino_primitivo", "reliquias", "gótico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -5989,7 +6317,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 43.3778,
         "lng": -5.8504,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Erigido hacia el año 848 durante el reinado de Ramiro I como aula regia o pabellón ceremonial de un conjunto palaciego, el edificio fue transformado en iglesia dedicada a la Virgen en el siglo XII.",
+          "Ingeniería: Cuenta con dos plantas totalmente abovedadas con cañón reforzado por arcos fajones. Un sistema de contrarresto mediante contrafuertes exteriores permitió abrir miradores con arquerías en los extremos sin debilitar la estructura.",
+          "Cultura: Fue declarado Patrimonio de la Humanidad por la Unesco en 1985 dentro de la denominación «Monumentos de Oviedo y del Real Sitio de Asturias», al ser uno de los máximos exponentes del arte prerrománico ramirense.",
+          "Curiosidad: Los característicos arcos peraltados y la decoración esculpida de sus miradores sirvieron de inspiración directa para el diseño del logotipo oficial del turismo del Principado de Asturias."
+        ]
       },
       {
         "id": "es_ast_lillo",
@@ -5998,7 +6333,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.3784,
         "lng": -5.8528,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Un corrimiento de tierras provocado por un arroyo cercano derrumbó en la Edad Media dos terceras partes del edificio original, por lo que solo sobrevivieron el vestíbulo de acceso y el tramo inicial de las naves.",
+          "Cultura: Las jambas de la portada de entrada están decoradas con relieves de escenas paganas de juegos circenses y acrobacias, un motivo profano insólito en la arquitectura religiosa medieval inspirado en un díptico consular romano del siglo VI.",
+          "Historia: El rey Ramiro I mandó erigir la iglesia hacia el año 848 como capilla palatina dentro de su complejo residencial de reposo en la falda del monte Naranco, muy cerca de Santa María del Naranco.",
+          "Cultura: Las basas de las columnas interiores conservan un singular repertorio escultórico labrado con las figuras de los cuatro evangelistas en actitud de escribir o leer bajo arcos sogueados de influencia clásica.",
+          "Curiosidad: En el muro sur del templo destaca una celosía calada labrada en un único bloque de piedra, decorada con círculos entrelazados y una triple arquería peraltada."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/catedral-de-oviedo.png",
@@ -6018,7 +6361,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 55,
-    intereses: ["picos_de_europa", "costa", "vistas", "panoramica"],
+    intereses: ["Ingeniería: Inaugurado en 1927 según el proyecto del ingeniero José María Sánchez del Vallado, su balcón de hormigón armado conocido como «el cazu» se elevó sobre el terreno para salvar las copas de los árboles y ofrecer panorámicas de 360º.", "Naturaleza: El Pico Pienzu, cumbre principal de la Sierra del Sueve con 1161 metros de altitud, se sitúa a unos 5 kilómetros del mar Cantábrico, siendo una de las montañas europeas más elevadas tan próximas a la costa.", "Naturaleza: La ruta oficial PR-AS 71 conecta el Mirador del Fitu, a 597 metros de altitud, con el Pico Pienzu. Este sendero de montaña suma 11,7 kilómetros entre ida y vuelta con unos 700 metros de desnivel acumulado.", "Naturaleza: El choque del aire húmedo del Cantábrico contra la Sierra del Sueve genera densas nieblas repentinas. Este fenómeno climático produce a menudo mares de nubes que cubren los valles por debajo del mirador, situado a 597 metros.", "Naturaleza: La Reserva Natural Parcial de la Sierra del Sueve constituye el hábitat emblemático del asturcón. Esta raza autóctona de caballo asturiano de origen celta vive allí en libertad entre pastos calizos de montaña.", "picos_de_europa", "costa", "vistas", "panoramica"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mirador-del-fitu.png",
@@ -6038,7 +6381,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 119,
     cooldownMin: 55,
-    intereses: ["mineria", "pozo", "revolucion_industrial", "cuencas_mineras"],
+    intereses: ["Ingeniería: Construido por la Sociedad Metalúrgica Duro Felguera entre 1917 y 1922, destaca técnicamente por poseer dos pozos verticales independientes acoplados a sendas máquinas de extracción en una misma plaza minera.", "Curiosidad: El complejo subterráneo alcanza casi seiscientos metros de profundidad y cuenta con un entramado de galerías que supera los ciento cuarenta kilómetros de extensión acumulada.", "Historia: El yacimiento fue documentado en 1792 por el ingeniero de la armada Fernando Casado Torres, enviado por el rey Carlos IV para localizar carbón de piedra en la cuenca asturiana.", "Cultura: Declarado Bien de Interés Cultural en 2014, conserva intacta la estructura metálica denominada reter, que une sus dos emblemáticos castilletes sobre la casa de máquinas en el margen del río Nalón.", "mineria", "pozo", "revolucion_industrial", "cuencas_mineras"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -6049,7 +6392,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.2885,
         "lng": -5.6415,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: En las inmediaciones del museo se halla el Pozo San Vicente. Entre 1926 y 1937, esta explotación se convirtió en la primera mina de España gestionada y administrada directamente por un sindicato minero, el SOMA-UGT.",
+          "Historia: Inaugurado en 1994 en El Entrego, el museo se levantó sobre la antigua escombrera de la Mina San Vicente. Transformó un terreno de residuos mineros en un referente para la conservación del patrimonio industrial asturiano.",
+          "Ingeniería: El edificio principal integra un castillete minero por cuyo interior circula un ascensor hidráulico o jaula. Este dispositivo transporta en descenso simulado a los visitantes hasta la Mina Imagen, una galería subterránea construida a escala real.",
+          "Cultura: Entre su colección histórica destaca una noria de tracción humana empleada antiguamente para achicar agua de las galerías. Los visitantes pueden acceder a ella y hacerla girar caminando por su interior."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pozo-soton.png",
@@ -6069,7 +6419,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 118,
     cooldownMin: 50,
-    intereses: ["oleaje", "karst", "acantilados", "mar"],
+    intereses: ["Naturaleza: En el área del Bramadoriu de Llames, la compresión de aire y mar en galerías calizas expulsa surtidores verticales que superan los 20 metros de altura, produciendo un estruendo audible a kilómetros de distancia.", "Naturaleza: El río Guadamía marca el límite entre Llanes y Ribadesella, desembocando en la playa de Guadamía, un angosto brazo arenoso de unos 800 metros de longitud excavado sobre la rasa caliza de la costa asturiana.", "Naturaleza: La ruta oficial PR-AS-57 realiza un recorrido circular de 11 kilómetros desde Llames de Pría, superando unos 140 metros de desnivel acumulado a lo largo de acantilados costeros y la playa de Cuevas del Mar.", "Naturaleza: El fenómeno depende de temporales invernales u otoñales en el mar Cantábrico; la coincidencia de pleamar y fuerte marejada comprime el aire dentro del karst, forzando la expulsión del agua marina.", "Cultura: El estruendo del Bramadoriu dio origen al refrán tradicional pastoril «Cuando sientas sonar el Pozu Pría, coge leña pa'l otru día», utilizado históricamente en los Picos de Europa para prever la llegada de borrascas.", "oleaje", "karst", "acantilados", "mar"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bufones-de-pria.png",
@@ -6089,7 +6439,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 116,
     cooldownMin: 50,
-    intereses: ["acantilados", "miradores", "costa_verde"],
+    intereses: ["Naturaleza: La orientación y alta barrera natural de acantilados e islotes frenan los vientos dominantes y el oleaje cantábrico, amortiguando las olas y reduciendo el ruido ambiental que le da nombre al lugar.", "Naturaleza: Enmarcada por la Punta del Nocedal y la Punta La Forcada, esta ensenada en concha de 500 metros de longitud destaca por sus acantilados cuarcíticos verticales de entre 50 y 100 metros de altura sobre la rasa marina.", "Naturaleza: La Ruta Entrecabos es un sendero costero que conecta el Faro Vidio con la Playa del Silencio en Castañeras, bordeando los acantilados de la costa occidental asturiana hasta el Mirador del Silencio.", "Naturaleza: Carece de arenal convencional; se trata de un xogarral o pedrero de cantos rodados de cuarcita, protegido dentro del Paisaje Protegido de la Costa Occidental de Asturias y catalogado como ZEPA.", "acantilados", "miradores", "costa_verde"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/playa-del-silencio.png",
@@ -6109,7 +6459,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 115,
     cooldownMin: 50,
-    intereses: ["casas_colgantes", "puerto", "cantabrico"],
+    intereses: ["Curiosidad: La villa conserva el dialecto pixueto, variante del asturiano occidental propia del estamento marinero. Cada 29 de junio se recita en esta habla L'Amuravela, un célebre pregón satírico en verso declamado desde una embarcación en el puerto.", "Historia: En la cercana localidad de El Pito se ubica la Quinta de Selgas, un complejo palaciego erigido a finales del siglo XIX por los hermanos Selgas Albuerne. Alberga nueve hectáreas de jardines históricos y obras de Goya o El Greco.", "Cultura: Las casas de Cudillero se disponen en terrazas escalonadas alrededor de la Plaza de la Marina formando un anfiteatro natural. La tradición sostiene que los pescadores pintaban las fachadas de sus viviendas utilizando los restos de pintura de sus barcas.", "Cultura: El curadillo es una especialidad gastronómica local elaborada con especies pequeñas de escualos, como la pintarroja. Los marineros desvisceran los pescados y los dejan secar al aire colgados en las ventanas y fachadas de las viviendas.", "casas_colgantes", "puerto", "cantabrico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cudillero.png",
@@ -6129,7 +6479,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 115,
     cooldownMin: 50,
-    intereses: ["puente_romano", "oriente_asturiano", "sella"],
+    intereses: ["Curiosidad: Del centro del gran arco cuelga una réplica de la Cruz de la Victoria. Se colocó por primera vez en julio de 1939 para celebrar la llegada de la imagen de la Virgen de Covadonga tras su exilio parisino.", "Historia: A pesar de llamarse popularmente «puente romano», la estructura actual es de origen medieval, levantada hacia los siglos XIII o XIV. Se situó sobre el trazado de la calzada romana que conectaba Lucus Asturum con Portus Victoriae.", "Ingeniería: Su diseño alomado cuenta con un gran arco peraltado de 21,6 metros de luz sustentado directamente en la roca. Para soportar las crecidas del Sella dispone de tajamares ojivales y dos arquetos superiores de aligeramiento.", "Cultura: El puente es el gran símbolo del concejo y figura en su escudo municipal junto al lema en latín «Minima urbium, maxima sedium» («La menor de las ciudades, la máxima de las sedes»), aludiendo a la primera capital de la monarquía asturiana.", "Historia: Entre 1940 y 1942, el arquitecto conservador Luis Menéndez-Pidal y Álvarez dirigió la gran restauración del viaducto, recuperando su perfil medieval y reforzando los muros tras los daños y el deterioro del viaducto.", "puente_romano", "oriente_asturiano", "sella"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cangas-de-onis-y-su-puente.png",
@@ -6149,7 +6499,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 115,
     cooldownMin: 50,
-    intereses: ["prerromanico", "unesco", "puerto_pajares"],
+    intereses: ["Historia: Interiormente, destaca un icónico iconostasio compuesto por tres arcos sobre columnas que separan la nave del presbiterio, reutilizando celosías de piedra y placas de cancel de época visigoda fechadas en el siglo VII.", "Historia: A finales del siglo XVIII, Gaspar Melchor de Jovellanos visitó y documentó el templo, realizando planos y dibujos de su estructura que sirvieron para sacarlo del olvido y darlo a conocer al público general.", "Historia: Entre 1892 y 1893, el arquitecto Juan Bautista Lázaro dirigió la restauración del edificio, considerada una de las primeras intervenciones monumentales documentadas en España, y reconstruyó su bóveda central.", "Historia: En 1985 la UNESCO declaró el templo Patrimonio Mundial de la Humanidad como parte indispensable del conjunto de las «Iglesias del Reino de Asturias».", "Cultura: Se la apodó popularmente «la iglesia de las esquinas» debido a su peculiar silueta exterior, marcada por un diseño de dieciséis caras y una tupida serie de contrafuertes distribuidos en sus muros.", "prerromanico", "unesco", "puerto_pajares"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-cristina-de-lena.png",
@@ -6169,7 +6519,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 114,
     cooldownMin: 50,
-    intereses: ["faro", "mar", "vistas", "acantilados"],
+    intereses: ["Naturaleza: La cueva marina de la Iglesiona, situada directamente bajo el cabo, posee tres bocas y una cúpula natural de 60 metros de altura a la que únicamente se accede a pie durante la bajamar.", "Naturaleza: Los acantilados del cabo Vidio, integrados en la rasa costera del mar Cantábrico, están formados por cuarcitas y pizarras que alcanzan entre 80 y 90 metros de altura vertical en el concejo de Cudillero.", "Naturaleza: La Ruta Entrecabos es una travesía costera de 10,2 kilómetros de longitud que parte del Faro de Cabo Vidio y finaliza en la Playa del Silencio tras recorrer diversos acantilados y miradores.", "Historia: El Faro de Cabo Vidio, inaugurado en 1950, fue el último faro construido en Asturias y cuenta con una altura focal de 101 metros sobre el nivel del mar.", "faro", "mar", "vistas", "acantilados"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-vidio.png",
@@ -6520,7 +6870,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 125,
     cooldownMin: 60,
-    intereses: ["prehistoria", "unesco", "arte_rupestre"],
+    intereses: ["Historia: Modesto Cubillas descubrió la entrada en 1868 y Marcelino Sanz de Sautuola identificó las pinturas en 1879 junto a su hija María. La comunidad científica rechazó su autenticidad hasta que hallazgos similares en Francia confirmaron su antigüedad en 1902.", "Cultura: Los artistas paleolíticos pintaron los bisontes del Gran Techo aprovechando los abultamientos y grietas naturales de la roca para dotar a los animales de un relieve tridimensional y dar la sensación de movimiento.", "Ingeniería: Para proteger la cueva original, en 2001 se inauguró la Neocueva. Esta réplica exacta se construyó tras digitalizar la cavidad con miles de puntos topográficos por metro cuadrado y utilizar polvo de roca caliza, pigmentos naturales y carbón.", "Historia: Fue declarada Patrimonio Mundial por la UNESCO en 1985 al ser el primer lugar del mundo donde se identificó el arte rupestre del Paleolítico Superior. En 2008 se amplió la protección a otras 17 cuevas del cantábrico.", "Naturaleza: Un derrumbe natural bloqueó el acceso a la cueva hace unos 13.000 años. Este sellado selló el interior herméticamente, preservando intactas las pinturas durante milenios hasta su redescubrimiento casual en el siglo XIX.", "prehistoria", "unesco", "arte_rupestre"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -6531,7 +6881,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 43.389,
         "lng": -4.1082,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: Es popularmente llamada «la villa de las tres mentiras» porque, según el dicho local, ni es santa, ni es llana, ni tiene mar (aunque su término municipal sí linda con el Cantábrico).",
+          "Historia: Su topónimo deriva del nombre de Santa Juliana (Sancta Iuliana), martirizada en el siglo III. En el siglo IX monjes peregrinos llevaron sus reliquias a este lugar, dando origen al antiguo monasterio y a la posterior colegiata.",
+          "Cultura: Su monumento central es la Colegiata de Santa Juliana, un templo románico del siglo XII. Destaca por su claustro con 42 capiteles esculpidos con temas bíblicos, escenas de caballería y motivos vegetales.",
+          "Historia: En la Edad Media, tras la concesión de fuero por Alfonso VIII, la villa pasó a ser la capital histórica de las Asturias de Santillana, conservando torres bajomedievales como las del Merino y de Don Borja.",
+          "Cultura: El filósofo Jean-Paul Sartre visitó la villa en 1935 junto a Simone de Beauvoir. Fascinado por el lugar, lo inmortalizó en su primera novela, «La náusea», describiéndolo como «el pueblo más bonito de España»."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cueva-y-museo-de-altamira.png",
@@ -6551,7 +6909,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 123,
     cooldownMin: 55,
-    intereses: ["flysch", "acantilados", "geologia", "oleaje"],
+    intereses: ["Naturaleza: El litoral abarca 20 kilómetros de acantilados y plataformas de abrasión esculpidos sobre el Sinclinal de San Román-Santillana, un pliegue geológico formado por la elevación de la cordillera Cantábrica con capas rocosas de hasta 125 millones de años.", "Naturaleza: En la playa de Covachos existe un tómbolo natural de arena que desaparece con la pleamar y que durante la bajamar conecta la costa con el islote de Castro de Covachos mediante un paso caminable.", "Naturaleza: La Senda Litoral de Costa Quebrada recorre 20 kilómetros a pie entre la península de la Magdalena en Santander y la playa de Cuchía en Miengo, conectando acantilados, las dunas de Liencres y miradores emblemáticos.", "Naturaleza: Los constantes vientos del noroeste y el mar de fondo cantábrico desgastan de forma desigual las calizas del Cretácico, modelando los singulares «urros» o islotes alineados en paralelo a la costa por erosión marina diferencial.", "Cultura: Gracias al impulso vecinal y científico iniciado por Jesús Mojas y Antonio Cendrero para proteger su geodiversidad, este frágil ecosistema costero fue declarado Geoparque Mundial por la UNESCO.", "flysch", "acantilados", "geologia", "oleaje"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -6562,7 +6920,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 43.4495,
         "lng": -3.9637,
-        "radio": 5500
+        "radio": 5500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: La ría de Mogro se forma en la desembocadura del río Pas. A su derecha se despliega el parque natural con un campo dunar de unas 195 hectáreas, catalogado como Punto de Interés Geológico.",
+          "Naturaleza: Con precipitaciones anuales de entre 1.000 y 1.200 mm y temperaturas medias de 14,5 °C, los vientos dominantes del noroeste impulsan la arena de las playas, modelando dunas móviles en constante transformación.",
+          "Naturaleza: En 1949 se repoblaron las dunas terciarias con pino marítimo (Pinus pinaster) para estabilizar el terreno arenoso y frenar su avance eólico hacia las zonas de pastos y cultivos interiores.",
+          "Naturaleza: Una ruta circular de unos 6 kilómetros parte del aparcamiento de Valdearenas, bordea la ría de Mogro y cruza el pinar antes de regresar a la costa por la playa de Canallave."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/costa-quebrada.png",
@@ -6582,7 +6947,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 122,
     cooldownMin: 60,
-    intereses: ["nacimiento_del_ason", "miradores", "caliza", "senderismo"],
+    intereses: ["Naturaleza: El río Asón brota de una surgencia kárstica en la pared rocosa de Soba y se precipita en la conocida cascada de Cailagua, un salto vertical de más de setenta metros de altura.", "Naturaleza: El parque combina huellas del glaciarismo cuaternario, como el circo de Hondojón, con un vasto sistema kárstico bajo la roca caliza que alberga cavidades de renombre espeleológico como la sima Cueto-Coventosa.", "Naturaleza: La ruta oficial PR-S 014 (Ruta de Cailagua) conecta el barrio de Asón con la base del nacimiento del río en un recorrido lineal de unos nueve kilómetros ida y vuelta de dificultad baja.", "Naturaleza: Las precipitaciones anuales alcanzan entre 1.800 y 2.400 mm y las frecuentes nevadas invernales filtran agua hacia el complejo kárstico subterráneo, manteniendo el caudal continuo del nacimiento del Asón todo el año.", "nacimiento_del_ason", "miradores", "caliza", "senderismo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -6593,7 +6958,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 43.1708,
         "lng": -3.6348,
-        "radio": 5500
+        "radio": 5500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: El entorno del macizo conserva huellas de modelado glaciar cuaternario, como el circo de Lunada y valles en U, considerados entre los de menor cota alcanzados por el hielo en la península ibérica.",
+          "Ingeniería: En 1791, el ingeniero austriaco Wolfgang Mücha construyó el Resbaladero de Lunada, un canal de madera sobre base de piedra de 1.700 metros diseñado para deslizar troncos hacia las Reales Fábricas de Cañones de La Cavada.",
+          "Naturaleza: El puerto de Lunada se sitúa a 1.313 metros de altitud a los pies del macizo de Castro Valnera (1.718 m), en cuya abrupta cara norte nacen las aguas de cabecera del río Miera.",
+          "Naturaleza: La travesía de montaña desde el portillo de Lunada asciende por el Pico de la Miel (1.563 m) y el collado de la Piluca para alcanzar la cima del Castro Valnera en una ruta de unos 5,5 kilómetros.",
+          "Naturaleza: Su elevada altitud y exposición al flujo cantábrico generan precipitaciones superiores a los 2.000 mm anuales, acumulando intensas nevadas invernales que provocan el cierre prolongado del paso por carretera."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/collados-del-ason.png",
@@ -6613,7 +6986,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["fauna", "mina_a_cielo_abierto", "familias"],
+    intereses: ["Naturaleza: El espacio acoge más de 120 especies animales de cinco continentes en instalaciones de gran tamaño en semilibertad, con áreas destacadas como el recinto de osos pardos de 40 hectáreas y el espacio de elefantes de 20 hectáreas.", "Naturaleza: Emplazado en el sector occidental del macizo de Peña Cabarga sobre 750 hectáreas, el parque alberga el karst de Cabárceno, un singular relieve geológico kárstico rojizo esculpido sobre rocas calcáreas ricas en mineral de hierro.", "Historia: El terreno funcionó durante más de dos milenios como mina de hierro a cielo abierto iniciada en época romana, cerrando la extracción industrial en 1989 para dar paso a la reconversión pública del espacio.", "Naturaleza: El clima atlántico húmedo con precipitaciones frecuentes ha permitido regenerar el suelo degradado de la antigua mina mediante la repoblación de más de 5000 árboles autóctonos e introducidos, como robles, hayas, encinas y acebos.", "fauna", "mina_a_cielo_abierto", "familias"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-de-la-naturaleza-de-cabarceno.png",
@@ -6633,7 +7006,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["bahia", "puerto", "historia_urbana"],
+    intereses: ["Historia: En febrero de 1941, un voraz incendio avivado por vientos de hasta 140 km/h destruyó 14 hectáreas y 377 edificios del casco viejo. La reconstrucción posterior transformó por completo la trama urbana del centro histórico.", "Ingeniería: El Centro Botín, concebido por Renzo Piano y Luis Vidal, se levanta suspendido sobre pilares a cuatro metros de altura. Esta solución técnica evita bloquear la vista al mar y conecta los Jardines de Pereda con la bahía.", "Cultura: El Palacio de la Magdalena se construyó entre 1908 y 1912 como residencia de verano real para Alfonso XIII y Victoria Eugenia. El proyecto fue diseñado por los arquitectos santanderinos Gonzalo Bringas y Javier González de Riancho.", "Curiosidad: Con más de 22 kilómetros cuadrados formados por el estuario del río Miera, la bahía de Santander se integró en 1997 en la asociación internacional del Club de las Bahías más Bellas del Mundo.", "bahia", "puerto", "historia_urbana"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -6644,7 +7017,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 43.4623,
         "lng": -3.7717,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En la cima de la península se erige el palacio real, proyectado por Javier González Riancho y Gonzalo Bringas Vega entre 1909 y 1911 como residencia estival del rey Alfonso XIII.",
+          "Naturaleza: Esta península costera abarca 24,5 hectáreas en la entrada de la bahía de Santander y culmina a unos 37 metros de altitud, rodeada por acantilados en su vertiente norte y playas tranquilas al sur.",
+          "Naturaleza: El itinerario peatonal perimetral rodea la península pasando por la playa de los Bikinis, el Embarcadero Real y el mirador del Palacio, ofreciendo panorámicas directas de la isla de Mouro y su faro.",
+          "Naturaleza: Aprovechando las rocas de los acantilados y la entrada natural de agua marina, el parque acoge un espacio acuático al aire libre con hábitats para focas, leones marinos y pingüinos.",
+          "Naturaleza: Expuesta al clima marítimo cantábrico, la península experimenta vientos dominantes del noroeste y temperaturas del agua del mar entre 13 °C en invierno y 20 °C en verano, moderando el clima local."
+        ]
       },
       {
         "id": "es_can_santander_centro_botin",
@@ -6653,7 +7034,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.4624,
         "lng": -3.8014,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Diseñado por el arquitecto Renzo Piano, premio Pritzker, junto a Luis Vidal, el edificio está compuesto por dos volúmenes elevados sobre pilares de siete metros de altura para mantener abiertas las vistas hacia la bahía de Santander.",
+          "Ingeniería: Su fachada exterior está recubierta por 280.000 piezas cerámicas circulares y abombadas. Este revestimiento blanco reflectante fue diseñado para matizar y reflejar los cambiantes tonos de la luz solar y del mar de la bahía.",
+          "Ingeniería: Para integrar el edificio en la trama urbana, se soterró el tráfico rodado mediante un túnel de más de 200 metros, lo que permitió duplicar la extensión de los contiguos Jardines de Pereda hasta la misma orilla del agua.",
+          "Cultura: Inaugurado en junio de 2017, el conjunto está organizado en dos cuerpos unidos por pasarelas elevadas: la parte oeste se dedica a exposiciones de arte y la este a actividades formativas y a un auditorio."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bahia-y-centro-historico-de-santander.png",
@@ -6673,7 +7061,7 @@ export const POIS = [
     perfil: "familia",
     prioridad: 120,
     cooldownMin: 55,
-    intereses: ["espeleologia", "excéntricas", "mineria", "karst"],
+    intereses: ["Naturaleza: Alberga un conjunto insólito de helíctitas o estalactitas excéntricas, espeleotemas de calcita que desafían la gravedad al crecer con ramificaciones en múltiples direcciones aleatorias.", "Historia: En 1908, mineros del grupo La Florida descubrieron accidentalmente la cavidad al perforar la galería de La Isidra para extraer zinc y plomo, bautizándola como «soplao» por la corriente de aire que percibieron.", "Naturaleza: Se sitúa en la cumbre de la Sierra de Arnero, a 540 metros de altitud. Desarrolla un sistema kárstico de más de 20 kilómetros de galerías repartidas entre los municipios de Herrerías, Valdáliga y Rionansa.", "Naturaleza: La ruta de turismo-aventura ofrece un recorrido de 2,5 kilómetros a pie por el suelo original de la cavidad, adentrándose por las galerías subterráneas de Campamento, El Órgano y El Bosque.", "Naturaleza: En el interior de la cavidad se registra una temperatura constante durante todo el año de entre 12 y 14 °C con una humedad relativa cercana al 90 %, lo que obliga a vestir ropa de abrigo.", "espeleologia", "excéntricas", "mineria", "karst"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cueva-el-soplao.png",
@@ -6693,7 +7081,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 118,
     cooldownMin: 55,
-    intereses: ["playas", "marismas", "aves", "occidente"],
+    intereses: ["Historia: El 14 de junio de 1929, la avioneta 'El Pájaro Amarillo' aterrizó de emergencia en la playa de Oyambre tras cruzar el Atlántico, descubriéndose a bordo al primer polizón aéreo de la historia.", "Naturaleza: El parque abarca 5.782 hectáreas articuladas por las rías de San Vicente y La Rabia, junto al Monte Corona, cuya cota máxima alcanza los 300 metros de altitud sobre el nivel del mar.", "Naturaleza: Las dunas de Oyambre y Merón forman un relevante sistema dunar cantábrico, mientras que sus marismas y estuarios albergan ecosistemas fangosos esenciales para el descanso de aves migratorias.", "Naturaleza: El clima templado-húmedo de la zona registra precipitaciones de entre 1.000 y 1.400 milímetros anuales y una temperatura media superior a 14 °C, lo que mantiene una cubierta vegetal siempre verde.", "Naturaleza: La Ruta del Litoral de Oyambre es un itinerario de 9,75 kilómetros y 169 metros de desnivel que une la playa del Tostadero con la ría de la Rabia atravesando acantilados, dunas y arenales.", "playas", "marismas", "aves", "occidente"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -6704,7 +7092,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 43.3854,
         "lng": -4.3987,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: El Puente de la Maza, de 500 metros de longitud y 28 arcos de medio punto sobre la ría, se construyó en piedra entre los siglos XV y XVI reemplazando una pasarela previa de madera.",
+          "Naturaleza: El estuario de San Vicente abarca las marismas de Rubín y Pombo, alimentadas por los ríos Escudo y Gandarilla, formando parte de las 5758 hectáreas protegidas del Parque Natural de Oyambre.",
+          "Naturaleza: La Ruta de los Acantilados discurre en un trazado circular de unos 9 kilómetros por la costa de Oyambre, atravesando brezales y acantilados con vistas directas sobre el mar Cantábrico.",
+          "Naturaleza: Las variaciones mareales inundan y desecan diariamente las marismas del estuario, creando fangos e islotes intermareales donde descansan y se alimentan aves migratorias en su ruta entre África y Europa.",
+          "Naturaleza: Su clima templado atlántico registra temperaturas medias superiores a 14 °C y precipitaciones entre 1000 y 1200 mm anuales, lo que mantiene una cubierta vegetal verde y praderías permanentes."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-oyambre.png",
@@ -6724,7 +7120,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 117,
     cooldownMin: 50,
-    intereses: ["costa_oriental", "aves", "acantilados", "mar"],
+    intereses: ["Cultura: En 2020, el artista cántabro Okuda San Miguel decoró la torre cilíndrica de 16 metros del faro con su obra «Infinite Cantabria», empleando más de 70 colores inspirados en la fauna autóctona.", "Naturaleza: El Cabo de Ajo es el punto más septentrional de Cantabria, caracterizado por acantilados calcáreos que se elevan 63 metros sobre el Cantábrico en la desembocadura de la ría de Ajo.", "Naturaleza: La Cueva de la Ojerada es una formación kárstica en el acantilado con dos grandes cavidades que, durante fuertes temporales, actúan como bufones impulsando agua de mar a presión hacia la superficie.", "Naturaleza: La ruta costera entre el Faro de Ajo y la Cueva de la Ojerada cubre unos 4 kilómetros de ida y vuelta sobre los acantilados de Bareyo, ofreciendo miradores panorámicos del litoral cantábrico.", "Naturaleza: La continua exposición a los vientos cantábricos con rachas superiores a 50 km/h y el salitre del mar impiden el desarrollo arbóreo, generando un prado litoral adaptado a la erosión costera constante.", "costa_oriental", "aves", "acantilados", "mar"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -6735,7 +7131,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.4987,
         "lng": -3.5675,
-        "radio": 4200
+        "radio": 4200,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: Entre las rías de Castellano y Quejo se extiende la costa de Isla, dominada por Cabo Quejo, donde los acantilados verticales alcanzan desplomes de más de 50 metros de altura sobre el mar Cantábrico.",
+          "Naturaleza: La Senda Litoral de Isla es un itinerario oficial de unos 7 kilómetros de longitud que recorre la franja costera entre la Playa de los Barcos y la Playa de La Arena bordeando los acantilados.",
+          "Naturaleza: La Marisma de Joyel, dentro del Parque Natural de las Marismas de Santoña, Victoria y Joyel, constituye un estuario intermareal protegido de alto valor ecológico que sirve de refugio para miles de aves migratorias.",
+          "Naturaleza: El clima oceánico litoral genera precipitaciones frecuentes y fuertes vientos dominantes del noroeste, condicionando en los acantilados un ecosistema de matorrales halófilos y praderías adaptados a la extrema salinidad marina.",
+          "Historia: En Cabo Quejo se conservan restos de una antigua atalaya desde la que se atisbaba el paso de cetáceos, alertando mediante señales de humo a los marineros para la caza tradicional de ballenas."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/faro-de-ajo-y-acantilados.png",
@@ -6755,7 +7159,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 116,
     cooldownMin: 55,
-    intereses: ["leyenda_hombre_pez", "pasiegos", "arquitectura"],
+    intereses: ["Ingeniería: En 1622 se establecieron en Liérganes los primeros altos hornos de la península ibérica, impulsados por el empresario belga Jean Curtius para fabricar cañones de hierro colado destinados a la Armada española.", "Curiosidad: La leyenda local narra que Francisco de la Vega Casar desapareció nadando en el río Miera en 1674 y fue hallado cinco años después por pescadores en la bahía de Cádiz, pronunciando únicamente la palabra «Liérganes».", "Ingeniería: El Puente Mayor sobre el río Miera, conocido como puente romano, fue diseñado en 1587 por el maestro de cantería Bartolomé de Hermosa y construido con un único ojo de piedra de sillería sobre el cauce.", "Naturaleza: El paisaje de Liérganes está dominado por las cimas gemelas de los Picos de Busampiro, conocidas como Marimón y Cotillamón —o «las Tetas de Liérganes»—, que alcanzan unos 400 metros de altitud.", "Cultura: Junto al Puente Mayor se conserva un antiguo molino harinero de 1667 erigido por la familia Rubalcaba, rehabilitado posteriormente como centro de interpretación dedicado a la historia del Hombre Pez.", "leyenda_hombre_pez", "pasiegos", "arquitectura"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lierganes.png",
@@ -6775,7 +7179,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 115,
     cooldownMin: 55,
-    intereses: ["deva", "paredes_calizas", "acceso_a_liebana"],
+    intereses: ["Naturaleza: El río Deva ha excavado este desfiladero calizo de 21 kilómetros de longitud, considerado el más largo de España, con paredones rocosos verticales que superan los 600 metros de altura sobre el cauce.", "Naturaleza: La ruta entre la central hidroeléctrica de Urdón y Tresviso recorre unos 6 kilómetros por sentido salvando 850 metros de desnivel positivo a través de abruptos zigzags esculpidos en las paredes calizas de la garganta.", "Naturaleza: El encajonamiento a baja altitud —desde 45 metros sobre el nivel del mar— genera un microclima mediterráneo resguardado donde prosperan encinares y alcornoques cantábricos, a diferencia del clima atlántico y alpino de las cumbres adyacentes.", "Naturaleza: Protegido como Zona de Especial Protección para las Aves con 6.350 hectáreas, sus precipicios inaccesibles albergan nidificaciones de buitre leonado, alimoche, águila real y zonas destinadas al programa de reintroducción del quebrantahuesos.", "deva", "paredes_calizas", "acceso_a_liebana"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desfiladero-de-la-hermida.png",
@@ -6795,7 +7199,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 115,
     cooldownMin: 50,
-    intereses: ["ebro", "manantial", "campoo", "hidrologia"],
+    intereses: ["Naturaleza: Pruebas con fluoresceína del Instituto Geológico y Minero en 1987 demostraron que el manantial de Fontibre es una resurgencia kárstica. Brota con unos 500 litros por segundo a partir del río Híjar, que se filtra 800 metros antes.", "Naturaleza: La senda circular Fuentes del Ebro rodea el monte comunal de La Guariza a 930 metros de altitud. Con 5 kilómetros y 90 metros de desnivel, recorre el hayedo de Fontibre y ofrece vistas del valle de Campoo.", "Naturaleza: El surgidero forma un estanque arbolado de fresnos y chopos dentro de la Zona de Especial Conservación Río y Embalse del Ebro, hábitat protegido donde habitan nutrias y especies ícticas autóctonas como la bermejuela y la madrilla.", "Cultura: El paraje La Fuentona alberga un monolito de piedra diseñado por el escultor Jesús Otero, coronado por la Virgen del Pilar y con los escudos tallados de las regiones que atraviesa el Ebro hasta su desembocadura.", "Naturaleza: Ubicado a 930 metros de altitud, su clima combina influencias atlánticas y continentales, registrando hasta 90 días anuales de heladas y temperaturas medias entre 8 y 10 °C, lo que favorece bosquetes de hayas, robles y quejigos.", "ebro", "manantial", "campoo", "hidrologia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -6806,7 +7210,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.0007,
         "lng": -4.1387,
-        "radio": 4000
+        "radio": 4000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: El cercano Pico Tres Mares es una divisoria de aguas única en la Península Ibérica: sus laderas alimentan ríos hacia el Mediterráneo (Híjar-Ebro), el Atlántico (Pisuerga-Duero) y el Cantábrico (Nansa).",
+          "Naturaleza: Reinosa se sitúa a 850 metros de altitud en la confluencia de los ríos Híjar, Izarilla y Ebro, que alimentan el embalse del Ebro, una masa de agua de 6.253 hectáreas situada a 838 metros sobre el nivel del mar.",
+          "Naturaleza: Desde la estación de esquí de Alto Campoo parte la ruta hacia el mirador del Pico Tres Mares (2.175 m), un recorrido de 8,5 km y 520 m de desnivel positivo con vistas a Picos de Europa y Campoo.",
+          "Naturaleza: Ubicada en una hondonada a 850 metros de altitud, Reinosa sufre acentuada inversión térmica invernal con heladas frecuentes de octubre a mayo y temperaturas mínimas invernales que alcanzan habitualmente valores inferiores a -15 °C.",
+          "Historia: Fundada en la Edad Media, Reinosa se consolidó como cruce estratégico y comercial entre la Meseta y el Cantábrico, desarrollándose históricamente alrededor de los puentes sobre el río Ebro y sus casonas nobles."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fontibre-nacimiento-del-ebro.png",
@@ -6826,7 +7238,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 115,
     cooldownMin: 50,
-    intereses: ["modernismo", "universidad_pontificia", "costa"],
+    intereses: ["Ingeniería: En el verano de 1881, Comillas instaló unos treinta faroles para convertirse en la primera localidad española con alumbrado público eléctrico, coincidiendo con la visita del rey Alfonso XII para celebrar un Consejo de Ministros.", "Cultura: El Capricho, diseñado por Antoni Gaudí entre 1883 y 1885 para Máximo Díaz de Quijano, es una de las escasísimas obras del arquitecto catalán fuera de Cataluña y destaca por sus azulejos cerámicos con girasoles.", "Historia: En el verano de 1881, la villa se convirtió en sede temporal del gobierno de España cuando el rey Alfonso XII reunió allí al Consejo de Ministros en la Casa Ocejo durante su estancia estival.", "Cultura: El Palacio de Sobrellano y su Capilla-Panteón fueron proyectados por el arquitecto Joan Martorell por encargo del primer marqués de Comillas, contando además con mobiliario diseñado expresamente por Antoni Gaudí.", "modernismo", "universidad_pontificia", "costa"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -6837,7 +7249,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.3865,
         "lng": -4.2928,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Diseñado por Antoni Gaudí y construido entre 1883 y 1885 bajo la dirección de obra de Cristóbal Cascante, el inmueble combina zócalos de sillería, muros de ladrillo visto y bandas cerámicas con girasoles.",
+          "Curiosidad: Es una de las escasas obras proyectadas por Antoni Gaudí fuera de Cataluña, junto al Palacio Episcopal de Astorga y la Casa Botines de León.",
+          "Historia: El palacete fue encargado por el indiano Máximo Díaz de Quijano, concuñado del primer marqués de Comillas, tras amasar su fortuna en Cuba como abogado y empresario.",
+          "Cultura: Se adscribe a la etapa orientalista de Gaudí, caracterizada por la influencia neomudéjar e hispanoárabe, con una prominente torre cilíndrica revestida de azulejos decorativos.",
+          "Historia: Tras décadas de uso residencial y abandono, el edificio fue restaurado a finales del siglo XX para albergar un restaurante y reabrió sus puertas en 2010 reconvertido en museo."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/comillas.png",
@@ -7269,7 +7689,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
+    intereses: ["Cultura: El Museo de la Evolución Humana, diseñado por el arquitecto Juan Navarro Baldeweg e inaugurado en 2010, alberga los fósiles originales de Atapuerca, entre ellos los restos clave del Homo antecessor.", "Curiosidad: En 1494 la reina Isabel I creó el Consulado del Mar en Burgos. Pese a no tener costa, la ciudad monopolizó la exportación de la lana castellana a Flandes y coordinó la flota mercantil cantábrica.", "Historia: El Arco de Santa María, antigua puerta medieval de la muralla, fue transformado en el siglo XVI por Juan de Vallejo y Francisco de Colonia en arco triunfal decorado con estatuas de Carlos V y el Cid.", "Curiosidad: En la nave mayor de la catedral gótica habita el Papamoscas, un autómata del siglo XVIII sobre la claraboya que abre la boca y acciona un badajo para dar las horas en punto.", "capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -7280,7 +7700,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.3344,
         "lng": -3.7169,
-        "radio": 4000
+        "radio": 4000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Fundado en 1187 por el rey Alfonso VIII de Castilla y su esposa Leonor de Plantagenet, el monasterio fue diseñado como panteón regio de la dinastía castellana y principal monasterio femenino cisterciense del reino.",
+          "Curiosidad: Su abadesa ostentaba jurisdicción 'nullius dioecesis', lo que le otorgaba un poder histórico casi episcopal con autoridad civil y criminal sobre decenas de villas sin depender de los obispos locales.",
+          "Cultura: Alberga el Museo de Telas Medievales, considerado una colección única en el mundo por conservar indumentaria civil de los siglos XII y XIII extraída directamente de los sepulcros reales.",
+          "Historia: Entre sus piezas más destacadas se conserva el célebre Pendón de las Navas de Tolosa, un gran tapiz militar almohade conquistado como botín tras la batalla del año 1212.",
+          "Curiosidad: El complejo arquitectónico servía de escenario para ceremonias regias excepcionales, incluyendo la coronación de monarcas castellanos y el nombramiento de caballeros como Fernando III el Santo o Eduardo I de Inglaterra."
+        ]
       },
       {
         "id": "es_bur_catedral_burgos",
@@ -7289,7 +7717,16 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.34,
         "lng": -3.7043,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: Es la única catedral de España declarada Patrimonio de la Humanidad por la UNESCO de forma independiente, en 1984, sin estar condicionada a formar parte del conjunto del centro histórico de la ciudad.",
+          "Ingeniería: La Escalera Dorada, diseñada en 1519 por Diego de Siloé para salvar un desnivel de ocho metros entre portadas, se convirtió en referente del Renacimiento español e inspiró la gran escalera de la Ópera de París.",
+          "Historia: Impulsada en 1221 por el rey Fernando III y el obispo Mauricio, fue la primera catedral de estilo gótico clásico en la península ibérica, tomando como referencia las grandes catedrales francesas de la época.",
+          "Cultura: El arquitecto germánico Juan de Colonia diseñó en el siglo XV las famosas agujas caladas de las torres principales, introduciendo el gótico flamígero en el templo y comenzando una célebre saga familiar de maestros de obra.",
+          "Historia: Bajo el crucero y el cimborrio renacentista reposan desde 1921 los restos de Rodrigo Díaz de Vivar, el Cid Campeador, y de su esposa Doña Jimena.",
+          "Curiosidad: En la nave central se ubica el Papamoscas, un autómata articulado del siglo XVI instalado junto a un reloj que abre la boca al tocar las campanas en cada hora en punto."
+        ]
       },
       {
         "id": "es_bur_cartuja_miraflores",
@@ -7298,7 +7735,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.3277,
         "lng": -3.6596,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: Isabel la Católica encargó a Gil de Siloé el panteón de sus padres, Juan II e Isabel de Portugal. Esculpido en alabastro con forma de estrella de ocho puntas, este sepulcro exento se completó en 1493.",
+          "Cultura: El retablo mayor de la iglesia, realizado entre 1496 y 1499 por Gil de Siloé y Diego de la Cruz, contó con un abono documentado de más de un millón de maravedíes financiado por la reina Isabel.",
+          "Historia: El origen del monasterio se remonta a 1442, cuando Juan II de Castilla donó a los cartujos un palacio de caza de su padre Enrique III. Tras sufrir un devastador incendio en 1452, el recinto fue reconstruido por completo.",
+          "Ingeniería: El proyecto arquitectónico de la iglesia actual fue diseñado por el maestro Juan de Colonia tras el incendio de 1452 y completado por su hijo Simón de Colonia con complejas bóvedas de crucería y terceletes.",
+          "Curiosidad: En el presbiterio descansa también el infante Alfonso de Castilla, hermanastro de Enrique IV cuya tumba en arcosolio fue proyectada por Gil de Siloé para consolidar la legitimidad dinástica de la reina Isabel."
+        ]
       },
       {
         "id": "es_bur_san_pedro_cardena",
@@ -7307,7 +7752,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.3027,
         "lng": -3.6201,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Según la tradición y el Cantar de mio Cid, Rodrigo Díaz de Vivar dejó aquí a doña Jimena y a sus hijas al partir al destierro. Sus restos reposaron en su capilla hasta ser trasladados a la catedral de Burgos.",
+          "Historia: En el año 934, durante las campañas de Abderramán III, las tropas andalusíes destruyeron el cenobio y ejecutaron a unos doscientos monjes. Este trágico episodio motivó su canonización oficial en 1603 como mártires de Cardeña.",
+          "Cultura: El claustro románico del siglo XII destaca por sus arcos con dovelas que alternan los colores blanco y rojo. Este diseño arquitectónico refleja la influencia directa de la decoración de la Mezquita de Córdoba.",
+          "Historia: La conocida como Torre de Doña Jimena, erigida a finales del siglo X como campanario exento, es la estructura más antigua en pie del conjunto monástico y posteriormente fue integrada en el templo gótico.",
+          "Curiosidad: Frente al acceso principal del monasterio, un monolito de piedra señala el lugar exacto donde la tradición popular sitúa la sepultura de Babieca, el caballo legendario del Cid Campeador."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/burgos.png",
@@ -7327,7 +7780,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 128,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "duques_de_lerma"],
+    intereses: ["Historia: Entre 1600 y 1618, Francisco Gómez de Sandoval, primer duque de Lerma y valido de Felipe III, transformó la villa en sede de la corte mandando erigir palacios, conventos y plazas diseñados por arquitectos como Francisco de Mora.", "Ingeniería: El Palacio Ducal de Lerma se diseñó con cuatro torres esquineras con chapiteles de pizarra, una excepción arquitectónica en la época reservada habitualmente a las residencias reales de los Austrias.", "Cultura: Para desplazarse de forma privada entre el Palacio Ducal y las fundaciones religiosas sin pisar la calle, el duque ordenó construir una red de pasadizos elevados de los que se conserva un tramo visitable.", "Curiosidad: La Plaza Mayor de Lerma, diseñada para albergar fiestas cortesanas, corridas y comedias, cuenta con casi 7000 metros cuadrados de superficie, lo que la convierte en una de las plazas porticadas más grandes de España.", "Cultura: La Excolegiata de San Pedro se consagró en 1617 con fiestas que duraron 21 días, obteniendo del papa Paulo V la condición de abadía independiente de la diócesis local y directamente subordinada a la Santa Sede.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "duques_de_lerma"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lerma.png",
@@ -7387,7 +7840,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "nudo_logistico", "ebro", "ap1"],
+    intereses: ["Ingeniería: Diseñada en 1862 por el ingeniero inglés Charles Blacker Vignoles, la estación convirtió a la ciudad en un nodo ferroviario en aspa. Destaca por sus marquesinas victorianas de 90 metros, fabricadas en hierro traído directamente de Inglaterra.", "Historia: Ubicado en el cerro de La Picota, el castillo fue iniciado en el siglo XV por la familia Sarmiento para controlar el comercio salinero. En 1808, José Bonaparte firmó allí el decreto que autorizaba el uso de moneda francesa en España.", "Ingeniería: El Puente de Carlos III fue proyectado en 1775 por Francisco Alejo de Aranguren tras la destrucción del paso medieval por una gran riada. Consta de seis arcos de sillería sobre tajamares diseñados para resistir el empuje del río Ebro.", "Historia: El Fuero de Miranda de 1099, otorgado por Alfonso VI, concedió el monopolio del cobro del pontazgo. Su templo románico de San Nicolás (actual Espíritu Santo) sirvió como iglesia juradera para resolver disputas entre vecinos de ambas márgenes.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "nudo_logistico", "ebro", "ap1"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/miranda-de-ebro.png",
@@ -7407,7 +7860,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 126,
     cooldownMin: 120,
-    intereses: ["monasterio", "arte", "arquitectura", "religion", "patrimonio"],
+    intereses: ["Historia: Fundado en 1011 por el conde Sancho García, el monasterio albergó el primer panteón real de Castilla y custodia los restos de monarcas como Sancho II de Castilla y Sancho III el Mayor de Pamplona.", "Cultura: En el siglo XVI, el monje benedictino Pedro Ponce de León desarrolló en este cenobio un pionero método educativo y sistema de comunicación para personas sordas, considerado el primer antecedente documentado de la lengua de signos.", "Ingeniería: La capilla mayor está cubierta por una bóveda octogonal estrellada de 400 metros cuadrados de superficie, proyectada por el maestro Juan de Colonia y ejecutada por Fernando Díaz de Presencio hacia 1450.", "Curiosidad: Los sepulcros reales y condales del siglo XV destacan por ser cofres esculpidos en madera de nogal y boj por fray Pedro de Valladolid, con decoración gótico-mudéjar e imitación de mocárabes única en la imaginería funeraria.", "monasterio", "arte", "arquitectura", "religion", "patrimonio"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-san-salvador-de-ona.png",
@@ -7427,7 +7880,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "arleanza", "castilla_medieval"],
+    intereses: ["Historia: Levantado en el siglo X por Fernán González, este torreón mozárabe de planta piramidal truncada es la primera construcción defensiva castellana. La tradición popular afirma que allí permaneció encerrada su hija, la infanta doña Urraca.", "Cultura: En el claustro de la excolegiata de San Cosme y San Damián reposa la princesa Kristina de Noruega, quien viajó a Castilla en el siglo XIII para casarse con el infante Felipe, hermano de Alfonso X el Sabio.", "Curiosidad: Inaugurada en 2011 en el Valle de los Lobos, la ermita de San Olav fue la primera capilla levantada en España en el siglo XXI. Honra al patrón noruego en cumplimiento diferido de una promesa a la princesa Kristina.", "Historia: El edificio del Archivo del Adelantamiento de Castilla fue mandado construir en 1575 por el rey Felipe II. Su traza se atribuye al arquitecto Juan de Herrera y custodió documentación oficial castellana antes de su traslado a Simancas.", "Cultura: El casco histórico conserva la arquitectura vernácula castellana con plantas bajas de piedra y pisos superiores levantados mediante entramados de madera rellenos de adobe, acompañados de balconadas y calles porticadas tradicionales.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "arleanza", "castilla_medieval"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/covarrubias.png",
@@ -7447,7 +7900,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "la_bureba"],
+    intereses: ["Historia: En 1305 la infanta Blanca de Portugal reorganizó Briviesca con un trazado urbano ortogonal. La regularidad de este diseño sirvió a Isabel la Católica como modelo para planificar la ciudad de Santa Fe durante el asedio a Granada.", "Cultura: El retablo mayor de la iglesia del convento de Santa Clara, realizado en madera de nogal sin policromar entre 1551 y 1570 por Diego Guillén y Pedro López de Gámiz, supera los veinte metros de altura.", "Historia: Durante las Cortes de Briviesca, celebradas en 1387 bajo el reinado de Juan I de Castilla, se promulgó un ordenamiento fundamental que reguló el funcionamiento del Consejo Real y fijó límites al gasto económico de la Corona.", "Ingeniería: La excolegiata de Santa María la Mayor, primera de la diócesis de Burgos, cuenta con una monumental fachada neoclásica con tres cuerpos, columnas corintias y dos torres campanario con cúpulas gallonadas, proyectada por el arquitecto Manuel Echanove.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "la_bureba"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/briviesca.png",
@@ -7467,7 +7920,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_a62", "origen_romano"],
+    intereses: ["Historia: Durante las guerras cántabras, entre los años 29 y 19 a. C., el emperador Octavio Augusto estableció su campamento militar en la celtíbera Segisama, origen romano de Sasamón, para dirigir la campaña en el norte peninsular.", "Cultura: La iglesia de Santa María la Real es el tercer templo más grande de la provincia de Burgos y conserva en su transepto sur una portada gótica del siglo XIII que reproduce fielmente la Puerta del Sarmental de la Catedral burgalesa.", "Curiosidad: A las afueras se encuentra la Casa Museo de Salaguti, una escultura habitable con muros curvos iniciada en 1970 por el artista autodidacta Carlos Salazar, cuya fachada luce un rostro humano monumental labrado en la pared.", "Ingeniería: Sobre el río Brullés se conservan los puentes de Trisla, San Miguel y Puente Nueva, estructuras erigidas en la Edad Media sobre cimientos romanos para permitir el trazado de las calzadas que conectaban Zaragoza con Astorga.", "Historia: En el siglo XI, Sancho II el Fuerte estableció en Sasamón una sede episcopal efímera, motivo por el cual la iglesia de Santa María la Real presenta unas proporciones monumentales impropias de una villa rural.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_a62", "origen_romano"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sasamon.png",
@@ -7487,7 +7940,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "castillo", "ribera_del_duero"],
+    intereses: ["Cultura: El Palacio de los Condes de Miranda, del siglo XVI, fue mandado construir por Francisco de Zúñiga y Velasco. Destaca por su portada plateresca, su patio porticado renacentista y salas decoradas con elaborados artesonados y yeserías mudéjares.", "Curiosidad: Fundada en 1725 por el boticario Lucas Ximeno Briongos, la Botica de Ximeno es la farmacia en activo más antigua de España. Ha sido regentada ininterrumpidamente por ocho generaciones de la misma familia durante tres siglos.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "castillo", "ribera_del_duero"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/penaranda-de-duero.png",
@@ -7507,7 +7960,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "felix_rodriguez_de_la_fuente", "sal"],
+    intereses: ["Naturaleza: La villa se asienta sobre un diapiro salino, un cráter geológico formado durante el Triásico que hizo aflorar a la superficie depósitos subterráneos de sal explotados desde la Antigüedad.", "Cultura: En esta localidad nació en 1928 el naturalista y divulgador Félix Rodríguez de la Fuente, cuya infancia observando la avifauna del entorno moldeó su vocación por la conservación de la naturaleza.", "Historia: El castillo de los Rojas, adaptado al escarpe rocoso en el siglo XIV, se erigió para vigilar el paso estratégico entre La Bureba y el Páramo y proteger el valioso monopolio salinero.", "Curiosidad: Su casco medieval amurallado alberga el arco del Conjuradero, una galería abierta desde donde las autoridades religiosas oficiaban ritos para ahuyentar nublados y proteger las eras de evaporación de sal.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "felix_rodriguez_de_la_fuente", "sal"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/poza-de-la-sal.png",
@@ -7527,7 +7980,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 116,
     cooldownMin: 70,
-    intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "paso_natural", "a1", "cantabrico"],
+    intereses: ["Naturaleza: En las navas y pastizales altos que coronan el desfiladero habita y se gestiona la reserva de conservación del caballo losino, la única raza equina autóctona de Castilla y León, caracterizada por su pequeña alzada y pelaje negro.", "Naturaleza: El río Oroncillo ha labrado este desfiladero calcáreo al atravesar los Montes Obarenes, superando una barrera montañosa de unos cinco kilómetros de anchura que culmina en cumbres prominentes como el pico Castillete, situado a 1038 metros de altitud.", "Naturaleza: La ruta senderista PRC-BU 89 es un itinerario circular de 14,7 kilómetros con salida en Pancorbo que remonta los escarpes de los Obarenes hasta asomarse al mirador panorámico de la Peña del Mazo sobre el desfiladero.", "Cultura: El pintor impresionista Darío de Regoyos inmortalizó el desfiladero y el trazado ferroviario en su óleo «Pancorbo, el tren que pasa», pintado en 1901 y conservado actualmente en la colección del Museo Nacional Thyssen-Bornemisza.", "Naturaleza: La estrechez de la garganta genera corrientes intensas por efecto Venturi y crea una encrucijada bioclimática entre las regiones atlántica y mediterránea, permitiendo la convivencia de hayas en las laderas umbrías con encinas en las solanas.", "paisaje", "miradores", "fauna", "flora", "rutas", "paso_natural", "a1", "cantabrico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desfiladero-de-pancorbo.png",
@@ -7568,7 +8021,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
+    intereses: ["Historia: En 1188, la Curia Regia convocada por el rey Alfonso IX en León incluyó por primera vez a representantes electos del pueblo llano. La UNESCO reconoció los Decreta resultantes como el testimonio documental más antiguo del sistema parlamentario europeo.", "Ingeniería: La catedral gótica de Santa María de Regla cuenta con casi 1800 metros cuadrados de vidrieras medievales repartidas en 125 ventanales y tres grandes rosetones, reduciendo la superficie del muro de piedra a la mínima expresión constructiva.", "Cultura: El Panteón Real de la Colegiata de San Isidoro alberga murales del siglo XII pintados al fresco. Destaca la escena de la Anunciación a los pastores, decorada con vegetación autóctona leonesa y un perro de raza mastín leonés.", "Curiosidad: Diseñada por Antoni Gaudí en 1892 como almacén textil y viviendas, la Casa Botines es una de sus tres únicas obras fuera de Cataluña. Incorporó 28 pilares de hierro en planta baja para ganar espacio comercial diáfano.", "capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -7579,7 +8032,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.6015,
         "lng": -5.5704,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En el claustro de la colegiata se celebraron las Cortes de León de 1188 bajo el reinado de Alfonso IX. La Unesco reconoció este evento como el testimonio documental más antiguo del sistema parlamentario europeo.",
+          "Cultura: El Panteón Real alberga un conjunto de frescos románicos del siglo XII tan bien conservados que se conoce popularmente como la «Capilla Sixtina del arte románico», destacando su célebre calendario agrícola medieval.",
+          "Curiosidad: El museo custodia el Cáliz de Doña Urraca, compuesto por dos cuencos romanos de ónice unidos en el siglo XI mediante filigrana de oro y gemas donadas por la infanta leonesa.",
+          "Ingeniería: La zona occidental del complejo colegial se adosa directamente sobre los restos del muro defensivo de la muralla romana de la antigua Legio VII Gemina, reutilizando sus sobrios cubos de piedra como cimentación y torre."
+        ]
       },
       {
         "id": "es_leo_catedral_leon",
@@ -7588,7 +8048,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.598,
         "lng": -5.567,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: El edificio gótico del siglo XIII redujo la piedra de los muros a la mínima expresión para abrir cerca de 1800 metros cuadrados de vidrieras medievales policromadas compuestas por 737 ventanales y tres grandes rosetones.",
+          "Historia: El rey Ordoño II donó en el siglo X sus palacios reales, construidos sobre unas termas romanas del siglo II, para edificar el primer templo catedralicio tras vencer a los árabes en la batalla de San Esteban de Gormaz.",
+          "Cultura: Las vidrieras organizan su discurso según la luz: el lado norte, más sombrío, representa personajes del Antiguo Testamento, mientras el lado sur, iluminado por el sol, exhibe pasajes del Nuevo Testamento en tonos cálidos.",
+          "Historia: Fue el primer edificio declarado Monumento Nacional en España, mediante Real Orden aprobada el 28 de agosto de 1844, lo que impulsó su gran restauración arquitectónica durante la segunda mitad del siglo XIX.",
+          "Curiosidad: Una leyenda popular atribuye los retrasos medievales de la obra a un topo maligno que destruía de noche los cimientos; en realidad, el pellejo colgado en la puerta de San Juan resultó ser un caparazón de tortuga laúd."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/leon.png",
@@ -7608,7 +8076,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 130,
     cooldownMin: 70,
-    intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "romanos", "oro", "unesco"],
+    intereses: ["Ingeniería: Para extraer el oro mediante «ruina montium», los romanos construyeron más de 300 kilómetros de canales en los montes Aquilianos para captar agua y soltarla a presión, derrumbando montañas y extrayendo unas 1.630 toneladas de metal fino.", "Naturaleza: Pico Placias alcanza 1022 metros de altitud como cota máxima del espacio, mientras que a 490 metros se sitúa el Lago de Carucedo, originado por los taponamientos de sedimentos arcillosos procedentes del lavado minero romano.", "Naturaleza: La Senda de Las Valiñas es un itinerario circular de cuatro kilómetros desde el pueblo de Las Médulas hasta La Cuevona, ampliable a siete kilómetros y medio al ascender al Mirador de Orellán con doscientos treinta metros de desnivel.", "Naturaleza: Los bosques de castaños centenarios se asentaron sobre sustrato silíceo tras la romanización y conviven con alcornocales septentrionales, mientras el embalsado Lago de Carucedo actúa como humedal protegido para la avifauna dentro de la Red Natura 2000.", "Naturaleza: Ubicado en la depresión berciana entre 428 y 1022 metros de altitud, el microclima mediterráneo atlántico registra veranos con temperaturas superiores a 35 °C que condicionan las horas recomendables para realizar senderismo por sus frentes arcillosos.", "paisaje", "miradores", "fauna", "flora", "rutas", "romanos", "oro", "unesco"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-medulas.png",
@@ -7628,7 +8096,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "bierzo", "a6"],
+    intereses: ["Historia: El nombre de Ponferrada procede del puente «Pons Ferrata», mandado construir a finales del siglo XI por el obispo Osmundo de Astorga y reforzado con hierro para facilitar el paso de los peregrinos del Camino de Santiago sobre el río Sil.", "Historia: En 1178, los caballeros templarios se establecieron en Ponferrada para proteger el Camino de Santiago, ampliando una pequeña fortaleza entre los ríos Sil y Boeza hasta conformar un recinto defensivo de unos 8.000 metros cuadrados.", "Ingeniería: La Fábrica de Luz recupera la antigua central térmica de la Minero Siderúrgica de Ponferrada (MSP), activa entre 1920 y 1971. Su rehabilitación conservó las instalaciones de producción con carbón, siendo premiada por Europa Nostra en 2012.", "Cultura: La Torre del Reloj se erigió en el siglo XVI sobre el Arco de las Eras, único acceso que se conserva de la muralla medieval. En 1693 se le añadió un tercer cuerpo rematado con chapitel para albergar la campana.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "bierzo", "a6"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -7639,7 +8107,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.5475,
         "lng": -6.5968,
-        "radio": 2200
+        "radio": 2200,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Ante la persecución de la Orden del Temple iniciada en 1307, el maestre Rodrigo Yáñez entregó la fortaleza al infante don Felipe, hermano del rey Fernando IV de Castilla, para evitar la confiscación directa de sus posesiones.",
+          "Historia: En 1178, el rey Fernando II de León cedió la plaza a la Orden del Temple. Los templarios ampliaron la fortaleza para proteger a los peregrinos que recorrían el Camino de Santiago Francés a su paso por El Bierzo.",
+          "Ingeniería: Erigido sobre un promontorio en la confluencia de los ríos Sil y Boeza, el complejo abarca 8.000 metros cuadrados. Incorpora defensas escalonadas con barbacanas, triples murallas y un amplio albacar rodeado por torres medievales.",
+          "Ingeniería: En el siglo XV, el conde de Lemos, Pedro Álvarez Osorio, remodeló el castillo erigiendo el Castillo Viejo y cinco torres defensivas clave: Moclín, Caracoles, Cabrera, Malvecino y Malpica, junto a la puerta de acceso flanqueada por torreones."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ponferrada.png",
@@ -7659,7 +8134,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 128,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "camino_de_santiago"],
+    intereses: ["Ingeniería: Las cloacas romanas de Asturica Augusta, construidas entre los siglos I y II d. C., conservan galerías abovedadas de hasta 1,80 metros de altura que hoy en día continúan integradas en la red de alcantarillado municipal.", "Cultura: Antoni Gaudí proyectó el Palacio Episcopal neogótico tras incendiarse el anterior en 1886. Al fallecer el obispo promotor en 1893, Gaudí abandonó la dirección de la obra, que fue completada años más tarde por el arquitecto Ricardo García Guereta.", "Curiosidad: El cocido maragato es el único cocido tradicional español que se sirve a la inversa: primero las carnes y el relleno de pan y huevo, después los garbanzos con verdura y finalmente la sopa de fideos.", "Historia: Astorga albergó casi cincuenta fábricas chocolateras a comienzos del siglo XX gracias al impulso del comercio arriero. En 1994 abrió en la ciudad el Museo del Chocolate, pionero en España en este género.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "camino_de_santiago"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -7670,7 +8145,13 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.4587,
         "lng": -6.0575,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Tras el incendio del edificio anterior en 1886, el obispo Joan Grau encomendó el diseño a Antoni Gaudí, quien proyectó un palacio neogótico de planta en cruz griega construido con granito blanco traído de la comarca del Bierzo.",
+          "Historia: La muerte del obispo en 1893 provocó desavenencias entre Gaudí y la junta diocesana, lo que llevó al arquitecto a dimitir; la obra la concluyó entre 1905 y 1913 el arquitecto Ricardo García Guereta.",
+          "Curiosidad: Los tres ángeles de zinc diseñados originalmente por Gaudí para rematar la cubierta nunca llegaron a colocarse en el tejado por los cambios del proyecto y quedaron instalados de forma permanente en el jardín de acceso."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/astorga.png",
@@ -7690,7 +8171,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago", "a6"],
+    intereses: ["Historia: La iglesia románica de Santiago custodia la Puerta del Perdón, el único lugar del Camino Francés fuera de Compostela donde los peregrinos enfermos que no pueden continuar la ruta obtienen el jubileo jacobeo.", "Cultura: Erigida sobre un antiguo monasterio benedictino del siglo XI, la Colegiata de Santa María fue reconstruida en el siglo XVI por impulso del virrey de Nápoles y muestra una mezcla de estilos gótico tardío, plateresco y barroco.", "Cultura: En esta villa nació en 1815 el escritor romántico Enrique Gil y Carrasco, autor de «El señor de Bembibre», considerada una de las obras cumbres de la novela histórica española del siglo XIX.", "Historia: El origen de Villafranca se remonta al siglo XI con la llegada de monjes cluniacenses y la consolidación de un asentamiento de peregrinos galos, lo que dio lugar al topónimo «villa francorum» o villa de los francos.", "Curiosidad: El Convento de San Nicolás el Real alberga un curioso Museo de Ciencias Naturales y Etnográfico fundado por los Padres Paúles, famoso por su completa colección de conchas marinas conservada en el interior de El Bierzo.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago", "a6"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villafranca-del-bierzo.png",
@@ -7710,7 +8191,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 126,
     cooldownMin: 120,
-    intereses: ["monasterio", "arte", "arquitectura", "religion", "patrimonio"],
+    intereses: ["Historia: Una inscripción conservada en la puerta del templo atestigua que el 29 de agosto de 1810 se eligieron en el monasterio los primeros diputados representantes de León para las Cortes de Cádiz.", "Historia: El rey Bermudo II de León fundó el monasterio en 990, bajo la advocación de San Salvador, para refugiar a los monjes benedictinos que huían de las razias del caudillo Almanzor.", "Historia: En 1138 la infanta Sancha Raimúndez impulsó la reconstrucción del cenobio e instaló dependencias señoriales, conocidas como Palacio Real, convirtiendo el complejo en residencia de la monarquía leonesa.", "Cultura: En 1203 la abadía se incorporó a la Orden del Císter y cambió su nombre a Santa María de Carracedo, convirtiéndose en un centro de poder que llegó a ejercer jurisdicción sobre múltiples monasterios de León, Galicia y Asturias.", "Ingeniería: El Mirador de la Reina destaca por su terraza cubierta apoyada en arquerías góticas del siglo XIII, comunicada con la Sala de Audiencias o Cocina de la Reina, que conserva bóvedas de crucería decoradas con relieve escultórico.", "monasterio", "arte", "arquitectura", "religion", "patrimonio"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santa-maria-de-carracedo.png",
@@ -7730,7 +8211,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "puente", "camino_de_santiago", "a6"],
+    intereses: ["Historia: En el Año Jacobeo de 1434, el caballero leonés Suero de Quiñones organizó un torneo medieval en el puente para romper trescientas lanzas y librarse de una argolla de hierro impuesta como voto de amor a Leonor de Tovar.", "Curiosidad: Tras concluir el torneo, Suero de Quiñones peregrinó a Santiago de Compostela para ofrecer la argolla de su cuello; la valiosa gargantilla y su cinta se conservan todavía en el relicario de la catedral compostelana.", "Ingeniería: El puente monumental sobre el río Órbigo, construido en el siglo XIII sobre trazado romano, mide casi trescientos metros y cuenta con veinte arcos de piedra de distintas tipologías y arquillos de aligeramiento en sus pilares.", "Cultura: Miguel de Cervantes inmortalizó la gesta en Don Quijote de la Mancha, donde cita expresamente las justas de Suero de Quiñones en el Paso Honroso como uno de los hechos de caballería más auténticos y verdaderos.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "puente", "camino_de_santiago", "a6"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hospital-de-orbigo.png",
@@ -7750,7 +8231,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a231", "mudejar", "camino_de_santiago"],
+    intereses: ["Historia: Alfonso VI de León convirtió el monasterio de San Benito en el gran foco cluniacense de la Península y eligió esta abadía como lugar de sepultura junto a varias de sus esposas.", "Cultura: Construida en la antigua morería durante el siglo XIII, la iglesia de San Lorenzo destaca por su arquitectura enteramente en ladrillo y una torre de cuatro cuerpos con arquerías ciegas decrecientes.", "Ingeniería: La iglesia de San Tirso arrancó su edificación con sillería de piedra, pero el cambio de planteamiento llevó a continuar la obra en ladrillo cocido, sentando el patrón técnico del románico-mudéjar.", "Historia: En mayo de 1158, Fernando II de León y Sancho III de Castilla firmaron en esta villa el Tratado de Sahagún, buscando pacificar ambos reinos y acordar el reparto de las zonas de reconquista.", "Curiosidad: Documentada en 1116, la villa albergó la primera escuela de juglares de España, donde se enseñaban artes de juglaría y poesía popular a artistas procedentes de diversos reinos hispánicos.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a231", "mudejar", "camino_de_santiago"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sahagun.png",
@@ -7770,7 +8251,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "maragateria", "arrieros"],
+    intereses: ["Historia: El asentamiento original de la villa quedó destruido por una riada en el siglo XVI, tras lo cual sus habitantes lo reconstruyeron en su emplazamiento actual conservando la arquitectura tradicional maragata.", "Ingeniería: Las casonas arrieras se estructuraron con grandes portones en arco de medio punto y amplios patios interiores empedrados, diseñados para permitir la entrada, maniobra y resguardo de carros y recuas de mulas.", "Cultura: La escritora Concha Espina se inspiró en este pueblo, al que denominó Valdecruces, para ambientar su novela «La esfinge maragata» (1914), retratando la dureza del trabajo femenino mientras los hombres arriaban.", "Curiosidad: La llegada del ferrocarril a Astorga en 1866 puso fin bruscamente al oficio tradicional de la arriería maragata, que hasta entonces transportaba salazones del norte y productos de la meseta por toda la Península.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "maragateria", "arrieros"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castrillo-de-los-polvazares.png",
@@ -7790,7 +8271,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "esla", "sur_leones"],
+    intereses: ["Historia: El castillo de Coyanza, erigido en el siglo XV por los condes de Acuña, es un referente de la arquitectura gótico-militar construido sobre un cerro que domina la vega del río Esla.", "Historia: En 1475, durante la Guerra de Sucesión Castellana, la fortaleza sufrió un asedio en el que murió el conde Juan de Acuña tras precipitarse desde una ventana de la torre.", "Ingeniería: La torre del homenaje alberga un museo de sitio protegido mediante un edificio interior exento, ejecutado con madera, acero y cristal, que reestructuró la torre respetando los muros perimetrales históricos.", "Cultura: Conocida originariamente como Coyanza en época medieval, la villa cambió su nombre a Valencia de Don Juan en honor al infante don Juan de Castilla, hijo de Alfonso X el Sabio y señor del lugar.", "Cultura: La localidad alberga el Museo de la Indumentaria Tradicional Leonesa (MITLE), el primer centro de la provincia enfocado al estudio, conservación y divulgación del traje popular y la joyería tradicional leonesa.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "esla", "sur_leones"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valencia-de-don-juan.png",
@@ -7810,7 +8291,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago", "murallas", "a60"],
+    intereses: ["Ingeniería: La muralla medieval se levantó con tapial de cal y canto rodado del río Esla, sin saeteras. Alcanza los catorce metros de altura y casi tres de grosor, conservando el trazado albarrano y la puerta de la Concepción.", "Historia: En 1181, el rey Fernando II de León otorgó a la villa su fuero y ordenó su repoblación fortificada para defender el paso estratégico del Esla y consolidar la frontera del reino frente a los dominios vecinos.", "Cultura: Las ruinas del antiguo convento de San Agustín albergan el Museo de los Pueblos Leoneses, una obra arquitectónica inaugurada en 2008 que integra restos renacentistas con una colección de miles de piezas de la etnografía popular leonesa.", "Curiosidad: Mansilla de las Mulas es citada en el manuscrito medieval Codex Calixtinus y ha sido un cruce clave de la ruta jacobea, donde confluían el Camino Francés tradicional y la antigua Vía Trajana antes de entrar a León.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago", "murallas", "a60"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mansilla-de-las-mulas.png",
@@ -7830,7 +8311,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "cruce_camino"],
+    intereses: ["Curiosidad: La Bañeza alberga desde 1952 un célebre Gran Premio de motociclismo en circuito puramente urbano. Leyendas como Ángel Nieto compitieron en sus calles antes de conquistar sus primeros títulos mundiales.", "Historia: La primera referencia documental sobre el carnaval bañezano consta en un testamento de 1675. En él, el vecino Luis González legó 8000 reales para fundar las «cuarenta horas de carnaval» en el convento del Carmen Descalzo.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "cruce_camino"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-baneza.png",
@@ -7953,7 +8434,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
+    intereses: ["Curiosidad: En 1931 se inauguró el Cristo del Otero, obra de Victorio Macho. Con 21 metros de altura, es una de las esculturas de Jesús más altas del mundo y alberga en su cripta los restos del propio escultor.", "Historia: Creado en 1208 por el obispo Tello Téllez de Meneses y respaldado por el rey Alfonso VIII de Castilla, el Estudio General de Palencia fue el primer centro de educación superior de la España cristiana.", "Historia: En el siglo XIV, ante la ausencia de varones, las mujeres palentinas defendieron la ciudad del ataque inglés del duque de Lancaster. Por ello, Juan I les otorgó el privilegio perpetuo de lucir la banda dorada de caballeros.", "Cultura: La catedral de San Antolín alberga bajo su suelo la cripta de San Antolín, un espacio subterráneo cuyos restos más antiguos datan del siglo VII, considerados el único vestigio en pie de la primitiva catedral visigoda.", "capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -7964,7 +8445,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.0176,
         "lng": -4.5159,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: El proyecto inicial del escultor Victorio Macho en 1930 preveía piezas de bronce y azulejos brillantes, pero se simplificó al usar hormigón armado para aligerar la estructura y reducir los costes de construcción.",
+          "Historia: Con 21 metros de altura, es la escultura de Cristo más alta de España. Fue proyectada por Victorio Macho e inaugurada en 1931, el mismo año en que se finalizó el Cristo Redentor de Río de Janeiro.",
+          "Cultura: A los pies del monumento se ubica la ermita de Santa María del Otero, en cuya cripta fue enterrado por deseo propio Victorio Macho junto a un centro de interpretación con sus bocetos y obras.",
+          "Curiosidad: Su diseño combina la estética Art Déco con el postcubismo y el arte del Antiguo Egipto. La estatua fue concebida con esbeltez vertical y ojos vacíos para ser contemplada desde la propia ciudad de Palencia."
+        ]
       },
       {
         "id": "es_pal_monte_viejo",
@@ -7973,7 +8461,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.026,
         "lng": -4.557,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: Alberga desde 1975 una reserva de ciervos en un recinto cercado de 50 hectáreas, donde los animales están adaptados al ecosistema de encinar y permiten observar la berrea otoñal al amanecer y al atardecer.",
+          "Naturaleza: Con 1435 hectáreas a 860 metros de altitud media, este parque ocupa un altiplano que domina la margen derecha del río Carrión, constituyendo la principal masa de bosque mediterráneo periurbano de Palencia.",
+          "Historia: En 1191, el rey Alfonso VIII vendió este terreno al Ayuntamiento y al Cabildo de la Catedral de Palencia, garantizando su uso público y protección municipal de forma ininterrumpida durante más de ocho siglos.",
+          "Naturaleza: Su clima mediterráneo continentalizado a 860 metros provoca elevadas amplitudes térmicas y heladas severas, favoreciendo la dominancia del quejigo y la encina junto a plantas aromáticas como tomillo, salvia y jara.",
+          "Naturaleza: La Ruta 3 «Refugio-Mirador del Valle-Casa Grande» recorre 5,4 kilómetros en itinerario circular bordeando el Valle de San Juan, enlazando con la Casa Pequeña, el mirador panorámico más célebre hacia la capital."
+        ]
       },
       {
         "id": "es_pal_venta_banos",
@@ -7982,7 +8478,15 @@ export const POIS = [
         "nivel": 3,
         "lat": 41.9212,
         "lng": -4.494,
-        "radio": 1600
+        "radio": 1600,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Durante el siglo XX se consolidó como el nudo ferroviario más importante de la mitad norte peninsular, enlazando las líneas de Madrid con el norte de España, Portugal y Francia, con un tráfico superior a 200 trenes diarios.",
+          "Historia: En la pedanía de Baños de Cerrato se ubica la basílica de San Juan Bautista, consagrada en el año 661 por el rey Recesvinto. Se considera la iglesia de culto cristiano en pie más antigua de España.",
+          "Historia: Nació en 1860 como núcleo poblacional ligado a la llegada del tren alrededor de una posada del antiguo Camino Real, convirtiéndose en un enclave industrial estratégico para la red ferroviaria del norte de España.",
+          "Cultura: El Centro Cultural La Briquetera ocupa una antigua fábrica de aglomerado de carbón para locomotoras de vapor. Actualmente acoge el Museo del Ferrocarril y alberga el automotor Sentinel 9091, un vehículo ferroviario único en España.",
+          "Curiosidad: Según la tradición, el rey visigodo Recesvinto alivió su dolencia nefrítica al beber de un manantial medicinal romano situado junto a la basílica, por lo que ordenó reconstruir la fuente y erigir el templo dedicado a San Juan."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/palencia.png",
@@ -8002,7 +8506,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a67", "montana_palentina"],
+    intereses: ["Historia: En la década de 1960 llegaron a operar en Aguilar de Campoo hasta cinco industrias galleteras de forma simultánea, produciendo en esta villa hasta el 90 % de las galletas consumidas en toda España.", "Cultura: En 1169 Alfonso VIII entregó a los monjes premonstratenses el monasterio románico de Santa María la Real. En 1978 se impulsó su rehabilitación, origen de la primera Escuela Taller de España y de la actual Fundación.", "Historia: El castillo medieval de Aguilar se asienta a 970 metros de altitud sobre un promontorio rocoso que albergó un castro celtibérico, erigiéndose en un punto defensivo clave sobre la cuenca del río Pisuerga.", "Cultura: La Plaza Mayor porticada combina viviendas de tradición castellana con miradores acristalados de corte cantábrico, estando presidida en su extremo por la Colegiata de San Miguel, con portada del siglo XIII y remate herreriano.", "Curiosidad: El casco histórico conserva más de un centenar de escudos e insignias heráldicas talladas en piedra, fruto del privilegio de Villa Realenga otorgado por Alfonso X en 1255 y de la posterior creación del Marquesado.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a67", "montana_palentina"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -8013,7 +8517,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.7925,
         "lng": -4.2642,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Tras décadas de abandono y ruina, en la década de 1970 el edificio, conocido popularmente como el «convento caído», fue rescatado mediante una movilización ciudadana impulsada por el dibujante y arquitecto José María Pérez, «Peridis».",
+          "Ingeniería: Las obras de reconstrucción del cenobio a finales de los años 70 sirvieron como modelo pionero para la creación del primer programa de Escuelas Taller en España, formando a jóvenes desempleados en oficios tradicionales de rehabilitación patrimonial.",
+          "Cultura: A raíz del abandono del cenobio tras la Desamortización de Mendizábal, en 1871 la mayoría de los capiteles historiados de su claustro románico se desmontaron y trasladaron al Museo Arqueológico Nacional de Madrid, donde se exponen hoy.",
+          "Curiosidad: El complejo medieval combina hoy usos educativos y divulgativos, al albergar en sus antiguas dependencias un instituto de educación secundaria (IES Santa María la Real) y el Centro Expositivo ROM (Románico y Territorio)."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aguilar-de-campoo.png",
@@ -8033,7 +8544,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago", "canal"],
+    intereses: ["Ingeniería: Las cuatro esclusas escalonadas (17, 18, 19 y 20) del Canal de Castilla en Frómista constituyen el único conjunto cuádruple del canal, construido para salvar un desnivel acumulado de casi catorce metros y medio.", "Cultura: La iglesia de San Martín de Tours, fundada hacia 1066 por la reina Doña Mayor de Castilla, es uno de los referentes del románico en el Camino de Santiago por la simetría y pureza de sus naves.", "Historia: Entre 1895 y 1904, el arquitecto Manuel Aníbal Álvarez desmontó y reconstruyó gran parte de San Martín de Tours para eliminar aditamentos posteriores y devolver al edificio su traza románica primitiva.", "Curiosidad: Frómista es uno de los pocos puntos del trayecto jacobeo donde coinciden el Camino de Santiago Francés y el Canal de Castilla, permitiendo recorrer parte de la ruta en barco a lo largo de la sirga.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago", "canal"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -8044,7 +8555,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.267,
         "lng": -4.4079,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Entre 1895 y 1904, el arquitecto Manuel Aníbal Álvarez la desmontó y reconstruyó desde sus cimientos para devolverle su pureza románica, eliminando añadidos posteriores góticos y barrocos en una intervención de criterios historicistas.",
+          "Historia: Fundada hacia 1066 por doña Mayor de Castilla, viuda del rey Sancho Garcés III de Navarra, la iglesia formaba parte de un monasterio benedictino ya desaparecido y se convirtió en un hito fundamental del Camino de Santiago Francés.",
+          "Cultura: Su diseño destaca por la simetría de volúmenes, con dos torres cilíndricas en los ángulos de la fachada principal y un cimborrio octogonal sobre el crucero que organiza la luz interior del templo.",
+          "Curiosidad: Bajo las cornisas exteriores e interiores conserva más de trescientos canecillos y capiteles con figuras humanas, seres fantásticos y escenas alegóricas o morales, como la lección contra la avaricia o la fábula del cuervo y el zorro."
+        ]
       },
       {
         "id": "es_pal_canal_castilla_fromista",
@@ -8053,7 +8571,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.2695,
         "lng": -4.404,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Frómista alberga el único conjunto de cuádruple esclusa de todo el Canal de Castilla. Formado por las esclusas ovales 17, 18, 19 y 20, permitía salvar de forma consecutiva un desnivel vertiginoso de 14,2 metros.",
+          "Historia: El proyecto ilustrado del canal fue presentado en 1753 por el científico e ingeniero Antonio de Ulloa junto con Carlos Lemaur, con el objetivo de transportar los cereales castellanos hacia los puertos del mar Cantábrico.",
+          "Curiosidad: La fuerza motriz del agua creada por el salto de 14 metros en las esclusas de Frómista fue aprovechada industrialmente para accionar dos molinos harineros y dos batanes destinados al tratamiento textil.",
+          "Ingeniería: Las esclusas funcionaban como ascensores hidráulicos manuales equipados con compuertas, cadenas y tornos. Tras la apertura del ferrocarril en el siglo XIX, la vía navegable perdió progresivamente su uso comercial de transporte."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fromista.png",
@@ -8073,7 +8598,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 124,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago"],
+    intereses: ["Cultura: La iglesia de Santiago conserva su friso occidental románico del siglo XII, donde destaca un Pantócrator rodeado por el Tetramorfo y una arquivolta labrada con minuciosos relieves que representan antiguos gremios y oficios medievales de la villa.", "Cultura: El claustro plateresco del monasterio de San Zoilo, trazado en 1537 por el arquitecto Juan de Badajoz el Mozo, reúne 24 tramos cubiertos con bóvedas de crucería y más de 200 medallones esculpidos con bustos bíblicos, monásticos y reales.", "Curiosidad: Durante unos trabajos de restauración en 1993, el monasterio de San Zoilo sacó a la luz una portada románica del siglo XI oculta tras un tabique desde 1786, sostenida por cuatro columnas de mármol romano reaprovechadas del siglo II.", "Historia: En Carrión de los Condes nació en 1398 Íñigo López de Mendoza, primer marqués de Santillana, militar y uno de los poetas más influyentes del Prerrenacimiento castellano, pionero en adaptar la lírica italiana a la lengua castellana.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_de_santiago"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/carrion-de-los-condes.png",
@@ -8093,7 +8618,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "legion_romana", "a67"],
+    intereses: ["Historia: Entre los años 19 a. C. y 39 d. C., en este emplazamiento se acantonó la Legio IV Macedonica durante las Guerras Cántabras, lo que dio origen a la urbe romana de Pisoraca.", "Ingeniería: En la retención de San Andrés coinciden las aguas del Canal de Castilla, el río Pisuerga y el Canal del Pisuerga, donde una esclusa de vaciado y llenado permite navegar entre cotas.", "Cultura: Creado en 1972, el Festival Nacional de Exaltación del Cangrejo de Río se celebra en agosto con un concurso gastronómico, desfile de carrozas y la quema nocturna de una gran falla temática.", "Cultura: El interior de la Ermita de la Virgen de la Piedad fue íntegramente decorado entre 1902 y 1904 por el pintor Mariano Lantada con frescos al óleo sobre estuco que no dejan espacio sin pintar.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "legion_romana", "a67"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/herrera-de-pisuerga.png",
@@ -8113,7 +8638,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos"],
+    intereses: ["Historia: En enero de 1606, el Castillo de Ampudia albergó la firma promovida por el Duque de Lerma para devolver la capitalidad de la Corona española desde Valladolid a Madrid.", "Cultura: Sus calles Corredera y Ontiveros conservan una de las mejores muestras de arquitectura porticada tradicional castellana, sostenida sobre antiguos pies derechos de madera y columnas de piedra originarias del siglo XVII.", "Cultura: La torre campanario de la Colegiata de San Miguel, de 63 metros de altura y construida en el siglo XVI, es conocida popularmente como la Giralda de Campos por su imponente esbeltez sobre el paisaje llano.", "Curiosidad: En 1960, el empresario galletero Eugenio Fontaneda adquirió el castillo sumido en el abandono, acometió su restauración completa e instaló en su interior su amplia colección de arqueología, arte sacro y etnografía.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ampudia.png",
@@ -8133,7 +8658,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "templarios", "camino_de_santiago"],
+    intereses: ["Historia: La iglesia de Santa María la Blanca albergó una encomienda de la Orden del Temple a comienzos del siglo XIV, actuando como templo-fortaleza para proteger a los peregrinos del Camino de Santiago.", "Cultura: El rey Alfonso X el Sabio se inspiró en las devociones y milagros atribuidos a la Virgen de Santa María la Blanca para componer varias de sus célebres Cantigas de Santa María en el siglo XIII.", "Historia: El templo conserva los sarcófagos góticos del siglo XIII del infante Felipe de Castilla —hermano de Alfonso X el Sabio— y de su esposa Inés Rodríguez Girón, reconocidos por su rica escultura y policromía de época.", "Curiosidad: El apellido «Sirga» proviene de la denominación medieval referida a la vía o calzada, lo que refleja que la villa creció ligada de forma inseparable al trazado del Camino de Santiago Francés.", "Historia: En 1888, un derrumbe parcial en los pies de la iglesia de Santa María la Blanca destruyó la antigua Puerta del Ángel y redujo la longitud del edificio en siete metros tras la posterior reconstrucción del muro frontal.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "templarios", "camino_de_santiago"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalcazar-de-sirga.png",
@@ -8153,7 +8678,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos"],
+    intereses: ["Curiosidad: Las ruinas de la iglesia del siglo XII de San Pedro fueron rehabilitadas como aula astronómica y primer Monumento Starlight, albergando un péndulo de Foucault, una línea meridiana solar activa y un firmamento recreado en su bóveda.", "Cultura: La iglesia-museo de Santa María alberga trece tablas renacentistas pintadas por Pedro Berruguete para su retablo mayor original, además de valiosas esculturas de maestros como Alejo de Vahía y Juan de Juni.", "Ingeniería: El trazado del Canal de Castilla por la localidad requirió la edificación de seis acueductos hidráulicos, entre ellos La Barquilla y San Pelayo, diseñados para salvar los arroyos locales y garantizar la navegación.", "Historia: En el siglo XIV, la localidad ostentó el estatus de villa de behetría, un privilegio medieval que otorgaba a sus vecinos la potestad de elegir libremente a su señor feudal.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/becerril-de-campos.png",
@@ -8173,7 +8698,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "cerrato", "bodegas"],
+    intereses: ["Ingeniería: El Barrio de Bodegas reúne 374 bodegas subterráneas excavadas en arcilla en hasta seis niveles superpuestos. Sus aperturas y chimeneas garantizan una corriente de aire continua que mantiene la temperatura interior estable en unos 12 °C.", "Historia: La primera referencia escrita del barrio de bodegas se remonta a 1543 en un documento de venta a Pedro de Zúñiga. El conjunto se asienta sobre el cerro donde antes existía un castillo medieval del siglo IX.", "Cultura: El Museo del Cerrato Castellano aúna dos inmuebles con estilos contrapuestos: el Palacio-Hospital de Santo Tomás, del siglo XVIII con fachada y patio barrocos, y el antiguo Colegio de la Milagrosa, un edificio modernista en ladrillo.", "Curiosidad: Una hipótesis sostenida por la investigadora Ana María Ferrín sugiere que Antoni Gaudí visitó Baltanás y se inspiró en las chimeneas de sus bodegas subterráneas para diseñar los respiraderos del terrado de La Pedrera en Barcelona.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "cerrato", "bodegas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baltanas.png",
@@ -8213,7 +8738,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos", "arte"],
+    intereses: ["Cultura: Paredes de Nava es la cuna de destacadas figuras del Renacimiento y la literatura española, como el poeta Jorge Manrique, autor de las Coplas a la muerte de su padre, el pintor Pedro Berruguete y el escultor Alonso Berruguete.", "Cultura: La iglesia de Santa Eulalia alberga desde 1964 el primer museo parroquial de arte sacro creado en España. Custodia casi trescientas obras, entre las que destacan las tablas de los Reyes de Judá, pintadas por Pedro Berruguete.", "Cultura: La torre de la iglesia de Santa Eulalia superpone elementos románicos, góticos y mudéjares a lo largo de 45 metros de altura, culminando en una pechina piramidal decorada con azulejos esmaltados de colores del siglo XVI.", "Ingeniería: En el término municipal de Paredes de Nava, el Ramal de Campos del Canal de Castilla salva el cauce del río Retortillo mediante un acueducto de tres ojos construido durante esta obra de ingeniería hidráulica del siglo XVIII.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos", "arte"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/paredes-de-nava.png",
@@ -8233,7 +8758,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a62", "camino_del_pisuerga"],
+    intereses: ["Historia: En mayo de 1470, los Reyes Católicos se refugiaron en el Palacio de los Condes de Buendía, en Dueñas, lugar donde en octubre de ese mismo año nació su primogénita, la infanta Isabel de Aragón.", "Historia: En el Palacio de los Condes de Buendía, Fernando el Católico celebró en 1506 sus segundas nupcias con Germana de Foix, tras haber quedado viudo de la reina Isabel I de Castilla.", "Cultura: La villa cuenta con barrios de bodegas subterráneas y casas cueva tradicionales excavadas en la ladera. La documentación más antigua de sus bodegas se remonta a un privilegio del rey Alfonso VIII de 1211.", "Ingeniería: Junto al municipio discurre el Ramal Sur del Canal de Castilla, donde se ubica la esclusa 37 acompañada por la monumental fábrica de harinas La Estrella de Castilla, un edificio industrial de ladrillo de cinco plantas.", "Cultura: De la antigua muralla medieval se conserva la puerta del Ojo de la Virgen, un arco gótico sobre el cual se construyó una capilla adosada que alberga la ermita de la Virgen de los Remedios.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a62", "camino_del_pisuerga"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/duenas.png",
@@ -8314,7 +8839,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
+    intereses: ["Historia: Fundada en 1218 por el rey Alfonso IX de León, la Universidad de Salamanca es la institución universitaria más antigua de España en activo y fue reconocida pontificiamente en 1254 como gran centro de estudio europeo.", "Cultura: La Plaza Mayor, proyectada en estilo barroco por el arquitecto Alberto de Churriguera y construida entre 1729 y 1756, destaca por sus 88 arcos porticados decorados con medallones tallados de personajes históricos y literarios.", "Cultura: La Casa de las Conchas, palacio mandado construir a finales del siglo XV por el noble y catedrático Rodrigo Maldonado de Talavera, luce en su fachada exterior más de trescientas conchas de vieira esculpidas en piedra.", "Ingeniería: Gran parte de la arquitectura monumental salmantina empleó la piedra franca de Villamayor, una arenisca blanda fácil de tallar que adquiere su característico tono dorado al oxidarse el hierro de su composición tras quedar expuesta al aire.", "Curiosidad: Salamanca conserva dos catedrales adosadas e integradas en un mismo conjunto: la Catedral Vieja, de factura románica comenzada en el siglo XII, y la Catedral Nueva, iniciada en el XVI en estilo gótico tardío y finalizada en el XVIII.", "capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -8325,7 +8850,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.961,
         "lng": -5.6676,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Fundada por el rey Alfonso IX de León hacia 1218 y reconocida como Universidad por Alfonso X en 1254, es la institución universitaria en activo más antigua de España y de todo el ámbito hispánico.",
+          "Cultura: En 1492 el profesor Antonio de Nebrija publicó en Salamanca la «Gramática castellana», la primera gramática impresa de una lengua vulgar europea, que sentó las bases del estudio metódico del castellano.",
+          "Ingeniería: La fachada plateresca de las Escuelas Mayores, labrada en piedra de Villamayor en el siglo XVI, destaca por su minucioso relieve en tres cuerpos donde se oculta la célebre figura de una rana sobre un cráneo.",
+          "Historia: En esta universidad se redactaron los dictámenes científicos de 1515 y 1578 que sirvieron de base astronómica y matemática al papa Gregorio XIII para la reforma del calendario gregoriano impuesta en 1582.",
+          "Curiosidad: Tras estar preso casi cinco años por la Inquisición, el teólogo humanista Fray Luis de León reanudó sus cátedras universitarias en 1577 pronunciando ante la clase la célebre frase inicial «Como decíamos ayer…»."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/salamanca.png",
@@ -8345,7 +8878,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a62", "frontera", "fortificaciones"],
+    intereses: ["Historia: Durante el sitio de 1810, el gobernador Andrés Pérez de Herrasti defendió la fortaleza durante 74 días con 5.500 hombres frente a más de 40.000 soldados franceses del mariscal Ney, retrasando la campaña napoleónica hacia Portugal.", "Cultura: El Carnaval del Toro, documentado desde el siglo XV, transforma cada año la Plaza Mayor en un coso taurino rectangular levantado con entramados de madera por los propios vecinos para albergar encierros y capeas.", "Ingeniería: El recinto amurallado abaluardado actual incluye un foso defensivo y siete puertas de acceso; en sus reformas defensivas del siglo XVIII intervino el destacado ingeniero militar español Juan Martín Zermeño.", "Curiosidad: Junto a la fortaleza se exhibe un verraco de granito, escultura zoomorfa tallada por los vetones en la Edad del Hierro para delimitar pastos o proteger al ganado, considerado el vestigio habitado más antiguo de la plaza.", "Historia: El castillo de Enrique II de Trastámara fue mandado construir en 1372 por dicho monarca tras tomar la población, situándose sobre el tajo del río Águeda para dominar el vado del puente y la frontera portuguesa.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a62", "frontera", "fortificaciones"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-rodrigo.png",
@@ -8365,7 +8898,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 124,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a66", "sierra"],
+    intereses: ["Curiosidad: Durante la festividad del Corpus Christi, varios vecinos desfilan cubiertos de musgo natural. Esta tradición rememora la leyenda de la Reconquista, cuando los cristianos se camuflaron con vegetación para tomar por sorpresa la fortaleza de la villa.", "Historia: Inaugurada en 1711 en el paraje de El Castañar, la plaza de toros «La Ancianita» está considerada la más antigua conservada en piedra de España. Presenta un coso circular de 41 metros de diámetro y aforo monumental.", "Cultura: Promovida en 1567 por Francisco de Zúñiga, cuarto duque de Béjar, El Bosque es una villa de recreo con jardín de influencia renacentista italiana. Conserva su trazado original organizado en terrazas, gran estanque y fuentes monumentales.", "Historia: Junto al río Cuerpo de Hombre se conserva la Ruta de las Fábricas Textiles, vestigio del histórico centro lanero bejarano. Desde el siglo XVIII la industria local destacó por confeccionar uniformes para el ejército español mediante energía hidráulica.", "Ingeniería: Ubicada en el Torreón de las Cadenas del Palacio Ducal del siglo XVI, Béjar cuenta con la única cámara oscura de Castilla y León. Un sistema óptico de espejo y lentes cóncavas proyecta imágenes vivas a 360 grados.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a66", "sierra"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -8376,7 +8909,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.3686,
         "lng": -5.7445,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: Las batipuertas son medias puertas de madera instaladas ante la entrada principal. Servían para apuntillar al ganado desde el interior resguardándose de las inclemencias, facilitar la ventilación y evitar la entrada de animales callejeros a la vivienda.",
+          "Curiosidad: Las regaderas son acanaladuras que discurren por las empinadas calles empedradas de la villa. Transportan agua del deshielo de la sierra, utilizada históricamente para limpiar las calles tras la matanza del cerdo y regar las huertas cercanas.",
+          "Historia: A finales del siglo XVIII, el chacinero Constantino Rico popularizó los embutidos de Candelario en la corte de Carlos IV. Esta próspera tradición chacinera dio origen al popular dicho «atar los perros con longaniza».",
+          "Cultura: Miguel de Unamuno veraneó en Candelario a principios del siglo XX y dejó constancia de su devoción por el lugar en su escrito «En retiro de manso serrano», elogiando la vista de la sierra y sus empinadas calles.",
+          "Ingeniería: El edificio del Ayuntamiento fue construido entre 1894 y 1895 con diseño de un arquitecto catalán. Presenta un estilo ecléctico poco común en la zona y un salón de plenos cubierto con vigas de madera de castaño."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bejar.png",
@@ -8396,7 +8937,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["mirador", "vistas", "paisaje", "foto", "parada"],
+    intereses: ["Naturaleza: Con 1727 metros de altitud en El Cabaco, la Peña de Francia forma un sinclinal colgado de cuarcitas ordovícicas en el Parque Natural de Las Batuecas-Sierra de Francia, dominando las cuencas de los ríos Alagón y Agadón.", "Naturaleza: Superados los 1500 metros de altitud, el rigor térmico y las intensas nevadas invernales impiden el desarrollo de árboles, dando paso a un piso vegetacional dominado por piornales y cambrionales resistentes al viento.", "Naturaleza: Las rocas de cuarcita ordovícica que coronan la cumbre albergan icnitas, fósiles que conservan las huellas trazadas por trilobites en los fondos marinos de la zona hace más de 400 millones de años.", "Naturaleza: La ascensión por el sendero GR-10 desde el área recreativa de El Casarito suma 12,3 kilómetros entre ida y vuelta, con 700 metros de desnivel acumulado a través de bosques de castaños, robles y pinares.", "Historia: En 1434, tras años de búsqueda, el peregrino francés Simón Vela halló en una cueva del risco la talla de la Virgen Morena, lo que motivó la edificación del santuario mariano a más de 1700 metros de altitud.", "mirador", "vistas", "paisaje", "foto", "parada"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -8407,7 +8948,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.4872,
         "lng": -6.1117,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1940, La Alberca se convirtió en el primer municipio español declarado Conjunto Histórico-Artístico, destacando por su arquitectura popular de entramados de madera, plantas superiores voladas y dinteles labrados en piedra.",
+          "Naturaleza: Ubicada a 1044 metros de altitud en la Sierra de Francia, la zona alberga el nacimiento del río Francia y valles angostos como el del río Batuecas, caracterizado por sus cascadas y pozas de aguas cristalinas.",
+          "Naturaleza: El Camino de las Raíces es un itinerario circular de 8 kilómetros con inicio y fin en La Alberca que discurre entre robledales e integra obras de arte contemporáneo con elementos patrimoniales del paisaje.",
+          "Naturaleza: El municipio forma parte de la Reserva de la Biosfera de Las Batuecas, albergando flora mediterránea y atlántica como madroños y alcornoques, además de fauna protegida como la cabra montés, el buitre negro y la cigüeña negra.",
+          "Naturaleza: A más de 1000 metros de altitud, la orografía serrana ocasiona inviernos fríos con heladas frecuentes y veranos frescos, favoreciendo la presencia de bosques caducifolios de roble melojo y castaño."
+        ]
       },
       {
         "id": "es_sal_batuecas",
@@ -8416,7 +8965,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.4934,
         "lng": -6.2306,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: En el corazón del valle perviven los abrigos del Canchal de las Cabras Pintadas, con arte rupestre esquemático neolítico, junto al monasterio carmelita de San José, fundado en 1599 como lugar de retiro.",
+          "Naturaleza: El valle del río Batuecas está encajonado entre abruptos desniveles que descienden desde los 1398 metros de altitud en el puerto del Portillo hasta unos 600 metros en el lecho fluvial.",
+          "Naturaleza: La ruta de senderismo del Chorro de las Batuecas arranca junto al monasterio carmelita y recorre unos 9,5 kilómetros de ida y vuelta a lo largo del río hasta una cascada de doce metros.",
+          "Naturaleza: El aislamiento geográfico y la orientación al sur originan un microclima de tendencia mediterránea en el valle, lo que permite el crecimiento de especies de solana como alcornoques, madroños y durillos.",
+          "Naturaleza: Los cortados de cuarcita y los frondosos bosques del valle abrigan fauna amenazada como la cigüeña negra y el buitre negro, además de albergar una de las poblaciones destacadas de cabra montés del Sistema Central."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santuario-de-la-pena-de-francia.png",
@@ -8436,7 +8993,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra", "vino"],
+    intereses: ["Curiosidad: San Esteban de la Sierra alberga la Ruta de los Lagares Rupestres, un itinerario de trece kilómetros salpicado de piletas talladas directamente sobre bloques de granito para pisar la uva a pie de viñedo.", "Historia: En 1959 se fundó en la villa la primera bodega cooperativa de la Sierra de Salamanca. Creada por doscientos viticultores locales, permitió preservar viñedos centenarios de la uva rufete cultivados en terrazas abancaladas.", "Naturaleza: El pueblo se ubica en la ladera del valle del río Alagón, flanqueado por el monte El Castañar y los canchales de El Cancho, en la Reserva de la Biosfera de las Sierras de Béjar y Francia.", "Naturaleza: La Ruta de los Miradores Serranos es un sendero circular de cinco kilómetros entre San Esteban y Santibáñez de la Sierra con vistas panorámicas sobre el encajamiento del río Alagón y la Sierra de las Quilamas.", "Cultura: En la parte baja de la localidad se conserva el Centro de Interpretación del Aceite en una antigua almazara hidráulica, donde se divulga cómo se aprovechaba la fuerza del agua para el prensado de la aceituna.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra", "vino"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-esteban-de-la-sierra.png",
@@ -8456,7 +9013,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra_de_francia", "camino"],
+    intereses: ["Curiosidad: El castillo medieval del siglo XV alberga el Centro de Interpretación de la Reserva de la Biosfera de las Sierras de Béjar y Francia, mientras que su recinto amurallado cobija el cementerio municipal.", "Cultura: A los pies de la fortaleza se ubica su plaza de toros, una de las más antiguas de España, con una forma irregular delimitada por toscos burladeros de granito esculpidos en el siglo XVII.", "Ingeniería: El urbanismo tradicional responde a una solución constructiva mudéjar con voladizos en madera y adobe que estrechan la calle en altura, resguardando las fachadas de mampostería de las lluvias serranas.", "Curiosidad: Por las calles del municipio se distribuyen unas sesenta jardineras de madera grabadas con palabras y vocablos tradicionales serranos, concebidas para difundir y proteger el patrimonio oral autóctono.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra_de_francia", "camino"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-martin-del-castanar.png",
@@ -8476,7 +9033,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "retratos", "sierra_de_francia"],
+    intereses: ["Cultura: En 2012, el artista Florencio Maíllo expuso en las fachadas del pueblo retratos a la encáustica de sus vecinos, basados en fotos que Alejandro Martín tomó en 1967 para renovar sus carnés de identidad.", "Historia: Mogarraz fue repoblada en el siglo XII por colonos procedentes de la Gascuña francesa tras la boda del conde Raimundo de Borgoña con la infanta Urraca, origen del topónimo de la Sierra de Francia.", "Curiosidad: La arquitectura tradicional de la villa cuenta con viviendas de hasta cuatro plantas levantadas con entramados de madera, mampostería y adobe sobre bases de granito, conjunto declarado Bien de Interés Cultural en 1998.", "Historia: La Torre del Campanil se erigió de forma exenta a la iglesia de Nuestra Señora de las Nieves a comienzos del siglo XVII en sillería de granito, tras ser concebida originariamente como torre defensiva de vigilancia.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "retratos", "sierra_de_francia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mogarraz.png",
@@ -8496,7 +9053,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "rio_tormes", "ruta_a50"],
+    intereses: ["Cultura: En el Monasterio de la Anunciación de las Carmelitas Descalzas falleció Santa Teresa de Jesús en 1582. El templo alberga su sepulcro con su cuerpo incorrupto y dos de sus reliquias mayores: su corazón y su brazo izquierdo.", "Historia: Del espléndido castillo palacio de los Duques de Alba solo se conserva la imponente Torre del Homenaje. En su interior alberga frescos renacentistas pintados por Cristóbal Passini y Miguel Ruíz que representan pasajes de la batalla de Mühlberg.", "Curiosidad: Durante la Guerra de la Independencia, las tropas aliadas volaron una sección del puente medieval sobre el río Tormes. Al repararlo posteriormente, el nuevo arco se construyó con un tamaño mucho mayor, siendo hoy perfectamente reconocible.", "Historia: El nombre de Alba de Tormes quedó grabado en el Arco del Triunfo de París tras la contienda del 28 de noviembre de 1809, en la que la caballería francesa del general Kellermann derrotó al ejército español de la Izquierda.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "rio_tormes", "ruta_a50"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alba-de-tormes.png",
@@ -8516,7 +9073,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "fortaleza", "tormes"],
+    intereses: ["Curiosidad: El topónimo Bletisa, nombre romano del que deriva Ledesma, fue citado por Plutarco al relatar cómo Roma prohibió a los bletonenses realizar sacrificios humanos y equinos para adivinar el futuro.", "Historia: En 1161 el rey Fernando II de León otorgó el Fuero de Ledesma y ordenó amurallar la villa, consolidándola como nodo administrativo y defensivo estratégico en la frontera del reino leonés.", "Ingeniería: La fortaleza de Ledesma se erigió sobre una elevación de granito natural, integrando la propia masa rocosa como cimentación inexpugnable para sus murallas de trazado trapezoidal irregular.", "Cultura: En el muro exterior de la iglesia de Santa María la Mayor se conserva incrustado un término augustal romano de granito, una piedra hito que señalaba los límites jurisdiccionales hispánicos.", "Curiosidad: En los jardines de la fortaleza se exhibe un verraco de granito esculpido por la cultura vetona entre los siglos VII y I a.C., hallado en 1957 durante las obras de un centro escolar.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "fortaleza", "tormes"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ledesma.png",
@@ -8536,7 +9093,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a50", "llanura"],
+    intereses: ["Cultura: Su casco histórico alberga el conjunto porticado contiguo más grande de España. Está formado por tres plazas interconectadas (Agustín Martínez Soler, de la Constitución y de España) con arquitectura tradicional castellana de soportales, ladrillo visto y balconadas.", "Historia: El 9 de julio de 1939, el sobrecalentamiento de las ruedas de un tren desencadenó la explosión del polvorín militar de la estación con 300 toneladas de bombas, destruyendo un tercio de la villa y causando más de cien muertos.", "Historia: Gaspar de Bracamonte y Guzmán, tercer conde de Peñaranda y diplomático clave en la firma de la Paz de Westfalia en 1648, fundó en la localidad el Convento de las Madres Carmelitas Descalzas a mediados del siglo XVII.", "Curiosidad: El Convento de las Madres Carmelitas conserva una relevante colección de arte barroco italiano de los siglos XVII y XVIII, con lienzos de pintores como Luca Giordano, Andrea Vaccaro o Guido Reni trazados durante la etapa del conde como virrey.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a50", "llanura"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/penaranda-de-bracamonte.png",
@@ -8677,7 +9234,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.952,
         "lng": -4.1321,
-        "radio": 2200
+        "radio": 2200,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En diciembre de 1474, Isabel la Católica salió de este alcázar para ser proclamada reina de Castilla en la iglesia de San Miguel, hito decisivo para la unificación dinástica y la historia de España.",
+          "Curiosidad: En marzo de 1862 un voraz incendio destruyó sus artesonados y cubiertas. Durante la tragedia, los cadetes del Real Colegio de Artillería salvaron valiosos volúmenes de su biblioteca arrojándolos por las ventanas hacia el foso.",
+          "Ingeniería: Durante el reinado de Felipe II, el arquitecto Francisco de Mora incorporó las emblemáticas cubiertas con cónicos chapiteles de pizarra traída de Bernardos, otorgando al castillo su inconfundible perfil de estilo centroeuropeo.",
+          "Naturaleza: La fortaleza se alza estratégicamente sobre un espolón rocoso de calizas y dolomías cretácicas en la confluencia de los ríos Eresma y Clamores, cuyas aguas profundizaron los cañones fluviales que sirven de foso natural."
+        ]
       },
       {
         "id": "es_seg_acueducto",
@@ -8686,7 +9250,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.9498,
         "lng": -4.1193,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: La arquería visible en la plaza del Azoguejo alcanza 28,10 metros de altura máxima. Sus 167 arcos están formados por más de 20.000 sillares de granito tallados que se mantienen en equilibrio sin argamasa ni mortero.",
+          "Historia: El hallazgo en las fosas de cimentación de un sestercio de Trajano acuñado entre los años 112 y 116 d. C. situó el inicio de su construcción entre el final de su gobierno y el de Adriano.",
+          "Ingeniería: La conducción hidráulica abarca más de 15 kilómetros desde su toma en el arroyo de la Acebeda, en la sierra de Guadarrama, hasta el recinto del Alcázar, manteniendo una pendiente continua cercana al 1 %.",
+          "Curiosidad: Una leyenda popular atribuye la obra al diablo tras pactar con una joven aguadora. En recuerdo de esta tradición, Segovia instaló cerca de la calle San Juan una escultura en bronce de un diablillo haciéndose un selfi."
+        ]
       },
       {
         "id": "es_seg_riofrio",
@@ -8695,7 +9266,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.8987,
         "lng": -4.1095,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: La reina viuda Isabel de Farnesio ordenó su construcción en 1751 temiendo quedar al margen de la Corte. Sin embargo, tras subir al trono su hijo Carlos III en 1759, nunca llegó a habitar el edificio.",
+          "Ingeniería: Diseñado por el arquitecto italiano Virgilio Rabaglio inspirándose en el Palacio Real de Madrid, destaca por su austera planta cuadrada sobria y una compleja doble escalera de honor que arranca desde el vestíbulo en trayectorias opuestas.",
+          "Curiosidad: A pesar de su magnificencia palaciega, permaneció sin huéspedes estables durante más de cien años y se usó como pabellón de caza, albergando solo temporalmente a reyes como Francisco de Asís o Alfonso XII.",
+          "Naturaleza: El edificio se alza en el centro de un bosque cercado de más de 600 hectáreas de dehesa mediterránea, donde conviven en libertad manadas de ciervos y gamos visibles desde las inmediaciones del palacio."
+        ]
       },
       {
         "id": "es_seg_granja_san_ildefonso",
@@ -8704,7 +9282,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.9006,
         "lng": -4.0061,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Felipe V compró la granja a los monjes jerónimos en 1720 para construir su retiro tras abdicar en su hijo Luis I en 1724. La repentina muerte de su hijo le obligó a reasumir el trono y ampliar el palacio.",
+          "Ingeniería: El sistema hidráulico del siglo XVIII alimenta veintiséis fuentes monumentales mediante catorce kilómetros de tuberías de hierro en bóvedas subterráneas. Funciona exclusivamente por gravedad mediante presión generada desde el estanque El Mar, conservando casi toda su red original.",
+          "Cultura: La arquitectura del conjunto combina el trazado inicial de Teodoro Ardemans en torno al antiguo claustro monástico con la gran fachada hacia los jardines proyectada por Filippo Juvarra y ejecutada por Juan Bautista Sacchetti, junto a los parterres de René Carlier.",
+          "Naturaleza: El conjunto ocupa ciento cuarenta y seis hectáreas en la ladera norte de la Sierra de Guadarrama, a más de mil doscientos metros de altitud, con jardines alimentados por los arroyos Morete, Carneros, Chorrete y Peñalara.",
+          "Curiosidad: Felipe V fue el primer rey Borbón de España y rompió la tradición de sus predecesores austrias al no hacerse sepultar en El Escorial, eligiendo ser enterrado junto a Isabel de Farnesio en la Real Colegiata de La Granja."
+        ]
       },
       {
         "id": "es_seg_navas_riofrio",
@@ -8713,7 +9299,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.8668,
         "lng": -4.1402,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El primer documento escrito sobre la localidad data de 1247 y es un plan de distribución de rentas encargado por el cardenal Gil de Torres para resolver disputas entre el cabildo catedralicio de Segovia y los pueblos del entorno.",
+          "Ingeniería: En sus inmediaciones se erige el Palacio Real de Riofrío, concebido en 1751 por el arquitecto italiano Virgilio Rabaglio a imitación de las villas italianas y del Palacio Real de Madrid como retiro de la reina Isabel de Farnesio.",
+          "Naturaleza: El término municipal se alza al pie de la Mujer Muerta, macizo de la sierra de Guadarrama cuya cumbre principal, La Pinareja, alcanza los 2196 metros de altitud y domina el horizonte del enclave.",
+          "Cultura: Su iglesia parroquial conserva una portada románica decorada con tres arquivoltas que incluyen motivos vegetales, figuras humanas y seres fantásticos, uno de los pocos testimonios conservados de la repoblación medieval del municipio.",
+          "Curiosidad: El trazado de la Cañada Real Soriana Occidental atraviesa la zona, donde históricamente funcionaron casas de esquileo que atendían a miles de ovejas merino durante los desplazamientos de la ganadería trashumante."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/segovia.png",
@@ -8733,7 +9327,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 128,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "villa_medieval", "a1"],
+    intereses: ["Historia: Entre 1526 y 1530, el castillo de Pedraza sirvió de prisión para los príncipes Francisco y Enrique, hijos del rey Francisco I de Francia, retenidos como rehenes tras la batalla de Pavía por orden de Carlos I.", "Cultura: El pintor Ignacio Zuloaga adquirió las ruinas del castillo en 1925 para instalar allí su taller. Sus herederos adaptaron una de las torres como museo público para exponer parte de su obra pictórica.", "Cultura: Durante los Conciertos de las Velas, celebrados en julio, la villa apaga totalmente su alumbrado eléctrico para iluminar sus calles y plazas exclusivamente con miles de velas mientras se celebran recítales de música clásica.", "Historia: La Puerta de la Villa es el único acceso al recinto amurallado. Fue reconstruida en el siglo XVI por Íñigo Fernández de Velasco, duque de Frías, cuyos portones de madera de álamo negro se cerraban durante la noche.", "Curiosidad: En la medieval Cárcel de la Villa se conserva un sótano destinado a los reos peligrosos, al que eran arrojados desde la planta superior a través de una pequeña abertura, permaneciendo hacinados en completa oscuridad.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "villa_medieval", "a1"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pedraza.png",
@@ -8753,7 +9347,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "duraton"],
+    intereses: ["Historia: El Fuero de Sepúlveda, confirmado en 1076 por Alfonso VI, fijó un innovador modelo de repoblación fronteriza al conceder amplios privilegios y exenciones, sirviendo de molde para fueros posteriores como los de Teruel y Zaragoza.", "Cultura: La iglesia de El Salvador, cuya construcción comenzó en 1093, está documentada como la edificación románica fechada más antigua de la provincia de Segovia y de todo el sur del río Duero.", "Cultura: La iglesia de los Santos Justo y Pastor, actual Museo de los Fueros, cuenta con una cripta subterránea de tres naves, una solución arquitectónica insólita dentro del Románico castellano.", "Curiosidad: Durante los meses de invierno, las campanas de San Bartolomé hacen sonar 33 toques a las nueve de la noche, una tradición medieval que marcaba el toque de queda y el cierre de las siete puertas de la muralla.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "duraton"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sepulveda.png",
@@ -8773,7 +9367,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a601", "murallas"],
+    intereses: ["Curiosidad: Los encierros de Cuéllar, declarados de Interés Turístico Internacional, cuentan con regulación documentada desde 1215, año en que se dictaron normas para regular las carreras de toros, considerándose los más antiguos documentados de España.", "Historia: En 1297, la reina María de Molina celebró las Cortes de Castilla en el castillo de Cuéllar para defender los derechos del futuro rey Fernando IV tras enviudar de Sancho IV, consolidando la relevancia política de la fortaleza.", "Cultura: Cuéllar alberga uno de los focos mudéjares más destacados de Castilla y León, caracterizado por combinar aparejo de calicanto con ladrillo en las cabeceras, arcos ciegos y portadas de iglesias como San Esteban, San Andrés y San Martín.", "Historia: La torre del homenaje del castillo acoge la sede de la Fundación del Archivo de la Casa Ducal de Alburquerque, con documentos que abarcan desde el siglo XII y forman uno de los archivos nobiliarios más importantes.", "Ingeniería: El castillo-palacio de Cuéllar adaptó sus fachadas sur y oeste con trazado curvo y cubos flanqueantes para reducir la fuerza de impactos de artillería e impedir ángulos muertos en la defensa perimetral.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a601", "murallas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -8784,7 +9378,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.4023,
         "lng": -4.3146,
-        "radio": 2200
+        "radio": 2200,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: Parte de las dependencias del castillo albergan un Instituto de Educación Secundaria público, lo que convierte a este monumento histórico en un centro educativo en activo.",
+          "Historia: En 1464, Enrique IV otorgó el señorío de Cuéllar a Don Beltrán de la Cueva, primer duque de Alburquerque, quien convirtió el enclave en la sede fortificada y palaciega de su linaje.",
+          "Ingeniería: En sus distintas etapas de edificación intervinieron arquitectos y maestros de renombre como Juan Guas, Hanequin de Bruselas y Rodrigo Gil de Hontañón, quienes integraron la gótica galería primitiva en el nuevo diseño renacentista.",
+          "Cultura: La Torre del Homenaje alberga el Archivo Histórico de la Casa Ducal de Alburquerque, uno de los fondos nobiliarios privados más relevantes de España, con documentos que se remontan al siglo XII."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cuellar.png",
@@ -8804,7 +9405,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 122,
     cooldownMin: 70,
-    intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "buitres", "cañon"],
+    intereses: ["Naturaleza: Las escarpadas paredes calizas del cañón albergan una de las mayores colonias de buitre leonado de Europa, con más de 500 parejas censadas que anidan en las oquedades y cornisas de la roca.", "Naturaleza: El río Duratón ha excavado un cañón de rocas calizas de 27 kilómetros de longitud entre Sepúlveda y el embalse de Burgomillodo, con paredes verticales que superan los 100 metros de profundidad.", "Naturaleza: El camino de acceso a la ermita de San Frutos parte del aparcamiento de Villaseca y recorre 925 metros de ida sobre las hoces, ofreciendo panorámicas del cañón desde su mirador intermedio.", "Historia: En un promontorio sobre el meandro se alza la ermita románica de San Frutos, del siglo XII, construida junto a una necrópolis de tumbas antropomórficas visigodas tras cruzar un puente de piedra sobre la grieta La Cuchillada.", "Naturaleza: Su clima continental de paramera, con inviernos heladores y veranos secos de amplia oscilación térmica, condiciona una vegetación dividida entre sabinares albares en las llanuras superiores y bosques de ribera en el fondo del cañón.", "paisaje", "miradores", "fauna", "flora", "rutas", "buitres", "cañon"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hoces-del-rio-duraton.png",
@@ -8824,7 +9425,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "castillo_iglesia", "centro_provincia"],
+    intereses: ["Historia: En diciembre de 1474, Fernando el Católico permaneció hospedado cuatro días en el castillo de Turégano a la espera de ser recibido por su esposa Isabel I, recién proclamada reina de Castilla en la cercana Segovia.", "Cultura: El castillo de Turégano destaca por integrar completamente en su estructura la iglesia románica de San Miguel, construida en el siglo XII, cuyos muros y tres naves quedaron encastillados tras las reformas defensivas promovidas en el siglo XV.", "Curiosidad: La Plaza Mayor de Turégano es popularmente conocida como la «Plaza de los Cien Postes» debido a sus característicos soportales con vigas de madera sobre pilares de piedra, aunque en realidad cuenta con 104 apoyos.", "Historia: En 1585, el castillo sirvió como prisión de Estado cuando Felipe II ordenó encarcelar en sus dependencias a su antiguo secretario personal, Antonio Pérez, tras caer en desgracia con la Corona.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "castillo_iglesia", "centro_provincia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/turegano.png",
@@ -8863,7 +9464,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "sierra"],
+    intereses: ["Curiosidad: La Plaza Mayor destaca por su forma elíptica reformada en 1873. Cuenta con gradas de piedra y barandillas de hierro forjado, diseñadas para transformar periódicamente este espacio neurálgico en un coso taurino durante las fiestas locales.", "Historia: Vinculada a la Cañada Real Soriana Occidental, Riaza fue un relevante centro ganadero y textil durante el siglo XV, destacando por el esquileo de ovejas merinas, batanes y casas de cardado y tinte de lana.", "Cultura: En las inmediaciones de la villa se halla la ermita de Nuestra Señora de Hontanares, levantada en 1606, que alberga una imagen mariana cuya romería posterior al 8 de septiembre está declarada de Interés Turístico Regional.", "Naturaleza: A pocos kilómetros se ubica el Hayedo de la Pedrosa, un espacio natural protegido de 87 hectáreas situado a 1430 metros de altitud en la sierra de Ayllón, considerado uno de los hayedos más meridionales de Europa.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "sierra"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/riaza.png",
@@ -8883,7 +9484,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "frontera_historica"],
+    intereses: ["Historia: En 1411 se firmó en la villa el Tratado de Ayllón entre Castilla y Portugal, acuerdo que puso fin a las disputas dinásticas e hostilidades pendientes desde la batalla de Aljubarrota de 1385.", "Historia: El rey Juan II concedió el señorío de Ayllón a su condestable Don Álvaro de Luna en el siglo XV, convirtiendo la población en uno de los centros de decisión política del reino castellano.", "Cultura: El Palacio de Contreras, mandado construir en 1497 por Juan de Contreras, destaca por su fachada de estilo gótico-isabelino adornada con los blasones familiares e inscripciones de época.", "Cultura: La iglesia románica de San Miguel conserva un atrio con balconada del siglo XVI, construida para que los miembros del cabildo eclesiástico pudiesen presenciar los festejos taurinos de la Plaza Mayor.", "Curiosidad: El ingreso al casco antiguo se realiza cruzando el puente sobre el río Aguisejo y atravesando el Arco medieval, la única puerta conservada del antiguo recinto amurallado.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a1", "frontera_historica"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayllon.png",
@@ -8903,7 +9504,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra", "románico"],
+    intereses: ["Cultura: El municipio figura en el Libro de buen amor, obra cumbre del mester de clerecía del siglo XIV, donde Juan Ruiz, Arcipreste de Hita, cita Sotos Albos al narrar su célebre encuentro con la serrana La Chata.", "Historia: Donada al obispado de Segovia en 1116 por el rey Alfonso I de Aragón, la localidad comenzó a poblarse bajo la denominación en latín Sotis Albis, que significa «sotos blancos» y de la que deriva su nombre actual.", "Cultura: La iglesia parroquial de San Miguel Arcángel, levantada entre los siglos XI y XIII y declarada Monumento Nacional en 1973, destaca por su galería porticada decorada con capiteles tallados, entre los que sobresale la Adoración de los Reyes Magos.", "Curiosidad: El templo conserva entre su patrimonio litúrgico una notable cruz procesional de plata del siglo XVI, elaborada por el insigne platero segoviano Antonio de Oquendo.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra", "románico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sotosalbos.png",
@@ -8923,7 +9524,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "claustro"],
+    intereses: ["Cultura: El claustro del monasterio dominico conserva 87 capiteles historiados tallados por sus cuatro caras, que detallan las labores de los meses del año, escenas bíblicas y aspectos cotidianos de la sociedad castellana del siglo XV.", "Historia: La villa fue fundada en 1395 por la reina Catalina de Lancaster tras el hallazgo en 1392 de una imagen enterrada de la Virgen, bautizada desde entonces como la Virgen de la Soterraña.", "Historia: La reina Blanca I de Navarra falleció en esta localidad segoviana el 1 de abril de 1441 y sus restos fueron sepultados en la iglesia del monasterio de Nuestra Señora de la Soterraña.", "Curiosidad: En una de las dependencias del claustro del monasterio se halla el Salón de Cortes, donde el rey Enrique IV de Castilla convocó en 1473 las Cortes castellanas para tratar la pacificación de la Corona.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "claustro"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-maria-la-real-de-nieva.png",
@@ -9041,7 +9642,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 132,
     cooldownMin: 120,
-    intereses: ["castillo", "edad_media", "fortificacion", "arquitectura", "linajes", "paisaje"],
+    intereses: ["Ingeniería: Con unos 1200 metros de perímetro amurallado y 446 metros de longitud, se considera la fortaleza de origen califal de mayor extensión conservada en Europa.", "Historia: Rodrigo Díaz de Vivar, el Cid Campeador, ostentó la tenencia de la fortaleza en 1087 tras ser nombrado alcaide por el rey Alfonso VI de León.", "Curiosidad: Una incursión andalusí contra la población a los pies del castillo en 1081 motivó un ataque de represalia del Cid sin permiso real, desencadenando su primer destierro.", "Historia: En el año 965, el califa al-Hakam II encargó al general Gálib la ampliación de la fortaleza para afianzar la frontera del río Duero frente a los reinos cristianos.", "Cultura: Destaca en su fachada sur la puerta principal de acceso, compuesta por un doble arco de herradura califal enmarcado en alfiz.", "castillo", "edad_media", "fortificacion", "arquitectura", "linajes", "paisaje"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-gormaz.png",
@@ -9062,7 +9663,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
+    intereses: ["Cultura: El claustro de San Juan de Duero, del siglo XIII, carece de techumbre y destaca por sus arquerías de arcos entrelazados y califales, combinando influencias románicas, mudéjares y árabes a orillas del río Duero.", "Cultura: Antonio Machado llegó a Soria en 1907 para impartir clases de francés en su instituto. Los paisajes sorianos y el río Duero inspiraron su célebre libro de poemas «Campos de Castilla», publicado en 1912.", "Historia: La ermita de San Saturio fue levantada en el siglo XVII sobre una cueva rocosa junto al Duero. Según la tradición local, en ese abrigo vivió como eremita en el siglo VI el patrón de la ciudad.", "Historia: La iglesia de Santo Domingo conserva una fachada románica del siglo XII cuya construcción se relaciona con Leonor de Plantagenet. Su tímpano alberga una singular representación esculpida de la Trinidad con el Niño Jesús en el regazo.", "capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -9073,7 +9674,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.8054,
         "lng": -2.4829,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Publio Cornelio Escipión cercó la ciudad en el 134 a. C. con un muro de nueve kilómetros, siete campamentos y dos fortines fluviales. El aislamiento provocó su caída por inanición en el 133 a. C.",
+          "Historia: La prolongada resistencia celtíbera obligó al Senado romano a adelantar la toma de posesión de los cónsules de marzo a enero en el 153 a. C., fijando desde entonces el 1 de enero como inicio del año.",
+          "Ingeniería: El trazado urbano romano conserva grandes piedras pasaderas elevadas sobre la calzada. Este sistema permitía cruzar la calle a pie en días de lluvia sin pisar el barro ni las aguas de correntía que circulaban por el centro.",
+          "Cultura: Las excavaciones han recuperado piezas de cerámica arévaca pintadas con toros, buitres y escenas rituales. Destacan las vasijas modeladas con forma de trompa, utilizadas como instrumento musical de viento en ceremonias y combates.",
+          "Curiosidad: El ingeniero Eduardo Saavedra demostró científicamente en 1853 la ubicación de Numancia en el cerro de La Muela. A principios del siglo XX, el alemán Adolf Schulten identificó los campamentos romanos del cerco escipiónico."
+        ]
       },
       {
         "id": "es_sor_san_juan_duero",
@@ -9082,7 +9691,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.7647,
         "lng": -2.454,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Su claustro románico del siglo XIII destaca por la variedad estructural de sus cuatro lados, donde se entrelazan arcos de medio punto, túmidos y apuntados sobre haces de columnas, desprovistos hoy de su techumbre de madera original.",
+          "Cultura: El monasterio y sus inmediaciones a orillas del río Duero inspiraron a Gustavo Adolfo Bécquer para ambientar su famosa leyenda romántica «El Monte de las Ánimas», centrada en la noche de difuntos y los caballeros medievales.",
+          "Historia: La Orden Militar de los Hospitalarios de San Juan de Jerusalén estableció el cenobio en el siglo XII extramuros de Soria, junto al puente sobre el Duero, para acoger y defender a los peregrinos que accedían a la villa.",
+          "Cultura: En el interior de la iglesia desacralizada destacan dos templetes o ciborios exentos que flanquean el presbiterio, decorados con capiteles historiados y rematados por cúpulas de nervios de influencia oriental.",
+          "Historia: El conjunto arquitectónico fue declarado Monumento Nacional en 1882 y actualmente forma parte de la Sección Medieval del Museo Numantino de Soria."
+        ]
       },
       {
         "id": "es_sor_valonsadero",
@@ -9091,7 +9708,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.8013,
         "lng": -2.4562,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: En sus roquedos se conservan 36 abrigos con más de 500 figuras de arte rupestre esquemático del Calcolítico y la Edad del Bronce, pintadas en pigmento rojo y reconocidas como Bien de Interés Cultural e Itinerario Cultural Europeo.",
+          "Naturaleza: Monte Valonsadero abarca 2.793 hectáreas protegidas como Zona Natural de Esparcimiento, flanqueado al norte por el río Duero y el arroyo Pedrajas, y dominado en el paisaje por la imponente silueta calcárea del Pico Frentes, de 1.375 metros de altitud.",
+          "Naturaleza: El sendero circular PRC-SO 61, con inicio y fin en el Centro de Información del monte, tiene 20 kilómetros de longitud y 230 metros de desnivel acumulado, recorriendo las vegas de Baturio y del Cubillo a la orilla del Duero.",
+          "Naturaleza: Situado a unos 1.080 metros de altitud, el monte sufre un clima continentalizado con más de 80 días de helada al año y medias invernales de 3 °C, condicionando la presencia de extensas dehesas boyales de roble melojo.",
+          "Naturaleza: El paisaje presenta singulares afloramientos de arenisca moldeados por la erosión en formaciones rocosas como la Peña del Sombrero y la Peña Gorda, además de albergar una notable diversidad micológica con especies como el níscalo y el boletus."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/soria.png",
@@ -9111,7 +9736,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 128,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n122", "catedral"],
+    intereses: ["Historia: En 1101, el monje Pedro de Bourges (san Pedro de Osma) restauró la diócesis y promovió la catedral románica. A su alrededor floreció un nuevo núcleo urbano con personalidad jurídica propia, independiente de la vecina ciudad de Osma.", "Cultura: El obispo portugués Pedro Álvarez de Acosta fundó en 1550 la Pontificia y Real Universidad de Santa Catalina. Impartía Teología, Medicina, Cánones y Artes, y funcionó durante siglos hasta su traslado definitivo a Soria en 1841.", "Historia: La muralla medieval fue impulsada en 1458 por el obispo Pedro de Montoya para reforzar la seguridad de la villa. De su trazado original se conserva en pie la puerta de San Miguel, acceso histórico junto al río Ucero.", "Curiosidad: El antiguo Hospital de San Agustín, erigido a finales del siglo XVII por el obispo Sebastián de Arévalo, presenta un diseño palaciego barroco con dos torres achapiteladas. Frente a él se trazó en el siglo XVIII la Plaza Mayor.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n122", "catedral"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-burgo-de-osma.png",
@@ -9131,7 +9756,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 122,
     cooldownMin: 70,
-    intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "buitres", "cañon", "ermita"],
+    intereses: ["Naturaleza: El río Lobos discurre encajonado a lo largo de 25 kilómetros excavando desfiladeros de pared caliza que alcanzan hasta 200 metros de altura, drenando sus aguas subterráneas hacia el nacimiento del río Ucero.", "Naturaleza: En el terreno kárstico, el río Lobos desaparece en periodos secos al filtrarse por sumideros subterráneos, reapareciendo en manantiales y albergando en sus cantiles una de las mayores colonias de buitre leonado de Castilla y León.", "Cultura: En el centro del cañón se levanta la ermita de San Bartolomé, templo protogótico construido a inicios del siglo XIII vinculado a la Orden del Temple, situada en una cueva con vestigios de arte rupestre prehistórico.", "Naturaleza: La Senda del Río (PR-SOBU 65) recorre el fondo de la garganta durante 24,8 kilómetros entre Hontoria del Pinar (Burgos) y Ucero (Soria), siguiendo el cauce flanqueado por inmensas paredes rocosas.", "Naturaleza: Ubicado entre los 950 y 1286 metros de altitud, el parque sufre grandes amplitudes térmicas que condicionan la vegetación, marcando la transición entre los sabinares de sabina albar de la meseta y los pinares de pino laricio.", "paisaje", "miradores", "fauna", "flora", "rutas", "buitres", "cañon", "ermita"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -9142,7 +9767,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.7174,
         "lng": -3.0516,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Sobre un promontorio rocoso entre los valles de los ríos Ucero y Chico se conserva el Castillo de Ucero (siglos XIII-XV), una fortaleza fortificada de triple recinto vinculada históricamente a la Orden del Temple y al obispado de Osma.",
+          "Naturaleza: El río Ucero nace en el manantial kárstico de La Galiana, que descarga unos 2.000 litros por segundo de caudal medio; parte del agua brota oculta a lo largo de la propia orilla y del lecho del río.",
+          "Naturaleza: La Senda de las Gullurías es una ruta circular de unos 10 kilómetros con inicio en la Casa del Parque de Ucero que asciende al mirador homónimo para divisar el tramo final del cañón y el castillo.",
+          "Naturaleza: Los paredones kársticos de piedra caliza sobre los que se asienta Ucero albergan cavidades como la cueva de La Galiana y sirven de refugio de nidificación para numerosas parejas de buitre leonado (Gyps fulvus).",
+          "Naturaleza: El clima continental del valle, situado a 986 metros de altitud, destaca por una elevada amplitud térmica diaria y temperaturas extremas invernales que han alcanzado históricamente los 11 grados bajo cero."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/canon-del-rio-lobos.png",
@@ -9162,7 +9795,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 70,
-    intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "glaciarismo", "senderismo"],
+    intereses: ["Cultura: Antonio Machado visitó el enclave en octubre de 1910 e inmortalizó sus aguas oscuras y la leyenda local de su supuesta falta de fondo en el romance La tierra de Alvargonzález, publicado en 1912.", "Naturaleza: Esta laguna de origen glaciar se encaja a 1753 metros de altitud en la sierra de los Picos de Urbión, protegida por un circo de paredes rocosas verticales que alcanzan casi 80 metros de altura.", "Naturaleza: La ruta de senderismo homologada GR-86 conecta la Laguna Negra con el Pico Urbión a 2228 metros de altitud, recorriendo unos 11,6 kilómetros circulares y pasando por las lagunas glaciares Larga y Helada.", "Naturaleza: Su altitud superior a los 1700 metros determina un clima de montaña con heladas continuas en invierno, congelando la superficie del agua y limitando la vegetación de cumbre a matorrales de enebro rastrero y brezo.", "Naturaleza: En sus laderas conviven los extensos bosques de pino albar con hayedos en zonas umbrías, mientras que en las cumbrecillas habitan endemismos florísticos exclusivos de la sierra, como la armeria de Urbión (Armeria losae).", "paisaje", "miradores", "fauna", "flora", "rutas", "glaciarismo", "senderismo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -9173,7 +9806,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.9541,
         "lng": -2.9306,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: En este municipio nace el río Duero a 2.140 metros de altitud, en las laderas de la Muela de Urbión. En sus primeros diez kilómetros desciende casi 1.000 metros de desnivel hasta cruzar el casco urbano.",
+          "Naturaleza: El paraje de Castroviejo destaca por sus bloques de conglomerado silíceo erosionados por el agua y el hielo. Entre sus grietas crecen reductos de vegetación relicta con tejos, acebos, hayas y serbales.",
+          "Cultura: Duruelo mantiene la «Suerte de Pinos», una costumbre medieval vinculada a la Carta Puebla del siglo XIII que otorga a los vecinos un derecho comunal de reparto de madera, declarada Bien de Interés Cultural inmaterial.",
+          "Naturaleza: Desde el aparcamiento de Castroviejo parte la Ruta de las Cascadas, un sendero de 5,2 kilómetros que permite visitar el mirador sobre el mar de pinares y la cascada de la Cueva Serena.",
+          "Naturaleza: Con la villa a 1.197 metros de altitud y cumbres superiores a 2.200 metros, el clima de montaña registra heladas habituales y elevadas precipitaciones que sustentan una extensa masa continua de pino albar."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/laguna-negra.png",
@@ -9193,7 +9834,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a11", "colegiata"],
+    intereses: ["Ingeniería: En 1522 se inició la construcción de una fortaleza artillera renacentista envolviendo el castillo medieval. Cuenta con muros de sillería de más de cinco metros de espesor y cuatro imponentes cubos cilíndricos en los ángulos.", "Curiosidad: En el interior de la Colegiata cuelga el llamado «Lagarto de Fray Tomás», un caimán disecado traído desde América en el siglo XVI por Fray Tomás de Berlanga, obispo de Panamá y descubridor de las Islas Galápagos.", "Historia: En 1526, los señores de Berlanga ordenaron el derribo de diez iglesias medievales para unificar el culto local en una sola colegiata monumental y levantar allí el panteón del linaje de los Tovar.", "Cultura: El Palacio de los Marqueses de Berlanga, edificado en el siglo XVI, destacó por sus jardines renacentistas estructurados en varios niveles. En 1811 fue destruido por un incendio causado por las tropas napoleónicas.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a11", "colegiata"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/berlanga-de-duero.png",
@@ -9213,7 +9854,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camero_viejo", "frontera_historica"],
+    intereses: ["Cultura: En 1347, Alfonso XI concedió a los arrieros de Yanguas la exención de impuestos de portazgo en Castilla. Esta intensa actividad mercantil les dio gran renombre e inspiró un célebre episodio en el capítulo XV del Quijote.", "Cultura: Levantada en 1146, la exenta torre de San Miguel es el único vestigio de la primitiva iglesia de la villa y constituye el único ejemplo del románico con clara influencia lombarda en toda la provincia de Soria.", "Ingeniería: El castillo de Yanguas, erigido entre los siglos XIV y XV, se construyó empleando una técnica de tapial de argamasa de cal y arena, una solución constructiva de tradición musulmana muy poco frecuente en fortalezas señoriales castellanas.", "Curiosidad: A la entrada de Yanguas se exhibe una réplica del yacimiento paleontológico de El Majadal, con huellas fosilizadas de dinosaurios ornitópodos del Cretácico inferior que quedaron anegadas tras la construcción del embalse de Enciso.", "Historia: La iglesia de San Lorenzo, levantada en el siglo XVI, sirvió como centro administrativo comarcal. Allí se custodiaba el archivo de la Villa y Tierra, guardado en un arca cuyas cuatro llaves debían custodiar cuatro autoridades locales distintas.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camero_viejo", "frontera_historica"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yanguas.png",
@@ -9233,7 +9874,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "duero", "n122"],
+    intereses: ["Cultura: La iglesia de San Miguel alberga la primera galería porticada conocida del románico castellano. En un canecillo del pórtico, un monje esculpido sostiene un libro con la firma del maestro Julianus y la fecha de 1081.", "Ingeniería: Bajo el cerro del castillo se excavaron cerca de 300 bodegas subterráneas en terreno arcilloso impermeable. Sus galerías garantizan de forma natural una temperatura y humedad constantes para la elaboración y crianza del vino.", "Historia: Durante los siglos X y XI, la villa ejerció como «Puerta de Castilla» en la frontera del río Duero. Su puente y castillo cambiaron de manos repetidamente entre cristianos y musulmanes por su altísimo valor estratégico.", "Cultura: En 1187, la localidad albergó las primeras Cortes de Castilla, convocadas por Alfonso VIII. Además, es citada elogiosamente en el Cantar de mio Cid como «una buena ciudad» de habitantes acogedores y prudentes.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "duero", "n122"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/san-esteban-de-gormaz.png",
@@ -9253,7 +9894,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "pinares", "embalses"],
+    intereses: ["Naturaleza: En el término municipal de Vinuesa se halla la Laguna Negra, cuenca glaciar situada a 1773 metros de altitud al pie del Pico Urbión, cumbre que alcanza los 2228 metros de altitud.", "Ingeniería: El puente sobre el río Duero, construido con sillería y arcos de medio punto y ojivales, permanece sumergido bajo el embalse de La Cuerda del Pozo y solo emerge visible cuando el nivel del agua desciende significativamente.", "Naturaleza: La ruta senderista desde el aparcamiento del Paso de la Serrá hasta el Pico Urbión recorre 13 kilómetros de trazado lineal con 654 metros de desnivel positivo, pasando por la Laguna Negra y el nacedero del río Duero.", "Naturaleza: Ubicada a 1108 metros de altitud, la villa sufre un clima de alta montaña con heladas invernales frecuentes que sustentan la masa continua de pino albar (*Pinus sylvestris*) más extensa de la península ibérica.", "Naturaleza: El Parque Natural Laguna Negra y Circos Glaciares de Urbión protege casi 5000 hectáreas por encima de los 1700 metros de altitud, conservando un destacado modelado glaciar cuaternario con la Laguna Helada y la Laguna Larga.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "pinares", "embalses"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vinuesa.png",
@@ -9273,7 +9914,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "medieval", "sabinares"],
+    intereses: ["Historia: Según la tradición medieval, en el año 1002 tuvo lugar aquí la batalla donde Almanzor sufrió su primera gran derrota, inmortalizada en la frase «en Calatañazor perdió Almanzor el tambor», aunque la historiografía actual cuestiona este combate.", "Cultura: La villa conserva una arquitectura popular singular con entramados de madera de sabina, barro y tejados coronados por chimeneas cónicas pinariegas, construidas sobre entramados de cestería o madera y revestidas con pedazos de teja.", "Naturaleza: A escasos kilómetros del casco urbano se sitúa la Reserva Natural del Sabinar de Calatañazor, un bosque con ejemplares de sabina albar que superan los catorce metros de altura y quinientos años de antigüedad.", "Historia: El topónimo deriva del árabe Qal'at an-Nusur («Castillo de las águilas»), aunque el asentamiento primitivo se corresponde con la ciudad arévaca y romana de Voluce, situada a un kilómetro en el cerro de los Castejones.", "Cultura: El marcado aspecto medieval y la conservación del caserío llevaron al director Orson Welles a elegir las calles de Calatañazor en 1965 como escenario para el rodaje de su película Campanadas a medianoche.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "medieval", "sabinares"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calatanazor.png",
@@ -9293,7 +9934,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n111", "plaza_mayor"],
+    intereses: ["Ingeniería: La cúpula de la iglesia de San Miguel se apoya sobre trompas con ocho arcos de medio punto cruzados que forman una estrella de ocho puntas, siguiendo un diseño técnico e influencias geométricas de origen hispanomusulmán.", "Historia: En 1375 se firmó la Paz de Almazán entre Enrique II de Castilla y Pedro IV de Aragón, finalizando dos décadas de enfrentamientos y acordando el matrimonio de la infanta Leonor de Aragón con el futuro Juan I de Castilla.", "Historia: Durante su reinado, los Reyes Católicos convirtieron a Almazán en sede itinerante de la Corte en trece ocasiones, alojándose en el Palacio de los Hurtado de Mendoza a finales del siglo XV.", "Curiosidad: La iglesia de San Miguel alberga un destacado altorrelieve en piedra arenisca del siglo XII que representa el martirio de Tomás Becket, arzobispo de Canterbury asesinado en 1170.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n111", "plaza_mayor"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almazan.png",
@@ -9334,7 +9975,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
+    intereses: ["Historia: Valladolid fue la capital de la Monarquía Hispánica entre 1601 y 1606, bajo el reinado de Felipe III, tras el traslado de la corte desde Madrid promovido por el Duque de Lerma.", "Cultura: Miguel de Cervantes residió en Valladolid entre 1604 y 1606, periodo en el que obtuvo el privilegio real y vio publicados los primeros ejemplares de Don Quijote de la Mancha.", "Historia: Cristóbal Colón falleció en Valladolid el 20 de mayo de 1506 tras reunirse con Fernando el Católico, siendo enterrado inicialmente en el ya desaparecido Convento de San Francisco.", "Cultura: La Catedral de Nuestra Señora de la Asunción, diseñada por Juan de Herrera en el siglo XVI, quedó inconclusa por problemas económicos tras edificarse solo un fragmento de su ambicioso plan original.", "capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -9345,7 +9986,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.5909,
         "lng": -4.8261,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: En 1572, Felipe II encargó al arquitecto Juan de Herrera reformar la fortaleza medieval para crear el primer edificio de la Edad Moderna concebido expresamente como archivo institucional.",
+          "Historia: En 1588, Felipe II firmó la Instrucción para el Gobierno del Archivo de Simancas, considerada la primera reglamentación archivística oficial del mundo para organizar y proteger fondos documentales.",
+          "Historia: El origen como depósito documental se remonta a 1540, cuando Carlos I ordenó trasladar escrituras del Patrimonio Real a una de las torres de la fortaleza, denominada cubo del Archivo.",
+          "Cultura: En 2017 la UNESCO otorgó la distinción de Memoria del Mundo al fondo documental de Simancas, que reúne documentos del Gobierno de la Monarquía Hispánica entre los siglos XV y XIX.",
+          "Curiosidad: Antes de albergar los archivos reales, la fortaleza construida por la familia Enríquez a finales del siglo XV funcionó como prisión de Estado bajo el control de los Reyes Católicos."
+        ]
       },
       {
         "id": "es_val_simancas",
@@ -9354,7 +10003,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.5908,
         "lng": -4.8274,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En el año 939, las tropas leonesas de Ramiro II derrotaron a las del califa Abderramán III en la batalla de Simancas. Esta victoria frenó la expansión del Califato de Córdoba y consolidó la repoblación cristiana al norte del Duero.",
+          "Historia: El castillo de Simancas fue convertido en 1540 por orden de Carlos V en depósito documental de la Corona de Castilla. El archivo custodia millones de documentos sobre la administración de la Monarquía Hispánica entre los siglos XV y XIX.",
+          "Ingeniería: En 1572, Felipe II encargó a Juan de Herrera adaptar el castillo de Simancas como archivo estatal. Herrera diseñó una estructura pionera ideada exclusivamente para conservar documentos, regulada en 1588 por el primer reglamento de archivos del mundo.",
+          "Ingeniería: El puente medieval de piedra sobre el río Pisuerga suma 250 metros de longitud y 17 arcos desiguales, diez ojivales y siete de medio punto. Se construyó sobre la antigua vía romana entre Mérida y Zaragoza.",
+          "Curiosidad: En 2017, la UNESCO inscribió el Archivo General de Simancas en el Registro de la Memoria del Mundo. El organismo internacional reconoció la trascendencia global de sus documentos históricos y el valor de su arquitectura defensiva reconvertida en archivo."
+        ]
       },
       {
         "id": "es_val_cigales",
@@ -9363,7 +10020,13 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.7582,
         "lng": -4.6993,
-        "radio": 4000
+        "radio": 4000,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: La iglesia de Santiago Apóstol, conocida como la «Catedral del Vino», fue proyectada en 1535 por Rodrigo Gil de Hontañón. Su imponente estructura de piedra caliza se financió en gran medida con la bonanza vinícola de la villa.",
+          "Historia: En 1549 nació en Cigales Ana de Austria, quien llegó a ser reina consorte de España y Portugal por su matrimonio con Felipe II, además de madre del futuro rey Felipe III.",
+          "Curiosidad: El subsuelo de Cigales alberga bodegas tradicionales excavadas a unos 9 metros de profundidad, construidas para mantener una temperatura constante cercana a los 12 °C, idónea para la elaboración y conservación de sus afamados vinos claretes."
+        ]
       },
       {
         "id": "es_val_mucientes",
@@ -9372,7 +10035,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.7447,
         "lng": -4.7635,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: En 2004 el Ayuntamiento acondicionó dos bodegas subterráneas del siglo XVI como Aula de Interpretación del Vino, convirtiéndose en un espacio museístico reconocido por la Junta de Castilla y León dentro de galerías originales.",
+          "Historia: El origen documental del barrio de bodegas extramuros se remonta a 1528, cuando se registra la primera mención escrita sobre excavaciones subterráneas en el Cuarto de San Pedro para ampliar la producción fuera del casco urbano.",
+          "Ingeniería: El conjunto conserva más de 200 bodegas subterráneas excavadas manualmente a profundidades de hasta diez metros, caracterizadas por galerías cavadas, zarceras de ventilación y accesos semienterrados integrados en el terreno.",
+          "Curiosidad: Las galerías subterráneas excavadas bajo el terreno mantienen de forma natural una temperatura constante entre los 8 y 13 grados Celsius todo el año, idónea para la elaboración y conservación tradicional del vino."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valladolid.png",
@@ -9403,7 +10073,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.3087,
         "lng": -4.9131,
-        "radio": 2200
+        "radio": 2200,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1506, el militar César Borgia escapó de su cautiverio en la torre del homenaje descolgándose de noche con cuerdas hacia el foso con la complicidad exterior del conde de Benavente.",
+          "Ingeniería: A finales del siglo XV, los Reyes Católicos añadieron una barrera artillera exterior con foso y galerías subterráneas de tiro, convirtiendo la fortaleza en un pionero referente defensivo contra cañones en Europa.",
+          "Ingeniería: Al carecer de canteras cercanas, se construyó mediante ladrillo rojizo y relleno interior de mortero de cal con cantos rodados, reservando la piedra labrada exclusivamente para elementos funcionales como troneras o escudos.",
+          "Historia: En 1503, la princesa Juana permaneció retenida en el castillo por orden de sus padres, donde protagonizó un sonado altercado a la intemperie exigiendo marchar a Flandes para reunirse con Felipe el Hermoso.",
+          "Historia: Durante el reinado de Enrique IV en el siglo XV, el castillo tuvo la función de custodiar y servir como archivo de los documentos y registros oficiales de la Corona castellana."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/medina-del-campo.png",
@@ -9423,7 +10101,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a62", "tratado", "duero"],
+    intereses: ["Historia: En 1494, las coronas de Castilla y Portugal firmaron en Tordesillas el tratado que dividió las zonas de navegación y conquista del Nuevo Mundo mediante un meridiano situado a 370 leguas al oeste de Cabo Verde.", "Historia: La reina Juana I de Castilla permaneció recluida durante 46 años, entre 1509 y su fallecimiento en 1555, en el antiguo Palacio Real de Tordesillas por orden de su padre, Fernando el Católico.", "Cultura: El Real Monasterio de Santa Clara se acondicionó a partir de 1363 sobre un palacio mudéjar mandado edificar por Alfonso XI en 1340 tras la batalla del Salado, conservando además unos baños de estilo medieval.", "Ingeniería: El puente medieval de sillería sobre el río Duero cuenta con diez arcos apuntados de piedra caliza y tajamares triangulares, sirviendo históricamente como paso estratégico entre el centro y el noroeste peninsular.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a62", "tratado", "duero"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tordesillas.png",
@@ -9443,7 +10121,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "murallas", "villa_del_libro"],
+    intereses: ["Cultura: En 2007, la Diputación de Valladolid convirtió a Urueña en la primera Villa del Libro de España, impulsando la apertura de numerosas librerías y talleres artesanales vinculados al sector editorial dentro del casco medieval.", "Curiosidad: Fuera del recinto amurallado se alza la ermita de Nuestra Señora de la Anunciada, construida en el siglo XII, considerada el único ejemplo completo de arquitectura románica de estilo lombardo en Castilla y León.", "Historia: Urueña conserva aproximadamente el 80% de su recinto amurallado de los siglos XII y XIII, erigido durante los conflictos fronterizos entre los reinos de Castilla y León, conectando directamente con su castillo fortificado del siglo XI.", "Curiosidad: Su ubicación a unos 830 metros de altitud, en la cornisa de los Montes Torozos, convierte el adarve de su muralla en un mirador panorámico que domina la comarca agrícola de Tierra de Campos.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "murallas", "villa_del_libro"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/uruena.png",
@@ -9474,7 +10152,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.5957,
         "lng": -4.117,
-        "radio": 2200
+        "radio": 2200,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: Adaptado a la cresta del cerro sobre el que se asienta, sus 210 metros de largo por 33 de ancho le otorgan una inconfundible silueta similar a un barco, por lo que es popularmente conocido como el «Buque de Castilla».",
+          "Cultura: Desde 1999 alberga en sus patios el Museo Provincial del Vino de Valladolid, rehabilitado bajo el proyecto del arquitecto Roberto Valle González para divulgar la tradición enológica de las distintas denominaciones de origen de la provincia.",
+          "Historia: Tras recuperar la fortaleza en el año 1013, el conde castellano Sancho García rebautizó la Peña Falcón cambiando su nombre a Peñafiel, pronunciando la célebre frase: «Desde hoy en adelante esta será la peña más fiel de Castilla».",
+          "Cultura: El escritor medieval Don Juan Manuel, autor de El conde Lucanor, reconstruyó la fortaleza y sus murallas durante la primera mitad del siglo XIV tras recibir el señorío de Peñafiel de su tío, el rey Alfonso X el Sabio.",
+          "Ingeniería: En la reconstrucción del siglo XV encargada a Pedro Téllez Girón se erigió la torre del homenaje, de 34 metros de altura y labrada en piedra caliza de Campaspero, siguiendo los cánones defensivos de la Escuela de Valladolid."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/penafiel.png",
@@ -9494,7 +10180,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 118,
     cooldownMin: 70,
-    intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "duero", "aves", "humedal"],
+    intereses: ["Naturaleza: La presa de San José, construida en la década de 1940, embalsó el Duero permitiendo la expansión de extensos carrizales. Este humedal es la única reserva natural de Valladolid y refugia nidificaciones de garza imperial y martinete.", "Naturaleza: Enmarcada por un meandro del río Duero, la reserva ocupa 8.420 hectáreas entre vegas sedimentarias y páramos. El cauce forma una acusada curva en forma de U encajada a los pies del cerro donde se alza Castronuño.", "Naturaleza: La Senda de los Almendros (PRC-VA 9) es una ruta circular de 3,4 kilómetros que arranca en el Mirador de la Muela. Desciende hasta una pasarela junto al agua y el observatorio de aves antes de subir al Mirador del Pinar.", "Naturaleza: El espacio combina la influencia mediterránea del valle con el clima continental de la meseta, generando gran amplitud térmica. Este contraste propicia la floración temprana de los almendros centenarios de la ribera entre febrero y marzo.", "Historia: Corona el cerro sobre el meandro la iglesia de Santa María del Castillo, erigida en el siglo XII. Perteneció a la Orden de San Juan de Jerusalén en una época defensiva clave del curso del Duero.", "paisaje", "miradores", "fauna", "flora", "rutas", "duero", "aves", "humedal"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/reserva-natural-de-riberas-de-castronuno.png",
@@ -9514,7 +10200,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "mudejar", "a6"],
+    intereses: ["Cultura: Lope de Vega inmortalizó a la villa en la tragicomedia «El caballero de Olmedo», inspirada en un cantar popular basado en el asesinato real de Juan de Vivero en 1521 cuando regresaba de Medina del Campo.", "Cultura: El Parque Temático del Mudéjar alberga 21 réplicas a escala de los principales monumentos mudéjares de Castilla y León, construidas artesanalmente con ladrillo, piedra y cal reales, incluyendo castillos con interior visitable.", "Curiosidad: Olmedo fue conocida históricamente como la «villa de los siete sietes», al contar con siete iglesias, siete conventos, siete plazas, siete fuentes, siete puertas en su muralla, siete casas nobles y siete pueblos en su alfoz.", "Historia: En 1387 y entre 1527 y 1528, Olmedo albergó temporalmente la sede de la Real Chancillería de Valladolid, sirviendo como el máximo tribunal de justicia de la Corona de Castilla durante esos periodos.", "Ingeniería: La iglesia de San Miguel, de estilo románico-mudéjar del siglo XIII, se construyó adosada a la muralla e integra en su subsuelo una cripta barroca del siglo XVIII con una gran cúpula pintada al fresco.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "mudejar", "a6"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/olmedo.png",
@@ -9554,7 +10240,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "castillo", "campos"],
+    intereses: ["Historia: En 1528 el castillo alojó como rehenes al Delfín de Francia y al duque de Orleans, custodiados como garantía tras la derrota de su padre Francisco I frente a Carlos V en la batalla de Pavía.", "Curiosidad: En el siglo XX el castillo pasó a manos de la familia de Manuel Azaña tras su matrimonio con Dolores Rivas Cherif, motivo por el que el presidente de la Segunda República visitó la localidad en varias ocasiones.", "Historia: Las ruinas del cercano monasterio cisterciense de Matallana, fundado en el siglo XII por Tello Pérez de Meneses, fueron vendidas en 1844 tras la Desamortización para reutilizar sus piedras como cantera en las obras del Canal de Castilla.", "Curiosidad: El recinto amurallado medieval conservó varios de sus torreones o cubos defensivos adaptados durante generaciones por el vecindario para usos cotidianos, sirviendo históricamente como viviendas populares, corrales para el ganado y pajares.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "castillo", "campos"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalba-de-los-alcores.png",
@@ -9574,7 +10260,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "vino"],
+    intereses: ["Ingeniería: La torre de la iglesia de los Santos Juanes, llamada la Giralda de Castilla, alcanza 60 metros de altura tras ser reconstruida a comienzos del siglo XVIII tras el derrumbe del campanario original en 1663.", "Curiosidad: La festividad de la Virgen de los Pegotes nació en 1745 cuando una tormenta repentina obligó a iluminiar la procesión con antorchas de pez, inicio de una tradición en la que las mulas tiran del carruaje entre hogueras.", "Historia: En 1560, Felipe II otorgó a la localidad la exención de la jurisdicción de Medina del Campo a cambio del pago de casi 10.000 maravedíes por vecino, lo que dio origen al nombre de Nava del Rey.", "Cultura: El templo barroco alberga un órgano histórico de 1718, obra del maestro José de Alsúa, que protagoniza audiciones comentadas y visitas guiadas a través del programa municipal Espacio Barroco.", "Ingeniería: A las afueras se conserva un pozo de la nieve de estructura troncocónica con casi 160 metros cúbicos de capacidad, construido con profundos muros para garantizar un aislamiento térmico constante que conservase el hielo.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "vino"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/nava-del-rey.png",
@@ -9594,7 +10280,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos", "mercados"],
+    intereses: ["Cultura: Su rollo jurisdiccional de 1523 mide diez metros de altura y es de estilo gótico flamígero. Fue promovido por el conde de Benavente, Rodrigo Alonso Pimentel, y labrado con piedra traída de la catedral de Burgos.", "Historia: Fernando III el Santo otorgó a la villa en 1250 la concesión de su mercado semanal. En los siglos XV y XVI sus ferias se convirtieron en uno de los centros de operaciones financieras y de cambio de Europa.", "Curiosidad: Es la cuna del queso de Villalón, conocido popularmente como pata de mulo por su forma cilíndrica. La localidad alberga un Museo del Queso dedicado a la elaboración artesanal tradicional con leche de oveja.", "Cultura: Su arquitectura urbana destaca por los extensos soportales de madera y adobe en la Plaza Mayor y la calle de la Rúa, construidos históricamente para resguardar de la intemperie a mercaderes y puestos de venta.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "tierra_de_campos", "mercados"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villalon-de-campos.png",
@@ -9614,7 +10300,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "duero", "entorno_valladolid"],
+    intereses: ["Historia: En 1812, tras la batalla de Arapiles, el mariscal francés Auguste Marmont ordenó la voladura del antiguo puente medieval sobre el río Duero para intentar frenar el avance hacia el norte de las tropas anglo-hispanas del duque de Wellington.", "Naturaleza: El río Duero rodea casi por completo la villa mediante un pronunciado meandro. La frondosidad y fertilidad de sus huertas y arboledas le valieron históricamente los apelativos de «el oasis de Castilla» y «la alegre lágrima del Duero».", "Cultura: La iglesia parroquial de Nuestra Señora de la Asunción custodia en uno de sus retablos la «Virgen de los Frutos», una destacada escultura renacentista en madera policromada encargada hacia 1570 al afamado escultor manierista Juan de Juni.", "Cultura: El microclima del meandro del Duero propicia el cultivo intensivo de huertas, convirtiendo a Tudela de Duero en referente gastronómico por sus espárragos, cuya calidad se rinde homenaje anualmente en la Fiesta de Exaltación del Espárrago.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "duero", "entorno_valladolid"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tudela-de-duero.png",
@@ -9634,7 +10320,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 120,
     cooldownMin: 70,
-    intereses: ["castillo", "edad_media", "fortificacion", "arquitectura", "linajes", "paisaje"],
+    intereses: ["Historia: Don Álvaro de Luna, valido del rey Juan II de Castilla, estuvo encarcelado en esta fortaleza durante dos meses en 1453 antes de ser conducido a la Plaza Mayor de Valladolid para ser ejecutado.", "Ingeniería: En el centro de su patio de armas destaca un pozo excavado en roca de unos 30 metros de profundidad, al que se accede mediante una escalera de caracol con 123 escalones y cámaras abovedadas.", "Historia: El castillo perteneció al médico e histólogo Pío del Río Hortega, nacido en Portillo y candidato al Premio Nobel, quien al morir en el exilio en 1945 legó la propiedad a la Universidad de Valladolid.", "Historia: Durante la guerra con Portugal en el siglo XV, la fortaleza custodió de forma estratégica el archivo documental de los Condes de Benavente, trasladado desde su sede original para protegerlo del conflicto.", "Curiosidad: Emplazado sobre un promontorio a más de 800 metros de altitud, el castillo funcionó como punto estratégico para el control del paso entre Segovia y Valladolid sobre la comarca de Tierra de Pinares.", "castillo", "edad_media", "fortificacion", "arquitectura", "linajes", "paisaje"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-portillo.png",
@@ -9715,7 +10401,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
+    intereses: ["Cultura: Zamora alberga en su casco urbano más de una veintena de iglesias románicas construidas entre los siglos XI y XIII, lo que la convierte en la capital europea con mayor concentración de templos de este estilo.", "Historia: Durante el asedio a Zamora en 1072, el rey Sancho II de Castilla murió a manos del caballero Vellido Dolfos, un hecho histórico que dio origen al popular refrán castellano «no se ganó Zamora en una hora».", "Ingeniería: La catedral de Zamora cuenta con una característica cúpula o cimborrio gallonado revestido con escamas de piedra, una solución arquitectónica del siglo XII de directa influencia bizantina singular dentro del románico del Duero.", "Ingeniería: Las aceñas de Olivares, mencionadas desde el siglo X, empleaban ruedas hidráulicas vitruvianas para moler grano sobre el río Duero. Tras su rehabilitación, forman un conjunto preindustrial único que permite caminar sobre el cauce.", "Ingeniería: Erigido en el siglo XII para cruzar el río Duero en la Vía de la Plata, el Puente de Piedra cuenta con 16 arcos apuntados, tajamares triangulares y óculos de alivio diseñados para soportar las crecidas del caudal.", "capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zamora.png",
@@ -9735,7 +10421,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 128,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a52", "castillo", "frontera"],
+    intereses: ["Historia: En 1506, el Castillo de los Condes de Benavente alojó a la reina Juana I de Castilla y a Felipe el Hermoso poco antes del encuentro de Remesal y la firma de la Concordia de Villafáfila.", "Historia: Durante la guerra de Sucesión española, en 1710, las tropas portuguesas ocuparon la villa y mantuvieron la fortaleza fronteriza bajo su control hasta el año 1716.", "Ingeniería: En 1722, el ingeniero militar francés Carlos Robelin proyectó un sistema abaluartado para reorganizar y reforzar las murallas defensivas de Puebla de Sanabria tras los deterioros sufridos en las guerras fronterizas.", "Historia: Tras ser cedido al Ayuntamiento en 1895 por la reina María Cristina, el castillo medieval se reutilizó como cárcel municipal hasta 1950, albergando a más de doscientos prisioneros durante el año 1936.", "Naturaleza: El casco histórico se alza a 980 metros de altitud sobre un promontorio rocoso protegido por la confluencia entre el río Tera y su afluente el Castro.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a52", "castillo", "frontera"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puebla-de-sanabria.png",
@@ -9755,7 +10441,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "a66", "a52", "nudo_viario"],
+    intereses: ["Historia: En 1230 se firmó la Concordia de Benavente, un acuerdo histórico tras el fallecimiento de Alfonso IX que resolvió el pleito sucesorio y selló la unión definitiva de los reinos de León y Castilla bajo la corona de Fernando III.", "Cultura: La Torre del Caracol, construida a principios del siglo XVI en estilos gótico y renacentista, es el único resto conservado del antiguo castillo-palacio de los condes de Pimentel, destruido e incendiado por tropas napoleónicas en la Guerra de la Independencia.", "Cultura: La fiesta del Toro Enmaromado, documentada documentalmente desde el siglo XVII en la víspera del Corpus Christi, consiste en conducir al astado por un trazado urbano guiado por los mozos mediante una larga maroma atada a sus astas.", "Ingeniería: En la iglesia de Santa María del Azogue se descubrió durante su rehabilitación una cubierta románica de piedra escalonada del siglo XII oculta bajo la teja, resolviéndose su restauración con una nueva protección pétrea construida directamente sobre la original.", "Curiosidad: El antiguo reloj de la iglesia de Santa María del Azogue, cuyos potentes toques de campana resonaban por toda la comarca, dio origen al dicho popular castellano: «Campanas las de Toledo, reloj el de Benavente».", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a6", "a66", "a52", "nudo_viario"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/benavente.png",
@@ -9775,7 +10461,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a11", "vino", "duero"],
+    intereses: ["Historia: En las Cortes de Toro de 1505 se promulgaron las 83 Leyes de Toro, un cuerpo normativo clave impulsado tras el fallecimiento de Isabel la Católica que regulaba sucesiones y mayorazgos, influyendo directamente en el posterior Código Civil.", "Cultura: La Portada de la Majestad de la Colegiata de Santa María la Mayor conserva de forma excepcional su policromía medieval original del siglo XIII, protegida durante siglos tras construirse sobre ella la antigua capilla de Santo Tomé.", "Ingeniería: Levantado en piedra arenisca a finales del siglo XII con 22 arcos apuntados, el Puente Mayor cruzaba el río Duero de forma paralela a la corriente actual debido a un cambio posterior en el trazado del meandro.", "Ingeniería: La Colegiata de Toro destaca por su cimborrio o Torre del Gallo, construido en el siglo XIII en piedra arenisca rojiza como parte del selecto grupo de los denominados cimborrios leoneses o bizantinos junto al de Zamora y Salamanca.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a11", "vino", "duero"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -9786,7 +10472,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.5245,
         "lng": -5.3942,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: El Pórtico de la Majestad conserva casi intacta su policromía gótica original del siglo XIII, protegida de la intemperie gracias a la construcción posterior de una capilla adosada en el siglo XV.",
+          "Ingeniería: Su cimborrio con cúpula gallonada sobre tambor pertenece al influyente grupo de cimborrios del Duero, diseñado en el siglo XII siguiendo soluciones estructurales de la catedral de Zamora y la catedral Vieja de Salamanca.",
+          "Historia: Una inscripción al pie del dintel documenta que el trabajo de pintura fue realizado por Domingo Pérez, pintor y criado del rey Sancho IV, un caso excepcional de autoría firmada en la escultura medieval hispana.",
+          "Naturaleza: El templo se erige sobre un meandro del río Duero al borde de un cortado rocoso a más de cien metros de elevación, ofreciendo un mirador natural hacia la gran vega agrícola toresana.",
+          "Curiosidad: Su museo de la sacristía alberga el célebre cuadro hispanoflamenco de la Virgen de la Mosca, famoso por el detallado dibujo de un moscón sobre la rodilla de la Virgen que da nombre a la tabla."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/toro.png",
@@ -9806,7 +10500,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 122,
     cooldownMin: 70,
-    intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "duero", "cañones"],
+    intereses: ["Naturaleza: El río Duero ha encajado su cauce sobre la penillanura granítica de Sayago (a 750-800 m s. n. m.), esculpiendo cañones y cortados rocosos que superan los 200 metros de desnivel vertical.", "Naturaleza: La escasa altitud de los cañones frente a la penillanura genera un microclima mediterráneo sin apenas heladas, lo que permite cultivar olivos, almendros y viñedos en abancalamientos levantados en las laderas.", "Naturaleza: Desde la ermita de Nuestra Señora del Castillo en Fariza parte un sendero de 1 km (ida y vuelta) que conduce al Mirador de las Barrancas, balcón con vistas directas sobre el gargantal del Duero.", "Naturaleza: Los cortados de granito albergan colonias nidificantes de cigüeña negra (Ciconia nigra), buitre leonado y alimoche, motivo por el cual el parque está protegido como ZEPA.", "Cultura: La villa zamorana de Fermoselle, asentada sobre el conjunto de barrancos, conserva un entramado de bodegas tradicionales subterráneas horadadas directamente en el subsuelo de granito de las casas.", "paisaje", "miradores", "fauna", "flora", "rutas", "duero", "cañones"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -9817,7 +10511,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.3197,
         "lng": -6.3956,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: En el paraje de Ambasaguas convergen los ríos Duero y Tormes a solo 325 metros de altitud, el punto más bajo de Zamora, encajonado entre desfiladeros graníticos con cortados que superan los 200 metros de desnivel.",
+          "Curiosidad: Bajo las viviendas del casco histórico de Fermoselle se extiende un entramado subterráneo de alrededor de mil bodegas excavadas directamente sobre el peñasco granítico, destinadas tradicionalmente a la fermentación y guarda del vino.",
+          "Naturaleza: El Sendero Mirador de las Escaleras es un recorrido de 6,4 kilómetros desde el casco urbano de Fermoselle que desciende entre laderas abancaladas hasta un balcón rocoso sobre el cañón internacional del Duero.",
+          "Naturaleza: El encajonamiento de los cañones crea un microclima protegido con raras heladas, lo que permite cultivar en terrazas o bancales especies mediterráneas atípicas en la meseta norte, como olivos y viñedos de la variedad Juan García.",
+          "Naturaleza: Los paredones rocosos y cantiles del entorno de Fermoselle albergan una destacada avifauna rupícola, sirviendo de refugio a especies protegidas como el buitre leonado, el alimoche, el águila perdicera y la cigüeña negra."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arribes-del-duero.png",
@@ -9837,7 +10539,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 122,
     cooldownMin: 70,
-    intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "lago", "glaciar", "playas"],
+    intereses: ["Naturaleza: Con 3,47 km² de superficie y 53 metros de profundidad máxima, es el lago glaciar más grande de la Península Ibérica. Ocupa una cubeta excavada por la lengua del río Tera durante la glaciación de Würm.", "Naturaleza: Alberga turberas de musgo Sphagnum muy raras en estas latitudes, hábitat de la planta carnívora Drosera, y sus orillas son zona de reproducción de la libélula en peligro crítico de extinción Macromia splendens.", "Naturaleza: La Senda de los Monjes, una ruta circular de unos 12 kilómetros que conecta Ribadelago con San Martín de Castañeda, permite bordear la masa de agua y ascender a miradores panorámicos sobre el cañón y la cubeta lacustre.", "Naturaleza: Su clima de transición atlántico-mediterráneo registra unos 1.400 mm de precipitaciones anuales concentradas en invierno. En verano apenas cae el 6 % del total, provocando un estiaje acusado en los cauces de su cuenca.", "Curiosidad: La tradición sitúa bajo el lago la mítica aldea sumergida de Valverde de Lucerna, leyenda popularizada por Miguel de Unamuno en su célebre novela San Manuel Bueno, mártir, inspirada en las gentes y paisajes del lugar.", "paisaje", "miradores", "fauna", "flora", "rutas", "lago", "glaciar", "playas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -9875,7 +10577,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 126,
     cooldownMin: 120,
-    intereses: ["monasterio", "arte", "arquitectura", "religion", "patrimonio"],
+    intereses: ["Ingeniería: Su iglesia destaca por la singular cabecera románica con girola del siglo XII, formada por un ábside semicircular sostenido por ocho columnas desde el que se abren siete capillas radiales.", "Historia: Alfonso VII cedió el territorio en 1143 al noble Ponce de Cabrera para fundar un monasterio bajo la regla de San Benito, que en 1162 adoptó la reforma cisterciense y el patronazgo de Santa María.", "Cultura: Considerado una de las primeras implantaciones del Císter en la Península Ibérica, el cenobio estuvo activo hasta 1835, cuando la Desamortización de Mendizábal provocó su abandono y progresiva ruina.", "Ingeniería: En 1606, los canteros de origen trasmerano Hernando y Juan de Nates Naveda ampliaron el monasterio construyendo el amplio pabellón adosado de monjes y novicios.", "Curiosidad: La pérdida del tejado tras siglos de abandono dejó al descubierto la estructura portante y la arquería desnuda, dotando a las ruinas del templo de un aspecto imponente al aire libre.", "monasterio", "arte", "arquitectura", "religion", "patrimonio"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-santa-maria-de-moreruela.png",
@@ -9895,7 +10597,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a66", "llanura"],
+    intereses: ["Historia: En 1569, Fuentesaúco prohibió importar garbanzos foráneos para proteger su economía. La medida fue ratificada en 1571 por el rey Felipe II, sentando una precoz protección de origen que Francisco de Quevedo elogió por escrito en 1639.", "Cultura: Durante las fiestas de La Visitación, en julio, se celebran «Los Espantes». Esta tradición del siglo XVI consiste en que los mozos a pie forman una barrera en el prado de La Reguera para hacer retroceder al ganado guiado por caballistas.", "Cultura: La iglesia de Santa María del Castillo destaca por su trazado herreriano tardío. El transepto y el cuerpo principal fueron diseñados hacia 1620 por el arquitecto Hernando de Nates Naveda, y el templo está rematado por una singular torre.", "Curiosidad: La villa presenta una curiosa ordenación religiosa tradicional: sus cuatro ermitas e iglesias principales están orientadas hacia los cuatro puntos cardinales alrededor del núcleo urbano, custodiando los accesos al municipio desde Santa María del Castillo hasta la Virgen de la Antigua.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a66", "llanura"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fuentesauco.png",
@@ -9915,7 +10617,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a52", "mozárabe"],
+    intereses: ["Cultura: El Beato de Tábara conserva la imagen más antigua conocida de un scriptorium en el arte medieval europeo, representada junto a la torre campanario del antiguo monasterio.", "Cultura: En el scriptorium tabarense trabajó Ende, pintora del Beato de Gerona registrada en el siglo X, reconocida como una de las primeras mujeres iluminadoras de manuscritos de la historia del arte europeo.", "Historia: El monasterio de San Salvador de Tábara fue fundado a finales del siglo IX por San Froilán bajo el reinado de Alfonso III, albergando una destacada comunidad monástica dúplice de hombres y mujeres.", "Cultura: Tábara es la villa natal del poeta León Felipe, nacido en 1884, una de las voces fundamentales de la poesía española del exilio tras la Guerra Civil.", "Historia: La iglesia románica de Santa María, levantada sobre las trazas del antiguo monasterio y consagrada en 1137, acoge actualmente el Centro de Interpretación de los Beatos.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "a52", "mozárabe"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tabara.png",
@@ -9935,7 +10637,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra_de_la_culebra", "bosques"],
+    intereses: ["Naturaleza: La villa se ubica a los pies de la Sierra de la Culebra, un espacio natural que alberga una de las mayores densidades poblacionales de lobo ibérico en Europa occidental, además de importantes comunidades de ciervo.", "Historia: A partir de mediados del siglo XIX, Villardeciervos floreció comercialmente gracias al contrabando transfronterizo de productos como tabaco, sal y telas con Portugal, cuya bonanza económica financió la edificación de sus grandes casonas de piedra.", "Cultura: Declarado Conjunto Histórico en 1987, el casco urbano destaca por su arquitectura popular carballesa, caracterizada por grandes casonas construidas con mampostería y sillería de cuarcita rojiza, arcos pétreos y galerías o balcones volados.", "Historia: En la cercana Peña del Castro, una elevación a unos 170 metros sobre la población, se conservan los restos de un poblado de la Edad del Hierro protegido por murallas de cuarcita adaptadas al relieve rocoso.", "Naturaleza: A unos dos kilómetros del centro urbano se halla la Playa de los Molinos, un área recreativa y zona de baño situada a orillas del embalse de Valparaíso y rodeada de robledales.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra_de_la_culebra", "bosques"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villardeciervos.png",
@@ -9975,7 +10677,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n122", "frontera_portugal"],
+    intereses: ["Historia: El 12 de septiembre de 1297 se firmó el Tratado de Alcañices entre Fernando IV de Castilla (bajo la regencia de María de Molina) y Dionisio I de Portugal, delimitando la frontera internacional más antigua de Europa.", "Curiosidad: Durante los siglos XII y XIII fue sede de una encomienda de la Orden del Temple. De su antigua fortificación templaria se conservan paños de muralla y cuatro torreones, entre los que destaca el Cubo del Reloj.", "Cultura: Su recinto amurallado alberga el Palacio de los Marqueses de Alcañices y la iglesia parroquial de Nuestra Señora de la Asunción, integrados en un casco urbano con muestras de arquitectura popular alistana.", "Cultura: La villa es cabecera de la comarca zamorana de Aliste y punto de paso en el trazado transfronterizo del Camino de Santiago Portugués por la Vía de la Plata.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n122", "frontera_portugal"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcanices.png",
@@ -9995,7 +10697,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sanabria", "castillo"],
+    intereses: ["Historia: Tras la independencia de Portugal en 1143, la localidad sufrió frecuentes disputas fronterizas entre León y el reino portugués hasta estabilizarse en el siglo XIII, integrándose más tarde en las Tierras del Conde de Benavente.", "Cultura: La iglesia parroquial de San Isidoro, caracterizada por sus elementos de estilo renacentista, fue levantada en el año 1576.", "Curiosidad: El pueblo da nombre al río Castro, un afluente del río Tera que cruza la comarca sanabresa de oeste a este hasta desembocar en el embalse de Cernadilla.", "Cultura: En el centro de su entramado urbano se conserva un cruceiro tradicional que señala el trazado histórico del Camino de Santiago por la Ruta de la Plata.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sanabria", "castillo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castro-de-sanabria.png",
@@ -10015,7 +10717,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_sanabres", "románico"],
+    intereses: ["Cultura: La iglesia románica de Santa Marta de Tera conserva en su exterior una escultura tallada en el siglo XII considerada por los especialistas como la representación pétrea del Santiago Peregrino más antigua que se conoce.", "Curiosidad: Durante los equinoccios de primavera y otoño, a primera hora de la mañana, un rayo de sol penetra por el óculo del ábside e ilumina de forma exacta el capitel denominado del «alma justa» o «ascensión del alma».", "Ingeniería: Para construir el templo a finales del siglo XI se combinaron grandes bloques de pizarra en los muros perimetrales con piedra arenisca para labrar los capiteles y elementos decorativos de mayor complejidad iconográfica.", "Historia: El templo actual formaba parte de un antiguo monasterio medieval levantado a orillas del río Tera, enclave de paso e hito fundamental en la ruta jacobea del Camino Sanabrés hacia Santiago de Compostela.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "camino_sanabres", "románico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-marta-de-tera.png",
@@ -10056,7 +10758,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
+    intereses: ["Ingeniería: Con 2516 metros de perímetro defensivo, la muralla medieval conserva 87 cubos o torres y 9 puertas. Su grosor medio es de 3 metros y integra el ábside fortificado de la catedral románico-gótica en el propio muro.", "Curiosidad: Situada a 1131 metros sobre el nivel del mar junto al río Adaja, Ávila ostenta el récord de ser la capital de provincia más alta de España, lo que provoca marcadas heladas e inviernos muy fríos.", "Cultura: En esta ciudad nació en 1515 Santa Teresa de Jesús. En 1562 fundó aquí el convento de San José, origen de la reforma del Carmelo Descalzo, convirtiendo a Ávila en referencia clave de la mística española.", "capitalidad", "historia_urbana", "patrimonio", "cultura", "museos", "paseo_urbano"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10067,7 +10769,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.6579,
         "lng": -4.6989,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: En su transepto alberga el cenotafio de los santos Vicente, Sabina y Cristeta, un monumento funerario románico atribuido al maestro Fruchel que relata en relieve el martirio de los tres hermanos en el siglo IV.",
+          "Ingeniería: El templo está construido en piedra caleña, un tipo de granito extraído de La Colilla que destaca por sus vetas amarillas y rojizas, aportándole un colorido singular dentro del románico hispano.",
+          "Curiosidad: La basílica se considera el primer edificio histórico en España restaurado bajo criterios historicistas modernos, proceso iniciado a mediados del siglo XIX por arquitectos como Hernández Callejo, Vicente Miranda y Repullés y Vargas.",
+          "Historia: Según la tradición, el templo se levantó extramuros sobre la roca donde fueron ejecutados los tres hermanos mártires durante las persecuciones del emperador romano Diocleciano a comienzos del siglo IV."
+        ]
       },
       {
         "id": "es_avi_murallas_avila",
@@ -10076,7 +10785,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.6568,
         "lng": -4.6998,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: El recinto amurallado suma 2516 metros de perímetro continuo, 87 torreones semicirculares, 9 puertas de acceso y unas 2500 almenas, lo que constituye una de las cercas defensivas medievales mejor conservadas de Europa.",
+          "Curiosidad: El ábside fortificado de la Catedral de Ávila, conocido popularmente como el Cimorro, forma parte del trazado oriental de la muralla y funciona como un imponente torreón integrado en el sistema defensivo de la ciudad.",
+          "Historia: Tras la conquista de Toledo en 1085, el rey Alfonso VI encargó a su yerno Raimundo de Borgoña la repoblación de Ávila y la fortificación de la ciudad como bastión estratégico defensivo de la frontera castellana.",
+          "Ingeniería: Se levantó en mampostería de granito mediante dos lienzos paralelos rellenos de piedra y mortero de cal, asentándose directamente sobre la roca madre y reutilizando estelas grabadas de la necrópolis romana anterior."
+        ]
       },
       {
         "id": "es_avi_cuatro_postes",
@@ -10085,7 +10801,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.6617,
         "lng": -4.7112,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El monumento actual data de 1566, cuando el corregidor Rodrigo Dávila encargó al maestro cantero Francisco de Arellano la construcción de este humilladero, proyectado con tejadillo y una escultura dedicada a San Sebastián junto al río Adaja.",
+          "Ingeniería: Estructuralmente consta de cuatro columnas dóricas de granito de unos cinco metros de altura, unidas por arquitrabes rectos con el escudo esculpido de Ávila, alojando en el centro una cruz de granito sobre peana.",
+          "Cultura: Ocupa la margen izquierda del río Adaja, constituyendo un mirador privilegiado desde el que observar la panorámica completa del lienzo occidental y norte de la muralla medieval de Ávila.",
+          "Curiosidad: La tradición sitúa aquí el punto donde el tío de Santa Teresa de Jesús la interceptó de niña junto a su hermano Rodrigo cuando pretendían viajar hacia el sur para sufrir martirio en tierras musulmanas."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/avila.png",
@@ -10105,7 +10828,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "mudejar", "ruta_a6"],
+    intereses: ["Historia: Tras la muerte de Juan II en 1454, la infanta Isabel de Castilla (futura Isabel la Católica) se trasladó a Arévalo, donde vivió su infancia en las desaparecidas Casas Reales junto a su madre, Isabel de Portugal.", "Cultura: Arévalo es uno de los referentes del mudéjar castellano; destacan iglesias como la de Santa María la Mayor, cuyo campanario tiene la singularidad de contar con una torre pórtico bajo la cual discurre la calle.", "Ingeniería: La iglesia de San Martín destaca por sus «Torres Gemelas» de ladrillo: la Torre de los Ajedreces, del siglo XII y decorada con dameros, y la Torre Nueva, del siglo XIII, erigida con machones y rafas de tapial.", "Ingeniería: El castillo de Arévalo, situado en la confluencia de los ríos Adaja y Arevalillo, se remodeló a principios del siglo XVI por orden de los Reyes Católicos para transformarse en una fortaleza artillera con barbacana y foso.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "mudejar", "ruta_a6"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10116,7 +10839,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.0642,
         "lng": -4.7225,
-        "radio": 2200
+        "radio": 2200,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: En 1952, tras haber servido como prisión de Estado y cementerio municipal, el Ministerio de Agricultura transformó la fortaleza en silo de trigo, integrando en su interior la estructura de la Red Nacional de Silos y Graneros.",
+          "Historia: Reconstruido en el siglo XV por Álvaro de Zúñiga, los Reyes Católicos lo reformaron a inicios del XVI para adaptarlo a la artillería, añadiendo troneras, cámaras para cañones y un baluarte defensivo con foso hacia la villa.",
+          "Ingeniería: Es un destacado ejemplo de arquitectura mudéjar castellana que combina sillería y ladrillo. Su planta pentagonal irregular con forma de punta de flecha incluye torres cilíndricas en los ángulos y una gran torre del homenaje semicircular.",
+          "Historia: En sus dependencias residió Isabel la Católica durante parte de su infancia y juventud. Posteriormente funcionó como presidio de alta relevancia para figuras históricas como la reina Blanca de Borbón o el príncipe Guillermo de Orange."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arevalo.png",
@@ -10136,7 +10866,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 70,
-    intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "gredos", "circos_glaciares", "senderismo"],
+    intereses: ["Naturaleza: La Plataforma de Gredos (1750 m s. n. m.) da acceso a la garganta del río Barbellido y al Circo de Gredos, presidido por el pico Almanzor a 2592 m, la cumbre más alta del Sistema Central.", "Naturaleza: El entorno es refugio principal de la cabra montés de Gredos (Capra pyrenaica victoriae), subespecie endémica adaptada a las rocas graníticas y a la cubeta de sobreexcavación glaciar originada durante las glaciaciones del Cuaternario.", "Naturaleza: Desde este enclave se inicia la ruta oficial PR-AV 17 (Senda de la Laguna Grande), un trayecto empedrado de 6,4 km hasta la Laguna Grande (1940 m s. n. m.), pasando por el mirador de Los Barrerones a 2170 m.", "Naturaleza: Su elevación por encima de los 1700 m impone un clima de alta montaña con intensas nevadas invernales, condicionando una vegetación caracterizada por piornales achaparrados adaptados al fuerte viento y al peso de la nieve.", "Historia: La creación del Coto Real de Caza por Alfonso XIII a principios del siglo XX fue decisiva para salvar a la cabra montés de la extinción y constituyó el germen de la protección medioambiental del actual parque regional.", "paisaje", "miradores", "fauna", "flora", "rutas", "gredos", "circos_glaciares", "senderismo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10147,7 +10877,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.2978,
         "lng": -5.2483,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: Su microclima mantiene 17 °C constantes y cerca del 100 % de humedad; esta estabilidad permite a los científicos usar sus estalagmitas como laboratorio para analizar el cambio climático histórico en la Sierra de Gredos.",
+          "Curiosidad: Cinco jóvenes descubrieron la cavidad el 24 de diciembre de 1963 al ver vaho salir de un orificio por la diferencia térmica; tras entrar por una estrecha gatera de 60 centímetros, estuvieron perdidos cinco horas.",
+          "Naturaleza: Formadas sobre calizas cristalinas del Cámbrico, las cuevas forman una isla kárstica en el cerro de Romperropas, de 427 metros de altitud, rodeado por los ríos Tiétar, Arenal y Avellaneda.",
+          "Naturaleza: Las galerías destacan por la variedad de espeleotemas como helictitas, pisolitas o 'moonmilk', con tonalidades producidas por la diversa composición mineral de las filtraciones de agua a través de la caliza.",
+          "Naturaleza: En el municipio destaca la ruta homologada PRC-ASP 1 Senda de Pescadores, un recorrido circular de 9,05 kilómetros y 164 metros de desnivel que parte del puente medieval de Aquelcabos."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/plataforma-de-gredos.png",
@@ -10167,7 +10905,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 118,
     cooldownMin: 70,
-    intereses: ["paisaje", "miradores", "fauna", "flora", "rutas", "buitres", "embalse", "bosque"],
+    intereses: ["Naturaleza: El enclave alberga la colonia de buitre negro (*Aegypius monachus*) más numerosa de Castilla y León, con más de cien parejas reproductoras que nidifican en las copas de pino negral y laricio centenarios.", "Naturaleza: El valle presenta un gradiente altitudinal de 1.229 metros en solo 10 kilómetros, desde la cumbre del Cerro de la Escusa (1.959 m) hasta las orillas del embalse de El Burguillo (730 m), alimentado por la garganta de Iruelas.", "Naturaleza: El Sendero Cerro de las Víboras (PRC-AV 53) es una ruta circular de 4 kilómetros con inicio en el área recreativa Siempreverde que bordea el cerro y ofrece miradores directos sobre la cuenca del embalse de El Burguillo.", "Naturaleza: Su orientación al noreste y el acusado desnivel originan un microclima con cuatro pisos bioclimáticos, permitiendo convivir desde enebrales mediterráneos en la zona baja hasta matorrales alpinos con pequeños neveros en las cumbres más elevadas.", "Historia: A orillas del embalse se halla Las Cruceras, un antiguo poblado de resineros y madereros construido a mediados del siglo XX que fue rehabilitado para turismo rural y alberga la Casa del Parque de la reserva.", "paisaje", "miradores", "fauna", "flora", "rutas", "buitres", "embalse", "bosque"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10178,7 +10916,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.3649,
         "lng": -4.519,
-        "radio": 1800
+        "radio": 1800,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Las cuatro esculturas vetonas de granito, erigidas entre los siglos IV y III a. C., fueron el escenario donde en 1468 Enrique IV juró a su hermana Isabel la Católica como heredera de la Corona de Castilla.",
+          "Naturaleza: El cerro de Guisando alcanza 1300 metros de altitud en el extremo oriental de Gredos, flanqueado a sus pies por el arroyo Tórtolas, cauce que marca la frontera entre las provincias de Ávila y Madrid.",
+          "Naturaleza: El cerro presenta una marcada amplitud térmica y microclima: su umbría septentrional alberga húmedos pinares resineros, mientras que la solana sur registra temperaturas estivales elevadas que favorecen el desarrollo de encinas, enebros de miera y cornicabras.",
+          "Naturaleza: El espacio protegido del Cerro de Guisando alberga en la Garganta de la Yedra y las márgenes del arroyo Avellaneda frondosas alisedas de ribera, acompañadas de bosques con castaños centenarios en sus piedemontes.",
+          "Naturaleza: La Ruta de los Toros de Guisando, integrada en el trazado de gran recorrido GR-10 y la Cañada Real Leonesa, abarca algo más de 20 kilómetros de recorrido conectando San Martín de Valdeiglesias con las faldas del cerro."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/reserva-natural-del-valle-de-iruelas.png",
@@ -10198,7 +10944,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "rio_tormes", "puerta_gredos"],
+    intereses: ["Cultura: Las judías de El Barco de Ávila obtuvieron en 1989 la Indicación Geográfica Protegida, convirtiéndose en la primera legumbre de España en recibir este reconocimiento y en el segundo Consejo Regulador alimentario más antiguo del país.", "Historia: El castillo de Valdecorneja se erigió en el siglo XII sobre un antiguo castro vetón. En el siglo XIV pasó a la Casa de Alba y se convirtió en residencia de Fernando Álvarez de Toledo, el Gran Duque de Alba.", "Ingeniería: El Puente Viejo sobre el río Tormes mide unos 140 metros de longitud. Reconstruido en el siglo XII sobre estribos romanos, presenta una estructura alomada en lomo de asno apoyada sobre siete arcos desiguales y pilares de sillares almohadillados.", "Curiosidad: De la muralla pentagonal del siglo XII destaca la antigua Puerta de Piedrahíta. Durante el siglo XVI pasó a ser conocida popularmente como la Puerta del Ahorcado debido a la ejecución en su arco de un impopular alcalde local.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "rio_tormes", "puerta_gredos"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-barco-de-avila.png",
@@ -10218,7 +10964,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra_oeste", "ruta_ap6"],
+    intereses: ["Cultura: El dramaturgo Lope de Vega trabajó como secretario del tercer marqués de Las Navas y se basó en sucesos reales de la corte para escribir en 1624 su comedia teatral «El marqués de las Navas».", "Cultura: El Convento de Santo Domingo y San Pablo alberga la lauda sepulcral de bronce de los primeros marqueses de Las Navas, pieza renacentista de Jacques Jonghelinck que destaca por situar a la marquesa en primer lugar del epitafio.", "Historia: Pedro Dávila y Zúñiga ordenó erigir el Castillo Palacio de Magalia en 1533 tras recibir de Carlos I el título de primer marqués de Las Navas por apoyar a la Corona durante las Comunidades de Castilla.", "Curiosidad: En el pinar de la Ciudad Ducal se erige una atalaya de vigilancia contra incendios de hierro fundido y madera de 1873, conocida como Mirador Eiffel por atribuirse popularmente durante décadas a la escuela de Gustave Eiffel.", "Historia: Tras resultar afectado en la Guerra Civil, el Palacio de Magalia fue cedido al Estado y rehabilitado en 1950 por el arquitecto Luis Martínez Feduchi para albergar la Escuela Nacional de Instructoras de la Sección Femenina.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "sierra_oeste", "ruta_ap6"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10229,7 +10975,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.6037,
         "lng": -4.3279,
-        "radio": 2500
+        "radio": 2500,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: El interior conserva siete cuadros depositados por el Museo del Prado y un cipo funerario romano dedicado al legionario Domitius Pastor, traído por el primer marqués dada su afición a la epigrafía antigua.",
+          "Historia: El rey Carlos I otorgó en 1533 el título de marqués de Las Navas a Pedro Dávila y Zúñiga por su apoyo frente a los comuneros, impulsando la edificación de este castillo-palacio renacentista.",
+          "Ingeniería: La estructura destaca arquitectónicamente por incluir en una de sus torres dos inusuales bóvedas planas de piedra, además de un patio de honor articulado en galerías con columnas jónicas y dóricas.",
+          "Historia: En 1950, tras pasar por la Unión Resinera Española, el arquitecto Luis Martínez Feduchi rehabilitó el edificio para convertirlo en la Escuela de Magisterio de la Sección Femenina de Falange."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/las-navas-del-marques.png",
@@ -10249,7 +11002,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "valle_del_tietar", "sierra"],
+    intereses: ["Ingeniería: Construido entre 1462 y 1474 y atribuido al arquitecto Juan Guas, el castillo posee una torre del homenaje con pisos de madera desmontables diseñados para bloquear mecánicamente el acceso de asaltantes en caso de ataque.", "Cultura: El Hospital de San Andrés fue fundado en 1517 por el prior Ruy García Manso para atender a enfermos y peregrinos que recorrían el camino hacia el santuario de Guadalupe atravesando la sierra.", "Historia: En la Edad Media la localidad se denominaba Colmenar de las Ferrerías por sus explotaciones de hierro. En 1464 adoptó el nombre de Mombeltrán en homenaje a Beltrán de la Cueva, primer duque de Alburquerque.", "Curiosidad: A la entrada del pueblo se erige el Rollo Jurisdiccional, una columna granítica coronada por una cruz que simbolizaba la potestad para impartir justicia tras recibir el título de villa en 1393.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "valle_del_tietar", "sierra"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mombeltran.png",
@@ -10269,7 +11022,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "transicion_meseta", "n403"],
+    intereses: ["Ingeniería: La Estación de Seguimiento del Espacio Profundo de la ESA en Cebreros cuenta con una antena de 35 metros de diámetro y 630 toneladas que rastrea misiones interplanetarias como Rosetta, BepiColombo o ExoMars.", "Historia: Cebreros es la villa natal de Adolfo Suárez y alberga el Museo de la Transición, alojado en las ruinas rehabilitadas de la Iglesia Vieja de Santiago, un templo del siglo XIV.", "Cultura: En 1563 el arquitecto Juan de Herrera construyó el Palacio de El Quexigal por encargo de Felipe II, concebido como reserva maderera para El Escorial y residencia de descanso real.", "Cultura: El Carnaval de Cebreros cuenta con más de dos siglos de tradición documentada y fue la primera fiesta de la provincia de Ávila declarada de Interés Turístico Nacional.", "Curiosidad: Cebreros da nombre a la única Denominación de Origen Protegida vitivinícola abulense, famosa por sus cepas viejas de uva Garnacha Tinta y Albillo Real cultivadas en suelos graníticos.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "transicion_meseta", "n403"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cebreros.png",
@@ -10289,7 +11042,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n403", "sierra"],
+    intereses: ["Historia: En el cerro de Guisando se firmó en 1468 el Tratado de los Toros de Guisando, acuerdo por el cual Enrique IV de Castilla reconoció a su hermana Isabel la Católica como princesa heredera de la Corona castellana.", "Cultura: Los Toros de Guisando son un conjunto de cuatro esculturas zoomorfas vetonas de granito datadas entre los siglos IV y III a. C., alineadas junto a la Cañada Real Leonesa Oriental mirando hacia el cerro.", "Naturaleza: En la Reserva Natural del Valle de Iruelas destaca el Castañar de El Tiemblo y su árbol centenario El Abuelo, un castaño con más de 500 años, 19 metros de altura y 13 metros de perímetro.", "Naturaleza: El Sendero del Castañar es una ruta circular de 4,4 kilómetros que discurre por la cabecera de la Garganta de la Yedra partiendo del área recreativa de El Regajo, con un desnivel de 114 metros.", "Cultura: La Casa Consistorial de El Tiemblo se construyó en 1778 en estilo neoclásico durante el reinado de Carlos III, como atestigua la inscripción conmemorativa labrada en la piedra de su fachada principal.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "n403", "sierra"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/el-tiemblo.png",
@@ -10309,7 +11062,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 90,
-    intereses: ["patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "isabel_la_catolica", "muralla"],
+    intereses: ["Historia: En el antiguo palacio de Juan II nació la reina Isabel la Católica el 22 de abril de 1451. El edificio es hoy el Monasterio de Nuestra Señora de Gracia y conserva estancias de la época como la alcoba real.", "Ingeniería: Su muralla del siglo XIII es la única muralla mudéjar de Castilla y León. Debido a la falta de canteras de piedra en la llanura, se construyó con tapial de argamasa y verdugadas de ladrillo, alcanzando 2,3 kilómetros de perímetro.", "Historia: En las Cortes de Madrigal de 1476, convocadas tras autoproclamarse reina Isabel I, los Reyes Católicos juraron a su primogénita Isabel como heredera al trono castellano y crearon la Santa Hermandad para pacificar los caminos de Castilla.", "Cultura: El poeta y humanista Fray Luis de León falleció en 1591 en el Convento de San Agustín de Extramuros, un imponente recinto apodado 'El Escorial de Castilla' por sus grandes dimensiones.", "patrimonio", "casco_historico", "paseo", "arquitectura", "historia_local", "isabel_la_catolica", "muralla"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/madrigal-de-las-altas-torres.png",
@@ -10329,7 +11082,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["castillo", "edad_media", "fortificacion", "arquitectura", "linajes", "paisaje"],
+    intereses: ["Historia: A diferencia de otras fortalezas militares, el castillo se edificó a finales del siglo XIV integrando una iglesia gótica previa, de la que aún se conservan la cabecera, el ábside y el arco triunfal en el patio.", "Ingeniería: Para adaptar la fortaleza a las nuevas necesidades defensivas del siglo XV, se derribó el campanario gótico sobre el que se levantó la torre del homenaje y se añadió un gran cubo artillero.", "Historia: Concebido más como residencia palaciega y base de caza nobiliaria que como baluarte de guerra, alojó temporalmente a monarcas castellanos como Enrique III, Juan II, Enrique IV y los Reyes Católicos.", "Cultura: En las estancias de la casa del alcaide se recuperaron durante las excavaciones arqueológicas zócalos de azulejería mudéjar decorados mediante las técnicas de cuerda seca y arista.", "Cultura: Tras haber quedado arruinado en el siglo XIX y pasar a propiedad municipal, el recinto fue restaurado íntegramente y reutilizado como Centro de Interpretación Histórica del Valle del Tiétar.", "castillo", "edad_media", "fortificacion", "arquitectura", "linajes", "paisaje"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-la-adrada.png",
@@ -10410,7 +11163,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 133,
     cooldownMin: 100,
-    intereses: ["a31", "a35", "batalla_de_almansa", "castillo", "frontera"],
+    intereses: ["Historia: El 25 de abril de 1707, la decisiva Batalla de Almansa reunió a más de 40.000 soldados de diez naciones. La victoria de las tropas de Felipe V decantó la Guerra de Sucesión Española a favor de los Borbones.", "Historia: En 1911 el Ayuntamiento solicitó autorizar la demolición del castillo por riesgo de derrumbe y aprovechamiento de su yeso. La intervención de las Reales Academias frenó el derribo y propició su declaración como Monumento Nacional en 1921.", "Curiosidad: La fortificación se asienta sobre el cerro del Águila, adaptando sus murallas a las lajas de roca caliza del terreno. Su perfil alargado y escalonado en tres niveles permite vigilar el histórico paso natural entre la Meseta y Levante.", "Ingeniería: La torre del homenaje acoge en su interior una escalera gótica de caracol tallada en la propia roca. Diseñada con peldaños labrados en cantería, permaneció oculta tras la cesión de la fortaleza a la Corona a finales del siglo XV.", "a31", "a35", "batalla_de_almansa", "castillo", "frontera"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/almansa.png",
@@ -10430,7 +11183,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 131,
     cooldownMin: 100,
-    intereses: ["jucar", "cuevas", "hoz", "miradores", "manchuela"],
+    intereses: ["Naturaleza: El río Júcar se encaja en este tramo de La Manchuela formando un cañón con escarpes de caliza que alcanzan hasta 170 metros de profundidad entre la meseta y el fondo de la hoz.", "Naturaleza: El sendero del Corciolico (PR-AB 16) es una ruta circular de 5,5 kilómetros que asciende desde la Playeta de Alcalá del Júcar hasta Casas del Cerro bordeando el barranco de la Noguera.", "Ingeniería: El denominado Puente Romano es en realidad una estructura de sillería de cuatro ojos erigida en marzo de 1771, bajo el reinado de Carlos III, para encauzar el tráfico comercial del camino real.", "Historia: En la peña bajo el castillo almohade destaca la cueva de Garadén, un túnel de 170 metros excavado en la roca que servía de aduana medieval para cobrar tributos en el Camino Real de Levante.", "Naturaleza: El abrigo del cañón fluvial genera un microclima protegido de los vientos continentales de la meseta, lo que permite el cultivo de especies de regadío y frutales como granados y naranjos en la Ribera de Cubas.", "jucar", "cuevas", "hoz", "miradores", "manchuela"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10441,7 +11194,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 39.1745,
         "lng": -1.5219,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Para regar las huertas del foso natural, los pobladores musulmanes excavaron en la roca caliza del cerro el «Caño», un acueducto subterráneo canalizado que atraviesa el promontorio rocoso sobre el que se asienta el pueblo.",
+          "Naturaleza: El río Júcar discurre a los pies del casco urbano formando meandros encajados en cañones calizos de hasta 200 metros de desnivel vertical, producto del fenómeno geológico de captura fluvial producido hace dos millones de años.",
+          "Historia: Durante los siglos XII y XIII, bajo dominio almohade, Jorquera se fortificó con murallas de tapial y torres prismáticas para frenar el avance castellano de Alfonso VIII, aprovechando los cortados naturales del cauce del Júcar.",
+          "Curiosidad: El recinto superior del castillo medieval de Jorquera alberga actualmente el cementerio municipal, particularidad que permitió la conservación de varios lienzos de muralla almenada e impidió la demolición de sus torres defensivas.",
+          "Cultura: A la entrada del conjunto urbano se eleva la Torre de Doña Blanca, una construcción defensiva restaurada del siglo XV reconvertida en espacio expositivo que protege una de las puertas históricas de acceso a la villa."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcala-del-jucar.png",
@@ -10461,7 +11222,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 130,
     cooldownMin: 100,
-    intereses: ["rio_mundo", "cascada", "karst", "sierra_del_segura", "excursion"],
+    intereses: ["Naturaleza: El río Mundo nace en una impresionante cueva kárstica abierta en un farallón rocoso de 300 metros de altura, desde donde el agua se precipita en una cascada de más de 80 metros hacia el valle.", "Naturaleza: Tras episodios de intensas lluvias superiores a 100 milímetros, se desencadena el fenómeno del «reventón», un repentino vaciado kárstico que dispara el caudal del nacimiento desde 50 litros por segundo hasta alcanzar los 100.000 litros por segundo.", "Naturaleza: La ruta oficial desde el Puerto del Arenal hasta el mirador de los Chorros recorre unos 9 kilómetros ida y vuelta con 260 metros de desnivel, atravesando pinares hasta una panorámica del anfiteatro rocoso del nacimiento.", "Naturaleza: El enclave del Hueco de los Chorros alberga una destacada biodiversidad botánica con más de 1.300 táxones vegetales catalogados, favorecidos por las marcadas oscilaciones térmicas de la montaña y la constante humedad del pulverizado de la cascada.", "rio_mundo", "cascada", "karst", "sierra_del_segura", "excursion"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10492,7 +11253,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 128,
     cooldownMin: 95,
-    intereses: ["a31", "castillo", "cuevas", "miradores", "medieval"],
+    intereses: ["Historia: Tras ser apresado en Italia por el Gran Capitán, César Borgia estuvo recluso en el castillo de Chinchilla en 1504, donde intentó fugarse empujando al vacío al alcaide antes de ser trasladado a Medina del Campo.", "Ingeniería: El castillo de Chinchilla cuenta con un foso defensivo tallado directamente en la roca de diez metros de anchura y seis de profundidad, diseñado en el siglo XV para adaptarse a las nuevas armas de artillería.", "Cultura: A las afueras y al pie de las murallas destacan sus casas cueva con chimeneas enjalbegadas, excavadas masivamente a partir del siglo XVI por colectivos desplazados tras la expulsión de musulmanes y judíos.", "Historia: Tras ser restaurado por Juan Pacheco en el siglo XV, el castillo funcionó como penal estatal desde el siglo XVII hasta mediados del siglo XX.", "a31", "castillo", "cuevas", "miradores", "medieval"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/chinchilla-de-montearagon.png",
@@ -10512,7 +11273,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 127,
     cooldownMin: 95,
-    intereses: ["canon", "rio_mundo", "miradores", "paisaje", "amanece_que_no_es_poco"],
+    intereses: ["Naturaleza: El Mirador del Sidecar, situado en la curva panorámica de La Rodea Grande sobre la carretera CM-3203, exhibe una réplica del vehículo de la película rodada en el municipio suspendida sobre el cañón.", "Cultura: José Luis Cuerda rodó en 1988 la comedia surrealista «Amanece, que no es poco» en Aýna, cuyo Centro de Interpretación se ubica en la ermita de los Remedios, una antigua sinagoga del siglo XIII.", "Naturaleza: El río Mundo excava a los pies del monte San Urbán un cañón con paredes rocosas de casi 500 metros de desnivel, sobre la que se asienta Aýna a 674 metros de altitud.", "Naturaleza: El Rincón de la Toba es un paraje encajonado entre paredones de más de 100 metros de altura donde el manantial de la Toba alimenta acequias y pequeñas cascadas para el abastecimiento y riego local.", "Naturaleza: El clima de Aýna presenta una marcada amplitud térmica anual, con veranos secos que promedian máximas de 32 °C en julio e inviernos fríos de 0 °C en enero, concentrando sus escasas lluvias en octubre con 30 mm.", "canon", "rio_mundo", "miradores", "paisaje", "amanece_que_no_es_poco"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayna.png",
@@ -10543,7 +11304,13 @@ export const POIS = [
         "nivel": 2,
         "lat": 38.5885,
         "lng": -1.6936,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: La Tamborada de Tobarra fue declarada Patrimonio Cultural Inmaterial por la UNESCO en 2018. Durante la Semana Santa, los toques se suceden ininterrumpidamente durante 104 horas, constituyendo la tamborada continuada de mayor duración en España.",
+          "Historia: El Santuario del Cristo de la Antigua y Virgen de la Encarnación fue declarado Bien de Interés Cultural en 1981. Erigido junto a las ruinas del castillo islámico, conserva una tradición documental que atestigua la predicación de San Vicente Ferrer en 1411.",
+          "Curiosidad: Ubicado en la antigua iglesia de la Purísima Concepción, el Museo del Tambor alberga más de cincuenta piezas rituales y tradicionales traídas de cuatro continentes, constituyendo un espacio expositivo singular en Europa."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hellin.png",
@@ -10809,7 +11576,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 132,
     cooldownMin: 100,
-    intereses: ["romanos", "anfiteatro", "mineria", "a3", "a40"],
+    intereses: ["Historia: Segóbriga basó su apogeo económico entre los siglos I a. C. y III d. C. en la minería del lapis specularis, un yeso traslúcido muy codiciado que actuaba como cristal para las ventanas en todo el Imperio romano.", "Cultura: A diferencia de la mayoría de grandes ciudades hispanorromanas, Segóbriga no fue sepultada por construcciones posteriores. Al no haber un núcleo urbano moderno superpuesto, conserva intacta su traza monumental integrada en el paisaje original.", "Ingeniería: El anfiteatro de Segóbriga, con capacidad para unos 5.500 espectadores, destaca por adaptar su estructura al terreno: su flanco sur fue excavado directamente en la roca del cerro y el norte se levantó con imponentes muros de cantería.", "Curiosidad: El naturalista romano Plinio el Viejo denominó a Segóbriga «caput Celtiberiae» o cabeza de la Celtiberia, destacando su posición estratégica y la importancia de su extenso territorio minero de yeso espejuelo.", "romanos", "anfiteatro", "mineria", "a3", "a40"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10820,7 +11587,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 39.981,
         "lng": -2.8617,
-        "radio": 8500
+        "radio": 8500,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: El refectorio del siglo XVI conserva un artesonado renacentista de madera de pino tallada. Destaca por sus casetones octogonales que albergan 36 efigies talladas de grandes maestres y caballeros de la Orden de Santiago.",
+          "Historia: En 1174, el rey Alfonso VIII donó el primitivo castillo a la recién creada Orden de Santiago. El complejo se convirtió en la sede principal y espiritual de la orden, ostentando el título de Caput Ordinis.",
+          "Ingeniería: Apodado «El Escorial de la Mancha», la edificación del monasterio renacentista duró 206 años, entre 1529 y 1735. Su diseño integró trazas platerescas, herrerianas y barrocas con la intervención del arquitecto Francisco de Mora.",
+          "Cultura: En el centro del claustro barroco del siglo XVIII destaca un gran aljibe con un brocal de piedra labrada. En sus lados opuestos ostenta esculpidos los escudos de la Monarquía Hispánica y de la Orden de Santiago.",
+          "Historia: Durante la Guerra Civil española el edificio fue habilitado como hospital de sangre republicano. Posterior a la contienda, entre 1939 y 1943, funcionó como prisión de prisioneros políticos del régimen franquista."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/segobriga.png",
@@ -10840,7 +11615,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 131,
     cooldownMin: 100,
-    intereses: ["a3", "embalse", "murallas", "castillo", "desvio_recomendado"],
+    intereses: ["Cultura: La desacralizada iglesia de San Juan Bautista alberga un complejo conjunto de pintura mural contemporánea iniciado en 1994 por el artista Jesús Mateo, obra que cuenta con el patrocinio oficial de la UNESCO.", "Historia: El infante don Juan Manuel fue señor de Alarcón en el siglo XIV y aprovechó este retiro fortificado para redactar parte de sus célebres obras literarias, entre ellas «El conde Lucanor».", "Naturaleza: La villa se sitúa sobre un promontorio rocoso ceñido por un encajonado meandro del río Júcar, que funciona como un foso natural defensivo dejando un único y estrecho acceso por tierra.", "Historia: En 1184, el rey Alfonso VIII de Castilla conquistó la antigua fortaleza árabe, tras lo cual otorgó a la villa fuero propio y la cedió a la Orden de Santiago para reforzar la frontera medieval.", "a3", "embalse", "murallas", "castillo", "desvio_recomendado"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10871,7 +11646,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 100,
-    intereses: ["a3", "tarancon", "conexion_madrid_valencia", "paradas_utiles"],
+    intereses: ["Historia: El taranconero Fernando Muñoz, guardia de corps e hijo de un estanquero, contrajo matrimonio morganático secreto en 1833 con la reina regente María Cristina de Borbón, convirtiendo a Tarancón en una animada sede aristocrática de la época.", "Ingeniería: El Palacio de los Duques de Riánsares, actual Casa Consistorial, fue diseñado en 1845 por Narciso Pascual y Colomer, arquitecto de la Corte y autor del Congreso de los Diputados de Madrid, integrando un patio central con columnas toscanas.", "Cultura: La Iglesia de Nuestra Señora de la Asunción, levantada sobre un templo románico del siglo XII, destaca por su imponente torre defensivo-religiosa conocida popularmente como la Giralda Manchega y por albergar un valioso retablo mayor renacentista.", "Historia: El Arco de la Malena es una puerta medieval del siglo XI que constituía el principal acceso fortificado al barrio del Castillejo, conservando elementos del antiguo sistema defensivo que protegía el núcleo histórico urbano de Tarancón.", "a3", "tarancon", "conexion_madrid_valencia", "paradas_utiles"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10882,7 +11657,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.0469,
         "lng": -3.0592,
-        "radio": 6500
+        "radio": 6500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Explotadas desde época romana, las salinas de Belinchón fueron citadas en el siglo XIV por el Arcipreste de Hita en el «Libro de buen amor» y alcanzaron producciones superiores a dos millones de kilos de sal al año.",
+          "Historia: La iglesia de San Miguel Arcángel se erigió entre finales del siglo XV y principios del XVI sobre la antigua fortaleza o alcazaba árabe que dominaba el arroyo de la Vega.",
+          "Historia: En 1146, el rey Alfonso VII donó la mitad de las salinas al arzobispo de Toledo a cambio de que repoblase y defendiese esta zona fronteriza frente a los avances musulmanes.",
+          "Cultura: Durante las fiestas del Santo Cristo Arrodillado se ejecuta la ancestral Danza de Belinchón, encabezada por personajes tradicionales como el Porra o Botarga y el Castañuelón acompañando a ocho danzantes."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarancon.png",
@@ -10902,7 +11684,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 129,
     cooldownMin: 110,
-    intereses: ["karst", "serrania", "formas_rocosas", "a40", "excursion"],
+    intereses: ["Naturaleza: La erosión diferencial surge porque la capa superior es caliza magnesífera gris, más dura que la estrata inferior rojiza. Su desgaste desigual genera cornisas y rocas en forma de hongo, cuyo máximo exponente es el Tormo Alto.", "Cultura: Declarada Sitio Natural de Interés Nacional en 1929, la Ciudad Encantada sirvió en 1982 como escenario principal para el rodaje de la película de fantasía épica Conan el Bárbaro, protagonizada por Arnold Schwarzenegger.", "Naturaleza: Este paisaje de 250 hectáreas en Valdecabras se halla a 1.400 metros de altitud. Se originó hace 90 millones de años bajo el antiguo mar de Tetis, cuya roca caliza fue posteriormente esculpida mediante disolución kárstica.", "Naturaleza: El itinerario circular oficial recorre 3 kilómetros con un desnivel de 30 metros. El trazado discurre entre pinares de pino negral, estando señalizado con balizas de color azul durante la ida y rosas para el regreso.", "Naturaleza: A 1.500 metros de altitud, las heladas invernales habituales congelan el agua acumulada en las grietas. La presión del hielo provoca gelifracción, proceso que fractura la roca caliza y acelera el modelado de este relieve.", "karst", "serrania", "formas_rocosas", "a40", "excursion"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -10913,7 +11695,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.1939,
         "lng": -2.0419,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: La tradición popular atribuye la cueva a sesiones de brujería del Diablo, quien supuestamente despeñaba a las aguas del Júcar a cualquiera que intentase asomarse por sus huecos naturales.",
+          "Naturaleza: Se sitúa a unos 1100 metros de altitud sobre un cañón de 11 kilómetros labrado por el río Júcar, con paredones rocosos vertiginosos de 200 metros de desnivel vertical.",
+          "Naturaleza: Sus cavidades de origen kárstico sirven de cantil de nidificación para el buitre leonado y el águila real, los cuales aprovechan las térmicas para planear al nivel del observador.",
+          "Naturaleza: En las gargantas de los cortados umbríos del mirador se refugian reductos de flora eurosiberiana como tilos, avellanos y acebos, condicionados por las frías corrientes del cañón del Júcar.",
+          "Naturaleza: La ruta senderista desde la playa fluvial El Tablazo en Villalba de la Sierra hasta el mirador suma 7,5 kilómetros ida y vuelta, remontando el cauce del río Júcar."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ciudad-encantada.png",
@@ -10933,7 +11723,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 127,
     cooldownMin: 95,
-    intereses: ["castillo", "mancha", "cine", "a43", "desvio_recomendado"],
+    intereses: ["Ingeniería: Atribuido al maestro Hanequín de Bruselas y continuado por Juan Guas, presenta una singular planta pentagonal o estrellada de seis puntas con torres cilíndricas en los vértices y un patio de armas triangular en su interior.", "Cultura: En 1961 sirvió como escenario principal para la película «El Cid», dirigida por Anthony Mann y protagonizada por Charlton Heston y Sophia Loren, movilizando a miles de vecinos de la localidad como figurantes.", "Historia: Ordenado construir en 1456 por Juan Pacheco, primer marqués de Villena, el castillo combinó función defensiva y residencia señorial durante las convulsas disputas sucesorias de la Corona de Castilla en el siglo XV.", "Curiosidad: En el siglo XIX, la emperatriz de Francia Eugenia de Montijo, heredera de la propiedad como condesa de Teba, impulsó la restauración integral del recinto encomendando los trabajos al arquitecto Alejandro Sureda.", "Cultura: El interior de la fortaleza conserva techumbres y artesonados gótico-mudéjares de yeso y madera en salas como el Salón de Gobierno, junto con relieves de un bestiario medieval tallado en piedra.", "castillo", "mancha", "cine", "a43", "desvio_recomendado"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/belmonte.png",
@@ -11185,7 +11975,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 132,
     cooldownMin: 100,
-    intereses: ["a2", "n320", "a40", "palacios", "medieval", "renacimiento", "viaje_hacia_aragon"],
+    intereses: ["Cultura: El Palacio del Infantado, erigido por Juan Guas a finales del siglo XV para los Mendoza, destaca por su fachada decorada con cabezas de clavos en punta de diamante y su combinación de gótico isabelino y elementos mudéjares.", "Ingeniería: El puente sobre el río Henares, construido a mediados del siglo X por orden del califa Abderramán III, conserva en sus pilares sillería andalusí de soga y tizón y un singular aliviadero con arco de herradura.", "Cultura: La capilla de Luis de Lucena, levantada hacia 1540 por el médico papal alcarreño como biblioteca y monumento a la sabiduría, combina una imponente estructura exterior fortificada de ladrillo con frescos manieristas de Rómulo Cincinato en su interior.", "Cultura: El Panteón de la Duquesa de Sevillano, diseñado a finales del siglo XIX por el arquitecto Ricardo Velázquez Bosco, presenta una llamativa cúpula de tejas cerámicas vitrificadas y un estilo ecléctico con influencias bizantinas y románicas.", "a2", "n320", "a40", "palacios", "medieval", "renacimiento", "viaje_hacia_aragon"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -11196,7 +11986,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.6314256,
         "lng": -3.1650391,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En febrero de 1560, el edificio acogió los esponsales del rey Felipe II con Isabel de Valois, un evento de relevante trascendencia política para ratificar la paz de Cateau-Cambrésis entre las coronas española y francesa.",
+          "Ingeniería: El arquitecto Juan Guas diseñó la fachada utilizando piedra caliza de Tamajón decorada con puntas de diamante en relieve, un recurso constructivo ornamentado que genera dinámicos juegos de luces y sombras a lo largo del día.",
+          "Historia: El 6 de diciembre de 1936, un bombardeo aéreo destruyó casi por completo las cubiertas y las históricas techumbres de artesonado del palacio, exigiendo un largo proceso de reconstrucción pública concluido décadas después.",
+          "Cultura: El célebre Patio de los Leones combina elementos del gótico isabelino con el estilo hispano-musulmán, destacando por sus arcos decorados con figuras pareadas de leones que aluden al poder y emblema nobiliario de la casa Mendoza."
+        ]
       },
       {
         "id": "es_gua_capital_guadalajara",
@@ -11214,7 +12011,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.6112,
         "lng": -3.0546,
-        "radio": 6500
+        "radio": 6500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Fundado en el siglo XIV por Pedro Fernández Pecha tras la autorización del papa Gregorio XI en 1373, este monasterio erigido sobre una ermita previa se convirtió en la cuna y casa matriz de la Orden Jerónima.",
+          "Ingeniería: Su Claustro Grande, diseñado en 1535 por Alonso de Covarrubias, combina arquerías inferiores de medio punto con galerías superiores de arcos mixtilíneos y una tercera planta adintelada con zapatas talladas en su lado mediodía.",
+          "Historia: Durante siglos, el cargo de prior de Lupiana conllevaba la jefatura general de la Orden Jerónima. En sus capítulos trienales se gobernaban cenobios de gran peso institucional como El Escorial, Yuste o Guadalupe.",
+          "Curiosidad: Felipe II asumió en 1569 el patronato de la capilla mayor del cenobio y otorgó a Lupiana el título de villa bajo señorío de abadengo, garantizando la protección real e independencia judicial del recinto monástico."
+        ]
       },
       {
         "id": "es_gua_concatedral_santa_maria",
@@ -11223,7 +12027,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.6345712,
         "lng": -3.1652753,
-        "radio": 4000
+        "radio": 4000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Su primitiva torre de ladrillo estuvo exenta de la nave principal originalmente. Las bóvedas barrocas de escayola del interior ocultan un artesonado mudéjar primitivo de madera decorado con escudos pintados, visible únicamente desde una pasarela superior.",
+          "Historia: Se levantó durante los siglos XIII y XIV sobre una antigua mezquita medieval. En 1478 el papa Sixto IV le otorgó la categoría de colegiata y en 1959 se convirtió en concatedral junto a la catedral de Sigüenza.",
+          "Cultura: Suele conocerse como la iglesia de los tres estilos por combinar arcos y portadas de ladrillo mudéjar, un pórtico atrio renacentista del siglo XVI con capiteles alcarreños y reformas interiores barrocas del siglo XVII.",
+          "Curiosidad: El retablo mayor, de estilo renacentista manierista, fue trazado en 1624 por el fraile fray Francisco Mir. Además, el templo conserva un púlpito plateresco en alabastro tallado a nivel del suelo."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/guadalajara.png",
@@ -11243,7 +12054,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 128,
     cooldownMin: 110,
-    intereses: ["alto_tajo", "cañones", "pinares", "fauna", "serrania"],
+    intereses: ["Naturaleza: El Salto de Poveda es una cascada de 20 metros de altura surgida sobre una antigua presa abandonada del río Tajo, ubicada junto a la Laguna de Taravilla, de origen kárstico y 11 metros de profundidad.", "Naturaleza: La Georuta 7 Los caminos del agua consta de un recorrido de 15 kilómetros a lo largo del cañón del Tajo, uniendo la Laguna de Taravilla y el Salto de Poveda con vistas a tobas calcáreas y meandros.", "Naturaleza: Su clima mediterráneo continentalizado de montaña, a altitudes entre 1.000 y 1.400 metros, genera intensas heladas en invierno y veranos con medias diurnas de 22 °C, condicionando la adaptación de bosques de pino y sabina.", "Naturaleza: En sus parameras calizas crecen sabinares de sabina albar (Juniperus thurifera) considerados entre los mejor conservados de Europa, en un espacio protegido que reúne cerca del 20 % de todas las especies de la flora ibérica.", "Cultura: El parque conserva la memoria histórica de los gancheros, madereros que transportaban troncos flotando por el curso alto del río Tajo hacia Aranjuez, tradición reflejada por el escritor José Luis Sampedro en la novela El río que nos lleva.", "alto_tajo", "cañones", "pinares", "fauna", "serrania"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -11254,7 +12065,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.8428,
         "lng": -1.8864,
-        "radio": 9000
+        "radio": 9000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: Molina de Aragón integra el denominado «Triángulo del frío» español y registró el 28 de enero de 1952 una temperatura mínima histórica de -28,2 ºC en los datos oficiales de la AEMET.",
+          "Naturaleza: El río Gallo labra en el Barranco de la Hoz un cañón de areniscas y conglomerados rojos entre los 1.037 y los 1.197 metros de altitud, formando un paisaje fluvial protegido.",
+          "Naturaleza: Los acantilados del paraje albergan estratos del Triásico designados sección tipo de referencia estratigráfica para toda la Cordillera Ibérica dentro del Geoparque Mundial UNESCO Molina-Alto Tajo.",
+          "Historia: La fortaleza de Molina de Aragón, erigida sobre un alcázar andalusí del siglo XI y tomada en 1129 por Alfonso I el Batallador, conserva un recinto amurallado de 800 metros de perímetro.",
+          "Naturaleza: La ruta circular del Barranco de la Hoz, con inicio en Corduente, recorre 9,38 kilómetros y 292 metros de desnivel a lo largo del cauce del río Gallo y los miradores de sus acantilados."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-alto-tajo.png",
@@ -11274,7 +12093,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 90,
-    intereses: ["alcarria", "murallas", "jardines", "lavanda", "n2", "desvios_recomendados"],
+    intereses: ["Ingeniería: Fundada en 1750 bajo Fernando VI, la Real Fábrica de Paños destaca por su edificio circular concebido por Manuel de Villegas, diseñado para maximizar la entrada de luz natural y reducir el riesgo de incendios.", "Curiosidad: El patio del castillo de la Peña Bermeja, antigua fortaleza musulmana y residencia de los arzobispos de Toledo, fue reconvertido en cementerio municipal en 1834 tras un brote epidémico de cólera.", "Ingeniería: Bajo el casco histórico discurre un laberinto subterráneo de galerías excavadas entre los siglos X y XI con unos ocho kilómetros de extensión, usado como almacén de víveres por mantener 12 °C de temperatura constante.", "Historia: En diciembre de 1710, durante la guerra de Sucesión española, las tropas borbónicas del duque de Vendôme asaltaron Brihuega y capturaron al ejército británico de Lord Stanhope, un viraje decisivo en favor de Felipe V.", "alcarria", "murallas", "jardines", "lavanda", "n2", "desvios_recomendados"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -11285,7 +12104,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.7597,
         "lng": -2.8705,
-        "radio": 11000
+        "radio": 11000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Fundada por Fernando VI en 1750, la Real Fábrica de Paños destaca por su edificio circular de 1751, diseñado para optimizar el espacio y la luz natural distribuyendo los telares alrededor de una rotonda central.",
+          "Historia: En diciembre de 1710, las tropas borbónicas del duque de Vendôme sitiaron Brihuega y rindieron al ejército británico de Lord Stanhope, una victoria decisiva en la Guerra de Sucesión que consolidó el trono de Felipe V.",
+          "Cultura: El castillo de la Piedra Bermeja se alza sobre un promontorio rojizo. Tras la conquista cristiana, los arzobispos de Toledo lo convirtieron en residencia palaciega e incorporaron en el siglo XIII su capilla de estilo gótico.",
+          "Curiosidad: Bajo el casco histórico discurre un entramado subterráneo de galerías excavadas de unos ocho kilómetros de longitud. Mantiene doce grados de temperatura todo el año y sirvió históricamente como refugio, bodega y almacén de alimentos."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/brihuega.png",
@@ -11305,7 +12131,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 124,
     cooldownMin: 95,
-    intereses: ["visigodos", "arqueologia", "tajo", "ciudad_antigua", "n320"],
+    intereses: ["Historia: Fundada en el año 578 por el rey visigodo Leovigildo en honor a su hijo Recaredo, es la única ciudad visigoda de nueva planta conocida arqueológicamente en toda Europa.", "Historia: El monarca Leovigildo buscó imitar la tradición urbanística de los emperadores bizantinos tras unificar el reino visigodo, convirtiendo a la ciudad en capital administrativa de la provincia de Celtiberia.", "Ingeniería: La ciudad abarca 33 hectáreas fortificadas con una gran muralla y torres cuadrangulares, articulando un conjunto palatino con edificios de dos plantas cuyos machones cuadrados sostenían la estructura de la planta superior noble.", "Curiosidad: Tras la conquista musulmana en el siglo VIII pasó a llamarse Madinat Raqqubal; a mediados del siglo IX fue abandonada y sus materiales sirvieron de cantera para construir el cercano castillo de Zorita de los Canes.", "visigodos", "arqueologia", "tajo", "ciudad_antigua", "n320"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -11316,7 +12142,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 40.3304,
         "lng": -2.8897,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El emir Mohamed I de Córdoba ordenó construir la alcazaba islámica original en el siglo IX sobre un cerro junto al meandro del Tajo, con el fin de controlar el paso fluvial de la cora de Santaver.",
+          "Historia: Alfonso VIII cedió la fortaleza en 1174 a la Orden de Calatrava, que la convirtió en su bastión estratégico tras la derrota castellana en la batalla de Alarcos de 1195 frente a los almohades.",
+          "Ingeniería: Su acceso defensivo principal combina dos épocas distintas: un arco ojival gótico exterior superpuesto a un arco de herradura andalusí interior, vestigio defensivo de la época omeya.",
+          "Cultura: El interior conserva la iglesia románica de San Benito, construida en el siglo XIII, con una cripta inferior y una cámara circular excavada que sirvió como panteón para los caballeros de la Orden de Calatrava.",
+          "Cultura: Felipe II vendió el complejo defensivo en 1565 a Ruy Gómez de Silva y a la princesa de Éboli, duques de Pastrana, quienes adaptaron el castillo militar en residencia palaciega."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/recopolis.png",
@@ -11336,7 +12170,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 122,
     cooldownMin: 90,
-    intereses: ["n320", "alcarria", "santa_teresa", "evoli", "palacio_ducal"],
+    intereses: ["Historia: En 1542, Ana de la Cerda encargó al célebre arquitecto Alonso de Covarrubias la construcción del Palacio Ducal. Años más tarde, este imponente edificio renacentista sirvió de prisión para la célebre princesa de Éboli por orden de Felipe II.", "Cultura: La Colegiata custodia los famosos Tapices de Pastrana, una excepcional colección gótico-flamenca del siglo XV tejida en Tournai. Es de las pocas series medievales del mundo que narra acontecimientos militares contemporáneos a su fabricación.", "Historia: Santa Teresa de Jesús acudió a Pastrana en 1569 llamada por los príncipes de Éboli para fundar dos conventos carmelitas. Sin embargo, tras la muerte del duque, la caprichosa actitud de la princesa provocó la huida nocturna de las monjas.", "n320", "alcarria", "santa_teresa", "evoli", "palacio_ducal"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -11347,7 +12181,14 @@ export const POIS = [
         "nivel": 3,
         "lat": 40.417,
         "lng": -2.922,
-        "radio": 12000
+        "radio": 12000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1581, Felipe II confinó en el Palacio Ducal a Ana de Mendoza, princesa de Éboli. Según la tradición, solo se le permitía asomarse una hora al día al balcón, detalle que dio nombre a la Plaza de la Hora.",
+          "Cultura: La Colegiata custodia una célebre serie de tapices gótico-flamencos del siglo XV. Tejidos en lana y seda en Tournai, ilustran con minucioso detalle las campañas militares del rey Alfonso V de Portugal en el norte de África.",
+          "Ingeniería: El Palacio Ducal fue proyectado en el siglo XVI por el arquitecto Alonso de Covarrubias. Destaca por su trazado renacentista de planta cuadrada con torres esquinales y por sus elaborados artesonados de madera en las estancias nobles.",
+          "Historia: En 1569, Teresa de Jesús fundó dos conventos carmelitas en Pastrana con apoyo de los príncipes de Éboli. Sin embargo, las continuas injerencias de la princesa tras enviudar llevaron a la santa a evacuar discretamente a las monjas en 1574."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pastrana.png",
@@ -11619,7 +12460,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["capitalidad", "gaudi", "gótico", "modernismo", "puerto", "ramblas"],
+    intereses: ["Ingeniería: Ildefons Cerdà concibió el Ensanche con manzanas octogonales de esquinas achaflanadas. Esta solución facilitaba el giro de tranvías y carruajes en los cruces, garantizaba mayor visibilidad y mejoraba la iluminación y ventilación de las calles y viviendas.", "Ingeniería: Antoni Gaudí inventó la columna de doble giro para el interior de la Sagrada Familia. Esta estructura helicoidal se ramifica en la parte superior como un árbol, permitiendo repartir y absorber los pesos del templo hacia los cimientos.", "Historia: Bajo la plaza del Rey se conservan más de 4.000 metros cuadrados del subsuelo de la antigua colonia romana de Barcino. El yacimiento fue descubierto por accidente en 1931 al excavar para trasladar el palacio de la Casa Padellàs.", "Cultura: La basílica de Santa Maria del Mar se levantó en 54 años, entre 1329 y 1383. Fue impulsada por el pueblo del barrio de la Ribera y construida con bloques de Montjuïc acarreados a cuestas por los bastaixos.", "capitalidad", "gaudi", "gótico", "modernismo", "puerto", "ramblas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -11658,7 +12499,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 128,
     cooldownMin: 90,
-    intereses: ["monasterio", "moreneta", "montaña", "peregrinación", "miradores"],
+    intereses: ["Naturaleza: Entre las paredes verticales destaca el monolito Cavall Bernat, de 250 metros de pared rocosa, en cuyos cortados y fisuras habita la especie rupícola Ramonda myconi (oreja de oso), relicto vegetal de la época glacial.", "Naturaleza: El macizo de Montserrat culmina en la cumbre de Sant Jeroni a 1236 metros de altitud, alzándose sobre el río Llobregat mediante relieves de conglomerado calcáreo fruto de la erosión sedimentaria del Cenozoico.", "Naturaleza: La ruta circular a la Miranda de Sant Jeroni inicia en el monasterio de Montserrat, sumando 9,2 kilómetros de recorrido ida y vuelta con 545 metros de desnivel acumulado hasta alcanzar el mirador panorámico de la cumbre.", "Naturaleza: La precipitación media anual cercana a los 800 mm en las cotas altas favorece un gradiente vegetal que combina encinares mediterráneos con durillo en laderas secas y pequeños reductos de tejos en canales sombrías.", "Historia: El monasterio benedictino de Montserrat fue fundado en el año 1025 por el abad Oliba a partir de un pequeño cenobio junto a la ermita de Santa María, convirtiéndose en el gran centro espiritual de Cataluña.", "monasterio", "moreneta", "montaña", "peregrinación", "miradores"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-montserrat.png",
@@ -11678,7 +12519,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["castillo", "sal", "frontera_medieval", "fortaleza", "valle"],
+    intereses: ["Historia: Durante la Guerra de Sucesión Española, el castillo de Cardona resistió un duro asedio y fue el último bastión militar en capitular en Cataluña frente a las tropas borbónicas en septiembre de 1714.", "Naturaleza: Junto a la fortaleza se encuentra la Montaña de Sal, un fenómeno geológico de tipo diapiro formado por la ascensión de depósitos salinos marinos que se evaporaron hace millones de años.", "Curiosidad: En 1964, el cineasta Orson Welles eligió el conjunto monumental del castillo y la colegiata de San Vicente como escenario principal para rodar su célebre película «Campanadas a medianoche».", "Curiosidad: Los señores de Cardona eran apodados popularmente los «reyes sin corona» debido a la enorme riqueza y poder que acumulaban mediante el monopolio del comercio de la sal.", "castillo", "sal", "frontera_medieval", "fortaleza", "valle"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cardona-y-su-castillo.png",
@@ -11698,7 +12539,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["bosques", "senderismo", "fauna", "miradores", "reserva_biosfera"],
+    intereses: ["Naturaleza: Su gradiente altitudinal de 1500 metros condiciona pisos de vegetación contrastados: encinares mediterráneos en la base, robledales a media altura y hayedos junto al abetal más meridional de Europa por encima de los 1000 metros de altitud.", "Naturaleza: Alberga al tritón del Montseny (Calotriton arnoldi), un anfibio de pulmones atrofiados que respira por la piel y vive exclusivamente en los torrentes fríos y oxigenados de este macizo, siendo su único vertebrado endémico.", "Naturaleza: El macizo articula tres conjuntos principales: el Turó de l'Home (1706 m) y Les Agudes (1703 m), el Matagalls (1697 m) y el Pla de la Calma, donde nacen la cuenca alta del río Tordera y la riera de Santa Fe.", "Naturaleza: El itinerario PR-C 208 inicia en la fuente de Passavets y corona el Turó de l'Home y Les Agudes en un recorrido circular de 11,5 kilómetros con unos 500 metros de desnivel acumulado.", "Historia: En la cumbre del Turó de l'Home se ubica un observatorio meteorológico histórico fundado a finales del siglo XIX, uno de los más antiguos de Cataluña que sigue operativo registrando datos de alta montaña.", "bosques", "senderismo", "fauna", "miradores", "reserva_biosfera"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-del-montseny.png",
@@ -11718,7 +12559,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["playas", "casco_historico", "modernismo", "cine", "paseo_maritimo"],
+    intereses: ["Cultura: El Festival Internacional de Cine Fantástico de Cataluña nació en Sitges en 1968 con la denominación de Semana Internacional de Cine Fantástico, convirtiéndose en el primer certamen cinematográfico del mundo especializado en el género fantástico y de terror.", "Cultura: En 1893 el pintor y escritor Santiago Rusiñol adquirió unas casas de pescadores en Sitges y las transformó en el Cau Ferrat, residencia y taller que se convirtió en la sede de referencia del Modernismo catalán.", "Curiosidad: Facundo Bacardí Massó, nacido en Sitges en 1814, emigró a Cuba en su juventud y fundó en 1862 la empresa de ron Bacardí tras desarrollar un método de destilación que permitía obtener una bebida más suave.", "Cultura: La iglesia parroquial de San Bartolomé y Santa Tecla, erigida en el siglo XVII sobre un promontorio rocoso frente al mar, preside la fachada marítima y constituye el perfil arquitectónico más característico de la costa de Sitges.", "playas", "casco_historico", "modernismo", "cine", "paseo_maritimo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sitges.png",
@@ -12010,7 +12851,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 128,
     cooldownMin: 120,
-    intereses: ["casco_historico", "murallas", "onyar", "juderia", "catedral"],
+    intereses: ["Ingeniería: La catedral de Santa María posee la nave gótica abovedada más ancha del mundo, con 22,98 metros de luz. Su edificación en nave única se aprobó tras décadas de debates entre maestros de obra sobre su viabilidad técnica.", "Ingeniería: El viaducto peatonal de las Peixateries Velles, construido en hierro rojo sobre el río Onyar, fue diseñado por la empresa de Gustave Eiffel en 1877, doce años antes de la inauguración de la famosa Torre Eiffel parisina.", "Historia: El barrio judío o Call, vertebrado por la calle de la Força, albergó entre los siglos XI y XIII un relevante centro de estudios cabalísticos impulsado por pensadores como Nahmánides, siendo una de las juderías medievales mejor conservadas.", "Historia: Rodeada por las murallas de la Força Vella y del ensanche medieval, Girona resistió múltiples cercos militares a lo largo de los siglos, destacando el asedio napoleónico de 1809 comandado por el general Mariano Álvarez de Castro.", "casco_historico", "murallas", "onyar", "juderia", "catedral"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/girona.png",
@@ -12030,7 +12871,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 122,
     cooldownMin: 60,
-    intereses: ["conos_volcanicos", "hayedo", "senderismo", "fauna", "geologia"],
+    intereses: ["Naturaleza: El volcán del Croscat alberga el cono volcánico más grande y joven de la península ibérica, elevándose 160 metros sobre su base con un impresionante corte al descubierto procedente de antiguas extracciones de greda.", "Naturaleza: En Sant Joan les Fonts, el Itinerario 16 o Ruta de las Tres Coladas recorre 5,5 kilómetros mostrando tres coladas de lava basáltica superpuestas sobre el cauce del río Fluvià, depositadas en distintas erupciones volcánicas.", "Naturaleza: El Itinerario 1 del parque es un recorrido circular de 10,35 kilómetros que parte de Can Serra y permite visitar en una sola caminata la Fageda d'en Jordà, el volcán del Croscat y el volcán de Santa Margarida.", "Naturaleza: Su clima mediterráneo de montaña muy húmedo, con precipitaciones elevadas, favorece que la Fageda d'en Jordà se asiente a solo 550 metros de altitud sobre una colada de lava, una cota inusualmente baja para un hayedo.", "Cultura: El poeta Joan Maragall halló inspiración en este paisaje para escribir su célebre poema «La fageda d'en Jordà», hecho conmemorado hoy con un monolito situado al inicio del acceso principal en el área de Can Serra.", "conos_volcanicos", "hayedo", "senderismo", "fauna", "geologia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -12041,7 +12882,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.1828,
         "lng": 2.4889,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: En el tejido urbano de Olot se alza el volcán Montsacopa, a 531 metros de altitud, con un cráter circular perfectamente conservado de 120 metros de diámetro y 12 metros de profundidad junto al río Fluvià.",
+          "Naturaleza: La Reserva Natural de la Fageda d'en Jordà es un hayedo excepcional por crecer sobre la colada de lava del volcán Croscat a tan solo 550 metros de altitud, caracterizado por un relieve con prominencias volcánicas llamadas tossols.",
+          "Naturaleza: La Ruta 3 de Itinerànnia (Ruta Montsacopa-Montolivet) es un recorrido circular de 8,1 kilómetros con 218 metros de desnivel. Conecta a pie los dos volcanes urbanos principales ofreciendo miradores panorámicos sobre la llanura de Olot.",
+          "Naturaleza: Olot registra una elevada pluviosidad media anual cercana a 1000 mm por la retención de vientos mediterráneos en sus sierras. Esta humedad continua nutre sus frondosos robledales y generó el refrán «Si no plou a Olot, no plou enlloc».",
+          "Historia: En el borde del cráter del volcán Montsacopa se construyeron en el siglo XIX dos torres fortificadas de vigilancia junto a la ermita de San Francisco, utilizadas como posición defensiva clave durante las guerras carlistas."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-la-zona-volcanica-de-la-garrotxa.png",
@@ -12061,7 +12910,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["puente", "juderia", "edad_media", "garrotxa", "románico"],
+    intereses: ["Curiosidad: En 1964 se descubrió accidentalmente bajo tierra una mikvé del siglo XII, un baño ritual judío en piedra románica alimentado por agua viva de manantial, uno de los escasos conservados en Europa.", "Ingeniería: El Puente Viejo de Besalú mide 105 metros de largo y consta de siete arcos desiguales dispuestos en trazado angular para apoyar sus pilares sobre las rocas naturales del río Fluvià.", "Historia: Durante la Edad Media, la torre fortificada situada en el centro del puente servía como punto de control y cobro de peaje para permitir el acceso a la villa.", "Cultura: Para realizar el ritual de purificación hebreo en la mikvé de Besalú, los fieles descendían por una escalinata de 36 escalones esculpidos en piedra hasta sumergirse tres veces en la piscina ritual.", "puente", "juderia", "edad_media", "garrotxa", "románico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/besalu.png",
@@ -12101,7 +12950,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["dali", "emporda", "museos", "fortaleza", "frontera"],
+    intereses: ["Ingeniería: El Castillo de San Fernando, proyectado por el ingeniero militar Juan Martín Cermeño en el siglo XVIII, ocupa 32 hectáreas y está considerado la mayor fortaleza abaluartada de Europa.", "Cultura: El Teatro-Museo Dalí se levantó sobre las ruinas del antiguo Teatro Municipal, incendiado al final de la Guerra Civil. El propio Salvador Dalí diseñó el recinto, donde fue enterrado bajo la cúpula central.", "Historia: En Figueres nació Narcís Monturiol, quien botó en 1859 el Ictíneo I, uno de los primeros submarinos tripulados del mundo, diseñado originalmente para facilitar la recolección de coral.", "dali", "emporda", "museos", "fortaleza", "frontera"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -12121,7 +12970,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.3084,
         "lng": 3.0107,
-        "radio": 6500
+        "radio": 6500,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: La biblioteca del convento del Carmen alberga más de 80.000 volúmenes y cerca de 200 incunables, destacando una célebre colección cervantina con más de 1.000 ediciones distintas de Don Quijote traducidas a más de treinta idiomas.",
+          "Historia: En 1923, el industrial Miquel Mateu compró el conjunto del castillo para revitalizar la tradición enológica local. La familia impulsó además la firma de automoción Hispano Suiza y convirtió Peralada en su sede museística y promocional.",
+          "Cultura: Desde 1987, los jardines y recintos del castillo acogen el Festival Internacional de Música Castell de Peralada, un evento veraniego de referencia europea dedicado principalmente a la lírica, la ópera y la danza contemporánea.",
+          "Curiosidad: La elaboración de vino en el recito se remonta a los monjes carmelitas del siglo XIV. Sus antiguas galerías subterráneas se continúan utilizando como cavas para la elaboración artesanal de cava en la finca."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/figueres.png",
@@ -12141,7 +12997,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 116,
     cooldownMin: 60,
-    intereses: ["dali", "mediterraneo", "cala", "casas_blancas", "cap_de_creus"],
+    intereses: ["Cultura: La Casa-Museo de Salvador Dalí en Portlligat se creó uniendo progresivamente varias barracas de pescadores compradas desde 1930 a Lídia Noguer. Fue la residencia habitual y taller principal del pintor durante más de cuarenta años.", "Historia: Hasta finales del siglo XIX no existía carretera sobre el coll de Perafita. El aislamiento por tierra obligaba a comerciar por mar y favoreció la conservación del catalán «salat», una variante dialectal viva en la población.", "Cultura: La iglesia de Santa Maria, situada en el punto más alto del casco urbano, conserva en su interior un retablo barroco de madera tallado por el escultor Pau Costa en el siglo XVIII y sufragado por el gremio de pescadores.", "Naturaleza: El viento del norte, la tramontana, alcanza con frecuencia velocidades superiores a los 100 km/h en la zona del Cap de Creus, erosionando de forma característica las rocas y moldeando la vegetación del entorno litoral.", "dali", "mediterraneo", "cala", "casas_blancas", "cap_de_creus"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cadaques.png",
@@ -12382,7 +13238,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 125,
     cooldownMin: 120,
-    intereses: ["segre", "seo_vella", "poniente", "catedral", "ciudad"],
+    intereses: ["Historia: Tras conquistar Lleida en 1707 durante la guerra de Sucesión, Felipe V ordenó desacralizar la catedral de la Seu Vella y transformarla en cuartel militar, dividiendo sus naves medievales en varios pisos para alojar a las tropas.", "Historia: En el año 49 a. C., la colina de Gardeny sirvió de campamento a Julio César en su enfrentamiento contra las tropas pompeyanas. Siglos después, en 1149, la Orden del Temple construyó allí un estratégico castillo conventual.", "Curiosidad: El Eix Comercial de Lleida constituye una de las zonas comerciales peatonales al aire libre más largas de Europa, con un trazado continuo de unos 3,5 kilómetros que discurre por el centro histórico a través del entramado medieval.", "Cultura: Cada mes de mayo, la fiesta del Aplec del Caragol, declarada de Interés Turístico Nacional, reúne en el parque de los Camps Elisis a miles de participantes que consumen alrededor de doce toneladas de caracoles durante tres días.", "segre", "seo_vella", "poniente", "catedral", "ciudad"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -12393,7 +13249,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.6179,
         "lng": 0.6221,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1707, durante la Guerra de Sucesión, el rey Felipe V ordenó cerrar la catedral al culto para transformarla en cuartel militar y prisión, función castrense que el edificio mantuvo ininterrumpidamente hasta mediados del siglo XX.",
+          "Curiosidad: Su claustro gótico presenta una ubicación atípica a los pies del templo y cuenta con cinco grandes ventanales abiertos directamente al exterior que funcionan como un mirador sobre la ciudad de Lleida y el río Segre.",
+          "Ingeniería: El maestro Pere de Coma comenzó la catedral en 1203 con un diseño de transición entre el románico y el gótico, donde la solidez de los contrafuertes laterales permitió sostener la estructura sin necesidad de recurrir a arbotantes.",
+          "Cultura: El conjunto conserva murales en la Pia Almoina, la antigua institución benéfica del recinto que repartía comida a peregrinos y necesitados que hacían parada en la catedral dentro de la ruta hacia Santiago de Compostela."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lleida.png",
@@ -12413,7 +13276,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 122,
     cooldownMin: 60,
-    intereses: ["congost", "senderos", "pasarelas", "geologia", "vistas"],
+    intereses: ["Naturaleza: El río Noguera Ribagorzana excava el Congost de Mont-rebei al atravesar la sierra del Montsec, creando paredes calizas de más de 500 metros de caída vertical y tramos con un ancho de apenas 20 metros.", "Naturaleza: En las grietas calizas sobreviven plantas rupícolas singulares como la corona de rey (Saxifraga longifolia) y la oreja de oso (Ramonda myconi), mientras sus repisas rocosas albergan la nidificación protegida del quebrantahuesos.", "Ingeniería: En 1984, la empresa ENHER acondicionó el camino colgado en la roca a mayor altitud para sustituir el sendero histórico de 1924, que había quedado anegado por la crecida del embalse de Canelles.", "Naturaleza: La ruta clásica desde el aparcamiento de La Masieta abarca un recorrido lineal de 10 kilómetros ida y vuelta hasta el puente del congost del Seguer, cruzando el paso sobre el barranco de Sant Jaume.", "Naturaleza: El marcado contraste entre laderas configura un doble ambiente: la solana sur presenta microclima mediterráneo con encinares y prados secos, mientras la umbría norte acoge un ecosistema eurosiberiano dominado por frondosos robledales.", "congost", "senderos", "pasarelas", "geologia", "vistas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/congost-de-mont-rebei.png",
@@ -12433,7 +13296,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["románico", "boi_taull", "unesco", "pirineo", "valles"],
+    intereses: ["Naturaleza: A 2535 metros de altitud, la estación meteorológica de Boí registra la temperatura media anual más baja de Cataluña, con apenas 2,1 °C, caracterizando un clima de alta montaña con heladas continuas.", "Cultura: Declarado Patrimonio Mundial por la UNESCO en el año 2000, el conjunto románico lombardo del valle incluye nueve iglesias históricas del siglo XII, destacando Sant Climent de Taüll por sus célebres pinturas murales.", "Naturaleza: El techo geográfico del valle es el pico Comaloforno, con 3029 metros de altitud. Sus aguas convergen en el río Noguera de Tor tras descender desde los ibones glaciares del circo de Caldes.", "Naturaleza: La Ruta de la Nutria recorre unos 6,5 kilómetros bordeando el río Sant Nicolau entre Palanca de Molina y el Planell d'Aigüestortes, adentrándose con suave desnivel en el parque nacional.", "Naturaleza: La erosión glaciar del Cuaternario dejó más de 200 estanys e ibones de alta montaña en la cabecera del valle, originando meandros trenzados llamados «aigüestortes» al colmatarse las antiguas cuencas de hielo.", "románico", "boi_taull", "unesco", "pirineo", "valles"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -12444,7 +13307,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.5167,
         "lng": 0.85,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El 10 de diciembre de 1123, el obispo Ramon Guillem consagró la iglesia románica de Sant Climent de Taüll, cuyo célebre fresco del Cristo en Majestad se rememora en su ábside mediante un espectáculo de videomapping.",
+          "Naturaleza: El sendero del Mirador de la Santeta inicia en la iglesia de Santa María de Taüll, recorre un kilómetro con noventa metros de desnivel y ofrece vistas panorámicas sobre los pueblos y el valle de Sant Martí.",
+          "Naturaleza: El río Sant Martí nace en los Estanys del Pessó a 2492 metros de altitud y recorre 8 kilómetros a lo largo de su valle de alta montaña hasta desembocar en el río Noguera de Tor cerca de Erill la Vall.",
+          "Naturaleza: El valle de Sant Martí está custodiado por prominentes cumbres pirenaicas como el pico del Pessó, de 2894 metros de altitud, cuyas laderas condicionan la orientación de los prados de siega y la vegetación alpina.",
+          "Naturaleza: Ubicado a 1500 metros de altitud, el pueblo de Taüll registra un clima de alta montaña con heladas continuadas e inviernos donde las temperaturas medias bajan de cero grados, propiciando precipitaciones en forma de nieve."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vall-de-boi.png",
@@ -12464,7 +13335,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 116,
     cooldownMin: 60,
-    intereses: ["andorra", "catedral", "olimpiadas", "pirineo", "frontera"],
+    intereses: ["Historia: Desde la Edad Media, el obispo de la diócesis de Urgell, residente en La Seu d'Urgell, ostenta el título de copríncipe de Andorra, compartiendo la jefatura de Estado del país vecino junto al presidente de la República Francesa.", "Cultura: La Catedral de Santa María de La Seu d'Urgell, erigida en el siglo XII, es la única catedral íntegramente románica de Cataluña. Destaca por su marcada influencia lombarda e italiana, visible en la galería abierta de su ábside.", "Ingeniería: Construido para los Juegos Olímpicos de Barcelona 1992, el Parc Olímpic del Segre integra canales artificiales cuyo caudal es regulado por una minicentral eléctrica e incorpora un remonte mecánico continuo para las embarcaciones de piragüismo.", "Cultura: El Museo Diocesano de la localidad custodia el Beato de Urgell, un influyente manuscrito iluminado del siglo X ilustrado con escenas del Apocalipsis, considerado uno de los mejores testimonios del arte altomedieval pirenaico.", "andorra", "catedral", "olimpiadas", "pirineo", "frontera"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-seu-durgell.png",
@@ -12484,7 +13355,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 116,
     cooldownMin: 60,
-    intereses: ["aran", "valle", "gastronomia", "esqui", "túnel_de_viella"],
+    intereses: ["Naturaleza: En la surgencia de Uelhs deth Joeu afloran las aguas del glaciar del Aneto, que desaparecen bajo tierra en el sumidero del Forau d'Aigualluts y recorren subterráneamente más de 4 kilómetros.", "Ingeniería: Inaugurado en 1948, el primer túnel de Vielha rompió el histórico aislamiento invernal del Valle de Arán con el resto de España, al permitir por primera vez el paso rodado permanente sin cruzar puertos de alta montaña.", "Naturaleza: Vielha e Mijaran se ubica a unos 980 metros de altitud en la confluencia de los ríos Garona y Nere, al pie de cumbres pirenaicas como el Tuc de Montcorbison, de 2.172 metros de altitud.", "Naturaleza: La ruta circular de Era Artiga de Lin e Uelhs deth Joeu abarca unos 3 kilómetros con 120 metros de desnivel positivo, cruzando hayedos y abetales hasta un circo de montaña dominado por la Forcanada.", "Naturaleza: Su orientación al norte otorga al municipio clima de influencia atlántica con abundantes precipitaciones, sustento de frondosos bosques y plantas singulares como la viola d'aigua, una flor carnívora propia de aguas limpias.", "aran", "valle", "gastronomia", "esqui", "túnel_de_viella"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vielha-e-mijaran.png",
@@ -12765,7 +13636,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["romano", "anfiteatro", "mediterraneo", "circo", "murallas"],
+    intereses: ["Historia: Entre los años 27 y 25 a. C., el emperador Augusto residió en Tarraco para dirigir las guerras cántabras, convirtiendo a la urbe temporalmente en el centro de gobierno del Imperio romano fuera de Italia.", "Historia: Levantada a finales del siglo III a. C., la muralla romana de Tarragona es la construcción militar romana más antigua conservada fuera de Italia, manteniendo aún en pie más de un kilómetro de su trazado original.", "Ingeniería: El anfiteatro romano de Tarraco se construyó a principios del siglo II aprovechando el desnivel natural de la roca junto al mar, lo que permitió apoyar parte de la grada directamente en el terreno y sostener el resto con bóvedas de hormigón.", "Cultura: En la arena del anfiteatro sufrieron martirio en el año 259 el obispo Fructuoso y sus diáconos Augurio y Eulogio; sobre ese mismo espacio se levantaron posteriormente una basílica visigoda y la iglesia románica de Santa María del Milagro.", "Curiosidad: El circo romano de Tarraco se construyó dentro del casco urbano en época del emperador Domiciano. Tras perder su uso, se integró en el tejido medieval de la ciudad y hoy muchas bóvedas romanas forman parte de viviendas habitadas.", "romano", "anfiteatro", "mediterraneo", "circo", "murallas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -12776,7 +13647,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 41.1176,
         "lng": 1.2584,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: Durante una reforma en el año 221 se instaló en el pódium una inscripción conmemorativa de 140 metros de longitud, considerada la más larga conocida en todo el Imperio romano.",
+          "Historia: En su arena sufrieron martirio en el año 259 el obispo San Fructuoso y sus diáconos Augurio y Eulogio, al ser quemados vivos durante las persecuciones contra los cristianos bajo el imperio de Valeriano.",
+          "Ingeniería: Construido en el siglo II junto al mar, aprovechó la pendiente natural para excavar parte de la gradería superior en la roca, mientras que la inferior se levantó sobre estructuras de bóvedas de hormigón.",
+          "Cultura: En el siglo VI se construyó sobre la arena una basílica visigoda dedicada a los martirizados y, sobre sus restos, se erigió en el siglo XII la iglesia románica de Santa María del Milagro, aún visible.",
+          "Curiosidad: Su ubicación inmediata a la costa facilitaba la logística marítima, permitiendo desembarcar las fieras traídas para las cacerías e introducirlas de manera directa en los fosos subterráneos bajo la arena."
+        ]
       },
       {
         "id": "es_cat_tarr_altafulla",
@@ -12785,7 +13664,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.1438,
         "lng": 1.3744,
-        "radio": 6500
+        "radio": 6500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: La villa romana de Els Munts, del siglo I d. C., forma parte del conjunto arqueológico de Tarraco declarado Patrimonio de la Humanidad por la UNESCO en 2000. Conserva una lujosa residencia aristocrática con dos áreas termales.",
+          "Cultura: El científico Antoni de Martí i Franquès, nacido en Altafulla en 1750, determinó con precisión la proporción de oxígeno en el aire atmosférico, corrigiendo las mediciones previamente publicadas por el químico Antoine Lavoisier.",
+          "Historia: El casco antiguo de Altafulla, denominado Vila Closa, es un núcleo amurallado de origen medieval que conserva portales, torres y calles empedradas. Fue declarado Bien Cultural de Interés Nacional en 1998.",
+          "Historia: El castillo de Altafulla, documentado desde 1059, fue reconstruido en el siglo XVII como fortaleza renacentista con almenas y matacanes, y se conserva vinculado a la familia de los marqueses de Tamarit."
+        ]
       },
       {
         "id": "es_cat_tarr_salou",
@@ -12794,7 +13680,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.0766,
         "lng": 1.1416,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En septiembre de 1229, el rey Jaime I partió del puerto natural de Salou con una flota de más de 150 naves para conquistar Mallorca, expedición decisiva en la expansión territorial de la Corona de Aragón.",
+          "Historia: La Torre Vella fue erigida en 1530 por orden del arzobispo de Tarragona, Pere de Cardona, para avisar a los vecinos y repeler los constantes ataques y saqueos de los piratas corsarios en la costa.",
+          "Cultura: El Xalet Bonet, construido en 1918, fue proyectado por Domènec Sugrañes, colaborador de Antoni Gaudí. En su fachada destaca un reloj de sol cerámico con el lema neogótico «Aprovecha el tiempo que pasa y no vuelve».",
+          "Curiosidad: El tren de vía estrecha Carrilet unió Reus y Salou entre 1887 y 1975. Junto a la antigua estación aún se conserva su primera locomotora de vapor, fabricada en Inglaterra en 1886 y bautizada como «Prim»."
+        ]
       },
       {
         "id": "es_cat_tarr_vila_seca",
@@ -12803,7 +13696,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 41.1108,
         "lng": 1.145,
-        "radio": 6500
+        "radio": 6500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1525, el arzobispo Pere de Cardona compró el castillo local y sus tierras, unificando bajo una misma jurisdicción las dos villas medievales previas: Vila-seca del Comú y Vila-seca dels Olzina.",
+          "Ingeniería: El Celler de Vila-seca, diseñado en 1919 por el arquitecto Pere Domènech i Roura, cuenta con 3.150 metros cuadrados y arcos diafragma de ladrillo, restaurados para albergar un centro cultural y museístico.",
+          "Cultura: El castillo original del siglo XII fue remodelado en 1899 por el arquitecto Enric Fatjó i Torras por encargo del conde de Sicart, dándole su aspecto neogótico inspirado en los castillos del norte de Europa.",
+          "Naturaleza: La Séquia Major es un humedal protegido de 17,3 hectáreas que sirve como refugio de biodiversidad y punto de nidificación para aves acuáticas entre los deltas del Llobregat y del Ebro.",
+          "Curiosidad: El monumento del Piló del Rescat señala el lugar ligado a la leyenda popular del siglo XII sobre el rescate del almirante Galcerán de Pinós y el pago de cien doncellas a los piratas."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tarragona.png",
@@ -12843,7 +13744,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 122,
     cooldownMin: 60,
-    intereses: ["cister", "reyes_de_aragon", "unesco", "bosque", "silencio"],
+    intereses: ["Historia: Fundado en 1150 por el conde Ramón Berenguer IV, Pedro IV el Ceremonioso lo convirtió en 1340 en el panteón real de los reyes de la Corona de Aragón.", "Cultura: Tras el expolio y profanación sufridos en el siglo XIX, los sepulcros reales fueron reconstruidos a mediados del siglo XX por el escultor Frederic Marès utilizando alabastro.", "Ingeniería: El conjunto monumental está protegido por tres recintos amurallados consecutivos provistos de almenas y torres, destacando la monumental Puerta Real del siglo XIV flanqueada por dos torres octogonales.", "Curiosidad: Forma parte de la llamada Ruta del Císter en Cataluña junto con los monasterios medievales de Santes Creus y Vallbona de les Monges.", "cister", "reyes_de_aragon", "unesco", "bosque", "silencio"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/monasterio-de-poblet.png",
@@ -12863,7 +13764,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["murallas", "sant_jordi", "conca_de_barbera", "casco_historico", "leyendas"],
+    intereses: ["Cultura: El folclorista Joan Amades situó tradicionalmente en la villa el combate épico del caballero Sant Jordi contra el dragón. Según la leyenda popular, el suceso ocurrió justo ante la torre-portal defensiva que hoy lleva su nombre.", "Ingeniería: El recinto amurallado del siglo XIV alcanza unos 1500 metros de perímetro. Destaca la torre defensiva de los Cinc Cantons, que presenta una insólita planta pentagonal frente a la base rectangular de la mayoría del conjunto.", "Historia: En febrero de 1163, el rey Alfonso II de Aragón otorgó la carta de población a Pere Berenguer de Vilafranca, trasladando el asentamiento a una loma para proteger a los vecinos de las constantes inundaciones del río Francolí.", "Curiosidad: Bajo los porches de la Plaza Mayor se conservan las llamadas medidas oficiales de piedra. Estas paretillas esculpidas con la 'cuartelera' y los 'cuartenos' servían como patrón público para pesar y comercializar grano en el mercado medieval.", "murallas", "sant_jordi", "conca_de_barbera", "casco_historico", "leyendas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montblanc.png",
@@ -12883,7 +13784,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["castillo_templario", "ebro", "ceramica", "barca", "murallas"],
+    intereses: ["Historia: Cedido por Ramón Berenguer IV a la Orden del Temple en 1153, el castillo fue sede de su provincia en Cataluña y Aragón. Entre 1307 y 1308 sufrió un asedio de un año antes de capitular ante Jaime II.", "Ingeniería: El paso de barca de Miravet es el último transbordador fluvial del Ebro que opera sin motor. Se desplaza impulsado exclusivamente por la corriente del río y guiado por un sistema de cables entre ambas orillas.", "Cultura: El municipio mantiene una tradición alfarera de origen andalusí en el Raval dels Canterers. Su pieza más singular es el «pitxell del moixó», un botijo con trampa y caños por el que solo mana un surtidor.", "Ingeniería: Erigido sobre un acantilado rocoso junto al Ebro, el recinto soberano del castillo combina murallas de 25 metros con una distribución de patio y galerías propia de un monasterio cisterciense adaptado a fortaleza cruzada.", "Cultura: El pintor paisajista Joaquim Mir residió en Miravet a principios del siglo XX, cautivado por la luz del Ebro y el caserío escalonado bajo el castillo, plasmando este paisaje en numerosas composiciones artísticas.", "castillo_templario", "ebro", "ceramica", "barca", "murallas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/miravet.png",
@@ -12903,7 +13804,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 116,
     cooldownMin: 60,
-    intereses: ["gaudi", "vermú", "modernismo", "comercio", "camp_de_tarragona"],
+    intereses: ["Historia: En el siglo XVIII, Reus se convirtió en un gran centro comercial de aguardiente, fijando la cotización internacional de este licor junto a París y Londres, lo que la alzó como segunda ciudad de Cataluña.", "Cultura: La Casa Navàs de Reus, proyectada por Lluís Domènech i Montaner, destaca en Europa porque conserva intacto prácticamente todo su interior original, incluyendo mobiliario, vidrieras, tapizados y luminarias de época.", "Cultura: Aunque Reus es la ciudad natal de Antoni Gaudí y conserva los lugares de su infancia, el célebre arquitecto no llegó a proyectar ni construir ninguna obra en el municipio durante su vida.", "Ingeniería: El arquitecto Lluís Domènech i Montaner proyectó en Reus el hospital psiquiátrico Institut Pere Mata en 1898, con un diseño higienista de pabellones independientes del que destaca el Pavelló dels Distingits.", "Curiosidad: Reus se consagró como capital del vermut a finales del siglo XIX, al registrarse en 1892 la primera marca local y llegar a contar con más de treinta elaboradores y cincuenta marcas distintas.", "gaudi", "vermú", "modernismo", "comercio", "camp_de_tarragona"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/reus.png",
@@ -13178,7 +14079,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 132,
     cooldownMin: 75,
-    intereses: ["a31", "castillo", "interior", "meseta"],
+    intereses: ["Historia: En 1963 se descubrió en Villena el Tesoro de Villena, integrado por casi diez kilos de oro de la Edad del Bronce. Es el conjunto áureo prehistórico más importante de España y el segundo mayor de toda Europa.", "Ingeniería: La torre del homenaje del castillo de la Atalaya conserva en sus dos primeras plantas bóvedas almohades de arcos entrecruzados. Constituyen una solución arquitectónica andalusí excepcional en las fortalezas militares de España.", "Historia: En el siglo XIV, el escritor Don Juan Manuel, señor de Villena y autor de 'El conde Lucanor', residió en el castillo de la Atalaya, donde reforzó la fortaleza y redactó parte de sus obras literarias.", "Cultura: Villena es la cuna del compositor Ruperto Chapí, figura clave de la zarzuela y autor de 'La Revoltosa'. En 1899 cofundó la Sociedad General de Autores y Editores (SGAE) para la protección de los derechos de autor.", "a31", "castillo", "interior", "meseta"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -13189,7 +14090,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 38.6342,
         "lng": -0.8611,
-        "radio": 5500
+        "radio": 5500,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Los dos primeros pisos de la torre del homenaje conservan bóvedas almohades del siglo XII, hechas en tapial de argamasa; son de las más antiguas de su estilo en España, compartiendo esa primacía con las de Biar.",
+          "Curiosidad: Las paredes de la torre conservan grafitos históricos hechos por prisioneros de guerra, incluyendo un dibujo de un palacio veneciano realizado mediante esgrafiado al raspar las capas de hollín dejadas por las antorchas.",
+          "Historia: En abril de 1707, durante la Guerra de Sucesión, unos 150 soldados borbónicos resistieron un asedio austracista de ocho días, valiéndole a Villena el título de Fidelísima otorgado por Felipe V.",
+          "Historia: En abril de 1813, las tropas napoleónicas en retirada al mando del mariscal Suchet hicieron volar la torre del homenaje, lo que destruyó parcialmente sus célebres bóvedas almohades, restauradas en el siglo XX.",
+          "Cultura: En el siglo XIV, el castillo perteneció al célebre escritor Don Juan Manuel, autor de «El Conde Lucanor», quien amplió las defensas para cumplir las exigencias del rey aragonés Jaime II antes de casarse con la infanta Constanza."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/villena-puerta-de-alicante-por-la-a-31.png",
@@ -13220,7 +14129,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 38.268,
         "lng": -0.7003,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: Con más de 200 000 ejemplares de palmera datilera, es el palmeral más grande de Europa. Trazado en época andalusí entre los siglos VIII y X, articula un paisaje agrícola de oasis único en el continente.",
+          "Curiosidad: En el Huerto del Cura destaca la Palmera Imperial, un ejemplar con siete brazos en forma de candelabro. Recibe su nombre por la visita de la emperatriz Isabel de Austria, conocida como Sissi, en 1894.",
+          "Ingeniería: El sistema de riego canaliza el agua del río Vinalopó mediante la Acequia Mayor. Las palmeras bordean las parcelas para generar sombra, reduciendo la evaporación de los cultivos interiores de hortalizas y frutales.",
+          "Cultura: Desde época medieval, las palmeras se atan y privan de luz para producir palma blanca. Esta tradición artesanal abastece las procesiones del Domingo de Ramos y está vinculada a la cultura popular ilicitana."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/elche.png",
@@ -13240,7 +14156,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 121,
     cooldownMin: 60,
-    intereses: ["vega_baja", "poeta_miguel_hernandez", "a7", "sur"],
+    intereses: ["Cultura: El Museo Diocesano de Arte Sacro conserva «La Tentación de Santo Tomás de Aquino», óleo pintado por Diego Velázquez hacia 1632. La pintura llegó a Orihuela como regalo de fray Antonio de Sotomayor, confesor de Felipe IV.", "Naturaleza: El Palmeral de San Antón, de origen islámico, es el segundo más grande de Europa. Su trazado agrícola combina cultivos a distintas alturas regados por acequias tradicionales al pie de la sierra.", "Cultura: La Casa Museo Miguel Hernández conserva la vivienda campesina y el huerto donde creció el poeta. En sus estancias se custodian objetos personales que reflejan sus orígenes humildes y sus primeros escritos.", "Historia: El antiguo Convento-Colegio de Santo Domingo, conocido como «El Escorial de Levante», albergó una Universidad Pontificia durante casi tres siglos. Constituye el Bien de Interés Cultural de mayor superficie de la Comunidad Valenciana.", "vega_baja", "poeta_miguel_hernandez", "a7", "sur"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/orihuela.png",
@@ -13260,7 +14176,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 55,
-    intereses: ["ifach", "escalada", "litoral", "ap7"],
+    intereses: ["Naturaleza: Los acantilados de la reserva albergaban la Silene de Ifach (Silene hifacensis), una joya botánica endémica amenazada que llegó a darse por extinguida en la Europa continental durante el siglo XX hasta aplicarse intensos planes de recuperación.", "Naturaleza: El Peñón de Ifach es una mole calcárea de 332 metros de altitud unida al continente por un tómbolo o istmo arenoso, constituyendo una de las estribaciones orientales de las cordilleras Béticas sobre la costa de Calpe.", "Naturaleza: La ruta oficial al monte discurre desde el Centro de Visitantes hasta la cima en unos cinco kilómetros ida y vuelta, superando trescientos metros de desnivel positivo con un tramo técnico y equipado tras atravesar un túnel excavado.", "Historia: A sus pies reposa la Pobla Medieval de Ifach, un asentamiento amurallado del siglo XIII impulsado por la Corona de Aragón que funcionó como enclave defensivo frente a corsarios hasta su destrucción en la guerra con Castilla en 1359.", "Naturaleza: Su microclima litoral registra lluvias medias de quinientos milímetros anuales y escasa amplitud térmica, condicionando un matorral semiárido donde la cara norte acoge pino carrasco mientras la pared sur soporta alta insolación y salinidad marina.", "ifach", "escalada", "litoral", "ap7"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calpe-y-el-penon-de-ifach.png",
@@ -13280,7 +14196,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 119,
     cooldownMin: 55,
-    intereses: ["ferry", "montgo", "litoral", "mediterraneo"],
+    intereses: ["Ingeniería: El túnel bajo el castillo fue diseñado por el ingeniero Juan Pablo Alcaraz Pavía y construido entre 1937 y 1938 como refugio antiaéreo ante los bombardeos sufridos durante la Guerra Civil Española.", "Cultura: En 2015, Dénia fue declarada Ciudad Creativa de la Gastronomía por la UNESCO, un reconocimiento internacional a su tradición culinaria mediterránea y a productos emblemáticos como la gamba roja local.", "Naturaleza: El Parque Natural del Montgó, cuya cumbre alcanza los 753 metros de altitud a pocos kilómetros del mar, alberga más de 650 especies vegetales y microrreservas para la conservación de flora endémica.", "Historia: Durante la segunda mitad del siglo XIX, el puerto de Dénia vivió una época dorada como centro neurálgico de la exportación internacional de uva pasa hacia el Reino Unido, Estados Unidos y Canadá.", "ferry", "montgo", "litoral", "mediterraneo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/denia.png",
@@ -13300,7 +14216,7 @@ export const POIS = [
     perfil: "datos",
     prioridad: 118,
     cooldownMin: 55,
-    intereses: ["rascacielos", "playa", "ap7", "turismo"],
+    intereses: ["Historia: En 1956, el alcalde Pedro Zaragoza promovió el Plan General de Ordenación Urbana, ideado por el arquitecto Francisco Muñoz, que transformó un poblado pesquero en un modelo pionero de urbanismo vertical orientado al turismo masivo.", "Ingeniería: El rascacielos Intempo alcanza 198 metros de altura y 47 plantas. Diseñado por el estudio Pérez-Guerras, destaca estructuralmente por sus dos torres paralelas de hormigón unidas cerca de la cúspide mediante un cono invertido dorado.", "Naturaleza: El Parque Natural de la Serra Gelada protege más de 5.600 hectáreas, en su mayor parte marinas. Destaca geológicamente por sus acantilados verticales de más de 300 metros de altura y sus dunas fósiles colgantes.", "Curiosidad: Frente a la costa emerge la Isla de Benidorm, un islote deshabitado dentro del parque natural que alberga una importante colonia nidificante de paíño europeo y fondos marinos de gran valor ecológico.", "rascacielos", "playa", "ap7", "turismo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/benidorm.png",
@@ -13320,7 +14236,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 117,
     cooldownMin: 50,
-    intereses: ["casco_blanco", "iglesia", "mediterraneo", "n332"],
+    intereses: ["Cultura: La iglesia de Nuestra Señora del Consuelo fue proyectada entre 1900 y 1910 por los hermanos Adrián y Julio Vela Gadea. Sus célebres cúpulas están recubiertas de teja vidriada azul cobalto y blanca cocida en alfares valencianos.", "Historia: En 1617, el marqués de Ariza otorgó la Carta Puebla para erigir la villa amurallada en lo alto del cerro. Su trazado defensivo de nueva planta buscaba proteger a los pobladores frente a las incursiones piratas berberiscas.", "Cultura: Durante las décadas de 1960 y 1970, Altea se convirtió en refugio de pintores y creadores internacionales como Eberhard Schlotter. Este ambiente bohemio impulsó la protección del patrimonio local frente a la presión urbanística costera.", "Historia: La Torre de Bellaguarda vigilaba la bahía sobre un cerro defensivo medieval previo a la actual villa amurallada. Formaba parte de la red litoral de torres vigía construidas para alertar ante los constantes ataques de corsarios.", "casco_blanco", "iglesia", "mediterraneo", "n332"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/altea.png",
@@ -13340,7 +14256,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 116,
     cooldownMin: 50,
-    intereses: ["salinas", "isla_tabarca", "pesca", "ap7"],
+    intereses: ["Naturaleza: La Sierra de Santa Pola es un arrecife de coral fósil de la era messiniense, formado hace unos 6 millones de años y hoy exhumado sobre la costa del Mediterráneo en forma de atolón.", "Naturaleza: El Parque Natural de las Salinas de Santa Pola abarca 2.470 hectáreas de humedal costero originado en la antigua albufera de Elche, alimentado por aguas marinas y la desembocadura histórica del río Vinalopó.", "Naturaleza: El sendero circular PR-CV 61 recorre 13 kilómetros por la sierra de Santa Pola, conectando fortificaciones de la Guerra Civil con el mirador volado del Cabo de Santa Pola, situado a 144 metros de altitud.", "Naturaleza: El clima semiárido de la zona presenta precipitaciones anuales inferiores a 300 mm y una elevada evapotranspiración, factores climáticos que facilitan la rápida evaporación solar en el circuito de balsas de las salinas.", "Historia: Diseñado en 1553 por el arquitecto Giovanni Battista Antonelli, el Castillo-Fortaleza de Santa Pola se levantó contra las incursiones de piratas berberiscos y llegó a albergar una guarnición de 33 soldados con sus familias.", "salinas", "isla_tabarca", "pesca", "ap7"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santa-pola.png",
@@ -13360,7 +14276,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 115,
     cooldownMin: 50,
-    intereses: ["a7", "modernismo", "monta%C3%B1a", "industria"],
+    intereses: ["Historia: En julio de 1873, Alcoy protagonizó la Revolución del Petróleo, una insurrección obrera libertaria pionera en España. Tras denegarse mejoras laborales, los trabajadores tomaron el ayuntamiento e incendiaron inmuebles municipales tras enfrentarse a las autoridades.", "Ingeniería: Inaugurado en 1931, el Puente de San Jorge salva 42 metros de altura sobre el río Riquer. Diseñado por el arquitecto Víctor Eusa y los ingenieros Carmelo Monzón y Vicente Redón, destaca como pionera obra de hormigón armado e icono art déco.", "Cultura: La fiesta de Moros y Cristianos de Alcoy, documentada desde el siglo XVII e inspirada en la batalla de 1276 frente al caudillo Al-Azraq, está declarada de Interés Turístico Internacional y se estructura en veintiocho filaes o comparsas.", "Cultura: Construida entre 1908 y 1909 por el arquitecto Vicente Pascual Pastor, la Casa del Pavo es un referente del modernismo alcoyano. Destaca por sus pavos reales de hierro forjado y por albergar el estudio del pintor Fernando Cabrera.", "Naturaleza: El término municipal alberga el Parque Natural del Carrascal de la Font Roja, un espacio mediterráneo protegido de 2298 hectáreas dominado por carrascas y robles valencianos, cuya máxima altitud alcanza los 1356 metros en el pico Menejador.", "a7", "modernismo", "monta%C3%B1a", "industria"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alcoy-enclave-industrial-del-eje-interior-por-a-7.png",
@@ -13532,7 +14448,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 134,
     cooldownMin: 75,
-    intereses: ["capitalidad", "a7", "ap7", "puerto", "llanura_costera"],
+    intereses: ["Historia: En 1251, el rey Jaime I otorgó en Lérida el Privilegio del Traslado, documento que autorizó a los pobladores a abandonar el monte del Castell Vell para refundar Castellón en la fértil llanura litoral.", "Cultura: El campanario de El Fadrí debe su nombre de «soltero» en valenciano a estar completamente separado de la concatedral, una singularidad construida entre 1591 y 1604 con una altura de casi 60 metros.", "Cultura: Tras sufrir un gran incendio medieval y ser demolida en la Guerra Civil, la concatedral de Santa María conserva de su trazado histórico original sus tres portadas góticas talladas, reubicadas en el edificio neogótico reconstruido.", "Curiosidad: A pesar de estar situada junto al mar, la ciudad no dispuso de puerto construido hasta finales del siglo XIX; antes, el comercio marítimo del distrito del Grao requería trasladar las mercancías en barcazas hasta los buques fondeados.", "capitalidad", "a7", "ap7", "puerto", "llanura_costera"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -13543,7 +14459,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 39.9745,
         "lng": -0.0129,
-        "radio": 6500
+        "radio": 6500,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: En el término del Grao de Castellón se halla la intersección geográfica exacta entre el paralelo 40° norte y el meridiano 0° o de Greenwich, un cruce singular de coordenadas que rodea la Tierra.",
+          "Historia: En 1865, treinta y nueve empresarios y políticos liderados por el ingeniero Leandro Alloza solicitaron a la reina Isabel II la construcción del puerto para facilitar la exportación de la floreciente industria cerámica y los productos agrícolas locales.",
+          "Ingeniería: El histórico faro del Muelle de Costa, diseñado en 1915 por el ingeniero José Serrano con piedra de Borriol, fue trasladado piedra a piedra a su ubicación actual tras quedar fuera de servicio por la ampliación de las instalaciones portuarias.",
+          "Cultura: En 1961, el sector pesquero del Grao impulsó el Plan Experimental de Pesca de Arrastre de Castellón, una experiencia pionera en España para establecer paradas biológicas y regular la sostenibilidad de los caladeros mediterráneos."
+        ]
       },
       {
         "id": "es_cval_cas_vila_real",
@@ -13552,7 +14475,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 39.9387,
         "lng": -0.1018,
-        "radio": 6500
+        "radio": 6500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Fundada en 1274 por el rey Jaime I mediante carta de población, Vila-real destaca en el urbanismo medieval peninsular por haberse planificado con un trazado geométrico reticular previo a su edificación y fortificación.",
+          "Cultura: La Basílica de San Pascual Baylón alberga en sus torres dos destacados conjuntos sonoros: un carillón de 72 campanas fabricado en Holanda y un grupo de 12 campanas de volteo de procedencia francesa.",
+          "Cultura: En Vila-real nació en 1852 el guitarrista y compositor Francisco Tárrega, considerado impulsor de la guitarra clásica moderna. Un fragmento de su obra «Gran Vals» fue adaptado mundialmente como el famoso tono de llamada de Nokia.",
+          "Curiosidad: Una severa helada en 1956 arrasó los cultivos citrícolas locales, lo que impulsó a los propietarios a reorientar su capital hacia la industria azulejera, convirtiendo a Vila-real en un referente del sector cerámico mundial."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castellon-de-la-plana.png",
@@ -13572,7 +14502,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 132,
     cooldownMin: 75,
-    intereses: ["ap7", "n340", "puerta_norte", "mediterraneo", "pesca"],
+    intereses: ["Historia: Edificada a partir de 1586, la iglesia arciprestal de la Asunción se concibió como un templo fortificado con muros en talud y camino de ronda para proteger a la población, al carecer Vinaròs de castillo defensivo frente a corsarios.", "Historia: Tras el decreto de expulsión promulgado en 1609 por Felipe III, el puerto de Vinaròs se convirtió en uno de los principales puntos de embarque valencianos, desde donde partieron hacia el norte de África más de 15.000 moriscos.", "Naturaleza: Las aguas litorales de Vinaròs, endulzadas por la aportación del cercano delta del Ebro, aportan al langostino local una menor salinidad, lo que le confiere un sabor más dulce y una carnosidad muy apreciada en la gastronomía.", "Cultura: Vinaròs es la cuna de Carles Santos (1940-2017), influyente compositor, pianista y artista vanguardista que fusionó la música contemporánea con las artes escénicas, la transgresión y la teatralidad mediterránea.", "ap7", "n340", "puerta_norte", "mediterraneo", "pesca"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -13583,7 +14513,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.4189,
         "lng": 0.4231,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Entre los siglos XVI y XIX, Benicarló exportó masivamente el vino Carlón a Europa y América. Su elevada graduación alcohólica le permitía resistir largas travesías marinas, convirtiéndose en un producto popular citado en varios tangos rioplatenses.",
+          "Historia: El yacimiento arqueológico del Puig de la Nau conserva un poblado ibérico habitado entre los siglos VII y V a.C. Sus restos mantienen el trazado urbano original con calles y murallas que evidencian contactos comerciales con los fenicios.",
+          "Cultura: La Alcachofa de Benicarló ostenta la única Denominación de Origen Protegida dedicada a esta hortaliza en España. Destaca visualmente por su morfología chata y compacta, que presenta un hoyuelo característico en la parte superior.",
+          "Cultura: La iglesia parroquial de San Bartolomé, construida en el siglo XVIII, es un referente del barroco valenciano tardío que destaca por su fachada en piedra con columnas salomónicas labradas y su campanario octogonal exento."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vinaros.png",
@@ -13603,7 +14540,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 128,
     cooldownMin: 70,
-    intereses: ["a23", "via_verde", "obispado", "interior"],
+    intereses: ["Cultura: En su fiesta de septiembre, varios jinetes guían a galope una manada de toros por la calle Colón sin barreras de protección, donde una multitud congregada actúa como muralla humana abriendo y cerrando paso al avance.", "Historia: La catedral revistió a finales del siglo XVIII su interior gótico con una arquitectura neoclásica proyectada por Vicente Gascó, manteniendo intacto a su lado un claustro gótico del siglo XIV con una inusual planta trapezoidal.", "Ingeniería: El acueducto medieval del siglo XIV canalizaba el agua potable hasta la ciudad y fue construido adosado a la torre del Verdugo, integrando la estructura hidráulica con el lienzo de la muralla defensiva.", "Curiosidad: Por el municipio discurre la Vía Verde de Ojos Negros, reacondicionada sobre el antiguo trazado del ferrocarril minero de Sierra Menera y considerada la ruta acondicionada sobre vía férrea más larga de España.", "a23", "via_verde", "obispado", "interior"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -13614,7 +14551,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 39.8779,
         "lng": -0.5033,
-        "radio": 6500
+        "radio": 6500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: La cascada del Brazal, núcleo del paraje, despeña un salto de agua de 30 metros de altura sobre el río Palancia, alimentado por aguas procedentes del Manantial de la Esperanza a través de la acequia del Brazal.",
+          "Naturaleza: En el centro urbano del municipio destaca el Olmo de Navajas (Ulmus minor), un árbol emblemático plantado en 1636 con 19 metros de altura que fue reconocido como Árbol del Año en España en 2019.",
+          "Cultura: Según la tradición local, las parejas que iban a casarse debían superar el salto de la novia en la zona estrecha del río Palancia para probar la sinceridad de su amor y asegurar la felicidad matrimonial.",
+          "Naturaleza: El Mirador del Paraíso, habilitado junto a la cascada del Tío Juan, ofrece una panorámica sobre las formaciones calcáreas del cañón del río Palancia y la frondosa vegetación de ribera del Salto de la Novia.",
+          "Naturaleza: Ubicado a 383 metros de altitud entre las sierras de Espadán y Calderona, el cañón del río Palancia genera un microclima de ribera húmedo que amortigua las amplitudes térmicas extremas de la comarca del Alto Palancia."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/segorbe-gran-parada-historica-del-eje-a-23.png",
@@ -13634,7 +14579,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 126,
     cooldownMin: 65,
-    intereses: ["miradores", "sierra", "benicassim", "castellon"],
+    intereses: ["Naturaleza: El pico Bartolo culmina la sierra a 729 metros de altitud sobre suelo de arenisca roja (rodeno) y pizarras. Su cumbre ofrece vistas directas de la costa de Castellón y, en días despejados, del archipiélago de las islas Columbretes.", "Cultura: El topónimo «desierto» no describe un paraje árido, sino el término usado por la Orden de los Carmelitas Descalzos para definir lugares aislados dedicados al retiro espiritual, asentándose en la zona a finales del siglo XVII.", "Naturaleza: Los vientos de levante cargados de humedad marina chocan contra el relieve litoral, generando condensación y densas nieblas. Este fenómeno crea un microclima húmedo con una precipitación media de unos 600 mm anuales en plena franja mediterránea.", "Naturaleza: El parque acoge grandes poblaciones de palmito (Chamaerops humilis), la única palmera autóctona de la Europa continental, que combina su presencia con pequeños bosques silíceos de alcornoques y madroños sobre sustrato de rodeno.", "Naturaleza: La ruta circular oficial que une la Ermita de Les Santes con el pico Bartolo recorre unos 11 kilómetros atravesando la umbría norte de la sierra y el paso del Coll del Ginebret, acumulando casi 500 metros de desnivel positivo.", "miradores", "sierra", "benicassim", "castellon"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -13645,7 +14590,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 40.055,
         "lng": 0.0649,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: La Vía Verde del Mar aprovecha el trazado del antiguo ferrocarril litoral para conectar Benicàssim con Oropesa del Mar a lo largo de 5,6 kilómetros entre acantilados, trincheras rocosas y túneles sobre el Mediterráneo.",
+          "Naturaleza: El monte Bartolo alcanza 729 metros de altitud como la cota más elevada del Parque Natural del Desierto de las Palmas, dominando el relieve litoral de Benicàssim junto a barrancos de rodeno rojizo como el de la Farja.",
+          "Naturaleza: El espacio protegido alberga una importante densidad de palmito (Chamaerops humilis), la única palmera autóctona de Europa, cuya abundancia en las laderas dio nombre al Desierto de las Palmas.",
+          "Cultura: Entre la Torre de Sant Vicent y el hotel Voramar se conserva el llamado «Biarritz valenciano», un paseo de más de cincuenta residencias estivales construidas a partir de finales del siglo XIX.",
+          "Naturaleza: La disposición de la sierra frena los vientos fríos del interior, favoreciendo un microclima litoral que mantiene temperaturas medias anuales en torno a los 18 °C con inviernos de heladas prácticamente inexistentes."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/desierto-de-las-palmas.png",
@@ -13665,7 +14618,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 122,
     cooldownMin: 55,
-    intereses: ["via_augusta", "romano", "a7", "ap7"],
+    intereses: ["Ingeniería: El monumento conserva 5,8 metros de altura y un vano de 4 metros formado por catorce dovelas de piedra caliza, sustentadas sobre basamentos cuadrangulares con sillares colocados en seco, sin necesidad de usar argamasa.", "Curiosidad: Durante los siglos XVI y XVII el arco sufrió expolios en su remate superior: varios de sus sillares terminaron integrados en viviendas del pueblo de Cabanes e incluso sirvieron como abrevaderos para ganado en la zona.", "via_augusta", "romano", "a7", "ap7"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arco-romano-de-cabanes.png",
@@ -13685,7 +14638,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 121,
     cooldownMin: 60,
-    intereses: ["maestrazgo", "n232", "casco_historico", "interior"],
+    intereses: ["Historia: El 15 de agosto de 1429, en la iglesia arciprestal de Sant Mateu, Clemente VIII renunció al papado ante el legado pontificio Pedro de Foix, hecho que puso fin formal al Cisma de Occidente.", "Historia: A principios del siglo XIV, Guillem Belibaste, considerado el último perfecto o líder conocido del movimiento cátaro, se refugió en Sant Mateu huyendo de la Inquisición francesa antes de ser capturado años después.", "Historia: Tras la creación de la Orden de Montesa en el siglo XIV, sus maestres fijaron residencia en Sant Mateu, lo que convirtió a la villa en capital del Maestrazgo y sede recurrente de las Cortes del Reino de Valencia.", "Historia: Durante el siglo XIV, la villa destacó como gran centro exportador de lana hacia Italia. Tan apreciada era su producción que mercaderes toscanos la comerciaban en los telares florentinos bajo el nombre de «sanmattee».", "maestrazgo", "n232", "casco_historico", "interior"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sant-mateu.png",
@@ -13725,7 +14678,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 119,
     cooldownMin: 60,
-    intereses: ["termas", "barranco", "cv20", "interior"],
+    intereses: ["Naturaleza: En el paraje de la Fuente de los Baños, un manantial vierte al río Mijares 6.000 litros por minuto de agua minero-medicinal a 25 °C constantes entre paredes verticales de roca caliza.", "Naturaleza: El Sendero de la Bojera, homologado como SL-CV 105, realiza un trazado circular de 9 kilómetros que bordea de forma aérea el vertiginoso desfiladero calcáreo del Barranco de la Maimona.", "Naturaleza: Ubicado a 467 metros de altitud, su clima de montaña interior genera un fuerte contraste invernal donde el vapor de las aguas cálidas a 25 °C emerge visiblemente sobre el aire helado del cauce.", "Naturaleza: Las paredes de caliza del desfiladero del río Mijares alcanzan más de cien metros de altura, constituyendo un refugio clave para colmenas silvestres y buitres leonados, además de ser referente de escalada.", "Historia: La tradición atribuye la fundación de los baños árabes del siglo XIII a Zayd Abu Zayd, último gobernador almohade de Valencia, quien buscaba conservar la juventud de las mujeres de su harén.", "termas", "barranco", "cv20", "interior"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/montanejos.png",
@@ -13745,7 +14698,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 116,
     cooldownMin: 55,
-    intereses: ["a23", "torre_mudejar", "palancia", "interior"],
+    intereses: ["Cultura: La Torre de las Campanas está considerada el único ejemplar de arquitectura de estilo mudéjar en la Comunidad Valenciana, combinando una base defensiva antigua con cuerpos de ladrillo y decoración geométrica levantados en el siglo XVII.", "Ingeniería: Para lograr que los toques de misa se escucharan en todo el pueblo, el concejo acordó en 1614 recrecer la vieja torre defensiva de la Alcudia instalando los cuerpos superiores trazados por el monje cartujo fray Antón Ortín.", "Historia: Tras conquistar la villa en 1235, el rey Jaime I otorgó la Carta Puebla a la población en 1249 y posteriormente creó el señorío de Jérica para entregárselo a Teresa Gil de Vidaure y a su hijo.", "Naturaleza: El río Palancia rodea la población en la zona de Peña Tajada mediante un profundo desfiladero con cortados verticales que funcionaba como muralla natural infranqueable para la antigua fortaleza.", "a23", "torre_mudejar", "palancia", "interior"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jerica.png",
@@ -13918,7 +14871,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 132,
     cooldownMin: 75,
-    intereses: ["ap7", "a7", "romano", "castillo"],
+    intereses: ["Historia: En el año 219 a. C., el general cartaginés Aníbal Barca asedió la ciudad de Sagunto durante ocho meses. Su caída supuso el detonante inmediato de la Segunda Guerra Púnica entre Cartago y la República romana.", "Historia: El Castillo de Sagunto se extiende a lo largo de un kilómetro coronando la sierra Calderona. Está dividido en siete plazas independientes que albergan vestigios de épocas ibérica, romana, musulmana y medieval.", "Cultura: El Teatro Romano de Sagunto, construido en el siglo I d. C. aprovechando la pendiente de la montaña, fue el primer monumento nacional de España declarado como tal en el año 1896.", "Cultura: En Sagunto nació en 1901 el compositor Joaquín Rodrigo, autor del célebre Concierto de Aranjuez. A pesar de quedarse ciego a los tres años, se convirtió en una de las figuras universales de la música española.", "ap7", "a7", "romano", "castillo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -13929,7 +14882,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 39.6798,
         "lng": -0.2749,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: Entre 1992 y 1994, los arquitectos Giorgio Grassi y Manuel Portaceli ejecutaron una polémica restauración que recubrió la cávea y el escenario con mármol moderno, generando un largo litigio judicial sobre su reversión.",
+          "Historia: El 26 de agosto de 1896 se convirtió en el primer edificio protegido en España con la declaración oficial de Monumento Nacional.",
+          "Ingeniería: Fue edificado en el siglo I aprovechando la ladera septentrional del monte del Castillo, donde se excavó la propia roca caliza para asentar el graderío o cávea y optimizar la acústica del espacio.",
+          "Historia: Durante la Edad Media y la Edad Moderna perdióa su uso escénico y sirvió como avanzada militar defensiva integrada en el sistema fortificado del castillo de Sagunto, lo que permitió su conservación parcial."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sagunto-llave-historica-del-corredor-mediterraneo.png",
@@ -13949,7 +14909,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 129,
     cooldownMin: 70,
-    intereses: ["borja", "a7", "casco_historico", "interior_sur"],
+    intereses: ["Historia: En el Museo de Bellas Artes de Xàtiva cuelga boca abajo el retrato de Felipe V. La ciudad mantiene el lienzo en esta posición como protesta histórica porque el monarca ordenó incendiarla en 1707 tras la Guerra de Sucesión.", "Historia: Xàtiva fue el centro neurálgico de la influyente familia Borja. En la ciudad nació el papa Alejandro VI (Rodrigo de Borja) y fue bautizado su tío, el papa Calixto III, primer pontífice de esta dinastía valenciana.", "Historia: El castillo de Xàtiva es una doble fortaleza dividida en el Castell Menor y el Castell Major. Asentado sobre la cresta de la sierra Vernissa, combina vestigios íberos, romanos, islámicos y góticos.", "Naturaleza: El Paraje Natural Municipal de la Cova Negra alberga un abrigo rocoso con paredes oscurecidas por fuegos prehistóricos. Constituye un yacimiento clave para el estudio de la vida del hombre de Neandertal en Europa.", "Cultura: En el siglo XI, la Xàtiva islámica albergó el primer centro de producción papelera documentado en Europa. Su papel de lino y trapos, alabado por el geógrafo Al-Idrisi, se exportó por todo el Mediterráneo.", "borja", "a7", "casco_historico", "interior_sur"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -13960,7 +14920,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 38.9918,
         "lng": -0.5169,
-        "radio": 5500
+        "radio": 5500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El recinto sirvió como prisión estatal de la Corona de Aragón entre los siglos XIII y XVI. En sus celdas permaneció encarcelado Jaime de Urgell, candidato al trono aragonés en el Compromiso de Caspe, hasta su muerte en 1433.",
+          "Historia: Se trata de una doble fortaleza dividida en dos sectores: el Castell Menor, levantado sobre asentamientos íberos y romanos, y el Castell Major, ampliado durante la Edad Media a lo largo de la cresta de la sierra Vernissa.",
+          "Cultura: En la entrada principal se halla la Porta Ferrissa con el escudo municipal. Antiguamente la precedía la Porta Forana, que fue destruida mediante voladura por el ejército francés durante su retirada en la Guerra de la Independencia en 1813.",
+          "Cultura: La fortificación alberga los jardines de Ibn Hazm, dedicados al poeta andalusí autor de El collar de la paloma, célebre tratado del amor que redactó durante su exilio y estancia en la ciudad durante la época islámica."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/xativa.png",
@@ -13980,7 +14947,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 128,
     cooldownMin: 70,
-    intereses: ["arrozales", "aves", "lago", "saler"],
+    intereses: ["Naturaleza: Con unas 2.800 hectáreas, el lago de la Albufera es extraordinariamente somero y se comunica con el Mediterráneo mediante tres canales artificiales, conocidos como golas, regulados por compuertas.", "Naturaleza: El itinerario histórico de la Gola de Pujol ofrece un recorrido llano y adaptado de 700 metros de longitud que discurre paralelo al canal hasta el mirador de las compuertas que comunican la laguna con el mar.", "Naturaleza: El parque preserva especies emblemáticas amenazadas como el samaruc, pez autóctono del humedal, y reservas como el Tancat de la Pipa, donde nidifica la cerceta parda, una de las aves acuáticas más amenazadas de Europa.", "Cultura: El cultivo del arroz introducido en época islámica redujo la superficie del lago original para crear 14.000 hectáreas de marjal, un paisaje agrícola e identidad local retratados por Vicente Blasco Ibáñez en la novela Cañas y barro.", "Naturaleza: Su clima mediterráneo registra una temperatura media anual de 18 °C y unos 450 mm de precipitaciones concentradas en otoño, cuando episodios torrenciales de gota fría recargan la cuenca hidrográfica del humedal.", "arrozales", "aves", "lago", "saler"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-la-albufera.png",
@@ -14000,7 +14967,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 120,
     cooldownMin: 55,
-    intereses: ["casco_medieval", "a7", "barranco", "interior"],
+    intereses: ["Historia: En el barranco de la Fos se hallan las Covetes dels Moros, unas cincuenta cámaras excavadas en la pared rocosa entre los siglos X y XI, empleadas como graneros fortificados por comunidades bereberes.", "Ingeniería: Inaugurada en 1844, la plaza de toros de Bocairent es la más antigua de la Comunidad Valenciana y destaca por haber sido esculpida a pico directamente sobre la roca viva de la montaña.", "Historia: En el siglo XVI se excavó en la roca un monasterio subterráneo de 48 metros cuadrados para monjas de clausura, abandonado pocas décadas después por la extrema humedad y la falta de luz solar.", "Cultura: En el yacimiento local de la Lloma de Galbis se descubrió el León Ibérico de Bocairent, una escultura funeraria del siglo IV a. C. que hoy se conserva en el Museo de Bellas Artes de Valencia.", "Curiosidad: La cava de Sant Blai es un depósito circular excavado en el suelo que funcionó entre los siglos XVII y XIX para almacenar la nieve invernal y comerciar hielo con las comarcas vecinas.", "casco_medieval", "a7", "barranco", "interior"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bocairent.png",
@@ -14020,7 +14987,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 118,
     cooldownMin: 55,
-    intereses: ["duques", "playa", "ap7", "mediterraneo"],
+    intereses: ["Historia: En 1485, el cardenal Rodrigo de Borja, futuro papa Alejandro VI, adquirió el ducado de Gandía para su hijo Pedro Luis. Esto convirtió al Palacio Ducal en la residencia solariega de la influyente saga renacentista en España.", "Historia: Junto a Gandía, el castillo de Bairén domina el paso costero. En enero de 1097, Rodrigo Díaz de Vivar, el Cid Campeador, junto a tropas aragonesas, derrotó allí a un numeroso ejército almorávide en una célebre batalla.", "Cultura: El poeta Ausiàs March, figura esencial del Siglo de Oro valenciano y pionero en el uso del valenciano en la poesía culta medieval, se formó como caballero en la corte del primer duque real de Gandía.", "Historia: En 1499, la duquesa regente María Enríquez de Luna obtuvo del papa Alejandro VI la bula para elevar la parroquia de Santa María a categoría de Colegiata, impulsando la finalización de sus monumentales obras góticas.", "duques", "playa", "ap7", "mediterraneo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -14051,7 +15018,7 @@ export const POIS = [
     perfil: "datos",
     prioridad: 118,
     cooldownMin: 60,
-    intereses: ["motogp", "a3", "motor", "cheste"],
+    intereses: ["Ingeniería: Diseñado bajo el concepto de trazado en estadio, sitúa los edificios de boxes y paddocks en el exterior del circuito, lo que permite a los espectadores contemplar la totalidad del recorrido desde las gradas.", "Historia: Inaugurado el 19 de septiembre de 1999, rinde homenaje a Ricardo Tormo, bicampeón mundial valenciano de 50 cc fallecido en 1998. Acoge tradicionalmente la prueba final del Campeonato del Mundo de MotoGP.", "Ingeniería: Su pista principal mide 4,005 kilómetros, cuenta con catorce curvas y se recorre en sentido contrario a las agujas del reloj, una característica que exige una preparación física inusual a los pilotos.", "motogp", "a3", "motor", "cheste"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/circuit-ricardo-tormo-de-cheste.png",
@@ -14071,7 +15038,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 117,
     cooldownMin: 55,
-    intereses: ["a3", "utiel_requena", "vi%C3%B1edo", "interior"],
+    intereses: ["Cultura: Bajo el casco histórico de Utiel existen alrededor de 240 bodegas subterráneas tradicionales. Originadas en pasadizos medievales con fines defensivos y de extracción, se reutilizaron a partir del siglo XIV para elaborar y conservar el vino.", "Historia: El 25 de agosto de 1812, en el paraje de El Tollo, las tropas españolas del general Pedro Villacampa derrotaron al ejército francés comandado por el general Maupoint, acción condecorada con la Cruz de Distinción por Fernando VII.", "Ingeniería: La iglesia gótica de Nuestra Señora de la Asunción, iniciada en 1521, cuenta con una nave de 23 metros de altura cuyos arcos y bóvedas se apoyan en pilares torsos o helicoidales labrados en piedra.", "a3", "utiel_requena", "vi%C3%B1edo", "interior"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/utiel.png",
@@ -14091,7 +15058,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 114,
     cooldownMin: 50,
-    intereses: ["jucar", "playa", "monta%C3%B1a", "ap7"],
+    intereses: ["Naturaleza: La Muntanya de Cullera o Serra de les Raboses alcanza 233 metros de altitud y constituye la última estribación del Sistema Ibérico, siendo el único relieve calcáreo litoral que forma acantilados marinos en la provincia de Valencia.", "Naturaleza: El sendero homologado PR-CV 336, denominado Senda de la Lloma, ofrece una ruta circular de 14 kilómetros que recorre la cresta montañosa con panorámicas de la bahía, la marjal y el Parque Natural de la Albufera.", "Naturaleza: L'Estany de Cullera es una laguna de aguas salobres al sur de la desembocadura del río Júcar, rodeada por una senda de 1,9 kilómetros que bordea dehesas palustres y hábitats protegidos de avifauna acuática.", "Historia: En la ladera meridional de la montaña se sitúa el Castillo de Cullera, alcazaba de origen árabe levantada en el siglo X, fortificada de nuevo durante las guerras carlistas y rematada con un santuario neorrománico a finales del siglo XIX.", "Naturaleza: El clima mediterráneo litoral presenta inviernos suaves y lluvias otoñales de unos 70 millímetros mensuales; estas precipitaciones regulan la inundación estacional de la marjal, un ciclo determinante para el cultivo del arroz en la llanura del Júcar.", "jucar", "playa", "monta%C3%B1a", "ap7"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cullera.png",
@@ -14291,7 +15258,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 38.8828,
         "lng": -6.9683,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Fue fundada en el año 875 por el líder muladí Abd al-Rahman ibn Marwan tras rebelarse contra el Emirato de Córdoba, dando origen al nacimiento de la ciudad medieval de Batalyaws.",
+          "Ingeniería: Su recinto amurallado abarca unas ocho hectáreas de superficie y más de mil doscientos metros de lienzo conservado, lo que la convierte en la alcazaba de época árabe más extensa de Europa.",
+          "Cultura: La Torre de Espantaperros, torre albarrana octogonal levantada por los almohades en el siglo XII, sirvió de modelo arquitectónico directo para la posterior edificación de la Torre del Oro de Sevilla.",
+          "Curiosidad: Sus accesos almohades principales, como la Puerta del Capitel y la del Alpéndiz, se construyeron con diseño en recodo para anular el impulso y las embestidas de la caballería atacante."
+        ]
       },
       {
         "id": "es_bad_puente_palmas",
@@ -14300,7 +15274,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 38.8825,
         "lng": -6.9775,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: Los ganaderos trashumantes lo llamaban tradicionalmente el «Puente Bobo» debido a que, a diferencia de otros pasos fluviales de la zona, nunca se cobró tributo de pontazgo por cruzarlo.",
+          "Historia: Concluido en 1596 en estilo herreriano durante el reinado de Felipe II tras la destrucción de la obra previa por una riada, es el puente histórico más antiguo conservado en Badajoz sobre el río Guadiana.",
+          "Ingeniería: Sufrió numerosas reconstrucciones tras destructivas riadas del Guadiana; en 1603 una crecida arruinó 16 de sus tramos, obligando a rehacer cimientos, trece pilares y seis arcos entre 1609 y 1612.",
+          "Cultura: Comunica la Puerta de Palmas con un hornabeque erigido en la orilla opuesta durante el siglo XVII, formando un conjunto defensivo destinado a proteger el acceso a la ciudad fortificada."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/badajoz.png",
@@ -14331,7 +15312,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 38.417,
         "lng": -6.417,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1437, Lorenzo II Suárez de Figueroa ordenó construir el alcázar como residencia señorial. Las obras se terminaron en seis años, antes de recibir la autorización real de Juan II de Castilla en 1441.",
+          "Ingeniería: Alrededor de 1600, el maestro mayor Francisco de Montiel reformó la fortaleza medieval para convertirla en un palacio clasicista, incorporando un patio interior porticado enteramente labrado en mármol blanco.",
+          "Curiosidad: Entre 1605 y 1609 se construyó un pasadizo elevado para unir el palacio con la vecina iglesia conventual de Santa Marina, permitiendo a los duques acudir a los oficios religiosos sin salir al exterior.",
+          "Cultura: El célebre conquistador Hernán Cortés se alojó como huésped ilustre en este palacio durante el siglo XVI antes de emprender su viaje hacia América."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zafra.png",
@@ -14542,7 +15530,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 132,
     cooldownMin: 100,
-    intereses: ["conquistadores", "renacimiento", "plaza_mayor", "murallas", "castillo", "fortaleza", "medieval", "alcazaba", "plaza_mayor", "francisco_pizarro", "soportales"],
+    intereses: ["Historia: En 1479, mientras Isabel I de Castilla y Fernando II residían en Trujillo, falleció Juan II de Aragón, acontecimiento que desencadenó la efectividad de la unión dinástica entre las coronas de Castilla y Aragón.", "Cultura: El Palacio de la Conquista, mandado construir en la Plaza Mayor por Hernando Pizarro y Francisca Pizarro Yupanqui en el siglo XVI, destaca por su icónico balcón de esquina coronado por el escudo concedido por Carlos V.", "Historia: La Plaza Mayor nació como un arrabal comercial situado fuera del recinto amurallado medieval. A partir del siglo XVI, los indianos retornados de América transformaron el espacio construyendo en él sus residencias palaciegas.", "Ingeniería: El castillo sobre el Cabezo de Zorro fue erigido en época omeya reutilizando sillares romanos asentados en hiladas calzadas con lajas de pizarra y trozos de ladrillo para garantizar solidez y cimentación sobre la roca.", "conquistadores", "renacimiento", "plaza_mayor", "murallas", "castillo", "fortaleza", "medieval", "alcazaba", "francisco_pizarro", "soportales"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -14553,7 +15541,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 39.46528,
         "lng": -5.87889,
-        "radio": 10
+        "radio": 10,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: La alcazaba fue construida por los andalusíes entre los siglos IX y X sobre el cerro del Cabezo de Zorro, sirviendo de núcleo defensivo militar hasta la toma cristiana definitiva en 1233.",
+          "Ingeniería: El castillo reutilizó numerosos sillares de granito de la época romana para asentar los cimientos y muros de mampostería, calzados con hiladas de trozos de ladrillo y lajas de pizarra.",
+          "Curiosidad: En el siglo XVI se abrió una hornacina entre dos torres de la entrada principal para ubicar la imagen en granito de la Virgen de la Victoria, vinculada a una leyenda sobre la conquista cristiana.",
+          "Cultura: La estructura defensiva se divide en dos recintos contiguos: el Patio de Armas, de planta cuadrangular, y la Albacara, una explanada de forma hexagonal diseñada para albergar tropas y ganado en caso de asedio."
+        ]
       },
       {
         "id": "es_cac_plaza_mayor_trujillo",
@@ -14562,7 +15557,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 39.46528,
         "lng": -5.87889,
-        "radio": 10
+        "radio": 10,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: La estatua ecuestre de Francisco Pizarro, realizada en bronce con un peso de 6500 kilos, fue creada por el escultor estadounidense Charles Cary Rumsey y donada a la ciudad por su viuda en 1927.",
+          "Historia: El Palacio de la Conquista luce en su esquina un destacado balcón plateresco, encargado en el siglo XVI por Hernando Pizarro y Francisca Pizarro Yupanqui, decorado con relieves que representan los rostros de la familia.",
+          "Historia: Antes del desarrollo palaciego renacentista del siglo XVI, el espacio funcionaba como arrabal comercial fuera de las murallas medievales, albergando el mercado franco concedido en 1465 por el rey Enrique IV de Castilla.",
+          "Ingeniería: En 1743, el arquitecto Manuel de Lara Churriguera ejecutó obras de refuerzo y consolidación en la planta baja del Palacio de la Conquista debido a graves problemas de deterioro estructural que amenazaban la edificación."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/trujillo.png",
@@ -14583,7 +15585,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 120,
-    intereses: ["capitalidad", "via_de_la_plata", "patrimonio", "ciudad", "extremadura"],
+    intereses: ["Ingeniería: El aljibe hispanomusulmán bajo el Palacio de las Veletas se construyó entre los siglos X y XII. Es uno de los mejor conservados de la península e incluye cinco naves abovedadas sostenidas por arcos de herradura que recogen agua de lluvia.", "Historia: Isabel la Católica ordenó desmochar las torres nobiliarias de la ciudad para frenar los enfrentamientos señoriales. La única excepción respetada fue la Torre de las Cigüeñas, cuyo dueño, Diego de Ovando, se mantuvo leal a la soberana.", "Ingeniería: El Arco de la Estrella fue diseñado en 1726 por Manuel de Lara Churriguera en esviaje, con un trazado oblicuo respecto a la muralla para facilitar el giro de los carruajes que accedían al Palacio de Toledo-Moctezuma.", "Cultura: La Ciudad Vieja de Cáceres fue declarada Patrimonio de la Humanidad por la UNESCO en 1986 debido a la conservación de su recinto amurallado y al entramado monumental que integra influencias romanas, islámicas, judías, góticas y renacentistas.", "Curiosidad: La Torre de Bujaco, construida por los almohades en el siglo XII sobre sillería romana reutilizada, debe su nombre al califa Abu Yaqub o al «buhaco», una figura de trapo colocada históricamente en su balcón.", "capitalidad", "via_de_la_plata", "patrimonio", "ciudad", "extremadura"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -14603,7 +15605,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 39.474,
         "lng": -6.371,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En la antigua Puerta Nueva, que precedió al actual arco, la reina Isabel la Católica juró en 1477 respetar los Fueros de Cáceres. Dos años después, en 1479, Fernando el Católico revalidó allí el mismo compromiso solemne.",
+          "Ingeniería: El arquitecto Manuel de Lara Churriguera diseñó el arco en 1726 con una disposición en esviaje (oblicua). Esta solución geométrica permitía a los carruajes girar con mayor holgura al atravesar la muralla.",
+          "Cultura: La remodelación del siglo XVIII fue sufragada por Bernardino de Carvajal, conde de la Quinta de la Enjarada, con el objetivo de facilitar el paso de sus carruajes hacia el vecino palacio de los Toledo-Moctezuma.",
+          "Curiosidad: El monumento debe su nombre al templete neoclásico situado en su parte posterior, que alberga una figura de la Virgen de la Estrella coronada por un farol estrellado."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caceres.png",
@@ -14623,7 +15632,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 128,
     cooldownMin: 60,
-    intereses: ["aves_rapaces", "tajo", "tietar", "miradores", "bosque_mediterraneo"],
+    intereses: ["Naturaleza: La Ruta Roja, con inicio en Villarreal de San Carlos, permite recorrer el tramo de 2,5 kilómetros hasta el mirador del Salto del Gitano, un farallón cuarcítico de 300 metros de desnivel sobre el río Tajo.", "Naturaleza: Monfragüe alberga una de las principales colonias reproductoras de buitre negro del mundo, con unas 280 parejas censadas, las cuales construyen sus nidos en las copas de encinas y alcornoques en las laderas boscosas.", "Naturaleza: El parque abarca 18 396 hectáreas vertebradas por los ríos Tajo y Tiétar. Su relieve oscila entre los 220 y 773 metros de altitud, dominado por crestas de cuarcita armoricana y llanuras de dehesa mediterránea.", "Naturaleza: La orientación sureste-noroeste de las sierras crea dos vertientes climáticas: las umbrías húmedas albergan alcornoques, quejigos y madroños, mientras que las solanas secas están dominadas por encinas, acebuches y jaras adaptadas al estiaje.", "Historia: El Castillo de Monfragüe fue erigido por los árabes hacia el año 811 en lo alto de los peñascos para vigilar el paso del río Tajo y la red de caminos de la zona.", "aves_rapaces", "tajo", "tietar", "miradores", "bosque_mediterraneo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -14634,7 +15643,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 39.84083,
         "lng": -6.03,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: El desfiladero del Salto del Gitano lo conforma el paso del río Tajo cortando la cresta de cuarcita armoricana de Peña Falcón, un imponente farallón rocoso que alcanza los 513 metros de altitud.",
+          "Naturaleza: Las fisuras y repisas de Peña Falcón albergan una de las mayores colonias de buitre leonado de Europa, además de servir como punto habitual de nidificación para la cigüeña negra y el alimoche.",
+          "Naturaleza: El mirador forma parte de la Ruta Roja oficial del Parque Nacional, una senda de 16 kilómetros con 550 metros de desnivel acumulado que conecta Villarreal de San Carlos, el castillo de Monfragüe y el río Tajo.",
+          "Naturaleza: El clima mediterráneo continentalizado genera un acentuado contraste ambiental entre la solana de Peña Falcón, dominada por acebuches adaptados a la sequía estival, y la umbría serrana, más húmeda y poblada por alcornoques y quejigos.",
+          "Curiosidad: El lugar debe su nombre a la leyenda de un bandolero gitano que saltó el río Tajo para huir de la Guardia Civil, dejando petrificado a un agente cuya silueta en la roca asemeja un tricornio."
+        ]
       },
       {
         "id": "es_cac_torrejon_rubio",
@@ -14643,7 +15660,15 @@ export const POIS = [
         "nivel": 3,
         "lat": 39.7667,
         "lng": -6,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: El territorio alberga colonias de buitre negro y la mitad de las parejas de águila imperial ibérica censadas en Monfragüe, además de un cielo nocturno protegido certificado como Destino Turístico Starlight desde 2016.",
+          "Naturaleza: El término municipal abarca la Sierra de las Corchuelas, con una cota máxima de 545 metros de altitud, y el cauce del arroyo de la Vid, afluente del río Tajo que articula el paisaje de dehesas.",
+          "Naturaleza: La Ruta Morada une Villarreal de San Carlos con Torrejón el Rubio mediante la Cañada Real Trujillana; un recorrido lineal de 13 kilómetros que cruza el Puente Viejo sobre el arroyo de la Vid.",
+          "Naturaleza: El clima mediterráneo continentalizado registra unos 630 mm de lluvia media anual y acusados contrastes térmicos, entre los 9 °C de media en enero y 28 °C en julio, generando una fuerte sequía estival.",
+          "Curiosidad: En sus afueras se ubica el Observatorio Astronómico de Monfragüe, con una cúpula de tres metros de diámetro y telescopios con sistema de seguimiento automático dedicados al astroturismo y la divulgación científica."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-nacional-de-monfrague.png",
@@ -14854,7 +15879,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 130,
     cooldownMin: 70,
-    intereses: ["faro", "romanos", "unesco", "oceano", "miradores"],
+    intereses: ["Historia: Es el faro de origen romano más antiguo del mundo que continúa en funcionamiento. Levantado entre finales del siglo I y principios del II d. C., la UNESCO lo declaró Patrimonio de la Humanidad en 2009.", "Ingeniería: A los pies de la torre se conserva una inscripción grabada en roca con la firma de su arquitecto romano, Gaius Sevius Lupus, procedente de Aeminium (la actual Coimbra), dedicada al dios Marte.", "Ingeniería: Entre 1788 y 1791, el ingeniero militar Eustaquio Giannini recubrió el núcleo romano con una fachada neoclásica de granito y añadió 21 metros de altura, conservando en su interior las cámaras romanas originales.", "Cultura: Un joven Pablo Picasso pintó la Torre al óleo durante su estancia en A Coruña y la apodó en sus cuadernos «Torre de caramelo», aludiendo al tono del granito empleado en la reforma neoclásica.", "Curiosidad: Según una leyenda popular, Hércules derrotó allí al gigante Gerión y enterró su cabeza debajo del faro. Por esa tradición, el escudo de A Coruña representa la Torre levantada sobre una calavera con tibias cruzadas.", "faro", "romanos", "unesco", "oceano", "miradores"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -14865,7 +15890,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.3708,
         "lng": -8.396,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: El Jardín de San Carlos alberga la tumba de piedra del general británico Sir John Moore, fallecido en la batalla de Elviña de 1809 durante las Guerras Napoleónicas, convertida en un espacio romántico rodeado de olmos centenarios.",
+          "Historia: En 1208, el rey Alfonso IX de León otorgó el Fuero de Benavente y refundó la antigua Crunia en este recinto, lo que impulsó la economía local y fijó su puerto como punto de llegada del Camino Inglés.",
+          "Historia: La Iglesia de Santiago, erigida en el siglo XII, es el templo románico más antiguo conservado en la ciudad; su atrio acogió las reuniones del concejo municipal hasta el siglo XV, antes de construirse la Casa Consistorial.",
+          "Cultura: La casa hidalga de la calle Tabernas donde nació la escritora Emilia Pardo Bazán en 1851 alberga hoy su Casa-Museo y la sede central de la Real Academia Galega, conservando su biblioteca y mobiliario original.",
+          "Cultura: La Colegiata de Santa María del Campo, construida entre los siglos XIII y XV por el gremio de mareantes, mantiene la tradición marinera de acudir al templo para agradecer la llegada a puerto tras una travesía del Atlántico."
+        ]
       },
       {
         "id": "es_gal_acoruna_castillo_san_anton",
@@ -14874,7 +15907,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.3716,
         "lng": -8.389,
-        "radio": 2500
+        "radio": 2500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Iniciado en 1587 sobre un islote para proteger la bahía, repelió en 1589 el asedio de la flota inglesa comandada por Francis Drake, a pesar de estar todavía inconcluso.",
+          "Cultura: Alberga el Museo Arqueológico e Histórico municipal, donde destaca el Casco de Leiro, un recipiente o tocado ritual de oro macizo elaborado durante la Edad del Bronce.",
+          "Curiosidad: Hasta mediados del siglo XX fue una isla rodeada por el mar, comunicada con la ciudad únicamente por barca, hasta que quedó unida a tierra firme mediante un relleno artificial.",
+          "Historia: A partir del siglo XVIII funcionó como prisión militar y política, donde estuvieron presas figuras históricas como el marino y explorador Alejandro Malaspina o el militar liberal Juan Díaz Porlier.",
+          "Ingeniería: En su interior alberga un aljibe excavado directamente en la roca madre de la isla, proyectado para almacenar agua de lluvia y garantizar el abastecimiento de la guarnición durante asedios prolongados."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/torre-de-hercules.png",
@@ -14905,7 +15946,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.4069,
         "lng": -8.1804,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Construido en piedra en el siglo XIV por orden de Fernán Pérez de Andrade, el antiguo puente medieval midió más de 840 metros y contó con 78 arcos góticos, dos torres defensivas y un hospital de peregrinos.",
+          "Naturaleza: El río Eume nace en la sierra de O Xistral, recorre unos 80 kilómetros y esculpe un profundo cañón con laderas que alcanzan los 300 metros de desnivel antes de desembocar en la ría de Ares.",
+          "Naturaleza: La Ruta dos Encomendeiros bordea el río Eume desde el puente colgante de Cal Grande hasta el puente de Santa Cristina para ascender al monasterio de Caaveiro en el corazón del parque natural.",
+          "Naturaleza: El cañón genera un microclima atlántico protegido con precipitaciones anuales entre 1.400 mm cerca del mar y más de 1.900 mm en la cumbre, manteniendo temperaturas medias suaves entre 11,7 y 15 °C.",
+          "Naturaleza: El bosque umbrío conserva 28 especies de helechos relicto descendientes de la Era Terciaria, favorecidos por la penumbra y la continua humedad de la vegetación atlántica de ribera."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/fragas-do-eume-y-monasterio-de-caaveiro.png",
@@ -14925,7 +15974,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 125,
     cooldownMin: 90,
-    intereses: ["plazas", "soportales", "universidad", "camino"],
+    intereses: ["Ingeniería: El Botafumeiro de la catedral mide 1,5 metros y supera los 60 kilos. Suspendido a 20 metros, vuela impulsado por ocho hombres («tiraboleiros») mediante poleas. Nació en la Edad Media para higienizar el templo donde pernoctaban los peregrinos.", "Historia: La plaza del Obradoiro debe su nombre al término gallego «obradoiro» (taller), ya que en esta explanada se instalaron los talleres de cantería que labraron la piedra para construir la catedral y los edificios monumentales circundantes.", "Historia: La plaza de la Quintana se divide en dos niveles separados por escalinatas: la Quintana de Mortos, que funcionó como cementerio urbano hasta finales del siglo XVIII, y la Quintana de Vivos en la franja superior.", "Cultura: El Colegio de Fonseca, impulsado en el siglo XVI por el arzobispo Alonso III de Fonseca sobre la casona de su propia familia, albergó los primeros estudios unificados que dieron origen a la Universidad de Santiago de Compostela.", "plazas", "soportales", "universidad", "camino"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -14936,7 +15985,13 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.8806,
         "lng": -8.5449,
-        "radio": 7000
+        "radio": 7000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Para construir el Pórtico de la Gloria en la entrada occidental, el Maestro Mateo diseñó una cripta inferior que permitió salvar el fuerte desnivel del terreno antes de asentar las esculturas.",
+          "Curiosidad: El Botafumeiro mide 1,50 metros y pesa 53 kilos en vacío. Para hacerlo oscilar sobre las naves del templo se necesita la fuerza coordinada de ocho hombres, conocidos como tiraboleiros.",
+          "Historia: Bajo el altar mayor se encuentra la cripta con las reliquias del Apóstol Santiago, configurada a finales del siglo XIX sobre los restos de un mausoleo romano original."
+        ]
       },
       {
         "id": "es_gal_santiago_monte_gozo",
@@ -14965,7 +16020,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["dunas", "lagunas", "atlántico", "aves"],
+    intereses: ["Naturaleza: Su emblema es una duna móvil de 1 km de largo y 20 metros de alto que convive con dos lagunas muy distintas: Carregal, de agua salada, y Vixán, alimentada por agua dulce.", "Naturaleza: Los vientos del sudoeste predominantes en invierno mueven la duna sin vegetación hacia el interior varios centímetros al año, mientras los vientos del nordeste empujan la arena de vuelta hacia la costa.", "Naturaleza: La ruta circular Camiño do Agua, de 2,5 kilómetros, rodea la laguna de Vixán, permite acceder a un observatorio de aves y pasa junto a cuatro molinos de agua rehabilitados en el río Amendo.", "Naturaleza: En sus arenales habita la Omphalodes littoralis, una pequeña planta endémica de Galicia amenazada de extinción, junto con anfibios singulares como el sapo de espuelas, que se entierra en la arena para protegerse.", "Historia: Tras décadas de intensa extracción de arena para la construcción en la comarca de Barbanza, las movilizaciones ciudadanas de los años 80 impulsaron la declaración del parque natural en 1992 para frenar el deterioro del espacio.", "dunas", "lagunas", "atlántico", "aves"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-corrubedo.png",
@@ -15205,7 +16260,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 130,
     cooldownMin: 90,
-    intereses: ["romanos", "unesco", "urbanismo", "muralla"],
+    intereses: ["Historia: Es la única fortificación romana del mundo que conserva completo todo su perímetro defensivo de más de dos kilómetros. Fue declarada Patrimonio Mundial por la UNESCO en el año 2000 como el mejor ejemplo europeo de muralla tardorromana.", "Ingeniería: Se levantó entre finales del siglo III y principios del IV en pizarra y granito con un núcleo interior de mortero de tierra y piedra. Almacena 71 de sus 85 torres originales y alcanza hasta siete metros de anchura.", "Curiosidad: La fortificación conserva la torre conocida como A Mosqueira, el único tramo defensivo que todavía mantiene intactos sus ventanales superiores de medio punto originales de época romana.", "Historia: El recinto original contaba con cinco puertas romanas adaptadas a las calzadas de la época. A partir de 1853 se abrieron cinco accesos adicionales perforando el muro para permitir la expansión urbana de Lugo.", "Curiosidad: Una extendida leyenda popular sostiene que los romanos no construyeron la fortificación para proteger a los habitantes de Lucus Augusti, sino para resguardar un bosque sagrado dedicado al emperador Augusto.", "romanos", "unesco", "urbanismo", "muralla"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -15216,7 +16271,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.0104,
         "lng": -7.5566,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: Posee el privilegio papal de mantener expuesto públicamente el Santísimo Sacramento las 24 horas del día. Por esta tradición centenaria, a Lugo se la conoce popularmente como la «Ciudad del Sacramento».",
+          "Historia: A consecuencia del devastador terremoto de Lisboa de 1755, el gran retablo renacentista de la capilla mayor, esculpido por Cornelis de Holanda, sufrió graves daños y tuvo que ser dividido en dos partes principales instaladas en los transeptos.",
+          "Ingeniería: El arquitecto Fernando de Casas Novoa, célebre autor de la fachada del Obradoiro en Santiago, comenzó en Lugo como aparejador y asumió la dirección del claustro tras morir el maestro, obra barroca que consagró su carrera.",
+          "Curiosidad: El transepto sur conserva una inscripción medieval en acróstico cuyas primeras letras verticales forman la palabra «ODOAR», en homenaje al obispo Odoario, quien reconstruyó el templo destruido en el siglo VIII.",
+          "Cultura: Es la única catedral de Galicia que conserva su coro tallado de madera en el centro de la nave principal, una relevante obra encargada al escultor Francisco de Moure a comienzos del siglo XVII."
+        ]
       },
       {
         "id": "es_gal_lugo_termas_mino",
@@ -15225,7 +16288,14 @@ export const POIS = [
         "nivel": 3,
         "lat": 43.0055,
         "lng": -7.553,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: El recinto conserva el apodycterium o vestuario, una sala con pavimento de opus signinum y dieciocho hornacinas murales abovedadas que servían de taquillas para guardar la ropa y pertenencias de los bañistas.",
+          "Historia: Construidas en torno al año 15 a. C., las termas surgieron de forma contemporánea a la fundación de la ciudad romana de Lucus Augusti, situándose junto al río Miño y el trazado de la antigua Vía XIX.",
+          "Naturaleza: El manantial brota a través de un dique porfídico a 43,8 °C. Sus aguas bicarbonatadas, fluoruradas y sulfurado-sódicas completan un flujo subterráneo de trayectoria larga con notables propiedades minero-medicinales.",
+          "Cultura: Los restos arqueológicos romanos se conservan integrados en la planta baja del actual Hotel Balneario de Lugo y fueron declarados Monumento Histórico-Artístico en 1931."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/muralla-romana-de-lugo.png",
@@ -15245,7 +16315,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 125,
     cooldownMin: 60,
-    intereses: ["acantilados", "mareas", "erosion", "cantabrico"],
+    intereses: ["Naturaleza: Integrada en la Rasa Cantábrica, la playa se compone de pizarras y cuarcitas formadas hace 500 millones de años, sobre las que el oleaje ha erosionado arcos de roca de más de 30 metros de altura.", "Naturaleza: La Etapa 1 del Camino Natural de la Ruta del Cantábrico une el puerto de Ribadeo con el Mirador de la Playa de las Catedrales a lo largo de un recorrido costero de 16 kilómetros.", "Naturaleza: Bajo un clima oceánico cantábrico de suaves temperaturas, el mar registra fluctuaciones de marea con oscilaciones de unos cuatro metros de altura, inundando la arena y haciendo desaparecer el paseo dos veces al día.", "Naturaleza: Designada Monumento Natural en 2005, la playa recibe el nombre original de Praia de Augas Santas debido a una antigua fuente de aguas medicinales que manaba en sus inmediaciones.", "acantilados", "mareas", "erosion", "cantabrico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/playa-de-las-catedrales.png",
@@ -15265,7 +16335,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["camino_frances", "montaña", "pallozas", "leyendas"],
+    intereses: ["Cultura: En 1984, el párroco local Elías Valiña concibió la célebre flecha amarilla del Camino de Santiago. Trazó el Camino Francés desde Roncesvalles brocha en mano con pintura sobrante de señalización viaria para orientar a los peregrinos.", "Historia: La tradición del milagro eucarístico del siglo XIV, en el que el pan y el vino se convirtieron en carne y sangre en Santa María la Real, convirtió la aldea en centro de peregrinación y su cáliz inspiró el escudo oficial de Galicia.", "Ingeniería: Las pallozas tradicionales poseen muros bajos de piedra y un tejado cónico de paja de centeno con fuerte pendiente. Esta estructura soportaba vientos copiosos, evacuaba la lluvia y evitaba la acumulación de nieve a 1300 metros de altitud.", "Historia: La iglesia de Santa María la Real, fundada en el siglo IX, es el templo prerrománico íntegramente conservado más antiguo del Camino Francés. Durante los inviernos medievales, sus campanas tañían de continuo para orientar a los romeros perdidos entre la niebla.", "Historia: En enero de 1809, durante la Guerra de la Independencia, el puerto de O Cebreiro fue testigo de la agónica retirada de las tropas británicas del general Sir John Moore hacia A Coruña, perseguidas por el ejército napoleónico en pleno invierno.", "camino_frances", "montaña", "pallozas", "leyendas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -15276,7 +16346,15 @@ export const POIS = [
         "nivel": 3,
         "lat": 42.7268,
         "lng": -7.0211,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: Por este puerto discurre un tramo de 14 kilómetros del Camino Francés entre Pedrafita, O Cebreiro y Fonfría, alcanzando en el Alto do Poio los 1335 metros de altitud, la cota máxima de esta ruta jacobea.",
+          "Naturaleza: El municipio se eleva por encima de los 1000 metros de altitud y alberga el nacimiento de los ríos Navia y Lor, cuyas cuencas están separadas por las sierras de Chao y Rañadoiro, con cumbres de 1300 metros.",
+          "Naturaleza: Ubicado a 1098 metros de altitud, el puerto presenta inviernos fríos y prolongados con frecuentes e intensas nevadas que históricamente dificultan el tráfico rodado en este paso montañoso de acceso a Galicia.",
+          "Naturaleza: En los miradores de alta montaña de Pedrafita, situados a más de 1000 metros, predominan los abedulares de alta montaña, que constituyen las masas arbóreas naturales de mayor altitud de las sierras gallegas.",
+          "Historia: El topónimo Pedrafita procede del latín petra ficta («piedra hincada»), en alusión a los hitos o miliarios romanos que señalizaban la antigua calzada que comunicaba la meseta castellana con el interior de Galicia."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/o-cebreiro.png",
@@ -15587,7 +16665,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 125,
     cooldownMin: 70,
-    intereses: ["senderismo", "frontera", "biodiversidad", "termalismo"],
+    intereses: ["Naturaleza: El espacio alberga al lirio del Xurés (Iris boissieri), especie floral protegida en peligro de extinción, y es la zona de origen de la vaca cachena, raza bovina autóctona amenazada.", "Historia: La Vía Nova o Vía XVIII de Antonino atravesaba la comarca uniendo Braga y Astorga, conservando en el paso de Portela do Home una notable concentración de 116 miliarios romanos.", "Naturaleza: El macizo granítico culmina a 1.533 metros en el pico A Nevosa y el río Limia articula el espacio, encajado en laderas montañosas entre los embalses de As Conchas, Salas y Lindoso.", "Naturaleza: La ruta oficial PR-G 215 A Mina das Sombras asciende durante 6,5 kilómetros desde la ermita de Nosa Señora do Xurés hasta las antiguas minas de wolframio situadas a 1.218 metros de altitud.", "Naturaleza: Su ubicación genera una transición entre climas atlántico y mediterráneo, con oscilaciones térmicas extremas de 35 ºC en verano a -5 ºC en invierno y precipitaciones acumuladas anuales de entre 800 y 1.600 mm.", "senderismo", "frontera", "biodiversidad", "termalismo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baixa-limia-y-serra-do-xures.png",
@@ -15607,7 +16685,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["ribeira_sacra", "cañon", "sil", "miradores"],
+    intereses: ["Naturaleza: El mirador se sitúa a unos 800 metros de altitud frente al meandro del Coto das Boedas, una mole granítica de más de 700 metros de altura con una pared vertical que cae 400 metros hacia el Sil.", "Naturaleza: El senderismo oficial PR-G 98 Cañón del Sil-Santa Cristina parte de la plaza do Barquilleiro en Parada de Sil y recorre 18,5 kilómetros circulares con un desnivel acumulado de 750 metros por el contorno del valle.", "Naturaleza: La profusa garganta fluvial genera un microclima de abrigo con temperaturas medias anuales de 13,7 °C en la estación de Santo Estevo, favoreciendo la supervivencia de especies mediterráneas dentro del dominio atlántico gallego.", "Naturaleza: El acusado contraste de insolación del cañón genera una marcada asimetría vegetal: en las laderas de umbría abundan los castaños y carballos atlánticos, mientras en la solana prosperan especies termófilas como madroños y alcornoques.", "Cultura: En los cortados de las vertientes del Sil se practica la viticultura en bancales de origen romano, con declives superiores al 30 % que impiden el uso de maquinaria agrícola convencional.", "ribeira_sacra", "cañon", "sil", "miradores"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -15618,7 +16696,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.3862,
         "lng": -7.6732,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Entre los siglos X y XI, nueve obispos renunciaron a sus sedes episcopales para retirarse a este monasterio. Sus enterramientos en el cenobio dieron origen al nombre del claustro de los Obispos y al escudo monástico con nueve mitras.",
+          "Curiosidad: En 2020, durante la restauración del altar mayor de la iglesia, se hallaron en un relicario de madera cuatro de los nueve anillos milagrosos medievales pertenecientes a los obispos santos, considerados perdidos desde el siglo XIX.",
+          "Cultura: El conjunto monumental conserva tres claustros de distintas épocas y estilos: el claustro de los Obispos, de trazado románico con galería gótica, y los claustros del Vivero y de los Caballeros, de época renacentista.",
+          "Cultura: La iglesia abacial custodia un singular retablo pétreo románico del siglo XII con forma pentagonal y tallado por ambas caras. Muestra a Cristo flanqueado por los doce apóstoles y pudo servir como tímpano o frontal de altar.",
+          "Historia: Tras su exclaustración en el siglo XIX y un prolongado abandono durante el siglo XX, el edificio sufrió una rehabilitación integral hasta reabrir sus puertas en 2004 transformado en Parador Nacional de Turismo."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/canon-del-sil.png",
@@ -15638,7 +16724,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["frontera", "castillo", "acropolis_gallega"],
+    intereses: ["Cultura: En febrero de 1494 se imprimió entre sus muros el «Missale Auriense», considerado el primer libro incunable impreso en Galicia, elaborado por los impresores Juan de Porras y Gonzalo Rodríguez de la Pasera.", "Historia: En este recinto fortificado se entrevistaron en 1506 el rey Felipe I el Hermoso y el Cardenal Cisneros para negociar la inminente regencia del Reino de Castilla tras la muerte de Isabel la Católica.", "Ingeniería: El conjunto constituye la acrópolis fortificada más grande de Galicia, protegida por un triple recinto amurallado con baluartes del siglo XVII diseñados por los ingenieros militares Juan de Villarroel y Carlos de Grunemberg.", "Curiosidad: Su gran Torre del Homenaje del siglo XV mide 22,5 metros de altura, posee muros de hasta 3,5 metros de grosor y conserva marcas de cantero grabadas en casi cada uno de sus sillares de granito.", "frontera", "castillo", "acropolis_gallega"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -15669,7 +16755,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["aguas_termales", "romanizacion", "ciudad"],
+    intereses: ["Cultura: En las excavaciones se hallaron aras votivas romanas dedicadas a las ninfas. Una fue ofrendada por Calpurnia Abana, nombre que constituye el registro documentado más antiguo de un habitante de Ourense.", "Naturaleza: El agua mineromedicinal brota de un acuífero subterráneo a más de un kilómetro de profundidad a una temperatura superior a 60 °C, con un caudal aproximado de trescientos litros por minuto.", "Historia: En torno a estos manantiales nació la urbe romana de Aquis Aurienses en el siglo I d.C. Las excavaciones han sacado a la luz los restos de una piscina-santuario dedicada al culto del agua.", "Curiosidad: El conjunto monumental se divide principalmente en tres manantiales: la Burga de Arriba, de estilo popular del siglo XVII; la Burga de Abaixo, neoclásica del siglo XIX; y la intermedia Burga do Medio.", "aguas_termales", "romanizacion", "ciudad"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -15680,7 +16766,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.3363,
         "lng": -7.8635,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: El Pórtico del Paraíso, esculpido en el siglo XIII por discípulos del Maestro Mateo inspirándose en el Pórtico de la Gloria de Santiago de Compostela, destaca por conservar su vistosa policromía del siglo XVIII.",
+          "Ingeniería: Entre 1499 y 1505, el maestro Rodrigo de Badajoz levantó sobre el crucero un cimborrio octogonal de estilo gótico flamenco, diseñado con doce ventanales para inundar de luz natural el interior románico del templo.",
+          "Ingeniería: Para superar la acusada pendiente del terreno hacia el oeste, los maestros medievales construyeron una estructura inferior de bóvedas de cañón y arcos de medio punto sobre la que se apoya la fachada principal.",
+          "Curiosidad: En la capilla del Santo Cristo se custodia una venerada talla gótica rodeada por una popular leyenda local que asegura que el cabello humano de la figura continúa creciendo con el tiempo."
+        ]
       },
       {
         "id": "es_gal_ourense_puente_romano",
@@ -15689,7 +16782,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.339,
         "lng": -7.8668,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Ingeniería: Su gran arco central medieval, de perfil apuntado, alcanza unos 38 metros de luz y supera los 33 metros de altura sobre las aguas, situándose entre los mayores arcos de piedra conservados en España.",
+          "Historia: Construido en el siglo I para dar paso a la Vía XVIII o Vía Nova entre Bracara Augusta y Asturica Augusta, fue durante siglos el único cruce estable sobre el río Miño en decenas de kilómetros.",
+          "Historia: La primera gran reconstrucción documentada la promovió el obispo don Lorenzo entre 1228 y 1229 con el apoyo del rey Fernando III, otorgándole su perfil con arcos apuntados y rampas ascendentes.",
+          "Ingeniería: Tras siglos de colapsos por deficiencias de cimentación, la consolidación estructural definitiva de la fábrica del puente la ejecutó el maestro de obras Melchor de Velasco a mediados del siglo XVII.",
+          "Curiosidad: El escudo oficial de Ourense representa este puente coronado por una torre defensiva que existió en su calzada hasta que fue demolida en el siglo XIX."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/as-burgas.png",
@@ -15931,7 +17032,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["ría_de_vigo", "puerto", "historia_urbana"],
+    intereses: ["Historia: El 28 de marzo de 1809, un alzamiento popular expulsó a las tropas napoleónicas de Vigo, convirtiéndola en la primera localidad de Europa en reconquistar una plaza ocupada a Napoleón, motivo por el que recibió el título de ciudad.", "Historia: En el extremo norte del promontorio rocoso del Casco Vello se descubrió la necrópolis romana más antigua documentada en la zona, utilizada entre los siglos I y III d.C. por los moradores del primitivo vicus.", "Curiosidad: En el año 2000, durante la rehabilitación de un inmueble en la calle Oliva, se descubrieron bajo el suelo los restos de una calzada romana construida entre los siglos III y IV d.C.", "Cultura: La zona baja del Casco Vello conserva el barrio marinero tradicional de O Berbés, cuya plaza con soportales corresponde a la antigua playa donde los pescadores amarraban sus embarcaciones.", "ría_de_vigo", "puerto", "historia_urbana"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -15942,7 +17043,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.2317,
         "lng": -8.7217,
-        "radio": 4000
+        "radio": 4000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El monte acoge el origen habitacional de Vigo, un poblado castreño habitado entre los siglos II a. C. y III d. C. que llegó a ocupar unas diez hectáreas y funcionó como centro comercial estratégico durante la romanización.",
+          "Cultura: Uno de los miradores del monte alberga un monumento formado por tres anclas y varios cañones rescatados del fondo de la ría, correspondientes a los navíos hundidos durante la Batalla de Rande de 1702.",
+          "Historia: En la cima se conservan las murallas del castillo del siglo XVII, construido en 1665 durante la Guerra de Restauración portuguesa para proteger la ciudad junto con la vecina fortaleza de San Sebastián.",
+          "Curiosidad: En la ladera del monte se encuentra el yacimiento arqueológico donde se han reconstruido tres edificaciones castreñas con techumbre vegetal para mostrar las técnicas de vivienda de los antiguos habitantes galaicos."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/casco-vello-de-vigo.png",
@@ -15962,7 +17070,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["plazas", "peatonalizacion", "casco_historico"],
+    intereses: ["Cultura: Erigido a finales del siglo XVIII, el Santuario de la Virgen de la Peregrina destaca por su planta con forma de concha de vieira, símbolo jacobeo del Camino Portugués. En su entrada custodia una gran concha marina natural como pila.", "Curiosidad: El Loro Ravachol, mascota del boticario Perfecto Feijoo a finales del siglo XIX, se convirtió en un icono popular por sus sarcásticas interrupciones. Su muerte en 1913 dio origen al emblemático entierro del loro durante el carnaval local.", "Historia: La Basílica de Santa María la Mayor fue costeada en el siglo XVI por el poderoso Gremio de Mareantes. Su portada plateresca, obra de Cornelis de Holanda y João Noble, incluye una peculiar escultura de San Jerónimo con anteojos.", "Curiosidad: Desde 1999, Pontevedra aplicó una peatonalización integral en su centro histórico restringiendo el tráfico a motor. Este modelo de movilidad sostenible devolvió el espacio público a los peatones y ha recibido reconocimientos internacionales como el Premio ONU-Hábitat.", "plazas", "peatonalizacion", "casco_historico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -15990,7 +17098,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.4298,
         "lng": -8.6473,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: La basílica fue sufragada en el siglo XVI por el Gremio de Mareantes de Pontevedra, la asociación de marineros local que llegó a financiar las obras con los beneficios de la captura y venta de sardinas.",
+          "Curiosidad: En su fachada plateresca destaca la figura de San Jerónimo representado con gafas, un anacronismo esculpido en piedra por los maestros canteros para simbolizar su erudición como traductor de la Biblia Vulgata.",
+          "Ingeniería: Diseñada por arquitectos como Juan de los Cuetos y Diego Gil, su fachada occidental fue concebida por Cornelis de Holanda y João Nobre a modo de un retablo exterior esculpido íntegramente en granito.",
+          "Historia: Pontevedra carece de catedral al pertenecer a la archidiócesis de Santiago de Compostela, por lo que esta basílica, elevada a tal rango por el papa Juan XXIII en 1962, actúa como el templo principal de la ciudad."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pontevedra.png",
@@ -16010,7 +17125,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["camino_portugues", "miño", "frontera_portuguesa"],
+    intereses: ["Curiosidad: Durante los siglos XV y XVI, plateros judíos y conversos radicados en Tui confeccionaron parte del tesoro sagrado del templo, incluyendo piezas emblemáticas de orfebrería como cálices y utensilios litúrgicos.", "Historia: Iniciada hacia 1120 en estilo románico y consagrada en 1225, la catedral fue fortificada con pasadizos, almenas y torres defensivas como la de Soutomaior debido a su estratégica posición fronteriza frente a Portugal.", "Cultura: Su claustro gótico, construido en la segunda mitad del siglo XIII, destaca por ser el único claustro medieval conservado íntegramente en las catedrales de Galicia y el de mayor tamaño en la región.", "Cultura: En el interior del conjunto catedralicio se conserva la única sala capitular románica de Galicia, una de las más grandes de su género en toda España.", "camino_portugues", "miño", "frontera_portuguesa"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -16021,7 +17136,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.08,
         "lng": -8.688,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: El ingeniero Rafael Areses impulsó desde 1909 una repoblación forestal pionera que convirtió la cumbre en un arboreto botánico singular, introduciendo especies exóticas como cedros del Líbano, cipreses y abetos.",
+          "Naturaleza: El parque, integrado en la Serra do Galiñeiro sobre sustrato granítico, alcanza su punto culminante en el Alto de San Xiao a 631 metros de altitud, donde nacen regatos como el de Cabanas, Deique y Tabernas.",
+          "Naturaleza: El Mirador da Cruz de San Xiao domina el valle del río Miño y la frontera portuguesa, enlazando con itinerarios oficiales como la senda circular de As Udencias, de 600 metros de recorrido.",
+          "Historia: Protegido como Sitio Natural de Interés Nacional en 1935 y declarado en 1978 como el primer Parque Natural de Galicia, abarca 746 hectáreas y constituye el parque natural de menor extensión de la comunidad.",
+          "Naturaleza: Su clima oceánico templado registra temperaturas medias entre los 4 °C invernales y los 22 °C estivales, acumulando lluvias atlánticas frecuentes que nutren la frondosa vegetación ribereña y los cursos fluviales del monte."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tui-y-su-catedral-fortaleza.png",
@@ -16041,7 +17164,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 115,
     cooldownMin: 50,
-    intereses: ["carabela_pinta", "murallas", "atlántico"],
+    intereses: ["Historia: El 1 de marzo de 1493, la carabela La Pinta atracó en Baiona capitaneada por Martín Alonso Pinzón, convirtiendo a la villa en el primer puerto de Europa en recibir la noticia del descubrimiento de América.", "Ingeniería: El recinto amurallado abarca unas 18 hectáreas rodeadas por tres kilómetros de murallas almenadas construidas entre los siglos XI y XVII, que protegían la península de Monte Boi frente a incursiones corsarias y marítimas.", "Historia: Diego Sarmiento de Acuña, conde de Gondomar, reconstruyó la fortaleza en el siglo XVII y la rebautizó como castillo de Monterreal en honor a los Reyes Católicos, quienes un siglo antes habían otorgado fuero para repoblar la península.", "Cultura: En el puerto baionés, a los pies de la fortaleza, permanece amarrada una réplica musealizada de la carabela La Pinta, que recrea los instrumentos náuticos y las condiciones de navegación de la tripulación de 1493.", "Curiosidad: Entre sus torres destaca la Torre del Príncipe, que sirvió como faro náutico y debe su nombre a la tradición histórica sobre el encarcelamiento del príncipe portugués Alfonso Enríquez en el siglo XII.", "carabela_pinta", "murallas", "atlántico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -16052,7 +17175,15 @@ export const POIS = [
         "nivel": 3,
         "lat": 42.141,
         "lng": -8.8245,
-        "radio": 3500
+        "radio": 3500,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: Monteferro es una península rocosa de 100 hectáreas que alcanza 147 metros de altitud y se adentra 1,5 km en el Atlántico, delimitando la bahía de Baiona y la entrada a la ría de Vigo.",
+          "Naturaleza: La senda azul de Monteferro es una ruta circular litoral de 3,6 kilómetros que bordea los acantilados de la península, pasa por el faro de Punta Lameda y conecta las vistas hacia las islas Estelas y Cíes.",
+          "Naturaleza: La península forma parte del espacio protegido Red Natura 2000 A Ramallosa, destacando geológicamente por el contacto entre rocas metamórficas con cristales de andalucita y cordierita y las rocas graníticas del litoral.",
+          "Historia: En la cima se erige el Monumento a la Marina Universal, un monolito de granito de 25 metros de altura diseñado por Manuel Gómez Román e inaugurado en 1924 en honor a los marineros fallecidos.",
+          "Naturaleza: Su orientación abierta al océano expone la península a vientos dominantes del noroeste y suroeste con rachas superiores a 25 km/h, moldeando su cubierta vegetal de pinar, eucaliptal y matorral costero de acantilado."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/baiona-y-el-recinto-de-monterreal.png",
@@ -16072,7 +17203,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 115,
     cooldownMin: 50,
-    intereses: ["fortaleza", "jardines", "rías_baixas"],
+    intereses: ["Historia: Tras ser semidestruido en la Revuelta Irmandiña en el siglo XV, Pedro Madruga lo reconstruyó adaptando sus defensas al uso de armas de fuego, convirtiéndose en una de las primeras fortalezas gallegas preparadas para la artillería.", "Naturaleza: En 2012, su parque botánico se convirtió en el primero de España reconocido como Jardín de Excelencia Internacional por la Sociedad Internacional de la Camelia, al albergar cientos de ejemplares centenarios de esta flor de origen oriental.", "Cultura: A principios del siglo XX habitó el castillo la escritora María Vinyals, aristócrata pionera del feminismo en Galicia que defendió los derechos de la mujer y relató la historia y leyendas de la fortaleza en sus escritos.", "Historia: En la segunda mitad del siglo XIX, los marqueses de la Vega de Armijo transformaron la fortaleza medieval en una residencia palaciega neogótica, añadiendo la célebre Galería de las Damas y un extenso parque botánico.", "Curiosidad: A diferencia de la mayoría de fortificaciones medievales construidas en cumbres rocosas, este castillo se ubicó en un valle resguardado para vigilar los caminos terrestres evitando quedar expuesto a los ataques invasores desde el mar.", "fortaleza", "jardines", "rías_baixas"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-soutomaior.png",
@@ -16358,7 +17489,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 134,
     cooldownMin: 75,
-    intereses: ["ap68", "bodegas", "ebro"],
+    intereses: ["Historia: Tras la devastación de los viñedos franceses por la plaga de filoxera a finales del siglo XIX, negociantes de Burdeos se establecieron en Haro para comprar vino riojano, impulsando el desarrollo bodeguero e industrial de la localidad.", "Ingeniería: La llegada de la línea férrea Tudela-Bilbao en 1863 permitió sustituir el transporte en carruajes y concentró bodegas junto a las vías, dando origen al Barrio de la Estación con la mayor densidad de bodegas centenarias del mundo.", "Curiosidad: El 1 de enero de 1891, Haro inauguró su red eléctrica pública con 260 lámparas incandescentes y 8 focos, convirtiéndose en la primera ciudad de España con iluminación eléctrica en la totalidad de su casco urbano.", "Cultura: Cada 29 de junio, la romería a los Riscos de Bilibio deriva en la celebre Batalla del Vino, donde los participantes se arrojan miles de litros de vino tinto tras la misa en la ermita de San Felices.", "ap68", "bodegas", "ebro"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -16369,7 +17500,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.5802,
         "lng": -2.8489,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Surgió a raíz de la llegada del ferrocarril en 1863. Comerciantes franceses se establecieron junto a las vías para comprar vino riojano tras la plaga de filoxera que devastó los viñedos de Burdeos.",
+          "Curiosidad: El recinto alberga la mayor concentración de bodegas centenarias del mundo en un mismo distrito. R. López de Heredia fue la primera bodega en instalarse de forma permanente en el barrio en 1877.",
+          "Ingeniería: En la bodega CVNE destaca la nave Eiffel, proyectada a finales del siglo XIX por el estudio del arquitecto francés Gustave Eiffel sin columnas intermedias para facilitar el manejo y trasiego de las barricas.",
+          "Cultura: La bonanza económica del comercio vinícola a través de la estación impulsó que Haro instalara alumbrado público eléctrico a finales del siglo XIX, siendo pionera en España junto a Jerez de la Frontera."
+        ]
       },
       {
         "id": "es_pv_alava_labastida",
@@ -16378,7 +17516,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.5894,
         "lng": -2.793,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: En 1786, el sacerdote ilustrado Manuel Quintano introdujo en Labastida las técnicas bordolesas de vinificación, utilizando barricas de roble y desgranado de uva, lo que dio origen a los primeros vinos de crianza en la región.",
+          "Cultura: Labastida alberga una destacada concentración de lagares rupestres medievales, estructuras excavadas en rocas areniscas al pie de los viñedos donde se pisaba la uva al aire libre para elaborar el mosto.",
+          "Cultura: En la cumbre que domina la villa se ubica la ermita del Santo Cristo, un templo-fortaleza de origen románico fundado en el siglo XII por Sancho VI de Navarra sobre un castillo anterior.",
+          "Naturaleza: La sierra de Toloño resguarda la villa y sus viñedos de los vientos fríos del norte; en su cumbre de 1271 metros se conservan ruinas de un santuario y antiguas neveras de piedra.",
+          "Cultura: Labastida alberga el ensanche barroco más destacado de Rioja Alavesa, sobresaliendo su Casa Consistorial del siglo XVIII con pórtico de tres arcos de medio punto decorados con finas arquivoltas."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/haro-capital-del-vino-riojano.png",
@@ -16398,7 +17544,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 130,
     cooldownMin: 70,
-    intereses: ["a12", "camino_de_santiago", "catedral", "milagro_del_gallo"],
+    intereses: ["Ingeniería: En el siglo XVIII, Martín de Beratúa construyó la torre campanario de casi 70 metros separada de la catedral, una solución técnica obligada por la inestabilidad del terreno arcilloso y las corrientes subterráneas de agua.", "Curiosidad: Un gallinero barroco en la catedral alberga permanentemente un gallo y una gallina vivos de color blanco, en recuerdo de la conocida leyenda medieval del milagro del peregrino ahorcado.", "Ingeniería: En el siglo XI, el eremita Domingo García trazó una calzada de piedra y un puente sobre el río Oja para facilitar el paso jacobeo, hito por el que fue nombrado patrón de los ingenieros civiles.", "Ingeniería: El puente de sillería sobre el río Oja cuenta con 148 metros de longitud y 16 arcos, cuyo origen se remonta a la pasarela levantada por Santo Domingo para evitar crecidas y vadeos peligrosos.", "a12", "camino_de_santiago", "catedral", "milagro_del_gallo"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santo-domingo-de-la-calzada.png",
@@ -16418,7 +17564,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 70,
-    intereses: ["ap68", "ebro", "romano", "catedral"],
+    intereses: ["Historia: Durante las guerras sertorianas en el año 72 a. C., la antigua Calagurris sufrió un prolongado asedio romano. La resistencia extrema de la población dio origen a la célebre expresión latina «fames calagurritana» para definir la hambruna llevada al límite.", "Cultura: La catedral de Santa María se ubica insólitamente a extramuros y en la zona más baja de la ciudad, junto al río Cidacos. Se construyó en ese emplazamiento por ser el lugar tradicional del martirio de los santos legionarios Emeterio y Celedonio.", "Ingeniería: Bajo el subsuelo del casco antiguo se conserva un tramo de cloaca romana del siglo I construida en *opus caementicium*, con bóveda de cañón de 1,32 metros de altura, que servía para evacuar las aguas servidas de las termas de Calagurris.", "Curiosidad: El Museo de la Verdura, ubicado en un antiguo convento del siglo XVI, es un centro divulgativo dedicado a las huertas de la ribera del Ebro que expone trajes de alta moda confeccionados con hortalizas frescas y deshidratadas.", "ap68", "ebro", "romano", "catedral"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/calahorra.png",
@@ -16438,7 +17584,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 124,
     cooldownMin: 70,
-    intereses: ["cigueñas", "ebro", "ap68", "ciguenas_de_san_miguel"],
+    intereses: ["Cultura: La Colegiata de San Miguel Arcángel, levantada en ladrillo, acoge sobre su tejado la mayor colonia urbana del mundo de cigüeña blanca instalada sobre un único edificio, con más de cien parejas y nidos de hasta 500 kilos.", "Naturaleza: La Reserva Natural de los Sotos del Ebro protege 476 hectáreas a lo largo de siete kilómetros del río Ebro, desde la desembocadura del río Aragón hasta el puente del ferrocarril, albergando meandros e islas fluviales.", "Naturaleza: El Sendero del Meandro del Estajao es un recorrido circular de 4,7 kilómetros y diez metros de desnivel acumulado, de dificultad baja, que discurre entre chopos, álamos y brazos de agua a orillas del Ebro.", "Naturaleza: El clima semiárido de la zona presenta lluvias escasas y episodios de cierzo, un viento seco del noroeste canalizado por el valle del Ebro que intensifica la evaporación y restringe la vegetación caducifolia al cauce fluvial.", "Naturaleza: Este espacio fluvial es refugio vital para especies amenazadas como el visón europeo y alberga 175 especies de aves, entre las que destacan la garza imperial, el cormorán y el martín pescador.", "cigueñas", "ebro", "ap68", "ciguenas_de_san_miguel"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alfaro.png",
@@ -16458,7 +17604,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 123,
     cooldownMin: 65,
-    intereses: ["a12", "reino_de_najera", "camino_de_santiago"],
+    intereses: ["Historia: Durante el siglo XI, Nájera fue capital del reino de Nájera-Pamplona. El rey Sancho III el Mayor estableció allí la corte, acuñó moneda y desvió el trazado del Camino de Santiago para hacer salir la ruta por la villa.", "Cultura: El monasterio de Santa María la Real adosa su estructura a los cortados de la peña de Malpica. Su interior alberga el Panteón Real con tumbas de reyes navarros e integra la cueva original a los pies del templo.", "Curiosidad: La tradición relata que en 1044 el rey García Sánchez III cazaba con su halcón cuando descubrió una cueva con una Virgen, una campana y azucenas. Este hallazgo impulsó la construcción del monasterio de Santa María la Real.", "Historia: En los cortados arcillosos de la localidad se conservan cuevas artificiales excavadas manualmente en varios niveles. Durante la Edad Media, la población local utilizó estas cavidades como habitáculos y refugio estratégico ante incursiones militares.", "Historia: Tras conquistar la plaza de Calahorra en el siglo XI, García Sánchez III creó en Nájera la Orden de la Terraza o de la Jarra, considerada una de las órdenes de caballería más antiguas de la Península Ibérica.", "a12", "reino_de_najera", "camino_de_santiago"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -16469,7 +17615,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.418,
         "lng": -2.7349,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Alberga el Panteón Real con los sepulcros de los reyes de Nájera-Pamplona, antecesor del Reino de Navarra. Entre ellos destacan las estatuas de los reyes fundadores, García Sánchez III y Estefanía de Foix.",
+          "Cultura: La sillería del coro, realizada a finales del siglo XV en madera de nogal, destaca por combinar escenas religiosas con figuras profanas, eróticas y grotescas labradas por maestros del gótico final.",
+          "Curiosidad: Según la tradición, el rey García Sánchez III erigió el monasterio tras hallar en 1044 una imagen de la Virgen, una campana y un jarrón con azucenas en una cueva mientras cazaba con un halcón.",
+          "Cultura: El Claustro de los Caballeros, erigido en el siglo XVI, combina estilos gótico florido y plateresco. Debe su nombre a los nobles que pagaban importantes sumas para ser enterrados en los arcosolios de su galería.",
+          "Cultura: Conserva la tapa del sarcófago de Blanca de Navarra, fallecida en 1156, una relevante obra esculpida en estilo románico que representa escenas como el Pantocrátor y el entierro de la reina."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/najera.png",
@@ -16500,7 +17654,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.3584,
         "lng": -2.4737,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: En el scriptorium de su monasterio se creó en el año 976 el Códice Albeldense. Este manuscrito medieval es célebre por contener la primera transcripción documentada en Europa occidental de los números arábigos.",
+          "Historia: El antiguo monasterio de San Martín se fundó en el año 924 por el rey Sancho Garcés I de Pamplona, aprovechando un entramado de cuevas eremíticas rupestres excavadas en la peña Salagona.",
+          "Naturaleza: La peña Salagona, formada por conglomerados arcillosos e inestables, sufrió un cataclismo en 1683. Un gran desprendimiento de rocas sepultó definitivamente el primitivo Monasterio de San Martín situado a sus pies.",
+          "Historia: En el año 950, el obispo francés Godescalco de Le Puy visitó Albelda para encargar una copia manuscrita. Este viaje lo convirtió en el primer peregrino a Santiago de Compostela documentado históricamente por su nombre."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-clavijo.png",
@@ -16687,7 +17848,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 134,
     cooldownMin: 85,
-    intereses: ["badlands", "paisaje", "sur_de_navarra", "n121"],
+    intereses: ["Cultura: El territorio carece de municipios y pertenece a la Comunidad de Bardenas Reales, una entidad integrada por 22 «congozantes» (19 pueblos, dos valles pirenaicos y un monasterio) con derechos tradicionales de pastoreo y cultivo.", "Naturaleza: El paisaje oscila entre 280 y 659 metros de altitud, vertebrado por el Barranco Grande, una gran red fluvial de carácter torrencial que drena la hondonada central de la Bardena Blanca y erosiona sus cerros de arcilla.", "Naturaleza: El clima semiárido registra entre 300 y 450 mm de lluvia anual torrencial. El cierzo, un fuerte viento del noroeste, sopla con frecuencia acelerando el desgaste del terreno arcilloso y creando desniveles abruptos.", "Naturaleza: Este espacio desértico alberga hasta 24 especies reproductoras de aves rapaces, como el alimoche y el águila real, así como aves esteparias singulares, protegidas bajo la figura de Reserva de la Biosfera por la UNESCO.", "Naturaleza: La ruta del Barranco de las Cortinas permite realizar un recorrido a pie de 1,6 kilómetros que se adentra por el cauce erosionado junto al monumental cabezo de Castildetierra y sube al Cabezo de las Cortinillas.", "badlands", "paisaje", "sur_de_navarra", "n121"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-las-bardenas-reales.png",
@@ -16707,7 +17868,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 132,
     cooldownMin: 75,
-    intereses: ["ap15", "navarra_media", "vino"],
+    intereses: ["Historia: A principios del siglo XV, el rey Carlos III el Noble convirtió Olite en sede de la corte navarra al construir el Palacio Real, emblemático conjunto gótico civil concebido como residencia palaciega.", "Curiosidad: Durante el reinado de Carlos III, el Palacio Real alojó un zoológico exótico con leones, camellos, linces y avestruces, además de frondosos jardines elevados que sorprendían a las visitas de la época.", "Ingeniería: Para abastecer de agua los jardines suspendidos y dependencias del palacio, se diseñó un complejo sistema de cañerías e infraestructuras hidráulicas conectadas a la denominada Torre del Aljibe.", "Cultura: Considerada la capital del vino de Navarra, Olite conserva vestigios de elaboración vitivinícola desde la época romana y alberga la sede de la Denominación de Origen Navarra.", "ap15", "navarra_media", "vino"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -16718,7 +17879,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.4814,
         "lng": -1.6512,
-        "radio": 2800
+        "radio": 2800,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: En el siglo XV, el complejo palaciego alojó un zoológico privado con especies exóticas como leones, camellos y aves diversas, concebido para el asombro y entretenimiento de la corte.",
+          "Cultura: Un viajero alemán del siglo XV anotó en su diario, conservado en el Museo Británico de Londres, su admiración al afirmar que ningún rey poseía un palacio tan hermoso ni con tantas estancias doradas.",
+          "Historia: Carlos III el Noble y Leonor de Trastámara impulsaron la edificación del Palacio Nuevo entre 1402 y 1424, convirtiéndolo en la residencia cortesana de mayor esplendor del Reino de Navarra.",
+          "Historia: En 1813, durante la Guerra de la Independencia, el comandante Francisco Espoz y Mina prendió fuego al palacio para impedir que las tropas napoleónicas en retirada lo emplearan como fortín."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/olite.png",
@@ -16758,7 +17926,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 128,
     cooldownMin: 75,
-    intereses: ["pirineo", "camino_de_santiago", "a21"],
+    intereses: ["Historia: En el año 778, los vascones emboscaron a la retaguardia del ejército de Carlomagno en sus inmediaciones. Este enfrentamiento provocó la muerte del comandante Roldán e inspiró el Cantar de Roldán, el poema épico más célebre de la Edad Media.", "Historia: La capilla de San Agustín alberga el sepulcro de Sancho VII el Fuerte. Su estatua yacente mide 2,25 metros, un reflejo de la imponente estatura física atribuida a este rey navarro que combatió en Las Navas de Tolosa.", "Cultura: La Capilla del Espíritu Santo, conocida como el Silo de Carlomagno, se construyó alrededor del siglo XII. Funcionó como osario y cementerio masivo para los peregrinos del Camino de Santiago que fallecían tras atravesar el paso pirenaico.", "Naturaleza: A 1057 metros de altitud, el puerto de Ibañeta conecta la vertiente francesa con Navarra. Funciona como divisoria de aguas entre las cuencas cantábrica y mediterránea y es el punto de entrada peninsular del Camino Francés.", "pirineo", "camino_de_santiago", "a21"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/roncesvalles.png",
@@ -16778,7 +17946,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 128,
     cooldownMin: 70,
-    intereses: ["a12", "camino_de_santiago", "románico"],
+    intereses: ["Historia: En esta villa confluyen los dos ramales principales del Camino de Santiago Francés en España: la ruta navarra, proveniente de Roncesvalles, y la aragonesa, que entra desde el puerto de Somport.", "Ingeniería: El puente románico del siglo XI mide 110 metros de largo y dispone de pequeños arcos aliviaderos entre sus pilares para aligerar la estructura y permitir el paso del agua durante las crecidas del río Arga.", "Historia: La tradición atribuye la fundación del puente a una reina del siglo XI, identificada habitualmente con Doña Mayor de Castilla o Doña Estefanía de Foix, con el propósito de facilitar la travesía de los peregrinos.", "Cultura: El trazado urbano de la villa es un modelo de «pueblo-calle» medieval, estructurado a lo largo de su Rúa Mayor para dirigir directamente a los caminantes hacia el puente sobre el río.", "Curiosidad: Una conocida leyenda local relata que un pajarillo («txori») acudía en primavera a la torre central del puente para limpiar con agua del río y sus alas el rostro de una imagen de la Virgen del Puy.", "a12", "camino_de_santiago", "románico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-la-reina-gares.png",
@@ -16798,7 +17966,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 126,
     cooldownMin: 70,
-    intereses: ["a12", "camino_de_santiago", "románico"],
+    intereses: ["Historia: Durante las guerras carlistas del siglo XIX, Estella actuó como capital de facto y sede de la corte de los pretendientes carlistas en dos etapas: primero en 1835 con Carlos María Isidro y entre 1874 y 1876.", "Historia: En 1090, el rey Sancho Ramírez otorgó un fuero a Estella modificando el trazado del Camino de Santiago hacia esta nueva villa con el fin de atraer comerciantes francos y recaudar las rentas del peregrinaje.", "Cultura: El Palacio de los Reyes de Navarra, edificado a finales del siglo XII, constituye el único ejemplo de arquitectura civil románica conservado en la comunidad foral. En su fachada destaca un capitel firmado por el escultor Martín de Logroño.", "Cultura: En una de las crujías del claustro románico de San Pedro de la Rúa se conserva un capricho arquitectónico excepcional: cuatro columnas exentas torsas e intrincadamente entrelazadas entre sí que sostienen uno de los arcos.", "Naturaleza: En las laderas del entorno crecen ejemplares de zumaque, un arbusto de origen oriental introducido en época medieval para curtir pieles en las tenerías locales, cuyas hojas se tiñen de rojo intenso al llegar el otoño.", "a12", "camino_de_santiago", "románico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -16809,7 +17977,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 42.6611,
         "lng": -2.0382,
-        "radio": 3000
+        "radio": 3000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El rey García Sánchez III de Nájera fundó en este cenobio el primer hospital de peregrinos documentado de Navarra en el siglo XI, destinado a dar cobijo y cuidados a los caminantes del Camino de Santiago.",
+          "Curiosidad: A escasos metros del monasterio se halla la célebre Fuente del Vino, instalada en los noventa para rememorar la costumbre medieval de los monjes, quienes recibían a los peregrinos ofreciéndoles una copa de vino reconstituyente.",
+          "Historia: El conjunto monumental fusiona estilos de varias épocas: conserva una iglesia románica de cabecera con naves cistercienses del siglo XII, un claustro plateresco renacentista del siglo XVI y una torre de estilo herreriano del XVII.",
+          "Historia: A lo largo de sus más de mil años de existencia, el complejo ha albergado un cenobio benedictino, la Universidad de Irache en los siglos XVI y XVII, un hospital de guerra e incluso un colegio religioso.",
+          "Cultura: Bajo el abadiado de San Veremundo, en la segunda mitad del siglo XI, el monasterio alcanzó su mayor apogeo espiritual y patrimonial, convirtiendo al abad en patrón de los peregrinos en esta ruta jacobea navarra."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/estella-lizarra.png",
@@ -16829,7 +18005,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 124,
     cooldownMin: 65,
-    intereses: ["san_francisco_javier", "a21", "fortaleza"],
+    intereses: ["Historia: En 1516, tras la anexión de Navarra por la corona castellana, el cardenal Cisneros ordenó la demolición parcial de la fortaleza: desmochó sus torres, cegó los fosos e inutilizó saeteras y defensas.", "Cultura: En esta fortaleza nació en 1506 san Francisco Javier, cofundador de la Compañía de Jesús junto a san Ignacio de Loyola, misionero en Asia y copatrón de la Comunidad Foral de Navarra.", "Historia: El castillo surgió en la segunda mitad del siglo X como una torre defensiva de señales en la frontera entre Navarra y Aragón, sobre la que posteriormente se ampliaron estancias y murallas medievales.", "Curiosidad: El nombre del castillo procede del euskera 'etxeberri' (casa nueva), voz que evolucionó fonéticamente en romance navarroaragonés hasta dar denominación a la fortaleza, al santo y al municipio.", "Curiosidad: Cada mes de marzo se celebran las Javieradas, una multitudinaria peregrinación tradicional en la que miles de personas caminan decenas de kilómetros desde distintos municipios navarros hacia el castillo.", "san_francisco_javier", "a21", "fortaleza"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/castillo-de-javier.png",
@@ -16849,7 +18025,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 121,
     cooldownMin: 60,
-    intereses: ["cerro", "románico", "panoramica"],
+    intereses: ["Historia: En el santuario de Santa María se conserva el corazón embalsamado del rey Carlos II el Malo de Navarra, depositado allí por su expresa voluntad testamentaria tras su fallecimiento en 1387.", "Ingeniería: Durante el siglo XIV, Carlos II ordenó transformar la antigua iglesia románica sustituyendo sus naves por un amplio tramo gótico y rodeando el templo de pasillos de ronda elevados y torres almenadas defensivas.", "Cultura: La escultura titular de Santa María de Ujué es una talla románica en madera de la segunda mitad del siglo XII, recubierta posteriormente en el siglo XIV con planchas de plata y latón dorado.", "Cultura: Emplazada a 815 metros de altitud en la sierra homónima, la villa constituye una atalaya natural desde la que es posible divisar simultáneamente la Ribera de Navarra, el Moncayo y la cordillera pirenaica.", "Curiosidad: La tradición popular atribuye el origen del pueblo al hallazgo milagroso de la figura de la Virgen por un pastor guiado por una paloma, ave de cuya denominación en euskera (uxua) procede el topónimo Uxue.", "cerro", "románico", "panoramica"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ujue-gran-balcon-de-la-navarra-media.png",
@@ -17149,7 +18325,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 134,
     cooldownMin: 80,
-    intereses: ["bombardeo", "libertades_vascas", "urdaibai", "a8"],
+    intereses: ["Historia: El Árbol de Gernika es un roble foral donde históricamente se juraban las leyes tradicionales de Bizkaia. Frente a él sigue realizando la toma de posesión y juramento de su cargo el Lehendakari del Gobierno Vasco.", "Historia: El 26 de abril de 1937, durante la Guerra Civil, la aviación alemana e italiana bombardeó y arrasó Gernika, convirtiendo a la villa en el primer ataque aéreo masivo indiscriminado de la historia contra una población civil indefensa.", "Cultura: Tras el bombardeo de 1937, Pablo Picasso pintó «Guernica» por encargo de la República Española para la Exposición Internacional de París, convirtiendo la tragedia de la villa en una de las obras de arte más emblemáticas de la paz.", "Ingeniería: La Casa de Juntas alberga una vidriera de 235 metros cuadrados instalada en 1985 como cubierta artesanal. La estructura muestra en su centro el Árbol de Gernika y representa la historia e instituciones forales de Bizkaia.", "Naturaleza: Gernika-Lumo se ubica en el valle del río Oka, integrado en la Reserva de la Biosfera de Urdaibai declarada por la UNESCO, un espacio protegido de marismas y humedales de elevada biodiversidad.", "bombardeo", "libertades_vascas", "urdaibai", "a8"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -17160,7 +18336,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 43.3152,
         "lng": -2.6774,
-        "radio": 2500
+        "radio": 2500,
+        "intereses_originales": [],
+        "intereses": [
+          "Cultura: El Árbol de Gernika es el roble histórico bajo el cual se juraban tradicionalmente los Fueros de Bizkaia. Hoy en día constituye el lugar institucional donde los lehendakaris juran su cargo al asumir la presidencia vasca.",
+          "Historia: Durante el devastador bombardeo de Gernika en abril de 1937 por la Legión Cóndor, tanto la Casa de Juntas como el Árbol sobrevivieron intactos en medio del fuego y la destrucción casi total de la villa.",
+          "Historia: Construida entre 1826 y 1833 según el proyecto neoclásico del arquitecto Antonio de Echevarría, la Casa de Juntas fue concebida como iglesia-parlamento sobre la antigua ermita de Santa María la Antigua para albergar las asambleas del Señorío.",
+          "Cultura: El interior del complejo alberga la Sala de la Vidriera, cubierta por un vitral artesanal de gran tamaño instalado en 1985 que plasma el Árbol de Gernika y la tradición de las asambleas forales.",
+          "Curiosidad: En el jardín del recinto se conserva bajo un templete de columnas diseñado en 1929 el tronco petrificado del denominado «Árbol Viejo», un ejemplar seco desde 1892 que se mantiene como vestigio histórico."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/gernika-lumo.png",
@@ -17180,7 +18364,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 125,
     cooldownMin: 75,
-    intereses: ["senderismo", "caliza", "duranguesado", "ap8"],
+    intereses: ["Cultura: Según la mitología vasca, la cueva situada en la cara este del pico Anboto, a 1.200 metros de altitud, es la residencia principal de la diosa Mari.", "Naturaleza: El parque alberga las cresterías calizas del Duranguesado y la sierra de Aramotz, alcanzando su cota más elevada en el pico Anboto a 1.331 metros de altitud.", "Naturaleza: Desde el centro de visitantes Toki Alai parte la ruta al monte Saibi, un itinerario de cuatro kilómetros de recorrido con vistas panorámicas sobre los macizos del parque.", "Naturaleza: Las crestas de Urkiola ejercen de divisoria de aguas entre la cuenca cantábrica y la mediterránea, generando intensas precipitaciones y un rápido cambio hacia pisos de vegetación alpina y hayedos.", "Naturaleza: El macizo está formado por calizas cretácicas de gran espesor, cuyo relieve kárstico provoca la filtración del agua de lluvia a cavernas subterráneas y escasez de ríos superficiales.", "senderismo", "caliza", "duranguesado", "ap8"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-urkiola.png",
@@ -17200,7 +18384,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 120,
     cooldownMin: 60,
-    intereses: ["ap8", "duranguesado", "casco_historico"],
+    intereses: ["Historia: El 31 de marzo de 1937, Durango sufrió un devastador bombardeo por parte de la Aviazione Legionaria italiana. El ataque provocó más de trescientos muertos y convirtió a la villa en una de las primeras poblaciones civiles bombardeadas.", "Cultura: La Cruz de Kurutziaga, un crucero gótico del siglo XV, se vincula con la secta de los Herejes de Durango encabezada por fray Alonso de Mella. La tradición sostiene que fue erigida como monumento expiatorio tras la persecución inquisitorial.", "Cultura: La Basílica de Santa María de Uribarri destaca por albergar el pórtico cubierto de madera más grande del País Vasco. Esta enorme estructura diáfana sostenida por pilastras ha funcionado históricamente como espacio protegido para mercados y reuniones vecinales.", "Historia: En 1483, la reina Isabel la Católica pernoctó en la Torre de Lariz, el edificio civil más antiguo conservado en el casco histórico. Su estancia formó parte de la visita oficial para jurar los fueros de Vizcaya.", "Historia: La puerta renacentista de Santa Ana se levantó en 1566 y fue sustituida en 1743 por el arco barroco actual, el único acceso que permanece en pie de la antigua muralla de Durango.", "ap8", "duranguesado", "casco_historico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/durango.png",
@@ -17415,7 +18599,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 132,
     cooldownMin: 80,
-    intereses: ["flysch", "costa", "acantilados", "geologia"],
+    intereses: ["Naturaleza: En la ensenada de Algorri aflora una delgada capa de arcilla rica en iridio que atestigua el impacto meteorítico ocurrido hace 66 millones de años, causante de la extinción masiva del límite Cretácico-Paleógeno.", "Naturaleza: El acantilado del flysch se extiende 13 kilómetros por la costa cantábrica desde la desembocadura del río Urola en Zumaia hasta Mutriku, con paredes verticales que alcanzan en algunos tramos hasta 150 metros de caída sobre el mar.", "Naturaleza: La ruta del sendero GR 121 entre Zumaia y Deba recorre 14 kilómetros con un desnivel acumulado de 649 metros, atravesando los acantilados de Sakoneta y atalayas panorámicas situadas junto al mar Cantábrico.", "Naturaleza: El continuo embate del oleaje cantábrico y las precipitaciones erosionan de forma desigual la costa, desgastando las capas blandas de margas y lutitas mientras resaltan las láminas duras de caliza y arenisca.", "Cultura: Sobre un acantilado del flysch se erige la ermita de San Telmo, patrono de los marineros y construida en el siglo XVI, que sirvió como localización cinematográfica en la película Ocho apellidos vascos.", "flysch", "costa", "acantilados", "geologia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/flysch-de-zumaia.png",
@@ -17435,7 +18619,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 131,
     cooldownMin: 75,
-    intereses: ["frontera", "bahia_de_txingudi", "murallas", "a8"],
+    intereses: ["Historia: En 1638, la villa resistió un asedio francés de 69 días con apenas 700 defensores frente a 18.000 soldados atacantes. La victoria originó el Alarde, festividad tradicional que aún hoy conmemora aquella resistencia.", "Ingeniería: El recinto amurallado levantado entre los siglos XVI y XVII empleó sillería y mampostería de piedra caliza de Jaizkibel, estructurado en baluartes diseñados para soportar los impactos de la artillería de época.", "Curiosidad: En el barrio marinero de La Marina, las fachadas y balcones de entramado de madera se pintaban tradicionalmente con los restos de pintura sobrantes tras impermeabilizar y reparar las embarcaciones pesqueras.", "Cultura: En el punto más elevado del casco histórico se alza el Castillo de Carlos V, una imponente fortaleza de origen medieval con muros de piedra de gran grosor reconvertida en Parador de Turismo.", "frontera", "bahia_de_txingudi", "murallas", "a8"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -17446,7 +18630,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.3382,
         "lng": -1.7893,
-        "radio": 6000
+        "radio": 6000,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: Ubicada en el río Bidasoa, la Isla de los Faisanes es el condominio más pequeño del mundo. Su administración se alterna cada seis meses entre España e Italia a través de los ayuntamientos de Irún y Hendaya.",
+          "Historia: Bajo la urbe actual se descubrieron los restos de Oiasso, una relevante ciudad portuaria del Imperio romano del siglo I d. C. cuyo muelle y termas públicas se custodian en el Museo Romano Oiasso.",
+          "Historia: El 30 de junio de 1522, tropas locales vencieron al ejército franco-navarro en el monte Aldabe. En recuerdo de esa victoria se erigió la ermita de San Marcial y nació la tradición del Alarde de Armas.",
+          "Ingeniería: En las laderas de Aiako Harria se conserva la batería de hornos de calcinación de Irugurutzeta, donde se quemaba el carbonato de hierro mediante capas alternas de carbón para elevar la ley metálica del mineral extraído."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/hondarribia.png",
@@ -17466,7 +18657,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 124,
     cooldownMin: 65,
-    intereses: ["ignacio_de_loyola", "urola", "barroco"],
+    intereses: ["Historia: El santuario se levantó envolviendo la casa torre medieval familiar donde nació Íñigo de Loyola en 1491 y donde, convaleciente de una herida de guerra sufrida en 1521, comenzó su conversión espiritual.", "Ingeniería: El proyecto fue diseñado en Roma por el arquitecto italiano Carlo Fontana, discípulo de Bernini, concebido como una gran planta circular integrada en un frente monumental de 150 metros de longitud.", "Ingeniería: Para construir la basílica y su cúpula de 65 metros de altura exterior, se emplearon bloques de mármol y caliza extraídos de las canteras del cercano monte Izarraitz por cientos de canteros locales.", "Cultura: La estatua de plata de San Ignacio que preside el altar mayor churrigueresco fue regalada en 1758 por la Real Compañía Guipuzcoana de Caracas.", "ignacio_de_loyola", "urola", "barroco"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/santuario-de-loyola.png",
@@ -17486,7 +18677,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 123,
     cooldownMin: 60,
-    intereses: ["surf", "a8", "litoral", "playa_larga"],
+    intereses: ["Cultura: La reina Isabel II eligió Zarautz como residencia estival en 1865 alojándose en el palacio de Narros, hito que transformó la villa pesquera en un destino de veraneo de referencia para la aristocracia.", "Naturaleza: Con 2,5 kilómetros de longitud, la playa de Zarautz es la más extensa de Gipuzkoa y del País Vasco, lo que le valió el sobrenombre popular de «la Reina de las Playas».", "Curiosidad: El cocinero Karlos Arguiñano inauguró en 1979 su restaurante en Villa Aiala, un palacete señorial a pie de playa de principios del siglo XX, ampliándolo posteriormente en 1990 con la apertura de su hotel.", "Historia: Sobre el arco del Palacio de Narros figura el blasón con el lema «Zarauz antes que Zarauz», en referencia al linaje medieval anterior a la constitución formal de la villa por Fernando III en 1237.", "Cultura: Zarautz es una cuna histórica del surf en España: en el verano de 1967 comenzaron a correrse olas con tabla en su playa y en 1969 se organizó allí el primer campeonato estatal de este deporte.", "surf", "a8", "litoral", "playa_larga"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -17497,7 +18688,15 @@ export const POIS = [
         "nivel": 1,
         "lat": 43.3035,
         "lng": -2.205,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Juan Sebastián Elcano nació en Getaria hacia 1486 y tomó el mando de la nao Victoria tras la muerte de Magallanes, completando en 1522 la primera circunnavegación documentada de la Tierra.",
+          "Cultura: El célebre modisto Cristóbal Balenciaga nació en Getaria en 1895. Aprendió el oficio junto a su madre costurera y hoy la villa acoge su museo monográfico junto al Palacio Aldamar.",
+          "Ingeniería: El monte San Antón, conocido como el «Ratón de Getaria» por su silueta, fue una isla independiente hasta el siglo XVI, cuando los vecinos construyeron un tómbolo artificial para unirlo a tierra firme.",
+          "Cultura: Bajo el suelo inclinadamente adaptado de la iglesia gótica de San Salvador discurre el pasadizo de Katrapona, una antigua galería defensiva de la muralla que conecta la calle Mayor directamente con el puerto.",
+          "Curiosidad: Las primeras ordenanzas de Gipuzkoa, aprobadas en Getaria en 1397, castigaban con pena de muerte a quien destruyera viñedos, protegiendo así la incipiente producción de vino txakoli en la provincia."
+        ]
       },
       {
         "id": "es_pv_gipuzkoa_orio",
@@ -17506,7 +18705,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 43.2788,
         "lng": -2.126,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: El 14 de mayo de 1901, marineros de Orio capturaron a arponazos y con dinamita la última ballena franca registrada en la costa vasca, acontecimiento histórico que la localidad rememora periódicamente en el denominado «Balearen Eguna».",
+          "Cultura: En Orio nació en 1908 el escultor Jorge Oteiza, una de las figuras clave del arte abstracto del siglo XX y creador del conocido Friso de los Apóstoles en la Basílica de Arantzazu.",
+          "Cultura: En el trazado del Camino de Santiago del Norte se erige la ermita de San Martín de Tours, templo del siglo XVI levantado sobre una construcción del siglo XII que domina la desembocadura del río Oria.",
+          "Curiosidad: La Cofradía de Mareantes de Orio oficializó sus ordenanzas escritas en 1520 a raíz de una disputa con el párroco local sobre las limosnas obligatorias destinadas a la ermita de San Martín."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/zarautz.png",
@@ -17546,7 +18752,7 @@ export const POIS = [
     perfil: "datos",
     prioridad: 116,
     cooldownMin: 60,
-    intereses: ["ap1", "mondragon", "cooperativas", "alto_deba"],
+    intereses: ["Naturaleza: En la cueva de Lezetxiki se halló un húmero fósil con más de 160.000 años de antigüedad, considerado uno de los restos humanos más antiguos documentados en el País Vasco.", "Cultura: En 1956, por impulso del sacerdote José María Arizmendiarrieta y cinco jóvenes técnicos, se fundó el taller Ulgor, embrión de la Corporación Mondragón y referente internacional del movimiento cooperativo.", "Historia: En 1260, el rey Alfonso X el Sabio otorgó la carta puebla a la población de Arrasate y dispuso en el documento cambiar su nombre oficial por el de Mondragón.", "Curiosidad: Según la tradición popular local, un monstruoso dragón llamado Herensuge atemorizaba los caseríos desde el monte Udalatx hasta que fue derrotado por los antiguos ferrones de la villa.", "ap1", "mondragon", "cooperativas", "alto_deba"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/arrasate-mondragon.png",
@@ -17824,7 +19030,7 @@ export const POIS = [
     perfil: "datos",
     prioridad: 132,
     cooldownMin: 70,
-    intereses: ["sal", "ap68", "tradicion", "geologia"],
+    intereses: ["Historia: Investigaciones arqueológicas sitúan el origen de la extracción salinera hace 7.500 años; en la Prehistoria la salmuera se hervía en recipientes cerámicos sobre fuego que debían romperse para extraer los bloques de sal.", "Naturaleza: El agua de lluvia atraviesa en el subsuelo un diapiro salino originado en el Triásico, brotando en cuatro manantiales principales con una concentración salina superior a 210 gramos por litro.", "Ingeniería: El complejo cuenta con una red de canales de madera que distribuye la salmuera por gravedad hacia miles de terrazas o eras elevadas sobre la ladera mediante pilotes de madera y mampostería.", "Curiosidad: En 2017, la FAO declaró el Valle Salado como Sistema Importante del Patrimonio Agrícola Mundial, reconociendo el valor agronómico y cultural de sus métodos tradicionales de producción.", "sal", "ap68", "tradicion", "geologia"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -17835,7 +19041,15 @@ export const POIS = [
         "nivel": 3,
         "lat": 42.8167,
         "lng": -2.9853,
-        "radio": 4500
+        "radio": 4500,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Durante la Tercera Guerra Carlista en 1875, el ejército isabelino construyó las torres fortificadas de Vayagüen, Almoreta y El Encinal para vigilar y proteger el paso estratégico de tropas entre Miranda de Ebro y Vitoria.",
+          "Historia: En 1940 el régimen franquista instaló junto al río Zadorra un campo de concentración donde los cautivos picaban roca caliza para rebajar el terreno y levantar barracones, antes de convertirse en recinto penitenciario.",
+          "Ingeniería: El antiguo horno de El Calero es una torre industrial del siglo XIX concebida para la calcinación continua de la piedra caliza extraída del entorno y su transformación en cal, restaurada e integrada en un parque urbano.",
+          "Curiosidad: Inaugurado en 1890, el Balneario de Bolen albergó un hotel de más de cien habitaciones levantado para aprovechar las aguas minero-medicinales de la zona, complejo que tras su decadencia terminó convertido en colegio religioso.",
+          "Curiosidad: En la plaza principal se ubica la Fuente de los Doce Caños, una construcción de piedra caliza de planta cuadrada erigida en 1901 que distribuye el agua a través de cuatro surtidores en cada uno de sus lados."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valle-salado-de-anana.png",
@@ -17855,7 +19069,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 128,
     cooldownMin: 75,
-    intereses: ["cascada", "valle_de_ayala", "mirador", "frontera"],
+    intereses: ["Naturaleza: Con 222 metros de caída libre, el salto se forma cuando el río Delika, originado por los arroyos Iturrigutxi, Ajiturri y Urita, se despeña por los cortados calizos del cañón de Delika hacia el valle.", "Naturaleza: En el camino hacia el mirador destaca la lobera restaurada de Monte Santiago, una trampa ganadera tradicional formada por muros convergentes de piedra de casi 500 metros que dirigían a los lobos a un foso.", "Naturaleza: El sendero PR-BU 42 conecta la Casa del Parque de Fuente Santiago con el Mirador del Salto del Nervión en un itinerario lineal de casi dos kilómetros sin apenas desnivel a través de un frondoso hayedo.", "Naturaleza: El suelo kárstico de la meseta filtra rápidamente las precipitaciones al subsuelo, convirtiendo la gran cascada en un fenómeno estacional que solo fluye tras intensas lluvias o durante el deshielo invernal.", "cascada", "valle_de_ayala", "mirador", "frontera"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -17866,7 +19080,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 42.9959,
         "lng": -3.0096,
-        "radio": 5000
+        "radio": 5000,
+        "intereses_originales": [],
+        "intereses": [
+          "Naturaleza: En época invernal se registra el fenómeno de «El Bollo», cuando la niebla fría del valle de Losa se derrama sobre los cantiles de Sierra Salvada formando una masa nubes giratorias que cae hacia el valle de Orduña.",
+          "Naturaleza: El puerto de Orduña salva los cortados calizos de Sierra Salvada bajo el monte Txarlazo, a 938 metros de altitud, desde donde arranca la hondonada del cañón de Delika y la cuenca del río Nervión.",
+          "Naturaleza: La Senda Verde de Delika completa un itinerario de cinco kilómetros ida y vuelta con 115 metros de desnivel acumulado, adentrándose entre robles y hayas por el fondo del cañón hacia la base del Salto del Nervión.",
+          "Naturaleza: Los paredones rocosos que enmarcan el puerto son zona de anidación del buitre leonado, alimoche y halcón peregrino, rapaces que aprovechan las fuertes corrientes térmicas ascendentes provocadas por el desnivel de la sierra.",
+          "Historia: En la cima del monte Txarlazo se halla el monumento a la Virgen de la Antigua, inaugurado en 1903 y diseñado por Claudio Durán y Ventosa como una estructura monumental de 25 metros con forma de tronco de morera."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/salto-del-nervion.png",
@@ -17886,7 +19108,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 126,
     cooldownMin: 70,
-    intereses: ["gorbeia", "hayedos", "senderismo", "n622"],
+    intereses: ["Naturaleza: En el límite occidental alavés de Urkabustaiz, el arroyo Oiardo se despeña en la cascada de Gujuli, formando un salto vertical de 105 metros sobre un cañón calizo.", "Naturaleza: El pico Gorbeia alcanza 1.482 metros de altitud en la divisoria provincial, dando nacimiento en la vertiente alavesa al río Bayas, que discurre hacia el sur articulando el valle de Zuia.", "Naturaleza: La Senda Bayas-Gorbea inicia su recorrido en el Parketxe de Sarria y remonta el cauce del río Bayas a lo largo de 11 kilómetros hasta coronar la cima principal del macizo.", "Naturaleza: El macizo actúa como barrera climática ante los vientos cantábricos, haciendo que la vertiente sur alavesa registre precipitaciones inferiores a 1.200 mm anuales, frente a la zona norte más húmeda.", "Cultura: La tradición popular atribuye el origen del salto de Gujuli al hechizo de una lamia sobre el pastor Urjauzi, a quien transformó en cascada por sustraerle su espejo mágico.", "gorbeia", "hayedos", "senderismo", "n622"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-gorbeia-vertiente-alavesa.png",
@@ -17906,7 +19128,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 123,
     cooldownMin: 70,
-    intereses: ["roble_marojal", "montaña_alavesa", "senderismo", "a132"],
+    intereses: ["Naturaleza: Izki alberga una de las mayores reservas continuas de roble marojo (Quercus pyrenaica) de Europa, bosque que acoge la población reproductora más destacada del pájaro carpintero pico mediano.", "Naturaleza: El monte Kapildui señala la altitud máxima del parque con 1.176 metros, mientras que el río Izki vertebra el valle discurriendo de oeste a este sobre una extensa cubeta arenosa.", "Naturaleza: La senda oficial de Bujanda arranca en el pueblo de Korres y recorre 3,5 kilómetros con 125 metros de desnivel acumulado bordeando el angosto desfiladero del río Izki.", "Historia: La villa de Korres constituye el único núcleo habitado situado dentro de los límites del parque natural y mantiene una estructura de origen medieval junto a ruinas de su antigua fortaleza.", "Naturaleza: Su posición entre el clima atlántico y el mediterráneo a unos 800 metros de altitud media produce precipitaciones entre 600 y 800 mm anuales, veranos templados e inviernos fríos con heladas habituales.", "roble_marojal", "montaña_alavesa", "senderismo", "a132"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/parque-natural-de-izki.png",
@@ -17926,7 +19148,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 121,
     cooldownMin: 60,
-    intereses: ["roma", "zadorra", "alava", "n622"],
+    intereses: ["Historia: En 2024 las investigaciones revelaron los restos en el subsuelo de un gran circo romano de 280 metros de largo, el único del norte peninsular que conserva su trazado original sin estar cubierto por edificaciones modernas.", "Historia: La ciudad romana de Veleia cobró vital importancia estratégica por su ubicación en el trazado de la calzada romana Iter XXXIV, la principal vía de comunicación que unía Astorga con Burdeos.", "Ingeniería: Durante la crisis del siglo III d. C. la ciudad se fortificó con una muralla de 1,5 kilómetros de perímetro, cuyos muros alcanzaban entre 4,5 y 5,5 metros de espesor y conservan cimientos de 16 torres.", "Curiosidad: El asentamiento antiguo se levantó en el cerro de Arkiz, una elevación delimitada y protegida de forma natural en tres de sus lados por un pronunciado meandro del río Zadorra.", "roma", "zadorra", "alava", "n622"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/yacimiento-de-iruna-veleia.png",
@@ -18152,7 +19374,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 132,
     cooldownMin: 75,
-    intereses: ["a7", "barroco", "castillo", "guadalentin"],
+    intereses: ["Historia: Hallada en 2003 dentro del castillo, la sinagoga de Lorca es la única de España que permaneció intacta sin reconvertirse jamás en templo cristiano tras la expulsión judía de 1492.", "Ingeniería: En 1802, la rotura del pantano de Puentes provocó una gran catástrofe hídrica al ceder sus compuertas de madera por haber edificado la presa sobre cimientos inestables y terrenos arenosos.", "Historia: La antigua Colegiata de San Patricio se erigió dedicada al patrón irlandés para conmemorar la victoria de los lorquinos frente a los nazaríes en la batalla de los Alporchones, librada el 17 de marzo de 1452.", "Cultura: Durante la Edad Moderna, las familias nobles de Lorca compitieron por reflejar su estatus social esculpiendo elaborados escudos de armas señoriales en las fachadas de sus palacios urbanos.", "a7", "barroco", "castillo", "guadalentin"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -18163,7 +19385,14 @@ export const POIS = [
         "nivel": 1,
         "lat": 37.6748,
         "lng": -1.7008,
-        "radio": 5500
+        "radio": 5500,
+        "intereses_originales": [],
+        "intereses": [
+          "Curiosidad: En 2003 se descubrieron dentro del recinto fortificado los restos de una judería del siglo XV y su sinagoga, el único templo judío en España jamás reconvertido posteriormente en iglesia u otro lugar de culto.",
+          "Ingeniería: La Torre Alfonsina alcanza casi 30 metros de altura sobre muros de cuatro metros de grosor, articula sus tres plantas con un pilar central y está cubierta por bóvedas esquifadas de ladrillo apoyadas en pechinas.",
+          "Historia: Tras la conquista cristiana en 1244, el infante Alfonso de Castilla —futuro Alfonso X el Sabio— ordenó edificar la Torre Alfonsina y reforzar la fortaleza para convertirla en baluarte estratégico frente al Reino Nazarí de Granada.",
+          "Ingeniería: Con 640 metros de longitud y un recinto amurallado de más de 1400 metros de perímetro, constituye una de las alcazabas defensivas de mayor extensión en la península ibérica."
+        ]
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/lorca-gran-ciudad-historica-del-eje-a-7.png",
@@ -18183,7 +19412,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 124,
     cooldownMin: 65,
-    intereses: ["a%C3%B1o_jubilar", "santuario", "interior", "rm15"],
+    intereses: ["Cultura: La Santa Sede le concedió en 1998 el Año Jubilar «in perpetuum», permitiendo ganar la indulgencia plenaria cada siete años desde 2003, compartiendo este privilegio jubilar perpetuo con Roma, Jerusalén, Santiago de Compostela y Santo Toribio de Liébana.", "Cultura: Cada 2 de mayo se celebra la carrera de los Caballos del Vino, festejo declarado Patrimonio Cultural Inmaterial por la UNESCO en 2020, donde caballos enjaezados con ricos mantos bordados en seda y oro ascienden a toda velocidad la cuesta del castillo.", "Historia: El santuario custodia la Vera Cruz, un relicario con un fragmento del Lignum Crucis. Según la tradición local, la cruz se apareció en 1232 ante el rey musulmán Abu Zeid durante una misa officiada por el sacerdote cautivo Ginés Pérez de Chirinos.", "Historia: La basílica-santuario se proyectó en 1617 por el arquitecto carmelita fray Alberto de la Madre de Dios dentro del recinto fortificado islámico, construido originalmente en el siglo XII y custodiado históricamente por la Orden del Temple y la de Santiago.", "Curiosidad: La llamativa fachada barroca del santuario, agregada en el siglo XVIII a la sobria estructura de raíz herreriana, fue esculpida utilizando mármoles y jaspes locales de tonos rojos y negros extraídos de las canteras de la zona.", "a%C3%B1o_jubilar", "santuario", "interior", "rm15"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/caravaca-de-la-cruz.png",
@@ -18203,7 +19432,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 123,
     cooldownMin: 60,
-    intereses: ["laguna_salada", "n332", "ap7", "deporte_nautico"],
+    intereses: ["Naturaleza: En el paraje de Las Encañizadas se conserva un sistema tradicional de pesca de origen árabe hecho con cañas y estacas en las golas naturales, diseñado para capturar peces migratorios como el mújol o la dorada.", "Naturaleza: El Mar Menor es la mayor laguna litoral de España, con 135 km² de superficie y 7 metros de profundidad máxima, separada del mar Mediterráneo por la franja arenosa de La Manga, de 22 kilómetros de longitud.", "Naturaleza: El sendero de la Playa de la Hita en San Javier, integrado en la ruta de gran recorrido GR-92, permite recorrer a pie o en bicicleta la orilla protegida entre carrizales hasta el límite con Los Alcázares.", "Naturaleza: Con precipitaciones inferiores a 300 mm anuales y una elevada evaporación, el clima mediterráneo seco eleva la salinidad de la laguna a valores de entre 42 y 47 g/l, superiores a los del mar Mediterráneo.", "Naturaleza: El interior del Mar Menor alberga cinco islas de origen volcánico, como la Isla Mayor o del Barón, y constituye un refugio clave para especies singulares como el caballito de mar y la nacra.", "laguna_salada", "n332", "ap7", "deporte_nautico"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/mar-menor-y-san-javier.png",
@@ -18223,7 +19452,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 122,
     cooldownMin: 55,
-    intereses: ["faro", "reserva_marina", "mediterraneo", "ap7"],
+    intereses: ["Naturaleza: La Reserva Marina de Cabo de Palos e Islas Hormigas abarca casi 19 kilómetros cuadrados. Sus fondos combinan montañas submarinas con amplias praderas de la planta marina Posidonia oceanica, que favorecen un ecosistema de alta biodiversidad.", "Naturaleza: Cabo de Palos es una península de origen volcánico de unos 600 metros de longitud. Constituye el extremo litoral de la cordillera Bética, prolongándose bajo el Mediterráneo hasta emerger en las islas Hormigas y escollos como el Bajo de Fuera.", "Naturaleza: El itinerario oficial Sendero Azul La Manga - Cabo de Palos suma 7,5 kilómetros ida y vuelta. Recorre el espacio litoral de Las Amoladeras, la playa de Levante y los miradores de los acantilados marinos.", "Naturaleza: Su clima mediterráneo semiárido registra precipitaciones medias anuales de entre 260 y 364 milímetros. Los frecuentes vientos de levante canalizados por la orografía provocan un intenso oleaje y corrientes constantes en los acantilados del cabo.", "Ingeniería: El Faro de Cabo de Palos, proyectado por el ingeniero Leonardo de Tejada e inaugurado en 1865, consta de una torre de sillería de 51 metros sobre un edificio prismático de base cuadrada, situado a 30 metros de altitud sobre el mar.", "faro", "reserva_marina", "mediterraneo", "ap7"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cabo-de-palos.png",
@@ -18243,7 +19472,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 121,
     cooldownMin: 60,
-    intereses: ["a33", "bodegas", "altiplano", "interior"],
+    intereses: ["Cultura: En la necrópolis del poblado ibérico de Coimbra del Barranco Ancho se hallaron unos pendientes de oro del siglo IV a.C. con forma de racimo de uva. La imagen de estas joyas sirve de modelo para los trofeos del vino jumillano.", "Naturaleza: En el yacimiento de Hoya de la Sima se conservan huellas fosilizadas en yeso de hace seis millones de años. Destacan las icnitas de camello prehistórico (*Paracamelus*), una evidencia única de esta especie en la Europa de esa época.", "Historia: El Castillo de Jumilla domina el valle sobre ocupaciones humanas continuadas desde la Edad del Bronce. Su fortaleza actual fue mandada levantar en el siglo XV por el Marqués de Villena, incorporando muros curvos pensados para resistir impactos artilleros.", "Cultura: Jumilla alberga célebres viñedos de uva Monastrell cultivados a pie franco. Sus cepas sobrevivieron a la plaga europea de filoxera a finales del siglo XIX gracias a las características arenosas y limoso-calcáreas del suelo del altiplano.", "a33", "bodegas", "altiplano", "interior"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/jumilla.png",
@@ -18263,7 +19492,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 119,
     cooldownMin: 55,
-    intereses: ["erosion", "mazarron", "gredas", "costa"],
+    intereses: ["Naturaleza: Declaradas Monumento Natural en 2019, las Gredas de Bolnuevo forman un relieve de hasta 10 metros de altura esculpido sobre margas, areniscas y conglomerados pliocenos al pie de la Sierra de las Moreras.", "Naturaleza: El Sendero Calas de Bolnuevo, distinguido como Sendero Azul, recorre 7,1 kilómetros desde la playa urbana bordeando las calas vírgenes del espacio protegido de la Sierra de las Moreras.", "Naturaleza: Bajo un clima mediterráneo árido con precipitaciones inferiores a 300 mm anuales, las lluvias torrenciales esporádicas y el viento esculpen la roca blanda creando oquedades y alveolos con patrón en nido de abeja.", "Naturaleza: Las areniscas de las gredas albergan microfósiles marinos de hace unos 4,5 millones de años, testimonios de la inundación de la cuenca tras la reapertura del estrecho de Gibraltar en el Plioceno.", "Historia: Junto a las gredas se alza la Torre de los Caballos (siglo XVI), atalaya defensiva vinculada a la tradición de 1585, cuando según la memoria local la Purísima repelió un desembarco de piratas berberiscos.", "erosion", "mazarron", "gredas", "costa"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bolnuevo-y-las-gredas-de-mazarron.png",
@@ -18303,7 +19532,7 @@ export const POIS = [
     perfil: "datos",
     prioridad: 118,
     cooldownMin: 55,
-    intereses: ["mineria", "sierra_minera", "cartagena", "ap7"],
+    intereses: ["Naturaleza: En el interior subterráneo de la mina Agrupa Vicenta existe un estanque de agua ácida teñido de tonos rojizos por efecto de la oxidación de la pirita disuelta en las rocas.", "Cultura: De la dureza del trabajo en los yacimientos de la sierra nacieron los cantes minero-levantinos, expresión flamenca que dio origen al Festival Internacional del Cante de las Minas de La Unión.", "Historia: Explotada desde tiempos cartagineses y romanos por sus minas de plomo y plata, la Sierra Minera vivió un gran auge en el siglo XIX que propició la creación del municipio de La Unión en 1860.", "Ingeniería: La mina Agrupa Vicenta se extrajo mediante el sistema de cámaras y pilares, una técnica que dejó enormes bóvedas vaciadas de mineral sustentadas por columnas rocosas a 80 metros de profundidad.", "Curiosidad: El conocido Camino del 33 se construyó en 1933 cruzando la sierra hacia el puerto de Portmán con el fin prioritario de dar empleo a los mineros en paro tras la crisis de los años veinte.", "mineria", "sierra_minera", "cartagena", "ap7"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/la-union-y-el-parque-minero.png",
@@ -18323,7 +19552,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 117,
     cooldownMin: 50,
-    intereses: ["a30", "segura", "frutales", "floracion"],
+    intereses: ["Historia: Sobre la ladera del cerro del Castillo se conserva Medina Siyâsa, un despoblado islámico de los siglos XI a XIII con más de 750 viviendas y yeserías ornamentales únicas en la arquitectura andalusí.", "Cultura: Entre febrero y marzo, los campos de melocotoneros, albaricoqueros y ciruelos tiñen el valle de la Vega Alta de tonos rosas y blancos, un fenómeno agrícola que atrae visitantes antes de la cosecha frutal.", "Historia: La Cueva del Arco alberga manifestaciones de arte rupestre paleolítico protegidas por la UNESCO y un yacimiento arqueológico con vestigios de fuego de neandertales de hace unos 45.000 años.", "Naturaleza: El río Segura ha labrado el Cañón de Almadenes, un cortado de paredes verticales de roca caliza que superan los 100 metros de altura, donde habitan la nutria y la culebrera o el búho real.", "a30", "segura", "frutales", "floracion"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cieza-gran-paso-frutal-del-eje-a-30.png",
@@ -18343,7 +19572,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 116,
     cooldownMin: 50,
-    intereses: ["castillo", "litoral", "mediterraneo", "sur"],
+    intereses: ["Ingeniería: El embarcadero del Hornillo, diseñado por el ingeniero británico Gustavo Gillman e inaugurado en 1903, empleó una estructura de hierro y hormigón con depósitos sobre túneles para permitir la carga directa de mineral de hierro en los buques.", "Historia: En la isla del Fraile, los arqueólogos hallaron almacenes romanos con ánforas que aún conservaban restos de garum, la célebre salsa de pescado elaborada en sus piletas de salazón entre los siglos IV y V d. C.", "Historia: El castillo de San Juan de las Águilas fue proyectado en el siglo XVIII por el ingeniero Sebastián Feringán para defender el litoral de los ataques berberiscos, favoreciendo el posterior repoblamiento y desarrollo de la ciudad moderna.", "Curiosidad: A principios del siglo XX, el escocés Hugh Pakenham Borthwick, conocido como Don Hugo, residió casi aislado en la isla del Fraile mientras colaboraba como agente británico vigilando el tráfico marítimo durante la Primera Guerra Mundial.", "Cultura: El Carnaval de Águilas, declarado Fiesta de Interés Turístico Internacional, destaca por tradiciones locales como la Suelta de la Mussona, las batallas con cascarones de huevo rellenos de confeti y la degustación de la cuerva.", "castillo", "litoral", "mediterraneo", "sur"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/aguilas.png",
@@ -18363,7 +19592,7 @@ export const POIS = [
     perfil: "naturaleza",
     prioridad: 116,
     cooldownMin: 50,
-    intereses: ["balneario", "a30", "termalismo", "segura"],
+    intereses: ["Naturaleza: El manantial termal emerge a 52,5 °C en la ribera del río Segura tras filtrarse durante 15.000 años bajo tierra. Sus aguas mineromedicinales brotan en un meandro fluvial a 100 metros de altitud.", "Cultura: Aprovechado desde épocas íbera y romana, el balneario fue renovado en el siglo XIX por el decorador Manuel Castaños, quien diseñó en 1898 una cúpula estrellada de mocárabes de inspiración alhambrista en el Hotel Termas.", "Naturaleza: El mirador del cerro del Ope, situado a 227 metros de altitud sobre la margen derecha del río Segura, constituye la puerta sur de acceso al Valle de Ricote y ofrece panorámicas de la Vega Media.", "Naturaleza: El clima semiárido de Archena registra más de 2.700 horas de sol al año y escasa lluvia, creando un acusado contraste paisajístico entre los cabezos ocres de matorral y el frondoso palmeral del río.", "Naturaleza: La surgencia termal de Archena se produce en la intersección entre la Falla de los Baños y la falla de la Vega Alta del Segura, punto de contacto geológico entre las zonas de la Cordillera Bética.", "balneario", "a30", "termalismo", "segura"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/archena-y-su-balneario.png",
@@ -19663,7 +20892,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 126,
     cooldownMin: 85,
-    intereses: ["necropolis_romana", "alcazar", "puerta_de_sevilla", "a4", "los_alcores", "tartessos", "parador"],
+    intereses: ["Historia: La necrópolis romana de Carmona se convirtió en 1885 en el primer yacimiento arqueológico excavado de forma sistemática y abierto al público como museo de sitio en España, impulsado por George Bonsor y Juan Fernández López.", "Curiosidad: En la Tumba del Elefante, la orientación solar de su ventana permite que la luz ilumine directamente la cámara principal solo durante los equinoccios de primavera y otoño, indicando una función astronómica vinculada a cultos orientales.", "Historia: Julio César destacó en su obra De Bello Civile que Carmona era la ciudad más fuerte de toda la provincia romana de la Bética, gracias a su inexpugnable situación defensiva en el escarpe de Los Alcores.", "Cultura: La Tumba de Servilia, datada en el siglo I, imita la arquitectura y distribución de una domus o lujosa casa romana, disponiendo sus cámaras funerarias alrededor de un amplio patio porticado esculpido en la roca.", "Historia: El Alcázar de la Puerta de Sevilla superpone vestigios de un bastión cartaginés del siglo III a. C., adiciones romanas de época de Augusto, un arco califal y remodelaciones medievales del rey Pedro I de Castilla.", "necropolis_romana", "alcazar", "puerta_de_sevilla", "a4", "los_alcores", "tartessos", "parador"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     sub_pois: [
@@ -19674,7 +20903,14 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.469,
         "lng": -5.652,
-        "radio": 4000
+        "radio": 4000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Inaugurada en 1885 por el arqueólogo Jorge Bonsor y el farmacéutico Juan Fernández López, la Necrópolis romana de Carmona fue el primer yacimiento arqueológico en abrirse a la visita pública y musealizarse en España.",
+          "Ingeniería: La Tumba de Servilia fue tallada en la roca imitando la arquitectura de una villa romana, con un gran patio central porticado o peristilo y diversas cámaras subterráneas decoradas con restos de pintura mural y relieves.",
+          "Curiosidad: La Tumba del Elefante recibe su nombre por una figura de piedra tallada hallada en su interior; el recinto albergaba un santuario dedicado al culto de divinidades orientales como Cibeles y Atis, dotado de su propio sistema hidráulico.",
+          "Cultura: El yacimiento conserva más de setecientas sepulturas excavadas directamente en la roca, datadas entre los siglos I y II d. C., donde el rito predominante fue la incineración y el depósito de cenizas en urnas dentro de hipogeos."
+        ]
       },
       {
         "id": "es_sev_alcazar_puerta_sevilla",
@@ -19683,7 +20919,15 @@ export const POIS = [
         "nivel": 2,
         "lat": 37.471,
         "lng": -5.645,
-        "radio": 4000
+        "radio": 4000,
+        "intereses_originales": [],
+        "intereses": [
+          "Historia: Julio César destacó la gran solidez defensiva de Carmona en el siglo I a. C. gracias al bastión romano construido sobre la fortificación cartaginesa previa en la Puerta de Sevilla.",
+          "Ingeniería: El complejo defensivo superpone murallas cartaginesas del siglo III a. C. con tosco almohadillado, puertas romanas de arco de medio punto y arcos de herradura califales y almohades.",
+          "Cultura: En el interior del patio se conserva un aljibe islámico de siete metros de profundidad excavado en la roca con seis lumbreras que recogía el agua de lluvia.",
+          "Curiosidad: El monumento fue declarado monumento histórico-artístico nacional en 1906, años antes de que la Giralda de Sevilla recibiera esa misma protección patrimonial.",
+          "Historia: En el siglo XV, tras la toma de Málaga por los Reyes Católicos, el alcaide musulmán Hamet el Zegrí permaneció prisionero en una de las torres de este alcázar."
+        ]
       }
     ],
   },
@@ -19702,7 +20946,7 @@ export const POIS = [
     perfil: "cultura",
     prioridad: 116,
     cooldownMin: 80,
-    intereses: ["ciudad_de_las_torres", "sarten_de_andalucia", "astigi", "mosaicos_romanos", "a4", "genil", "barroco"],
+    intereses: ["Historia: En época romana, la antigua Astigi fue capital de uno de los cuatro conventos jurídicos de la Bética y un importante centro exportador de aceite a Roma, como atestiguan las ánforas halladas en el monte Testaccio.", "Cultura: El Museo Histórico Municipal conserva la Amazona herida, una escultura romana de mármol del siglo II d. C. hallada en 2002 que destaca por superar los dos metros de altura y conservar restos de policromía original.", "Cultura: Se la conoce como la «ciudad de las torres» por sus 11 campanarios barrocos, levantados o remodelados principalmente en el siglo XVIII tras el terremoto de Lisboa y caracterizados por su ornamentación con azulejos polícromos.", "Cultura: El Palacio de Peñaflor, erigido en el siglo XVIII, luce una fachada curva decorada con pinturas al fresco y un balcón corrido de 59 metros de longitud, uno de los más largos de Europa.", "ciudad_de_las_torres", "sarten_de_andalucia", "astigi", "mosaicos_romanos", "a4", "genil", "barroco"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -20153,7 +21397,7 @@ export const POIS = [
     perfil: "historia",
     prioridad: 128,
     cooldownMin: 90,
-    intereses: ["numancia", "asedio", "escipion", "celtiberos", "resistencia_numantina", "soria", "roma", "garray"],
+    intereses: ["Curiosidad: La resistencia de Numancia obligó al Senado romano en el año 153 a. C. a adelantar el inicio del año consular de marzo a enero para enviar antes sus ejércitos, fijando desde entonces el comienzo del año el 1 de enero.", "Ingeniería: Para rendir la ciudad por hambre en el 134 a. C., Escipión construyó un muro de nueve kilómetros con torres, siete campamentos perimetrales y rastrillos sobre los ríos para impedir cualquier acceso o huida de los defensores.", "Historia: Agotados los víveres durante el cerco, en el verano del 133 a. C. gran parte de la población numantina prefirió quitarse la vida antes que entregarse como esclava a las legiones romanas.", "Cultura: Las excavaciones en el cerro de la Muela muestran la superposición de dos ciudades: el trazado celtibérico prerromano original y, construida encima, la ciudad romana posterior que se adaptó a la estructura urbana previa.", "numancia", "asedio", "escipion", "celtiberos", "resistencia_numantina", "soria", "roma", "garray"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
     musica: "asedio",

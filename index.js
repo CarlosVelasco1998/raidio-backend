@@ -206,6 +206,51 @@ async function saveQuizPool(topic, difficulty, pool, lang = "es") {
   await fs.writeFile(quizPoolFile(topic, difficulty, lang), JSON.stringify(pool));
 }
 
+function quizNormalize(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9 ]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const QUIZ_STOP_WORDS = new Set([
+  "de", "la", "el", "los", "las", "un", "una", "que", "en", "del",
+  "al", "por", "para", "con", "sin", "y", "o", "es", "fue", "era",
+  "son", "se", "cual", "donde", "cuando", "como",
+]);
+
+function quizTokens(value) {
+  return new Set(quizNormalize(value).split(" ").filter(w => w.length > 2 && !QUIZ_STOP_WORDS.has(w)));
+}
+
+function quizQuestionsSimilar(a, b) {
+  const na = quizNormalize(a);
+  const nb = quizNormalize(b);
+  if (!na || !nb) return false;
+  if (na === nb) return true;
+  if (na.length > 24 && nb.length > 24 && (na.includes(nb) || nb.includes(na))) return true;
+  const ta = quizTokens(a);
+  const tb = quizTokens(b);
+  if (!ta.size || !tb.size) return false;
+  let intersection = 0;
+  for (const token of ta) if (tb.has(token)) intersection++;
+  const union = new Set([...ta, ...tb]).size;
+  return (intersection / union >= 0.50 && intersection >= 3) ||
+    (Math.min(ta.size, tb.size) >= 4 && intersection >= 4);
+}
+
+function quizQuestionValid(question) {
+  if (!question || !quizNormalize(question.question)) return false;
+  if (!Array.isArray(question.options) || question.options.length !== 4) return false;
+  const options = question.options.map(quizNormalize);
+  if (options.some(option => !option) || new Set(options).size !== 4) return false;
+  if (!Number.isInteger(question.correct_index) || question.correct_index < 0 || question.correct_index > 3) return false;
+  return Boolean(String(question.explanation || "").trim());
+}
+
 // ─── POOL DE ROSCOS (juego "El Rosco", estilo Pasapalabra) ───────────────────
 const ROSCO_POOL_DIR = path.join(NARRATION_CACHE_DIR, "rosco-pool");
 
@@ -257,6 +302,8 @@ function roscoNormalize(s) {
     .replace(/[íìï]/g, "i")
     .replace(/[óòö]/g, "o")
     .replace(/[úùü]/g, "u")
+    .replace(/[^a-z0-9ñ ]/g, " ")
+    .replace(/\s+/g, " ")
     .trim();
 }
 
@@ -306,15 +353,26 @@ function mapRoscoEntries(parsed) {
 // no estén en la lista.
 function dedupeAndOrderRosco(entries, letters) {
   const byLetter = new Map();
+  const usedAnswers = new Set();
   for (const e of entries) {
     const L = String(e.letter || "").toUpperCase();
-    if (!byLetter.has(L)) byLetter.set(L, { ...e, letter: L });
+    const answer = roscoNormalize(e.answer);
+    if (!byLetter.has(L) && answer && !usedAnswers.has(answer)) {
+      byLetter.set(L, { ...e, letter: L });
+      usedAnswers.add(answer);
+    }
   }
   const out = [];
   for (const L of letters) {
     if (byLetter.has(L)) out.push(byLetter.get(L));
   }
   return out;
+}
+
+function roscoSetValid(set, letters) {
+  if (!set || !Array.isArray(set.letters) || set.letters.length !== letters.length) return false;
+  const ordered = dedupeAndOrderRosco(set.letters.filter(roscoEntryValid), letters);
+  return ordered.length === letters.length;
 }
 
 function buildRoscoReviewPrompt(letters, draft) {
@@ -1061,7 +1119,14 @@ app.get("/quiz/pool/stats", async (_req, res) => {
 
 app.post("/quiz/question", guard, async (req, res) => {
   try {
-    const { topic = "cultura_general", difficulty = "easy", usedIds = [], customTopic = "", lang = "es" } = req.body || {};
+    const {
+      topic = "cultura_general",
+      difficulty = "easy",
+      usedIds = [],
+      usedQuestions = [],
+      customTopic = "",
+      lang = "es",
+    } = req.body || {};
 
     const isEN = lang === "en";
     const topicPrompts = isEN ? TOPIC_PROMPTS_EN : TOPIC_PROMPTS;
@@ -1075,7 +1140,12 @@ app.post("/quiz/question", guard, async (req, res) => {
     if (!isCustom) {
       const pool = await loadQuizPool(topic, difficulty, lang);
       const usedSet = new Set(usedIds);
-      const available = pool.filter(q => !usedSet.has(q.id));
+      const sessionQuestions = Array.isArray(usedQuestions) ? usedQuestions.slice(-40) : [];
+      const available = pool.filter(q =>
+        !usedSet.has(q.id) &&
+        quizQuestionValid(q) &&
+        !sessionQuestions.some(previous => quizQuestionsSimilar(q.question, previous))
+      );
 
       if (available.length > 0) {
         const q = available[Math.floor(Math.random() * available.length)];
@@ -1087,7 +1157,8 @@ app.post("/quiz/question", guard, async (req, res) => {
 
     // Generar nueva pregunta con Claude
     const pool = isCustom ? [] : await loadQuizPool(topic, difficulty, lang);
-    const existingQuestions = pool.map(q => q.question);
+    const sessionQuestions = Array.isArray(usedQuestions) ? usedQuestions.slice(-40) : [];
+    const existingQuestions = [...pool.map(q => q.question), ...sessionQuestions];
     const prompt = isEN
       ? buildQuizPromptEN(topicText, difficulty, existingQuestions)
       : buildQuizPrompt(topicText, difficulty, existingQuestions);
@@ -1107,7 +1178,7 @@ app.post("/quiz/question", guard, async (req, res) => {
     jsonStr = jsonStr.slice(start, end + 1);
 
     const parsed = JSON.parse(jsonStr);
-    if (!parsed.question || !Array.isArray(parsed.options) || parsed.options.length !== 4) {
+    if (!quizQuestionValid(parsed)) {
       throw new Error(`Formato inválido: ${raw.slice(0, 200)}`);
     }
 
@@ -1155,14 +1226,29 @@ app.get("/rosco/pool/stats", async (_req, res) => {
 
 app.post("/rosco/set", guard, async (req, res) => {
   try {
-    const { difficulty = "medium", usedIds = [], lang = "es" } = req.body || {};
+    const {
+      difficulty = "medium",
+      usedIds = [],
+      usedAnswers = [],
+      usedClues = [],
+      lang = "es",
+    } = req.body || {};
     const isEN = lang === "en";
     const letters = isEN ? ROSCO_LETTERS_EN : ROSCO_LETTERS_ES;
 
     // Pool hit: devolver un rosco ya generado que el cliente no haya visto.
     const pool = await loadRoscoPool(difficulty, lang);
     const usedSet = new Set(usedIds);
-    const available = pool.filter(s => !usedSet.has(s.id));
+    const blockedAnswers = new Set((Array.isArray(usedAnswers) ? usedAnswers : []).map(roscoNormalize).filter(Boolean));
+    const blockedClues = new Set((Array.isArray(usedClues) ? usedClues : []).map(roscoNormalize).filter(Boolean));
+    const available = pool.filter(s =>
+      !usedSet.has(s.id) &&
+      roscoSetValid(s, letters) &&
+      !(s.letters || []).some(entry =>
+        blockedAnswers.has(roscoNormalize(entry.answer)) ||
+        blockedClues.has(roscoNormalize(entry.clue))
+      )
+    );
     if (available.length > 0) {
       const s = available[Math.floor(Math.random() * available.length)];
       console.log(`🎯 Rosco HIT [${lang}]: ${difficulty} (pool:${pool.length} disp:${available.length})`);
@@ -1170,7 +1256,10 @@ app.post("/rosco/set", guard, async (req, res) => {
     }
     console.log(`🤖 Rosco MISS [${lang}]: generando ${difficulty} (pool:${pool.length})`);
 
-    const existingAnswers = pool.flatMap(s => (s.letters || []).map(l => l.answer));
+    const existingAnswers = [
+      ...pool.flatMap(s => (s.letters || []).map(l => l.answer)),
+      ...(Array.isArray(usedAnswers) ? usedAnswers : []),
+    ];
 
     async function generate() {
       const prompt = isEN
@@ -1271,6 +1360,34 @@ app.get("/admin/status", (req, res) => {
     gemini: { callsToday: _geminiCount, dailyCap: GEMINI_DAILY_CAP },
     uptimeSec: Math.round(process.uptime()),
   });
+});
+
+// Exportación de solo lectura para auditar los bancos fuera de producción.
+// No incluye secretos ni permite sobrescribir contenido del disco.
+app.get("/admin/games/export", async (req, res) => {
+  if (!adminOk(req)) return res.status(401).json({ error: "secret inválido o no configurado" });
+  try {
+    async function readPools(directory, contentKey) {
+      const files = await fs.readdir(directory).catch(() => []);
+      const result = [];
+      for (const file of files.filter(name => name.endsWith(".json")).sort()) {
+        try {
+          const content = JSON.parse(await fs.readFile(path.join(directory, file), "utf8"));
+          result.push({ file, [contentKey]: Array.isArray(content) ? content : [] });
+        } catch (error) {
+          result.push({ file, [contentKey]: [], error: error.message });
+        }
+      }
+      return result;
+    }
+    res.json({
+      exportedAt: new Date().toISOString(),
+      quizPools: await readPools(QUIZ_POOL_DIR, "questions"),
+      roscoPools: await readPools(ROSCO_POOL_DIR, "sets"),
+    });
+  } catch (error) {
+    res.status(500).json({ error: "games_export_failed", detail: error.message });
+  }
 });
 
 // Ver los topes de gasto actuales.

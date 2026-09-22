@@ -275,7 +275,10 @@ async function initRoscoPool() {
 }
 
 // Versión del pool: súbela para descartar sets antiguos al mejorar el prompt.
-const ROSCO_POOL_VERSION = "v6";
+// v7 invalida por completo el banco v6: se detectaron pares semánticamente
+// incorrectos (la respuesta cumplía la letra, pero no respondía a la pista).
+// Los nuevos sets pasan por generación + revisión antes de guardarse.
+const ROSCO_POOL_VERSION = "v7";
 
 function roscoPoolFile(difficulty, lang = "es") {
   const safe = String(difficulty).replace(/[^a-z0-9_]/gi, "_").slice(0, 20);

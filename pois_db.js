@@ -514,30 +514,6 @@ export const POIS = [
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  {
-    id: "es_demo_a1_buitrago_rest",
-    nombre: "Restaurante de Ruta Buitrago del Lozoya (A-1)",
-    emoji: "🍽️",
-    lat: 40.994,
-    lng: -3.631,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a1"],
-    sponsor: {
-      "sponsorId": "spon_demo_a1_buitrago_rest",
-      "sponsorNombre": "Restaurante de Ruta Buitrago del Lozoya (A-1)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-1.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Buitrago%20del%20Lozoya%20(A-1)%20Buitrago%20del%20Lozoya"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
   // =====================================================================
   // ================================ TOLEDO =============================
   // =====================================================================
@@ -1009,30 +985,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a4_ocana_rest",
-    nombre: "Restaurante de Ruta Ocaña (A-4)",
-    emoji: "🍽️",
-    lat: 39.959,
-    lng: -3.496,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a4"],
-    sponsor: {
-      "sponsorId": "spon_demo_a4_ocana_rest",
-      "sponsorNombre": "Restaurante de Ruta Ocaña (A-4)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-4.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Oca%C3%B1a%20(A-4)%20Oca%C3%B1a"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a4_madridejos_gas",
     nombre: "Área de Servicio Madridejos (A-4)",
     emoji: "⛽",
@@ -1052,30 +1004,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Madridejos (A-4)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-4. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Madridejos%20(A-4)%20Madridejos"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a4_madridejos_rest",
-    nombre: "Restaurante de Ruta Madridejos (A-4)",
-    emoji: "🍽️",
-    lat: 39.474,
-    lng: -3.526,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a4"],
-    sponsor: {
-      "sponsorId": "spon_demo_a4_madridejos_rest",
-      "sponsorNombre": "Restaurante de Ruta Madridejos (A-4)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-4.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Madridejos%20(A-4)%20Madridejos"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -1105,30 +1033,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a5_talavera_rest",
-    nombre: "Restaurante de Ruta Talavera de la Reina (A-5)",
-    emoji: "🍽️",
-    lat: 39.968,
-    lng: -4.826,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a5"],
-    sponsor: {
-      "sponsorId": "spon_demo_a5_talavera_rest",
-      "sponsorNombre": "Restaurante de Ruta Talavera de la Reina (A-5)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-5.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Talavera%20de%20la%20Reina%20(A-5)%20Talavera%20de%20la%20Reina"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a5_oropesa_gas",
     nombre: "Área de Servicio Oropesa (A-5)",
     emoji: "⛽",
@@ -1148,30 +1052,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Oropesa (A-5)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-5. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Oropesa%20(A-5)%20Oropesa"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a5_oropesa_rest",
-    nombre: "Restaurante de Ruta Oropesa (A-5)",
-    emoji: "🍽️",
-    lat: 39.916,
-    lng: -5.166,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a5"],
-    sponsor: {
-      "sponsorId": "spon_demo_a5_oropesa_rest",
-      "sponsorNombre": "Restaurante de Ruta Oropesa (A-5)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-5.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Oropesa%20(A-5)%20Oropesa"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -1605,30 +1485,6 @@ export const POIS = [
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
 
-  {
-    id: "es_demo_a4_valdepenas-a4_rest",
-    nombre: "Restaurante de Ruta Valdepeñas (A-4)",
-    emoji: "🍽️",
-    lat: 38.766,
-    lng: -3.381,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a4"],
-    sponsor: {
-      "sponsorId": "spon_demo_a4_valdepenas-a4_rest",
-      "sponsorNombre": "Restaurante de Ruta Valdepeñas (A-4)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-4.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Valdepe%C3%B1as%20(A-4)%20Valdepe%C3%B1as"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
   // =====================================================================
   // ================================ JAÉN =============================
   // =====================================================================
@@ -2043,30 +1899,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Bailén (A-4)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-4. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Bail%C3%A9n%20(A-4)%20Bail%C3%A9n"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a4_bailen_rest",
-    nombre: "Restaurante de Ruta Bailén (A-4)",
-    emoji: "🍽️",
-    lat: 38.101,
-    lng: -3.774,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a4"],
-    sponsor: {
-      "sponsorId": "spon_demo_a4_bailen_rest",
-      "sponsorNombre": "Restaurante de Ruta Bailén (A-4)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-4.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Bail%C3%A9n%20(A-4)%20Bail%C3%A9n"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -21661,30 +21493,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a1_aranda_rest",
-    nombre: "Restaurante de Ruta Aranda de Duero (A-1)",
-    emoji: "🍽️",
-    lat: 41.674,
-    lng: -3.685,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a1"],
-    sponsor: {
-      "sponsorId": "spon_demo_a1_aranda_rest",
-      "sponsorNombre": "Restaurante de Ruta Aranda de Duero (A-1)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-1.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Aranda%20de%20Duero%20(A-1)%20Aranda%20de%20Duero"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a1_lerma_gas",
     nombre: "Área de Servicio Lerma (A-1)",
     emoji: "⛽",
@@ -21704,30 +21512,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Lerma (A-1)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-1. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Lerma%20(A-1)%20Lerma"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a1_lerma_rest",
-    nombre: "Restaurante de Ruta Lerma (A-1)",
-    emoji: "🍽️",
-    lat: 42.032,
-    lng: -3.755,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a1"],
-    sponsor: {
-      "sponsorId": "spon_demo_a1_lerma_rest",
-      "sponsorNombre": "Restaurante de Ruta Lerma (A-1)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-1.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Lerma%20(A-1)%20Lerma"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -21757,30 +21541,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a1_burgos_rest",
-    nombre: "Restaurante de Ruta Burgos (A-1)",
-    emoji: "🍽️",
-    lat: 42.345,
-    lng: -3.7,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a1"],
-    sponsor: {
-      "sponsorId": "spon_demo_a1_burgos_rest",
-      "sponsorNombre": "Restaurante de Ruta Burgos (A-1)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-1.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Burgos%20(A-1)%20Burgos"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a1_miranda_gas",
     nombre: "Área de Servicio Miranda de Ebro (A-1)",
     emoji: "⛽",
@@ -21800,30 +21560,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Miranda de Ebro (A-1)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-1. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Miranda%20de%20Ebro%20(A-1)%20Miranda%20de%20Ebro"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a1_miranda_rest",
-    nombre: "Restaurante de Ruta Miranda de Ebro (A-1)",
-    emoji: "🍽️",
-    lat: 42.69,
-    lng: -2.943,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a1"],
-    sponsor: {
-      "sponsorId": "spon_demo_a1_miranda_rest",
-      "sponsorNombre": "Restaurante de Ruta Miranda de Ebro (A-1)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-1.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Miranda%20de%20Ebro%20(A-1)%20Miranda%20de%20Ebro"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -21853,30 +21589,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a2_guadalajara_rest",
-    nombre: "Restaurante de Ruta Guadalajara (A-2)",
-    emoji: "🍽️",
-    lat: 40.637,
-    lng: -3.163,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a2"],
-    sponsor: {
-      "sponsorId": "spon_demo_a2_guadalajara_rest",
-      "sponsorNombre": "Restaurante de Ruta Guadalajara (A-2)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-2.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Guadalajara%20(A-2)%20Guadalajara"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a2_medinaceli_gas",
     nombre: "Área de Servicio Medinaceli (A-2)",
     emoji: "⛽",
@@ -21896,30 +21608,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Medinaceli (A-2)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-2. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Medinaceli%20(A-2)%20Medinaceli"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a2_medinaceli_rest",
-    nombre: "Restaurante de Ruta Medinaceli (A-2)",
-    emoji: "🍽️",
-    lat: 41.178,
-    lng: -2.431,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a2"],
-    sponsor: {
-      "sponsorId": "spon_demo_a2_medinaceli_rest",
-      "sponsorNombre": "Restaurante de Ruta Medinaceli (A-2)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-2.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Medinaceli%20(A-2)%20Medinaceli"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -21949,30 +21637,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a2_calatayud_rest",
-    nombre: "Restaurante de Ruta Calatayud (A-2)",
-    emoji: "🍽️",
-    lat: 41.357,
-    lng: -1.639,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a2"],
-    sponsor: {
-      "sponsorId": "spon_demo_a2_calatayud_rest",
-      "sponsorNombre": "Restaurante de Ruta Calatayud (A-2)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-2.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Calatayud%20(A-2)%20Calatayud"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a2_zaragoza_gas",
     nombre: "Área de Servicio Zaragoza (A-2)",
     emoji: "⛽",
@@ -21992,30 +21656,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Zaragoza (A-2)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-2. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Zaragoza%20(A-2)%20Zaragoza"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a2_zaragoza_rest",
-    nombre: "Restaurante de Ruta Zaragoza (A-2)",
-    emoji: "🍽️",
-    lat: 41.653,
-    lng: -0.883,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a2"],
-    sponsor: {
-      "sponsorId": "spon_demo_a2_zaragoza_rest",
-      "sponsorNombre": "Restaurante de Ruta Zaragoza (A-2)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-2.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Zaragoza%20(A-2)%20Zaragoza"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -22045,30 +21685,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a2_fraga_rest",
-    nombre: "Restaurante de Ruta Fraga (A-2)",
-    emoji: "🍽️",
-    lat: 41.526,
-    lng: 0.353,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a2"],
-    sponsor: {
-      "sponsorId": "spon_demo_a2_fraga_rest",
-      "sponsorNombre": "Restaurante de Ruta Fraga (A-2)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-2.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Fraga%20(A-2)%20Fraga"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a3_tarancon_gas",
     nombre: "Área de Servicio Tarancón (A-3)",
     emoji: "⛽",
@@ -22088,30 +21704,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Tarancón (A-3)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-3. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Taranc%C3%B3n%20(A-3)%20Taranc%C3%B3n"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a3_tarancon_rest",
-    nombre: "Restaurante de Ruta Tarancón (A-3)",
-    emoji: "🍽️",
-    lat: 40.012,
-    lng: -3.002,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a3"],
-    sponsor: {
-      "sponsorId": "spon_demo_a3_tarancon_rest",
-      "sponsorNombre": "Restaurante de Ruta Tarancón (A-3)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-3.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Taranc%C3%B3n%20(A-3)%20Taranc%C3%B3n"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -22141,30 +21733,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a3_honrubia_rest",
-    nombre: "Restaurante de Ruta Honrubia (A-3)",
-    emoji: "🍽️",
-    lat: 39.636,
-    lng: -2.287,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a3"],
-    sponsor: {
-      "sponsorId": "spon_demo_a3_honrubia_rest",
-      "sponsorNombre": "Restaurante de Ruta Honrubia (A-3)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-3.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Honrubia%20(A-3)%20Honrubia"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a3_motilla_gas",
     nombre: "Área de Servicio Motilla del Palancar (A-3)",
     emoji: "⛽",
@@ -22184,30 +21752,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Motilla del Palancar (A-3)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-3. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Motilla%20del%20Palancar%20(A-3)%20Motilla%20del%20Palancar"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a3_motilla_rest",
-    nombre: "Restaurante de Ruta Motilla del Palancar (A-3)",
-    emoji: "🍽️",
-    lat: 39.564,
-    lng: -1.886,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a3"],
-    sponsor: {
-      "sponsorId": "spon_demo_a3_motilla_rest",
-      "sponsorNombre": "Restaurante de Ruta Motilla del Palancar (A-3)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-3.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Motilla%20del%20Palancar%20(A-3)%20Motilla%20del%20Palancar"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -22237,30 +21781,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a3_requena_rest",
-    nombre: "Restaurante de Ruta Requena (A-3)",
-    emoji: "🍽️",
-    lat: 39.493,
-    lng: -1.099,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a3"],
-    sponsor: {
-      "sponsorId": "spon_demo_a3_requena_rest",
-      "sponsorNombre": "Restaurante de Ruta Requena (A-3)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-3.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Requena%20(A-3)%20Requena"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a3_bunol_gas",
     nombre: "Área de Servicio Buñol (A-3)",
     emoji: "⛽",
@@ -22280,30 +21800,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Buñol (A-3)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-3. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Bu%C3%B1ol%20(A-3)%20Bu%C3%B1ol"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a3_bunol_rest",
-    nombre: "Restaurante de Ruta Buñol (A-3)",
-    emoji: "🍽️",
-    lat: 39.424,
-    lng: -0.786,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a3"],
-    sponsor: {
-      "sponsorId": "spon_demo_a3_bunol_rest",
-      "sponsorNombre": "Restaurante de Ruta Buñol (A-3)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-3.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Bu%C3%B1ol%20(A-3)%20Bu%C3%B1ol"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -22333,30 +21829,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a4_cordoba_rest",
-    nombre: "Restaurante de Ruta Córdoba (A-4)",
-    emoji: "🍽️",
-    lat: 37.895,
-    lng: -4.775,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a4"],
-    sponsor: {
-      "sponsorId": "spon_demo_a4_cordoba_rest",
-      "sponsorNombre": "Restaurante de Ruta Córdoba (A-4)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-4.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20C%C3%B3rdoba%20(A-4)%20C%C3%B3rdoba"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a5_navalmoral_gas",
     nombre: "Área de Servicio Navalmoral de la Mata (A-5)",
     emoji: "⛽",
@@ -22376,30 +21848,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Navalmoral de la Mata (A-5)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-5. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Navalmoral%20de%20la%20Mata%20(A-5)%20Navalmoral%20de%20la%20Mata"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a5_navalmoral_rest",
-    nombre: "Restaurante de Ruta Navalmoral de la Mata (A-5)",
-    emoji: "🍽️",
-    lat: 39.896,
-    lng: -5.537,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a5"],
-    sponsor: {
-      "sponsorId": "spon_demo_a5_navalmoral_rest",
-      "sponsorNombre": "Restaurante de Ruta Navalmoral de la Mata (A-5)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-5.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Navalmoral%20de%20la%20Mata%20(A-5)%20Navalmoral%20de%20la%20Mata"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -22429,30 +21877,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a5_trujillo-a5_rest",
-    nombre: "Restaurante de Ruta Trujillo (A-5)",
-    emoji: "🍽️",
-    lat: 39.462,
-    lng: -5.878,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a5"],
-    sponsor: {
-      "sponsorId": "spon_demo_a5_trujillo-a5_rest",
-      "sponsorNombre": "Restaurante de Ruta Trujillo (A-5)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-5.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Trujillo%20(A-5)%20Trujillo"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a5_merida_gas",
     nombre: "Área de Servicio Mérida (A-5)",
     emoji: "⛽",
@@ -22472,30 +21896,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Mérida (A-5)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-5. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20M%C3%A9rida%20(A-5)%20M%C3%A9rida"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a5_merida_rest",
-    nombre: "Restaurante de Ruta Mérida (A-5)",
-    emoji: "🍽️",
-    lat: 38.92,
-    lng: -6.339,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a5"],
-    sponsor: {
-      "sponsorId": "spon_demo_a5_merida_rest",
-      "sponsorNombre": "Restaurante de Ruta Mérida (A-5)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-5.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20M%C3%A9rida%20(A-5)%20M%C3%A9rida"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -22525,30 +21925,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a6_villacastin_rest",
-    nombre: "Restaurante de Ruta Villacastín (A-6)",
-    emoji: "🍽️",
-    lat: 40.787,
-    lng: -4.414,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a6"],
-    sponsor: {
-      "sponsorId": "spon_demo_a6_villacastin_rest",
-      "sponsorNombre": "Restaurante de Ruta Villacastín (A-6)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-6.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Villacast%C3%ADn%20(A-6)%20Villacast%C3%ADn"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a6_adanero_gas",
     nombre: "Área de Servicio Adanero (A-6)",
     emoji: "⛽",
@@ -22568,30 +21944,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Adanero (A-6)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-6. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Adanero%20(A-6)%20Adanero"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a6_adanero_rest",
-    nombre: "Restaurante de Ruta Adanero (A-6)",
-    emoji: "🍽️",
-    lat: 40.944,
-    lng: -4.598,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a6"],
-    sponsor: {
-      "sponsorId": "spon_demo_a6_adanero_rest",
-      "sponsorNombre": "Restaurante de Ruta Adanero (A-6)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-6.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Adanero%20(A-6)%20Adanero"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },
@@ -22621,30 +21973,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a6_medina_rest",
-    nombre: "Restaurante de Ruta Medina del Campo (A-6)",
-    emoji: "🍽️",
-    lat: 41.316,
-    lng: -4.907,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a6"],
-    sponsor: {
-      "sponsorId": "spon_demo_a6_medina_rest",
-      "sponsorNombre": "Restaurante de Ruta Medina del Campo (A-6)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-6.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Medina%20del%20Campo%20(A-6)%20Medina%20del%20Campo"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a6_tordesillas_gas",
     nombre: "Área de Servicio Tordesillas (A-6)",
     emoji: "⛽",
@@ -22669,30 +21997,6 @@ export const POIS = [
   },
 
   {
-    id: "es_demo_a6_tordesillas_rest",
-    nombre: "Restaurante de Ruta Tordesillas (A-6)",
-    emoji: "🍽️",
-    lat: 41.504,
-    lng: -4.996,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a6"],
-    sponsor: {
-      "sponsorId": "spon_demo_a6_tordesillas_rest",
-      "sponsorNombre": "Restaurante de Ruta Tordesillas (A-6)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-6.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Tordesillas%20(A-6)%20Tordesillas"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
     id: "es_demo_a6_benavente_gas",
     nombre: "Área de Servicio Benavente (A-6)",
     emoji: "⛽",
@@ -22712,30 +22016,6 @@ export const POIS = [
       "sponsorNombre": "Área de Servicio Benavente (A-6)",
       "mensaje": "Repostaje rápido, buen café y aseos limpios junto a la A-6. La parada ideal para estirar las piernas.",
       "url": "https://www.google.com/maps/search/?api=1&query=%C3%81rea%20de%20Servicio%20Benavente%20(A-6)%20Benavente"
-    },
-    // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
-  },
-
-  {
-    id: "es_demo_a6_benavente_rest",
-    nombre: "Restaurante de Ruta Benavente (A-6)",
-    emoji: "🍽️",
-    lat: 42.007,
-    lng: -5.674,
-    nivel: 1,
-    categorias: ["gastronomia", "parada", "ruta"],
-    tipo: "restaurante_carretera",
-    radioActivacionMetros: 8000,
-
-    perfil: "gastronomia",
-    prioridad: 130,
-    cooldownMin: 180,
-    intereses: ["menu_del_dia", "cocina_casera", "parada", "a6"],
-    sponsor: {
-      "sponsorId": "spon_demo_a6_benavente_rest",
-      "sponsorNombre": "Restaurante de Ruta Benavente (A-6)",
-      "mensaje": "Cocina de carretera de la buena: menú del día casero y raciones generosas a un paso de la A-6.",
-      "url": "https://www.google.com/maps/search/?api=1&query=Restaurante%20de%20Ruta%20Benavente%20(A-6)%20Benavente"
     },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
   },

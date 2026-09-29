@@ -1031,14 +1031,19 @@ async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp
 }
 
 function construirPromptConEventos({ prompt, liveEvents, liveContext }) {
-  if (!asBool(liveEvents) || !liveContext?.trim()) return prompt;
+  if (!asBool(liveEvents)) return prompt;
+  const contexto = liveContext?.trim()
+    ? liveContext.trim()
+    : "No se ha encontrado ningún evento destacado y confirmado cerca para estas fechas.";
   return `${prompt}
 
 INFORMACIÓN EN VIVO — EVENTOS CERCANOS:
-${liveContext}
+${contexto}
 
 INSTRUCCIONES PARA LA NARRACIÓN:
-- Menciona el evento de forma natural dentro de la narración.
+- Incluye SIEMPRE un párrafo propio de información en vivo, incluso si el contexto indica que no se ha encontrado ningún evento confirmado.
+- Empieza ese párrafo con el marcador exacto [[INFORMACION_EN_VIVO]]. No cambies ni omitas el marcador; el servidor lo retirará antes de generar la voz.
+- Si hay eventos, menciona el más relevante de forma natural. Si no los hay, dilo brevemente y no inventes ninguno.
 - Si tienes fechas concretas, inclúyelas en el texto (escríbelas con palabras, nunca con números).
 - No inventes detalles que no estén en el contexto anterior.
 - Máximo 1-2 frases sobre el evento.`;
@@ -1086,7 +1091,113 @@ function truncarPorFrases(text, maxWords) {
   return chunk.trim();
 }
 
-const MAX_WORDS_BY_NIVEL = { poco: 130, normal: 200, mucho: 270 };
+const REQUIRED_MARKERS = {
+  curiosity: "[[DATO_CURIOSO]]",
+  live: "[[INFORMACION_EN_VIVO]]",
+};
+
+function marcadoresRequeridos({ temas, liveEvents }) {
+  const activos = new Set(Array.isArray(temas) ? temas.filter(Boolean) : []);
+  return [
+    ...(activos.has("datos_curiosos") ? [REQUIRED_MARKERS.curiosity] : []),
+    ...(asBool(liveEvents) ? [REQUIRED_MARKERS.live] : []),
+  ];
+}
+
+function quitarMarcadoresInternos(text) {
+  return String(text || "")
+    .replaceAll(REQUIRED_MARKERS.curiosity, "")
+    .replaceAll(REQUIRED_MARKERS.live, "")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+// El cuerpo puede recortarse, pero nunca los bloques finales que el usuario ha
+// activado. Antes se truncaba todo el texto desde el final y por eso desaparecían
+// precisamente la curiosidad y la información en vivo.
+function truncarPreservandoSecciones(text, maxWords, requiredMarkers) {
+  if (!text) return text;
+  const present = requiredMarkers
+    .map((marker) => ({ marker, index: text.indexOf(marker) }))
+    .filter((entry) => entry.index >= 0)
+    .sort((a, b) => a.index - b.index);
+
+  if (present.length === 0) {
+    return quitarMarcadoresInternos(truncarPorFrases(text, maxWords));
+  }
+
+  const firstProtectedIndex = present[0].index;
+  const body = text.slice(0, firstProtectedIndex).trim();
+  const protectedTail = text.slice(firstProtectedIndex).trim();
+  const cleanTail = quitarMarcadoresInternos(protectedTail);
+  const tailWords = cleanTail ? cleanTail.split(/\s+/).length : 0;
+  const bodyBudget = Math.max(20, maxWords - tailWords);
+  const cleanBody = truncarPorFrases(body, bodyBudget);
+  return [cleanBody, cleanTail].filter(Boolean).join("\n\n").trim();
+}
+
+const BODY_WORDS_BY_NIVEL = { poco: 80, normal: 130, mucho: 180 };
+
+function maxWordsNarracion({ nivel, temas, liveEvents, prompt }) {
+  const activos = new Set(Array.isArray(temas) ? temas.filter(Boolean) : []);
+  let total = BODY_WORDS_BY_NIVEL[nivel] ?? BODY_WORDS_BY_NIVEL.normal;
+  if (activos.has("datos_curiosos")) total += 45;
+  if (activos.has("donde_parar")) total += 40;
+  if (asBool(liveEvents)) total += 60;
+  if (String(prompt || "").includes("CIERRE OBLIGATORIO AL FINAL")) total += 35;
+  return total;
+}
+
+async function generarSeccionObligatoria({ marker, prompt, liveContext, language }) {
+  const isEN = language === "en";
+
+  if (marker === REQUIRED_MARKERS.live && !liveContext?.trim()) {
+    return isEN
+      ? `${marker} Live update: there are no notable confirmed events near this place right now.`
+      : `${marker} En cuanto a la información en vivo, ahora mismo no hay ningún evento destacado y confirmado cerca de este lugar.`;
+  }
+
+  const sectionInstruction = marker === REQUIRED_MARKERS.curiosity
+    ? (isEN
+        ? `Write exactly one short paragraph with one specific, surprising and reliable fact about the target place. Use only facts supported by the original request. Start with the exact marker ${marker}. Do not add headings or any other section.`
+        : `Escribe exactamente un párrafo breve con un único dato curioso, específico, sorprendente y fiable sobre el lugar objetivo. Usa solo hechos respaldados por la solicitud original. Empieza con el marcador exacto ${marker}. No añadas títulos ni ninguna otra sección.`)
+    : (isEN
+        ? `Using only the live context below, write exactly one short paragraph about the most relevant current event, including its date when supplied. Start with the exact marker ${marker}. If no event is confirmed, say so briefly. Do not invent details.`
+        : `Usando únicamente el contexto en vivo siguiente, escribe exactamente un párrafo breve sobre el evento actual más relevante, con su fecha cuando conste. Empieza con el marcador exacto ${marker}. Si no hay ningún evento confirmado, dilo brevemente. No inventes detalles.`);
+
+  const source = marker === REQUIRED_MARKERS.live
+    ? `CONTEXTO EN VIVO:\n${liveContext}`
+    : `SOLICITUD ORIGINAL Y DATOS DEL POI:\n${prompt}`;
+
+  try {
+    const r = await anthropic.messages.create({
+      model: MODEL_FAST,
+      max_tokens: 220,
+      system: isEN
+        ? "You write concise, factual text for a road-trip audio guide. Return only the requested paragraph."
+        : "Escribes textos breves y rigurosos para una audioguía de carretera. Devuelve únicamente el párrafo solicitado.",
+      messages: [{ role: "user", content: `${sectionInstruction}\n\n${source}` }],
+    });
+    logClaude(r, marker === REQUIRED_MARKERS.live ? "reparar_evento_vivo" : "reparar_curiosidad", language);
+    let section = r.content?.[0]?.text?.trim() ?? "";
+    if (section && !section.includes(marker)) section = `${marker} ${section}`;
+    return section;
+  } catch (e) {
+    console.error(`ERROR generando sección obligatoria ${marker}:`, e.message);
+    if (marker === REQUIRED_MARKERS.live && liveContext?.trim()) {
+      const compact = liveContext
+        .replace(/^Eventos[^:]*:\s*/i, "")
+        .replace(/^[-•]\s*/gm, "")
+        .replace(/\s*\n+\s*/g, ". ")
+        .trim();
+      return compact
+        ? `${marker} ${isEN ? "Live update" : "Información en vivo"}: ${compact}`
+        : "";
+    }
+    return "";
+  }
+}
 
 // ─── DEEZER ──────────────────────────────────────────────────────────────────
 function deezerQuery(genre) {
@@ -1536,16 +1647,51 @@ app.post("/ai/generate", guard, async (req, res) => {
     });
     logClaude(r, "narracion", language);
 
-    const rawText  = r.content?.[0]?.text ?? "";
-    const maxWords = MAX_WORDS_BY_NIVEL[nivel] ?? MAX_WORDS_BY_NIVEL.normal;
-    const text     = truncarPorFrases(rawText, maxWords);
+    let rawText = r.content?.[0]?.text ?? "";
+    const requiredMarkers = marcadoresRequeridos({ temas, liveEvents });
+
+    // Segunda barrera: si el modelo ignora una sección obligatoria, generamos
+    // solo ese pequeño párrafo y lo añadimos. Normalmente no supone otra llamada;
+    // se usa únicamente cuando falta el marcador solicitado en el primer texto.
+    for (const marker of requiredMarkers) {
+      if (rawText.includes(marker)) continue;
+      let section = "";
+      for (let attempt = 0; attempt < 2 && !section; attempt++) {
+        section = await generarSeccionObligatoria({
+          marker,
+          prompt,
+          liveContext,
+          language,
+        });
+      }
+      if (section) rawText = `${rawText.trim()}\n\n${section}`.trim();
+    }
+
+    const missingRequired = requiredMarkers.filter((marker) => !rawText.includes(marker));
+    if (missingRequired.length > 0) {
+      throw new Error(`No se pudieron generar las secciones obligatorias: ${missingRequired.join(", ")}`);
+    }
+
+    const maxWords = maxWordsNarracion({ nivel, temas, liveEvents, prompt });
+    const text = truncarPreservandoSecciones(rawText, maxWords, requiredMarkers);
 
     if (useTextCache && text) {
       setCachedText(resolvedCacheKey, text).catch(() => {});
       console.log(`💾 Text cache SET [${language}]: ${resolvedCacheKey}`);
     }
 
-    res.json({ text, model_used: r.model, usage: r.usage, live_events_enabled: asBool(liveEvents), live_context_used: Boolean(liveContext?.trim()), cache: "miss" });
+    res.json({
+      text,
+      model_used: r.model,
+      usage: r.usage,
+      live_events_enabled: asBool(liveEvents),
+      live_context_used: Boolean(liveContext?.trim()),
+      required_sections: requiredMarkers.map((marker) => ({
+        marker,
+        present: rawText.includes(marker),
+      })),
+      cache: "miss",
+    });
   } catch (e) {
     console.error("ERROR /ai/generate:", e.message);
     res.status(500).json({ error: "ai_generate_failed", detail: e.message });

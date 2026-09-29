@@ -918,48 +918,133 @@ const GEMINI_DAILY_CAP = 800; // máximo de llamadas a Gemini por día
 let _geminiDay = "";
 let _geminiCount = 0;
 
+function isoDateInTimezone(date) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const value = (type) => parts.find((part) => part.type === type)?.value || "";
+  return `${value("year")}-${value("month")}-${value("day")}`;
+}
+
+function addDaysIso(iso, days) {
+  const date = new Date(`${iso}T12:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+function parseGeminiEventArray(text) {
+  if (!text?.trim()) return [];
+  const clean = text
+    .trim()
+    .replace(/^```(?:json)?\s*/i, "")
+    .replace(/\s*```$/, "");
+  const start = clean.indexOf("[");
+  const end = clean.lastIndexOf("]");
+  if (start < 0 || end <= start) return [];
+  try {
+    const parsed = JSON.parse(clean.slice(start, end + 1));
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (_) {
+    return [];
+  }
+}
+
+function validarEventosGemini(text, { todayIso, limitIso }) {
+  const isoPattern = /^\d{4}-\d{2}-\d{2}$/;
+  const valid = [];
+
+  for (const raw of parseGeminiEventArray(text)) {
+    if (!raw || typeof raw !== "object") continue;
+    const name = limpiar(raw.name);
+    const locality = limpiar(raw.locality);
+    const startDate = limpiar(raw.startDate);
+    const endDate = limpiar(raw.endDate) || startDate;
+    const detail = limpiar(raw.detail);
+
+    if (!name || !locality) continue;
+    if (!isoPattern.test(startDate) || !isoPattern.test(endDate)) continue;
+    if (endDate < startDate || endDate < todayIso || startDate > limitIso) continue;
+
+    valid.push({ name, locality, startDate, endDate, detail });
+  }
+
+  valid.sort((a, b) => a.startDate.localeCompare(b.startDate));
+  return valid.slice(0, 3);
+}
+
 async function buscarEventosGemini({ zona, now, lang, poi }) {
   if (!GEMINI_API_KEY) return null;
-  const today = now.toISOString().slice(0, 10);
+  const today = isoDateInTimezone(now);
   if (_geminiDay !== today) { _geminiDay = today; _geminiCount = 0; }
   if (_geminiCount >= GEMINI_DAILY_CAP) return null;
 
   const isEN = lang === "en";
+  const limit = addDaysIso(today, 30);
   const fecha = now.toLocaleDateString(isEN ? "en-GB" : "es-ES",
     { day: "numeric", month: "long", year: "numeric", timeZone: TIMEZONE });
-  const cerca = poi
-    ? (isEN ? ` Use ${poi} as the centre of the search.` : ` Usa ${poi} como centro de la búsqueda.`)
-    : "";
+  const municipio = limpiar(zona.split(",")[0]) || limpiar(poi) || zona;
+  const centro = limpiar(poi) || municipio;
   const prompt = isEN
-    ? `You are the live-events researcher for a road-trip co-pilot in Spain. Today is ${fecha}.${cerca}
+    ? `You are the live-events researcher for a road-trip co-pilot in Spain. Today is ${fecha}. Search Google now for real events around ${centro}, in ${zona}.
 
-Use Google Search and perform this search ladder before answering:
-1. Check the official agenda, town hall, tourism office and main venues of the municipality in ${zona} for events under way today or starting in the next 30 days.
-2. If the local result is weak, check nearby towns within roughly 50 km for the same period.
-3. If needed, broaden to the province, still favouring the closest and most useful events for a traveller.
+Search specifically for "${municipio} events ${fecha}", "${municipio} cultural agenda", the town hall, tourism office, public library and main local venues. Then check nearby towns within roughly 50 km and finally the province. The valid date window is ${today} through ${limit}, inclusive.
 
-Include real local fiestas, fairs, festivals, concerts, theatre, exhibitions, food events, traditional or weekly markets, sports or family activities. A worthwhile municipal event is valid; it does not need to be nationally famous. Prioritise events in the next 7 days, then the rest of the 30-day window. Never include a one-day event before today, an event whose end date has passed, a permanent attraction, or an event without a verifiable date. Reply EXACTLY "NINGUNO" only after all three search levels produce no confirmed result. Return at most 3 events, ordered by proximity and date, in short plain lines: "- Name — town (exact date): one useful detail". No introduction, no filler.`
-    : `Eres el investigador de eventos en vivo de un copiloto de carretera por España. Hoy es ${fecha}.${cerca}
+Include local fiestas, fairs, festivals, concerts, theatre, exhibitions, food events, traditional markets, sports and family activities. Local municipal activities are valid. Reject expired events, permanent attractions and anything without a verified exact date. Prefer the municipality, then nearby towns, and only then the province.
 
-Usa la búsqueda de Google y completa esta búsqueda escalonada antes de responder:
-1. Revisa la agenda oficial, el ayuntamiento, la oficina de turismo y los principales recintos del municipio de ${zona} para encontrar eventos en curso hoy o que empiecen durante los próximos treinta días.
-2. Si el resultado local es escaso, revisa localidades cercanas en un radio aproximado de cincuenta kilómetros para el mismo periodo.
-3. Si todavía hace falta, amplía a la provincia, priorizando siempre lo más cercano y útil para un viajero.
+Return ONLY a JSON array, without markdown or commentary. Each item must use exactly these fields:
+[{"name":"event name","locality":"town","startDate":"YYYY-MM-DD","endDate":"YYYY-MM-DD","detail":"one short verified detail"}]
+Return [] if no dated event is confirmed. Maximum 3, ordered by proximity first and date second.`
+    : `Eres el investigador de eventos en vivo de un copiloto de carretera por España. Hoy es ${fecha}. Busca ahora en Google eventos reales alrededor de ${centro}, en ${zona}.
 
-Incluye fiestas locales, ferias, festivales, conciertos, teatro, exposiciones, jornadas gastronómicas, mercados tradicionales o semanales, deporte y actividades familiares reales. Un evento municipal interesante es válido: no necesita ser famoso a nivel nacional. Prioriza primero los próximos siete días y después el resto de la ventana de treinta días. Nunca incluyas un evento de un solo día anterior a hoy, uno cuya fecha de finalización ya haya pasado, una atracción permanente ni un evento sin fecha verificable. Responde EXACTAMENTE "NINGUNO" solo después de que los tres niveles no den ningún resultado confirmado. Devuelve como máximo tres eventos ordenados por cercanía y fecha, en líneas breves: "- Nombre — localidad (fecha exacta): un detalle útil". Sin introducción ni relleno.`;
+Busca expresamente "${municipio} eventos ${fecha}", "${municipio} agenda cultural", el ayuntamiento, la oficina de turismo, la biblioteca pública y los principales recintos locales. Después revisa localidades en un radio aproximado de cincuenta kilómetros y finalmente la provincia. La ventana válida va del ${today} al ${limit}, ambos incluidos.
+
+Incluye fiestas locales, ferias, festivales, conciertos, teatro, exposiciones, jornadas gastronómicas, mercados tradicionales, deporte y actividades familiares. Las actividades municipales locales son válidas. Descarta eventos caducados, atracciones permanentes y cualquier resultado sin fecha exacta verificada. Prioriza el propio municipio, después localidades cercanas y solo al final la provincia.
+
+Devuelve ÚNICAMENTE un array JSON, sin markdown ni explicaciones. Cada elemento debe usar exactamente estos campos:
+[{"name":"nombre del evento","locality":"localidad","startDate":"YYYY-MM-DD","endDate":"YYYY-MM-DD","detail":"un detalle breve y verificado"}]
+Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenados primero por cercanía y después por fecha.`;
 
   try {
     _geminiCount++;
     const resp = await axios.post(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-      { contents: [{ parts: [{ text: prompt }] }], tools: [{ google_search: {} }] },
+      {
+        contents: [{ parts: [{ text: prompt }] }],
+        tools: [{ google_search: {} }],
+        generationConfig: { temperature: 0.1 },
+      },
       { headers: { "Content-Type": "application/json" }, timeout: 20000 }
     );
     const cand = resp.data?.candidates?.[0];
     const text = (cand?.content?.parts || []).map(p => p.text).filter(Boolean).join("").trim();
-    const norm = text.toUpperCase();
-    if (!text || norm === "NINGUNO" || norm.startsWith("NINGUNO")) return null;
-    return text;
+    const grounding = cand?.groundingMetadata || {};
+    const queries = Array.isArray(grounding.webSearchQueries) ? grounding.webSearchQueries : [];
+    const sources = Array.isArray(grounding.groundingChunks)
+      ? grounding.groundingChunks.filter((chunk) => chunk?.web?.uri)
+      : [];
+    if (queries.length === 0 || sources.length === 0) {
+      console.warn(`Gemini eventos sin grounding para ${zona}; respuesta descartada.`);
+      return null;
+    }
+
+    const events = validarEventosGemini(text, { todayIso: today, limitIso: limit });
+    if (events.length === 0) {
+      console.warn(`Gemini eventos sin resultados estructurados válidos para ${zona}. Búsquedas: ${queries.join(" | ")}`);
+      return null;
+    }
+
+    console.log(`🔎 Gemini eventos [${zona}] búsquedas: ${queries.join(" | ")} · fuentes: ${sources.length}`);
+    return events.map((event) => {
+      const inicio = fechaEs(`${event.startDate}T12:00:00Z`);
+      const fin = event.endDate !== event.startDate
+        ? fechaEs(`${event.endDate}T12:00:00Z`)
+        : null;
+      const fechaTxt = fin ? `del ${inicio} al ${fin}` : `el ${inicio}`;
+      return `- ${event.name} — ${event.locality} (${fechaTxt})${event.detail ? `: ${event.detail}` : ""}`;
+    }).join("\n");
   } catch (e) {
     console.error("Gemini eventos error:", e.response?.data?.error?.message || e.message);
     return null;
@@ -967,7 +1052,9 @@ Incluye fiestas locales, ferias, festivales, conciertos, teatro, exposiciones, j
 }
 
 // ─── CONTEXTO DE EVENTOS EN VIVO ─────────────────────────────────────────────
-// Estrategia: 0) Gemini (Google Search en vivo) → 1) Spain.info → 2) Claude
+// Estrategia: 0) Gemini (Google Search en vivo) → 1) Spain.info. No usamos
+// Claude como fuente de agenda: sin búsqueda web podría completar huecos con
+// eventos desactualizados o no verificables.
 async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp, poiNombre, language = "es" }) {
   if (!asBool(liveEvents)) return "";
   const lat = asNum(latitude);
@@ -1024,20 +1111,8 @@ async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp
       }
     }
 
-    // 2) Fallback: Claude — pide eventos con fechas si las conoce, pero no exige fechas para responder
-    const r = await anthropic.messages.create({
-      model: MODEL_FAST,
-      max_tokens: 250,
-      system: "Eres un experto en cultura, fiestas y tradiciones locales de España. Responde SOLO si conoces eventos reales. Si no conoces ninguno, responde únicamente: NINGUNO.",
-      messages: [{ role: "user", content: `¿Qué eventos, ferias, festivales o fiestas importantes se celebran en ${zona} durante ${mes}? ${poi ? `El viajero está cerca de: ${poi}.` : ""} Si conoces fechas concretas (día y mes), inclúyelas. Si no las conoces con seguridad, menciona el evento igualmente. Solo eventos reales, en 2-3 frases máximo.` }],
-    });
-    logClaude(r, "eventos_vivo");
-
-    const text = r.content?.[0]?.text?.trim() ?? "";
-    if (!text || text.toUpperCase().includes("NINGUNO")) { setCache(key, ""); return ""; }
-    const context = `Eventos en ${zona} (${mes} ${año}):\n${text}`;
-    setCache(key, context);
-    return context;
+    setCache(key, "");
+    return "";
   } catch (e) {
     console.error("ERROR getLiveEventsContext:", e.message);
     return "";

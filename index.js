@@ -928,11 +928,25 @@ async function buscarEventosGemini({ zona, now, lang, poi }) {
   const fecha = now.toLocaleDateString(isEN ? "en-GB" : "es-ES",
     { day: "numeric", month: "long", year: "numeric", timeZone: TIMEZONE });
   const cerca = poi
-    ? (isEN ? ` The traveller is near: ${poi}.` : ` El viajero está cerca de: ${poi}.`)
+    ? (isEN ? ` Use ${poi} as the centre of the search.` : ` Usa ${poi} como centro de la búsqueda.`)
     : "";
   const prompt = isEN
-    ? `You are a road-trip co-pilot in Spain. Today is ${fecha}. List ONLY real, notable events (local fiestas, fairs, festivals, big concerts) in ${zona} (Spain) that are still under way today or start between today and the next seven days.${cerca} Never include a one-day event that happened before today or an event whose end date has already passed. Only what a traveller would care about, with exact dates. Nothing small or obscure. If nothing notable is confirmed in that window, reply EXACTLY "NINGUNO". Max 3, short plain lines like "- Name (date): one short detail". No intro, no filler.`
-    : `Eres el copiloto de un viaje por carretera en España. Hoy es ${fecha}. Lista SOLO eventos reales y destacados (fiestas populares, ferias, festivales, conciertos grandes) de ${zona} (España) que sigan en curso hoy o comiencen entre hoy y los próximos siete días.${cerca} Nunca incluyas un evento de un solo día que ocurrió antes de hoy ni uno cuya fecha de finalización ya haya pasado. Solo lo que le interesaría a un viajero, con fechas exactas. Nada pequeño ni raro. Si no hay nada destacado confirmado dentro de esa ventana, responde EXACTAMENTE "NINGUNO". Máximo 3, en líneas cortas como "- Nombre (fecha): un detalle breve". Sin introducción ni relleno.`;
+    ? `You are the live-events researcher for a road-trip co-pilot in Spain. Today is ${fecha}.${cerca}
+
+Use Google Search and perform this search ladder before answering:
+1. Check the official agenda, town hall, tourism office and main venues of the municipality in ${zona} for events under way today or starting in the next 30 days.
+2. If the local result is weak, check nearby towns within roughly 50 km for the same period.
+3. If needed, broaden to the province, still favouring the closest and most useful events for a traveller.
+
+Include real local fiestas, fairs, festivals, concerts, theatre, exhibitions, food events, traditional or weekly markets, sports or family activities. A worthwhile municipal event is valid; it does not need to be nationally famous. Prioritise events in the next 7 days, then the rest of the 30-day window. Never include a one-day event before today, an event whose end date has passed, a permanent attraction, or an event without a verifiable date. Reply EXACTLY "NINGUNO" only after all three search levels produce no confirmed result. Return at most 3 events, ordered by proximity and date, in short plain lines: "- Name — town (exact date): one useful detail". No introduction, no filler.`
+    : `Eres el investigador de eventos en vivo de un copiloto de carretera por España. Hoy es ${fecha}.${cerca}
+
+Usa la búsqueda de Google y completa esta búsqueda escalonada antes de responder:
+1. Revisa la agenda oficial, el ayuntamiento, la oficina de turismo y los principales recintos del municipio de ${zona} para encontrar eventos en curso hoy o que empiecen durante los próximos treinta días.
+2. Si el resultado local es escaso, revisa localidades cercanas en un radio aproximado de cincuenta kilómetros para el mismo periodo.
+3. Si todavía hace falta, amplía a la provincia, priorizando siempre lo más cercano y útil para un viajero.
+
+Incluye fiestas locales, ferias, festivales, conciertos, teatro, exposiciones, jornadas gastronómicas, mercados tradicionales o semanales, deporte y actividades familiares reales. Un evento municipal interesante es válido: no necesita ser famoso a nivel nacional. Prioriza primero los próximos siete días y después el resto de la ventana de treinta días. Nunca incluyas un evento de un solo día anterior a hoy, uno cuya fecha de finalización ya haya pasado, una atracción permanente ni un evento sin fecha verificable. Responde EXACTAMENTE "NINGUNO" solo después de que los tres niveles no den ningún resultado confirmado. Devuelve como máximo tres eventos ordenados por cercanía y fecha, en líneas breves: "- Nombre — localidad (fecha exacta): un detalle útil". Sin introducción ni relleno.`;
 
   try {
     _geminiCount++;

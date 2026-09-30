@@ -952,8 +952,19 @@ function parseGeminiEventArray(text) {
   }
 }
 
-function validarEventosGemini(text, { todayIso, limitIso }) {
+function normalizarLocalidad(value) {
+  return limpiar(value)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function validarEventosGemini(text, { todayIso, limitIso, expectedLocality }) {
   const isoPattern = /^\d{4}-\d{2}-\d{2}$/;
+  const expected = normalizarLocalidad(expectedLocality);
   const valid = [];
 
   for (const raw of parseGeminiEventArray(text)) {
@@ -967,6 +978,9 @@ function validarEventosGemini(text, { todayIso, limitIso }) {
     if (!name || !locality) continue;
     if (!isoPattern.test(startDate) || !isoPattern.test(endDate)) continue;
     if (endDate < startDate || endDate < todayIso || startDate > limitIso) continue;
+    const localityKey = normalizarLocalidad(locality);
+    if (!localityKey || !expected ||
+        (!localityKey.includes(expected) && !expected.includes(localityKey))) continue;
 
     valid.push({ name, locality, startDate, endDate, detail });
   }
@@ -988,20 +1002,20 @@ async function buscarEventosGemini({ zona, now, lang, poi }) {
   const municipio = limpiar(zona.split(",")[0]) || limpiar(poi) || zona;
   const centro = limpiar(poi) || municipio;
   const prompt = isEN
-    ? `You are the live-events researcher for a road-trip co-pilot in Spain. Today is ${fecha}. Search Google now for real events around ${centro}, in ${zona}.
+    ? `You are the live-events researcher for a road-trip co-pilot in Spain. Today is ${fecha}. Search Google now for real events taking place specifically in the municipality of ${municipio}, Spain. ${centro} is the traveller's point of interest.
 
-Search specifically for "${municipio} events ${fecha}", "${municipio} cultural agenda", the town hall, tourism office, public library and main local venues. Then check nearby towns within roughly 50 km and finally the province. The valid date window is ${today} through ${limit}, inclusive.
+Search specifically for "${municipio} eventos ${now.getFullYear()}", "${municipio} agenda cultural ${now.getFullYear()}", "${municipio} ayuntamiento agenda", the official tourism site, public library and main local venues. The valid date window is ${today} through ${limit}, inclusive.
 
-Include local fiestas, fairs, festivals, concerts, theatre, exhibitions, food events, traditional markets, sports and family activities. Local municipal activities are valid. Reject expired events, permanent attractions and anything without a verified exact date. Prefer the municipality, then nearby towns, and only then the province.
+Include local fiestas, fairs, festivals, concerts, theatre, exhibitions, book fairs, storytelling nights, food events, traditional markets, sports and family activities. Local municipal activities are valid. Reject expired events, permanent attractions and anything without a verified exact date. Do NOT return events from another municipality, even if they are in the same province.
 
 Return ONLY a JSON array, without markdown or commentary. Each item must use exactly these fields:
 [{"name":"event name","locality":"town","startDate":"YYYY-MM-DD","endDate":"YYYY-MM-DD","detail":"one short verified detail"}]
 Return [] if no dated event is confirmed. Maximum 3, ordered by proximity first and date second.`
-    : `Eres el investigador de eventos en vivo de un copiloto de carretera por España. Hoy es ${fecha}. Busca ahora en Google eventos reales alrededor de ${centro}, en ${zona}.
+    : `Eres el investigador de eventos en vivo de un copiloto de carretera por España. Hoy es ${fecha}. Busca ahora en Google eventos reales que se celebren específicamente en el municipio de ${municipio}, España. ${centro} es el punto de interés del viajero.
 
-Busca expresamente "${municipio} eventos ${fecha}", "${municipio} agenda cultural", el ayuntamiento, la oficina de turismo, la biblioteca pública y los principales recintos locales. Después revisa localidades en un radio aproximado de cincuenta kilómetros y finalmente la provincia. La ventana válida va del ${today} al ${limit}, ambos incluidos.
+Busca expresamente "${municipio} eventos ${now.getFullYear()}", "${municipio} agenda cultural ${now.getFullYear()}", "${municipio} ayuntamiento agenda", la web oficial de turismo, la biblioteca pública y los principales recintos locales. La ventana válida va del ${today} al ${limit}, ambos incluidos.
 
-Incluye fiestas locales, ferias, festivales, conciertos, teatro, exposiciones, jornadas gastronómicas, mercados tradicionales, deporte y actividades familiares. Las actividades municipales locales son válidas. Descarta eventos caducados, atracciones permanentes y cualquier resultado sin fecha exacta verificada. Prioriza el propio municipio, después localidades cercanas y solo al final la provincia.
+Incluye fiestas locales, ferias, festivales, conciertos, teatro, exposiciones, ferias del libro, noches de cuentos, jornadas gastronómicas, mercados tradicionales, deporte y actividades familiares. Las actividades municipales locales son válidas. Descarta eventos caducados, atracciones permanentes y cualquier resultado sin fecha exacta verificada. NO devuelvas eventos de otro municipio, aunque pertenezca a la misma provincia.
 
 Devuelve ÚNICAMENTE un array JSON, sin markdown ni explicaciones. Cada elemento debe usar exactamente estos campos:
 [{"name":"nombre del evento","locality":"localidad","startDate":"YYYY-MM-DD","endDate":"YYYY-MM-DD","detail":"un detalle breve y verificado"}]
@@ -1030,7 +1044,11 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
       return null;
     }
 
-    const events = validarEventosGemini(text, { todayIso: today, limitIso: limit });
+    const events = validarEventosGemini(text, {
+      todayIso: today,
+      limitIso: limit,
+      expectedLocality: municipio,
+    });
     if (events.length === 0) {
       console.warn(`Gemini eventos sin resultados estructurados válidos para ${zona}. Búsquedas: ${queries.join(" | ")}`);
       return null;

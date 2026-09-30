@@ -1183,15 +1183,252 @@ INSTRUCCIONES PARA LA NARRACIÓN:
 // ─── TRUNCAR POR FRASES COMPLETAS ────────────────────────────────────────────
 // Recorta el texto al número máximo de palabras, siempre terminando en frase completa.
 // ─── CORRECCIÓN DE PRONUNCIACIÓN PARA ELEVENLABS ─────────────────────────────
-// Palabras españolas que ElevenLabs pronuncia mal en inglés → reemplazar por fonética
-// Solo palabras que ElevenLabs pronuncia mal en inglés — no tocar las que ya suenan bien
+// ElevenLabs puede leer cifras y numerales romanos de forma imprevisible. Antes
+// del TTS los convertimos a palabras, aunque el modelo ya tenga esa instrucción.
 const PRONUNCIACION = [
   [/\bGeneralife\b/gi, "Jenerali-fe"],
 ];
 
-function corregirPronunciacion(text) {
+const UNIDADES_ES = [
+  "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve",
+  "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete",
+  "dieciocho", "diecinueve", "veinte", "veintiuno", "veintidós", "veintitrés",
+  "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve",
+];
+const DECENAS_ES = ["", "", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
+const CENTENAS_ES = ["", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
+
+function numeroMenorMilEs(value) {
+  const n = Math.trunc(value);
+  if (n < 30) return UNIDADES_ES[n];
+  if (n < 100) {
+    const decena = Math.floor(n / 10);
+    const unidad = n % 10;
+    return unidad ? `${DECENAS_ES[decena]} y ${UNIDADES_ES[unidad]}` : DECENAS_ES[decena];
+  }
+  if (n === 100) return "cien";
+  const centena = Math.floor(n / 100);
+  const resto = n % 100;
+  return resto ? `${CENTENAS_ES[centena]} ${numeroMenorMilEs(resto)}` : CENTENAS_ES[centena];
+}
+
+function numeroEnteroEs(value) {
+  const n = Math.trunc(value);
+  if (n < 0) return `menos ${numeroEnteroEs(-n)}`;
+  if (n < 1000) return numeroMenorMilEs(n);
+  if (n < 1_000_000) {
+    const miles = Math.floor(n / 1000);
+    const resto = n % 1000;
+    const prefijo = miles === 1 ? "mil" : `${numeroEnteroEs(miles)} mil`;
+    return resto ? `${prefijo} ${numeroMenorMilEs(resto)}` : prefijo;
+  }
+  if (n < 1_000_000_000) {
+    const millones = Math.floor(n / 1_000_000);
+    const resto = n % 1_000_000;
+    const prefijo = millones === 1 ? "un millón" : `${numeroEnteroEs(millones)} millones`;
+    return resto ? `${prefijo} ${numeroEnteroEs(resto)}` : prefijo;
+  }
+  if (n < 1_000_000_000_000) {
+    const milesDeMillones = Math.floor(n / 1_000_000_000);
+    const resto = n % 1_000_000_000;
+    const prefijo = milesDeMillones === 1
+      ? "mil millones"
+      : `${numeroEnteroEs(milesDeMillones)} mil millones`;
+    return resto ? `${prefijo} ${numeroEnteroEs(resto)}` : prefijo;
+  }
+  const billones = Math.floor(n / 1_000_000_000_000);
+  const resto = n % 1_000_000_000_000;
+  const prefijo = billones === 1 ? "un billón" : `${numeroEnteroEs(billones)} billones`;
+  return resto ? `${prefijo} ${numeroEnteroEs(resto)}` : prefijo;
+}
+
+const SMALL_EN = [
+  "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+  "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
+  "eighteen", "nineteen",
+];
+const TENS_EN = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+
+function numeroMenorMilEn(value) {
+  const n = Math.trunc(value);
+  if (n < 20) return SMALL_EN[n];
+  if (n < 100) {
+    const tens = Math.floor(n / 10);
+    const unit = n % 10;
+    return unit ? `${TENS_EN[tens]}-${SMALL_EN[unit]}` : TENS_EN[tens];
+  }
+  const hundreds = Math.floor(n / 100);
+  const rest = n % 100;
+  return rest ? `${SMALL_EN[hundreds]} hundred ${numeroMenorMilEn(rest)}` : `${SMALL_EN[hundreds]} hundred`;
+}
+
+function numeroEnteroEn(value) {
+  const n = Math.trunc(value);
+  if (n < 0) return `minus ${numeroEnteroEn(-n)}`;
+  if (n < 1000) return numeroMenorMilEn(n);
+  const scales = [
+    [1_000_000_000_000, "trillion"],
+    [1_000_000_000, "billion"],
+    [1_000_000, "million"],
+    [1000, "thousand"],
+  ];
+  for (const [size, name] of scales) {
+    if (n < size) continue;
+    const units = Math.floor(n / size);
+    const rest = n % size;
+    const prefix = `${numeroEnteroEn(units)} ${name}`;
+    return rest ? `${prefix} ${numeroEnteroEn(rest)}` : prefix;
+  }
+  return String(n);
+}
+
+const ORDINALES_ES = [
+  "", "primero", "segundo", "tercero", "cuarto", "quinto", "sexto", "séptimo", "octavo",
+  "noveno", "décimo", "undécimo", "duodécimo", "decimotercero", "decimocuarto",
+  "decimoquinto", "decimosexto", "decimoséptimo", "decimoctavo", "decimonoveno", "vigésimo",
+];
+const DECENAS_ORDINALES_ES = {
+  20: "vigésimo",
+  30: "trigésimo",
+  40: "cuadragésimo",
+  50: "quincuagésimo",
+};
+
+function ordinalEs(value, femenino = false) {
+  const n = Math.trunc(value);
+  let result = ORDINALES_ES[n] || "";
+  if (!result && n > 20 && n < 60) {
+    const decena = Math.floor(n / 10) * 10;
+    const unidad = n % 10;
+    const base = DECENAS_ORDINALES_ES[decena];
+    if (base) result = unidad ? `${base} ${ORDINALES_ES[unidad]}` : base;
+  }
+  if (!result) result = numeroEnteroEs(n);
+  return femenino
+    ? result.split(" ").map((word) => word.endsWith("o") ? `${word.slice(0, -1)}a` : word).join(" ")
+    : result;
+}
+
+const ORDINAL_SMALL_EN = [
+  "", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth",
+  "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth",
+  "seventeenth", "eighteenth", "nineteenth", "twentieth",
+];
+const ORDINAL_TENS_EN = { 20: "twentieth", 30: "thirtieth", 40: "fortieth", 50: "fiftieth" };
+
+function ordinalEn(value) {
+  const n = Math.trunc(value);
+  if (ORDINAL_SMALL_EN[n]) return ORDINAL_SMALL_EN[n];
+  if (n > 20 && n < 60) {
+    const tens = Math.floor(n / 10) * 10;
+    const unit = n % 10;
+    if (unit === 0 && ORDINAL_TENS_EN[tens]) return ORDINAL_TENS_EN[tens];
+    if (unit && TENS_EN[tens / 10]) return `${TENS_EN[tens / 10]}-${ORDINAL_SMALL_EN[unit]}`;
+  }
+  return numeroEnteroEn(n);
+}
+
+function enteroARomano(value) {
+  const pairs = [
+    [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"], [100, "C"], [90, "XC"],
+    [50, "L"], [40, "XL"], [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],
+  ];
+  let n = value;
+  let result = "";
+  for (const [amount, symbol] of pairs) {
+    while (n >= amount) { result += symbol; n -= amount; }
+  }
+  return result;
+}
+
+function romanoAEntero(raw) {
+  const roman = raw.toUpperCase();
+  const values = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+  let total = 0;
+  for (let i = 0; i < roman.length; i++) {
+    const current = values[roman[i]];
+    const next = values[roman[i + 1]] || 0;
+    total += current < next ? -current : current;
+  }
+  return total > 0 && total < 4000 && enteroARomano(total) === roman ? total : null;
+}
+
+function convertirRomanos(text, lang) {
+  return text.replace(/\b[IVXLCDM]+\b/g, (roman, offset, source) => {
+    const value = romanoAEntero(roman);
+    if (value === null || value > 59) return roman;
+    const before = source.slice(Math.max(0, offset - 35), offset);
+    const after = source.slice(offset + roman.length, offset + roman.length + 30);
+    const contextual = lang === "en"
+      ? /(?:century|chapter|volume|act|part|phase|edition|king|queen|pope|henry|charles|louis|philip)\s*$/i.test(before) ||
+        /^\s+(?:world war|edition|republic|dynasty|festival|congress)\b/i.test(after)
+      : /(?:siglo|capítulo|tomo|volumen|acto|parte|fase|edición|rey|reina|papa|emperador|emperatriz|carlos|felipe|fernando|alfonso|luis|isabel|juan|enrique)\s*$/i.test(before) ||
+        /^\s+(?:guerra|edición|república|dinastía|jornada|etapa|parte|fase|feria|legislatura|festival|congreso)\b/i.test(after);
+    // En español una letra romana aislada también se transforma (V → quinto).
+    // En inglés conservamos "I" cuando no hay contexto para no alterar el pronombre.
+    if (lang === "en" && roman.length === 1 && !contextual) return roman;
+    if (lang === "en") return ordinalEn(value);
+    const femenino = /^\s+(?:guerra|edición|república|dinastía|jornada|etapa|parte|fase|feria|legislatura)\b/i.test(after);
+    return ordinalEs(value, femenino);
+  });
+}
+
+function numeroTokenEnPalabras(raw, lang) {
+  let integerPart = raw;
+  let decimalPart = "";
+  if (lang === "en") {
+    if (/^\d{1,3}(?:,\d{3})+(?:\.\d+)?$/.test(raw)) {
+      const split = raw.split(".");
+      integerPart = split[0].replaceAll(",", "");
+      decimalPart = split[1] || "";
+    } else if (raw.includes(".")) {
+      [integerPart, decimalPart] = raw.split(".", 2);
+    } else {
+      integerPart = raw.replaceAll(",", "");
+    }
+  } else if (/^\d{1,3}(?:\.\d{3})+(?:,\d+)?$/.test(raw)) {
+    const split = raw.split(",");
+    integerPart = split[0].replaceAll(".", "");
+    decimalPart = split[1] || "";
+  } else if (raw.includes(",") || raw.includes(".")) {
+    const separator = raw.includes(",") ? "," : ".";
+    [integerPart, decimalPart] = raw.split(separator, 2);
+  }
+
+  const numeric = Number(integerPart);
+  if (!Number.isSafeInteger(numeric)) {
+    return raw.split("").map((digit) => {
+      if (!/\d/.test(digit)) return digit;
+      return lang === "en" ? SMALL_EN[Number(digit)] : UNIDADES_ES[Number(digit)];
+    }).join(" ");
+  }
+  const integerWords = lang === "en" ? numeroEnteroEn(numeric) : numeroEnteroEs(numeric);
+  if (!decimalPart) return integerWords;
+  const decimalWords = decimalPart.split("").map((digit) =>
+    lang === "en" ? SMALL_EN[Number(digit)] : UNIDADES_ES[Number(digit)]).join(" ");
+  return `${integerWords} ${lang === "en" ? "point" : "coma"} ${decimalWords}`;
+}
+
+function normalizarNumerosParaVoz(text, lang = "es") {
+  let result = convertirRomanos(text, lang);
+  if (lang === "en") {
+    result = result.replace(/\b(\d+)\s*(st|nd|rd|th)\b/gi, (_match, number) => ordinalEn(Number(number)));
+    result = result.replace(/\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?/g,
+      (number) => numeroTokenEnPalabras(number, "en"));
+    result = result.replace(/\s*%/g, " percent").replace(/\s*°\s*C\b/gi, " degrees Celsius").replace(/\s*°/g, " degrees");
+  } else {
+    result = result.replace(/\b(\d+)\s*\.?\s*([ºª])/g,
+      (_match, number, suffix) => ordinalEs(Number(number), suffix === "ª"));
+    result = result.replace(/\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:[.,]\d+)?/g,
+      (number) => numeroTokenEnPalabras(number, "es"));
+    result = result.replace(/\s*%/g, " por ciento").replace(/\s*°\s*C\b/gi, " grados Celsius").replace(/\s*°/g, " grados");
+  }
+  return result.replace(/\s{2,}/g, " ").trim();
+}
+
+function corregirPronunciacion(text, lang = "es") {
   if (!text) return text;
-  let result = text;
+  let result = normalizarNumerosParaVoz(text, lang);
   for (const [pattern, replacement] of PRONUNCIACION) {
     result = result.replace(pattern, replacement);
   }
@@ -1306,8 +1543,8 @@ async function generarSeccionObligatoria({ marker, prompt, liveContext, language
       model: MODEL_FAST,
       max_tokens: 220,
       system: isEN
-        ? "You write concise, factual text for a road-trip audio guide. Return only the requested paragraph."
-        : "Escribes textos breves y rigurosos para una audioguía de carretera. Devuelve únicamente el párrafo solicitado.",
+        ? "You write concise, factual text for a road-trip audio guide. Spell out every number and Roman numeral in words. Never use digits. Return only the requested paragraph."
+        : "Escribes textos breves y rigurosos para una audioguía de carretera. Escribe absolutamente todos los números y numerales romanos con palabras; nunca uses cifras. Devuelve únicamente el párrafo solicitado.",
       messages: [{ role: "user", content: `${sectionInstruction}\n\n${source}` }],
     });
     logClaude(r, marker === REQUIRED_MARKERS.live ? "reparar_evento_vivo" : "reparar_curiosidad", language);
@@ -1767,11 +2004,11 @@ app.post("/ai/generate", guard, async (req, res) => {
     const isEN = language === "en";
     const systemPrompt = isEN
       ? [
-          "You are SANCHO, a road trip co-pilot app. Explain places clearly and with accuracy, but without academic language — like a great storyteller, not a historian. Use precise vocabulary. Avoid vague phrases, slang or inaccuracies. Reply in English, no lists, no emojis, no headings. Natural text designed to sound great out loud while driving.",
+          "You are SANCHO, a road trip co-pilot app. Explain places clearly and with accuracy, but without academic language — like a great storyteller, not a historian. Use precise vocabulary. Avoid vague phrases, slang or inaccuracies. Reply in English, no lists, no emojis, no headings. Spell out absolutely every number, date, year, quantity and Roman numeral in words; never use digits. Natural text designed to sound great out loud while driving.",
           temasTxt ? `Active topics: ${temasTxt}` : "",
         ].filter(Boolean).join("\n")
       : [
-          "Eres SANCHO, el copiloto de viaje. Explicas los lugares de forma clara y con rigor, pero sin tecnicismos ni lenguaje académico — como un buen divulgador, no como un historiador ni como un colega informal. Usa vocabulario preciso y correcto. Evita expresiones vagas, coloquialismos burdos o imprecisiones. Responde en español, sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta mientras se conduce.",
+          "Eres SANCHO, el copiloto de viaje. Explicas los lugares de forma clara y con rigor, pero sin tecnicismos ni lenguaje académico — como un buen divulgador, no como un historiador ni como un colega informal. Usa vocabulario preciso y correcto. Evita expresiones vagas, coloquialismos burdos o imprecisiones. Responde en español, sin listas, sin emojis, sin títulos. Escribe absolutamente todos los números, fechas, años, cantidades y numerales romanos con palabras; nunca uses cifras. Por ejemplo, escribe quinto en lugar de V y mil cuatrocientos noventa y dos en lugar de usar dígitos. Solo texto natural pensado para sonar bien en voz alta mientras se conduce.",
           temasTxt ? `Temas activados: ${temasTxt}` : "",
         ].filter(Boolean).join("\n");
 
@@ -1850,7 +2087,7 @@ app.post("/tts", guard, async (req, res) => {
       ? (process.env.ELEVEN_VOICE_ID_EN || DEFAULT_VOICE_ID_EN)
       : DEFAULT_VOICE_ID;
     const usedVoiceId = voiceId || defaultVoice;
-    const cleanText   = corregirPronunciacion(text);
+    const cleanText   = corregirPronunciacion(text, lang);
 
     // ── Caché de audio: misma voz + texto → mismo MP3 ──────────────────────
     const mp3CacheKey = `${usedVoiceId}|${mood}|${cleanText}`;
@@ -2143,12 +2380,12 @@ app.post("/narrate/bienvenida-provincia", async (req, res) => {
     if (isEN) {
       const month    = now.toLocaleString("en-US", { month: "long", timeZone: TIMEZONE });
       const season   = m >= 3 && m <= 5 ? "spring" : m >= 6 && m <= 8 ? "summer" : m >= 9 && m <= 11 ? "autumn" : "winter";
-      systemPrompt   = "You are SANCHO, a road trip co-pilot app. You narrate with warmth, like a friend who knows Spain well. No lists, no emojis, no headings. Natural text designed to sound great out loud while driving.";
+      systemPrompt   = "You are SANCHO, a road trip co-pilot app. You narrate with warmth, like a friend who knows Spain well. No lists, no emojis, no headings. Spell out absolutely every number and Roman numeral in words; never use digits. Natural text designed to sound great out loud while driving.";
       userPrompt     = `The traveller has just entered the province of ${provincia}${comunidad ? `, in the region of ${comunidad}` : ""}. It is ${month}, ${season}.\n\nWelcome them in 3-5 paragraphs:\n1. Something visual or sensory they notice as they enter.\n2. The identity of ${provincia} — what makes it unique and why it matters: this could be a key historical figure born or linked to this land, a decisive historical event that happened here, or the role it played in the history of Spain.\n3. Two or three things they will discover, at least one surprising.\n4. A hook at the end that makes them want to pay attention.\n\nWarm, personal tone with character.`;
     } else {
       const mes      = now.toLocaleString("es-ES", { month: "long", timeZone: TIMEZONE });
       const estacion = m >= 3 && m <= 5 ? "primavera" : m >= 6 && m <= 8 ? "verano" : m >= 9 && m <= 11 ? "otoño" : "invierno";
-      systemPrompt   = "Eres el copiloto de carretera SANCHO. Narras con calidez, como un amigo que conoce bien España. Sin listas, sin emojis, sin títulos. Solo texto natural pensado para sonar bien en voz alta.";
+      systemPrompt   = "Eres el copiloto de carretera SANCHO. Narras con calidez, como un amigo que conoce bien España. Sin listas, sin emojis, sin títulos. Escribe absolutamente todos los números, fechas, años, cantidades y numerales romanos con palabras; nunca uses cifras. Solo texto natural pensado para sonar bien en voz alta.";
       userPrompt     = `El viajero acaba de entrar en la provincia de ${provincia}${comunidad ? `, comunidad de ${comunidad}` : ""}. Es ${mes}, ${estacion}.\n\nDale la bienvenida en 3-5 párrafos:\n1. Algo visual o sensorial que el viajero percibe al entrar.\n2. La identidad de ${provincia} — qué la hace única y por qué importa: puede ser un personaje histórico clave nacido o ligado a esta tierra, un hecho histórico decisivo que ocurrió aquí, o el papel que tuvo en la historia de España.\n3. Dos o tres cosas que va a encontrar, al menos una sorprendente.\n4. Un cierre con gancho que invite a estar atento.\n\nTono cercano, cálido, con personalidad.`;
     }
 

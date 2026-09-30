@@ -912,8 +912,9 @@ async function buscarEventos({ province, nowDate }) {
 // ─── EVENTOS EN VIVO VÍA GEMINI (grounding con Google Search) ────────────────
 // Fuente principal: Gemini busca en Google en tiempo real y filtra por relevancia.
 // Tope diario de seguridad + caché por zona/día (en getLiveEventsContext) para
-// que el gasto no se dispare. Sin GEMINI_API_KEY, devuelve null (fallback).
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+// que el gasto no se dispare. Sin clave de Gemini, no genera contexto en vivo.
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+const GEMINI_EVENTS_MODEL = process.env.GEMINI_EVENTS_MODEL || "gemini-3.8-flash";
 const GEMINI_DAILY_CAP = 800; // máximo de llamadas a Gemini por día
 let _geminiDay = "";
 let _geminiCount = 0;
@@ -1004,7 +1005,7 @@ async function buscarEventosGemini({ zona, now, lang, poi }) {
   const prompt = isEN
     ? `You are the live-events researcher for a road-trip co-pilot in Spain. Today is ${fecha}. Search Google now for real events taking place specifically in the municipality of ${municipio}, Spain. ${centro} is the traveller's point of interest.
 
-Search specifically for "${municipio} eventos ${now.getFullYear()}", "${municipio} agenda cultural ${now.getFullYear()}", "${municipio} ayuntamiento agenda", the official tourism site, public library and main local venues. The valid date window is ${today} through ${limit}, inclusive.
+You must use Google Search. Search specifically for "${municipio} eventos esta semana", "${municipio} eventos este mes", "${municipio} events this week", "${municipio} events this month", "${municipio} agenda cultural ${now.getFullYear()}", "${municipio} ayuntamiento agenda", the official tourism site, public library, university and main local venues. The valid date window is ${today} through ${limit}, inclusive.
 
 Include local fiestas, fairs, festivals, concerts, theatre, exhibitions, book fairs, storytelling nights, food events, traditional markets, sports and family activities. Local municipal activities are valid. Reject expired events, permanent attractions and anything without a verified exact date. Do NOT return events from another municipality, even if they are in the same province.
 
@@ -1013,7 +1014,7 @@ Return ONLY a JSON array, without markdown or commentary. Each item must use exa
 Return [] if no dated event is confirmed. Maximum 3, ordered by proximity first and date second.`
     : `Eres el investigador de eventos en vivo de un copiloto de carretera por España. Hoy es ${fecha}. Busca ahora en Google eventos reales que se celebren específicamente en el municipio de ${municipio}, España. ${centro} es el punto de interés del viajero.
 
-Busca expresamente "${municipio} eventos ${now.getFullYear()}", "${municipio} agenda cultural ${now.getFullYear()}", "${municipio} ayuntamiento agenda", la web oficial de turismo, la biblioteca pública y los principales recintos locales. La ventana válida va del ${today} al ${limit}, ambos incluidos.
+Debes utilizar Google Search. Busca expresamente "${municipio} eventos esta semana", "${municipio} eventos este mes", "${municipio} agenda cultural ${now.getFullYear()}", "${municipio} ayuntamiento agenda", la web oficial de turismo, la biblioteca pública, la universidad y los principales recintos locales. La ventana válida va del ${today} al ${limit}, ambos incluidos.
 
 Incluye fiestas locales, ferias, festivales, conciertos, teatro, exposiciones, ferias del libro, noches de cuentos, jornadas gastronómicas, mercados tradicionales, deporte y actividades familiares. Las actividades municipales locales son válidas. Descarta eventos caducados, atracciones permanentes y cualquier resultado sin fecha exacta verificada. NO devuelvas eventos de otro municipio, aunque pertenezca a la misma provincia.
 
@@ -1024,23 +1025,40 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
   try {
     _geminiCount++;
     const resp = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+      "https://generativelanguage.googleapis.com/v1beta/interactions",
       {
-        contents: [{ parts: [{ text: prompt }] }],
-        tools: [{ google_search: {} }],
-        generationConfig: { temperature: 0.1 },
+        model: GEMINI_EVENTS_MODEL,
+        input: prompt,
+        tools: [{ type: "google_search" }],
+        store: false,
       },
-      { headers: { "Content-Type": "application/json" }, timeout: 20000 }
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": GEMINI_API_KEY,
+        },
+        timeout: 30000,
+      }
     );
-    const cand = resp.data?.candidates?.[0];
-    const text = (cand?.content?.parts || []).map(p => p.text).filter(Boolean).join("").trim();
-    const grounding = cand?.groundingMetadata || {};
-    const queries = Array.isArray(grounding.webSearchQueries) ? grounding.webSearchQueries : [];
-    const sources = Array.isArray(grounding.groundingChunks)
-      ? grounding.groundingChunks.filter((chunk) => chunk?.web?.uri)
-      : [];
-    if (queries.length === 0 || sources.length === 0) {
-      console.warn(`Gemini eventos sin grounding para ${zona}; respuesta descartada.`);
+    const steps = Array.isArray(resp.data?.steps) ? resp.data.steps : [];
+    const queries = steps
+      .filter((step) => step?.type === "google_search_call")
+      .flatMap((step) => Array.isArray(step?.arguments?.queries) ? step.arguments.queries : []);
+    const hasSearchResult = steps.some((step) => step?.type === "google_search_result");
+    const modelBlocks = steps
+      .filter((step) => step?.type === "model_output")
+      .flatMap((step) => Array.isArray(step?.content) ? step.content : []);
+    const text = modelBlocks
+      .filter((block) => block?.type === "text" && block?.text)
+      .map((block) => block.text)
+      .join("")
+      .trim();
+    const citations = modelBlocks
+      .flatMap((block) => Array.isArray(block?.annotations) ? block.annotations : [])
+      .filter((annotation) => annotation?.type === "url_citation");
+
+    if (queries.length === 0 || !hasSearchResult) {
+      console.warn(`Gemini eventos no ejecutó Google Search para ${zona}; respuesta descartada.`);
       return null;
     }
 
@@ -1054,7 +1072,7 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
       return null;
     }
 
-    console.log(`🔎 Gemini eventos [${zona}] búsquedas: ${queries.join(" | ")} · fuentes: ${sources.length}`);
+    console.log(`🔎 Gemini eventos [${zona}] búsquedas: ${queries.join(" | ")} · citas: ${citations.length}`);
     return events.map((event) => {
       const inicio = fechaEs(`${event.startDate}T12:00:00Z`);
       const fin = event.endDate !== event.startDate
@@ -1070,9 +1088,8 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
 }
 
 // ─── CONTEXTO DE EVENTOS EN VIVO ─────────────────────────────────────────────
-// Estrategia: 0) Gemini (Google Search en vivo) → 1) Spain.info. No usamos
-// Claude como fuente de agenda: sin búsqueda web podría completar huecos con
-// eventos desactualizados o no verificables.
+// Fuente única: Gemini con Google Search en vivo. No usamos Claude ni Spain.info
+// como fallback: podrían mezclar municipios o devolver eventos desactualizados.
 async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp, poiNombre, language = "es" }) {
   if (!asBool(liveEvents)) return "";
   const lat = asNum(latitude);
@@ -1092,7 +1109,7 @@ async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp
   if (cached !== null) return cached;
 
   try {
-    // 0) Fuente principal: Gemini con grounding de Google Search (actual al día).
+    // Gemini con Google Search (actual al día).
     const geminiTexto = await buscarEventosGemini({
       zona, now, lang: limpiar(language) || "es", poi,
     });
@@ -1100,33 +1117,6 @@ async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp
       const context = `Eventos reales cerca (${zona}):\n${geminiTexto}`;
       setCache(key, context);
       return context;
-    }
-
-    // 1) Intentar Spain.info para fechas reales
-    const province = place.province;
-    if (province) {
-      const eventos = await buscarEventos({ province, nowDate: now });
-      if (eventos.length > 0) {
-        // Ordenar por puntuación y tomar los 2 mejores
-        const ranked = eventos
-          .map(ev => ({ ...ev, score: puntuarEvento(ev, now, place) }))
-          .sort((a, b) => b.score - a.score)
-          .slice(0, 2);
-
-        const lines = ranked.map(ev => {
-          const inicio = ev.startDate ? fechaEs(ev.startDate.toISOString()) : null;
-          const fin    = ev.endDate && ev.endDate.getTime() !== ev.startDate?.getTime()
-            ? fechaEs(ev.endDate.toISOString()) : null;
-          const fechaTxt = inicio
-            ? (fin ? `del ${inicio} al ${fin}` : `el ${inicio}`)
-            : "";
-          return `- ${ev.title}${fechaTxt ? ` (${fechaTxt})` : ""}${ev.isOngoing ? " — en curso ahora mismo" : ""}`;
-        }).join("\n");
-
-        const context = `Eventos reales en ${zona} (fuente: Spain.info):\n${lines}`;
-        setCache(key, context);
-        return context;
-      }
     }
 
     setCache(key, "");

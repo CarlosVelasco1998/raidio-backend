@@ -59,19 +59,40 @@ const RL_DEV_PER_MIN        = Number(process.env.RL_DEV_PER_MIN        || 40);
 const RL_DEV_PER_DAY        = Number(process.env.RL_DEV_PER_DAY        || 800);
 let CLAUDE_DAILY_USD_CAP  = Number(process.env.CLAUDE_DAILY_USD_CAP  || 5);       // $/día (editable desde el panel)
 let ELEVEN_DAILY_CHAR_CAP = Number(process.env.ELEVEN_DAILY_CHAR_CAP || 200000); // caracteres/día (editable desde el panel)
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+const GEMINI_EVENTS_MODEL = process.env.GEMINI_EVENTS_MODEL || "gemini-3.8-flash";
+let GEMINI_DAILY_CAP = Number(process.env.GEMINI_DAILY_CAP || 800); // llamadas/día (editable desde el panel)
 
-// Contadores de gasto del día (memoria; se reinician al cambiar de día en Madrid).
+// Contadores del día. Se persisten en el disco de Render más abajo para que un
+// despliegue o reinicio no reinicie artificialmente los topes de seguridad.
 const _spendDayFmt = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Madrid" });
 let _spendDay = _spendDayFmt.format(new Date());
 let _claudeUsdToday = 0, _elevenCharsToday = 0;
 function _rollSpendDay() {
   const d = _spendDayFmt.format(new Date());
-  if (d !== _spendDay) { _spendDay = d; _claudeUsdToday = 0; _elevenCharsToday = 0; }
+  if (d !== _spendDay) {
+    _spendDay = d;
+    _claudeUsdToday = 0;
+    _elevenCharsToday = 0;
+    if (typeof _geminiDay !== "undefined") {
+      _geminiDay = d;
+      _geminiCount = 0;
+    }
+    saveDailyUsage().catch(() => {});
+  }
 }
 function addClaudeSpend(r) {
-  try { _rollSpendDay(); _claudeUsdToday += claudeCost(r?.model, r?.usage?.input_tokens, r?.usage?.output_tokens); } catch (_) {}
+  try {
+    _rollSpendDay();
+    _claudeUsdToday += claudeCost(r?.model, r?.usage?.input_tokens, r?.usage?.output_tokens);
+    saveDailyUsage().catch(() => {});
+  } catch (_) {}
 }
-function addElevenSpend(chars) { _rollSpendDay(); _elevenCharsToday += (chars || 0); }
+function addElevenSpend(chars) {
+  _rollSpendDay();
+  _elevenCharsToday += (chars || 0);
+  saveDailyUsage().catch(() => {});
+}
 
 // Rate-limit en memoria (ventana fija). Limpieza periódica para no crecer sin fin.
 const _rl = new Map();
@@ -92,25 +113,70 @@ function clientIp(req) {
   return xf || req.ip || req.socket?.remoteAddress || "unknown";
 }
 
-// Middleware que protege los endpoints caros (Claude / ElevenLabs).
-function guard(req, res, next) {
+// Autenticación y rate-limit compartidos. Los topes se comprueban después por
+// proveedor para que agotar ElevenLabs no apague Claude (y viceversa).
+function guardBase(req, res) {
   // Capa A — secreto compartido (solo se exige si está configurado en el entorno).
   if (APP_SHARED_SECRET && req.get("x-app-key") !== APP_SHARED_SECRET) {
-    return res.status(401).json({ error: "no autorizado" });
-  }
-  // Capa C — tope de gasto diario: corta ANTES de gastar más.
-  _rollSpendDay();
-  if (_claudeUsdToday >= CLAUDE_DAILY_USD_CAP || _elevenCharsToday >= ELEVEN_DAILY_CHAR_CAP) {
-    return res.status(503).json({ error: "servicio en pausa por hoy" });
+    res.status(401).json({ error: "no autorizado" });
+    return false;
   }
   // Capa B — rate-limit por IP y por dispositivo.
   const ip = clientIp(req);
   if (_overLimit("ipm:" + ip, RL_IP_PER_MIN, 60000) || _overLimit("ipd:" + ip, RL_IP_PER_DAY, 86400000)) {
-    return res.status(429).json({ error: "demasiadas peticiones" });
+    res.status(429).json({ error: "demasiadas peticiones" });
+    return false;
   }
   const dev = req.get("x-device-id");
   if (dev && (_overLimit("dvm:" + dev, RL_DEV_PER_MIN, 60000) || _overLimit("dvd:" + dev, RL_DEV_PER_DAY, 86400000))) {
-    return res.status(429).json({ error: "demasiadas peticiones" });
+    res.status(429).json({ error: "demasiadas peticiones" });
+    return false;
+  }
+  return true;
+}
+
+function guardClaude(req, res, next) {
+  if (!guardBase(req, res)) return;
+  _rollSpendDay();
+  if (_claudeUsdToday >= CLAUDE_DAILY_USD_CAP) {
+    return res.status(503).json({ error: "Claude en pausa por hoy", provider: "claude" });
+  }
+  next();
+}
+
+// Autentica y limita tráfico, pero deja que cada ruta compruebe su proveedor
+// después de consultar la caché. Así un tope agotado no inutiliza contenido ya
+// generado, que no tiene coste adicional.
+function guardApp(req, res, next) {
+  if (!guardBase(req, res)) return;
+  next();
+}
+
+function guardEleven(req, res, next) {
+  if (!guardBase(req, res)) return;
+  _rollSpendDay();
+  if (_elevenCharsToday >= ELEVEN_DAILY_CHAR_CAP) {
+    return res.status(503).json({ error: "ElevenLabs en pausa por hoy", provider: "eleven" });
+  }
+  next();
+}
+
+function guardGemini(req, res, next) {
+  if (!guardBase(req, res)) return;
+  const today = _spendDayFmt.format(new Date());
+  if (_geminiDay !== today) { _geminiDay = today; _geminiCount = 0; }
+  if (_geminiCount >= GEMINI_DAILY_CAP) {
+    return res.status(503).json({ error: "Gemini en pausa por hoy", provider: "gemini" });
+  }
+  next();
+}
+
+// Flujos que gastan Claude y ElevenLabs dentro de una sola petición (cuentos).
+function guardCombined(req, res, next) {
+  if (!guardBase(req, res)) return;
+  _rollSpendDay();
+  if (_claudeUsdToday >= CLAUDE_DAILY_USD_CAP || _elevenCharsToday >= ELEVEN_DAILY_CHAR_CAP) {
+    return res.status(503).json({ error: "servicio de cuentos en pausa por hoy" });
   }
   next();
 }
@@ -136,12 +202,19 @@ const TTL = {
 // Directorio: /data/narration-cache (Render Persistent Disk) o fallback local
 const NARRATION_CACHE_DIR = process.env.NARRATION_CACHE_DIR
   || (process.env.RENDER ? "/data/narration-cache" : "./narration-cache");
-let CACHE_TTL_DAYS = Number(process.env.CACHE_TTL_DAYS ?? 14);
-let CACHE_TTL_MS   = CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
+let TEXT_CACHE_TTL_DAYS = Number(process.env.TEXT_CACHE_TTL_DAYS ?? 180);
+let AUDIO_CACHE_TTL_DAYS = Number(process.env.AUDIO_CACHE_TTL_DAYS ?? 90);
+let LIVE_CACHE_TTL_HOURS = Number(process.env.LIVE_CACHE_TTL_HOURS ?? 12);
+let TEXT_CACHE_TTL_MS = TEXT_CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
+let AUDIO_CACHE_TTL_MS = AUDIO_CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
+let LIVE_CACHE_TTL_MS = LIVE_CACHE_TTL_HOURS * 60 * 60 * 1000;
 
 const CACHE_TXT_DIR    = path.join(NARRATION_CACHE_DIR, "txt");
 const CACHE_MP3_DIR    = path.join(NARRATION_CACHE_DIR, "mp3");
+const CACHE_LIVE_DIR   = path.join(NARRATION_CACHE_DIR, "live-events");
 const CACHE_CONFIG_FILE = path.join(NARRATION_CACHE_DIR, "admin-config.json");
+const DAILY_USAGE_FILE = path.join(NARRATION_CACHE_DIR, "daily-usage.json");
+const CACHE_METRICS_FILE = path.join(NARRATION_CACHE_DIR, "cache-metrics.json");
 
 async function readCacheConfig() {
   try { return JSON.parse(await fs.readFile(CACHE_CONFIG_FILE, "utf8")); }
@@ -151,6 +224,64 @@ async function writeCacheConfig(cfg) {
   await fs.writeFile(CACHE_CONFIG_FILE, JSON.stringify(cfg, null, 2), "utf8");
 }
 
+async function loadDailyUsage() {
+  try {
+    const j = JSON.parse(await fs.readFile(DAILY_USAGE_FILE, "utf8"));
+    const today = _spendDayFmt.format(new Date());
+    if (j.day !== today) return;
+    _spendDay = today;
+    _claudeUsdToday = Number(j.claudeUsdToday) || 0;
+    _elevenCharsToday = Number(j.elevenCharsToday) || 0;
+    _geminiDay = today;
+    _geminiCount = Number(j.geminiCallsToday) || 0;
+  } catch { /* primera ejecución: no hay contadores persistidos */ }
+}
+
+async function saveDailyUsage() {
+  if (typeof _geminiDay === "undefined") return;
+  await fs.writeFile(DAILY_USAGE_FILE, JSON.stringify({
+    day: _spendDay,
+    claudeUsdToday: _claudeUsdToday,
+    elevenCharsToday: _elevenCharsToday,
+    geminiCallsToday: _geminiCount,
+  }, null, 2), "utf8");
+}
+
+function emptyCacheMetrics(day = _spendDayFmt.format(new Date())) {
+  return {
+    day,
+    textHits: 0,
+    textMisses: 0,
+    audioHits: 0,
+    audioMisses: 0,
+    liveHits: 0,
+    liveMisses: 0,
+    claudeGenerations: 0,
+    elevenGenerations: 0,
+    geminiSearches: 0,
+  };
+}
+let _cacheMetrics = emptyCacheMetrics();
+
+function rollCacheMetricsDay() {
+  const today = _spendDayFmt.format(new Date());
+  if (_cacheMetrics.day !== today) _cacheMetrics = emptyCacheMetrics(today);
+}
+
+async function loadCacheMetrics() {
+  try {
+    const j = JSON.parse(await fs.readFile(CACHE_METRICS_FILE, "utf8"));
+    const today = _spendDayFmt.format(new Date());
+    _cacheMetrics = j.day === today ? { ...emptyCacheMetrics(today), ...j } : emptyCacheMetrics(today);
+  } catch { _cacheMetrics = emptyCacheMetrics(); }
+}
+
+function incrementCacheMetric(name) {
+  rollCacheMetricsDay();
+  if (Object.hasOwn(_cacheMetrics, name)) _cacheMetrics[name]++;
+  fs.writeFile(CACHE_METRICS_FILE, JSON.stringify(_cacheMetrics, null, 2), "utf8").catch(() => {});
+}
+
 // ── Topes de gasto editables desde el panel (persisten en disco) ──────────────
 const ADMIN_LIMITS_FILE = path.join(NARRATION_CACHE_DIR, "admin-limits.json");
 async function loadAdminLimits() {
@@ -158,28 +289,39 @@ async function loadAdminLimits() {
     const j = JSON.parse(await fs.readFile(ADMIN_LIMITS_FILE, "utf8"));
     if (Number.isFinite(j.claudeDailyUsdCap)  && j.claudeDailyUsdCap  > 0) CLAUDE_DAILY_USD_CAP  = j.claudeDailyUsdCap;
     if (Number.isFinite(j.elevenDailyCharCap) && j.elevenDailyCharCap > 0) ELEVEN_DAILY_CHAR_CAP = j.elevenDailyCharCap;
-    console.log(`Topes cargados de disco: Claude $${CLAUDE_DAILY_USD_CAP}/día, Eleven ${ELEVEN_DAILY_CHAR_CAP} chars/día`);
+    if (Number.isFinite(j.geminiDailyCallCap) && j.geminiDailyCallCap > 0) GEMINI_DAILY_CAP = j.geminiDailyCallCap;
+    console.log(`Topes cargados de disco: Claude $${CLAUDE_DAILY_USD_CAP}/día, Eleven ${ELEVEN_DAILY_CHAR_CAP} chars/día, Gemini ${GEMINI_DAILY_CAP} llamadas/día`);
   } catch { /* sin overrides en disco: se usan env/defaults */ }
 }
 async function saveAdminLimits() {
   await fs.writeFile(ADMIN_LIMITS_FILE, JSON.stringify({
     claudeDailyUsdCap: CLAUDE_DAILY_USD_CAP,
     elevenDailyCharCap: ELEVEN_DAILY_CHAR_CAP,
+    geminiDailyCallCap: GEMINI_DAILY_CAP,
   }, null, 2), "utf8");
 }
 
 async function initNarrationCache() {
   await fs.mkdir(CACHE_TXT_DIR, { recursive: true });
   await fs.mkdir(CACHE_MP3_DIR, { recursive: true });
+  await fs.mkdir(CACHE_LIVE_DIR, { recursive: true });
   await loadAdminLimits(); // topes de gasto guardados desde el panel
+  await loadDailyUsage();
+  await loadCacheMetrics();
   // Leer TTL override desde disco persistente
   const cfg = await readCacheConfig();
-  if (cfg.ttl_days && Number.isInteger(cfg.ttl_days) && cfg.ttl_days > 0) {
-    CACHE_TTL_DAYS = cfg.ttl_days;
-    CACHE_TTL_MS   = CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
-  }
+  const legacyTtl = Number(cfg.ttl_days);
+  const textDays = Number(cfg.text_ttl_days || (legacyTtl > 0 ? legacyTtl : TEXT_CACHE_TTL_DAYS));
+  const audioDays = Number(cfg.audio_ttl_days || (legacyTtl > 0 ? legacyTtl : AUDIO_CACHE_TTL_DAYS));
+  const liveHours = Number(cfg.live_ttl_hours || LIVE_CACHE_TTL_HOURS);
+  if (Number.isInteger(textDays) && textDays > 0) TEXT_CACHE_TTL_DAYS = textDays;
+  if (Number.isInteger(audioDays) && audioDays > 0) AUDIO_CACHE_TTL_DAYS = audioDays;
+  if (Number.isInteger(liveHours) && liveHours > 0) LIVE_CACHE_TTL_HOURS = liveHours;
+  TEXT_CACHE_TTL_MS = TEXT_CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
+  AUDIO_CACHE_TTL_MS = AUDIO_CACHE_TTL_DAYS * 24 * 60 * 60 * 1000;
+  LIVE_CACHE_TTL_MS = LIVE_CACHE_TTL_HOURS * 60 * 60 * 1000;
   await cleanExpiredCache();
-  console.log(`✅ Narration cache ready — dir: ${NARRATION_CACHE_DIR}, TTL: ${CACHE_TTL_DAYS} días`);
+  console.log(`✅ Cache ready — texto ${TEXT_CACHE_TTL_DAYS}d, audio ${AUDIO_CACHE_TTL_DAYS}d, eventos ${LIVE_CACHE_TTL_HOURS}h`);
 }
 
 // ─── POOL DE PREGUNTAS DE QUIZ ───────────────────────────────────────────────
@@ -578,10 +720,19 @@ async function getCachedText(key) {
   const file = path.join(CACHE_TXT_DIR, `${narrationHash(key)}.json`);
   try {
     const stat = await fs.stat(file);
-    if (Date.now() - stat.mtimeMs > CACHE_TTL_MS) { await fs.unlink(file).catch(() => {}); return null; }
+    if (Date.now() - stat.mtimeMs > TEXT_CACHE_TTL_MS) {
+      await fs.unlink(file).catch(() => {});
+      incrementCacheMetric("textMisses");
+      return null;
+    }
     const data = JSON.parse(await fs.readFile(file, "utf8"));
-    return data.text ?? null;
-  } catch { return null; }
+    if (data.text) {
+      incrementCacheMetric("textHits");
+      return data.text;
+    }
+  } catch {}
+  incrementCacheMetric("textMisses");
+  return null;
 }
 
 async function setCachedText(key, text) {
@@ -593,9 +744,18 @@ async function getCachedMp3(key) {
   const file = path.join(CACHE_MP3_DIR, `${narrationHash(key)}.mp3`);
   try {
     const stat = await fs.stat(file);
-    if (Date.now() - stat.mtimeMs > CACHE_TTL_MS) { await fs.unlink(file).catch(() => {}); return null; }
-    return await fs.readFile(file);
-  } catch { return null; }
+    if (Date.now() - stat.mtimeMs > AUDIO_CACHE_TTL_MS) {
+      await fs.unlink(file).catch(() => {});
+      incrementCacheMetric("audioMisses");
+      return null;
+    }
+    const data = await fs.readFile(file);
+    incrementCacheMetric("audioHits");
+    return data;
+  } catch {
+    incrementCacheMetric("audioMisses");
+    return null;
+  }
 }
 
 async function setCachedMp3(key, buffer) {
@@ -603,16 +763,43 @@ async function setCachedMp3(key, buffer) {
   await fs.writeFile(file, buffer).catch(() => {});
 }
 
+async function getCachedLive(key) {
+  const file = path.join(CACHE_LIVE_DIR, `${narrationHash(key)}.json`);
+  try {
+    const stat = await fs.stat(file);
+    if (Date.now() - stat.mtimeMs > LIVE_CACHE_TTL_MS) {
+      await fs.unlink(file).catch(() => {});
+      incrementCacheMetric("liveMisses");
+      return null;
+    }
+    const data = JSON.parse(await fs.readFile(file, "utf8"));
+    incrementCacheMetric("liveHits");
+    return data;
+  } catch {
+    incrementCacheMetric("liveMisses");
+    return null;
+  }
+}
+
+async function setCachedLive(key, value) {
+  const file = path.join(CACHE_LIVE_DIR, `${narrationHash(key)}.json`);
+  await fs.writeFile(file, JSON.stringify({ key, ...value, ts: Date.now() }, null, 2), "utf8").catch(() => {});
+}
+
 async function cleanExpiredCache() {
   const now = Date.now();
-  for (const dir of [CACHE_TXT_DIR, CACHE_MP3_DIR]) {
+  for (const [dir, ttlMs] of [
+    [CACHE_TXT_DIR, TEXT_CACHE_TTL_MS],
+    [CACHE_MP3_DIR, AUDIO_CACHE_TTL_MS],
+    [CACHE_LIVE_DIR, LIVE_CACHE_TTL_MS],
+  ]) {
     try {
       const files = await fs.readdir(dir);
       for (const f of files) {
         try {
           const fp = path.join(dir, f);
           const stat = await fs.stat(fp);
-          if (now - stat.mtimeMs > CACHE_TTL_MS) await fs.unlink(fp);
+          if (now - stat.mtimeMs > ttlMs) await fs.unlink(fp);
         } catch {}
       }
     } catch {}
@@ -620,8 +807,12 @@ async function cleanExpiredCache() {
 }
 
 async function cacheStats() {
-  let txtCount = 0, mp3Count = 0, totalBytes = 0, oldest = Date.now();
-  for (const [dir, label] of [[CACHE_TXT_DIR, "txt"], [CACHE_MP3_DIR, "mp3"]]) {
+  let txtCount = 0, mp3Count = 0, liveCount = 0, totalBytes = 0, oldest = Date.now();
+  for (const [dir, label] of [
+    [CACHE_TXT_DIR, "txt"],
+    [CACHE_MP3_DIR, "mp3"],
+    [CACHE_LIVE_DIR, "live"],
+  ]) {
     try {
       const files = await fs.readdir(dir);
       for (const f of files) {
@@ -629,18 +820,27 @@ async function cacheStats() {
           const stat = await fs.stat(path.join(dir, f));
           totalBytes += stat.size;
           if (stat.mtimeMs < oldest) oldest = stat.mtimeMs;
-          label === "txt" ? txtCount++ : mp3Count++;
+          if (label === "txt") txtCount++;
+          else if (label === "mp3") mp3Count++;
+          else liveCount++;
         } catch {}
       }
     } catch {}
   }
+  rollCacheMetricsDay();
   return {
     txt_entries: txtCount,
     mp3_entries: mp3Count,
+    live_entries: liveCount,
     total_size_mb: (totalBytes / 1048576).toFixed(2),
-    oldest_entry_days: txtCount + mp3Count > 0
+    oldest_entry_days: txtCount + mp3Count + liveCount > 0
       ? ((Date.now() - oldest) / 86400000).toFixed(1) : 0,
-    cache_ttl_days: CACHE_TTL_DAYS,
+    // Compatibilidad con versiones anteriores de Sancho Admin.
+    cache_ttl_days: TEXT_CACHE_TTL_DAYS,
+    text_cache_ttl_days: TEXT_CACHE_TTL_DAYS,
+    audio_cache_ttl_days: AUDIO_CACHE_TTL_DAYS,
+    live_cache_ttl_hours: LIVE_CACHE_TTL_HOURS,
+    metrics: _cacheMetrics,
     cache_dir: NARRATION_CACHE_DIR,
   };
 }
@@ -913,10 +1113,7 @@ async function buscarEventos({ province, nowDate }) {
 // Fuente principal: Gemini busca en Google en tiempo real y filtra por relevancia.
 // Tope diario de seguridad + caché por zona/día (en getLiveEventsContext) para
 // que el gasto no se dispare. Sin clave de Gemini, no genera contexto en vivo.
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
-const GEMINI_EVENTS_MODEL = process.env.GEMINI_EVENTS_MODEL || "gemini-3.8-flash";
-const GEMINI_DAILY_CAP = 800; // máximo de llamadas a Gemini por día
-let _geminiDay = "";
+let _geminiDay = _spendDayFmt.format(new Date());
 let _geminiCount = 0;
 let _geminiLast = {
   at: null,
@@ -1001,7 +1198,7 @@ function validarEventosGemini(text, { todayIso, limitIso, expectedLocality }) {
   return valid.slice(0, 3);
 }
 
-async function buscarEventosGemini({ zona, now, lang, poi }) {
+async function buscarEventosGemini({ zona, now, lang, poi, attempt = 0 }) {
   if (!GEMINI_API_KEY) return null;
   const today = isoDateInTimezone(now);
   if (_geminiDay !== today) { _geminiDay = today; _geminiCount = 0; }
@@ -1013,8 +1210,13 @@ async function buscarEventosGemini({ zona, now, lang, poi }) {
     { day: "numeric", month: "long", year: "numeric", timeZone: TIMEZONE });
   const municipio = limpiar(zona.split(",")[0]) || limpiar(poi) || zona;
   const centro = limpiar(poi) || municipio;
+  const retryInstruction = attempt > 0
+    ? (isEN
+        ? "This is a verification retry: Google returned relevant result pages before. Inspect their dated agendas carefully and return valid JSON instead of giving up early."
+        : "Este es un segundo intento de verificación: Google ya devolvió páginas relevantes. Revisa con cuidado sus agendas fechadas y devuelve JSON válido en vez de abandonar antes de tiempo.")
+    : "";
   const prompt = isEN
-    ? `You are the live-events researcher for a road-trip co-pilot in Spain. Today is ${fecha}. Search Google now for real events taking place specifically in the municipality of ${municipio}, Spain. ${centro} is the traveller's point of interest.
+    ? `You are the live-events researcher for a road-trip co-pilot in Spain. Today is ${fecha}. Search Google now for real events taking place specifically in the municipality of ${municipio}, Spain. ${centro} is the traveller's point of interest. ${retryInstruction}
 
 You must use Google Search. Search specifically for "${municipio} eventos esta semana", "${municipio} eventos este mes", "${municipio} events this week", "${municipio} events this month", "${municipio} agenda cultural ${now.getFullYear()}", "${municipio} ayuntamiento agenda", the official tourism site, public library, university and main local venues. The valid date window is ${today} through ${limit}, inclusive.
 
@@ -1023,7 +1225,7 @@ Include local fiestas, fairs, festivals, concerts, theatre, exhibitions, book fa
 Return ONLY a JSON array, without markdown or commentary. Each item must use exactly these fields:
 [{"name":"event name","locality":"town","startDate":"YYYY-MM-DD","endDate":"YYYY-MM-DD","detail":"one short verified detail"}]
 Return [] if no dated event is confirmed. Maximum 3, ordered by proximity first and date second.`
-    : `Eres el investigador de eventos en vivo de un copiloto de carretera por España. Hoy es ${fecha}. Busca ahora en Google eventos reales que se celebren específicamente en el municipio de ${municipio}, España. ${centro} es el punto de interés del viajero.
+    : `Eres el investigador de eventos en vivo de un copiloto de carretera por España. Hoy es ${fecha}. Busca ahora en Google eventos reales que se celebren específicamente en el municipio de ${municipio}, España. ${centro} es el punto de interés del viajero. ${retryInstruction}
 
 Debes utilizar Google Search. Busca expresamente "${municipio} eventos esta semana", "${municipio} eventos este mes", "${municipio} agenda cultural ${now.getFullYear()}", "${municipio} ayuntamiento agenda", la web oficial de turismo, la biblioteca pública, la universidad y los principales recintos locales. La ventana válida va del ${today} al ${limit}, ambos incluidos.
 
@@ -1035,6 +1237,8 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
 
   try {
     _geminiCount++;
+    incrementCacheMetric("geminiSearches");
+    saveDailyUsage().catch(() => {});
     _geminiLast = {
       at: new Date().toISOString(),
       model: GEMINI_EVENTS_MODEL,
@@ -1098,20 +1302,19 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
     if (events.length === 0) {
       _geminiLast.error = "no_valid_structured_events";
       console.warn(`Gemini eventos sin resultados estructurados válidos para ${zona}. Búsquedas: ${queries.join(" | ")}`);
-      return null;
+      if (attempt === 0 && _geminiCount < GEMINI_DAILY_CAP) {
+        console.log(`🔁 Reintentando una vez la verificación de eventos para ${zona}`);
+        return buscarEventosGemini({ zona, now, lang, poi, attempt: 1 });
+      }
+      // La búsqueda sí funcionó: cacheamos el resultado vacío para no repetir
+      // gasto cada pocos minutos cuando realmente no hay agenda confirmada.
+      return [];
     }
 
     _geminiLast.ok = true;
     _geminiLast.eventCount = events.length;
     console.log(`🔎 Gemini eventos [${zona}] búsquedas: ${queries.join(" | ")} · citas: ${citations.length}`);
-    return events.map((event) => {
-      const inicio = fechaEs(`${event.startDate}T12:00:00Z`);
-      const fin = event.endDate !== event.startDate
-        ? fechaEs(`${event.endDate}T12:00:00Z`)
-        : null;
-      const fechaTxt = fin ? `del ${inicio} al ${fin}` : `el ${inicio}`;
-      return `- ${event.name} — ${event.locality} (${fechaTxt})${event.detail ? `: ${event.detail}` : ""}`;
-    }).join("\n");
+    return events;
   } catch (e) {
     const message = e.response?.data?.error?.message || e.message;
     _geminiLast.httpStatus = e.response?.status || null;
@@ -1124,41 +1327,102 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
 // ─── CONTEXTO DE EVENTOS EN VIVO ─────────────────────────────────────────────
 // Fuente única: Gemini con Google Search en vivo. No usamos Claude ni Spain.info
 // como fallback: podrían mezclar municipios o devolver eventos desactualizados.
-async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp, poiNombre, language = "es" }) {
-  if (!asBool(liveEvents)) return "";
+function fechaEvento(iso, lang = "es") {
+  try {
+    const date = new Date(`${iso}T12:00:00Z`);
+    return new Intl.DateTimeFormat(lang === "en" ? "en-GB" : "es-ES", {
+      timeZone: TIMEZONE,
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(date);
+  } catch { return iso; }
+}
+
+function rangoEvento(event, lang = "es") {
+  const start = fechaEvento(event.startDate, lang);
+  if (event.endDate && event.endDate !== event.startDate) {
+    const end = fechaEvento(event.endDate, lang);
+    return lang === "en" ? `from ${start} to ${end}` : `del ${start} al ${end}`;
+  }
+  return lang === "en" ? `on ${start}` : `el ${start}`;
+}
+
+function liveContextFromEvents(events, zona, lang = "es") {
+  if (!Array.isArray(events) || events.length === 0) return "";
+  const heading = lang === "en"
+    ? `Verified events near ${zona}:`
+    : `Eventos reales cerca (${zona}):`;
+  const lines = events.map((event) =>
+    `- ${event.name} — ${event.locality} (${rangoEvento(event, lang)})${event.detail ? `: ${event.detail}` : ""}`
+  );
+  return [heading, ...lines].join("\n");
+}
+
+function liveSpeechFromEvents(events, zona, lang = "es") {
+  const locality = limpiar(zona.split(",")[0]) || zona;
+  if (!Array.isArray(events) || events.length === 0) {
+    return lang === "en"
+      ? `Live update: I haven't found any confirmed dated events in ${locality} for the next thirty days.`
+      : `Información en vivo: no he encontrado ningún evento con fecha confirmada en ${locality} para los próximos treinta días.`;
+  }
+
+  const selected = events.slice(0, 2);
+  const sentences = selected.map((event) => {
+    const detail = limpiar(event.detail).replace(/[.]+$/, "");
+    if (lang === "en") {
+      return `${event.name} takes place in ${event.locality} ${rangoEvento(event, lang)}${detail ? `: ${detail}` : ""}.`;
+    }
+    return `${event.name} se celebra en ${event.locality} ${rangoEvento(event, lang)}${detail ? `: ${detail}` : ""}.`;
+  });
+  return `${lang === "en" ? "Live update" : "Información en vivo"}: ${sentences.join(" ")}`;
+}
+
+async function getLiveEventsBundle({ latitude, longitude, timestamp, poiNombre, language = "es" }) {
   const lat = asNum(latitude);
   const lng = asNum(longitude);
-  if (lat === null || lng === null) return "";
+  if (lat === null || lng === null) return { context: "", text: "", events: [], zona: "", cache: "skip" };
 
   const now   = parseFecha(timestamp);
-  const place = await geocodeInverso(lat, lng, limpiar(language) || "es");
+  const lang = limpiar(language) === "en" ? "en" : "es";
+  const place = await geocodeInverso(lat, lng, lang);
   const zona  = [place.city, place.province].filter(Boolean).join(", ");
-  if (!zona) return "";
+  if (!zona) return { context: "", text: "", events: [], zona: "", cache: "skip" };
 
-  const mes = now.toLocaleString("es-ES", { month: "long", timeZone: TIMEZONE });
-  const año = now.getFullYear();
   const poi = limpiar(poiNombre);
-  const key = `live|${zona}|${mes}|${año}`;
-  const cached = getCache(key, TTL.events);
-  if (cached !== null) return cached;
+  const day = isoDateInTimezone(now);
+  // Un único resultado por municipio, idioma y día sirve a todos sus POIs.
+  const key = `live_v2|${normalizarLocalidad(zona)}|${lang}|${day}`;
+  const cached = await getCachedLive(key);
+  if (cached) return { ...cached, cache: "hit" };
 
   try {
     // Gemini con Google Search (actual al día).
-    const geminiTexto = await buscarEventosGemini({
-      zona, now, lang: limpiar(language) || "es", poi,
+    const events = await buscarEventosGemini({
+      zona, now, lang, poi,
     });
-    if (geminiTexto) {
-      const context = `Eventos reales cerca (${zona}):\n${geminiTexto}`;
-      setCache(key, context);
-      return context;
+    if (!Array.isArray(events)) {
+      return { context: "", text: "", events: [], zona, cache: "error" };
     }
-
-    setCache(key, "");
-    return "";
+    const bundle = {
+      context: liveContextFromEvents(events, zona, lang),
+      text: liveSpeechFromEvents(events, zona, lang),
+      events,
+      zona,
+      generatedAt: new Date().toISOString(),
+    };
+    await setCachedLive(key, bundle);
+    return { ...bundle, cache: "miss" };
   } catch (e) {
-    console.error("ERROR getLiveEventsContext:", e.message);
-    return "";
+    console.error("ERROR getLiveEventsBundle:", e.message);
+    return { context: "", text: "", events: [], zona, cache: "error" };
   }
+}
+
+async function getLiveEventsContext({ liveEvents, latitude, longitude, timestamp, poiNombre, language = "es" }) {
+  if (!asBool(liveEvents)) return "";
+  const bundle = await getLiveEventsBundle({ latitude, longitude, timestamp, poiNombre, language });
+  return bundle.context || "";
 }
 
 function construirPromptConEventos({ prompt, liveEvents, liveContext }) {
@@ -1599,7 +1863,7 @@ app.get("/quiz/pool/stats", async (_req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-app.post("/quiz/question", guard, async (req, res) => {
+app.post("/quiz/question", guardApp, async (req, res) => {
   try {
     const {
       topic = "cultura_general",
@@ -1645,6 +1909,10 @@ app.post("/quiz/question", guard, async (req, res) => {
       ? buildQuizPromptEN(topicText, difficulty, existingQuestions)
       : buildQuizPrompt(topicText, difficulty, existingQuestions);
 
+    _rollSpendDay();
+    if (_claudeUsdToday >= CLAUDE_DAILY_USD_CAP) {
+      return res.status(503).json({ error: "Claude en pausa por hoy", provider: "claude" });
+    }
     const r = await anthropic.messages.create({
       model: MODEL_FAST,
       max_tokens: 600,
@@ -1706,7 +1974,7 @@ app.get("/rosco/pool/stats", async (_req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-app.post("/rosco/set", guard, async (req, res) => {
+app.post("/rosco/set", guardApp, async (req, res) => {
   try {
     const {
       difficulty = "medium",
@@ -1742,6 +2010,11 @@ app.post("/rosco/set", guard, async (req, res) => {
       ...pool.flatMap(s => (s.letters || []).map(l => l.answer)),
       ...(Array.isArray(usedAnswers) ? usedAnswers : []),
     ];
+
+    _rollSpendDay();
+    if (_claudeUsdToday >= CLAUDE_DAILY_USD_CAP) {
+      return res.status(503).json({ error: "Claude en pausa por hoy", provider: "claude" });
+    }
 
     async function generate() {
       const prompt = isEN
@@ -1845,6 +2118,7 @@ app.get("/admin/status", (req, res) => {
       model: GEMINI_EVENTS_MODEL,
       last: _geminiLast,
     },
+    cacheMetrics: _cacheMetrics,
     uptimeSec: Math.round(process.uptime()),
   });
 });
@@ -1880,7 +2154,11 @@ app.get("/admin/games/export", async (req, res) => {
 // Ver los topes de gasto actuales.
 app.get("/admin/limits", (req, res) => {
   if (!adminOk(req)) return res.status(401).json({ error: "secret inválido o no configurado" });
-  res.json({ claudeDailyUsdCap: CLAUDE_DAILY_USD_CAP, elevenDailyCharCap: ELEVEN_DAILY_CHAR_CAP });
+  res.json({
+    claudeDailyUsdCap: CLAUDE_DAILY_USD_CAP,
+    elevenDailyCharCap: ELEVEN_DAILY_CHAR_CAP,
+    geminiDailyCallCap: GEMINI_DAILY_CAP,
+  });
 });
 
 // Editar los topes de gasto (persisten en disco).
@@ -1888,23 +2166,53 @@ app.post("/admin/limits", async (req, res) => {
   if (!adminOk(req)) return res.status(401).json({ error: "secret inválido o no configurado" });
   const c = Number(req.body?.claudeDailyUsdCap);
   const e = Number(req.body?.elevenDailyCharCap);
+  const g = Number(req.body?.geminiDailyCallCap);
   if (Number.isFinite(c) && c > 0) CLAUDE_DAILY_USD_CAP  = c;
   if (Number.isFinite(e) && e > 0) ELEVEN_DAILY_CHAR_CAP = e;
+  if (Number.isFinite(g) && g > 0) GEMINI_DAILY_CAP = Math.floor(g);
   try { await saveAdminLimits(); } catch (err) { return res.status(500).json({ error: err.message }); }
-  res.json({ claudeDailyUsdCap: CLAUDE_DAILY_USD_CAP, elevenDailyCharCap: ELEVEN_DAILY_CHAR_CAP, message: "Topes actualizados" });
+  res.json({
+    claudeDailyUsdCap: CLAUDE_DAILY_USD_CAP,
+    elevenDailyCharCap: ELEVEN_DAILY_CHAR_CAP,
+    geminiDailyCallCap: GEMINI_DAILY_CAP,
+    message: "Topes actualizados",
+  });
 });
 
 app.post("/cache/config", async (req, res) => {
   const secret = process.env.CACHE_ADMIN_SECRET;
   if (!secret || req.query.secret !== secret)
     return res.status(401).json({ error: "secret inválido o no configurado" });
-  const ttl_days = Number(req.body?.ttl_days);
-  if (!Number.isInteger(ttl_days) || ttl_days < 1)
-    return res.status(400).json({ error: "ttl_days debe ser un entero positivo" });
-  CACHE_TTL_DAYS = ttl_days;
-  CACHE_TTL_MS   = ttl_days * 24 * 60 * 60 * 1000;
-  await writeCacheConfig({ ttl_days });
-  res.json({ ttl_days, message: `TTL actualizado a ${ttl_days} días` });
+  // ttl_days se conserva como alias para clientes antiguos.
+  const legacy = Number(req.body?.ttl_days);
+  const textDays = Number(req.body?.text_ttl_days ?? legacy);
+  const audioDays = Number(req.body?.audio_ttl_days ?? legacy);
+  const liveHours = Number(req.body?.live_ttl_hours ?? LIVE_CACHE_TTL_HOURS);
+  if (!Number.isInteger(textDays) || textDays < 1 ||
+      !Number.isInteger(audioDays) || audioDays < 1 ||
+      !Number.isInteger(liveHours) || liveHours < 1) {
+    return res.status(400).json({
+      error: "text_ttl_days, audio_ttl_days y live_ttl_hours deben ser enteros positivos",
+    });
+  }
+  TEXT_CACHE_TTL_DAYS = textDays;
+  AUDIO_CACHE_TTL_DAYS = audioDays;
+  LIVE_CACHE_TTL_HOURS = liveHours;
+  TEXT_CACHE_TTL_MS = textDays * 24 * 60 * 60 * 1000;
+  AUDIO_CACHE_TTL_MS = audioDays * 24 * 60 * 60 * 1000;
+  LIVE_CACHE_TTL_MS = liveHours * 60 * 60 * 1000;
+  await writeCacheConfig({
+    text_ttl_days: textDays,
+    audio_ttl_days: audioDays,
+    live_ttl_hours: liveHours,
+  });
+  await cleanExpiredCache();
+  res.json({
+    text_ttl_days: textDays,
+    audio_ttl_days: audioDays,
+    live_ttl_hours: liveHours,
+    message: "Duraciones de caché actualizadas",
+  });
 });
 
 app.delete("/cache/clear", async (req, res) => {
@@ -1912,15 +2220,21 @@ app.delete("/cache/clear", async (req, res) => {
   if (!secret || req.query.secret !== secret)
     return res.status(401).json({ error: "secret inválido o no configurado" });
   try {
+    const scope = ["text", "audio", "live", "all"].includes(req.query.scope)
+      ? req.query.scope : "all";
+    const dirs = scope === "text" ? [CACHE_TXT_DIR]
+      : scope === "audio" ? [CACHE_MP3_DIR]
+      : scope === "live" ? [CACHE_LIVE_DIR]
+      : [CACHE_TXT_DIR, CACHE_MP3_DIR, CACHE_LIVE_DIR];
     let deleted = 0;
-    for (const dir of [CACHE_TXT_DIR, CACHE_MP3_DIR]) {
+    for (const dir of dirs) {
       const files = await fs.readdir(dir).catch(() => []);
       for (const f of files) {
         await fs.unlink(path.join(dir, f)).catch(() => {});
         deleted++;
       }
     }
-    res.json({ deleted, message: "Caché limpiado" });
+    res.json({ deleted, scope, message: `Caché ${scope} limpiada` });
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
@@ -1929,8 +2243,8 @@ app.get("/healthz", (_req, res) => res.status(200).send("ok"));
 app.get("/",        (_req, res) => res.send("Backend Sancho funcionando ✔️"));
 
 // ─── CUENTOS INMERSIVOS ───────────────────────────────────────────────────────
-app.post("/kids-story-immersive", guard, generateKidsStoryImmersive);
-app.post("/render-immersive", guard, renderImmersiveSegments);
+app.post("/kids-story-immersive", guardCombined, generateKidsStoryImmersive);
+app.post("/render-immersive", guardEleven, renderImmersiveSegments);
 
 // ─── POIS CERCANOS ────────────────────────────────────────────────────────────
 app.get("/pois-nearby", (req, res) => {
@@ -1972,10 +2286,38 @@ app.get("/pois-all", (_req, res) => {
 });
 
 // ─── GENERACIÓN IA ───────────────────────────────────────────────────────────
-app.post("/ai/generate", guard, async (req, res) => {
+// La agenda actual se genera y cachea aparte de la narración estable. Un mismo
+// resultado diario sirve a todos los POIs de la localidad.
+app.post("/live-events", guardApp, async (req, res) => {
   try {
-    if (!process.env.ANTHROPIC_API_KEY) return res.status(500).json({ error: "Falta ANTHROPIC_API_KEY" });
+    const {
+      latitude,
+      longitude,
+      timestamp = new Date().toISOString(),
+      poiNombre = "",
+      language = "es",
+    } = req.body || {};
+    if (asNum(latitude) === null || asNum(longitude) === null) {
+      return res.status(400).json({ error: "latitude y longitude son requeridos" });
+    }
+    const bundle = await getLiveEventsBundle({
+      latitude, longitude, timestamp, poiNombre, language,
+    });
+    res.json({
+      text: bundle.text || "",
+      events: bundle.events || [],
+      zone: bundle.zona || "",
+      generatedAt: bundle.generatedAt || null,
+      cache: bundle.cache,
+    });
+  } catch (e) {
+    console.error("ERROR /live-events:", e.message);
+    res.status(500).json({ error: "live_events_failed", detail: e.message });
+  }
+});
 
+app.post("/ai/generate", guardApp, async (req, res) => {
+  try {
     const { prompt, temas, liveEvents = false, latitude = null, longitude = null, timestamp = null, poiNombre = "", language = "es", nivel = "normal", poiCacheKey = null } = req.body || {};
 
     if (!prompt || typeof prompt !== "string") return res.status(400).json({ error: "prompt requerido (string)" });
@@ -1986,7 +2328,14 @@ app.post("/ai/generate", guard, async (req, res) => {
     // (…|live|YYYY-MM-DD), así se cachea 24h y refresca cada día en vez de
     // regenerar en cada paso. Sin clave (p.ej. peticiones antiguas) no se cachea.
     const langSuffix = language === "en" ? "|en" : "";
-    const resolvedCacheKey = poiCacheKey ? `${poiCacheKey}${langSuffix}` : null;
+    // Compatibilidad con las versiones ya publicadas: enviaban eventos dentro
+    // de /ai/generate y omitían poiCacheKey. Al menos comparten el resultado
+    // completo del mismo POI durante el día, en vez de pagar cada activación.
+    const legacyLiveKey = !poiCacheKey && asBool(liveEvents)
+      ? `legacy_live_v1|${narrationHash(prompt)}|${isoDateInTimezone(parseFecha(timestamp))}`
+      : null;
+    const rawCacheKey = poiCacheKey || legacyLiveKey;
+    const resolvedCacheKey = rawCacheKey ? `${rawCacheKey}${langSuffix}` : null;
     const useTextCache = !!resolvedCacheKey;
     if (useTextCache) {
       const cached = await getCachedText(resolvedCacheKey);
@@ -1994,6 +2343,16 @@ app.post("/ai/generate", guard, async (req, res) => {
         console.log(`📦 Text cache HIT [${language}]: ${resolvedCacheKey}`);
         return res.json({ text: cached, cache: "hit" });
       }
+    }
+
+    if (!process.env.ANTHROPIC_API_KEY) {
+      return res.status(500).json({ error: "Falta ANTHROPIC_API_KEY" });
+    }
+
+    // Solo se aplica el tope si realmente hace falta generar texto nuevo.
+    _rollSpendDay();
+    if (_claudeUsdToday >= CLAUDE_DAILY_USD_CAP) {
+      return res.status(503).json({ error: "Claude en pausa por hoy", provider: "claude" });
     }
 
     const maxTokens   = MAX_TOKENS_BY_NIVEL[nivel] ?? MAX_TOKENS_BY_NIVEL.normal;
@@ -2012,6 +2371,7 @@ app.post("/ai/generate", guard, async (req, res) => {
           temasTxt ? `Temas activados: ${temasTxt}` : "",
         ].filter(Boolean).join("\n");
 
+    incrementCacheMetric("claudeGenerations");
     const r = await anthropic.messages.create({
       model: MODEL_FAST,
       max_tokens: maxTokens,
@@ -2072,7 +2432,7 @@ app.post("/ai/generate", guard, async (req, res) => {
 });
 
 // ─── TTS (ELEVENLABS) ────────────────────────────────────────────────────────
-app.post("/tts", guard, async (req, res) => {
+app.post("/tts", guardApp, async (req, res) => {
   const apiKey = process.env.ELEVEN_API_KEY;
   const { text, voiceId, mood = "normal", lang = "es" } = req.body || {};
 
@@ -2099,12 +2459,19 @@ app.post("/tts", guard, async (req, res) => {
       return res.send(cachedMp3);
     }
 
+    // El audio cacheado sigue disponible aunque se alcance el tope diario.
+    _rollSpendDay();
+    if (_elevenCharsToday >= ELEVEN_DAILY_CHAR_CAP) {
+      return res.status(503).json({ error: "ElevenLabs en pausa por hoy", provider: "eleven" });
+    }
+
     const voiceSettings   = VOICE_SETTINGS_BY_MOOD[mood] ?? VOICE_SETTINGS_BY_MOOD.normal;
     const url             = `https://api.elevenlabs.io/v1/text-to-speech/${usedVoiceId}`;
     const headers         = { "xi-api-key": apiKey, "Content-Type": "application/json", "Accept": "audio/mpeg" };
     const payloadFlash    = { text: cleanText, model_id: "eleven_flash_v2_5",      voice_settings: voiceSettings };
     const payloadFallback = { text: cleanText, model_id: "eleven_multilingual_v2", voice_settings: { stability: voiceSettings.stability, similarity_boost: voiceSettings.similarity_boost } };
 
+    incrementCacheMetric("elevenGenerations");
     let elevenResp;
     try {
       elevenResp = await axios.post(url, payloadFlash, { headers, responseType: "arraybuffer", timeout: 30000 });

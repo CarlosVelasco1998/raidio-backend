@@ -1363,19 +1363,41 @@ function liveSpeechFromEvents(events, zona, lang = "es") {
   const locality = limpiar(zona.split(",")[0]) || zona;
   if (!Array.isArray(events) || events.length === 0) {
     return lang === "en"
-      ? `Live update: I haven't found any confirmed dated events in ${locality} for the next thirty days.`
-      : `Información en vivo: no he encontrado ningún evento con fecha confirmada en ${locality} para los próximos treinta días.`;
+      ? `I have also checked what is happening around ${locality} over the coming weeks, but I haven't found any confirmed dated events for the next thirty days.`
+      : `También he revisado lo que está pasando estos días por ${locality}, pero no he encontrado ningún evento con fecha confirmada para los próximos treinta días.`;
   }
 
   const selected = events.slice(0, 2);
-  const sentences = selected.map((event) => {
-    const detail = limpiar(event.detail).replace(/[.]+$/, "");
-    if (lang === "en") {
-      return `${event.name} takes place in ${event.locality} ${rangoEvento(event, lang)}${detail ? `: ${detail}` : ""}.`;
-    }
-    return `${event.name} se celebra en ${event.locality} ${rangoEvento(event, lang)}${detail ? `: ${detail}` : ""}.`;
+  const normalizarDetalle = (value) => {
+    const detail = limpiar(value).replace(/[.]+$/, "");
+    return detail ? detail.charAt(0).toLocaleLowerCase(lang === "en" ? "en" : "es") + detail.slice(1) : "";
+  };
+
+  if (lang === "en") {
+    const intro = selected.length === 1
+      ? `Looking at what is happening around ${locality} over the coming weeks, there is one event that may be worth noting.`
+      : `Looking at what is happening around ${locality} over the coming weeks, there are a couple of events that may be worth noting.`;
+    const sentences = selected.map((event, index) => {
+      const detail = normalizarDetalle(event.detail);
+      const lead = index === 0
+        ? `${selected.length === 1 ? "The event is" : "One of them is"} ${event.name}, taking place ${rangoEvento(event, lang)}`
+        : `There is also ${event.name}, scheduled ${rangoEvento(event, lang)}`;
+      return `${lead}${detail ? `; ${detail}` : ""}.`;
+    });
+    return `${intro} ${sentences.join(" ")}`;
+  }
+
+  const intro = selected.length === 1
+    ? `Y mirando a lo que está pasando estos días por ${locality}, hay una cita que puede merecer la pena.`
+    : `Y mirando a lo que está pasando estos días por ${locality}, hay un par de citas que pueden merecer la pena.`;
+  const sentences = selected.map((event, index) => {
+    const detail = normalizarDetalle(event.detail);
+    const lead = index === 0
+      ? `${selected.length === 1 ? "La cita es" : "Una de ellas es"} ${event.name}, que se celebra ${rangoEvento(event, lang)}`
+      : `También está ${event.name}, previsto ${rangoEvento(event, lang)}`;
+    return `${lead}${detail ? `; ${detail}` : ""}.`;
   });
-  return `${lang === "en" ? "Live update" : "Información en vivo"}: ${sentences.join(" ")}`;
+  return `${intro} ${sentences.join(" ")}`;
 }
 
 async function getLiveEventsBundle({ latitude, longitude, timestamp, poiNombre, language = "es" }) {
@@ -1392,7 +1414,7 @@ async function getLiveEventsBundle({ latitude, longitude, timestamp, poiNombre, 
   const poi = limpiar(poiNombre);
   const day = isoDateInTimezone(now);
   // Un único resultado por municipio, idioma y día sirve a todos sus POIs.
-  const key = `live_v2|${normalizarLocalidad(zona)}|${lang}|${day}`;
+  const key = `live_v3_radio|${normalizarLocalidad(zona)}|${lang}|${day}`;
   const cached = await getCachedLive(key);
   if (cached) return { ...cached, cache: "hit" };
 

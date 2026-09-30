@@ -918,6 +918,17 @@ const GEMINI_EVENTS_MODEL = process.env.GEMINI_EVENTS_MODEL || "gemini-3.8-flash
 const GEMINI_DAILY_CAP = 800; // máximo de llamadas a Gemini por día
 let _geminiDay = "";
 let _geminiCount = 0;
+let _geminiLast = {
+  at: null,
+  model: GEMINI_EVENTS_MODEL,
+  ok: null,
+  httpStatus: null,
+  responseStatus: null,
+  queries: [],
+  stepTypes: [],
+  eventCount: 0,
+  error: null,
+};
 
 function isoDateInTimezone(date) {
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -1024,6 +1035,17 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
 
   try {
     _geminiCount++;
+    _geminiLast = {
+      at: new Date().toISOString(),
+      model: GEMINI_EVENTS_MODEL,
+      ok: false,
+      httpStatus: null,
+      responseStatus: null,
+      queries: [],
+      stepTypes: [],
+      eventCount: 0,
+      error: null,
+    };
     const resp = await axios.post(
       "https://generativelanguage.googleapis.com/v1beta/interactions",
       {
@@ -1057,7 +1079,13 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
       .flatMap((block) => Array.isArray(block?.annotations) ? block.annotations : [])
       .filter((annotation) => annotation?.type === "url_citation");
 
+    _geminiLast.httpStatus = resp.status;
+    _geminiLast.responseStatus = resp.data?.status || null;
+    _geminiLast.queries = queries.slice(0, 10);
+    _geminiLast.stepTypes = steps.map((step) => step?.type).filter(Boolean);
+
     if (queries.length === 0 || !hasSearchResult) {
+      _geminiLast.error = "google_search_not_executed";
       console.warn(`Gemini eventos no ejecutó Google Search para ${zona}; respuesta descartada.`);
       return null;
     }
@@ -1068,10 +1096,13 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
       expectedLocality: municipio,
     });
     if (events.length === 0) {
+      _geminiLast.error = "no_valid_structured_events";
       console.warn(`Gemini eventos sin resultados estructurados válidos para ${zona}. Búsquedas: ${queries.join(" | ")}`);
       return null;
     }
 
+    _geminiLast.ok = true;
+    _geminiLast.eventCount = events.length;
     console.log(`🔎 Gemini eventos [${zona}] búsquedas: ${queries.join(" | ")} · citas: ${citations.length}`);
     return events.map((event) => {
       const inicio = fechaEs(`${event.startDate}T12:00:00Z`);
@@ -1082,7 +1113,10 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
       return `- ${event.name} — ${event.locality} (${fechaTxt})${event.detail ? `: ${event.detail}` : ""}`;
     }).join("\n");
   } catch (e) {
-    console.error("Gemini eventos error:", e.response?.data?.error?.message || e.message);
+    const message = e.response?.data?.error?.message || e.message;
+    _geminiLast.httpStatus = e.response?.status || null;
+    _geminiLast.error = message;
+    console.error("Gemini eventos error:", message);
     return null;
   }
 }
@@ -1568,7 +1602,12 @@ app.get("/admin/status", (req, res) => {
     },
     rateLimits: { ipPerMin: RL_IP_PER_MIN, ipPerDay: RL_IP_PER_DAY, devPerMin: RL_DEV_PER_MIN, devPerDay: RL_DEV_PER_DAY },
     secretActive: Boolean(APP_SHARED_SECRET),
-    gemini: { callsToday: _geminiCount, dailyCap: GEMINI_DAILY_CAP },
+    gemini: {
+      callsToday: _geminiCount,
+      dailyCap: GEMINI_DAILY_CAP,
+      model: GEMINI_EVENTS_MODEL,
+      last: _geminiLast,
+    },
     uptimeSec: Math.round(process.uptime()),
   });
 });

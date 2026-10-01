@@ -1144,21 +1144,41 @@ function addDaysIso(iso, days) {
   return date.toISOString().slice(0, 10);
 }
 
-function parseGeminiEventArray(text) {
-  if (!text?.trim()) return [];
+function parseGeminiEventPayload(text) {
+  if (!text?.trim()) return { parsed: false, events: [], narration: "" };
   const clean = text
     .trim()
     .replace(/^```(?:json)?\s*/i, "")
     .replace(/\s*```$/, "");
-  const start = clean.indexOf("[");
-  const end = clean.lastIndexOf("]");
-  if (start < 0 || end <= start) return [];
-  try {
-    const parsed = JSON.parse(clean.slice(start, end + 1));
-    return Array.isArray(parsed) ? parsed : [];
-  } catch (_) {
-    return [];
+
+  const candidates = [clean];
+  const objectStart = clean.indexOf("{");
+  const objectEnd = clean.lastIndexOf("}");
+  if (objectStart >= 0 && objectEnd > objectStart) {
+    candidates.push(clean.slice(objectStart, objectEnd + 1));
   }
+  const arrayStart = clean.indexOf("[");
+  const arrayEnd = clean.lastIndexOf("]");
+  if (arrayStart >= 0 && arrayEnd > arrayStart) {
+    candidates.push(clean.slice(arrayStart, arrayEnd + 1));
+  }
+
+  for (const candidate of candidates) {
+    try {
+      const parsed = JSON.parse(candidate);
+      if (Array.isArray(parsed)) {
+        return { parsed: true, events: parsed, narration: "" };
+      }
+      if (parsed && typeof parsed === "object" && Array.isArray(parsed.events)) {
+        return {
+          parsed: true,
+          events: parsed.events,
+          narration: limpiar(parsed.narration).replace(/\s+/g, " ").trim(),
+        };
+      }
+    } catch (_) {}
+  }
+  return { parsed: false, events: [], narration: "" };
 }
 
 function normalizarLocalidad(value) {
@@ -1172,11 +1192,12 @@ function normalizarLocalidad(value) {
 }
 
 function validarEventosGemini(text, { todayIso, limitIso, expectedLocality }) {
+  const payload = parseGeminiEventPayload(text);
   const isoPattern = /^\d{4}-\d{2}-\d{2}$/;
   const expected = normalizarLocalidad(expectedLocality);
   const valid = [];
 
-  for (const raw of parseGeminiEventArray(text)) {
+  for (const raw of payload.events) {
     if (!raw || typeof raw !== "object") continue;
     const name = limpiar(raw.name);
     const locality = limpiar(raw.locality);
@@ -1195,7 +1216,17 @@ function validarEventosGemini(text, { todayIso, limitIso, expectedLocality }) {
   }
 
   valid.sort((a, b) => a.startDate.localeCompare(b.startDate));
-  return valid.slice(0, 3);
+  const narrationWords = payload.narration.split(/\s+/).filter(Boolean).length;
+  // Si se descarta algún evento por fecha o localidad, tampoco aceptamos el
+  // párrafo: podría mencionarlo aunque ya no figure entre los datos validados.
+  const allPayloadEventsAreValid = payload.events.length <= 3 &&
+    payload.events.length === valid.length;
+  const narration = allPayloadEventsAreValid &&
+      narrationWords >= 8 && narrationWords <= 140 &&
+      !/\[\[|```|^\s*[-*]\s/m.test(payload.narration)
+    ? payload.narration
+    : "";
+  return { parsed: payload.parsed, events: valid.slice(0, 3), narration };
 }
 
 async function buscarEventosGemini({ zona, now, lang, poi, attempt = 0 }) {
@@ -1222,18 +1253,24 @@ You must use Google Search. Search specifically for "${municipio} eventos esta s
 
 Include local fiestas, fairs, festivals, concerts, theatre, exhibitions, book fairs, storytelling nights, food events, traditional markets, sports and family activities. Local municipal activities are valid. Reject expired events, permanent attractions and anything without a verified exact date. Do NOT return events from another municipality, even if they are in the same province.
 
-Return ONLY a JSON array, without markdown or commentary. Each item must use exactly these fields:
-[{"name":"event name","locality":"town","startDate":"YYYY-MM-DD","endDate":"YYYY-MM-DD","detail":"one short verified detail"}]
-Return [] if no dated event is confirmed. Maximum 3, ordered by proximity first and date second.`
+Return ONLY one valid JSON object, without markdown or commentary, using exactly this structure:
+{"events":[{"name":"event name","locality":"town","startDate":"YYYY-MM-DD","endDate":"YYYY-MM-DD","detail":"one short verified detail"}],"narration":"one natural spoken paragraph"}
+
+The events array may contain a maximum of 3 verified events, ordered by relevance to a traveller near ${centro} and then by date. The narration is the actual text SANCHO will speak after describing the point of interest. Write one fluid radio-style paragraph of roughly 55 to 100 words, selecting and connecting the most interesting one, two or three events. You have freedom over its opening, rhythm and structure: vary them naturally according to the place and events. It must feel like a continuation of the journey, not a database response.
+
+Do not use a heading, bullet points, enumeration, a colon after a generic label, or a repeated formula such as "one of them... there is also...". Do not say "live update". Mention useful dates naturally and spell every number out in words inside narration. Use only facts contained in events; do not add claims that were not verified. If no dated event is confirmed, return an empty events array and one brief, natural sentence in narration saying that no confirmed event was found.`
     : `Eres el investigador de eventos en vivo de un copiloto de carretera por España. Hoy es ${fecha}. Busca ahora en Google eventos reales que se celebren específicamente en el municipio de ${municipio}, España. ${centro} es el punto de interés del viajero. ${retryInstruction}
 
 Debes utilizar Google Search. Busca expresamente "${municipio} eventos esta semana", "${municipio} eventos este mes", "${municipio} agenda cultural ${now.getFullYear()}", "${municipio} ayuntamiento agenda", la web oficial de turismo, la biblioteca pública, la universidad y los principales recintos locales. La ventana válida va del ${today} al ${limit}, ambos incluidos.
 
 Incluye fiestas locales, ferias, festivales, conciertos, teatro, exposiciones, ferias del libro, noches de cuentos, jornadas gastronómicas, mercados tradicionales, deporte y actividades familiares. Las actividades municipales locales son válidas. Descarta eventos caducados, atracciones permanentes y cualquier resultado sin fecha exacta verificada. NO devuelvas eventos de otro municipio, aunque pertenezca a la misma provincia.
 
-Devuelve ÚNICAMENTE un array JSON, sin markdown ni explicaciones. Cada elemento debe usar exactamente estos campos:
-[{"name":"nombre del evento","locality":"localidad","startDate":"YYYY-MM-DD","endDate":"YYYY-MM-DD","detail":"un detalle breve y verificado"}]
-Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenados primero por cercanía y después por fecha.`;
+Devuelve ÚNICAMENTE un objeto JSON válido, sin markdown ni explicaciones, con esta estructura exacta:
+{"events":[{"name":"nombre del evento","locality":"localidad","startDate":"YYYY-MM-DD","endDate":"YYYY-MM-DD","detail":"un detalle breve y verificado"}],"narration":"un único párrafo natural para locución"}
+
+El array events puede contener un máximo de tres eventos verificados, ordenados primero por su interés para alguien que pasa cerca de ${centro} y después por fecha. narration es el texto real que SANCHO dirá después de contar el punto de interés. Escribe un solo párrafo fluido, de unas cincuenta y cinco a cien palabras, escogiendo y enlazando libremente los uno, dos o tres eventos más interesantes. Tienes libertad para decidir el arranque, el ritmo y la estructura: varíalos de forma natural según el lugar y los eventos. Debe sonar como la continuación de un relato de carretera, no como la respuesta de una base de datos.
+
+No uses título, lista, enumeración, dos puntos tras una etiqueta genérica ni una fórmula repetida como "una de ellas... también está...". No digas "información en vivo". Integra las fechas útiles con naturalidad y escribe con palabras todos los números que aparezcan en narration. Usa exclusivamente hechos contenidos en events; no añadas nada que no hayas verificado. Si no confirmas ningún evento fechado, devuelve events vacío y una sola frase natural en narration diciendo que no has encontrado ninguno.`;
 
   try {
     _geminiCount++;
@@ -1294,27 +1331,41 @@ Devuelve [] si no hay ningún evento fechado y confirmado. Máximo tres, ordenad
       return null;
     }
 
-    const events = validarEventosGemini(text, {
+    const result = validarEventosGemini(text, {
       todayIso: today,
       limitIso: limit,
       expectedLocality: municipio,
     });
-    if (events.length === 0) {
-      _geminiLast.error = "no_valid_structured_events";
-      console.warn(`Gemini eventos sin resultados estructurados válidos para ${zona}. Búsquedas: ${queries.join(" | ")}`);
-      if (attempt === 0 && _geminiCount < GEMINI_DAILY_CAP) {
-        console.log(`🔁 Reintentando una vez la verificación de eventos para ${zona}`);
-        return buscarEventosGemini({ zona, now, lang, poi, attempt: 1 });
-      }
-      // La búsqueda sí funcionó: cacheamos el resultado vacío para no repetir
-      // gasto cada pocos minutos cuando realmente no hay agenda confirmada.
-      return [];
+    const needsRetry = !result.parsed || result.events.length === 0 ||
+      (result.events.length > 0 && !result.narration);
+    if (needsRetry && attempt === 0 && _geminiCount < GEMINI_DAILY_CAP) {
+      _geminiLast.error = "events_or_narration_need_retry";
+      console.warn(`Gemini eventos necesita verificación adicional para ${zona}. Búsquedas: ${queries.join(" | ")}`);
+      console.log(`🔁 Reintentando una vez la verificación de eventos para ${zona}`);
+      return buscarEventosGemini({ zona, now, lang, poi, attempt: 1 });
+    }
+    if (!result.parsed) {
+      _geminiLast.error = "invalid_structured_response";
+      return null;
+    }
+    if (result.events.length === 0) {
+      _geminiLast.ok = true;
+      _geminiLast.eventCount = 0;
+      _geminiLast.error = null;
+      console.log(`🔎 Gemini eventos [${zona}]: sin agenda fechada confirmada`);
+      return result;
+    }
+    if (!result.narration) {
+      _geminiLast.error = "narration_fallback";
+      console.warn(`Gemini encontró eventos para ${zona}, pero no redactó un párrafo válido.`);
+    } else {
+      _geminiLast.error = null;
     }
 
     _geminiLast.ok = true;
-    _geminiLast.eventCount = events.length;
+    _geminiLast.eventCount = result.events.length;
     console.log(`🔎 Gemini eventos [${zona}] búsquedas: ${queries.join(" | ")} · citas: ${citations.length}`);
-    return events;
+    return result;
   } catch (e) {
     const message = e.response?.data?.error?.message || e.message;
     _geminiLast.httpStatus = e.response?.status || null;
@@ -1414,21 +1465,24 @@ async function getLiveEventsBundle({ latitude, longitude, timestamp, poiNombre, 
   const poi = limpiar(poiNombre);
   const day = isoDateInTimezone(now);
   // Un único resultado por municipio, idioma y día sirve a todos sus POIs.
-  const key = `live_v3_radio|${normalizarLocalidad(zona)}|${lang}|${day}`;
+  const key = `live_v4_ai_paragraph|${normalizarLocalidad(zona)}|${lang}|${day}`;
   const cached = await getCachedLive(key);
   if (cached) return { ...cached, cache: "hit" };
 
   try {
     // Gemini con Google Search (actual al día).
-    const events = await buscarEventosGemini({
+    const result = await buscarEventosGemini({
       zona, now, lang, poi,
     });
-    if (!Array.isArray(events)) {
+    if (!result || !Array.isArray(result.events)) {
       return { context: "", text: "", events: [], zona, cache: "error" };
     }
+    const events = result.events;
     const bundle = {
       context: liveContextFromEvents(events, zona, lang),
-      text: liveSpeechFromEvents(events, zona, lang),
+      // Gemini escribe el párrafo con libertad después de buscar; la plantilla
+      // local queda solo como salvavidas si devuelve datos válidos sin locución.
+      text: result.narration || liveSpeechFromEvents(events, zona, lang),
       events,
       zona,
       generatedAt: new Date().toISOString(),

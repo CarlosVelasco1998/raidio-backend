@@ -1300,7 +1300,10 @@ No uses título, lista, enumeración, dos puntos tras una etiqueta genérica ni 
           "Content-Type": "application/json",
           "x-goog-api-key": GEMINI_API_KEY,
         },
-        timeout: 30000,
+        // Las búsquedas con grounding pueden superar treinta segundos en
+        // localidades con una agenda extensa. La app espera setenta segundos,
+        // dejando margen suficiente para esta llamada y la geocodificación.
+        timeout: 60000,
       }
     );
     const steps = Array.isArray(resp.data?.steps) ? resp.data.steps : [];

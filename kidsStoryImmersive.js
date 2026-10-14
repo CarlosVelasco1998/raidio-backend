@@ -4,11 +4,17 @@ import fs from "fs";
 import Anthropic from "@anthropic-ai/sdk";
 import path from "path";
 import os from "os";
+import { fileURLToPath } from "url";
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegPath from "ffmpeg-static";
 import { recordUsage } from "./analytics.js";
 
 ffmpeg.setFfmpegPath(ffmpegPath);
+
+let spendHooks = {};
+export function configureKidsStorySpendTracking(hooks = {}) {
+  spendHooks = hooks;
+}
 
 // ================== LIBRERÍA DE VOCES ==================
 const VOICE_LIBRARY = {
@@ -36,6 +42,33 @@ const VOICE_LIBRARY = {
 const GIRL_KEYS = ["child_girl_1", "child_girl_2", "child_girl_3"];
 const BOY_KEYS  = ["child_boy_1",  "child_boy_2",  "child_boy_3"];
 
+const MODULE_DIR = path.dirname(fileURLToPath(import.meta.url));
+const ALLOWED_DURATIONS = new Set([3, 5, 7, 10]);
+const STORY_THEMES = {
+  surprise: { es: "sorpresa: elige libremente la premisa más original", en: "surprise: freely choose the most original premise" },
+  magic:    { es: "magia y fantasía", en: "magic and fantasy" },
+  mystery:  { es: "misterio amable e intrigante", en: "gentle, intriguing mystery" },
+  animals:  { es: "animales con personalidades memorables", en: "animals with memorable personalities" },
+  space:    { es: "espacio, ciencia y aventura", en: "space, science and adventure" },
+  spain:    { es: "una aventura inspirada en lugares, leyendas o cultura de España", en: "an adventure inspired by Spain's places, legends or culture" },
+};
+const STORY_TONES = {
+  fun:      { es: "divertido, ingenioso y cálido", en: "funny, witty and warm" },
+  exciting: { es: "emocionante y con suspense apto para su edad", en: "exciting, with age-appropriate suspense" },
+  calm:     { es: "tranquilo, imaginativo y reconfortante", en: "calm, imaginative and comforting" },
+};
+const STORY_MUSIC = {
+  magic: "magic.mp3",
+  mystery: "magic.mp3",
+  exciting: "magic.mp3",
+  surprise: "wonder.mp3",
+  animals: "wonder.mp3",
+  space: "wonder.mp3",
+  spain: "wonder.mp3",
+  calm: "wonder.mp3",
+  fun: "wonder.mp3",
+};
+
 // ================== ASIGNACIÓN DE VOCES A PROTAGONISTAS ==================
 function assignChildVoices(kids) {
   let gi = 0, bi = 0;
@@ -51,7 +84,7 @@ function assignChildVoices(kids) {
 }
 
 // ================== PROMPT PARA OPENAI ==================
-function buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voiceAssignments, language = "es" }) {
+function buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voiceAssignments, language = "es", theme = "surprise", tone = "fun" }) {
   const isEN = language === "en";
   const narratorKey = isEN
     ? (narratorGender === "m" ? "narrator_m_en" : "narrator_f_en")
@@ -69,6 +102,9 @@ function buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voic
   const secondaryVoices = Object.keys(VOICE_LIBRARY)
     .filter((k) => !k.startsWith("narrator") && !k.startsWith("child"))
     .join(", ");
+  const themeText = (STORY_THEMES[theme] ?? STORY_THEMES.surprise)[isEN ? "en" : "es"];
+  const toneText = (STORY_TONES[tone] ?? STORY_TONES.fun)[isEN ? "en" : "es"];
+  const sfxCount = targetMinutes <= 3 ? "2" : targetMinutes <= 5 ? "3 or 4" : "4 to 6";
 
   if (isEN) {
     return `You are an expert children's storyteller. Create an ORIGINAL story in English for ${age}-year-olds travelling by car with their family.
@@ -76,6 +112,8 @@ function buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voic
 MAIN CHARACTERS (with assigned voice): ${kidsList}
 NARRATOR VOICE: ${narratorKey}
 IDEA: "${idea || "Invent an original and entertaining adventure."}"
+CHOSEN THEME: ${themeText}
+CHOSEN MOOD: ${toneText}
 TARGET LENGTH: between ${minWords} and ${maxWords} words in total.
 
 AVAILABLE VOICES for secondary characters: ${secondaryVoices}
@@ -87,6 +125,16 @@ REQUIRED STORY STRUCTURE:
 3. DEVELOPMENT: the characters face the problem with humour, cleverness or bravery. Include 1 or 2 moments where story characters play a joke on or ask something funny directly to the main characters by name.
 4. RESOLUTION: resolved in a satisfying way, no forced moral.
 
+QUALITY BAR:
+- This is a paid, personalised audio production. It must feel authored rather than templated.
+- The children must make meaningful decisions and change the outcome; do not merely insert their names into a generic story.
+- Give every named child at least one useful action and one spoken line. Balance their importance.
+- Give secondary characters distinct personalities, motives and speech patterns.
+- Maintain continuity of objects, places, character knowledge and goals from beginning to end.
+- Every scene must advance the story. Avoid filler, repeated explanations and repetitive catchphrases.
+- Build anticipation, include at least one genuine surprise, and earn the resolution.
+- Never use copyrighted franchise characters even if requested; invent an original equivalent.
+
 STYLE:
 - Simple and friendly language, suitable for the indicated age.
 - The narrator ALWAYS introduces who speaks before each dialogue: "said [character]:", "replied [character]:", "asked [character] with a smile:".
@@ -95,7 +143,7 @@ STYLE:
 - Never mention that you are an AI.
 
 SOUND EFFECTS:
-- Use ONLY 2 or 3 sound effects at very specific, meaningful moments.
+- Use ${sfxCount} sound effects at very specific, meaningful moments.
 - Place them where they really add value (a door opening, a thunderclap, an animal appearing). Do not put them between every segment.
 
 RESPONSE FORMAT — reply EXCLUSIVELY with valid JSON, no text before or after:
@@ -124,6 +172,8 @@ FORMAT RULES:
 PROTAGONISTAS (con su voz asignada): ${kidsList.replace(/voice:/g, "voz:")}
 VOZ NARRADOR/A: ${narratorKey}
 IDEA: "${idea || "Inventa una aventura original y entretenida."}"
+TEMA ELEGIDO: ${themeText}
+TONO ELEGIDO: ${toneText}
 DURACIÓN OBJETIVO: entre ${minWords} y ${maxWords} palabras en total.
 
 VOCES DISPONIBLES para personajes secundarios: ${secondaryVoices}
@@ -135,6 +185,16 @@ ESTRUCTURA OBLIGATORIA DEL CUENTO:
 3. DESARROLLO: los protagonistas afrontan el problema con humor, ingenio o valentía. Incluye 1 o 2 momentos donde los personajes del cuento le gastan una broma o le preguntan algo gracioso directamente a los protagonistas por su nombre.
 4. DESENLACE: resuelto de forma satisfactoria, sin moraleja forzada.
 
+NIVEL DE CALIDAD:
+- Es una producción de audio personalizada y de pago. Debe parecer escrita con intención, nunca una plantilla con nombres pegados.
+- Los niños deben tomar decisiones importantes y cambiar el resultado de la aventura.
+- Da a cada peque al menos una acción útil y una frase hablada. Equilibra su protagonismo.
+- Los personajes secundarios deben tener personalidad, motivación y forma de hablar propias.
+- Mantén la continuidad de objetos, lugares, conocimientos y objetivos de principio a fin.
+- Cada escena debe hacer avanzar la historia. Evita relleno, explicaciones repetidas y muletillas.
+- Crea expectación, incluye al menos una sorpresa real y haz que el desenlace se sienta merecido.
+- No uses personajes de franquicias protegidas aunque se soliciten: inventa un equivalente original.
+
 ESTILO:
 - Lenguaje sencillo y cercano, apto para la edad indicada.
 - El narrador SIEMPRE presenta quién habla antes de cada diálogo: "dijo [personaje]:", "respondió [personaje]:", "preguntó [personaje] con una sonrisa:".
@@ -143,7 +203,7 @@ ESTILO:
 - Nunca menciones que eres una IA.
 
 EFECTOS DE SONIDO:
-- Pon SOLO 2 o 3 efectos de sonido en momentos muy concretos y significativos.
+- Pon ${sfxCount} efectos de sonido en momentos muy concretos y significativos.
 - Colócalos donde realmente aporten (una puerta que se abre, un trueno, un animal que aparece). No los pongas entre todos los segmentos.
 
 FORMATO DE RESPUESTA — responde EXCLUSIVAMENTE con un JSON válido, sin texto antes ni después:
@@ -185,7 +245,17 @@ async function callTTS(apiKey, voiceKey, text, modelId = "eleven_multilingual_v2
     }
   );
   recordUsage({ provider: "eleven", model: modelId, chars: (text || "").length, context: "cuento" });
+  spendHooks.addElevenChars?.((text || "").length);
   return Buffer.from(resp.data);
+}
+
+async function callStoryTTS(apiKey, voiceKey, text) {
+  try {
+    return await callTTS(apiKey, voiceKey, text, "eleven_v3");
+  } catch (v3Error) {
+    console.warn(`Eleven v3 falló para ${voiceKey}; usando multilingual v2: ${v3Error.message}`);
+    return callTTS(apiKey, voiceKey, text, "eleven_multilingual_v2");
+  }
 }
 
 // ================== EFECTO DE SONIDO / MÚSICA ==================
@@ -236,6 +306,122 @@ async function concatenateBuffers(buffers) {
     try { fs.unlinkSync(f); } catch (_) {}
   }
   return result;
+}
+
+async function mixBackgroundMusic(voiceBuffer, theme, tone) {
+  const musicName = STORY_MUSIC[theme] ?? STORY_MUSIC[tone] ?? "wonder.mp3";
+  const musicPath = path.join(MODULE_DIR, "story_music", musicName);
+  if (!fs.existsSync(musicPath)) {
+    console.warn(`Música de cuento no encontrada: ${musicPath}; se devuelve mezcla sin fondo`);
+    return voiceBuffer;
+  }
+
+  const tmpDir = os.tmpdir();
+  const sid = `${Date.now()}_${Math.random().toString(36).slice(2)}`;
+  const voicePath = path.join(tmpDir, `sancho_story_voice_${sid}.mp3`);
+  const outPath = path.join(tmpDir, `sancho_story_mix_${sid}.mp3`);
+  fs.writeFileSync(voicePath, voiceBuffer);
+
+  try {
+    await new Promise((resolve, reject) => {
+      ffmpeg()
+        .input(voicePath)
+        .input(musicPath)
+        .inputOptions(["-stream_loop -1"])
+        .complexFilter([
+          "[1:a]volume=0.13[bed]",
+          "[bed][0:a]sidechaincompress=threshold=0.018:ratio=8:attack=20:release=650[ducked]",
+          "[0:a][ducked]amix=inputs=2:duration=first:dropout_transition=2,alimiter=limit=0.95[mix]",
+        ])
+        .outputOptions(["-map [mix]"])
+        .audioCodec("libmp3lame")
+        .audioBitrate("128k")
+        .output(outPath)
+        .on("end", resolve)
+        .on("error", reject)
+        .run();
+    });
+    return fs.readFileSync(outPath);
+  } finally {
+    for (const file of [voicePath, outPath]) {
+      try { fs.unlinkSync(file); } catch (_) {}
+    }
+  }
+}
+
+function normalizeDuration(value) {
+  const requested = Number(value);
+  if (ALLOWED_DURATIONS.has(requested)) return requested;
+  return [...ALLOWED_DURATIONS].reduce((best, current) =>
+    Math.abs(current - requested) < Math.abs(best - requested) ? current : best, 5);
+}
+
+function normalizeKids(value) {
+  if (!Array.isArray(value)) return [];
+  return value.slice(0, 5).map((kid, index) => ({
+    name: String(kid?.name || `Peque ${index + 1}`).trim().slice(0, 40),
+    gender: kid?.gender === "girl" ? "girl" : "boy",
+  })).filter((kid) => kid.name.length > 0);
+}
+
+function normalizeStory(parsed, { kids, narratorGender, language, targetMinutes, voiceAssignments }) {
+  const narratorKey = language === "en"
+    ? (narratorGender === "m" ? "narrator_m_en" : "narrator_f_en")
+    : (narratorGender === "m" ? "narrator_m" : "narrator_f");
+  const allowedVoices = new Set(Object.keys(VOICE_LIBRARY));
+  const rawSegments = Array.isArray(parsed?.segments) ? parsed.segments : [];
+  const segments = [];
+  let spokenWords = 0;
+  let spokenSegments = 0;
+
+  for (const raw of rawSegments.slice(0, 120)) {
+    if (raw?.type === "sfx") {
+      const description = String(raw.description || "").trim().slice(0, 140);
+      if (description) segments.push({ type: "sfx", description });
+      continue;
+    }
+    if (raw?.type !== "narration" && raw?.type !== "dialogue") continue;
+    const text = String(raw.text || "").trim();
+    if (!text) continue;
+    const character = String(raw.character || "").trim();
+    let voice = raw.type === "narration" ? narratorKey : String(raw.voice || "");
+    const childVoice = Object.entries(voiceAssignments)
+      .find(([name]) => character.localeCompare(name, undefined, { sensitivity: "base" }) === 0)?.[1];
+    if (childVoice) voice = childVoice;
+    if (!allowedVoices.has(voice)) voice = narratorKey;
+    spokenWords += text.split(/\s+/).filter(Boolean).length;
+    spokenSegments += 1;
+    segments.push({ type: raw.type, voice, character, text });
+  }
+
+  const minimumWords = Math.round(targetMinutes * 115 * 1.7 * 0.62);
+  if (spokenSegments < 6 || spokenWords < minimumWords) {
+    throw new Error(`Cuento incompleto: ${spokenWords} palabras; mínimo de calidad ${minimumWords}`);
+  }
+  const fullText = segments.filter((s) => s.text).map((s) => s.text).join(" ").toLocaleLowerCase();
+  for (const kid of kids) {
+    if (!fullText.includes(kid.name.toLocaleLowerCase())) {
+      throw new Error(`El cuento ha olvidado al protagonista ${kid.name}`);
+    }
+  }
+  return {
+    title: String(parsed?.title || (language === "en" ? "A Sancho Story" : "Un cuento de Sancho")).trim().slice(0, 120),
+    segments,
+    spokenWords,
+  };
+}
+
+async function mapWithConcurrency(items, concurrency, task) {
+  const results = new Array(items.length);
+  let cursor = 0;
+  async function worker() {
+    while (cursor < items.length) {
+      const index = cursor++;
+      results[index] = await task(items[index], index);
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, worker));
+  return results;
 }
 
 // ================== RENDER DE SEGMENTOS YA ESCRITOS ==================
@@ -295,15 +481,25 @@ export async function generateKidsStoryImmersive(req, res) {
   const anthropic = new Anthropic({ apiKey: anthropicKey });
 
   const {
-    kids           = [],
+    kids: rawKids  = [],
     narratorGender = "f",
     age            = 7,
-    targetMinutes  = 3,
+    targetMinutes: rawTargetMinutes = 5,
     idea           = "",
     language       = "es",
+    theme: rawTheme = "surprise",
+    tone: rawTone = "fun",
+    storyId        = "",
   } = req.body ?? {};
 
-  if (!Array.isArray(kids) || kids.length === 0) {
+  const kids = normalizeKids(rawKids);
+  const targetMinutes = normalizeDuration(rawTargetMinutes);
+  const safeAge = Math.min(11, Math.max(3, Number(age) || 7));
+  const theme = STORY_THEMES[rawTheme] ? rawTheme : "surprise";
+  const tone = STORY_TONES[rawTone] ? rawTone : "fun";
+  const safeLanguage = language === "en" ? "en" : "es";
+
+  if (kids.length === 0) {
     return res.status(400).json({ error: "kids[] requerido: [{ name, gender }]" });
   }
 
@@ -313,16 +509,26 @@ export async function generateKidsStoryImmersive(req, res) {
     console.log("🎭 Voces asignadas:", voiceAssignments);
 
     // 2 — Generar cuento estructurado con Claude
-    const prompt = buildStoryPrompt({ kids, narratorGender, age, targetMinutes, idea, voiceAssignments, language });
+    const prompt = buildStoryPrompt({
+      kids,
+      narratorGender,
+      age: safeAge,
+      targetMinutes,
+      idea: String(idea || "").trim().slice(0, 1200),
+      voiceAssignments,
+      language: safeLanguage,
+      theme,
+      tone,
+    });
     console.log("✍️  Generando cuento con Claude...");
 
-    const systemPrompt = language === "en"
+    const systemPrompt = safeLanguage === "en"
       ? "You are an expert children's storyteller. You ALWAYS respond with complete, valid JSON and nothing else."
       : "Eres un experto cuentacuentos infantil. Respondes SIEMPRE con JSON válido y completo, sin texto adicional.";
 
     const claudeResp = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: 4000,
+      max_tokens: Math.max(5000, Math.min(10000, targetMinutes * 900)),
       system: systemPrompt,
       messages: [{ role: "user", content: prompt }],
     });
@@ -332,8 +538,9 @@ export async function generateKidsStoryImmersive(req, res) {
       tokensIn: claudeResp?.usage?.input_tokens,
       tokensOut: claudeResp?.usage?.output_tokens,
       context: "cuento",
-      lang: language,
+      lang: safeLanguage,
     });
+    spendHooks.addClaudeResponse?.(claudeResp);
 
     let rawText = claudeResp.content[0].text.trim();
     rawText = rawText.replace(/^```(?:json)?\s*/i, "").replace(/\s*```\s*$/i, "");
@@ -345,38 +552,37 @@ export async function generateKidsStoryImmersive(req, res) {
       if (match) parsed = JSON.parse(match[0]);
       else throw new Error("No se pudo parsear el JSON del cuento: " + rawText.slice(0, 200));
     }
-    const segments = parsed.segments ?? [];
-    const title    = parsed.title ?? "Cuento";
+    const normalized = normalizeStory(parsed, {
+      kids,
+      narratorGender,
+      language: safeLanguage,
+      targetMinutes,
+      voiceAssignments,
+    });
+    const segments = normalized.segments;
+    const title = normalized.title;
 
-    console.log(`📖 "${title}" — ${segments.length} segmentos`);
+    console.log(`📖 "${title}" — ${segments.length} segmentos, ${normalized.spokenWords} palabras`);
 
-    // 3 — Procesar cada segmento con ElevenLabs
-    const audioBuffers = [];
-
-    for (let i = 0; i < segments.length; i++) {
-      const seg = segments[i];
+    // 3 — Procesar por lotes conservando el orden. Las voces son obligatorias;
+    // un efecto puede omitirse si Eleven falla, pero nunca una frase del cuento.
+    const rendered = await mapWithConcurrency(segments, 3, async (seg, i) => {
       const tag = `[${i + 1}/${segments.length}] ${seg.type}`;
-
-      try {
-        if (seg.type === "sfx") {
-          if (!seg.description?.trim()) continue;
+      if (seg.type === "sfx") {
+        try {
           console.log(`  ${tag} — "${seg.description}"`);
-          audioBuffers.push(await callSFX(elevenKey, seg.description.trim()));
-
-        } else if (seg.type === "narration" || seg.type === "dialogue") {
-          if (!seg.text?.trim()) continue;
-          const defaultNarrator = language === "en"
-            ? (narratorGender === "m" ? "narrator_m_en" : "narrator_f_en")
-            : (narratorGender === "m" ? "narrator_m" : "narrator_f");
-          const voiceKey  = seg.voice ?? defaultNarrator;
-          const voiceName = VOICE_LIBRARY[voiceKey]?.name ?? voiceKey;
-          console.log(`  ${tag} — ${voiceName}: "${seg.text.slice(0, 45)}..."`);
-          audioBuffers.push(await callTTS(elevenKey, voiceKey, seg.text.trim()));
+          return await callSFX(elevenKey, seg.description.trim());
+        } catch (segErr) {
+          console.warn(`  ⚠️  Efecto ${i + 1} fallido: ${segErr.message}`);
+          return null;
         }
-      } catch (segErr) {
-        console.warn(`  ⚠️  Segmento ${i + 1} fallido (${seg.type}): ${segErr.message} — omitido`);
       }
-    }
+      const voiceKey = seg.voice;
+      const voiceName = VOICE_LIBRARY[voiceKey]?.name ?? voiceKey;
+      console.log(`  ${tag} — ${voiceName}: "${seg.text.slice(0, 45)}..."`);
+      return callStoryTTS(elevenKey, voiceKey, seg.text.trim());
+    });
+    const audioBuffers = rendered.filter(Buffer.isBuffer);
 
     if (audioBuffers.length === 0) {
       return res.status(500).json({ error: "No se generó ningún segmento de audio" });
@@ -384,23 +590,28 @@ export async function generateKidsStoryImmersive(req, res) {
 
     // Coletilla final siempre presente
     try {
-      const narratorKey = language === "en"
+      const narratorKey = safeLanguage === "en"
         ? (narratorGender === "m" ? "narrator_m_en" : "narrator_f_en")
         : (narratorGender === "m" ? "narrator_m" : "narrator_f");
-      const closingText = language === "en"
+      const closingText = safeLanguage === "en"
         ? "And that's the end of our story! Until the next adventure, kids!"
         : "Y colorín colorado, este cuento ha terminado. ¡Hasta la próxima aventura, chicos!";
-      const closingBuf = await callTTS(elevenKey, narratorKey, closingText);
+      const closingBuf = await callStoryTTS(elevenKey, narratorKey, closingText);
       audioBuffers.push(closingBuf);
-    } catch (_) {}
+    } catch (closingError) {
+      console.warn(`No se pudo generar la despedida: ${closingError.message}`);
+    }
 
     // 4 — Concatenar con ffmpeg
     console.log(`🎵 Concatenando ${audioBuffers.length} piezas...`);
-    const finalAudio = await concatenateBuffers(audioBuffers);
+    const voiceAudio = await concatenateBuffers(audioBuffers);
+    const finalAudio = await mixBackgroundMusic(voiceAudio, theme, tone);
 
     // 5 — Devolver MP3
     res.set("Content-Type", "audio/mpeg");
     res.set("X-Story-Title", encodeURIComponent(title));
+    if (storyId) res.set("X-Story-Id", String(storyId).slice(0, 120));
+    res.set("X-Story-Minutes", String(targetMinutes));
     res.send(finalAudio);
 
     console.log(`✅ Cuento enviado — ${(finalAudio.length / 1024).toFixed(1)} KB`);

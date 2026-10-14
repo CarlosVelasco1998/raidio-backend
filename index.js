@@ -13,7 +13,11 @@ import { promises as fs } from "fs";
 import path from "path";
 
 import { POIS } from "./pois_db.js";
-import { generateKidsStoryImmersive, renderImmersiveSegments } from "./kidsStoryImmersive.js";
+import {
+  configureKidsStorySpendTracking,
+  generateKidsStoryImmersive,
+  renderImmersiveSegments,
+} from "./kidsStoryImmersive.js";
 import { mountAnalytics, recordUsage, claudeCost } from "./analytics.js";
 
 dotenv.config();
@@ -93,6 +97,13 @@ function addElevenSpend(chars) {
   _elevenCharsToday += (chars || 0);
   saveDailyUsage().catch(() => {});
 }
+
+// El motor de cuentos llama directamente a Claude y ElevenLabs; conecta sus
+// consumos a los mismos topes diarios que protegen el resto de Sancho.
+configureKidsStorySpendTracking({
+  addClaudeResponse: addClaudeSpend,
+  addElevenChars: addElevenSpend,
+});
 
 // Rate-limit en memoria (ventana fija). Limpieza periódica para no crecer sin fin.
 const _rl = new Map();
@@ -2670,7 +2681,7 @@ During game (screen=guess_song_round): "reveal" → reveal_song | "yes"/"correct
 step=story_protagonists → Extract name and gender (boy/girl).
   Call: set_story_protagonists { kids: [{name:"...",gender:"boy"|"girl"},...] }  speech: "Great! What is the story about?"
 step=story_idea → Extract idea.
-  Call: set_story_idea { idea: "..." }  speech: "How many minutes? Between 1 and 5."
+  Call: set_story_idea { idea: "..." }  speech: "How long should it be? Choose 3, 5, 7 or 10 minutes."
 step=story_duration → Extract minutes.
   Call: note_story_duration { minutes: N }  speech: "Perfect! Shall we start the story?"
 step=story_confirm → Call: start_story { minutes: ${ctx.minutes || 3} }  speech: "Here we go! Enjoy!"
@@ -2730,7 +2741,7 @@ Durante partida (screen=guess_song_round): "revela" → reveal_song | "sí"/"ace
 paso=story_protagonists → Extrae nombre y género (boy/girl).
   Llama: set_story_protagonists { kids: [{name:"...",gender:"boy"|"girl"},...] }  speech: "¡Genial! ¿De qué trata el cuento?"
 paso=story_idea → Extrae idea.
-  Llama: set_story_idea { idea: "..." }  speech: "¿Cuántos minutos? Entre 1 y 5."
+  Llama: set_story_idea { idea: "..." }  speech: "¿Cuántos minutos? Elige 3, 5, 7 o 10."
 paso=story_duration → Extrae minutos.
   Llama: note_story_duration { minutes: N }  speech: "¡Perfecto! ¿Empezamos el cuento?"
 paso=story_confirm → Llama: start_story { minutes: ${ctx.minutes || 3} }  speech: "¡Hecho! ¡Que disfruten!"

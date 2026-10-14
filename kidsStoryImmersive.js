@@ -512,8 +512,17 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   }
 
   if (spokenSegments < 6) errors.push(`Solo hay ${spokenSegments} segmentos hablados`);
-  if (spokenWords < duration.minWords) errors.push(`Cuento corto: ${spokenWords} palabras; mínimo ${duration.minWords}`);
-  if (spokenWords > duration.maxWords) errors.push(`Cuento largo: ${spokenWords} palabras; máximo ${duration.maxWords}`);
+  // La redacción apunta al intervalo nominal, pero la puerta técnica admite
+  // hasta un doce por ciento de desviación: la duración final también depende
+  // de interpretación, diálogos, efectos y ritmo de cada voz.
+  const acceptedMinWords = Math.round(duration.minWords * 0.88);
+  const acceptedMaxWords = Math.round(duration.maxWords * 1.12);
+  if (spokenWords < acceptedMinWords) {
+    errors.push(`Cuento corto: ${spokenWords} palabras; mínimo aceptable ${acceptedMinWords}`);
+  }
+  if (spokenWords > acceptedMaxWords) {
+    errors.push(`Cuento largo: ${spokenWords} palabras; máximo aceptable ${acceptedMaxWords}`);
+  }
   if (sfxCount < duration.sfxMin || sfxCount > duration.sfxMax) {
     errors.push(`Hay ${sfxCount} efectos; deben ser entre ${duration.sfxMin} y ${duration.sfxMax}`);
   }

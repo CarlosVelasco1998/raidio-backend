@@ -260,7 +260,7 @@ REGLAS DE REDACCIÓN:
 
 AUDIO:
 - Incluye entre ${duration.sfxMin} y ${duration.sfxMax} efectos, solo con finalidad dramática. Sus prompts van en inglés y describen un sonido físicamente concreto.
-- Puedes incluir una o dos pausas de 250 a 900 milisegundos antes de una revelación o remate.
+- Crea las pausas dramáticas con puntuación natural y frases breves; no generes segmentos de silencio.
 - La música de fondo se mezclará después; no generes segmentos musicales.
 - Voces válidas: ${JSON.stringify(allowedVoices)}.
 
@@ -271,8 +271,7 @@ Devuelve exclusivamente JSON válido:
   "segments":[
     {"id":"", "sceneId":"", "beatId":"", "type":"narration", "voice":"${brief.narratorVoice}", "text":"", "delivery":"neutral|warm|excited|whisper|worried|playful|mysterious|calm"},
     {"id":"", "sceneId":"", "beatId":"", "type":"dialogue", "voice":"", "characterId":"", "character":"", "text":"", "delivery":"neutral|warm|excited|whisper|worried|playful|mysterious|calm"},
-    {"id":"", "sceneId":"", "beatId":"", "type":"sfx", "prompt":"concrete sound in English", "durationMs":1800, "purpose":""},
-    {"id":"", "sceneId":"", "beatId":"", "type":"pause", "durationMs":500}
+    {"id":"", "sceneId":"", "beatId":"", "type":"sfx", "prompt":"concrete sound in English", "durationMs":1800, "purpose":""}
   ],
   "contributions":[{"characterId":"", "segmentIds":[], "causalResult":""}],
   "resolvedSetups":[{"setupId":"", "setupSegmentId":"", "payoffSegmentId":""}],
@@ -375,28 +374,6 @@ async function concatenateBuffers(buffers) {
   return result;
 }
 
-async function createSilenceBuffer(durationMs) {
-  const safeDuration = Math.min(1200, Math.max(180, Number(durationMs) || 450));
-  const outPath = path.join(os.tmpdir(), `sancho_story_silence_${Date.now()}_${Math.random().toString(36).slice(2)}.mp3`);
-  try {
-    await new Promise((resolve, reject) => {
-      ffmpeg()
-        .input("anullsrc=channel_layout=stereo:sample_rate=44100")
-        .inputFormat("lavfi")
-        .duration(safeDuration / 1000)
-        .audioCodec("libmp3lame")
-        .audioBitrate("96k")
-        .output(outPath)
-        .on("end", resolve)
-        .on("error", reject)
-        .run();
-    });
-    return fs.readFileSync(outPath);
-  } finally {
-    try { fs.unlinkSync(outPath); } catch (_) {}
-  }
-}
-
 async function mixBackgroundMusic(voiceBuffer, theme, tone) {
   const musicName = tone === "exciting"
     ? "magic.mp3"
@@ -484,7 +461,6 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
 
   for (const [index, raw] of rawSegments.slice(0, 140).entries()) {
     if (raw?.type === "pause") {
-      segments.push({ type: "pause", durationMs: Math.min(1200, Math.max(180, Number(raw.durationMs) || 450)) });
       continue;
     }
     if (raw?.type === "sfx") {
@@ -777,9 +753,6 @@ export async function generateKidsStoryImmersive(req, res) {
     // un efecto puede omitirse si Eleven falla, pero nunca una frase del cuento.
     const rendered = await mapWithConcurrency(segments, 3, async (seg, i) => {
       const tag = `[${i + 1}/${segments.length}] ${seg.type}`;
-      if (seg.type === "pause") {
-        return createSilenceBuffer(seg.durationMs);
-      }
       if (seg.type === "sfx") {
         try {
           console.log(`  ${tag} — "${seg.description}"`);

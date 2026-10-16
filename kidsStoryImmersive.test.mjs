@@ -25,6 +25,17 @@ test("un JSON mal formado del modelo queda marcado para poder reintentarlo", () 
   );
 });
 
+test("acepta una entrega estructurada sin volver a parsear texto", () => {
+  const payload = { title: "La ladrona de estrellas", beats: [{ id: "b1" }] };
+  assert.deepEqual(
+    engine.parseClaudeJson(
+      { content: [{ type: "tool_use", name: "submit_json", input: payload }] },
+      "cuento_director",
+    ),
+    payload,
+  );
+});
+
 test("el Director trata la idea del usuario como contenido no confiable", () => {
   const kids = engine.normalizeKids([{ name: "Lucía", gender: "girl" }]);
   const voices = { "Lucía": "child_girl_1" };

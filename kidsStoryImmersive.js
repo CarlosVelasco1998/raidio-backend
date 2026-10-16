@@ -164,6 +164,12 @@ function narratorVoice(language, narratorGender) {
 }
 
 function parseClaudeJson(response, label) {
+  const toolBlock = response?.content?.find((item) =>
+    item?.type === "tool_use" && item?.name === "submit_json");
+  if (toolBlock?.input && typeof toolBlock.input === "object" && !Array.isArray(toolBlock.input)) {
+    return toolBlock.input;
+  }
+
   const block = response?.content?.find((item) => item?.type === "text");
   let text = String(block?.text || "").trim();
   text = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```\s*$/i, "");
@@ -217,6 +223,19 @@ async function callClaudeJson(anthropic, { system, prompt, maxTokens, context, l
         temperature: attempt === 1 ? temperature : Math.min(temperature, 0.45),
         system,
         messages: [{ role: "user", content: prompt }],
+        tools: [{
+          name: "submit_json",
+          description: "Entrega el objeto JSON final solicitado. No incluyas explicaciones fuera de este objeto.",
+          input_schema: {
+            type: "object",
+            additionalProperties: true,
+          },
+        }],
+        tool_choice: {
+          type: "tool",
+          name: "submit_json",
+          disable_parallel_tool_use: true,
+        },
       });
       recordUsage({
         provider: "claude",
@@ -1092,7 +1111,7 @@ export async function generateKidsStoryImmersive(req, res) {
     let blueprint = await callClaudeJson(anthropic, {
       system: "Eres el Director Literario de Sancho. Diseñas cuentos infantiles originales para ser comprendidos solo con el oído. No escribes el cuento, solo una escaleta causal y producible. No adaptas ni imitas obras o franquicias. Respondes exclusivamente con JSON válido.",
       prompt: buildDirectorPrompt({ brief, duration, ageRules, secondaryVoices }),
-      maxTokens: 5000,
+      maxTokens: 7000,
       context: "cuento_director",
       language: safeLanguage,
       temperature: 0.9,
@@ -1112,7 +1131,7 @@ export async function generateKidsStoryImmersive(req, res) {
           ageRules,
           secondaryVoices,
         }),
-        maxTokens: 5000,
+        maxTokens: 7000,
         context: "cuento_director_reparador",
         language: safeLanguage,
         temperature: 0.4,

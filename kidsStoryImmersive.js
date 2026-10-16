@@ -104,10 +104,10 @@ function assignChildVoices(kids) {
 }
 
 const DURATION_PROFILES = {
-  3: { minWords: 320, maxWords: 410, beatCount: 8, sfxMin: 4, sfxMax: 5, orientationMinWords: 55, orientationMaxWords: 85 },
-  5: { minWords: 540, maxWords: 680, beatCount: 10, sfxMin: 6, sfxMax: 8, orientationMinWords: 80, orientationMaxWords: 120 },
-  7: { minWords: 760, maxWords: 930, beatCount: 12, sfxMin: 8, sfxMax: 10, orientationMinWords: 105, orientationMaxWords: 150 },
-  10: { minWords: 1080, maxWords: 1320, beatCount: 15, sfxMin: 10, sfxMax: 13, orientationMinWords: 135, orientationMaxWords: 190 },
+  3: { minWords: 320, maxWords: 410, beatCount: 7, minSetbacks: 1, minAntagonistMoves: 2, sfxMin: 4, sfxMax: 5, orientationMinWords: 55, orientationMaxWords: 85 },
+  5: { minWords: 540, maxWords: 680, beatCount: 10, minSetbacks: 2, minAntagonistMoves: 2, sfxMin: 6, sfxMax: 8, orientationMinWords: 80, orientationMaxWords: 120 },
+  7: { minWords: 760, maxWords: 930, beatCount: 12, minSetbacks: 2, minAntagonistMoves: 3, sfxMin: 8, sfxMax: 10, orientationMinWords: 105, orientationMaxWords: 150 },
+  10: { minWords: 1080, maxWords: 1320, beatCount: 15, minSetbacks: 3, minAntagonistMoves: 3, sfxMin: 10, sfxMax: 13, orientationMinWords: 135, orientationMaxWords: 190 },
 };
 
 function ageProfile(age) {
@@ -117,8 +117,6 @@ function ageProfile(age) {
     maxLocations: 2,
     maxNarrationWords: 42,
     maxDialogueWords: 16,
-    minSetbacks: 1,
-    minAntagonistMoves: 1,
     conflict: "un antagonista visible y fácil de reconocer; amenaza simple como robar, bloquear, atrapar o perseguir; derrota segura, clara y tranquilizadora",
     craft: "un objetivo; causa y efecto explícitos; repetición de tres con variación mínima; vocabulario concreto",
   };
@@ -128,8 +126,6 @@ function ageProfile(age) {
     maxLocations: 3,
     maxNarrationWords: 55,
     maxDialogueWords: 22,
-    minSetbacks: 2,
-    minAntagonistMoves: 2,
     conflict: "un antagonista con plan propio, una ventaja clara y dos intentos que obligan al héroe a cambiar de estrategia",
     craft: "un problema y una complicación; predicción sencilla; humor físico audible; una palabra nueva entendible por contexto",
   };
@@ -139,8 +135,6 @@ function ageProfile(age) {
     maxLocations: 4,
     maxNarrationWords: 68,
     maxDialogueWords: 28,
-    minSetbacks: 2,
-    minAntagonistMoves: 2,
     conflict: "antagonista activo que se adapta, pistas recuperables, giro central y debilidad descubierta por las decisiones del héroe",
     craft: "giro central; pistas recuperables; intenciones distintas; humor verbal suave; inferencias fáciles de reconstruir",
   };
@@ -150,8 +144,6 @@ function ageProfile(age) {
     maxLocations: 5,
     maxNarrationWords: 82,
     maxDialogueWords: 36,
-    minSetbacks: 2,
-    minAntagonistMoves: 3,
     conflict: "antagonista formidable con motivo comprensible pero actos injustificables, engaño posible, escalada y una elección difícil en el clímax",
     craft: "cadena causal más larga; anticipación discreta; falso supuesto; subobjetivo; diálogo no infantilizado",
   };
@@ -297,11 +289,11 @@ REQUISITOS:
 - La orientación no es una lista ni una ficha biográfica. Debe sonar a un cuentacuentos que abre una puerta: concreta, fluida y diferente en cada historia. No empieces siempre con «Os voy a contar».
 - Tras la orientación llega el detonante. Ningún personaje habla antes de que el narrador lo haya presentado por su nombre y haya dejado una pista clara de su personalidad o función.
 - Debe haber un ANTAGONISTA CON AGENCIA: tiene nombre o título reconocible, quiere algo incompatible con el protagonista, ya ha causado un daño concreto, ejecuta un plan y reacciona cuando el héroe avanza. No basta una avería, un objeto perdido, el mal tiempo o un malentendido.
-- El antagonista debe actuar de forma perceptible al menos ${ageRules.minAntagonistMoves} veces. Dale una ventaja que lo haga temible y una debilidad que el héroe pueda descubrir. Normalmente debe hablar con voz propia; si no habla, sus acciones y sonido deben hacerlo inequívoco.
+- El antagonista debe actuar de forma perceptible al menos ${duration.minAntagonistMoves} veces. Dale una ventaja que lo haga temible y una debilidad que el héroe pueda descubrir. Normalmente debe hablar con voz propia; si no habla, sus acciones y sonido deben hacerlo inequívoco.
 - Intensidad alta no significa contenido adulto. Puede haber robo, sabotaje, engaño, persecución, encierro fantástico, monstruos, maldiciones, competición, rescate y peligro inminente. Prohíbe violencia gráfica, tortura, muerte descrita, abuso realista, humillación y terror sin alivio.
 - La trama central NO puede consistir en reparar una farola, campana, puerta, máquina u objeto que simplemente dejó de funcionar. Solo puede aparecer una avería si el antagonista la provocó dentro de un plan mayor y las consecuencias afectan de verdad a alguien o a toda una comunidad.
 - Estructura una escalada: daño o amenaza inicial; primer plan del héroe que falla; antagonista contraataca; giro central que cambia lo que creían saber; nuevo revés; momento en que parece que van a perder; elección difícil; confrontación final; victoria y consecuencias.
-- Incluye al menos ${ageRules.minSetbacks} reveses reales. Un revés cambia la situación y cuesta algo: no es solo que un personaje diga que está preocupado.
+- Incluye al menos ${duration.minSetbacks} reveses reales. Un revés cambia la situación y cuesta algo: no es solo que un personaje diga que está preocupado.
 - Define una cuenta atrás o urgencia concreta. Las apuestas deben tener tres capas: qué se perderá materialmente, a quién afectará y por qué le importa personalmente al protagonista.
 - En el clímax, protagonista y antagonista se enfrentan directamente mediante acción, ingenio, valor o cooperación. La victoria usa una siembra anterior, exige una decisión y cambia el equilibrio de poder; nunca llega por accidente, sermón, perdón repentino del malo ni ayuda exterior no preparada.
 - El antagonista puede tener un motivo comprensible, pero no necesita redimirse. Su derrota debe ser clara, satisfactoria y adecuada a la edad.
@@ -385,12 +377,12 @@ function validateBlueprint(blueprint, { duration, ageRules }) {
     if (!phases.includes(phase)) errors.push(`Falta un beat de tipo ${phase}`);
   }
   const setbacks = phases.filter((phase) => phase === "setback").length;
-  if (setbacks < ageRules.minSetbacks) {
-    errors.push(`Solo hay ${setbacks} reveses; se requieren ${ageRules.minSetbacks}`);
+  if (setbacks < duration.minSetbacks) {
+    errors.push(`Solo hay ${setbacks} reveses; se requieren ${duration.minSetbacks}`);
   }
   const antagonistMoves = beats.filter((beat) => String(beat?.antagonistAction || "").trim()).length;
-  if (antagonistMoves < ageRules.minAntagonistMoves) {
-    errors.push(`El antagonista solo actúa en ${antagonistMoves} beats; debe actuar al menos en ${ageRules.minAntagonistMoves}`);
+  if (antagonistMoves < duration.minAntagonistMoves) {
+    errors.push(`El antagonista solo actúa en ${antagonistMoves} beats; debe actuar al menos en ${duration.minAntagonistMoves}`);
   }
   if (!Array.isArray(blueprint?.setupPayoffs) || blueprint.setupPayoffs.length === 0) {
     errors.push("Falta una siembra que se pague en el clímax");
@@ -432,7 +424,7 @@ REGLAS DE REDACCIÓN:
 - Mantén acción → consecuencia → nueva decisión. Cada protagonista tiene diálogo natural y una contribución imprescindible.
 - Respeta el conflicto de la escaleta: el antagonista quiere algo, actúa repetidamente, contraataca y obliga a cambiar de plan. Hazlo reconocible por su voz, sus decisiones y su firma sonora, no solo porque el narrador lo llame «malo».
 - Tras la orientación, el daño del antagonista aparece pronto. No encadenes conversaciones sobre lo que podrían hacer: alterna decisión, acción audible, consecuencia y reacción del rival.
-- Conserva al menos ${ageRules.minSetbacks} reveses, el giro central, el momento más difícil y la confrontación final. Cada uno debe modificar quién lleva ventaja.
+- Conserva al menos ${duration.minSetbacks} reveses, el giro central, el momento más difícil y la confrontación final. Cada uno debe modificar quién lleva ventaja.
 - La acción puede ser una huida, persecución, rescate, engaño descubierto, infiltración, prueba física, duelo de ingenio o defensa. En todos los casos debe haber movimiento, peligro comprensible y decisiones bajo presión.
 - No conviertas el conflicto en una avería cotidiana ni lo resuelvas reparando un objeto. Tampoco neutralices al antagonista mediante una charla amable. El desenlace debe detener su plan de forma visible y pagar la siembra preparada.
 - Identifica al hablante al entrar, tras una interrupción o cuando haya ambigüedad; una vez anclada cada voz no hace falta repetir su nombre en cada frase.
@@ -476,7 +468,7 @@ GUION: ${JSON.stringify(story)}
 ERRORES DETERMINISTAS: ${JSON.stringify(errors)}
 
 LÍMITES: ${duration.minWords}-${duration.maxWords} palabras; apertura orientativa narrada ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras antes del primer diálogo; narración <= ${ageRules.maxNarrationWords}; diálogo <= ${ageRules.maxDialogueWords}; voces ${JSON.stringify(allowedVoices)}; SFX ${duration.sfxMin}-${duration.sfxMax}.
-Comprueba que el oyente entiende protagonista, mundo, problema y riesgo antes de oír personajes; que cada voz es presentada por el narrador justo antes de su primera frase; que delivery y puntuación dirigen una interpretación emocional; que cada peque habla y cambia el resultado; y que los efectos hacen audible el espacio, las acciones y las consecuencias. El antagonista debe conservar objetivo, plan, ventaja, acciones propias y derrota clara; deben existir al menos ${ageRules.minSetbacks} reveses que cambien el plan, un momento más difícil y un clímax de confrontación ganado por decisiones previas. Completa dramaturgy con IDs de segmentos existentes.`;
+Comprueba que el oyente entiende protagonista, mundo, problema y riesgo antes de oír personajes; que cada voz es presentada por el narrador justo antes de su primera frase; que delivery y puntuación dirigen una interpretación emocional; que cada peque habla y cambia el resultado; y que los efectos hacen audible el espacio, las acciones y las consecuencias. El antagonista debe conservar objetivo, plan, ventaja, acciones propias y derrota clara; deben existir al menos ${duration.minSetbacks} reveses que cambien el plan, un momento más difícil y un clímax de confrontación ganado por decisiones previas. Completa dramaturgy con IDs de segmentos existentes.`;
 }
 
 // ================== TTS POR SEGMENTO ==================
@@ -902,12 +894,12 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   const validReferencedIds = (value) => [...new Set(Array.isArray(value) ? value : [])]
     .filter((id) => segmentIds.has(String(id)));
   const antagonistActionIds = validReferencedIds(dramaturgy.antagonistActionSegmentIds);
-  if (antagonistActionIds.length < ageRules.minAntagonistMoves) {
-    errors.push(`Solo hay ${antagonistActionIds.length} acciones verificables del antagonista; mínimo ${ageRules.minAntagonistMoves}`);
+  if (antagonistActionIds.length < duration.minAntagonistMoves) {
+    errors.push(`Solo hay ${antagonistActionIds.length} acciones verificables del antagonista; mínimo ${duration.minAntagonistMoves}`);
   }
   const setbackIds = validReferencedIds(dramaturgy.setbackSegmentIds);
-  if (setbackIds.length < ageRules.minSetbacks) {
-    errors.push(`Solo hay ${setbackIds.length} reveses verificables; mínimo ${ageRules.minSetbacks}`);
+  if (setbackIds.length < duration.minSetbacks) {
+    errors.push(`Solo hay ${setbackIds.length} reveses verificables; mínimo ${duration.minSetbacks}`);
   }
   for (const [key, label] of [
     ["incitingIncidentSegmentId", "incidente detonante"],

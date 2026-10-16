@@ -104,10 +104,10 @@ function assignChildVoices(kids) {
 }
 
 const DURATION_PROFILES = {
-  3: { minWords: 320, maxWords: 410, beatCount: 6, sfxMin: 4, sfxMax: 5, orientationMinWords: 55, orientationMaxWords: 85 },
-  5: { minWords: 540, maxWords: 680, beatCount: 8, sfxMin: 6, sfxMax: 8, orientationMinWords: 80, orientationMaxWords: 120 },
-  7: { minWords: 760, maxWords: 930, beatCount: 9, sfxMin: 8, sfxMax: 10, orientationMinWords: 105, orientationMaxWords: 150 },
-  10: { minWords: 1080, maxWords: 1320, beatCount: 11, sfxMin: 10, sfxMax: 13, orientationMinWords: 135, orientationMaxWords: 190 },
+  3: { minWords: 320, maxWords: 410, beatCount: 8, sfxMin: 4, sfxMax: 5, orientationMinWords: 55, orientationMaxWords: 85 },
+  5: { minWords: 540, maxWords: 680, beatCount: 10, sfxMin: 6, sfxMax: 8, orientationMinWords: 80, orientationMaxWords: 120 },
+  7: { minWords: 760, maxWords: 930, beatCount: 12, sfxMin: 8, sfxMax: 10, orientationMinWords: 105, orientationMaxWords: 150 },
+  10: { minWords: 1080, maxWords: 1320, beatCount: 15, sfxMin: 10, sfxMax: 13, orientationMinWords: 135, orientationMaxWords: 190 },
 };
 
 function ageProfile(age) {
@@ -117,6 +117,9 @@ function ageProfile(age) {
     maxLocations: 2,
     maxNarrationWords: 42,
     maxDialogueWords: 16,
+    minSetbacks: 1,
+    minAntagonistMoves: 1,
+    conflict: "un antagonista visible y fácil de reconocer; amenaza simple como robar, bloquear, atrapar o perseguir; derrota segura, clara y tranquilizadora",
     craft: "un objetivo; causa y efecto explícitos; repetición de tres con variación mínima; vocabulario concreto",
   };
   if (age <= 6) return {
@@ -125,6 +128,9 @@ function ageProfile(age) {
     maxLocations: 3,
     maxNarrationWords: 55,
     maxDialogueWords: 22,
+    minSetbacks: 2,
+    minAntagonistMoves: 2,
+    conflict: "un antagonista con plan propio, una ventaja clara y dos intentos que obligan al héroe a cambiar de estrategia",
     craft: "un problema y una complicación; predicción sencilla; humor físico audible; una palabra nueva entendible por contexto",
   };
   if (age <= 8) return {
@@ -133,6 +139,9 @@ function ageProfile(age) {
     maxLocations: 4,
     maxNarrationWords: 68,
     maxDialogueWords: 28,
+    minSetbacks: 2,
+    minAntagonistMoves: 2,
+    conflict: "antagonista activo que se adapta, pistas recuperables, giro central y debilidad descubierta por las decisiones del héroe",
     craft: "giro central; pistas recuperables; intenciones distintas; humor verbal suave; inferencias fáciles de reconstruir",
   };
   return {
@@ -141,6 +150,9 @@ function ageProfile(age) {
     maxLocations: 5,
     maxNarrationWords: 82,
     maxDialogueWords: 36,
+    minSetbacks: 2,
+    minAntagonistMoves: 3,
+    conflict: "antagonista formidable con motivo comprensible pero actos injustificables, engaño posible, escalada y una elección difícil en el clímax",
     craft: "cadena causal más larga; anticipación discreta; falso supuesto; subobjetivo; diálogo no infantilizado",
   };
 }
@@ -259,13 +271,21 @@ PERFIL DE DURACIÓN: ${JSON.stringify(duration)}
 PERFIL DE EDAD: ${JSON.stringify(ageRules)}
 VOCES SECUNDARIAS DISPONIBLES: ${JSON.stringify(secondaryVoices)}
 
-Diseña una escaleta para audioficción infantil ORIGINAL. No adaptes, imites ni recombines cuentos, películas, franquicias o personajes existentes. Usa exactamente dos o tres técnicas abstractas de esta biblioteca: objetivo claro; acción-consecuencia; repetición con variación; siembra-recompensa; inversión cómica; prueba creciente; giro; eco final.
+Diseña una escaleta para audioficción infantil ORIGINAL con conflicto fuerte y aventura. No adaptes, imites ni recombines cuentos, películas, franquicias o personajes existentes. Usa exactamente dos o tres técnicas abstractas de esta biblioteca: objetivo claro; acción-consecuencia; repetición con variación; siembra-recompensa; inversión cómica; prueba creciente; giro; eco final.
 
 REQUISITOS:
 - El primer acto es una ORIENTACIÓN NARRADA de ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras. Primero promete qué clase de historia se va a escuchar y después deja claro quién protagoniza, cómo es su mundo cotidiano, qué tiene de especial, cuál es el problema y qué está en juego. Debe despertar curiosidad sin lanzar al oyente a una acción que aún no comprende.
 - La orientación no es una lista ni una ficha biográfica. Debe sonar a un cuentacuentos que abre una puerta: concreta, fluida y diferente en cada historia. No empieces siempre con «Os voy a contar».
 - Tras la orientación llega el detonante. Ningún personaje habla antes de que el narrador lo haya presentado por su nombre y haya dejado una pista clara de su personalidad o función.
-- Un deseo concreto, obstáculo comprensible y riesgo amable.
+- Debe haber un ANTAGONISTA CON AGENCIA: tiene nombre o título reconocible, quiere algo incompatible con el protagonista, ya ha causado un daño concreto, ejecuta un plan y reacciona cuando el héroe avanza. No basta una avería, un objeto perdido, el mal tiempo o un malentendido.
+- El antagonista debe actuar de forma perceptible al menos ${ageRules.minAntagonistMoves} veces. Dale una ventaja que lo haga temible y una debilidad que el héroe pueda descubrir. Normalmente debe hablar con voz propia; si no habla, sus acciones y sonido deben hacerlo inequívoco.
+- Intensidad alta no significa contenido adulto. Puede haber robo, sabotaje, engaño, persecución, encierro fantástico, monstruos, maldiciones, competición, rescate y peligro inminente. Prohíbe violencia gráfica, tortura, muerte descrita, abuso realista, humillación y terror sin alivio.
+- La trama central NO puede consistir en reparar una farola, campana, puerta, máquina u objeto que simplemente dejó de funcionar. Solo puede aparecer una avería si el antagonista la provocó dentro de un plan mayor y las consecuencias afectan de verdad a alguien o a toda una comunidad.
+- Estructura una escalada: daño o amenaza inicial; primer plan del héroe que falla; antagonista contraataca; giro central que cambia lo que creían saber; nuevo revés; momento en que parece que van a perder; elección difícil; confrontación final; victoria y consecuencias.
+- Incluye al menos ${ageRules.minSetbacks} reveses reales. Un revés cambia la situación y cuesta algo: no es solo que un personaje diga que está preocupado.
+- Define una cuenta atrás o urgencia concreta. Las apuestas deben tener tres capas: qué se perderá materialmente, a quién afectará y por qué le importa personalmente al protagonista.
+- En el clímax, protagonista y antagonista se enfrentan directamente mediante acción, ingenio, valor o cooperación. La victoria usa una siembra anterior, exige una decisión y cambia el equilibrio de poder; nunca llega por accidente, sermón, perdón repentino del malo ni ayuda exterior no preparada.
+- El antagonista puede tener un motivo comprensible, pero no necesita redimirse. Su derrota debe ser clara, satisfactoria y adecuada a la edad.
 - Cada protagonista toma una decisión o realiza una acción que cambia el resultado. Sus aportaciones se encadenan.
 - Siembra un elemento concreto y págalo en el clímax. El clímax nace de decisiones previas, nunca del azar.
 - Respeta los máximos de personajes y localizaciones del perfil de edad.
@@ -278,13 +298,97 @@ Devuelve exclusivamente JSON válido:
 {
   "workingTitle":"", "logline":"", "storyQuestion":"", "engine":"", "techniques":[], "musicMood":"wonder|magic|mystery|epic|journey|adventure|calm",
   "orientation":{"storyPromise":"", "protagonistAndWorld":"", "specialTrait":"", "centralProblem":"", "stakes":"", "firstDialogueAfter":""},
-  "characters":[{"id":"", "name":"", "role":"", "voice":"", "want":"", "auditorySignature":"", "essentialContribution":"", "narratedIntroduction":""}],
+  "conflict":{"archetype":"rescue|recover|defend|escape|break_curse|unmask_deceiver|win_trial|defeat_monster", "antagonistId":"", "antagonistGoal":"", "harmAlreadyCaused":"", "plan":"", "advantage":"", "weakness":"", "concreteStakes":"", "personalStakes":"", "deadline":""},
+  "dramaticTurns":{"incitingIncident":"", "firstFailedPlan":"", "antagonistCounterattack":"", "midpointReversal":"", "darkestMoment":"", "climaxChoice":"", "earnedVictory":"", "antagonistDefeat":""},
+  "characters":[{"id":"", "name":"", "role":"", "alignment":"hero|ally|antagonist", "voice":"", "want":"", "advantage":"", "weakness":"", "auditorySignature":"", "essentialContribution":"", "narratedIntroduction":""}],
   "setupPayoffs":[{"id":"", "setupBeat":"", "payoffBeat":"", "element":""}],
-  "beats":[{"id":"", "timePctStart":0, "timePctEnd":0, "location":"", "goal":"", "obstacle":"", "action":"", "consequence":"", "turn":"", "participants":[], "audioPurpose":""}],
+  "beats":[{"id":"", "phase":"orientation|inciting_harm|attempt|setback|midpoint|counterattack|darkest_moment|climax|resolution", "timePctStart":0, "timePctEnd":0, "location":"", "goal":"", "obstacle":"", "protagonistAction":"", "antagonistAction":"", "cost":"", "consequence":"", "powerShift":"", "turn":"", "participants":[], "audioPurpose":""}],
   "continuityLedger":{"objects":[], "knowledge":[], "locations":[]},
   "audioPlan":{"motif":"", "musicArc":[], "sfxMoments":[], "silenceMoment":""},
   "endingEcho":""
 }`;
+}
+
+function validateBlueprint(blueprint, { duration, ageRules }) {
+  const errors = [];
+  const beats = Array.isArray(blueprint?.beats) ? blueprint.beats : [];
+  const characters = Array.isArray(blueprint?.characters) ? blueprint.characters : [];
+  const conflict = blueprint?.conflict ?? {};
+  const turns = blueprint?.dramaticTurns ?? {};
+
+  if (beats.length < Math.max(6, duration.beatCount - 1)) {
+    errors.push(`La escaleta solo tiene ${beats.length} beats; necesita aproximadamente ${duration.beatCount}`);
+  }
+
+  const beatIds = new Set();
+  for (const [index, beat] of beats.entries()) {
+    const id = String(beat?.id || "").trim();
+    if (!id) errors.push(`Beat ${index + 1} sin id`);
+    else if (beatIds.has(id)) errors.push(`ID de beat repetido: ${id}`);
+    else beatIds.add(id);
+    if (!String(beat?.consequence || "").trim()) errors.push(`Beat ${id || index + 1} sin consecuencia`);
+    if (!String(beat?.powerShift || "").trim()) errors.push(`Beat ${id || index + 1} sin cambio de poder`);
+  }
+
+  const antagonistId = String(conflict.antagonistId || "").trim();
+  const antagonist = characters.find((character) =>
+    String(character?.id || "").trim() === antagonistId && character?.alignment === "antagonist");
+  if (!antagonistId || !antagonist) errors.push("Falta un antagonista-personaje identificado en conflicto y characters");
+
+  for (const [key, label] of [
+    ["antagonistGoal", "objetivo incompatible del antagonista"],
+    ["harmAlreadyCaused", "daño inicial del antagonista"],
+    ["plan", "plan del antagonista"],
+    ["advantage", "ventaja del antagonista"],
+    ["weakness", "límite o debilidad del antagonista"],
+    ["concreteStakes", "consecuencia concreta si el héroe falla"],
+    ["personalStakes", "importancia personal para el protagonista"],
+    ["deadline", "urgencia o cuenta atrás"],
+  ]) {
+    if (!String(conflict[key] || "").trim()) errors.push(`Falta ${label}`);
+  }
+
+  for (const [key, label] of [
+    ["incitingIncident", "incidente detonante"],
+    ["firstFailedPlan", "primer plan fallido"],
+    ["antagonistCounterattack", "contraataque del antagonista"],
+    ["midpointReversal", "giro central"],
+    ["darkestMoment", "momento más difícil"],
+    ["climaxChoice", "elección de clímax"],
+    ["earnedVictory", "victoria ganada"],
+    ["antagonistDefeat", "derrota clara del antagonista"],
+  ]) {
+    if (!String(turns[key] || "").trim()) errors.push(`Falta ${label}`);
+  }
+
+  const phases = beats.map((beat) => String(beat?.phase || ""));
+  for (const phase of ["inciting_harm", "midpoint", "darkest_moment", "climax", "resolution"]) {
+    if (!phases.includes(phase)) errors.push(`Falta un beat de tipo ${phase}`);
+  }
+  const setbacks = phases.filter((phase) => phase === "setback").length;
+  if (setbacks < ageRules.minSetbacks) {
+    errors.push(`Solo hay ${setbacks} reveses; se requieren ${ageRules.minSetbacks}`);
+  }
+  const antagonistMoves = beats.filter((beat) => String(beat?.antagonistAction || "").trim()).length;
+  if (antagonistMoves < ageRules.minAntagonistMoves) {
+    errors.push(`El antagonista solo actúa en ${antagonistMoves} beats; debe actuar al menos en ${ageRules.minAntagonistMoves}`);
+  }
+  if (!Array.isArray(blueprint?.setupPayoffs) || blueprint.setupPayoffs.length === 0) {
+    errors.push("Falta una siembra que se pague en el clímax");
+  }
+  return errors;
+}
+
+function buildDirectorRepairPrompt({ brief, blueprint, errors, duration, ageRules, secondaryVoices }) {
+  return `${buildDirectorPrompt({ brief, duration, ageRules, secondaryVoices })}
+
+La primera escaleta no supera el control dramático:
+${JSON.stringify(errors)}
+
+ESCALETA A REPARAR:
+${JSON.stringify(blueprint)}
+
+Devuelve una escaleta JSON completa que conserve la premisa válida y corrija todos los fallos. No añadas explicaciones.`;
 }
 
 function buildWriterPrompt({ brief, blueprint, duration, ageRules, allowedVoices }) {
@@ -307,6 +411,11 @@ REGLAS DE REDACCIÓN:
 - Antes de la PRIMERA frase de cada personaje, el segmento de narrador inmediatamente anterior debe nombrarlo y asociarlo a un rasgo, intención o acción. Después dale una primera frase característica que permita reconocer esa voz. No introduzcas dos voces nuevas seguidas sin reorientar al oyente.
 - Revela rasgos mediante acciones. Cada escena cambia objetivo, información, riesgo o relación.
 - Mantén acción → consecuencia → nueva decisión. Cada protagonista tiene diálogo natural y una contribución imprescindible.
+- Respeta el conflicto de la escaleta: el antagonista quiere algo, actúa repetidamente, contraataca y obliga a cambiar de plan. Hazlo reconocible por su voz, sus decisiones y su firma sonora, no solo porque el narrador lo llame «malo».
+- Tras la orientación, el daño del antagonista aparece pronto. No encadenes conversaciones sobre lo que podrían hacer: alterna decisión, acción audible, consecuencia y reacción del rival.
+- Conserva al menos ${ageRules.minSetbacks} reveses, el giro central, el momento más difícil y la confrontación final. Cada uno debe modificar quién lleva ventaja.
+- La acción puede ser una huida, persecución, rescate, engaño descubierto, infiltración, prueba física, duelo de ingenio o defensa. En todos los casos debe haber movimiento, peligro comprensible y decisiones bajo presión.
+- No conviertas el conflicto en una avería cotidiana ni lo resuelvas reparando un objeto. Tampoco neutralices al antagonista mediante una charla amable. El desenlace debe detener su plan de forma visible y pagar la siembra preparada.
 - Identifica al hablante al entrar, tras una interrupción o cuando haya ambigüedad; una vez anclada cada voz no hace falta repetir su nombre en cada frase.
 - No repitas en narración lo que ya dice el diálogo o un efecto.
 - Repite solo con variación y recompensa. El giro recupera algo presentado antes.
@@ -326,20 +435,21 @@ AUDIO:
 Devuelve exclusivamente JSON válido:
 {
   "version":"3", "title":"", "musicMood":"wonder|magic|mystery|epic|journey|adventure|calm",
-  "characters":[{"id":"", "name":"", "voice":"", "role":"", "introducedBySegmentId":"", "firstDialogueSegmentId":""}],
+  "characters":[{"id":"", "name":"", "voice":"", "role":"", "alignment":"hero|ally|antagonist", "goal":"", "introducedBySegmentId":"", "firstDialogueSegmentId":""}],
   "segments":[
     {"id":"", "sceneId":"", "beatId":"", "type":"narration", "voice":"${brief.narratorVoice}", "text":"", "delivery":"neutral|warm|excited|whisper|worried|playful|mysterious|calm"},
     {"id":"", "sceneId":"", "beatId":"", "type":"dialogue", "voice":"", "characterId":"", "character":"", "text":"", "delivery":"neutral|warm|excited|whisper|worried|playful|mysterious|calm"},
     {"id":"", "sceneId":"", "beatId":"", "type":"sfx", "prompt":"concrete sound in English", "durationMs":1800, "purpose":""}
   ],
+  "dramaturgy":{"antagonistId":"", "incitingIncidentSegmentId":"", "antagonistActionSegmentIds":[], "setbackSegmentIds":[], "midpointTurnSegmentId":"", "darkestMomentSegmentId":"", "climaxSegmentIds":[], "antagonistDefeatSegmentId":"", "stakesResolved":true},
   "contributions":[{"characterId":"", "segmentIds":[], "causalResult":""}],
   "resolvedSetups":[{"setupId":"", "setupSegmentId":"", "payoffSegmentId":""}],
-  "selfCheck":{"wordCount":0, "openingOrients":true, "voicesIntroducedBeforeSpeaking":true, "deliveryVaries":true, "allChildrenSpeak":true, "allChildrenChangeOutcome":true, "continuityChecked":true, "resolutionEarned":true, "audioClearWithoutImages":true, "originalityChecked":true}
+  "selfCheck":{"wordCount":0, "openingOrients":true, "voicesIntroducedBeforeSpeaking":true, "deliveryVaries":true, "antagonistHasAgency":true, "conflictEscalates":true, "setbacksChangeThePlan":true, "climaxConfrontsAntagonist":true, "allChildrenSpeak":true, "allChildrenChangeOutcome":true, "continuityChecked":true, "resolutionEarned":true, "audioClearWithoutImages":true, "originalityChecked":true}
 }`;
 }
 
 function buildRepairPrompt({ brief, blueprint, story, errors, duration, ageRules, allowedVoices }) {
-  return `Repara este guion infantil sonoro sin cambiar su premisa ni los datos válidos. Modifica lo necesario para resolver TODOS los errores y revisa después la continuidad completa. No imites obras existentes. Devuelve exclusivamente el guion JSON completo con el mismo esquema de versión dos, sin explicaciones.
+  return `Repara este guion infantil sonoro sin cambiar su premisa ni los datos válidos. Modifica lo necesario para resolver TODOS los errores y revisa después la continuidad completa. No imites obras existentes. Devuelve exclusivamente el guion JSON completo con el mismo esquema de versión tres, sin explicaciones.
 
 BRIEF NO CONFIABLE: ${JSON.stringify(brief)}
 ESCALETA: ${JSON.stringify(blueprint)}
@@ -347,7 +457,7 @@ GUION: ${JSON.stringify(story)}
 ERRORES DETERMINISTAS: ${JSON.stringify(errors)}
 
 LÍMITES: ${duration.minWords}-${duration.maxWords} palabras; apertura orientativa narrada ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras antes del primer diálogo; narración <= ${ageRules.maxNarrationWords}; diálogo <= ${ageRules.maxDialogueWords}; voces ${JSON.stringify(allowedVoices)}; SFX ${duration.sfxMin}-${duration.sfxMax}.
-Comprueba que el oyente entiende protagonista, mundo, problema y riesgo antes de oír personajes; que cada voz es presentada por el narrador justo antes de su primera frase; que delivery y puntuación dirigen una interpretación emocional; que cada peque habla y cambia el resultado; y que los efectos hacen audible el espacio, las acciones y las consecuencias.`;
+Comprueba que el oyente entiende protagonista, mundo, problema y riesgo antes de oír personajes; que cada voz es presentada por el narrador justo antes de su primera frase; que delivery y puntuación dirigen una interpretación emocional; que cada peque habla y cambia el resultado; y que los efectos hacen audible el espacio, las acciones y las consecuencias. El antagonista debe conservar objetivo, plan, ventaja, acciones propias y derrota clara; deben existir al menos ${ageRules.minSetbacks} reveses que cambien el plan, un momento más difícil y un clímax de confrontación ganado por decisiones previas. Completa dramaturgy con IDs de segmentos existentes.`;
 }
 
 // ================== TTS POR SEGMENTO ==================
@@ -615,8 +725,9 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   const narratorKey = narratorVoice(language, narratorGender);
   const allowedVoices = new Set(Object.keys(VOICE_LIBRARY));
   const rawSegments = Array.isArray(parsed?.segments) ? parsed.segments : [];
+  const rawCharacters = Array.isArray(parsed?.characters) ? parsed.characters : [];
   const characterNames = new Map(
-    (Array.isArray(parsed?.characters) ? parsed.characters : [])
+    rawCharacters
       .map((character) => [String(character?.id || ""), String(character?.name || "")]),
   );
   const segments = [];
@@ -751,6 +862,54 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   }
 
   const fullText = segments.filter((s) => s.text).map((s) => s.text).join(" ").toLocaleLowerCase();
+  const segmentIds = new Set(segments.map((segment) => segment.id).filter(Boolean));
+  const dramaturgy = parsed?.dramaturgy ?? {};
+  const antagonistId = String(dramaturgy.antagonistId || "").trim();
+  const antagonist = rawCharacters.find((character) =>
+    String(character?.id || "").trim() === antagonistId && character?.alignment === "antagonist");
+  if (!antagonist) {
+    const issue = "El guion no identifica un antagonista-personaje con agencia";
+    errors.push(issue);
+    fatalErrors.push(issue);
+  } else {
+    const antagonistName = String(antagonist.name || "").trim();
+    if (!antagonistName || !fullText.includes(antagonistName.toLocaleLowerCase())) {
+      const issue = "El antagonista no aparece de forma reconocible en el cuento";
+      errors.push(issue);
+      fatalErrors.push(issue);
+    }
+  }
+
+  const validReferencedIds = (value) => [...new Set(Array.isArray(value) ? value : [])]
+    .filter((id) => segmentIds.has(String(id)));
+  const antagonistActionIds = validReferencedIds(dramaturgy.antagonistActionSegmentIds);
+  if (antagonistActionIds.length < ageRules.minAntagonistMoves) {
+    errors.push(`Solo hay ${antagonistActionIds.length} acciones verificables del antagonista; mínimo ${ageRules.minAntagonistMoves}`);
+  }
+  const setbackIds = validReferencedIds(dramaturgy.setbackSegmentIds);
+  if (setbackIds.length < ageRules.minSetbacks) {
+    errors.push(`Solo hay ${setbackIds.length} reveses verificables; mínimo ${ageRules.minSetbacks}`);
+  }
+  for (const [key, label] of [
+    ["incitingIncidentSegmentId", "incidente detonante"],
+    ["midpointTurnSegmentId", "giro central"],
+    ["darkestMomentSegmentId", "momento más difícil"],
+    ["antagonistDefeatSegmentId", "derrota del antagonista"],
+  ]) {
+    if (!segmentIds.has(String(dramaturgy[key] || ""))) {
+      errors.push(`No hay un segmento válido para ${label}`);
+    }
+  }
+  const climaxIds = validReferencedIds(dramaturgy.climaxSegmentIds);
+  if (climaxIds.length === 0) {
+    const issue = "No hay un clímax verificable de confrontación";
+    errors.push(issue);
+    fatalErrors.push(issue);
+  }
+  if (dramaturgy.stakesResolved !== true) {
+    errors.push("El guion no confirma que las consecuencias del conflicto queden resueltas");
+  }
+
   const contributions = Array.isArray(parsed?.contributions) ? parsed.contributions : [];
   for (const kid of kids) {
     if (!fullText.includes(kid.name.toLocaleLowerCase())) {
@@ -776,6 +935,10 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
     ["openingOrients", "El autoeditor no confirma una apertura comprensible"],
     ["voicesIntroducedBeforeSpeaking", "El autoeditor no confirma la presentación de las voces"],
     ["deliveryVaries", "El autoeditor no confirma variedad interpretativa"],
+    ["antagonistHasAgency", "El autoeditor no confirma la agencia del antagonista"],
+    ["conflictEscalates", "El autoeditor no confirma que el conflicto escale"],
+    ["setbacksChangeThePlan", "El autoeditor no confirma reveses que cambien el plan"],
+    ["climaxConfrontsAntagonist", "El autoeditor no confirma una confrontación en el clímax"],
     ["allChildrenSpeak", "El autoeditor no confirma que todos hablen"],
     ["allChildrenChangeOutcome", "El autoeditor no confirma la agencia de todos"],
     ["continuityChecked", "El autoeditor no confirma la continuidad"],
@@ -926,7 +1089,7 @@ export async function generateKidsStoryImmersive(req, res) {
     // 2 — El Director diseña la trama antes de escribir una sola frase.
     stage = "director";
     console.log("🧭 Director literario: diseñando escaleta...");
-    const blueprint = await callClaudeJson(anthropic, {
+    let blueprint = await callClaudeJson(anthropic, {
       system: "Eres el Director Literario de Sancho. Diseñas cuentos infantiles originales para ser comprendidos solo con el oído. No escribes el cuento, solo una escaleta causal y producible. No adaptas ni imitas obras o franquicias. Respondes exclusivamente con JSON válido.",
       prompt: buildDirectorPrompt({ brief, duration, ageRules, secondaryVoices }),
       maxTokens: 5000,
@@ -935,8 +1098,29 @@ export async function generateKidsStoryImmersive(req, res) {
       temperature: 0.9,
     });
 
-    if (!Array.isArray(blueprint?.beats) || blueprint.beats.length < 5) {
-      throw new Error("El Director no produjo una escaleta completa");
+    let blueprintErrors = validateBlueprint(blueprint, { duration, ageRules });
+    if (blueprintErrors.length > 0) {
+      stage = "director_reparador";
+      console.warn(`🧭 Control dramático: ${blueprintErrors.length} incidencias; rehaciendo escaleta...`);
+      blueprint = await callClaudeJson(anthropic, {
+        system: "Eres el Director de Calidad Literaria de Sancho. Reparas escaletas de audioficción infantil para que tengan antagonista activo, presión creciente, reveses y un clímax ganado. Mantienes una representación segura para la edad y respondes exclusivamente con JSON válido.",
+        prompt: buildDirectorRepairPrompt({
+          brief,
+          blueprint,
+          errors: blueprintErrors,
+          duration,
+          ageRules,
+          secondaryVoices,
+        }),
+        maxTokens: 5000,
+        context: "cuento_director_reparador",
+        language: safeLanguage,
+        temperature: 0.4,
+      });
+      blueprintErrors = validateBlueprint(blueprint, { duration, ageRules });
+    }
+    if (blueprintErrors.length > 0) {
+      throw new Error(`El Director no produjo una trama completa: ${blueprintErrors.slice(0, 5).join("; ")}`);
     }
 
     // 3 — El Redactor convierte la escaleta en guion y se autoedita en tres pasadas.
@@ -1052,7 +1236,7 @@ export async function generateKidsStoryImmersive(req, res) {
     res.set("X-Story-Title", encodeURIComponent(title));
     if (storyId) res.set("X-Story-Id", String(storyId).slice(0, 120));
     res.set("X-Story-Minutes", String(targetMinutes));
-    res.set("X-Story-Engine", "director-writer-v3");
+    res.set("X-Story-Engine", "director-writer-v4");
     res.set("X-Story-Words", String(normalized.spokenWords));
     res.send(finalAudio);
 
@@ -1075,6 +1259,8 @@ export const storyEngineInternals = {
   ageProfile,
   parseClaudeJson,
   buildDirectorPrompt,
+  validateBlueprint,
+  buildDirectorRepairPrompt,
   buildWriterPrompt,
   buildRepairPrompt,
   buildAudioUnits,

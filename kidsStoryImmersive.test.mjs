@@ -51,7 +51,30 @@ test("el Director trata la idea del usuario como contenido no confiable", () => 
   assert.match(prompt, /siembra-recompensa/i);
   assert.match(prompt, /ORIENTACIÓN NARRADA/i);
   assert.match(prompt, /Ningún personaje habla antes/i);
+  assert.match(prompt, /ANTAGONISTA CON AGENCIA/i);
+  assert.match(prompt, /NO puede consistir en reparar una farola/i);
+  assert.match(prompt, /momento en que parece que van a perder/i);
   assert.match(prompt, /arañas/i);
+});
+
+test("el control dramático rechaza una escaleta plana sin rival ni clímax", () => {
+  const errors = engine.validateBlueprint(
+    {
+      characters: [{ id: "kid_1", alignment: "hero" }],
+      conflict: {},
+      dramaticTurns: {},
+      setupPayoffs: [],
+      beats: [
+        { id: "b1", phase: "orientation", consequence: "Empieza", powerShift: "Ninguno" },
+        { id: "b2", phase: "attempt", consequence: "Arregla una farola", powerShift: "Ninguno" },
+      ],
+    },
+    { duration: engine.DURATION_PROFILES[3], ageRules: engine.ageProfile(7) },
+  );
+  assert.ok(errors.some((error) => error.includes("antagonista-personaje")));
+  assert.ok(errors.some((error) => error.includes("momento más difícil")));
+  assert.ok(errors.some((error) => error.includes("climax")));
+  assert.ok(errors.some((error) => error.includes("reveses")));
 });
 
 test("agrupa voces para Dialogue v4 sin mover los efectos de sitio", () => {
@@ -104,10 +127,25 @@ test("los avisos editoriales no invalidan un cuento que se puede reproducir", ()
   const normalized = engine.normalizeStory(
     {
       title: "Una versión más breve",
-      segments: [
-        { type: "narration", text: `Lucía ${filler}` },
-        { type: "dialogue", characterId: "kid_1", character: "Lucía", text: "Yo abriré la puerta ahora." },
+      characters: [
+        { id: "kid_1", name: "Lucía", alignment: "hero" },
+        { id: "villain_1", name: "Malvar", alignment: "antagonist" },
       ],
+      segments: [
+        { id: "s1", type: "narration", text: `Lucía y Malvar ${filler}` },
+        { id: "s2", type: "dialogue", characterId: "kid_1", character: "Lucía", text: "Yo abriré la puerta ahora." },
+      ],
+      dramaturgy: {
+        antagonistId: "villain_1",
+        incitingIncidentSegmentId: "s1",
+        antagonistActionSegmentIds: ["s1", "s2"],
+        setbackSegmentIds: ["s1", "s2"],
+        midpointTurnSegmentId: "s1",
+        darkestMomentSegmentId: "s1",
+        climaxSegmentIds: ["s2"],
+        antagonistDefeatSegmentId: "s2",
+        stakesResolved: true,
+      },
       contributions: [],
       selfCheck: {},
     },
@@ -132,7 +170,7 @@ test("un guion estructuralmente completo supera la puerta determinista", () => {
     { id: "s1b", type: "narration", voice: "narrator_f", text: `Lucía ${paragraph("mundo", 28)}`, delivery: "mysterious" },
     { id: "s2", type: "dialogue", characterId: "kid_1", character: "Lucía", voice: "child_girl_1", text: "Probaré una idea distinta porque la primera no ha funcionado.", delivery: "excited" },
     { id: "fx1", type: "sfx", prompt: "three pebbles dropping into a glass jar", durationMs: 1500, purpose: "consequence" },
-    { id: "s3", type: "narration", voice: "narrator_f", text: paragraph("avance"), delivery: "playful" },
+    { id: "s3", type: "narration", voice: "narrator_f", text: `Malvar ${paragraph("avance")}`, delivery: "playful" },
     { id: "fx2", type: "sfx", prompt: "wooden door opening slowly", durationMs: 1300, purpose: "transition" },
     { id: "s4", type: "narration", voice: "narrator_f", text: paragraph("giro"), delivery: "worried" },
     { id: "fx3", type: "sfx", prompt: "wind rushing through a narrow tunnel", durationMs: 1400, purpose: "action" },
@@ -145,13 +183,32 @@ test("un guion estructuralmente completo supera la puerta determinista", () => {
     {
       title: "La campana diminuta",
       musicMood: "adventure",
+      characters: [
+        { id: "kid_1", name: "Lucía", alignment: "hero" },
+        { id: "villain_1", name: "Malvar", alignment: "antagonist" },
+      ],
       segments,
+      dramaturgy: {
+        antagonistId: "villain_1",
+        incitingIncidentSegmentId: "s3",
+        antagonistActionSegmentIds: ["s3", "s4"],
+        setbackSegmentIds: ["s4", "s5"],
+        midpointTurnSegmentId: "s4",
+        darkestMomentSegmentId: "s5",
+        climaxSegmentIds: ["s6"],
+        antagonistDefeatSegmentId: "s6",
+        stakesResolved: true,
+      },
       contributions: [{ characterId: "kid_1", segmentIds: ["s2"], causalResult: "Su decisión abre la puerta" }],
       resolvedSetups: [{ setupId: "bell", setupSegmentId: "s1", payoffSegmentId: "s7" }],
       selfCheck: {
         openingOrients: true,
         voicesIntroducedBeforeSpeaking: true,
         deliveryVaries: true,
+        antagonistHasAgency: true,
+        conflictEscalates: true,
+        setbacksChangeThePlan: true,
+        climaxConfrontsAntagonist: true,
         allChildrenSpeak: true,
         allChildrenChangeOutcome: true,
         continuityChecked: true,

@@ -373,7 +373,10 @@ function validateBlueprint(blueprint, { duration, ageRules }) {
   }
 
   const phases = beats.map((beat) => String(beat?.phase || ""));
-  for (const phase of ["inciting_harm", "midpoint", "darkest_moment", "climax", "resolution"]) {
+  // Midpoint y punto bajo siguen siendo obligatorios en dramaticTurns, pero en
+  // relatos cortos pueden compartir beat con un revés. No exigimos que el
+  // modelo los duplique solo para satisfacer una etiqueta estructural.
+  for (const phase of ["inciting_harm", "climax", "resolution"]) {
     if (!phases.includes(phase)) errors.push(`Falta un beat de tipo ${phase}`);
   }
   const setbacks = phases.filter((phase) => phase === "setback").length;

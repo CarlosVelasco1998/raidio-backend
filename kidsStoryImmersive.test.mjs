@@ -64,6 +64,33 @@ test("la validación exige diálogo, agencia, longitud y sonido", () => {
   assert.ok(normalized.errors.some((error) => error.includes("ninguna frase")));
   assert.ok(normalized.errors.some((error) => error.includes("contribución causal")));
   assert.ok(normalized.errors.some((error) => error.includes("efectos")));
+  assert.ok(normalized.fatalErrors.some((error) => error.includes("incompleto")));
+});
+
+test("los avisos editoriales no invalidan un cuento que se puede reproducir", () => {
+  const kids = engine.normalizeKids([{ name: "Lucía", gender: "girl" }]);
+  const filler = Array.from({ length: 185 }, (_, index) => `palabra${index + 1}`).join(" ");
+  const normalized = engine.normalizeStory(
+    {
+      title: "Una versión más breve",
+      segments: [
+        { type: "narration", text: `Lucía ${filler}` },
+        { type: "dialogue", characterId: "kid_1", character: "Lucía", text: "Yo abriré la puerta ahora." },
+      ],
+      contributions: [],
+      selfCheck: {},
+    },
+    {
+      kids,
+      narratorGender: "f",
+      language: "es",
+      duration: engine.DURATION_PROFILES[3],
+      ageRules: engine.ageProfile(7),
+      voiceAssignments: { "Lucía": "child_girl_1" },
+    },
+  );
+  assert.ok(normalized.errors.length > 0);
+  assert.deepEqual(normalized.fatalErrors, []);
 });
 
 test("un guion estructuralmente completo supera la puerta determinista", () => {
@@ -105,5 +132,6 @@ test("un guion estructuralmente completo supera la puerta determinista", () => {
     },
   );
   assert.deepEqual(normalized.errors, []);
+  assert.deepEqual(normalized.fatalErrors, []);
   assert.ok(normalized.spokenWords >= 320 && normalized.spokenWords <= 410);
 });

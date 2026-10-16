@@ -154,24 +154,51 @@ function parseClaudeJson(response, label) {
   }
 }
 
+function wait(milliseconds) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+function errorStatus(error) {
+  return Number(error?.status || error?.response?.status || 0);
+}
+
+function isTransientServiceError(error) {
+  const status = errorStatus(error);
+  const code = String(error?.code || "").toUpperCase();
+  return status === 408 || status === 409 || status === 429 || status >= 500 ||
+    ["ECONNABORTED", "ECONNRESET", "ETIMEDOUT", "EAI_AGAIN"].includes(code);
+}
+
 async function callClaudeJson(anthropic, { system, prompt, maxTokens, context, language, temperature = 0.8 }) {
-  const response = await anthropic.messages.create({
-    model: "claude-sonnet-4-6",
-    max_tokens: maxTokens,
-    temperature,
-    system,
-    messages: [{ role: "user", content: prompt }],
-  });
-  recordUsage({
-    provider: "claude",
-    model: response?.model,
-    tokensIn: response?.usage?.input_tokens,
-    tokensOut: response?.usage?.output_tokens,
-    context,
-    lang: language,
-  });
-  spendHooks.addClaudeResponse?.(response);
-  return parseClaudeJson(response, context);
+  let lastError;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      const response = await anthropic.messages.create({
+        model: "claude-sonnet-4-6",
+        max_tokens: maxTokens,
+        temperature,
+        system,
+        messages: [{ role: "user", content: prompt }],
+      });
+      recordUsage({
+        provider: "claude",
+        model: response?.model,
+        tokensIn: response?.usage?.input_tokens,
+        tokensOut: response?.usage?.output_tokens,
+        context,
+        lang: language,
+      });
+      spendHooks.addClaudeResponse?.(response);
+      return parseClaudeJson(response, context);
+    } catch (error) {
+      lastError = error;
+      const invalidJson = String(error?.message || "").includes("no devolvió JSON válido");
+      if (attempt >= 2 || (!invalidJson && !isTransientServiceError(error))) throw error;
+      console.warn(`⚠️ ${context}: intento ${attempt} fallido; reintentando...`);
+      await wait(900 * attempt);
+    }
+  }
+  throw lastError;
 }
 
 function storyBrief({ kids, voiceAssignments, narratorGender, age, targetMinutes, idea, personalization, avoid, theme, tone, language }) {
@@ -313,14 +340,29 @@ async function callTTS(apiKey, voiceKey, text, modelId = "eleven_multilingual_v2
   return Buffer.from(resp.data);
 }
 
+async function callTTSWithRetry(apiKey, voiceKey, text, modelId) {
+  let lastError;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      return await callTTS(apiKey, voiceKey, text, modelId);
+    } catch (error) {
+      lastError = error;
+      if (attempt >= 2 || !isTransientServiceError(error)) throw error;
+      console.warn(`Eleven ${modelId} temporalmente no disponible; reintento ${attempt}...`);
+      await wait(750 * attempt);
+    }
+  }
+  throw lastError;
+}
+
 async function callStoryTTS(apiKey, voiceKey, text, delivery = "neutral") {
   const tag = DELIVERY_TAGS[delivery] || "";
   const performedText = tag ? `${tag} ${text}` : text;
   try {
-    return await callTTS(apiKey, voiceKey, performedText, "eleven_v3");
+    return await callTTSWithRetry(apiKey, voiceKey, performedText, "eleven_v3");
   } catch (v3Error) {
     console.warn(`Eleven v3 falló para ${voiceKey}; usando multilingual v2: ${v3Error.message}`);
-    return callTTS(apiKey, voiceKey, text, "eleven_multilingual_v2");
+    return callTTSWithRetry(apiKey, voiceKey, text, "eleven_multilingual_v2");
   }
 }
 
@@ -455,6 +497,7 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   );
   const segments = [];
   const errors = [];
+  const fatalErrors = [];
   let spokenWords = 0;
   let spokenSegments = 0;
   let sfxCount = 0;
@@ -512,6 +555,7 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   }
 
   if (spokenSegments < 6) errors.push(`Solo hay ${spokenSegments} segmentos hablados`);
+  if (spokenSegments < 2) fatalErrors.push(`Solo hay ${spokenSegments} segmentos hablados utilizables`);
   // La redacción apunta al intervalo nominal, pero la puerta técnica admite
   // hasta un doce por ciento de desviación: la duración final también depende
   // de interpretación, diálogos, efectos y ritmo de cada voz.
@@ -523,6 +567,14 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   if (spokenWords > acceptedMaxWords) {
     errors.push(`Cuento largo: ${spokenWords} palabras; máximo aceptable ${acceptedMaxWords}`);
   }
+  const playableMinWords = Math.round(duration.minWords * 0.55);
+  const playableMaxWords = Math.round(duration.maxWords * 1.5);
+  if (spokenWords < playableMinWords) {
+    fatalErrors.push(`Cuento incompleto: ${spokenWords} palabras; mínimo reproducible ${playableMinWords}`);
+  }
+  if (spokenWords > playableMaxWords) {
+    fatalErrors.push(`Cuento desproporcionado: ${spokenWords} palabras; máximo reproducible ${playableMaxWords}`);
+  }
   if (sfxCount < duration.sfxMin || sfxCount > duration.sfxMax) {
     errors.push(`Hay ${sfxCount} efectos; deben ser entre ${duration.sfxMin} y ${duration.sfxMax}`);
   }
@@ -531,11 +583,17 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   const contributions = Array.isArray(parsed?.contributions) ? parsed.contributions : [];
   for (const kid of kids) {
     if (!fullText.includes(kid.name.toLocaleLowerCase())) {
-      errors.push(`El cuento no presenta por nombre a ${kid.name}`);
+      const issue = `El cuento no presenta por nombre a ${kid.name}`;
+      errors.push(issue);
+      fatalErrors.push(issue);
     }
     const dialogue = segments.some((segment) => segment.type === "dialogue" &&
       (segment.characterId === kid.id || segment.character.localeCompare(kid.name, undefined, { sensitivity: "base" }) === 0));
-    if (!dialogue) errors.push(`${kid.name} no tiene ninguna frase hablada`);
+    if (!dialogue) {
+      const issue = `${kid.name} no tiene ninguna frase hablada`;
+      errors.push(issue);
+      fatalErrors.push(issue);
+    }
     const contribution = contributions.find((entry) => entry?.characterId === kid.id && String(entry?.causalResult || "").trim());
     if (!contribution) {
       errors.push(`${kid.name} no tiene una contribución causal declarada`);
@@ -564,6 +622,7 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
     spokenWords,
     sfxCount,
     errors,
+    fatalErrors,
   };
 }
 
@@ -663,6 +722,7 @@ export async function generateKidsStoryImmersive(req, res) {
     return res.status(400).json({ error: "kids[] requerido: [{ name, gender }]" });
   }
 
+  let stage = "preparacion";
   try {
     // 1 — Asignar voces a los protagonistas
     const voiceAssignments = assignChildVoices(kids);
@@ -686,6 +746,7 @@ export async function generateKidsStoryImmersive(req, res) {
     });
 
     // 2 — El Director diseña la trama antes de escribir una sola frase.
+    stage = "director";
     console.log("🧭 Director literario: diseñando escaleta...");
     const blueprint = await callClaudeJson(anthropic, {
       system: "Eres el Director Literario de Sancho. Diseñas cuentos infantiles originales para ser comprendidos solo con el oído. No escribes el cuento, solo una escaleta causal y producible. No adaptas ni imitas obras o franquicias. Respondes exclusivamente con JSON válido.",
@@ -701,6 +762,7 @@ export async function generateKidsStoryImmersive(req, res) {
     }
 
     // 3 — El Redactor convierte la escaleta en guion y se autoedita en tres pasadas.
+    stage = "redactor";
     console.log("✍️ Redactor sonoro: escribiendo y autoeditando...");
     let story = await callClaudeJson(anthropic, {
       system: "Eres el Redactor Principal y autoeditor de Sancho. Escribes audioficción infantil original, clara sin imágenes y adecuada a la edad. Antes de responder revisas causalidad, continuidad, claridad auditiva, ritmo y protagonismo. No muestras el proceso. Respondes exclusivamente con JSON válido.",
@@ -722,6 +784,7 @@ export async function generateKidsStoryImmersive(req, res) {
 
     // 4 — Validador sin coste. Solo llama al Reparador si hay incumplimientos.
     if (normalized.errors.length > 0) {
+      stage = "reparador";
       console.warn(`🩺 Control de calidad: ${normalized.errors.length} incidencias; reparando...`);
       story = await callClaudeJson(anthropic, {
         system: "Eres el Director de Calidad de Sancho. Reparas guiones infantiles sonoros sin alterar su identidad. Corriges solo lo necesario y vuelves a comprobar todo el guion. No imitas obras existentes. Respondes exclusivamente con el guion JSON completo.",
@@ -749,8 +812,11 @@ export async function generateKidsStoryImmersive(req, res) {
       });
     }
 
+    if (normalized.fatalErrors.length > 0) {
+      throw new Error(`El guion quedó incompleto tras repararlo: ${normalized.fatalErrors.slice(0, 4).join("; ")}`);
+    }
     if (normalized.errors.length > 0) {
-      throw new Error(`El guion no superó el control de calidad: ${normalized.errors.slice(0, 6).join("; ")}`);
+      console.warn(`⚠️ El cuento es reproducible con ${normalized.errors.length} avisos editoriales: ${normalized.errors.slice(0, 4).join("; ")}`);
     }
 
     const segments = normalized.segments;
@@ -760,7 +826,8 @@ export async function generateKidsStoryImmersive(req, res) {
 
     // 5 — Procesar por lotes conservando el orden. Las voces son obligatorias;
     // un efecto puede omitirse si Eleven falla, pero nunca una frase del cuento.
-    const rendered = await mapWithConcurrency(segments, 3, async (seg, i) => {
+    stage = "voces_y_efectos";
+    const rendered = await mapWithConcurrency(segments, 2, async (seg, i) => {
       const tag = `[${i + 1}/${segments.length}] ${seg.type}`;
       if (seg.type === "sfx") {
         try {
@@ -784,6 +851,7 @@ export async function generateKidsStoryImmersive(req, res) {
 
     // 6 — Concatenar y mezclar. No añadimos una coletilla genérica: el cierre
     // literario y su eco son parte del guion revisado.
+    stage = "mezcla";
     console.log(`🎵 Concatenando ${audioBuffers.length} piezas...`);
     const voiceAudio = await concatenateBuffers(audioBuffers);
     const finalAudio = await mixBackgroundMusic(voiceAudio, theme, tone);
@@ -805,8 +873,8 @@ export async function generateKidsStoryImmersive(req, res) {
         ? err.response.data.toString("utf8")
         : err.response.data
       : err.message;
-    console.error("❌ Error cuento inmersivo:", detail);
-    res.status(500).json({ error: "kids_story_failed", detail });
+    console.error(`❌ Error cuento inmersivo [${stage}]:`, detail);
+    res.status(500).json({ error: "kids_story_failed", stage, detail });
   }
 }
 

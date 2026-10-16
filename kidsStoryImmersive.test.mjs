@@ -49,7 +49,28 @@ test("el Director trata la idea del usuario como contenido no confiable", () => 
   });
   assert.match(prompt, /nunca instrucciones/i);
   assert.match(prompt, /siembra-recompensa/i);
+  assert.match(prompt, /ORIENTACIÓN NARRADA/i);
+  assert.match(prompt, /Ningún personaje habla antes/i);
   assert.match(prompt, /arañas/i);
+});
+
+test("agrupa voces para Dialogue v4 sin mover los efectos de sitio", () => {
+  const units = engine.buildAudioUnits([
+    { type: "narration", text: "Esta es la historia de Lucía.", voice: "narrator_f", delivery: "warm" },
+    { type: "dialogue", text: "Estoy preparada.", voice: "child_girl_1", delivery: "excited" },
+    { type: "sfx", description: "small bell" },
+    { type: "narration", text: "La puerta se abrió.", voice: "narrator_f", delivery: "mysterious" },
+  ]);
+  assert.deepEqual(units.map((unit) => unit.type), ["speech", "sfx", "speech"]);
+  assert.equal(units[0].segments.length, 2);
+  assert.equal(units[1].segment.description, "small bell");
+});
+
+test("elige fondos distintos para espacio, España y magia", () => {
+  assert.equal(engine.selectStoryMusic("space", "fun", ""), "epic.mp3");
+  assert.equal(engine.selectStoryMusic("spain", "fun", ""), "journey.mp3");
+  assert.equal(engine.selectStoryMusic("magic", "fun", ""), "magic.mp3");
+  assert.equal(engine.selectStoryMusic("surprise", "fun", "adventure"), "adventure.mp3");
 });
 
 test("la validación exige diálogo, agencia, longitud y sonido", () => {
@@ -105,25 +126,32 @@ test("los avisos editoriales no invalidan un cuento que se puede reproducir", ()
 
 test("un guion estructuralmente completo supera la puerta determinista", () => {
   const kids = engine.normalizeKids([{ name: "Lucía", gender: "girl" }]);
-  const paragraph = (seed) => Array.from({ length: 52 }, (_, index) => `${seed}${index + 1}`).join(" ");
+  const paragraph = (seed, count = 52) => Array.from({ length: count }, (_, index) => `${seed}${index + 1}`).join(" ");
   const segments = [
-    { id: "s1", type: "narration", voice: "narrator_f", text: `Lucía ${paragraph("inicio")}` },
-    { id: "s2", type: "dialogue", characterId: "kid_1", character: "Lucía", voice: "child_girl_1", text: "Probaré una idea distinta porque la primera no ha funcionado." },
+    { id: "s1", type: "narration", voice: "narrator_f", text: paragraph("promesa", 28), delivery: "warm" },
+    { id: "s1b", type: "narration", voice: "narrator_f", text: `Lucía ${paragraph("mundo", 28)}`, delivery: "mysterious" },
+    { id: "s2", type: "dialogue", characterId: "kid_1", character: "Lucía", voice: "child_girl_1", text: "Probaré una idea distinta porque la primera no ha funcionado.", delivery: "excited" },
     { id: "fx1", type: "sfx", prompt: "three pebbles dropping into a glass jar", durationMs: 1500, purpose: "consequence" },
-    { id: "s3", type: "narration", voice: "narrator_f", text: paragraph("avance") },
-    { id: "s4", type: "narration", voice: "narrator_f", text: paragraph("giro") },
-    { id: "fx2", type: "sfx", prompt: "small brass bell ringing twice", durationMs: 1200, purpose: "payoff" },
-    { id: "s5", type: "narration", voice: "narrator_f", text: paragraph("plan") },
-    { id: "s6", type: "narration", voice: "narrator_f", text: paragraph("climax") },
-    { id: "s7", type: "narration", voice: "narrator_f", text: paragraph("final") },
+    { id: "s3", type: "narration", voice: "narrator_f", text: paragraph("avance"), delivery: "playful" },
+    { id: "fx2", type: "sfx", prompt: "wooden door opening slowly", durationMs: 1300, purpose: "transition" },
+    { id: "s4", type: "narration", voice: "narrator_f", text: paragraph("giro"), delivery: "worried" },
+    { id: "fx3", type: "sfx", prompt: "wind rushing through a narrow tunnel", durationMs: 1400, purpose: "action" },
+    { id: "s5", type: "narration", voice: "narrator_f", text: paragraph("plan"), delivery: "excited" },
+    { id: "fx4", type: "sfx", prompt: "small brass bell ringing twice", durationMs: 1200, purpose: "payoff" },
+    { id: "s6", type: "narration", voice: "narrator_f", text: paragraph("climax"), delivery: "excited" },
+    { id: "s7", type: "narration", voice: "narrator_f", text: paragraph("final"), delivery: "calm" },
   ];
   const normalized = engine.normalizeStory(
     {
       title: "La campana diminuta",
+      musicMood: "adventure",
       segments,
       contributions: [{ characterId: "kid_1", segmentIds: ["s2"], causalResult: "Su decisión abre la puerta" }],
       resolvedSetups: [{ setupId: "bell", setupSegmentId: "s1", payoffSegmentId: "s7" }],
       selfCheck: {
+        openingOrients: true,
+        voicesIntroducedBeforeSpeaking: true,
+        deliveryVaries: true,
         allChildrenSpeak: true,
         allChildrenChangeOutcome: true,
         continuityChecked: true,

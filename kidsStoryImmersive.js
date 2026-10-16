@@ -60,23 +60,33 @@ const STORY_TONES = {
 const STORY_MUSIC = {
   magic: "magic.mp3",
   mystery: "magic.mp3",
-  exciting: "magic.mp3",
+  exciting: "epic.mp3",
   surprise: "wonder.mp3",
   animals: "wonder.mp3",
-  space: "wonder.mp3",
-  spain: "wonder.mp3",
+  space: "epic.mp3",
+  spain: "journey.mp3",
   calm: "wonder.mp3",
-  fun: "wonder.mp3",
+  fun: "adventure.mp3",
+};
+const MUSIC_MOODS = new Set(["wonder", "magic", "mystery", "epic", "journey", "adventure", "calm"]);
+const MUSIC_FILES = {
+  wonder: "wonder.mp3",
+  magic: "magic.mp3",
+  mystery: "magic.mp3",
+  epic: "epic.mp3",
+  journey: "journey.mp3",
+  adventure: "adventure.mp3",
+  calm: "wonder.mp3",
 };
 const DELIVERY_TAGS = {
   neutral: "",
-  warm: "[warmly]",
-  excited: "[excited]",
-  whisper: "[whispers]",
-  worried: "[worried]",
-  playful: "[playfully]",
-  mysterious: "[mysteriously]",
-  calm: "[calmly]",
+  warm: "[warm, intimate storyteller]",
+  excited: "[with bright excitement and rising energy]",
+  whisper: "[whispering, slowly]",
+  worried: "[worried, with controlled urgency]",
+  playful: "[playfully, with a smile]",
+  mysterious: "[mysteriously, slower, building suspense]",
+  calm: "[calm, gentle storytelling]",
 };
 
 // ================== ASIGNACIÓN DE VOCES A PROTAGONISTAS ==================
@@ -94,10 +104,10 @@ function assignChildVoices(kids) {
 }
 
 const DURATION_PROFILES = {
-  3: { minWords: 320, maxWords: 410, beatCount: 6, sfxMin: 2, sfxMax: 3 },
-  5: { minWords: 540, maxWords: 680, beatCount: 8, sfxMin: 3, sfxMax: 4 },
-  7: { minWords: 760, maxWords: 930, beatCount: 9, sfxMin: 4, sfxMax: 5 },
-  10: { minWords: 1080, maxWords: 1320, beatCount: 11, sfxMin: 5, sfxMax: 7 },
+  3: { minWords: 320, maxWords: 410, beatCount: 6, sfxMin: 4, sfxMax: 5, orientationMinWords: 55, orientationMaxWords: 85 },
+  5: { minWords: 540, maxWords: 680, beatCount: 8, sfxMin: 6, sfxMax: 8, orientationMinWords: 80, orientationMaxWords: 120 },
+  7: { minWords: 760, maxWords: 930, beatCount: 9, sfxMin: 8, sfxMax: 10, orientationMinWords: 105, orientationMaxWords: 150 },
+  10: { minWords: 1080, maxWords: 1320, beatCount: 11, sfxMin: 10, sfxMax: 13, orientationMinWords: 135, orientationMaxWords: 190 },
 };
 
 function ageProfile(age) {
@@ -252,20 +262,23 @@ VOCES SECUNDARIAS DISPONIBLES: ${JSON.stringify(secondaryVoices)}
 Diseña una escaleta para audioficción infantil ORIGINAL. No adaptes, imites ni recombines cuentos, películas, franquicias o personajes existentes. Usa exactamente dos o tres técnicas abstractas de esta biblioteca: objetivo claro; acción-consecuencia; repetición con variación; siembra-recompensa; inversión cómica; prueba creciente; giro; eco final.
 
 REQUISITOS:
-- Gancho antes del ocho por ciento y detonante antes del veintidós por ciento.
+- El primer acto es una ORIENTACIÓN NARRADA de ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras. Primero promete qué clase de historia se va a escuchar y después deja claro quién protagoniza, cómo es su mundo cotidiano, qué tiene de especial, cuál es el problema y qué está en juego. Debe despertar curiosidad sin lanzar al oyente a una acción que aún no comprende.
+- La orientación no es una lista ni una ficha biográfica. Debe sonar a un cuentacuentos que abre una puerta: concreta, fluida y diferente en cada historia. No empieces siempre con «Os voy a contar».
+- Tras la orientación llega el detonante. Ningún personaje habla antes de que el narrador lo haya presentado por su nombre y haya dejado una pista clara de su personalidad o función.
 - Un deseo concreto, obstáculo comprensible y riesgo amable.
 - Cada protagonista toma una decisión o realiza una acción que cambia el resultado. Sus aportaciones se encadenan.
 - Siembra un elemento concreto y págalo en el clímax. El clímax nace de decisiones previas, nunca del azar.
 - Respeta los máximos de personajes y localizaciones del perfil de edad.
-- Diseña sonidos por función dramática: orientación, acción, consecuencia, revelación o remate.
+- Diseña sonidos concretos por función dramática: establecer el lugar, confirmar una acción, marcar una consecuencia, revelar algo o rematar una escena. Incluye ambiente reconocible al abrir el mundo y efectos en los momentos que el oyente necesita imaginar.
 - La historia debe entenderse sin imágenes. El coche es el contexto de escucha, no una localización obligatoria.
 - No inventes aficiones reales que no estén en el brief.
 - Crea aproximadamente ${duration.beatCount} beats.
 
 Devuelve exclusivamente JSON válido:
 {
-  "workingTitle":"", "logline":"", "storyQuestion":"", "engine":"", "techniques":[],
-  "characters":[{"id":"", "name":"", "role":"", "voice":"", "want":"", "auditorySignature":"", "essentialContribution":""}],
+  "workingTitle":"", "logline":"", "storyQuestion":"", "engine":"", "techniques":[], "musicMood":"wonder|magic|mystery|epic|journey|adventure|calm",
+  "orientation":{"storyPromise":"", "protagonistAndWorld":"", "specialTrait":"", "centralProblem":"", "stakes":"", "firstDialogueAfter":""},
+  "characters":[{"id":"", "name":"", "role":"", "voice":"", "want":"", "auditorySignature":"", "essentialContribution":"", "narratedIntroduction":""}],
   "setupPayoffs":[{"id":"", "setupBeat":"", "payoffBeat":"", "element":""}],
   "beats":[{"id":"", "timePctStart":0, "timePctEnd":0, "location":"", "goal":"", "obstacle":"", "action":"", "consequence":"", "turn":"", "participants":[], "audioPurpose":""}],
   "continuityLedger":{"objects":[], "knowledge":[], "locations":[]},
@@ -289,10 +302,12 @@ Antes de responder realiza internamente tres pasadas silenciosas: causalidad y c
 
 REGLAS DE REDACCIÓN:
 - Escribe en ${brief.language === "en" ? "English" : "español castellano"}.
-- Abre con un sonido, imagen audible, pregunta o anomalía; no con biografías. El detonante llega pronto.
+- Abre con narrador y contexto. Dedica ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras habladas, repartidas en dos o más segmentos de narración, a situar la promesa del cuento, protagonista, mundo, rasgo especial, problema y riesgo. Puede haber un efecto ambiental entre ellos, pero todavía no diálogo.
+- Haz que esa apertura suene a cuento, no a resumen escolar: «Esta es la historia de…» es válido, pero varía la fórmula. El oyente debe poder responder quién, dónde, qué ocurre y por qué importa antes de la primera voz de personaje.
+- Antes de la PRIMERA frase de cada personaje, el segmento de narrador inmediatamente anterior debe nombrarlo y asociarlo a un rasgo, intención o acción. Después dale una primera frase característica que permita reconocer esa voz. No introduzcas dos voces nuevas seguidas sin reorientar al oyente.
 - Revela rasgos mediante acciones. Cada escena cambia objetivo, información, riesgo o relación.
 - Mantén acción → consecuencia → nueva decisión. Cada protagonista tiene diálogo natural y una contribución imprescindible.
-- Identifica al hablante al entrar, tras una interrupción o cuando haya ambigüedad; no antes de absolutamente cada frase.
+- Identifica al hablante al entrar, tras una interrupción o cuando haya ambigüedad; una vez anclada cada voz no hace falta repetir su nombre en cada frase.
 - No repitas en narración lo que ya dice el diálogo o un efecto.
 - Repite solo con variación y recompensa. El giro recupera algo presentado antes.
 - El final resuelve la pregunta, paga las siembras y devuelve brevemente una imagen o sonido inicial.
@@ -302,15 +317,16 @@ REGLAS DE REDACCIÓN:
 - Total hablado: entre ${duration.minWords} y ${duration.maxWords} palabras.
 
 AUDIO:
-- Incluye entre ${duration.sfxMin} y ${duration.sfxMax} efectos, solo con finalidad dramática. Sus prompts van en inglés y describen un sonido físicamente concreto.
+- Incluye entre ${duration.sfxMin} y ${duration.sfxMax} efectos, repartidos por el relato y con finalidad dramática. Al menos uno establece el ambiente del mundo y los demás hacen audible una acción, consecuencia, transición o revelación. Sus prompts van en inglés, describen un sonido físicamente concreto y no contienen música ni voces.
+- Usa delivery en CADA segmento hablado como dirección interpretativa real. Varía con el arco emocional; no marques todo neutral. La puntuación, las elipsis y las frases breves deben ayudar a respirar, sorprenderse, temer, jugar o emocionarse.
 - Crea las pausas dramáticas con puntuación natural y frases breves; no generes segmentos de silencio.
 - La música de fondo se mezclará después; no generes segmentos musicales.
 - Voces válidas: ${JSON.stringify(allowedVoices)}.
 
 Devuelve exclusivamente JSON válido:
 {
-  "version":"2", "title":"",
-  "characters":[{"id":"", "name":"", "voice":"", "role":""}],
+  "version":"3", "title":"", "musicMood":"wonder|magic|mystery|epic|journey|adventure|calm",
+  "characters":[{"id":"", "name":"", "voice":"", "role":"", "introducedBySegmentId":"", "firstDialogueSegmentId":""}],
   "segments":[
     {"id":"", "sceneId":"", "beatId":"", "type":"narration", "voice":"${brief.narratorVoice}", "text":"", "delivery":"neutral|warm|excited|whisper|worried|playful|mysterious|calm"},
     {"id":"", "sceneId":"", "beatId":"", "type":"dialogue", "voice":"", "characterId":"", "character":"", "text":"", "delivery":"neutral|warm|excited|whisper|worried|playful|mysterious|calm"},
@@ -318,7 +334,7 @@ Devuelve exclusivamente JSON válido:
   ],
   "contributions":[{"characterId":"", "segmentIds":[], "causalResult":""}],
   "resolvedSetups":[{"setupId":"", "setupSegmentId":"", "payoffSegmentId":""}],
-  "selfCheck":{"wordCount":0, "allChildrenSpeak":true, "allChildrenChangeOutcome":true, "continuityChecked":true, "resolutionEarned":true, "audioClearWithoutImages":true, "originalityChecked":true}
+  "selfCheck":{"wordCount":0, "openingOrients":true, "voicesIntroducedBeforeSpeaking":true, "deliveryVaries":true, "allChildrenSpeak":true, "allChildrenChangeOutcome":true, "continuityChecked":true, "resolutionEarned":true, "audioClearWithoutImages":true, "originalityChecked":true}
 }`;
 }
 
@@ -330,17 +346,18 @@ ESCALETA: ${JSON.stringify(blueprint)}
 GUION: ${JSON.stringify(story)}
 ERRORES DETERMINISTAS: ${JSON.stringify(errors)}
 
-LÍMITES: ${duration.minWords}-${duration.maxWords} palabras; narración <= ${ageRules.maxNarrationWords}; diálogo <= ${ageRules.maxDialogueWords}; voces ${JSON.stringify(allowedVoices)}; SFX ${duration.sfxMin}-${duration.sfxMax}.
-Comprueba que cada peque hable y cambie el resultado, cada acción cause la siguiente, toda siembra tenga recompensa, el clímax no dependa del azar y el oyente sepa siempre dónde está, quién habla y qué se intenta.`;
+LÍMITES: ${duration.minWords}-${duration.maxWords} palabras; apertura orientativa narrada ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras antes del primer diálogo; narración <= ${ageRules.maxNarrationWords}; diálogo <= ${ageRules.maxDialogueWords}; voces ${JSON.stringify(allowedVoices)}; SFX ${duration.sfxMin}-${duration.sfxMax}.
+Comprueba que el oyente entiende protagonista, mundo, problema y riesgo antes de oír personajes; que cada voz es presentada por el narrador justo antes de su primera frase; que delivery y puntuación dirigen una interpretación emocional; que cada peque habla y cambia el resultado; y que los efectos hacen audible el espacio, las acciones y las consecuencias.`;
 }
 
 // ================== TTS POR SEGMENTO ==================
 async function callTTS(apiKey, voiceKey, text, modelId = "eleven_multilingual_v2") {
   const voice = VOICE_LIBRARY[voiceKey] ?? VOICE_LIBRARY["narrator_f"];
-  // eleven_v3 usa stability discreta (0/0.5/1) y no admite 'style'; adaptamos.
-  const isV3 = modelId === "eleven_v3";
-  const voiceSettings = isV3
-    ? { stability: 0.5, use_speaker_boost: true }
+  // Los modelos interpretativos usan etiquetas emocionales y no admiten todos
+  // los controles clásicos de Multilingual v2.
+  const isExpressive = modelId === "eleven_v4" || modelId === "eleven_v3";
+  const voiceSettings = isExpressive
+    ? { stability: 0.5 }
     : voice.s;
   const resp = await axios.post(
     `https://api.elevenlabs.io/v1/text-to-speech/${voice.id}`,
@@ -348,7 +365,7 @@ async function callTTS(apiKey, voiceKey, text, modelId = "eleven_multilingual_v2
     {
       headers: { "xi-api-key": apiKey, "Content-Type": "application/json", Accept: "audio/mpeg" },
       responseType: "arraybuffer",
-      timeout: isV3 ? 90000 : 35000, // v3 es más lento
+      timeout: isExpressive ? 120000 : 35000,
     }
   );
   recordUsage({ provider: "eleven", model: modelId, chars: (text || "").length, context: "cuento" });
@@ -375,11 +392,99 @@ async function callStoryTTS(apiKey, voiceKey, text, delivery = "neutral") {
   const tag = DELIVERY_TAGS[delivery] || "";
   const performedText = tag ? `${tag} ${text}` : text;
   try {
-    return await callTTSWithRetry(apiKey, voiceKey, performedText, "eleven_v3");
-  } catch (v3Error) {
-    console.warn(`Eleven v3 falló para ${voiceKey}; usando multilingual v2: ${v3Error.message}`);
-    return callTTSWithRetry(apiKey, voiceKey, text, "eleven_multilingual_v2");
+    return await callTTSWithRetry(apiKey, voiceKey, performedText, "eleven_v4");
+  } catch (v4Error) {
+    console.warn(`Eleven v4 falló para ${voiceKey}; usando v3: ${v4Error.message}`);
+    try {
+      return await callTTSWithRetry(apiKey, voiceKey, performedText, "eleven_v3");
+    } catch (v3Error) {
+      console.warn(`Eleven v3 falló para ${voiceKey}; usando multilingual v2: ${v3Error.message}`);
+      return callTTSWithRetry(apiKey, voiceKey, text, "eleven_multilingual_v2");
+    }
   }
+}
+
+async function callDialogue(apiKey, segments, language) {
+  const inputs = segments.map((segment) => {
+    const voice = VOICE_LIBRARY[segment.voice] ?? VOICE_LIBRARY.narrator_f;
+    const tag = DELIVERY_TAGS[segment.delivery] || "";
+    return {
+      text: tag ? `${tag} ${segment.text}` : segment.text,
+      voice_id: voice.id,
+    };
+  });
+  const charCount = inputs.reduce((total, input) => total + input.text.length, 0);
+  const response = await axios.post(
+    "https://api.elevenlabs.io/v1/text-to-dialogue",
+    {
+      inputs,
+      model_id: "eleven_v4",
+      language_code: language,
+      apply_text_normalization: "on",
+    },
+    {
+      headers: { "xi-api-key": apiKey, "Content-Type": "application/json", Accept: "audio/mpeg" },
+      responseType: "arraybuffer",
+      timeout: 150000,
+    },
+  );
+  recordUsage({ provider: "eleven", model: "eleven_v4_dialogue", chars: charCount, context: "cuento" });
+  spendHooks.addElevenChars?.(charCount);
+  return Buffer.from(response.data);
+}
+
+async function callDialogueWithRetry(apiKey, segments, language) {
+  let lastError;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      return await callDialogue(apiKey, segments, language);
+    } catch (error) {
+      lastError = error;
+      if (attempt >= 2 || !isTransientServiceError(error)) throw error;
+      console.warn(`Eleven v4 diálogo temporalmente no disponible; reintento ${attempt}...`);
+      await wait(900 * attempt);
+    }
+  }
+  throw lastError;
+}
+
+function buildAudioUnits(segments, maxDialogueChars = 1800) {
+  const units = [];
+  let speech = [];
+  let speechChars = 0;
+  const flushSpeech = () => {
+    if (speech.length === 0) return;
+    units.push({ type: "speech", segments: speech });
+    speech = [];
+    speechChars = 0;
+  };
+
+  for (const segment of segments) {
+    if (segment.type === "sfx") {
+      flushSpeech();
+      units.push({ type: "sfx", segment });
+      continue;
+    }
+    const nextChars = segment.text.length + (DELIVERY_TAGS[segment.delivery] || "").length + 2;
+    if (speech.length > 0 && speechChars + nextChars > maxDialogueChars) flushSpeech();
+    speech.push(segment);
+    speechChars += nextChars;
+  }
+  flushSpeech();
+  return units;
+}
+
+async function renderSpeechFallback(apiKey, segments) {
+  const buffers = [];
+  for (const segment of segments) {
+    buffers.push(await callStoryTTS(
+      apiKey,
+      segment.voice,
+      segment.text.trim(),
+      segment.delivery,
+    ));
+  }
+  return buffers.length === 1 ? buffers[0] : concatenateBuffers(buffers);
 }
 
 // ================== EFECTO DE SONIDO / MÚSICA ==================
@@ -432,12 +537,15 @@ async function concatenateBuffers(buffers) {
   return result;
 }
 
-async function mixBackgroundMusic(voiceBuffer, theme, tone) {
-  const musicName = tone === "exciting"
-    ? "magic.mp3"
-    : tone === "calm"
-      ? "wonder.mp3"
-      : STORY_MUSIC[theme] ?? STORY_MUSIC[tone] ?? "wonder.mp3";
+function selectStoryMusic(theme, tone, musicMood) {
+  if (MUSIC_MOODS.has(musicMood)) return MUSIC_FILES[musicMood];
+  if (tone === "exciting") return MUSIC_FILES.epic;
+  if (tone === "calm") return MUSIC_FILES.calm;
+  return STORY_MUSIC[theme] ?? STORY_MUSIC[tone] ?? MUSIC_FILES.wonder;
+}
+
+async function mixBackgroundMusic(voiceBuffer, theme, tone, musicMood) {
+  const musicName = selectStoryMusic(theme, tone, musicMood);
   const musicPath = path.join(MODULE_DIR, "story_music", musicName);
   if (!fs.existsSync(musicPath)) {
     console.warn(`Música de cuento no encontrada: ${musicPath}; se devuelve mezcla sin fondo`);
@@ -457,7 +565,7 @@ async function mixBackgroundMusic(voiceBuffer, theme, tone) {
         .input(musicPath)
         .inputOptions(["-stream_loop -1"])
         .complexFilter([
-          "[1:a]volume=0.10[bed]",
+          "[1:a]volume=0.065,afade=t=in:st=0:d=2[bed]",
           "[bed][0:a]sidechaincompress=threshold=0.018:ratio=8:attack=20:release=650[ducked]",
           "[0:a][ducked]amix=inputs=2:duration=first:dropout_transition=2,loudnorm=I=-16:TP=-1:LRA=9[mix]",
         ])
@@ -595,6 +703,53 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
     errors.push(`Hay ${sfxCount} efectos; deben ser entre ${duration.sfxMin} y ${duration.sfxMax}`);
   }
 
+  const firstSpoken = segments.find((segment) => segment.type !== "sfx");
+  if (firstSpoken?.type !== "narration") {
+    errors.push("El cuento no empieza con una orientación del narrador");
+  }
+  const firstDialogueIndex = segments.findIndex((segment) => segment.type === "dialogue");
+  const orientationSegments = firstDialogueIndex < 0
+    ? []
+    : segments.slice(0, firstDialogueIndex).filter((segment) => segment.type === "narration");
+  const orientationWords = orientationSegments.reduce(
+    (total, segment) => total + segment.text.split(/\s+/).filter(Boolean).length,
+    0,
+  );
+  if (orientationWords < duration.orientationMinWords) {
+    errors.push(`La apertura da poco contexto: ${orientationWords} palabras antes del primer diálogo; mínimo ${duration.orientationMinWords}`);
+  }
+  if (orientationWords > Math.round(duration.orientationMaxWords * 1.25)) {
+    errors.push(`La apertura tarda demasiado en arrancar: ${orientationWords} palabras antes del primer diálogo`);
+  }
+
+  const introducedCharacters = new Set();
+  for (const [index, segment] of segments.entries()) {
+    if (segment.type !== "dialogue") continue;
+    const identity = String(segment.characterId || segment.character || segment.voice).toLocaleLowerCase();
+    if (!identity || introducedCharacters.has(identity)) continue;
+    introducedCharacters.add(identity);
+    let previousSpoken;
+    for (let previous = index - 1; previous >= 0; previous -= 1) {
+      if (segments[previous].type !== "sfx") {
+        previousSpoken = segments[previous];
+        break;
+      }
+    }
+    const characterName = String(segment.character || characterNames.get(segment.characterId) || "").trim();
+    const wasIntroduced = previousSpoken?.type === "narration" && characterName &&
+      previousSpoken.text.toLocaleLowerCase().includes(characterName.toLocaleLowerCase());
+    if (!wasIntroduced) {
+      errors.push(`La primera voz de ${characterName || segment.characterId || "un personaje"} aparece sin presentación narrativa inmediata`);
+    }
+  }
+
+  const expressiveDeliveries = new Set(
+    segments.filter((segment) => segment.text).map((segment) => segment.delivery).filter((value) => value !== "neutral"),
+  );
+  if (expressiveDeliveries.size < 2) {
+    errors.push("La dirección interpretativa es demasiado plana");
+  }
+
   const fullText = segments.filter((s) => s.text).map((s) => s.text).join(" ").toLocaleLowerCase();
   const contributions = Array.isArray(parsed?.contributions) ? parsed.contributions : [];
   for (const kid of kids) {
@@ -618,6 +773,9 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
 
   const selfCheck = parsed?.selfCheck ?? {};
   for (const [key, label] of [
+    ["openingOrients", "El autoeditor no confirma una apertura comprensible"],
+    ["voicesIntroducedBeforeSpeaking", "El autoeditor no confirma la presentación de las voces"],
+    ["deliveryVaries", "El autoeditor no confirma variedad interpretativa"],
     ["allChildrenSpeak", "El autoeditor no confirma que todos hablen"],
     ["allChildrenChangeOutcome", "El autoeditor no confirma la agencia de todos"],
     ["continuityChecked", "El autoeditor no confirma la continuidad"],
@@ -634,8 +792,12 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
 
   return {
     title: String(parsed?.title || (language === "en" ? "A Sancho Story" : "Un cuento de Sancho")).trim().slice(0, 120),
+    musicMood: MUSIC_MOODS.has(String(parsed?.musicMood || ""))
+      ? String(parsed.musicMood)
+      : "",
     segments,
     spokenWords,
+    orientationWords,
     sfxCount,
     errors,
     fatalErrors,
@@ -838,14 +1000,18 @@ export async function generateKidsStoryImmersive(req, res) {
     const segments = normalized.segments;
     const title = normalized.title;
 
-    console.log(`📖 "${title}" — ${segments.length} segmentos, ${normalized.spokenWords} palabras, ${normalized.sfxCount} efectos`);
+    console.log(`📖 "${title}" — ${segments.length} segmentos, ${normalized.spokenWords} palabras, ${normalized.sfxCount} efectos, música ${normalized.musicMood || theme}`);
 
-    // 5 — Procesar por lotes conservando el orden. Las voces son obligatorias;
-    // un efecto puede omitirse si Eleven falla, pero nunca una frase del cuento.
+    // 5 — Eleven v4 recibe bloques multivoz completos para conservar contexto,
+    // ritmo y respuesta entre personajes. Los SFX siguen ocupando su posición
+    // exacta en el relato. Si Dialogue no está disponible, conservamos el
+    // fallback robusto por voz sin perder ninguna frase.
     stage = "voces_y_efectos";
-    const rendered = await mapWithConcurrency(segments, 2, async (seg, i) => {
-      const tag = `[${i + 1}/${segments.length}] ${seg.type}`;
-      if (seg.type === "sfx") {
+    const audioUnits = buildAudioUnits(segments);
+    const rendered = await mapWithConcurrency(audioUnits, 2, async (unit, i) => {
+      const tag = `[${i + 1}/${audioUnits.length}] ${unit.type}`;
+      if (unit.type === "sfx") {
+        const seg = unit.segment;
         try {
           console.log(`  ${tag} — "${seg.description}"`);
           return await callSFX(elevenKey, seg.description.trim(), seg.durationMs / 1000);
@@ -854,10 +1020,14 @@ export async function generateKidsStoryImmersive(req, res) {
           return null;
         }
       }
-      const voiceKey = seg.voice;
-      const voiceName = VOICE_LIBRARY[voiceKey]?.name ?? voiceKey;
-      console.log(`  ${tag} — ${voiceName}: "${seg.text.slice(0, 45)}..."`);
-      return callStoryTTS(elevenKey, voiceKey, seg.text.trim(), seg.delivery);
+      const voices = [...new Set(unit.segments.map((segment) => VOICE_LIBRARY[segment.voice]?.name ?? segment.voice))];
+      console.log(`  ${tag} — ${unit.segments.length} intervenciones (${voices.join(", ")})`);
+      try {
+        return await callDialogueWithRetry(elevenKey, unit.segments, safeLanguage);
+      } catch (dialogueError) {
+        console.warn(`  ⚠️  Dialogue v4 falló en bloque ${i + 1}; fallback por voz: ${dialogueError.message}`);
+        return renderSpeechFallback(elevenKey, unit.segments);
+      }
     });
     const audioBuffers = rendered.filter(Buffer.isBuffer);
 
@@ -870,14 +1040,19 @@ export async function generateKidsStoryImmersive(req, res) {
     stage = "mezcla";
     console.log(`🎵 Concatenando ${audioBuffers.length} piezas...`);
     const voiceAudio = await concatenateBuffers(audioBuffers);
-    const finalAudio = await mixBackgroundMusic(voiceAudio, theme, tone);
+    const finalAudio = await mixBackgroundMusic(
+      voiceAudio,
+      theme,
+      tone,
+      normalized.musicMood,
+    );
 
     // 7 — Devolver MP3
     res.set("Content-Type", "audio/mpeg");
     res.set("X-Story-Title", encodeURIComponent(title));
     if (storyId) res.set("X-Story-Id", String(storyId).slice(0, 120));
     res.set("X-Story-Minutes", String(targetMinutes));
-    res.set("X-Story-Engine", "director-writer-v2");
+    res.set("X-Story-Engine", "director-writer-v3");
     res.set("X-Story-Words", String(normalized.spokenWords));
     res.send(finalAudio);
 
@@ -902,6 +1077,8 @@ export const storyEngineInternals = {
   buildDirectorPrompt,
   buildWriterPrompt,
   buildRepairPrompt,
+  buildAudioUnits,
+  selectStoryMusic,
   normalizeDuration,
   cleanUserText,
   normalizeKids,

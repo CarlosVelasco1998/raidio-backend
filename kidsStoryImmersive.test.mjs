@@ -15,6 +15,16 @@ test("neutraliza delimitadores y caracteres de control de las entradas", () => {
   );
 });
 
+test("un JSON mal formado del modelo queda marcado para poder reintentarlo", () => {
+  assert.throws(
+    () => engine.parseClaudeJson(
+      { content: [{ type: "text", text: '{"beats":[{"id":"uno"} {"id":"dos"}]}' }] },
+      "cuento_director",
+    ),
+    (error) => error.code === "INVALID_MODEL_JSON" && /Expected|JSON/i.test(error.message),
+  );
+});
+
 test("el Director trata la idea del usuario como contenido no confiable", () => {
   const kids = engine.normalizeKids([{ name: "Lucía", gender: "girl" }]);
   const voices = { "Lucía": "child_girl_1" };

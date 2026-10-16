@@ -145,13 +145,27 @@ function parseClaudeJson(response, label) {
   const block = response?.content?.find((item) => item?.type === "text");
   let text = String(block?.text || "").trim();
   text = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```\s*$/i, "");
-  try {
-    return JSON.parse(text);
-  } catch {
-    const match = text.match(/\{[\s\S]*\}/);
-    if (match) return JSON.parse(match[0]);
-    throw new Error(`${label}: Claude no devolvió JSON válido: ${text.slice(0, 220)}`);
+
+  const firstBrace = text.indexOf("{");
+  const lastBrace = text.lastIndexOf("}");
+  const extracted = firstBrace >= 0 && lastBrace > firstBrace
+    ? text.slice(firstBrace, lastBrace + 1)
+    : "";
+  const candidates = extracted && extracted !== text ? [text, extracted] : [text];
+  let parseError;
+  for (const candidate of candidates) {
+    try {
+      return JSON.parse(candidate);
+    } catch (error) {
+      parseError = error;
+    }
   }
+
+  const error = new Error(
+    `${label}: Claude no devolvió JSON válido (${parseError?.message || "formato desconocido"}): ${text.slice(0, 220)}`,
+  );
+  error.code = "INVALID_MODEL_JSON";
+  throw error;
 }
 
 function wait(milliseconds) {
@@ -176,7 +190,9 @@ async function callClaudeJson(anthropic, { system, prompt, maxTokens, context, l
       const response = await anthropic.messages.create({
         model: "claude-sonnet-4-6",
         max_tokens: maxTokens,
-        temperature,
+        // Si la primera salida vino mal formada, el reintento más conservador
+        // reduce la probabilidad de volver a romper la estructura JSON.
+        temperature: attempt === 1 ? temperature : Math.min(temperature, 0.45),
         system,
         messages: [{ role: "user", content: prompt }],
       });
@@ -192,7 +208,7 @@ async function callClaudeJson(anthropic, { system, prompt, maxTokens, context, l
       return parseClaudeJson(response, context);
     } catch (error) {
       lastError = error;
-      const invalidJson = String(error?.message || "").includes("no devolvió JSON válido");
+      const invalidJson = error?.code === "INVALID_MODEL_JSON";
       if (attempt >= 2 || (!invalidJson && !isTransientServiceError(error))) throw error;
       console.warn(`⚠️ ${context}: intento ${attempt} fallido; reintentando...`);
       await wait(900 * attempt);
@@ -751,7 +767,7 @@ export async function generateKidsStoryImmersive(req, res) {
     const blueprint = await callClaudeJson(anthropic, {
       system: "Eres el Director Literario de Sancho. Diseñas cuentos infantiles originales para ser comprendidos solo con el oído. No escribes el cuento, solo una escaleta causal y producible. No adaptas ni imitas obras o franquicias. Respondes exclusivamente con JSON válido.",
       prompt: buildDirectorPrompt({ brief, duration, ageRules, secondaryVoices }),
-      maxTokens: 3500,
+      maxTokens: 5000,
       context: "cuento_director",
       language: safeLanguage,
       temperature: 0.9,
@@ -882,6 +898,7 @@ export async function generateKidsStoryImmersive(req, res) {
 export const storyEngineInternals = {
   DURATION_PROFILES,
   ageProfile,
+  parseClaudeJson,
   buildDirectorPrompt,
   buildWriterPrompt,
   buildRepairPrompt,

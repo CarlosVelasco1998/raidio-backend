@@ -190,6 +190,45 @@ function parseClaudeJson(response, label) {
   throw error;
 }
 
+function unwrapModelPayload(value, requiredArrayKey) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return value;
+  let current = value;
+  const wrapperKeys = ["blueprint", "story", "result", "output", "data", "json"];
+
+  for (let depth = 0; depth < 3; depth += 1) {
+    if (Array.isArray(current?.[requiredArrayKey])) return current;
+    const explicitWrapper = wrapperKeys
+      .map((key) => current?.[key])
+      .find((candidate) => candidate && typeof candidate === "object" && !Array.isArray(candidate));
+    if (explicitWrapper) {
+      current = explicitWrapper;
+      continue;
+    }
+    const values = Object.values(current);
+    if (values.length === 1 && values[0] && typeof values[0] === "object" && !Array.isArray(values[0])) {
+      current = values[0];
+      continue;
+    }
+    break;
+  }
+  return current;
+}
+
+function modelToolSchema(requiredArrayKey) {
+  return {
+    type: "object",
+    properties: {
+      [requiredArrayKey]: {
+        type: "array",
+        minItems: 1,
+        items: { type: "object", additionalProperties: true },
+      },
+    },
+    required: [requiredArrayKey],
+    additionalProperties: true,
+  };
+}
+
 function wait(milliseconds) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
@@ -205,7 +244,15 @@ function isTransientServiceError(error) {
     ["ECONNABORTED", "ECONNRESET", "ETIMEDOUT", "EAI_AGAIN"].includes(code);
 }
 
-async function callClaudeJson(anthropic, { system, prompt, maxTokens, context, language, temperature = 0.8 }) {
+async function callClaudeJson(anthropic, {
+  system,
+  prompt,
+  maxTokens,
+  context,
+  language,
+  temperature = 0.8,
+  requiredArrayKey,
+}) {
   let lastError;
   for (let attempt = 1; attempt <= 2; attempt += 1) {
     try {
@@ -220,10 +267,9 @@ async function callClaudeJson(anthropic, { system, prompt, maxTokens, context, l
         tools: [{
           name: "submit_json",
           description: "Entrega el objeto JSON final solicitado. No incluyas explicaciones fuera de este objeto.",
-          input_schema: {
-            type: "object",
-            additionalProperties: true,
-          },
+          input_schema: requiredArrayKey
+            ? modelToolSchema(requiredArrayKey)
+            : { type: "object", additionalProperties: true },
         }],
         tool_choice: {
           type: "tool",
@@ -240,11 +286,22 @@ async function callClaudeJson(anthropic, { system, prompt, maxTokens, context, l
         lang: language,
       });
       spendHooks.addClaudeResponse?.(response);
-      return parseClaudeJson(response, context);
+      const parsed = parseClaudeJson(response, context);
+      const payload = requiredArrayKey
+        ? unwrapModelPayload(parsed, requiredArrayKey)
+        : parsed;
+      if (requiredArrayKey && (!Array.isArray(payload?.[requiredArrayKey]) || payload[requiredArrayKey].length === 0)) {
+        const invalidOutput = new Error(
+          `${context}: Claude devolvió un objeto sin ${requiredArrayKey} utilizables`,
+        );
+        invalidOutput.code = "INVALID_MODEL_OUTPUT";
+        throw invalidOutput;
+      }
+      return payload;
     } catch (error) {
       lastError = error;
-      const invalidJson = error?.code === "INVALID_MODEL_JSON";
-      if (attempt >= 2 || (!invalidJson && !isTransientServiceError(error))) throw error;
+      const invalidModelOutput = ["INVALID_MODEL_JSON", "INVALID_MODEL_OUTPUT"].includes(error?.code);
+      if (attempt >= 2 || (!invalidModelOutput && !isTransientServiceError(error))) throw error;
       console.warn(`⚠️ ${context}: intento ${attempt} fallido; reintentando...`);
       await wait(900 * attempt);
     }
@@ -1134,6 +1191,7 @@ export async function generateKidsStoryImmersive(req, res) {
       context: "cuento_director",
       language: safeLanguage,
       temperature: 0.9,
+      requiredArrayKey: "beats",
     });
 
     let blueprintErrors = validateBlueprint(blueprint, { duration, ageRules });
@@ -1154,6 +1212,23 @@ export async function generateKidsStoryImmersive(req, res) {
         context: "cuento_director_reparador",
         language: safeLanguage,
         temperature: 0.4,
+        requiredArrayKey: "beats",
+      });
+      blueprintErrors = validateBlueprint(blueprint, { duration, ageRules });
+    }
+    if (blueprintErrors.length > 0) {
+      stage = "director_rescate";
+      console.warn(`🛟 Director de rescate: la reparación conserva ${blueprintErrors.length} incidencias; creando una escaleta nueva...`);
+      blueprint = await callClaudeJson(anthropic, {
+        system: "Eres el Director Literario de rescate de Sancho. Creas desde cero una escaleta completa de audioficción infantil con antagonista activo, presión creciente, reveses y un clímax ganado. No resumes ni comentas intentos anteriores. Mantienes una representación segura para la edad y respondes exclusivamente con JSON válido.",
+        prompt: `${buildDirectorPrompt({ brief, duration, ageRules, secondaryVoices })}
+
+Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA desde cero. Antes de entregarla, cuenta internamente los beats y comprueba que incluye inciting_harm, al menos ${duration.minSetbacks} setbacks, climax y resolution; no devuelvas explicaciones ni un objeto envoltorio.`,
+        maxTokens: 7000,
+        context: "cuento_director_rescate",
+        language: safeLanguage,
+        temperature: 0.32,
+        requiredArrayKey: "beats",
       });
       blueprintErrors = validateBlueprint(blueprint, { duration, ageRules });
     }
@@ -1171,6 +1246,7 @@ export async function generateKidsStoryImmersive(req, res) {
       context: "cuento_redactor",
       language: safeLanguage,
       temperature: 0.82,
+      requiredArrayKey: "segments",
     });
 
     let normalized = normalizeStory(story, {
@@ -1201,6 +1277,7 @@ export async function generateKidsStoryImmersive(req, res) {
         context: "cuento_reparador",
         language: safeLanguage,
         temperature: 0.35,
+        requiredArrayKey: "segments",
       });
       normalized = normalizeStory(story, {
         kids,
@@ -1296,6 +1373,8 @@ export const storyEngineInternals = {
   DURATION_PROFILES,
   ageProfile,
   parseClaudeJson,
+  unwrapModelPayload,
+  modelToolSchema,
   buildDirectorPrompt,
   validateBlueprint,
   buildDirectorRepairPrompt,

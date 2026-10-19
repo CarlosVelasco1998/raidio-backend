@@ -56,6 +56,25 @@ test("acepta una entrega estructurada sin volver a parsear texto", () => {
   );
 });
 
+test("desenvuelve una escaleta válida aunque Claude la meta dentro de blueprint", () => {
+  const payload = {
+    blueprint: {
+      workingTitle: "La brújula imposible",
+      beats: [{ id: "b1", phase: "orientation" }],
+    },
+  };
+  assert.deepEqual(
+    engine.unwrapModelPayload(payload, "beats"),
+    payload.blueprint,
+  );
+});
+
+test("el contrato del Director prohíbe entregar un objeto vacío", () => {
+  const schema = engine.modelToolSchema("beats");
+  assert.deepEqual(schema.required, ["beats"]);
+  assert.equal(schema.properties.beats.minItems, 1);
+});
+
 test("el Director trata la idea del usuario como contenido no confiable", () => {
   const kids = engine.normalizeKids([{ name: "Lucía", gender: "girl" }]);
   const voices = { "Lucía": "child_girl_1" };

@@ -5,6 +5,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import path from "path";
 import os from "os";
 import { fileURLToPath } from "url";
+import { createHash } from "crypto";
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegPath from "ffmpeg-static";
 import { recordUsage } from "./analytics.js";
@@ -107,11 +108,29 @@ function assignChildVoices(kids) {
 }
 
 const DURATION_PROFILES = {
-  3: { minWords: 320, maxWords: 410, beatCount: 7, minSetbacks: 1, minAntagonistMoves: 2, sfxMin: 4, sfxMax: 5, orientationMinWords: 55, orientationMaxWords: 85 },
-  5: { minWords: 540, maxWords: 680, beatCount: 10, minSetbacks: 2, minAntagonistMoves: 2, sfxMin: 6, sfxMax: 8, orientationMinWords: 80, orientationMaxWords: 120 },
-  7: { minWords: 760, maxWords: 930, beatCount: 12, minSetbacks: 2, minAntagonistMoves: 3, sfxMin: 8, sfxMax: 10, orientationMinWords: 105, orientationMaxWords: 150 },
-  10: { minWords: 1080, maxWords: 1320, beatCount: 15, minSetbacks: 3, minAntagonistMoves: 3, sfxMin: 10, sfxMax: 13, orientationMinWords: 135, orientationMaxWords: 190 },
+  3: { minWords: 320, maxWords: 410, beatCount: 5, maxScenes: 3, minSetbacks: 1, minAntagonistMoves: 1, sfxMin: 4, sfxMax: 5, onomatopoeiaMin: 2, orientationMinWords: 65, orientationMaxWords: 95 },
+  5: { minWords: 540, maxWords: 680, beatCount: 7, maxScenes: 4, minSetbacks: 1, minAntagonistMoves: 2, sfxMin: 6, sfxMax: 8, onomatopoeiaMin: 3, orientationMinWords: 90, orientationMaxWords: 130 },
+  7: { minWords: 760, maxWords: 930, beatCount: 9, maxScenes: 5, minSetbacks: 2, minAntagonistMoves: 2, sfxMin: 8, sfxMax: 10, onomatopoeiaMin: 4, orientationMinWords: 110, orientationMaxWords: 160 },
+  10: { minWords: 1080, maxWords: 1320, beatCount: 12, maxScenes: 6, minSetbacks: 2, minAntagonistMoves: 3, sfxMin: 10, sfxMax: 13, onomatopoeiaMin: 5, orientationMinWords: 140, orientationMaxWords: 200 },
 };
+
+const ONOMATOPOEIA_PATTERNS = {
+  es: /\b(?:pum|pam|bum|zas|crac|clic|clac|plof|fiu|chap|ach[ií]s|miau|guau|ring|tic[ -]?tac|toc[ -]?toc|ding[ -]?dong)\b/giu,
+  en: /\b(?:boom|bang|crash|crack|click|clack|pop|whoosh|splash|buzz|beep|woof|meow|achoo|tick[ -]?tock|knock[ -]?knock|ding[ -]?dong)\b/giu,
+};
+
+const REUSABLE_SFX_PALETTE = [
+  "soft forest ambience with birds and leaves rustling",
+  "quick footsteps on a stone floor",
+  "old wooden door creaking open",
+  "bright magical sparkle and gentle chime",
+  "fast airy whoosh passing from left to right",
+  "single deep thunder rumble in the distance",
+  "large water splash followed by dripping",
+  "small crowd gasping in surprise",
+  "two clear bells ringing in the distance",
+  "low spaceship engine hum with soft electronic beeps",
+];
 
 function ageProfile(age) {
   if (age <= 4) return {
@@ -437,17 +456,21 @@ PERFIL DE DURACIÓN: ${JSON.stringify(duration)}
 PERFIL DE EDAD: ${JSON.stringify(ageRules)}
 VOCES SECUNDARIAS DISPONIBLES: ${JSON.stringify(secondaryVoices)}
 
-Diseña una escaleta para audioficción infantil ORIGINAL con conflicto fuerte y aventura. No adaptes, imites ni recombines cuentos, películas, franquicias o personajes existentes. Usa exactamente dos o tres técnicas abstractas de esta biblioteca: objetivo claro; acción-consecuencia; repetición con variación; siembra-recompensa; inversión cómica; prueba creciente; giro; eco final.
+Diseña una escaleta para audioficción infantil ORIGINAL con conflicto claro y aventura. No adaptes, imites ni recombines cuentos, películas, franquicias o personajes existentes. Usa exactamente dos o tres técnicas abstractas de esta biblioteca: objetivo claro; acción-consecuencia; repetición con variación; siembra-recompensa; inversión cómica; prueba creciente; giro; eco final.
 
 REQUISITOS:
 - El primer acto es una ORIENTACIÓN NARRADA de ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras. Primero promete qué clase de historia se va a escuchar y después deja claro quién protagoniza, cómo es su mundo cotidiano, qué tiene de especial, cuál es el problema y qué está en juego. Debe despertar curiosidad sin lanzar al oyente a una acción que aún no comprende.
 - La orientación no es una lista ni una ficha biográfica. Debe sonar a un cuentacuentos que abre una puerta: concreta, fluida y diferente en cada historia. No empieces siempre con «Os voy a contar».
+- Aplica la PRUEBA DE LOS OJOS CERRADOS: un niño que no ve ninguna imagen debe poder construir el lugar en su cabeza, saber dónde está cada personaje y seguir cada acción sin adivinar lo ocurrido.
+- Prefiere que sucedan MENOS COSAS y que estén plenamente dramatizadas. Agrupa la trama en un máximo de ${duration.maxScenes} escenas amplias y usa como máximo ${Math.min(ageRules.maxLocations, duration.maxScenes)} localizaciones. No encadenes viajes, objetos, revelaciones, personajes o peligros nuevos cada pocos segundos.
+- Cada escena necesita un ancla visual concreta: escala y forma del espacio, luz o color dominante y posición relativa de los elementos importantes. Elige dos o tres detalles sensoriales significativos, no una lista de adjetivos.
+- Cuando cambie la escena, reorienta con claridad: dónde están, qué tienen delante, qué distancia o barrera los separa del objetivo y qué ha cambiado desde la escena anterior.
 - Tras la orientación llega el detonante. Ningún personaje habla antes de que el narrador lo haya presentado por su nombre y haya dejado una pista clara de su personalidad o función.
 - Debe haber un ANTAGONISTA CON AGENCIA: tiene nombre o título reconocible, quiere algo incompatible con el protagonista, ya ha causado un daño concreto, ejecuta un plan y reacciona cuando el héroe avanza. No basta una avería, un objeto perdido, el mal tiempo o un malentendido.
 - El antagonista debe actuar de forma perceptible al menos ${duration.minAntagonistMoves} veces. Dale una ventaja que lo haga temible y una debilidad que el héroe pueda descubrir. Normalmente debe hablar con voz propia; si no habla, sus acciones y sonido deben hacerlo inequívoco.
 - Intensidad alta no significa contenido adulto. Puede haber robo, sabotaje, engaño, persecución, encierro fantástico, monstruos, maldiciones, competición, rescate y peligro inminente. Prohíbe violencia gráfica, tortura, muerte descrita, abuso realista, humillación y terror sin alivio.
 - La trama central NO puede consistir en reparar una farola, campana, puerta, máquina u objeto que simplemente dejó de funcionar. Solo puede aparecer una avería si el antagonista la provocó dentro de un plan mayor y las consecuencias afectan de verdad a alguien o a toda una comunidad.
-- Estructura una escalada: daño o amenaza inicial; primer plan del héroe que falla; antagonista contraataca; giro central que cambia lo que creían saber; nuevo revés; momento en que parece que van a perder; elección difícil; confrontación final; victoria y consecuencias.
+- Estructura una escalada compacta: daño o amenaza inicial; plan que encuentra resistencia; reacción del antagonista; descubrimiento útil; momento difícil; elección; confrontación final; consecuencias. En cuentos cortos, varios pasos pueden ocurrir dentro de una misma escena y un mismo beat, sin añadir peripecias solo para completar una fórmula.
 - Incluye al menos ${duration.minSetbacks} reveses reales. Un revés cambia la situación y cuesta algo: no es solo que un personaje diga que está preocupado.
 - Define una cuenta atrás o urgencia concreta. Las apuestas deben tener tres capas: qué se perderá materialmente, a quién afectará y por qué le importa personalmente al protagonista.
 - En el clímax, protagonista y antagonista se enfrentan directamente mediante acción, ingenio, valor o cooperación. La victoria usa una siembra anterior, exige una decisión y cambia el equilibrio de poder; nunca llega por accidente, sermón, perdón repentino del malo ni ayuda exterior no preparada.
@@ -458,7 +481,7 @@ REQUISITOS:
 - Diseña sonidos concretos por función dramática: establecer el lugar, confirmar una acción, marcar una consecuencia, revelar algo o rematar una escena. Incluye ambiente reconocible al abrir el mundo y efectos en los momentos que el oyente necesita imaginar.
 - La historia debe entenderse sin imágenes. El coche es el contexto de escucha, no una localización obligatoria.
 - No inventes aficiones reales que no estén en el brief.
-- Crea aproximadamente ${duration.beatCount} beats.
+- Crea aproximadamente ${duration.beatCount} beats sustanciales. Un beat no es un cambio de decorado: deja espacio para que el Redactor describa y dramatice lo importante.
 
 Devuelve exclusivamente JSON válido:
 {
@@ -478,7 +501,7 @@ function validateBlueprint(blueprint, { duration, ageRules }) {
   const conflict = blueprint?.conflict ?? {};
   const turns = blueprint?.dramaticTurns ?? {};
 
-  if (beats.length < Math.max(6, duration.beatCount - 1)) {
+  if (beats.length < Math.max(4, duration.beatCount - 1)) {
     errors.push(`La escaleta solo tiene ${beats.length} beats; necesita aproximadamente ${duration.beatCount}`);
   }
 
@@ -573,6 +596,11 @@ REGLAS DE REDACCIÓN:
 - Escribe en ${brief.language === "en" ? "English" : "español castellano"}.
 - Abre con narrador y contexto. Dedica ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras habladas, repartidas en dos o más segmentos de narración, a situar la promesa del cuento, protagonista, mundo, rasgo especial, problema y riesgo. Puede haber un efecto ambiental entre ellos, pero todavía no diálogo.
 - Haz que esa apertura suene a cuento, no a resumen escolar: «Esta es la historia de…» es válido, pero varía la fórmula. El oyente debe poder responder quién, dónde, qué ocurre y por qué importa antes de la primera voz de personaje.
+- Escribe para un niño con LOS OJOS CERRADOS. No hay ilustraciones ni pantalla: el texto y el sonido deben permitirle ver mentalmente cada escena mientras sucede.
+- Conserva como máximo ${duration.maxScenes} escenas. Prefiere una acción sencilla bien descrita a tres peripecias resumidas. No comprimas desplazamientos, descubrimientos y enfrentamientos en una sola frase.
+- Al abrir cada escena sitúa con naturalidad el espacio: qué tamaño y forma tiene, qué luz o color domina, dónde están los personajes y qué objeto, distancia o barrera tienen delante. Usa dos o tres detalles concretos y fáciles de imaginar; evita catálogos descriptivos y metáforas abstractas.
+- Durante la acción conserva la geografía de la escena. Explica movimientos y consecuencias en orden, con referentes inequívocos. Si alguien cruza, cae, alcanza, abre o esconde algo, el oyente debe saber desde dónde, hacia dónde y qué cambia al hacerlo.
+- Tras cada efecto importante deja que el personaje o el narrador reaccione, para que el sonido tenga significado y no parezca una sucesión de ruidos aislados.
 - Antes de la PRIMERA frase de cada personaje, el segmento de narrador inmediatamente anterior debe nombrarlo y asociarlo a un rasgo, intención o acción. Después dale una primera frase característica que permita reconocer esa voz. No introduzcas dos voces nuevas seguidas sin reorientar al oyente.
 - Revela rasgos mediante acciones. Cada escena cambia objetivo, información, riesgo o relación.
 - Mantén acción → consecuencia → nueva decisión. Cada protagonista tiene diálogo natural y una contribución imprescindible.
@@ -592,6 +620,8 @@ REGLAS DE REDACCIÓN:
 
 AUDIO:
 - Incluye entre ${duration.sfxMin} y ${duration.sfxMax} efectos, repartidos por el relato y con finalidad dramática. Al menos uno establece el ambiente del mundo y los demás hacen audible una acción, consecuencia, transición o revelación. Sus prompts van en inglés, describen un sonido físicamente concreto y no contienen música ni voces.
+- Integra al menos ${duration.onomatopoeiaMin} onomatopeyas HABLADAS y naturales en narración o diálogo —por ejemplo «¡Pum!», «crac», «fiuuu» o sus equivalentes en inglés— justo cuando ocurre la acción. Deben aportar ritmo, humor, sorpresa o tensión; no deben aparecer como una lista ni sustituir la descripción de lo ocurrido.
+- Cuando encaje, reutiliza literalmente uno de estos prompts de efectos y usa durationMs 2000; así Sancho puede recuperar el sonido de su biblioteca sin generarlo otra vez: ${JSON.stringify(REUSABLE_SFX_PALETTE)}. Para sonidos esenciales que no estén en esa lista, escribe un prompt específico.
 - Usa delivery en CADA segmento hablado como dirección interpretativa real. Varía con el arco emocional; no marques todo neutral. La puntuación, las elipsis y las frases breves deben ayudar a respirar, sorprenderse, temer, jugar o emocionarse.
 - Crea las pausas dramáticas con puntuación natural y frases breves; no generes segmentos de silencio.
 - La música de fondo se mezclará después; no generes segmentos musicales.
@@ -614,8 +644,8 @@ ESCALETA: ${JSON.stringify(blueprint)}
 GUION: ${JSON.stringify(story)}
 ERRORES DETERMINISTAS: ${JSON.stringify(errors)}
 
-LÍMITES: ${duration.minWords}-${duration.maxWords} palabras; apertura orientativa narrada ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras antes del primer diálogo; narración <= ${ageRules.maxNarrationWords}; diálogo <= ${ageRules.maxDialogueWords}; voces ${JSON.stringify(allowedVoices)}; SFX ${duration.sfxMin}-${duration.sfxMax}.
-Comprueba en el texto real que el oyente entiende protagonista, mundo, problema y riesgo antes de oír personajes; que cada voz es presentada por el narrador justo antes de su primera frase; que delivery y puntuación dirigen una interpretación emocional; que cada peque habla y cambia el resultado; y que los efectos hacen audible el espacio, las acciones y las consecuencias. El antagonista debe conservar objetivo, plan, ventaja, acciones propias y derrota clara; deben existir al menos ${duration.minSetbacks} reveses que cambien el plan, un momento más difícil y un clímax de confrontación ganado por decisiones previas.`;
+LÍMITES: ${duration.minWords}-${duration.maxWords} palabras; máximo ${duration.maxScenes} escenas; apertura orientativa narrada ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras antes del primer diálogo; narración <= ${ageRules.maxNarrationWords}; diálogo <= ${ageRules.maxDialogueWords}; voces ${JSON.stringify(allowedVoices)}; SFX ${duration.sfxMin}-${duration.sfxMax}; onomatopeyas habladas >= ${duration.onomatopoeiaMin}.
+Comprueba en el texto real que un niño con los ojos cerrados puede imaginar el tamaño, la luz y la disposición de cada escena y seguir los movimientos sin imágenes; que el oyente entiende protagonista, mundo, problema y riesgo antes de oír personajes; que cada voz es presentada por el narrador justo antes de su primera frase; que delivery y puntuación dirigen una interpretación emocional; que cada peque habla y cambia el resultado; y que los efectos hacen audible el espacio, las acciones y las consecuencias. El antagonista debe conservar objetivo, plan, ventaja, acciones propias y derrota clara; deben existir al menos ${duration.minSetbacks} reveses que cambien el plan, un momento más difícil y un clímax de confrontación ganado por decisiones previas.`;
 }
 
 // ================== TTS POR SEGMENTO ==================
@@ -770,17 +800,63 @@ async function renderSpeechFallback(apiKey, segments) {
 }
 
 // ================== EFECTO DE SONIDO / MÚSICA ==================
+function storySfxCacheDir() {
+  const root = spendHooks.cacheDir
+    || process.env.NARRATION_CACHE_DIR
+    || (process.env.RENDER ? "/data/narration-cache" : "./narration-cache");
+  return path.join(root, "story-sfx");
+}
+
+function normalizedSfxDuration(durationSeconds) {
+  const safe = Math.min(5, Math.max(0.5, Number(durationSeconds) || 2));
+  return Math.round(safe * 2) / 2;
+}
+
+function sfxCacheKey(description, durationSeconds) {
+  const normalizedDescription = String(description || "")
+    .trim()
+    .replace(/\s+/g, " ")
+    .toLocaleLowerCase("en");
+  return createHash("sha256")
+    .update(`${normalizedDescription}|${normalizedSfxDuration(durationSeconds)}`)
+    .digest("hex");
+}
+
 async function callSFX(apiKey, description, durationSeconds = 2.0) {
+  const normalizedDuration = normalizedSfxDuration(durationSeconds);
+  const cacheDir = storySfxCacheDir();
+  const cachePath = path.join(cacheDir, `${sfxCacheKey(description, normalizedDuration)}.mp3`);
+  try {
+    const cached = fs.readFileSync(cachePath);
+    if (cached.length > 0) {
+      console.log(`  ♻️ Efecto reutilizado de caché: "${description}"`);
+      return cached;
+    }
+  } catch (_) {}
+
   const resp = await axios.post(
     "https://api.elevenlabs.io/v1/sound-generation",
-    { text: description, duration_seconds: durationSeconds, prompt_influence: 0.4 },
+    { text: description, duration_seconds: normalizedDuration, prompt_influence: 0.4 },
     {
       headers: { "xi-api-key": apiKey, "Content-Type": "application/json", Accept: "audio/mpeg" },
       responseType: "arraybuffer",
       timeout: 60000,
     }
   );
-  return Buffer.from(resp.data);
+  const audio = Buffer.from(resp.data);
+  try {
+    fs.mkdirSync(cacheDir, { recursive: true });
+    const temporaryPath = `${cachePath}.${process.pid}.${Date.now()}.tmp`;
+    fs.writeFileSync(temporaryPath, audio);
+    try {
+      fs.renameSync(temporaryPath, cachePath);
+    } catch (_) {
+      try { fs.unlinkSync(temporaryPath); } catch (_) {}
+    }
+  } catch (cacheError) {
+    console.warn(`No se pudo guardar el efecto en caché: ${cacheError.message}`);
+  }
+  return audio;
 }
 
 // ================== CONCATENAR CON FFMPEG ==================
@@ -847,7 +923,7 @@ async function mixBackgroundMusic(voiceBuffer, theme, tone, musicMood) {
         .input(musicPath)
         .inputOptions(["-stream_loop -1"])
         .complexFilter([
-          "[1:a]volume=0.065,afade=t=in:st=0:d=2[bed]",
+          "[1:a]volume=0.085,afade=t=in:st=0:d=2[bed]",
           "[bed][0:a]sidechaincompress=threshold=0.018:ratio=8:attack=20:release=650[ducked]",
           "[0:a][ducked]amix=inputs=2:duration=first:dropout_transition=2,loudnorm=I=-16:TP=-1:LRA=9[mix]",
         ])
@@ -899,6 +975,11 @@ function normalizeKids(value) {
     name: cleanUserText(kid?.name || `Peque ${index + 1}`, 40),
     gender: kid?.gender === "girl" ? "girl" : "boy",
   })).filter((kid) => kid.name.length > 0);
+}
+
+function countOnomatopoeias(text, language) {
+  const base = ONOMATOPOEIA_PATTERNS[language === "en" ? "en" : "es"];
+  return String(text || "").match(new RegExp(base.source, base.flags))?.length ?? 0;
 }
 
 function normalizeStory(parsed, { kids, narratorGender, language, duration, ageRules, voiceAssignments }) {
@@ -1036,7 +1117,14 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
     errors.push("La dirección interpretativa es demasiado plana");
   }
 
-  const fullText = segments.filter((s) => s.text).map((s) => s.text).join(" ").toLocaleLowerCase();
+  const spokenText = segments.filter((s) => s.text).map((s) => s.text).join(" ");
+  const fullText = spokenText.toLocaleLowerCase();
+  const onomatopoeiaCount = countOnomatopoeias(spokenText, language);
+  if (onomatopoeiaCount < duration.onomatopoeiaMin) {
+    errors.push(
+      `Solo hay ${onomatopoeiaCount} onomatopeyas habladas; mínimo ${duration.onomatopoeiaMin}`,
+    );
+  }
   for (const kid of kids) {
     if (!fullText.includes(kid.name.toLocaleLowerCase())) {
       const issue = `El cuento no presenta por nombre a ${kid.name}`;
@@ -1061,6 +1149,7 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
     spokenWords,
     orientationWords,
     sfxCount,
+    onomatopoeiaCount,
     errors,
     fatalErrors,
   };
@@ -1435,6 +1524,9 @@ export const storyEngineInternals = {
   buildRepairPrompt,
   buildAudioUnits,
   expressiveStoryText,
+  countOnomatopoeias,
+  normalizedSfxDuration,
+  sfxCacheKey,
   selectStoryMusic,
   normalizeDuration,
   cleanUserText,

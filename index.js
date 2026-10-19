@@ -98,13 +98,6 @@ function addElevenSpend(chars) {
   saveDailyUsage().catch(() => {});
 }
 
-// El motor de cuentos llama directamente a Claude y ElevenLabs; conecta sus
-// consumos a los mismos topes diarios que protegen el resto de Sancho.
-configureKidsStorySpendTracking({
-  addClaudeResponse: addClaudeSpend,
-  addElevenChars: addElevenSpend,
-});
-
 // Rate-limit en memoria (ventana fija). Limpieza periódica para no crecer sin fin.
 const _rl = new Map();
 function _overLimit(key, max, windowMs) {
@@ -223,9 +216,19 @@ let LIVE_CACHE_TTL_MS = LIVE_CACHE_TTL_HOURS * 60 * 60 * 1000;
 const CACHE_TXT_DIR    = path.join(NARRATION_CACHE_DIR, "txt");
 const CACHE_MP3_DIR    = path.join(NARRATION_CACHE_DIR, "mp3");
 const CACHE_LIVE_DIR   = path.join(NARRATION_CACHE_DIR, "live-events");
+const CACHE_STORY_SFX_DIR = path.join(NARRATION_CACHE_DIR, "story-sfx");
 const CACHE_CONFIG_FILE = path.join(NARRATION_CACHE_DIR, "admin-config.json");
 const DAILY_USAGE_FILE = path.join(NARRATION_CACHE_DIR, "daily-usage.json");
 const CACHE_METRICS_FILE = path.join(NARRATION_CACHE_DIR, "cache-metrics.json");
+
+// El motor de cuentos llama directamente a Claude y ElevenLabs. Además de
+// conectar sus consumos a los topes diarios, comparte el disco persistente
+// para reutilizar efectos de sonido entre cuentos.
+configureKidsStorySpendTracking({
+  addClaudeResponse: addClaudeSpend,
+  addElevenChars: addElevenSpend,
+  cacheDir: NARRATION_CACHE_DIR,
+});
 
 async function readCacheConfig() {
   try { return JSON.parse(await fs.readFile(CACHE_CONFIG_FILE, "utf8")); }
@@ -316,6 +319,7 @@ async function initNarrationCache() {
   await fs.mkdir(CACHE_TXT_DIR, { recursive: true });
   await fs.mkdir(CACHE_MP3_DIR, { recursive: true });
   await fs.mkdir(CACHE_LIVE_DIR, { recursive: true });
+  await fs.mkdir(CACHE_STORY_SFX_DIR, { recursive: true });
   await loadAdminLimits(); // topes de gasto guardados desde el panel
   await loadDailyUsage();
   await loadCacheMetrics();
@@ -802,6 +806,7 @@ async function cleanExpiredCache() {
   for (const [dir, ttlMs] of [
     [CACHE_TXT_DIR, TEXT_CACHE_TTL_MS],
     [CACHE_MP3_DIR, AUDIO_CACHE_TTL_MS],
+    [CACHE_STORY_SFX_DIR, AUDIO_CACHE_TTL_MS],
     [CACHE_LIVE_DIR, LIVE_CACHE_TTL_MS],
   ]) {
     try {
@@ -818,11 +823,12 @@ async function cleanExpiredCache() {
 }
 
 async function cacheStats() {
-  let txtCount = 0, mp3Count = 0, liveCount = 0, totalBytes = 0, oldest = Date.now();
+  let txtCount = 0, mp3Count = 0, liveCount = 0, storySfxCount = 0, totalBytes = 0, oldest = Date.now();
   for (const [dir, label] of [
     [CACHE_TXT_DIR, "txt"],
     [CACHE_MP3_DIR, "mp3"],
     [CACHE_LIVE_DIR, "live"],
+    [CACHE_STORY_SFX_DIR, "story_sfx"],
   ]) {
     try {
       const files = await fs.readdir(dir);
@@ -833,7 +839,8 @@ async function cacheStats() {
           if (stat.mtimeMs < oldest) oldest = stat.mtimeMs;
           if (label === "txt") txtCount++;
           else if (label === "mp3") mp3Count++;
-          else liveCount++;
+          else if (label === "live") liveCount++;
+          else storySfxCount++;
         } catch {}
       }
     } catch {}
@@ -843,8 +850,9 @@ async function cacheStats() {
     txt_entries: txtCount,
     mp3_entries: mp3Count,
     live_entries: liveCount,
+    story_sfx_entries: storySfxCount,
     total_size_mb: (totalBytes / 1048576).toFixed(2),
-    oldest_entry_days: txtCount + mp3Count + liveCount > 0
+    oldest_entry_days: txtCount + mp3Count + liveCount + storySfxCount > 0
       ? ((Date.now() - oldest) / 86400000).toFixed(1) : 0,
     // Compatibilidad con versiones anteriores de Sancho Admin.
     cache_ttl_days: TEXT_CACHE_TTL_DAYS,
@@ -2313,9 +2321,9 @@ app.delete("/cache/clear", async (req, res) => {
     const scope = ["text", "audio", "live", "all"].includes(req.query.scope)
       ? req.query.scope : "all";
     const dirs = scope === "text" ? [CACHE_TXT_DIR]
-      : scope === "audio" ? [CACHE_MP3_DIR]
+      : scope === "audio" ? [CACHE_MP3_DIR, CACHE_STORY_SFX_DIR]
       : scope === "live" ? [CACHE_LIVE_DIR]
-      : [CACHE_TXT_DIR, CACHE_MP3_DIR, CACHE_LIVE_DIR];
+      : [CACHE_TXT_DIR, CACHE_MP3_DIR, CACHE_STORY_SFX_DIR, CACHE_LIVE_DIR];
     let deleted = 0;
     for (const dir of dirs) {
       const files = await fs.readdir(dir).catch(() => []);

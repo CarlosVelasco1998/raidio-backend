@@ -139,7 +139,8 @@ test("el Director trata la idea del usuario como contenido no confiable", () => 
   assert.match(prompt, /ANTAGONISTA CON AGENCIA/i);
   assert.match(prompt, /creationMode es "guided"/i);
   assert.match(prompt, /NO puede consistir en reparar una farola/i);
-  assert.match(prompt, /momento en que parece que van a perder/i);
+  assert.match(prompt, /PRUEBA DE LOS OJOS CERRADOS/i);
+  assert.match(prompt, /MENOS COSAS/i);
   assert.match(prompt, /arañas/i);
 });
 
@@ -195,6 +196,23 @@ test("elige fondos distintos para espacio, España y magia", () => {
   assert.equal(engine.selectStoryMusic("spain", "fun", ""), "journey.mp3");
   assert.equal(engine.selectStoryMusic("magic", "fun", ""), "magic.mp3");
   assert.equal(engine.selectStoryMusic("surprise", "fun", "adventure"), "adventure.mp3");
+});
+
+test("reconoce onomatopeyas habladas en español e inglés", () => {
+  assert.equal(engine.countOnomatopoeias("¡Pum! La puerta hizo crac y se abrió.", "es"), 2);
+  assert.equal(engine.countOnomatopoeias("Boom! Then came a loud whoosh.", "en"), 2);
+});
+
+test("la caché de efectos reutiliza descripciones y duraciones equivalentes", () => {
+  assert.equal(engine.normalizedSfxDuration(1.81), 2);
+  assert.equal(
+    engine.sfxCacheKey("  Old wooden door creaking open ", 1.81),
+    engine.sfxCacheKey("old   wooden door creaking open", 2),
+  );
+  assert.notEqual(
+    engine.sfxCacheKey("old wooden door creaking open", 2),
+    engine.sfxCacheKey("large water splash", 2),
+  );
 });
 
 test("la validación comprueba el texto reproducible, los diálogos, la longitud y el sonido", () => {
@@ -266,8 +284,8 @@ test("un guion estructuralmente completo supera la puerta determinista", () => {
   const kids = engine.normalizeKids([{ name: "Lucía", gender: "girl" }]);
   const paragraph = (seed, count = 52) => Array.from({ length: count }, (_, index) => `${seed}${index + 1}`).join(" ");
   const segments = [
-    { id: "s1", type: "narration", voice: "narrator_f", text: paragraph("promesa", 28), delivery: "warm" },
-    { id: "s1b", type: "narration", voice: "narrator_f", text: `Lucía ${paragraph("mundo", 28)}`, delivery: "mysterious" },
+    { id: "s1", type: "narration", voice: "narrator_f", text: `¡Pum! ${paragraph("promesa", 34)}`, delivery: "warm" },
+    { id: "s1b", type: "narration", voice: "narrator_f", text: `Lucía ${paragraph("mundo", 34)} ¡Crac!`, delivery: "mysterious" },
     { id: "s2", type: "dialogue", characterId: "kid_1", character: "Lucía", voice: "child_girl_1", text: "Probaré una idea distinta porque la primera no ha funcionado.", delivery: "excited" },
     { id: "fx1", type: "sfx", prompt: "three pebbles dropping into a glass jar", durationMs: 1500, purpose: "consequence" },
     { id: "s3", type: "narration", voice: "narrator_f", text: `Malvar ${paragraph("avance")}`, delivery: "playful" },

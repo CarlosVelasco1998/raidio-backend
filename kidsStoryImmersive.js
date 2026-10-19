@@ -220,10 +220,6 @@ function modelToolSchema(requiredArrayKey) {
   const textList = { type: "array", items: text };
 
   if (requiredArrayKey === "beats") {
-    const orientationKeys = [
-      "storyPromise", "protagonistAndWorld", "specialTrait",
-      "centralProblem", "stakes", "firstDialogueAfter",
-    ];
     const conflictKeys = [
       "archetype", "antagonistId", "antagonistGoal", "harmAlreadyCaused",
       "plan", "advantage", "weakness", "concreteStakes", "personalStakes", "deadline",
@@ -233,30 +229,13 @@ function modelToolSchema(requiredArrayKey) {
       "midpointReversal", "darkestMoment", "climaxChoice",
       "earnedVictory", "antagonistDefeat",
     ];
-    const characterKeys = [
-      "id", "name", "role", "alignment", "voice", "want", "advantage",
-      "weakness", "auditorySignature", "essentialContribution", "narratedIntroduction",
-    ];
-    const beatKeys = [
-      "id", "phase", "timePctStart", "timePctEnd", "location", "goal",
-      "obstacle", "protagonistAction", "antagonistAction", "cost",
-      "consequence", "powerShift", "turn", "participants", "audioPurpose",
-    ];
+    const characterKeys = ["id", "name", "alignment"];
+    const beatKeys = ["id", "phase", "consequence", "powerShift", "antagonistAction"];
     return {
       type: "object",
       properties: {
         workingTitle: text,
-        logline: text,
-        storyQuestion: text,
-        engine: text,
-        techniques: textList,
         musicMood: text,
-        orientation: {
-          type: "object",
-          properties: Object.fromEntries(orientationKeys.map((key) => [key, text])),
-          required: orientationKeys,
-          additionalProperties: false,
-        },
         conflict: {
           type: "object",
           properties: Object.fromEntries(conflictKeys.map((key) => [key, text])),
@@ -294,34 +273,15 @@ function modelToolSchema(requiredArrayKey) {
           minItems: 1,
           items: {
             type: "object",
-            properties: {
-              ...Object.fromEntries(beatKeys.map((key) => [key, text])),
-              timePctStart: { type: "number" },
-              timePctEnd: { type: "number" },
-              participants: textList,
-            },
+            properties: Object.fromEntries(beatKeys.map((key) => [key, text])),
             required: beatKeys,
             additionalProperties: false,
           },
         },
-        continuityLedger: {
-          type: "object",
-          properties: { objects: textList, knowledge: textList, locations: textList },
-          required: ["objects", "knowledge", "locations"],
-          additionalProperties: false,
-        },
-        audioPlan: {
-          type: "object",
-          properties: { motif: text, musicArc: textList, sfxMoments: textList, silenceMoment: text },
-          required: ["motif", "musicArc", "sfxMoments", "silenceMoment"],
-          additionalProperties: false,
-        },
-        endingEcho: text,
       },
       required: [
-        "workingTitle", "logline", "storyQuestion", "engine", "techniques",
-        "musicMood", "orientation", "conflict", "dramaticTurns", "characters",
-        "setupPayoffs", "beats", "continuityLedger", "audioPlan", "endingEcho",
+        "workingTitle", "musicMood", "conflict", "dramaticTurns",
+        "characters", "setupPayoffs", "beats",
       ],
       additionalProperties: false,
     };
@@ -576,16 +536,12 @@ REQUISITOS:
 
 Devuelve exclusivamente JSON válido:
 {
-  "workingTitle":"", "logline":"", "storyQuestion":"", "engine":"", "techniques":[], "musicMood":"wonder|magic|mystery|epic|journey|adventure|calm",
-  "orientation":{"storyPromise":"", "protagonistAndWorld":"", "specialTrait":"", "centralProblem":"", "stakes":"", "firstDialogueAfter":""},
+  "workingTitle":"", "musicMood":"wonder|magic|mystery|epic|journey|adventure|calm",
   "conflict":{"archetype":"rescue|recover|defend|escape|break_curse|unmask_deceiver|win_trial|defeat_monster", "antagonistId":"", "antagonistGoal":"", "harmAlreadyCaused":"", "plan":"", "advantage":"", "weakness":"", "concreteStakes":"", "personalStakes":"", "deadline":""},
   "dramaticTurns":{"incitingIncident":"", "firstFailedPlan":"", "antagonistCounterattack":"", "midpointReversal":"", "darkestMoment":"", "climaxChoice":"", "earnedVictory":"", "antagonistDefeat":""},
-  "characters":[{"id":"", "name":"", "role":"", "alignment":"hero|ally|antagonist", "voice":"", "want":"", "advantage":"", "weakness":"", "auditorySignature":"", "essentialContribution":"", "narratedIntroduction":""}],
+  "characters":[{"id":"", "name":"", "alignment":"hero|ally|antagonist"}],
   "setupPayoffs":[{"id":"", "setupBeat":"", "payoffBeat":"", "element":""}],
-  "beats":[{"id":"", "phase":"orientation|inciting_harm|attempt|setback|midpoint|counterattack|darkest_moment|climax|resolution", "timePctStart":0, "timePctEnd":0, "location":"", "goal":"", "obstacle":"", "protagonistAction":"", "antagonistAction":"", "cost":"", "consequence":"", "powerShift":"", "turn":"", "participants":[], "audioPurpose":""}],
-  "continuityLedger":{"objects":[], "knowledge":[], "locations":[]},
-  "audioPlan":{"motif":"", "musicArc":[], "sfxMoments":[], "silenceMoment":""},
-  "endingEcho":""
+  "beats":[{"id":"", "phase":"orientation|inciting_harm|attempt|setback|midpoint|counterattack|darkest_moment|climax|resolution", "consequence":"", "powerShift":"", "antagonistAction":""}]
 }`;
 }
 

@@ -77,6 +77,11 @@ test("el contrato del Director prohíbe entregar un objeto vacío", () => {
   assert.ok(schema.required.includes("characters"));
   assert.equal(schema.properties.beats.minItems, 1);
   assert.ok(schema.properties.conflict.required.includes("antagonistGoal"));
+  assert.equal(schema.required.length, 7);
+  assert.deepEqual(
+    schema.properties.beats.items.required.sort(),
+    ["antagonistAction", "consequence", "id", "phase", "powerShift"],
+  );
 });
 
 test("el contrato del Redactor exige guion, dramaturgia y autocontrol", () => {

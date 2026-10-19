@@ -215,16 +215,181 @@ function unwrapModelPayload(value, requiredArrayKey) {
 }
 
 function modelToolSchema(requiredArrayKey) {
+  const text = { type: "string" };
+  const textList = { type: "array", items: text };
+
+  if (requiredArrayKey === "beats") {
+    const orientationKeys = [
+      "storyPromise", "protagonistAndWorld", "specialTrait",
+      "centralProblem", "stakes", "firstDialogueAfter",
+    ];
+    const conflictKeys = [
+      "archetype", "antagonistId", "antagonistGoal", "harmAlreadyCaused",
+      "plan", "advantage", "weakness", "concreteStakes", "personalStakes", "deadline",
+    ];
+    const turnKeys = [
+      "incitingIncident", "firstFailedPlan", "antagonistCounterattack",
+      "midpointReversal", "darkestMoment", "climaxChoice",
+      "earnedVictory", "antagonistDefeat",
+    ];
+    const characterKeys = [
+      "id", "name", "role", "alignment", "voice", "want", "advantage",
+      "weakness", "auditorySignature", "essentialContribution", "narratedIntroduction",
+    ];
+    const beatKeys = [
+      "id", "phase", "timePctStart", "timePctEnd", "location", "goal",
+      "obstacle", "protagonistAction", "antagonistAction", "cost",
+      "consequence", "powerShift", "turn", "participants", "audioPurpose",
+    ];
+    return {
+      type: "object",
+      properties: {
+        workingTitle: text,
+        logline: text,
+        storyQuestion: text,
+        engine: text,
+        techniques: textList,
+        musicMood: text,
+        orientation: {
+          type: "object",
+          properties: Object.fromEntries(orientationKeys.map((key) => [key, text])),
+          required: orientationKeys,
+          additionalProperties: true,
+        },
+        conflict: {
+          type: "object",
+          properties: Object.fromEntries(conflictKeys.map((key) => [key, text])),
+          required: conflictKeys,
+          additionalProperties: true,
+        },
+        dramaticTurns: {
+          type: "object",
+          properties: Object.fromEntries(turnKeys.map((key) => [key, text])),
+          required: turnKeys,
+          additionalProperties: true,
+        },
+        characters: {
+          type: "array",
+          minItems: 2,
+          items: {
+            type: "object",
+            properties: Object.fromEntries(characterKeys.map((key) => [key, text])),
+            required: characterKeys,
+            additionalProperties: true,
+          },
+        },
+        setupPayoffs: {
+          type: "array",
+          minItems: 1,
+          items: {
+            type: "object",
+            properties: { id: text, setupBeat: text, payoffBeat: text, element: text },
+            required: ["id", "setupBeat", "payoffBeat", "element"],
+            additionalProperties: true,
+          },
+        },
+        beats: {
+          type: "array",
+          minItems: 6,
+          items: {
+            type: "object",
+            properties: {
+              ...Object.fromEntries(beatKeys.map((key) => [key, text])),
+              timePctStart: { type: "number" },
+              timePctEnd: { type: "number" },
+              participants: textList,
+            },
+            required: beatKeys,
+            additionalProperties: true,
+          },
+        },
+        continuityLedger: {
+          type: "object",
+          properties: { objects: textList, knowledge: textList, locations: textList },
+          required: ["objects", "knowledge", "locations"],
+          additionalProperties: true,
+        },
+        audioPlan: {
+          type: "object",
+          properties: { motif: text, musicArc: textList, sfxMoments: textList, silenceMoment: text },
+          required: ["motif", "musicArc", "sfxMoments", "silenceMoment"],
+          additionalProperties: true,
+        },
+        endingEcho: text,
+      },
+      required: [
+        "workingTitle", "logline", "storyQuestion", "engine", "techniques",
+        "musicMood", "orientation", "conflict", "dramaticTurns", "characters",
+        "setupPayoffs", "beats", "continuityLedger", "audioPlan", "endingEcho",
+      ],
+      additionalProperties: true,
+    };
+  }
+
+  const dramaturgyKeys = [
+    "antagonistId", "incitingIncidentSegmentId", "antagonistActionSegmentIds",
+    "setbackSegmentIds", "midpointTurnSegmentId", "darkestMomentSegmentId",
+    "climaxSegmentIds", "antagonistDefeatSegmentId", "stakesResolved",
+  ];
+  const selfCheckKeys = [
+    "wordCount", "openingOrients", "voicesIntroducedBeforeSpeaking", "deliveryVaries",
+    "antagonistHasAgency", "conflictEscalates", "setbacksChangeThePlan",
+    "climaxConfrontsAntagonist", "allChildrenSpeak", "allChildrenChangeOutcome",
+    "continuityChecked", "resolutionEarned", "audioClearWithoutImages", "originalityChecked",
+  ];
   return {
     type: "object",
     properties: {
-      [requiredArrayKey]: {
+      version: text,
+      title: text,
+      musicMood: text,
+      characters: { type: "array", minItems: 2, items: { type: "object", additionalProperties: true } },
+      segments: {
         type: "array",
         minItems: 1,
-        items: { type: "object", additionalProperties: true },
+        items: {
+          type: "object",
+          properties: {
+            id: text, sceneId: text, beatId: text, type: text, voice: text,
+            characterId: text, character: text, text, delivery: text,
+            prompt: text, durationMs: { type: "number" }, purpose: text,
+          },
+          required: ["id", "type"],
+          additionalProperties: true,
+        },
+      },
+      dramaturgy: {
+        type: "object",
+        properties: {
+          antagonistId: text,
+          incitingIncidentSegmentId: text,
+          antagonistActionSegmentIds: textList,
+          setbackSegmentIds: textList,
+          midpointTurnSegmentId: text,
+          darkestMomentSegmentId: text,
+          climaxSegmentIds: textList,
+          antagonistDefeatSegmentId: text,
+          stakesResolved: { type: "boolean" },
+        },
+        required: dramaturgyKeys,
+        additionalProperties: true,
+      },
+      contributions: { type: "array", minItems: 1, items: { type: "object", additionalProperties: true } },
+      resolvedSetups: { type: "array", minItems: 1, items: { type: "object", additionalProperties: true } },
+      selfCheck: {
+        type: "object",
+        properties: {
+          ...Object.fromEntries(selfCheckKeys.map((key) => [key, { type: "boolean" }])),
+          wordCount: { type: "number" },
+        },
+        required: selfCheckKeys,
+        additionalProperties: true,
       },
     },
-    required: [requiredArrayKey],
+    required: [
+      "version", "title", "musicMood", "characters", "segments", "dramaturgy",
+      "contributions", "resolvedSetups", "selfCheck",
+    ],
     additionalProperties: true,
   };
 }

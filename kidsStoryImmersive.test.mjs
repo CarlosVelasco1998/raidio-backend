@@ -71,8 +71,20 @@ test("desenvuelve una escaleta válida aunque Claude la meta dentro de blueprint
 
 test("el contrato del Director prohíbe entregar un objeto vacío", () => {
   const schema = engine.modelToolSchema("beats");
-  assert.deepEqual(schema.required, ["beats"]);
-  assert.equal(schema.properties.beats.minItems, 1);
+  assert.ok(schema.required.includes("beats"));
+  assert.ok(schema.required.includes("conflict"));
+  assert.ok(schema.required.includes("dramaticTurns"));
+  assert.ok(schema.required.includes("characters"));
+  assert.equal(schema.properties.beats.minItems, 6);
+  assert.ok(schema.properties.conflict.required.includes("antagonistGoal"));
+});
+
+test("el contrato del Redactor exige guion, dramaturgia y autocontrol", () => {
+  const schema = engine.modelToolSchema("segments");
+  assert.ok(schema.required.includes("segments"));
+  assert.ok(schema.required.includes("dramaturgy"));
+  assert.ok(schema.required.includes("selfCheck"));
+  assert.ok(schema.properties.dramaturgy.required.includes("antagonistDefeatSegmentId"));
 });
 
 test("el Director trata la idea del usuario como contenido no confiable", () => {

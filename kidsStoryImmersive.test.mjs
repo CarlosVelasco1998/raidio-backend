@@ -84,12 +84,13 @@ test("el contrato del Director prohíbe entregar un objeto vacío", () => {
   );
 });
 
-test("el contrato del Redactor exige guion, dramaturgia y autocontrol", () => {
+test("el contrato del Redactor solo exige el cuento que se va a reproducir", () => {
   const schema = engine.modelToolSchema("segments");
-  assert.ok(schema.required.includes("segments"));
-  assert.ok(schema.required.includes("dramaturgy"));
-  assert.ok(schema.required.includes("selfCheck"));
-  assert.ok(schema.properties.dramaturgy.required.includes("antagonistDefeatSegmentId"));
+  assert.deepEqual(schema.required, ["title", "musicMood", "segments"]);
+  assert.deepEqual(
+    schema.properties.segments.items.required.sort(),
+    ["character", "characterId", "delivery", "durationMs", "id", "prompt", "purpose", "text", "type", "voice"],
+  );
 });
 
 test("los contratos estrictos requieren todas sus propiedades y rechazan campos libres", () => {
@@ -196,7 +197,7 @@ test("elige fondos distintos para espacio, España y magia", () => {
   assert.equal(engine.selectStoryMusic("surprise", "fun", "adventure"), "adventure.mp3");
 });
 
-test("la validación exige diálogo, agencia, longitud y sonido", () => {
+test("la validación comprueba el texto reproducible, los diálogos, la longitud y el sonido", () => {
   const kids = engine.normalizeKids([{ name: "Lucía", gender: "girl" }]);
   const normalized = engine.normalizeStory(
     {
@@ -216,7 +217,6 @@ test("la validación exige diálogo, agencia, longitud y sonido", () => {
   );
   assert.ok(normalized.errors.some((error) => error.includes("Cuento corto")));
   assert.ok(normalized.errors.some((error) => error.includes("ninguna frase")));
-  assert.ok(normalized.errors.some((error) => error.includes("contribución causal")));
   assert.ok(normalized.errors.some((error) => error.includes("efectos")));
   assert.ok(normalized.fatalErrors.some((error) => error.includes("incompleto")));
 });

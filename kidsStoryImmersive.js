@@ -287,48 +287,22 @@ function modelToolSchema(requiredArrayKey) {
     };
   }
 
-  const dramaturgyKeys = [
-    "antagonistId", "incitingIncidentSegmentId", "antagonistActionSegmentIds",
-    "setbackSegmentIds", "midpointTurnSegmentId", "darkestMomentSegmentId",
-    "climaxSegmentIds", "antagonistDefeatSegmentId", "stakesResolved",
-  ];
-  const selfCheckKeys = [
-    "wordCount", "openingOrients", "voicesIntroducedBeforeSpeaking", "deliveryVaries",
-    "antagonistHasAgency", "conflictEscalates", "setbacksChangeThePlan",
-    "climaxConfrontsAntagonist", "allChildrenSpeak", "allChildrenChangeOutcome",
-    "continuityChecked", "resolutionEarned", "audioClearWithoutImages", "originalityChecked",
-  ];
-  const storyCharacterKeys = [
-    "id", "name", "voice", "role", "alignment", "goal",
-    "introducedBySegmentId", "firstDialogueSegmentId",
-  ];
   const segmentKeys = [
-    "id", "sceneId", "beatId", "type", "voice", "characterId",
+    "id", "type", "voice", "characterId",
     "character", "text", "delivery", "prompt", "durationMs", "purpose",
   ];
   return {
     type: "object",
     properties: {
-      version: text,
       title: text,
       musicMood: text,
-      characters: {
-        type: "array",
-        minItems: 1,
-        items: {
-          type: "object",
-          properties: Object.fromEntries(storyCharacterKeys.map((key) => [key, text])),
-          required: storyCharacterKeys,
-          additionalProperties: false,
-        },
-      },
       segments: {
         type: "array",
         minItems: 1,
         items: {
           type: "object",
           properties: {
-            id: text, sceneId: text, beatId: text, type: text, voice: text,
+            id: text, type: text, voice: text,
             characterId: text, character: text, text, delivery: text,
             prompt: text, durationMs: { type: "number" }, purpose: text,
           },
@@ -336,56 +310,8 @@ function modelToolSchema(requiredArrayKey) {
           additionalProperties: false,
         },
       },
-      dramaturgy: {
-        type: "object",
-        properties: {
-          antagonistId: text,
-          incitingIncidentSegmentId: text,
-          antagonistActionSegmentIds: textList,
-          setbackSegmentIds: textList,
-          midpointTurnSegmentId: text,
-          darkestMomentSegmentId: text,
-          climaxSegmentIds: textList,
-          antagonistDefeatSegmentId: text,
-          stakesResolved: { type: "boolean" },
-        },
-        required: dramaturgyKeys,
-        additionalProperties: false,
-      },
-      contributions: {
-        type: "array",
-        minItems: 1,
-        items: {
-          type: "object",
-          properties: { characterId: text, segmentIds: textList, causalResult: text },
-          required: ["characterId", "segmentIds", "causalResult"],
-          additionalProperties: false,
-        },
-      },
-      resolvedSetups: {
-        type: "array",
-        minItems: 1,
-        items: {
-          type: "object",
-          properties: { setupId: text, setupSegmentId: text, payoffSegmentId: text },
-          required: ["setupId", "setupSegmentId", "payoffSegmentId"],
-          additionalProperties: false,
-        },
-      },
-      selfCheck: {
-        type: "object",
-        properties: {
-          ...Object.fromEntries(selfCheckKeys.map((key) => [key, { type: "boolean" }])),
-          wordCount: { type: "number" },
-        },
-        required: selfCheckKeys,
-        additionalProperties: false,
-      },
     },
-    required: [
-      "version", "title", "musicMood", "characters", "segments", "dramaturgy",
-      "contributions", "resolvedSetups", "selfCheck",
-    ],
+    required: ["title", "musicMood", "segments"],
     additionalProperties: false,
   };
 }
@@ -673,22 +599,15 @@ AUDIO:
 
 Devuelve exclusivamente JSON válido:
 {
-  "version":"3", "title":"", "musicMood":"wonder|magic|mystery|epic|journey|adventure|calm",
-  "characters":[{"id":"", "name":"", "voice":"", "role":"", "alignment":"hero|ally|antagonist", "goal":"", "introducedBySegmentId":"", "firstDialogueSegmentId":""}],
+  "title":"", "musicMood":"wonder|magic|mystery|epic|journey|adventure|calm",
   "segments":[
-    {"id":"", "sceneId":"", "beatId":"", "type":"narration", "voice":"${brief.narratorVoice}", "text":"", "delivery":"neutral|warm|excited|whisper|worried|playful|mysterious|calm"},
-    {"id":"", "sceneId":"", "beatId":"", "type":"dialogue", "voice":"", "characterId":"", "character":"", "text":"", "delivery":"neutral|warm|excited|whisper|worried|playful|mysterious|calm"},
-    {"id":"", "sceneId":"", "beatId":"", "type":"sfx", "prompt":"concrete sound in English", "durationMs":1800, "purpose":""}
-  ],
-  "dramaturgy":{"antagonistId":"", "incitingIncidentSegmentId":"", "antagonistActionSegmentIds":[], "setbackSegmentIds":[], "midpointTurnSegmentId":"", "darkestMomentSegmentId":"", "climaxSegmentIds":[], "antagonistDefeatSegmentId":"", "stakesResolved":true},
-  "contributions":[{"characterId":"", "segmentIds":[], "causalResult":""}],
-  "resolvedSetups":[{"setupId":"", "setupSegmentId":"", "payoffSegmentId":""}],
-  "selfCheck":{"wordCount":0, "openingOrients":true, "voicesIntroducedBeforeSpeaking":true, "deliveryVaries":true, "antagonistHasAgency":true, "conflictEscalates":true, "setbacksChangeThePlan":true, "climaxConfrontsAntagonist":true, "allChildrenSpeak":true, "allChildrenChangeOutcome":true, "continuityChecked":true, "resolutionEarned":true, "audioClearWithoutImages":true, "originalityChecked":true}
+    {"id":"", "type":"narration|dialogue|sfx", "voice":"${brief.narratorVoice}", "characterId":"", "character":"", "text":"", "delivery":"neutral|warm|excited|whisper|worried|playful|mysterious|calm", "prompt":"", "durationMs":0, "purpose":""}
+  ]
 }`;
 }
 
 function buildRepairPrompt({ brief, blueprint, story, errors, duration, ageRules, allowedVoices }) {
-  return `Repara este guion infantil sonoro sin cambiar su premisa ni los datos válidos. Modifica lo necesario para resolver TODOS los errores y revisa después la continuidad completa. No imites obras existentes. Devuelve exclusivamente el guion JSON completo con el mismo esquema de versión tres, sin explicaciones.
+  return `Repara este guion infantil sonoro sin cambiar su premisa ni los datos válidos. Modifica lo necesario para resolver TODOS los errores y revisa después la continuidad completa. No imites obras existentes. Devuelve exclusivamente el mismo JSON simple con title, musicMood y segments, sin explicaciones ni informes de autoevaluación.
 
 BRIEF NO CONFIABLE: ${JSON.stringify(brief)}
 ESCALETA: ${JSON.stringify(blueprint)}
@@ -696,7 +615,7 @@ GUION: ${JSON.stringify(story)}
 ERRORES DETERMINISTAS: ${JSON.stringify(errors)}
 
 LÍMITES: ${duration.minWords}-${duration.maxWords} palabras; apertura orientativa narrada ${duration.orientationMinWords}-${duration.orientationMaxWords} palabras antes del primer diálogo; narración <= ${ageRules.maxNarrationWords}; diálogo <= ${ageRules.maxDialogueWords}; voces ${JSON.stringify(allowedVoices)}; SFX ${duration.sfxMin}-${duration.sfxMax}.
-Comprueba que el oyente entiende protagonista, mundo, problema y riesgo antes de oír personajes; que cada voz es presentada por el narrador justo antes de su primera frase; que delivery y puntuación dirigen una interpretación emocional; que cada peque habla y cambia el resultado; y que los efectos hacen audible el espacio, las acciones y las consecuencias. El antagonista debe conservar objetivo, plan, ventaja, acciones propias y derrota clara; deben existir al menos ${duration.minSetbacks} reveses que cambien el plan, un momento más difícil y un clímax de confrontación ganado por decisiones previas. Completa dramaturgy con IDs de segmentos existentes.`;
+Comprueba en el texto real que el oyente entiende protagonista, mundo, problema y riesgo antes de oír personajes; que cada voz es presentada por el narrador justo antes de su primera frase; que delivery y puntuación dirigen una interpretación emocional; que cada peque habla y cambia el resultado; y que los efectos hacen audible el espacio, las acciones y las consecuencias. El antagonista debe conservar objetivo, plan, ventaja, acciones propias y derrota clara; deben existir al menos ${duration.minSetbacks} reveses que cambien el plan, un momento más difícil y un clímax de confrontación ganado por decisiones previas.`;
 }
 
 // ================== TTS POR SEGMENTO ==================
@@ -986,11 +905,6 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   const narratorKey = narratorVoice(language, narratorGender);
   const allowedVoices = new Set(Object.keys(VOICE_LIBRARY));
   const rawSegments = Array.isArray(parsed?.segments) ? parsed.segments : [];
-  const rawCharacters = Array.isArray(parsed?.characters) ? parsed.characters : [];
-  const characterNames = new Map(
-    rawCharacters
-      .map((character) => [String(character?.id || ""), String(character?.name || "")]),
-  );
   const segments = [];
   const errors = [];
   const fatalErrors = [];
@@ -1019,7 +933,7 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
     const text = String(raw.text || "").trim();
     if (!text) continue;
     const characterId = String(raw.characterId || "").trim();
-    const character = String(raw.character || characterNames.get(characterId) || "").trim();
+    const character = String(raw.character || "").trim();
     let voice = raw.type === "narration" ? narratorKey : String(raw.voice || "");
     const child = kids.find((kid) =>
       kid.id === characterId || kid.name.localeCompare(character, undefined, { sensitivity: "base" }) === 0);
@@ -1107,7 +1021,7 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
         break;
       }
     }
-    const characterName = String(segment.character || characterNames.get(segment.characterId) || "").trim();
+    const characterName = String(segment.character || "").trim();
     const wasIntroduced = previousSpoken?.type === "narration" && characterName &&
       previousSpoken.text.toLocaleLowerCase().includes(characterName.toLocaleLowerCase());
     if (!wasIntroduced) {
@@ -1123,55 +1037,6 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   }
 
   const fullText = segments.filter((s) => s.text).map((s) => s.text).join(" ").toLocaleLowerCase();
-  const segmentIds = new Set(segments.map((segment) => segment.id).filter(Boolean));
-  const dramaturgy = parsed?.dramaturgy ?? {};
-  const antagonistId = String(dramaturgy.antagonistId || "").trim();
-  const antagonist = rawCharacters.find((character) =>
-    String(character?.id || "").trim() === antagonistId && character?.alignment === "antagonist");
-  if (!antagonist) {
-    const issue = "El guion no identifica un antagonista-personaje con agencia";
-    errors.push(issue);
-    fatalErrors.push(issue);
-  } else {
-    const antagonistName = String(antagonist.name || "").trim();
-    if (!antagonistName || !fullText.includes(antagonistName.toLocaleLowerCase())) {
-      const issue = "El antagonista no aparece de forma reconocible en el cuento";
-      errors.push(issue);
-      fatalErrors.push(issue);
-    }
-  }
-
-  const validReferencedIds = (value) => [...new Set(Array.isArray(value) ? value : [])]
-    .filter((id) => segmentIds.has(String(id)));
-  const antagonistActionIds = validReferencedIds(dramaturgy.antagonistActionSegmentIds);
-  if (antagonistActionIds.length < duration.minAntagonistMoves) {
-    errors.push(`Solo hay ${antagonistActionIds.length} acciones verificables del antagonista; mínimo ${duration.minAntagonistMoves}`);
-  }
-  const setbackIds = validReferencedIds(dramaturgy.setbackSegmentIds);
-  if (setbackIds.length < duration.minSetbacks) {
-    errors.push(`Solo hay ${setbackIds.length} reveses verificables; mínimo ${duration.minSetbacks}`);
-  }
-  for (const [key, label] of [
-    ["incitingIncidentSegmentId", "incidente detonante"],
-    ["midpointTurnSegmentId", "giro central"],
-    ["darkestMomentSegmentId", "momento más difícil"],
-    ["antagonistDefeatSegmentId", "derrota del antagonista"],
-  ]) {
-    if (!segmentIds.has(String(dramaturgy[key] || ""))) {
-      errors.push(`No hay un segmento válido para ${label}`);
-    }
-  }
-  const climaxIds = validReferencedIds(dramaturgy.climaxSegmentIds);
-  if (climaxIds.length === 0) {
-    const issue = "No hay un clímax verificable de confrontación";
-    errors.push(issue);
-    fatalErrors.push(issue);
-  }
-  if (dramaturgy.stakesResolved !== true) {
-    errors.push("El guion no confirma que las consecuencias del conflicto queden resueltas");
-  }
-
-  const contributions = Array.isArray(parsed?.contributions) ? parsed.contributions : [];
   for (const kid of kids) {
     if (!fullText.includes(kid.name.toLocaleLowerCase())) {
       const issue = `El cuento no presenta por nombre a ${kid.name}`;
@@ -1185,33 +1050,6 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
       errors.push(issue);
       fatalErrors.push(issue);
     }
-    const contribution = contributions.find((entry) => entry?.characterId === kid.id && String(entry?.causalResult || "").trim());
-    if (!contribution) {
-      errors.push(`${kid.name} no tiene una contribución causal declarada`);
-    }
-  }
-
-  const selfCheck = parsed?.selfCheck ?? {};
-  for (const [key, label] of [
-    ["openingOrients", "El autoeditor no confirma una apertura comprensible"],
-    ["voicesIntroducedBeforeSpeaking", "El autoeditor no confirma la presentación de las voces"],
-    ["deliveryVaries", "El autoeditor no confirma variedad interpretativa"],
-    ["antagonistHasAgency", "El autoeditor no confirma la agencia del antagonista"],
-    ["conflictEscalates", "El autoeditor no confirma que el conflicto escale"],
-    ["setbacksChangeThePlan", "El autoeditor no confirma reveses que cambien el plan"],
-    ["climaxConfrontsAntagonist", "El autoeditor no confirma una confrontación en el clímax"],
-    ["allChildrenSpeak", "El autoeditor no confirma que todos hablen"],
-    ["allChildrenChangeOutcome", "El autoeditor no confirma la agencia de todos"],
-    ["continuityChecked", "El autoeditor no confirma la continuidad"],
-    ["resolutionEarned", "El autoeditor no confirma un desenlace ganado"],
-    ["audioClearWithoutImages", "El autoeditor no confirma claridad auditiva"],
-    ["originalityChecked", "El autoeditor no confirma originalidad"],
-  ]) {
-    if (selfCheck[key] !== true) errors.push(label);
-  }
-
-  if (!Array.isArray(parsed?.resolvedSetups) || parsed.resolvedSetups.length === 0) {
-    errors.push("No hay ninguna siembra-recompensa declarada");
   }
 
   return {
@@ -1427,15 +1265,20 @@ Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA des
     // 3 — El Redactor convierte la escaleta en guion y se autoedita en tres pasadas.
     stage = "redactor";
     console.log("✍️ Redactor sonoro: escribiendo y autoeditando...");
-    let story = await callClaudeJson(anthropic, {
-      system: "Eres el Redactor Principal y autoeditor de Sancho. Escribes audioficción infantil original, clara sin imágenes y adecuada a la edad. Antes de responder revisas causalidad, continuidad, claridad auditiva, ritmo y protagonismo. No muestras el proceso. Respondes exclusivamente con JSON válido.",
-      prompt: buildWriterPrompt({ brief, blueprint, duration, ageRules, allowedVoices }),
-      maxTokens: Math.max(5500, Math.min(10000, targetMinutes * 950)),
-      context: "cuento_redactor",
-      language: safeLanguage,
-      temperature: 0.82,
-      requiredArrayKey: "segments",
-    });
+    let story = {};
+    try {
+      story = await callClaudeJson(anthropic, {
+        system: "Eres el Redactor Principal y autoeditor de Sancho. Escribes audioficción infantil original, clara sin imágenes y adecuada a la edad. Antes de responder revisas causalidad, continuidad, claridad auditiva, ritmo y protagonismo. No muestras el proceso. Respondes exclusivamente con JSON válido.",
+        prompt: buildWriterPrompt({ brief, blueprint, duration, ageRules, allowedVoices }),
+        maxTokens: Math.max(5500, Math.min(10000, targetMinutes * 950)),
+        context: "cuento_redactor",
+        language: safeLanguage,
+        temperature: 0.82,
+        requiredArrayKey: "segments",
+      });
+    } catch (writerError) {
+      console.warn(`⚠️ Redactor inicial inutilizable; se activa reparación: ${writerError.message}`);
+    }
 
     let normalized = normalizeStory(story, {
       kids,
@@ -1447,24 +1290,51 @@ Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA des
     });
 
     // 4 — Validador sin coste. Solo llama al Reparador si hay incumplimientos.
+    let repairFailed = false;
     if (normalized.errors.length > 0) {
       stage = "reparador";
       console.warn(`🩺 Control de calidad: ${normalized.errors.length} incidencias; reparando...`);
-      story = await callClaudeJson(anthropic, {
-        system: "Eres el Director de Calidad de Sancho. Reparas guiones infantiles sonoros sin alterar su identidad. Corriges solo lo necesario y vuelves a comprobar todo el guion. No imitas obras existentes. Respondes exclusivamente con el guion JSON completo.",
-        prompt: buildRepairPrompt({
-          brief,
-          blueprint,
-          story,
-          errors: normalized.errors,
+      try {
+        story = await callClaudeJson(anthropic, {
+          system: "Eres el Director de Calidad de Sancho. Reparas o reconstruyes guiones infantiles sonoros sin alterar su identidad. Si el guion recibido está vacío, lo escribes completo desde la escaleta. No imitas obras existentes. Respondes exclusivamente con el guion JSON completo.",
+          prompt: buildRepairPrompt({
+            brief,
+            blueprint,
+            story,
+            errors: normalized.errors,
+            duration,
+            ageRules,
+            allowedVoices,
+          }),
+          maxTokens: Math.max(5500, Math.min(10000, targetMinutes * 950)),
+          context: "cuento_reparador",
+          language: safeLanguage,
+          temperature: 0.35,
+          requiredArrayKey: "segments",
+        });
+        normalized = normalizeStory(story, {
+          kids,
+          narratorGender,
+          language: safeLanguage,
           duration,
           ageRules,
-          allowedVoices,
-        }),
+          voiceAssignments,
+        });
+      } catch (repairError) {
+        repairFailed = true;
+        console.warn(`⚠️ Reparador de guion inutilizable; se activa redactor de rescate: ${repairError.message}`);
+      }
+    }
+
+    if (repairFailed || normalized.fatalErrors.length > 0) {
+      stage = "redactor_rescate";
+      story = await callClaudeJson(anthropic, {
+        system: "Eres el Redactor de rescate de Sancho. Escribe desde cero el cuento sonoro completo indicado por la escaleta. Devuelve únicamente title, musicMood y segments; no informes, análisis ni autoevaluaciones.",
+        prompt: buildWriterPrompt({ brief, blueprint, duration, ageRules, allowedVoices }),
         maxTokens: Math.max(5500, Math.min(10000, targetMinutes * 950)),
-        context: "cuento_reparador",
+        context: "cuento_redactor_rescate",
         language: safeLanguage,
-        temperature: 0.35,
+        temperature: 0.45,
         requiredArrayKey: "segments",
       });
       normalized = normalizeStory(story, {

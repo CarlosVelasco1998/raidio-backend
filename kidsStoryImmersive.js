@@ -1472,6 +1472,11 @@ Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA des
       return callStoryTTS(elevenKey, seg.voice, seg.text.trim(), seg.delivery);
     });
     const audioBuffers = rendered.filter(Buffer.isBuffer);
+    const renderedSfxCount = rendered.reduce(
+      (total, buffer, index) => total +
+        (segments[index]?.type === "sfx" && Buffer.isBuffer(buffer) ? 1 : 0),
+      0,
+    );
 
     if (audioBuffers.length === 0) {
       return res.status(500).json({ error: "No se generó ningún segmento de audio" });
@@ -1496,7 +1501,8 @@ Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA des
     res.set("X-Story-Minutes", String(targetMinutes));
     res.set("X-Story-Engine", "claude-eleven-v3");
     res.set("X-Story-Words", String(normalized.spokenWords));
-    res.set("X-Story-SFX", String(normalized.sfxCount));
+    res.set("X-Story-SFX", String(renderedSfxCount));
+    res.set("X-Story-SFX-Planned", String(normalized.sfxCount));
     res.set("X-Story-Onomatopoeias", String(normalized.onomatopoeiaCount));
     res.send(finalAudio);
 

@@ -90,6 +90,7 @@ const DELIVERY_TAGS = {
   mysterious: "[mysteriously, slower, building suspense]",
   calm: "[calm, gentle storytelling]",
 };
+const ELEVEN_V3_MAX_CHARS = 5000;
 
 // ================== ASIGNACIÓN DE VOCES A PROTAGONISTAS ==================
 function assignChildVoices(kids) {
@@ -270,7 +271,7 @@ function modelToolSchema(requiredArrayKey) {
         },
         characters: {
           type: "array",
-          minItems: 2,
+          minItems: 1,
           items: {
             type: "object",
             properties: Object.fromEntries(characterKeys.map((key) => [key, text])),
@@ -290,7 +291,7 @@ function modelToolSchema(requiredArrayKey) {
         },
         beats: {
           type: "array",
-          minItems: 6,
+          minItems: 1,
           items: {
             type: "object",
             properties: {
@@ -353,7 +354,7 @@ function modelToolSchema(requiredArrayKey) {
       musicMood: text,
       characters: {
         type: "array",
-        minItems: 2,
+        minItems: 1,
         items: {
           type: "object",
           properties: Object.fromEntries(storyCharacterKeys.map((key) => [key, text])),
@@ -744,6 +745,13 @@ Comprueba que el oyente entiende protagonista, mundo, problema y riesgo antes de
 
 // ================== TTS POR SEGMENTO ==================
 async function callTTS(apiKey, voiceKey, text, modelId = "eleven_multilingual_v2") {
+  if (modelId === "eleven_v3" && text.length > ELEVEN_V3_MAX_CHARS) {
+    const tooLong = new Error(
+      `Eleven v3 admite como máximo ${ELEVEN_V3_MAX_CHARS} caracteres por petición; recibidos ${text.length}`,
+    );
+    tooLong.code = "ELEVEN_V3_TEXT_TOO_LONG";
+    throw tooLong;
+  }
   const voice = VOICE_LIBRARY[voiceKey] ?? VOICE_LIBRARY["narrator_f"];
   // Los modelos interpretativos usan etiquetas emocionales y no admiten todos
   // los controles clásicos de Multilingual v2.
@@ -780,19 +788,26 @@ async function callTTSWithRetry(apiKey, voiceKey, text, modelId) {
   throw lastError;
 }
 
-async function callStoryTTS(apiKey, voiceKey, text, delivery = "neutral") {
+function expressiveStoryText(text, delivery = "neutral") {
   const tag = DELIVERY_TAGS[delivery] || "";
   const performedText = tag ? `${tag} ${text}` : text;
+  if (performedText.length > ELEVEN_V3_MAX_CHARS) {
+    const tooLong = new Error(
+      `Eleven v3 admite como máximo ${ELEVEN_V3_MAX_CHARS} caracteres por petición; recibidos ${performedText.length}`,
+    );
+    tooLong.code = "ELEVEN_V3_TEXT_TOO_LONG";
+    throw tooLong;
+  }
+  return performedText;
+}
+
+async function callStoryTTS(apiKey, voiceKey, text, delivery = "neutral") {
+  const performedText = expressiveStoryText(text, delivery);
   try {
-    return await callTTSWithRetry(apiKey, voiceKey, performedText, "eleven_v4");
-  } catch (v4Error) {
-    console.warn(`Eleven v4 falló para ${voiceKey}; usando v3: ${v4Error.message}`);
-    try {
-      return await callTTSWithRetry(apiKey, voiceKey, performedText, "eleven_v3");
-    } catch (v3Error) {
-      console.warn(`Eleven v3 falló para ${voiceKey}; usando multilingual v2: ${v3Error.message}`);
-      return callTTSWithRetry(apiKey, voiceKey, text, "eleven_multilingual_v2");
-    }
+    return await callTTSWithRetry(apiKey, voiceKey, performedText, "eleven_v3");
+  } catch (v3Error) {
+    console.warn(`Eleven v3 falló para ${voiceKey}; usando multilingual v2: ${v3Error.message}`);
+    return callTTSWithRetry(apiKey, voiceKey, text, "eleven_multilingual_v2");
   }
 }
 
@@ -1518,16 +1533,14 @@ Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA des
 
     console.log(`📖 "${title}" — ${segments.length} segmentos, ${normalized.spokenWords} palabras, ${normalized.sfxCount} efectos, música ${normalized.musicMood || theme}`);
 
-    // 5 — Eleven v4 recibe bloques multivoz completos para conservar contexto,
-    // ritmo y respuesta entre personajes. Los SFX siguen ocupando su posición
-    // exacta en el relato. Si Dialogue no está disponible, conservamos el
-    // fallback robusto por voz sin perder ninguna frase.
+    // 5 — Claude ya ha escrito el cuento completo. Eleven v3 solo interpreta
+    // cada intervención con la voz y la emoción indicadas. Al enviar segmentos
+    // separados conservamos las voces, respetamos holgadamente el límite de
+    // 5.000 caracteres por petición y mantenemos cada SFX en su posición.
     stage = "voces_y_efectos";
-    const audioUnits = buildAudioUnits(segments);
-    const rendered = await mapWithConcurrency(audioUnits, 2, async (unit, i) => {
-      const tag = `[${i + 1}/${audioUnits.length}] ${unit.type}`;
-      if (unit.type === "sfx") {
-        const seg = unit.segment;
+    const rendered = await mapWithConcurrency(segments, 3, async (seg, i) => {
+      const tag = `[${i + 1}/${segments.length}] ${seg.type}`;
+      if (seg.type === "sfx") {
         try {
           console.log(`  ${tag} — "${seg.description}"`);
           return await callSFX(elevenKey, seg.description.trim(), seg.durationMs / 1000);
@@ -1536,14 +1549,10 @@ Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA des
           return null;
         }
       }
-      const voices = [...new Set(unit.segments.map((segment) => VOICE_LIBRARY[segment.voice]?.name ?? segment.voice))];
-      console.log(`  ${tag} — ${unit.segments.length} intervenciones (${voices.join(", ")})`);
-      try {
-        return await callDialogueWithRetry(elevenKey, unit.segments, safeLanguage);
-      } catch (dialogueError) {
-        console.warn(`  ⚠️  Dialogue v4 falló en bloque ${i + 1}; fallback por voz: ${dialogueError.message}`);
-        return renderSpeechFallback(elevenKey, unit.segments);
-      }
+      const voiceName = VOICE_LIBRARY[seg.voice]?.name ?? seg.voice;
+      const expressiveChars = seg.text.length + (DELIVERY_TAGS[seg.delivery] || "").length + 1;
+      console.log(`  ${tag} — ${voiceName}, ${seg.delivery}, ${expressiveChars} caracteres (Eleven v3)`);
+      return callStoryTTS(elevenKey, seg.voice, seg.text.trim(), seg.delivery);
     });
     const audioBuffers = rendered.filter(Buffer.isBuffer);
 
@@ -1568,7 +1577,7 @@ Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA des
     res.set("X-Story-Title", encodeURIComponent(title));
     if (storyId) res.set("X-Story-Id", String(storyId).slice(0, 120));
     res.set("X-Story-Minutes", String(targetMinutes));
-    res.set("X-Story-Engine", "director-writer-v4");
+    res.set("X-Story-Engine", "claude-eleven-v3");
     res.set("X-Story-Words", String(normalized.spokenWords));
     res.send(finalAudio);
 
@@ -1588,6 +1597,7 @@ Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA des
 // Funciones puras expuestas únicamente para las pruebas del motor narrativo.
 export const storyEngineInternals = {
   DURATION_PROFILES,
+  ELEVEN_V3_MAX_CHARS,
   ageProfile,
   parseClaudeJson,
   unwrapModelPayload,
@@ -1598,6 +1608,7 @@ export const storyEngineInternals = {
   buildWriterPrompt,
   buildRepairPrompt,
   buildAudioUnits,
+  expressiveStoryText,
   selectStoryMusic,
   normalizeDuration,
   cleanUserText,

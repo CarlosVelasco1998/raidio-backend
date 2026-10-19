@@ -75,7 +75,7 @@ test("el contrato del Director prohíbe entregar un objeto vacío", () => {
   assert.ok(schema.required.includes("conflict"));
   assert.ok(schema.required.includes("dramaticTurns"));
   assert.ok(schema.required.includes("characters"));
-  assert.equal(schema.properties.beats.minItems, 6);
+  assert.equal(schema.properties.beats.minItems, 1);
   assert.ok(schema.properties.conflict.required.includes("antagonistGoal"));
 });
 
@@ -167,6 +167,21 @@ test("agrupa voces para Dialogue v4 sin mover los efectos de sitio", () => {
   assert.deepEqual(units.map((unit) => unit.type), ["speech", "sfx", "speech"]);
   assert.equal(units[0].segments.length, 2);
   assert.equal(units[1].segment.description, "small bell");
+});
+
+test("prepara interpretación expresiva para Eleven v3", () => {
+  const performed = engine.expressiveStoryText("La puerta se abrió de golpe.", "mysterious");
+  assert.match(performed, /^\[mysteriously,/);
+  assert.match(performed, /La puerta se abrió de golpe\.$/);
+});
+
+test("ninguna petición de Eleven v3 puede superar cinco mil caracteres", () => {
+  assert.equal(engine.ELEVEN_V3_MAX_CHARS, 5000);
+  assert.equal(engine.expressiveStoryText("a".repeat(5000), "neutral").length, 5000);
+  assert.throws(
+    () => engine.expressiveStoryText("a".repeat(5001), "neutral"),
+    (error) => error.code === "ELEVEN_V3_TEXT_TOO_LONG",
+  );
 });
 
 test("elige fondos distintos para espacio, España y magia", () => {

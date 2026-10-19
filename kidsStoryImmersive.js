@@ -254,19 +254,19 @@ function modelToolSchema(requiredArrayKey) {
           type: "object",
           properties: Object.fromEntries(orientationKeys.map((key) => [key, text])),
           required: orientationKeys,
-          additionalProperties: true,
+          additionalProperties: false,
         },
         conflict: {
           type: "object",
           properties: Object.fromEntries(conflictKeys.map((key) => [key, text])),
           required: conflictKeys,
-          additionalProperties: true,
+          additionalProperties: false,
         },
         dramaticTurns: {
           type: "object",
           properties: Object.fromEntries(turnKeys.map((key) => [key, text])),
           required: turnKeys,
-          additionalProperties: true,
+          additionalProperties: false,
         },
         characters: {
           type: "array",
@@ -275,7 +275,7 @@ function modelToolSchema(requiredArrayKey) {
             type: "object",
             properties: Object.fromEntries(characterKeys.map((key) => [key, text])),
             required: characterKeys,
-            additionalProperties: true,
+            additionalProperties: false,
           },
         },
         setupPayoffs: {
@@ -285,7 +285,7 @@ function modelToolSchema(requiredArrayKey) {
             type: "object",
             properties: { id: text, setupBeat: text, payoffBeat: text, element: text },
             required: ["id", "setupBeat", "payoffBeat", "element"],
-            additionalProperties: true,
+            additionalProperties: false,
           },
         },
         beats: {
@@ -300,20 +300,20 @@ function modelToolSchema(requiredArrayKey) {
               participants: textList,
             },
             required: beatKeys,
-            additionalProperties: true,
+            additionalProperties: false,
           },
         },
         continuityLedger: {
           type: "object",
           properties: { objects: textList, knowledge: textList, locations: textList },
           required: ["objects", "knowledge", "locations"],
-          additionalProperties: true,
+          additionalProperties: false,
         },
         audioPlan: {
           type: "object",
           properties: { motif: text, musicArc: textList, sfxMoments: textList, silenceMoment: text },
           required: ["motif", "musicArc", "sfxMoments", "silenceMoment"],
-          additionalProperties: true,
+          additionalProperties: false,
         },
         endingEcho: text,
       },
@@ -322,7 +322,7 @@ function modelToolSchema(requiredArrayKey) {
         "musicMood", "orientation", "conflict", "dramaticTurns", "characters",
         "setupPayoffs", "beats", "continuityLedger", "audioPlan", "endingEcho",
       ],
-      additionalProperties: true,
+      additionalProperties: false,
     };
   }
 
@@ -337,13 +337,30 @@ function modelToolSchema(requiredArrayKey) {
     "climaxConfrontsAntagonist", "allChildrenSpeak", "allChildrenChangeOutcome",
     "continuityChecked", "resolutionEarned", "audioClearWithoutImages", "originalityChecked",
   ];
+  const storyCharacterKeys = [
+    "id", "name", "voice", "role", "alignment", "goal",
+    "introducedBySegmentId", "firstDialogueSegmentId",
+  ];
+  const segmentKeys = [
+    "id", "sceneId", "beatId", "type", "voice", "characterId",
+    "character", "text", "delivery", "prompt", "durationMs", "purpose",
+  ];
   return {
     type: "object",
     properties: {
       version: text,
       title: text,
       musicMood: text,
-      characters: { type: "array", minItems: 2, items: { type: "object", additionalProperties: true } },
+      characters: {
+        type: "array",
+        minItems: 2,
+        items: {
+          type: "object",
+          properties: Object.fromEntries(storyCharacterKeys.map((key) => [key, text])),
+          required: storyCharacterKeys,
+          additionalProperties: false,
+        },
+      },
       segments: {
         type: "array",
         minItems: 1,
@@ -354,8 +371,8 @@ function modelToolSchema(requiredArrayKey) {
             characterId: text, character: text, text, delivery: text,
             prompt: text, durationMs: { type: "number" }, purpose: text,
           },
-          required: ["id", "type"],
-          additionalProperties: true,
+          required: segmentKeys,
+          additionalProperties: false,
         },
       },
       dramaturgy: {
@@ -372,10 +389,28 @@ function modelToolSchema(requiredArrayKey) {
           stakesResolved: { type: "boolean" },
         },
         required: dramaturgyKeys,
-        additionalProperties: true,
+        additionalProperties: false,
       },
-      contributions: { type: "array", minItems: 1, items: { type: "object", additionalProperties: true } },
-      resolvedSetups: { type: "array", minItems: 1, items: { type: "object", additionalProperties: true } },
+      contributions: {
+        type: "array",
+        minItems: 1,
+        items: {
+          type: "object",
+          properties: { characterId: text, segmentIds: textList, causalResult: text },
+          required: ["characterId", "segmentIds", "causalResult"],
+          additionalProperties: false,
+        },
+      },
+      resolvedSetups: {
+        type: "array",
+        minItems: 1,
+        items: {
+          type: "object",
+          properties: { setupId: text, setupSegmentId: text, payoffSegmentId: text },
+          required: ["setupId", "setupSegmentId", "payoffSegmentId"],
+          additionalProperties: false,
+        },
+      },
       selfCheck: {
         type: "object",
         properties: {
@@ -383,14 +418,14 @@ function modelToolSchema(requiredArrayKey) {
           wordCount: { type: "number" },
         },
         required: selfCheckKeys,
-        additionalProperties: true,
+        additionalProperties: false,
       },
     },
     required: [
       "version", "title", "musicMood", "characters", "segments", "dramaturgy",
       "contributions", "resolvedSetups", "selfCheck",
     ],
-    additionalProperties: true,
+    additionalProperties: false,
   };
 }
 
@@ -432,6 +467,7 @@ async function callClaudeJson(anthropic, {
         tools: [{
           name: "submit_json",
           description: "Entrega el objeto JSON final solicitado. No incluyas explicaciones fuera de este objeto.",
+          strict: Boolean(requiredArrayKey),
           input_schema: requiredArrayKey
             ? modelToolSchema(requiredArrayKey)
             : { type: "object", additionalProperties: true },
@@ -1349,53 +1385,69 @@ export async function generateKidsStoryImmersive(req, res) {
     // 2 — El Director diseña la trama antes de escribir una sola frase.
     stage = "director";
     console.log("🧭 Director literario: diseñando escaleta...");
-    let blueprint = await callClaudeJson(anthropic, {
-      system: "Eres el Director Literario de Sancho. Diseñas cuentos infantiles originales para ser comprendidos solo con el oído. No escribes el cuento, solo una escaleta causal y producible. No adaptas ni imitas obras o franquicias. Respondes exclusivamente con JSON válido.",
-      prompt: buildDirectorPrompt({ brief, duration, ageRules, secondaryVoices }),
-      maxTokens: 7000,
-      context: "cuento_director",
-      language: safeLanguage,
-      temperature: 0.9,
-      requiredArrayKey: "beats",
-    });
-
-    let blueprintErrors = validateBlueprint(blueprint, { duration, ageRules });
-    if (blueprintErrors.length > 0) {
-      stage = "director_reparador";
-      console.warn(`🧭 Control dramático: ${blueprintErrors.length} incidencias; rehaciendo escaleta...`);
+    let blueprint = {};
+    let blueprintErrors = [];
+    try {
       blueprint = await callClaudeJson(anthropic, {
-        system: "Eres el Director de Calidad Literaria de Sancho. Reparas escaletas de audioficción infantil para que tengan antagonista activo, presión creciente, reveses y un clímax ganado. Mantienes una representación segura para la edad y respondes exclusivamente con JSON válido.",
-        prompt: buildDirectorRepairPrompt({
-          brief,
-          blueprint,
-          errors: blueprintErrors,
-          duration,
-          ageRules,
-          secondaryVoices,
-        }),
+        system: "Eres el Director Literario de Sancho. Diseñas cuentos infantiles originales para ser comprendidos solo con el oído. No escribes el cuento, solo una escaleta causal y producible. No adaptas ni imitas obras o franquicias. Respondes exclusivamente con JSON válido.",
+        prompt: buildDirectorPrompt({ brief, duration, ageRules, secondaryVoices }),
         maxTokens: 7000,
-        context: "cuento_director_reparador",
+        context: "cuento_director",
         language: safeLanguage,
-        temperature: 0.4,
+        temperature: 0.9,
         requiredArrayKey: "beats",
       });
       blueprintErrors = validateBlueprint(blueprint, { duration, ageRules });
+    } catch (directorError) {
+      console.warn(`⚠️ Director inicial inutilizable; se activa reparación: ${directorError.message}`);
+      blueprintErrors = [`El Director inicial no entregó una escaleta utilizable: ${directorError.message}`];
+    }
+
+    if (blueprintErrors.length > 0) {
+      stage = "director_reparador";
+      console.warn(`🧭 Control dramático: ${blueprintErrors.length} incidencias; rehaciendo escaleta...`);
+      try {
+        blueprint = await callClaudeJson(anthropic, {
+          system: "Eres el Director de Calidad Literaria de Sancho. Reparas o reconstruyes escaletas de audioficción infantil para que tengan antagonista activo, presión creciente, reveses y un clímax ganado. Si la entrada está vacía, crea una escaleta completa desde cero. Mantienes una representación segura para la edad y respondes exclusivamente con JSON válido.",
+          prompt: buildDirectorRepairPrompt({
+            brief,
+            blueprint,
+            errors: blueprintErrors,
+            duration,
+            ageRules,
+            secondaryVoices,
+          }),
+          maxTokens: 7000,
+          context: "cuento_director_reparador",
+          language: safeLanguage,
+          temperature: 0.4,
+          requiredArrayKey: "beats",
+        });
+        blueprintErrors = validateBlueprint(blueprint, { duration, ageRules });
+      } catch (repairError) {
+        console.warn(`⚠️ Reparador inutilizable; se activa rescate: ${repairError.message}`);
+        blueprintErrors = [`El reparador no entregó una escaleta utilizable: ${repairError.message}`];
+      }
     }
     if (blueprintErrors.length > 0) {
       stage = "director_rescate";
       console.warn(`🛟 Director de rescate: la reparación conserva ${blueprintErrors.length} incidencias; creando una escaleta nueva...`);
-      blueprint = await callClaudeJson(anthropic, {
-        system: "Eres el Director Literario de rescate de Sancho. Creas desde cero una escaleta completa de audioficción infantil con antagonista activo, presión creciente, reveses y un clímax ganado. No resumes ni comentas intentos anteriores. Mantienes una representación segura para la edad y respondes exclusivamente con JSON válido.",
-        prompt: `${buildDirectorPrompt({ brief, duration, ageRules, secondaryVoices })}
+      try {
+        blueprint = await callClaudeJson(anthropic, {
+          system: "Eres el Director Literario de rescate de Sancho. Creas desde cero una escaleta completa de audioficción infantil con antagonista activo, presión creciente, reveses y un clímax ganado. No resumes ni comentas intentos anteriores. Mantienes una representación segura para la edad y respondes exclusivamente con JSON válido.",
+          prompt: `${buildDirectorPrompt({ brief, duration, ageRules, secondaryVoices })}
 
 Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA desde cero. Antes de entregarla, cuenta internamente los beats y comprueba que incluye inciting_harm, al menos ${duration.minSetbacks} setbacks, climax y resolution; no devuelvas explicaciones ni un objeto envoltorio.`,
-        maxTokens: 7000,
-        context: "cuento_director_rescate",
-        language: safeLanguage,
-        temperature: 0.32,
-        requiredArrayKey: "beats",
-      });
-      blueprintErrors = validateBlueprint(blueprint, { duration, ageRules });
+          maxTokens: 7000,
+          context: "cuento_director_rescate",
+          language: safeLanguage,
+          temperature: 0.32,
+          requiredArrayKey: "beats",
+        });
+        blueprintErrors = validateBlueprint(blueprint, { duration, ageRules });
+      } catch (rescueError) {
+        blueprintErrors = [`El Director de rescate no entregó una escaleta utilizable: ${rescueError.message}`];
+      }
     }
     if (blueprintErrors.length > 0) {
       throw new Error(`El Director no produjo una trama completa: ${blueprintErrors.slice(0, 5).join("; ")}`);

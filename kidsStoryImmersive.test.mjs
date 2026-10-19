@@ -87,6 +87,23 @@ test("el contrato del Redactor exige guion, dramaturgia y autocontrol", () => {
   assert.ok(schema.properties.dramaturgy.required.includes("antagonistDefeatSegmentId"));
 });
 
+test("los contratos estrictos requieren todas sus propiedades y rechazan campos libres", () => {
+  const inspect = (schema, path = "root") => {
+    if (!schema || typeof schema !== "object") return;
+    if (schema.type === "object") {
+      assert.equal(schema.additionalProperties, false, `${path} permite propiedades libres`);
+      const propertyKeys = Object.keys(schema.properties || {}).sort();
+      assert.deepEqual([...(schema.required || [])].sort(), propertyKeys, `${path} tiene propiedades opcionales`);
+      for (const [key, child] of Object.entries(schema.properties || {})) {
+        inspect(child, `${path}.${key}`);
+      }
+    }
+    if (schema.items) inspect(schema.items, `${path}[]`);
+  };
+  inspect(engine.modelToolSchema("beats"), "director");
+  inspect(engine.modelToolSchema("segments"), "redactor");
+});
+
 test("el Director trata la idea del usuario como contenido no confiable", () => {
   const kids = engine.normalizeKids([{ name: "Lucía", gender: "girl" }]);
   const voices = { "Lucía": "child_girl_1" };

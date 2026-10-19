@@ -1067,7 +1067,9 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
     fatalErrors.push(`Cuento desproporcionado: ${spokenWords} palabras; máximo reproducible ${playableMaxWords}`);
   }
   if (sfxCount < duration.sfxMin || sfxCount > duration.sfxMax) {
-    errors.push(`Hay ${sfxCount} efectos; deben ser entre ${duration.sfxMin} y ${duration.sfxMax}`);
+    const issue = `Hay ${sfxCount} efectos; deben ser entre ${duration.sfxMin} y ${duration.sfxMax}`;
+    errors.push(issue);
+    if (sfxCount < duration.sfxMin) fatalErrors.push(issue);
   }
 
   const firstSpoken = segments.find((segment) => segment.type !== "sfx");
@@ -1121,9 +1123,9 @@ function normalizeStory(parsed, { kids, narratorGender, language, duration, ageR
   const fullText = spokenText.toLocaleLowerCase();
   const onomatopoeiaCount = countOnomatopoeias(spokenText, language);
   if (onomatopoeiaCount < duration.onomatopoeiaMin) {
-    errors.push(
-      `Solo hay ${onomatopoeiaCount} onomatopeyas habladas; mínimo ${duration.onomatopoeiaMin}`,
-    );
+    const issue = `Solo hay ${onomatopoeiaCount} onomatopeyas habladas; mínimo ${duration.onomatopoeiaMin}`;
+    errors.push(issue);
+    fatalErrors.push(issue);
   }
   for (const kid of kids) {
     if (!fullText.includes(kid.name.toLocaleLowerCase())) {
@@ -1494,6 +1496,8 @@ Un intento anterior no pudo completar la estructura. Crea una escaleta NUEVA des
     res.set("X-Story-Minutes", String(targetMinutes));
     res.set("X-Story-Engine", "claude-eleven-v3");
     res.set("X-Story-Words", String(normalized.spokenWords));
+    res.set("X-Story-SFX", String(normalized.sfxCount));
+    res.set("X-Story-Onomatopoeias", String(normalized.onomatopoeiaCount));
     res.send(finalAudio);
 
     console.log(`✅ Cuento enviado — ${(finalAudio.length / 1024).toFixed(1)} KB`);

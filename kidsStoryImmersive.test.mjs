@@ -250,8 +250,12 @@ test("los avisos editoriales no invalidan un cuento que se puede reproducir", ()
         { id: "villain_1", name: "Malvar", alignment: "antagonist" },
       ],
       segments: [
-        { id: "s1", type: "narration", text: `Lucía y Malvar ${filler}` },
+        { id: "s1", type: "narration", text: `¡Pum! Lucía y Malvar ${filler} ¡Crac!` },
         { id: "s2", type: "dialogue", characterId: "kid_1", character: "Lucía", text: "Yo abriré la puerta ahora." },
+        { id: "fx1", type: "sfx", prompt: "old wooden door creaking open", durationMs: 2000 },
+        { id: "fx2", type: "sfx", prompt: "quick footsteps on a stone floor", durationMs: 2000 },
+        { id: "fx3", type: "sfx", prompt: "bright magical sparkle and gentle chime", durationMs: 2000 },
+        { id: "fx4", type: "sfx", prompt: "fast airy whoosh passing from left to right", durationMs: 2000 },
       ],
       dramaturgy: {
         antagonistId: "villain_1",

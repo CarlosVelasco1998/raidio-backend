@@ -115,8 +115,8 @@ const DURATION_PROFILES = {
 };
 
 const ONOMATOPOEIA_PATTERNS = {
-  es: /\b(?:pum|pam|bum|zas|crac|clic|clac|plof|fiu|chap|ach[ií]s|miau|guau|ring|tic[ -]?tac|toc[ -]?toc|ding[ -]?dong)\b/giu,
-  en: /\b(?:boom|bang|crash|crack|click|clack|pop|whoosh|splash|buzz|beep|woof|meow|achoo|tick[ -]?tock|knock[ -]?knock|ding[ -]?dong)\b/giu,
+  es: /\b(?:pum+|pam+|bum+|zas+|crac+|clic+|clac+|plof+|fiu+|brr+|grr+|vru+m+|zu+m+|chof+|chap+|plas+|catapl[aá]s|til[ií]n|ach[ií]s|miau+|guau+|ring+|tic[ -]?tac|tac[ -]?tac|toc[ -]?toc|ding[ -]?dong)\b/giu,
+  en: /\b(?:boom+|bang+|crash+|crack+|click+|clack+|pop+|whoosh+|splash+|buzz+|beep+|brr+|grr+|woof+|meow+|achoo+|tick[ -]?tock|knock[ -]?knock|ding[ -]?dong)\b/giu,
 };
 
 const REUSABLE_SFX_PALETTE = [

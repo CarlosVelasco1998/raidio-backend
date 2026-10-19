@@ -200,6 +200,7 @@ test("elige fondos distintos para espacio, España y magia", () => {
 
 test("reconoce onomatopeyas habladas en español e inglés", () => {
   assert.equal(engine.countOnomatopoeias("¡Pum! La puerta hizo crac y se abrió.", "es"), 2);
+  assert.equal(engine.countOnomatopoeias("Fiuuu, pasó volando. Después: tac tac.", "es"), 2);
   assert.equal(engine.countOnomatopoeias("Boom! Then came a loud whoosh.", "en"), 2);
 });
 

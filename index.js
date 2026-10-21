@@ -341,6 +341,19 @@ async function initNarrationCache() {
 
 // ─── POOL DE PREGUNTAS DE QUIZ ───────────────────────────────────────────────
 const QUIZ_POOL_DIR = path.join(NARRATION_CACHE_DIR, "quiz-pool");
+const quizPoolWriteLocks = new Map();
+
+async function withPoolWriteLock(locks, key, task) {
+  const previous = locks.get(key) || Promise.resolve();
+  const run = previous.catch(() => {}).then(task);
+  const tail = run.catch(() => {});
+  locks.set(key, tail);
+  try {
+    return await run;
+  } finally {
+    if (locks.get(key) === tail) locks.delete(key);
+  }
+}
 
 async function initQuizPool() {
   await fs.mkdir(QUIZ_POOL_DIR, { recursive: true });
@@ -361,6 +374,18 @@ async function loadQuizPool(topic, difficulty, lang = "es") {
 
 async function saveQuizPool(topic, difficulty, pool, lang = "es") {
   await fs.writeFile(quizPoolFile(topic, difficulty, lang), JSON.stringify(pool));
+}
+
+async function appendQuizPoolQuestions(topic, difficulty, questions, lang = "es") {
+  const key = `${lang}|${topic}|${difficulty}`;
+  return withPoolWriteLock(quizPoolWriteLocks, key, async () => {
+    const latest = await loadQuizPool(topic, difficulty, lang);
+    for (const question of questions) {
+      if (!latest.some(existing => existing.id === question.id)) latest.push(question);
+    }
+    await saveQuizPool(topic, difficulty, latest, lang);
+    return latest.length;
+  });
 }
 
 function quizNormalize(value) {
@@ -410,6 +435,7 @@ function quizQuestionValid(question) {
 
 // ─── POOL DE ROSCOS (juego "El Rosco", estilo Pasapalabra) ───────────────────
 const ROSCO_POOL_DIR = path.join(NARRATION_CACHE_DIR, "rosco-pool");
+const roscoPoolWriteLocks = new Map();
 
 // Letras del rosco. ES: 25 letras sin K/W (incluye Ñ). EN: alfabeto A-Z.
 const ROSCO_LETTERS_ES = ["A","B","C","D","E","F","G","H","I","J","L","M","N","Ñ","O","P","Q","R","S","T","U","V","X","Y","Z"];
@@ -450,6 +476,16 @@ async function loadRoscoPool(difficulty, lang = "es") {
 
 async function saveRoscoPool(difficulty, pool, lang = "es") {
   await fs.writeFile(roscoPoolFile(difficulty, lang), JSON.stringify(pool));
+}
+
+async function appendRoscoPoolSet(difficulty, set, lang = "es") {
+  const key = `${lang}|${difficulty}`;
+  return withPoolWriteLock(roscoPoolWriteLocks, key, async () => {
+    const latest = await loadRoscoPool(difficulty, lang);
+    if (!latest.some(existing => existing.id === set.id)) latest.push(set);
+    await saveRoscoPool(difficulty, latest, lang);
+    return latest.length;
+  });
 }
 
 // Minúsculas sin acentos, PERO conservando la ñ (letra propia del rosco español).
@@ -657,6 +693,50 @@ Rules:
 ${avoid}`;
 }
 
+function buildRoscoFreshPrompt(targets, difficulty, existingAnswers = [], existingClues = [], isEN = false) {
+  const targetText = targets
+    .map(target => `${target.letter} (${target.mode === "contains" ? "contains" : "starts"})`)
+    .join(", ");
+  const answers = existingAnswers.map(roscoNormalize).filter(Boolean).slice(-90);
+  const clues = existingClues.map(roscoNormalize).filter(Boolean).slice(-50);
+  const avoidAnswers = answers.length
+    ? isEN
+      ? `\nDo not use any of these answers: ${answers.join(", ")}.`
+      : `\nNo uses ninguna de estas respuestas: ${answers.join(", ")}.`
+    : "";
+  const avoidClues = clues.length
+    ? isEN
+      ? `\nDo not repeat or lightly rephrase these clues: ${clues.join(" | ")}.`
+      : `\nNo repitas ni reformules ligeramente estas pistas: ${clues.join(" | ")}.`
+    : "";
+  const diff = isEN
+    ? (ROSCO_DIFFICULTY_EN[difficulty] || ROSCO_DIFFICULTY_EN.medium)
+    : (ROSCO_DIFFICULTY_ES[difficulty] || ROSCO_DIFFICULTY_ES.medium);
+
+  if (isEN) {
+    return `Create replacement entries for a word-ring game. Return ONLY a JSON array with EXACTLY one entry for each requested letter, in this order: ${targetText}.
+Schema: [{"letter":"A","mode":"starts","clue":"...","answer":"..."}]
+
+Rules:
+- English. Difficulty: ${diff}
+- The answer is one real, common word and must satisfy the requested start/contain mode.
+- The clue is a short, exact definition for which the answer is the single natural solution.
+- Never include the answer in the clue. Avoid obscure terms and ambiguous definitions.
+- Every answer and clue must be genuinely new. Check every pair before returning it.
+- Write numbers with words.${avoidAnswers}${avoidClues}`;
+  }
+  return `Crea entradas de sustitución para un rosco. Devuelve SOLO un array JSON con EXACTAMENTE una entrada por cada letra solicitada y en este orden: ${targetText}.
+Esquema: [{"letter":"A","mode":"starts","clue":"...","answer":"..."}]
+
+Reglas:
+- Español. Dificultad: ${diff}
+- La respuesta será una sola palabra real y conocida, y cumplirá el modo empieza/contiene solicitado.
+- La pista será una definición breve y exacta cuya solución natural sea únicamente esa respuesta.
+- La pista nunca contendrá la respuesta. Evita tecnicismos oscuros y definiciones ambiguas.
+- Cada respuesta y pista debe ser realmente nueva. Comprueba cada pareja antes de devolverla.
+- Escribe los números con palabras.${avoidAnswers}${avoidClues}`;
+}
+
 const TOPIC_PROMPTS = {
   cultura_general:    "cultura general",
   historia_espana:    "historia de España",
@@ -724,6 +804,58 @@ Rules:
 - Write numbers and Roman numerals as words for text-to-speech readability.
 - Difficulty: ${diff}
 - Topic: ${topicText}
+${avoid}`;
+}
+
+function parseJsonArray(raw, label = "response") {
+  const text = String(raw || "").trim().replace(/```json|```/g, "").trim();
+  const start = text.indexOf("[");
+  const end = text.lastIndexOf("]");
+  if (start === -1 || end === -1 || end <= start) {
+    throw new Error(`No JSON array in ${label}: ${text.slice(0, 200)}`);
+  }
+  const parsed = JSON.parse(text.slice(start, end + 1));
+  if (!Array.isArray(parsed)) throw new Error(`${label} is not an array`);
+  return parsed;
+}
+
+function buildQuizBatchPrompt(topicText, difficulty, count, existingQuestions = [], isEN = false) {
+  const diff = isEN
+    ? (DIFFICULTY_HINTS_EN[difficulty] || DIFFICULTY_HINTS_EN.medium)
+    : (DIFFICULTY_HINTS[difficulty] || DIFFICULTY_HINTS.medium);
+  const avoidItems = existingQuestions.filter(Boolean).slice(-35);
+  const avoid = avoidItems.length
+    ? isEN
+      ? `\nDo not repeat or rephrase these questions:\n- ${avoidItems.join("\n- ")}\n`
+      : `\nNo repitas ni reformules estas preguntas:\n- ${avoidItems.join("\n- ")}\n`
+    : "";
+  if (isEN) {
+    return `Create EXACTLY ${count} NEW and mutually different quiz questions. Return ONLY a valid JSON array, no markdown or extra text.
+Each item must use this exact schema: {"question":"...","options":["...","...","...","..."],"correct_index":0,"explanation":"..."}
+
+Rules:
+- English. Topic: ${topicText}. Difficulty: ${diff}
+- Exactly four distinct options and only one correct answer.
+- correct_index must be zero, one, two or three and should vary between questions.
+- One or two short, factual sentences in explanation.
+- Plausible but unambiguously wrong distractors.
+- Every question must test a different fact; do not create minor rewrites.
+- Write numbers and Roman numerals as words for text-to-speech.
+- Check every answer before returning the array.
+${avoid}`;
+  }
+  return `Crea EXACTAMENTE ${count} preguntas NUEVAS y distintas entre sí para un concurso. Devuelve SOLO un array JSON válido, sin markdown ni texto adicional.
+Cada elemento debe usar este esquema exacto: {"question":"...","options":["...","...","...","..."],"correct_index":0,"explanation":"..."}
+
+Reglas:
+- Español. Tema: ${topicText}. Dificultad: ${diff}
+- Exactamente cuatro opciones distintas y una sola respuesta correcta.
+- correct_index debe ser cero, uno, dos o tres y debe variar entre preguntas.
+- explanation tendrá una o dos frases breves y verificables.
+- Distractores plausibles, pero inequívocamente incorrectos.
+- Cada pregunta debe evaluar un dato diferente; no hagas reformulaciones.
+- Escribe los números y romanos con palabras para la lectura en voz alta.
+- Comprueba cada respuesta antes de devolver el array.
 ${avoid}`;
 }
 
@@ -1970,6 +2102,7 @@ app.post("/quiz/question", guardApp, async (req, res) => {
       usedQuestions = [],
       customTopic = "",
       lang = "es",
+      poolOnly = false,
     } = req.body || {};
 
     const isEN = lang === "en";
@@ -1997,6 +2130,12 @@ app.post("/quiz/question", guardApp, async (req, res) => {
         return res.json({ ...q, fromPool: true });
       }
       console.log(`🤖 Quiz MISS [${lang}]: generando para ${topic}/${difficulty} (pool:${pool.length} usadas:${usedIds.length})`);
+    }
+
+    // La app usa este modo como respaldo de carga rápida: si la generación
+    // fresca agotó su tiempo, nunca iniciamos otra llamada larga de IA.
+    if (poolOnly) {
+      return res.status(404).json({ error: "quiz_pool_empty" });
     }
 
     // Generar nueva pregunta con Claude
@@ -2043,9 +2182,9 @@ app.post("/quiz/question", guardApp, async (req, res) => {
     if (!isCustom) {
       // Añadir al pool evitando duplicados
       if (!pool.find(p => p.id === id)) {
-        pool.push(newQ);
-        saveQuizPool(topic, difficulty, pool, lang).catch(e => console.error("Error guardando quiz pool:", e.message));
-        console.log(`💾 Quiz SET [${lang}]: ${topic}/${difficulty} (pool size: ${pool.length})`);
+        appendQuizPoolQuestions(topic, difficulty, [newQ], lang)
+          .then(size => console.log(`💾 Quiz SET [${lang}]: ${topic}/${difficulty} (pool size: ${size})`))
+          .catch(e => console.error("Error guardando quiz pool:", e.message));
       }
     }
 
@@ -2053,6 +2192,78 @@ app.post("/quiz/question", guardApp, async (req, res) => {
   } catch (e) {
     console.error("❌ /quiz/question error:", e.message);
     res.status(500).json({ error: "quiz_question_failed", detail: e.message });
+  }
+});
+
+// Genera un pequeño lote nuevo al comienzo de cada partida. Cada pregunta
+// válida se incorpora inmediatamente al pool para reutilizarla como respaldo
+// en viajes futuros.
+app.post("/quiz/fresh-batch", guardApp, async (req, res) => {
+  try {
+    const {
+      topic = "cultura_general",
+      difficulty = "easy",
+      customTopic = "",
+      usedQuestions = [],
+      lang = "es",
+      count = 4,
+    } = req.body || {};
+    const requested = Math.max(3, Math.min(5, Number(count) || 4));
+    const isEN = lang === "en";
+    const isCustom = topic === "personalizado";
+    const prompts = isEN ? TOPIC_PROMPTS_EN : TOPIC_PROMPTS;
+    const topicText = isCustom
+      ? (String(customTopic).trim() || (isEN ? "general knowledge" : "cultura general"))
+      : (prompts[topic] || (isEN ? "general knowledge" : "cultura general"));
+    const storageTopic = isCustom
+      ? `personalizado_${narrationHash(topicText.toLowerCase())}`
+      : topic;
+    const pool = await loadQuizPool(storageTopic, difficulty, lang);
+    const sessionQuestions = Array.isArray(usedQuestions) ? usedQuestions.slice(-30) : [];
+    const existingQuestions = [...pool.map(question => question.question), ...sessionQuestions];
+
+    _rollSpendDay();
+    if (_claudeUsdToday >= CLAUDE_DAILY_USD_CAP) {
+      return res.status(503).json({ error: "Claude en pausa por hoy", provider: "claude" });
+    }
+
+    const prompt = buildQuizBatchPrompt(topicText, difficulty, requested, existingQuestions, isEN);
+    const result = await anthropic.messages.create({
+      model: MODEL_FAST,
+      max_tokens: 1800,
+      temperature: 0.55,
+      messages: [{ role: "user", content: prompt }],
+    }, { timeout: 22000, maxRetries: 0 });
+    logClaude(result, "quiz_fresh_batch", lang);
+
+    const parsed = parseJsonArray(result.content?.[0]?.text ?? "", "quiz fresh batch");
+    const accepted = [];
+    const comparisons = [...existingQuestions];
+    for (const candidate of parsed) {
+      if (accepted.length >= requested || !quizQuestionValid(candidate)) continue;
+      if (comparisons.some(previous => quizQuestionsSimilar(candidate.question, previous))) continue;
+      const id = narrationHash(`${lang}|${storageTopic}|${difficulty}|${candidate.question}`);
+      const question = {
+        id,
+        question: String(candidate.question).trim(),
+        options: candidate.options.map(option => String(option).trim()),
+        correct_index: candidate.correct_index,
+        explanation: String(candidate.explanation).trim(),
+        createdAt: new Date().toISOString(),
+        source: "fresh_game_batch",
+      };
+      accepted.push(question);
+      comparisons.push(question.question);
+    }
+
+    if (accepted.length > 0) {
+      await appendQuizPoolQuestions(storageTopic, difficulty, accepted, lang);
+      console.log(`✨ Quiz fresh [${lang}]: ${accepted.length}/${requested} guardadas en ${storageTopic}/${difficulty}`);
+    }
+    res.json({ questions: accepted, freshCount: accepted.length, requested, saved: accepted.length });
+  } catch (e) {
+    console.error("❌ /quiz/fresh-batch error:", e.message);
+    res.status(500).json({ error: "quiz_fresh_batch_failed", detail: e.message });
   }
 });
 
@@ -2171,15 +2382,112 @@ app.post("/rosco/set", guardApp, async (req, res) => {
     const set = { id, lang, difficulty, letters: entries, createdAt: new Date().toISOString() };
 
     if (!pool.find(p => p.id === id)) {
-      pool.push(set);
-      saveRoscoPool(difficulty, pool, lang).catch(e => console.error("Error guardando rosco pool:", e.message));
-      console.log(`💾 Rosco SET [${lang}]: ${difficulty} (pool:${pool.length}, letras:${entries.length})`);
+      appendRoscoPoolSet(difficulty, set, lang)
+        .then(size => console.log(`💾 Rosco SET [${lang}]: ${difficulty} (pool:${size}, letras:${entries.length})`))
+        .catch(e => console.error("Error guardando rosco pool:", e.message));
     }
 
     res.json({ ...set, fromPool: false });
   } catch (e) {
     console.error("❌ /rosco/set error:", e.message);
     res.status(500).json({ error: "rosco_set_failed", detail: e.message });
+  }
+});
+
+// Parte de un rosco completo y fiable, sustituye solo entre tres y cinco
+// letras con contenido recién creado y guarda el resultado híbrido en el pool.
+// Si la IA no devuelve al menos tres sustituciones válidas se conserva la base.
+app.post("/rosco/freshen", guardApp, async (req, res) => {
+  try {
+    const {
+      baseSet,
+      difficulty = "medium",
+      lang = "es",
+      freshCount = 4,
+      usedAnswers = [],
+      usedClues = [],
+    } = req.body || {};
+    const isEN = lang === "en";
+    const letters = isEN ? ROSCO_LETTERS_EN : ROSCO_LETTERS_ES;
+    if (!roscoSetValid(baseSet, letters)) {
+      return res.status(400).json({ error: "invalid_base_rosco" });
+    }
+
+    const requested = Math.max(3, Math.min(5, Number(freshCount) || 4));
+    const shuffled = [...baseSet.letters].sort(() => Math.random() - 0.5);
+    const targets = shuffled.slice(0, requested).map(entry => ({
+      letter: String(entry.letter).toUpperCase(),
+      mode: entry.mode === "contains" ? "contains" : "starts",
+    }));
+    const existingAnswers = [
+      ...baseSet.letters.map(entry => entry.answer),
+      ...(Array.isArray(usedAnswers) ? usedAnswers : []),
+    ];
+    const existingClues = [
+      ...baseSet.letters.map(entry => entry.clue),
+      ...(Array.isArray(usedClues) ? usedClues : []),
+    ];
+
+    _rollSpendDay();
+    if (_claudeUsdToday >= CLAUDE_DAILY_USD_CAP) {
+      return res.status(503).json({ error: "Claude en pausa por hoy", provider: "claude" });
+    }
+
+    const prompt = buildRoscoFreshPrompt(
+      targets,
+      difficulty,
+      existingAnswers,
+      existingClues,
+      isEN,
+    );
+    const result = await anthropic.messages.create({
+      model: MODEL_SMART,
+      max_tokens: 1200,
+      temperature: 0.4,
+      messages: [{ role: "user", content: prompt }],
+    }, { timeout: 22000, maxRetries: 0 });
+    logClaude(result, "rosco_fresh_entries", lang);
+
+    const targetLetters = targets.map(target => target.letter);
+    const generated = dedupeAndOrderRosco(
+      mapRoscoEntries(parseRoscoArray(result.content?.[0]?.text ?? "")),
+      targetLetters,
+    );
+    const blockedAnswers = new Set(existingAnswers.map(roscoNormalize).filter(Boolean));
+    const blockedClues = new Set(existingClues.map(roscoNormalize).filter(Boolean));
+    const fresh = generated.filter(entry =>
+      targetLetters.includes(entry.letter) &&
+      !blockedAnswers.has(roscoNormalize(entry.answer)) &&
+      !blockedClues.has(roscoNormalize(entry.clue))
+    );
+
+    if (fresh.length < 3) {
+      console.log(`🧩 Rosco fresh [${lang}]: solo ${fresh.length}/${requested}; se conserva la base`);
+      return res.json({ set: baseSet, freshCount: 0, requested, saved: false, fallback: true });
+    }
+
+    const replacements = new Map(fresh.map(entry => [entry.letter, entry]));
+    const mergedLetters = baseSet.letters.map(entry => replacements.get(entry.letter) || entry);
+    const id = narrationHash(`${lang}|${difficulty}|${mergedLetters.map(entry => entry.answer).join(",")}`);
+    const hybrid = {
+      id,
+      lang,
+      difficulty,
+      letters: mergedLetters,
+      createdAt: new Date().toISOString(),
+      source: "hybrid_fresh",
+      freshLetters: [...replacements.keys()],
+    };
+    if (!roscoSetValid(hybrid, letters)) {
+      throw new Error("El rosco híbrido no superó la validación final");
+    }
+
+    const poolSize = await appendRoscoPoolSet(difficulty, hybrid, lang);
+    console.log(`✨ Rosco fresh [${lang}]: ${fresh.length}/${requested} letras guardadas (pool:${poolSize})`);
+    res.json({ set: hybrid, freshCount: fresh.length, requested, saved: true, fallback: false });
+  } catch (e) {
+    console.error("❌ /rosco/freshen error:", e.message);
+    res.status(500).json({ error: "rosco_freshen_failed", detail: e.message });
   }
 });
 

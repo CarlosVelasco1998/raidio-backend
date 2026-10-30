@@ -1999,7 +1999,7 @@ function truncarPreservandoSecciones(text, maxWords, requiredMarkers) {
   return [cleanBody, cleanTail].filter(Boolean).join("\n\n").trim();
 }
 
-const BODY_WORDS_BY_NIVEL = { poco: 80, normal: 130, mucho: 180 };
+const BODY_WORDS_BY_NIVEL = { poco: 80, normal: 150, mucho: 180 };
 
 function maxWordsNarracion({ nivel, temas, liveEvents, prompt }) {
   const activos = new Set(Array.isArray(temas) ? temas.filter(Boolean) : []);

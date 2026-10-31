@@ -3,7 +3,7 @@
 // Provincias: Madrid, Toledo, Ciudad Real, Jaén, Granada
 //
 // ✅ Generado automáticamente desde Excel. NO EDITAR A MANO.
-//    Fuente: pois.xlsx
+//    Fuente: pois_engineering_madrid_candidate.xlsx
 
 export const POIS = [
 
@@ -52,6 +52,109 @@ export const POIS = [
     eventos: [
       {
         "titulo": "id, titulo, descripcion, startDate, endDate, importancia"
+      }
+    ],
+    sub_pois: [
+      {
+        "id": "es_mad_capital_torres_kio_ingenieria",
+        "nombre": "las Torres KIO de Madrid",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La construcción de las torres exigió un retranqueo de la alineación de la edificación respecto a la calle para liberar el espacio subterráneo ocupado por las infraestructuras de la estación e intercambiador de metro de Plaza de Castilla. Los arquitectos aprovecharon esta limitación de espacio en parcela para plantear la inclinación de los edificios hacia la avenida.",
+          "Autoría y equipos: El diseño arquitectónico corrió a cargo de los estadounidenses Philip Johnson y John Burgee, promovido por Kuwait Investment Office. La ingeniería de estructuras fue realizada por Leslie E. Robertson Associates (LERA) y la ejecución de la obra principal fue contratada a la constructora española Fomento de Construcciones y Contratas (FCC).",
+          "Dimensiones y magnitudes: Cada una de las dos torres gemelas tiene una altura de 114 metros, 26 plantas sobre rasante y una inclinación simétrica hacia el Paseo de la Castellana de 14,3 grados respecto a la vertical, lo que genera un vuelo continuo del extremo superior de aproximadamente 30 metros desde su base.",
+          "Sistema estructural: El sistema resistente combina un núcleo rígido vertical de hormigón armado para la circulación vertical, una malla metálica perimetral triangulada en fachada que absorbe los esfuerzos cortantes y de flexión, y un sistema de pretensado posterior con tirantes de acero anclados en la cimentación opuesta.",
+          "Cimentación: Para contrarrestar el par de vuelco originado por la inclinación, la cimentación integra bajo la fachada trasera inclinada contrapesos de hormigón masivo anclados mediante cables de acero de alta resistencia que transmiten las tracciones al terreno y compensan el desequilibrio de cargas.",
+          "Reto y solución: El principal reto estructural consistió en equilibrar las deformaciones y esfuerzos de flexión provocados por el peso propio en voladizo. Para resolverlo se dispuso un sistema de postesado de acero de alta resistencia que tira del borde superior posterior de la estructura y deriva las cargas centradas hacia el núcleo y los cimientos.",
+          "Proceso constructivo: Durante la ejecución del esqueleto metálico inclinado, el núcleo de hormigón armado se erigió primero actuando como eje vertical sustentante provisional mediante el atirantado continuo del marco de acero perimetral a medida que el edificio ganaba altura."
+        ],
+        "fuentes": [
+          "https://es.wikipedia.org/wiki/Puerta_de_Europa",
+          "https://www.archdaily.com/172633/architecture-classics-puerta-de-europa-philip-johnson-john-burgee",
+          "https://www.hormigonyacero.com/index.php/ache/article/view/528",
+          "https://blogs.upv.es/vyeper/2014/03/19/construccion-de-las-torres-puerta-de-europa-de-madrid/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-10-31T09:17:32.173591+00:00"
+      },
+      {
+        "id": "es_mad_capital_cuatro_torres_ingenieria",
+        "nombre": "las Cuatro Torres de Madrid",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: El complejo Cuatro Torres Business Area responde al plan de reordenación urbanística sobre los terrenos de la antigua Ciudad Deportiva del Real Madrid al norte del Paseo de la Castellana. El objetivo fue concentrar edificabilidad mediante rascacielos exentos sobre una gran plaza pública unificada de cota cero con accesos subterráneos.",
+          "Autoría y equipos: Torre Emperador Castellana fue diseñada por Henry N. Cobb (Pei Cobb Freed & Partners) y RFA Arquitectura con ingeniería de MC-2. Torre de Cristal por César Pelli con Ortiz-León e ingeniería de Thornton Tomasetti. Torre PwC por Carlos Rubio y Enrique Álvarez-Sala con MC-2, y Torre Moeve por Norman Foster con Buro Happold y Bellido & Martí.",
+          "Sistema estructural: Las torres difieren en el esquema de rigidez horizontal. Torre Espacio, Torre de Cristal y Torre PwC basan su resistencia en un núcleo central monolítico de hormigón armado. En contraste, Torre Moeve traslada la rigidez lateral a dos núcleos periféricos exteriores unidos por vigas Vierendeel, dejando las plantas libres de soportes interiores.",
+          "Materiales: Para optimizar la sección vertical y resistir grandes compresiones, en elementos críticos como los pilares inferiores de Torre Espacio y Torre de Cristal se prescribió hormigón autocompactante de alta resistencia HAC-100 u HA-80, combinado con forjados de losa maciza o vigas metálicas mixtas tipo IFB.",
+          "Dimensiones y magnitudes: El conjunto alcanza alturas comprendidas entre 224 metros y 249 metros. Torre de Cristal es el edificio más alto del complejo con 249 metros y 50 plantas sobre rasante, seguida por Torre Moeve con 248 metros y 45 plantas, Torre PwC con 236 metros y 58 plantas, y Torre Espacio con 224 metros y 57 plantas.",
+          "Cimentación: Dado el terreno arcilloso de Madrid y las intensas cargas concentradas, los edificios emplean una losa masiva de cimentación de hormigón armado de gran espesor, apoyada sobre muretes pantalla perimetrales profundos que contienen el vaciado subterráneo de hasta seis niveles de sótano a unos 19 metros de profundidad.",
+          "Reto y solución: La geometría de Torre Espacio cambia de planta cuadrada en base a romboide curvado en coronación, lo que obligaba a mover la posición de los pilares. La solución estructural incorporó un cinturón de rigidez (outrigger) con hormigón HA-80 bombeado a 130 metros de altura para conectar monolíticamente el núcleo con el perímetro.",
+          "Proceso constructivo: El avance de las obras exigió sistemas de encofrado trepante y autotrepante hidráulico para elevar los núcleos rígidos de hormigón de forma continua. El hormigonado en altura precisó bombeo vertical de alta presión capaz de impulsar mezclas de alta resistencia hasta cotas superiores a los doscientos veinte metros."
+        ],
+        "fuentes": [
+          "https://polired.upm.es/index.php/estructura_proyecto_arquitectura/es/article/view/3021",
+          "https://es.wikipedia.org/wiki/Cuatro_Torres_Business_Area",
+          "https://www.jmhdezhdez.com/2013/01/torre-espacio-madrid-arquitecto-ctba.html",
+          "https://www.archdaily.com/es/02-13974/en-construccion-complejo-financiero-cuatro-torres-business-area",
+          "https://www.caminoscastillayleon.es/wp-content/uploads/2017/11/Torre20Espacio.pdf",
+          "https://es.wikiarquitectura.com/edificio/torre-espacio/",
+          "https://www.ersigroup.com/project/torre-de-cristal/",
+          "https://es.wikipedia.org/wiki/Torre_de_Cristal",
+          "https://es.wikiarquitectura.com/edificio/torre-cepsa-torre-foster/",
+          "https://www.dragados.com/nuestra-experiencia/nuestros-proyectos/torre-de-cristal"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-10-31T09:17:32.173769+00:00"
+      },
+      {
+        "id": "es_mad_capital_torres_colon_ingenieria",
+        "nombre": "las Torres de Colón",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La adopción de una estructura suspendida respondió a la exigencia de maximizar el espacio útil en las seis plantas de aparcamiento subterráneo. Eliminar los pilares perimetrales convencionales en los sótanos optimizó la distribución del solar, de dimensiones muy reducidas e irregulares en la plaza de Colón.",
+          "Autoría y equipos: El proyecto fue diseñado por el arquitecto Antonio Lamela a través de su firma Estudio Lamela. El cálculo estructural y la ingeniería del sistema suspendido corrieron a cargo de la consultora C. Fernández Casado S.A., integrada por los ingenieros de caminos Carlos Fernández Casado, Javier Manterola y Leonardo Fernández Troyano, con la empresa Huarte y Cía. como constructora principal.",
+          "Sistema estructural: El camino de cargas transfiere el peso de los 21 forjados suspendidos hacia los 18 tirantes perimetrales situados en la fachada. Estos tirantes cuelgan de una estructura de cabeza de hormigón armado postensado situada en la coronación, la cual deriva la totalidad de la carga vertical hacia el núcleo central vertical, descendiendo finalmente a la cimentación.",
+          "Sistema estructural: La estructura de cabeza en la cima de cada torre está compuesta por cuatro vigas radiales de hormigón armado postensado con cantos variables de 3 a 5 metros sobre los muros del núcleo central, y por cuatro vigas perimetrales de atado de 3 metros de canto de las que se suspenden los tirantes.",
+          "Proceso constructivo: El proceso constructivo comenzó con la elevación del núcleo central de hormigón mediante encofrados deslizantes. Una vez completado el núcleo y hormigonada la cabeza de coronación, la construcción de las plantas sobre rasante procedió de arriba hacia abajo utilizando una cimbra móvil colgada que descendió sucesivamente.",
+          "Materiales: Los tirantes exteriores se realizaron mediante piezas prefabricadas huecas de hormigón que alojaban cables de acero de alta resistencia en su interior. Una vez posicionados y finalizada la suspensión de los forjados, los cables se tensionaron desde la cabeza en dos etapas y se inyectaron con lechada para garantizar su protección anticorrosiva.",
+          "Reto y solución: Para evitar tensiones excesivas sobre las piezas de hormigón de los tirantes durante el montaje y hormigonado descendente de los forjados, se aplicó un tesado por etapas en las armaduras activas de acero. Esto permitió equilibrar las variaciones de carga introducidas a medida que se suspendía cada nueva planta.",
+          "Dimensiones y magnitudes: Cada losa de planta tipo consiste en una placa continua de hormigón de 25 cm de grosor aligerada mediante casetones de plástico. El forjado se apoya en su borde interior sobre el núcleo central mediante ménsulas metálicas soldadas a chapas embebidas durante el deslizamiento del núcleo."
+        ],
+        "fuentes": [
+          "https://informesdelaconstruccion.revistas.csic.es/index.php/informesdelaconstruccion/article/view/2644",
+          "https://cdn.website-editor.net/1fb3f7999fd74b71b70204e10e2c537c/files/uploaded/1-TORRES%2520COL%25C3%2593N.pdf",
+          "https://es.wikipedia.org/wiki/Torres_de_Col%C3%B3n",
+          "https://es.scribd.com/document/545922000/Informe-de-la-construccion-293-1977-Torre-colon",
+          "https://www.caminosmadrid.es/torres-colon-pasado-presente-y-futuro",
+          "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF78GcgOf_6iWtZuvIKZ8z0txxloj2wIXmp61xydr7B5432QaSC7EELsZaDppbIABSB4EK6ztBGs7CEmwPEScTm8k08rtd5e_LxrcYpAqWaDbdlcVGvvr6wFXD4Ky1Z2_pK4z4S_R785JauRqHQbW-rsd17DPQE-CWQ8navju3P7Wk3qZUxq9ignus=",
+          "https://informesdelaconstruccion.revistas.csic.es/index.php/informesdelaconstruccion/article/view/2643"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-10-31T09:17:32.409050+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/madrid.png",

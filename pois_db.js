@@ -3,7 +3,7 @@
 // Provincias: Madrid, Toledo, Ciudad Real, Jaén, Granada
 //
 // ✅ Generado automáticamente desde Excel. NO EDITAR A MANO.
-//    Fuente: pois_engineering_national_candidate.xlsx
+//    Fuente: pois.xlsx
 
 export const POIS = [
 
@@ -155,6 +155,39 @@ export const POIS = [
         ],
         "gemini_modelo": "gemini-3.6-flash",
         "gemini_fecha": "2026-10-31T09:17:32.409050+00:00"
+      },
+      {
+        "id": "es_mad_bernabeu_reforma_ingenieria",
+        "nombre": "la transformación del estadio Santiago Bernabéu",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La remodelación responde a la necesidad de transformar un estadio de mediados del siglo XX en un espacio multifuncional rentable los 365 días del año, manteniendo la actividad deportiva y la evacuación de espectadores durante las obras en un entorno urbano denso.",
+          "Autoría y equipos: El diseño conceptual fue desarrollado por la UTE compuesta por los estudios gmp Architekten, L35 Arquitectos y Ribas & Ribas Arquitectos, la ingeniería TYPSA redactó el proyecto de ejecución, la ingeniería SENER concibió y patentó el sistema del césped retráctil Hypogea y FCC Construcción actuó como constructora principal.",
+          "Sistema estructural: La cubierta fija soporta sus cargas sobre una estructura de acero independiente de más de 9000 toneladas compuesta por dos cerchas atirantadas longitudinales de 177 metros de luz y cuatro transversales de 144 metros que descargan sobre torres de hormigón exteriores para no sobrecargar el estadio histórico.",
+          "Dimensiones y magnitudes: El sistema de cubierta retráctil cubre una superficie de 8000 metros cuadrados mediante dos paneles móviles configurados por 12 cerchas de 72,5 metros de luz con cordones de composite híbrido y cojines inflables de tejido de PTFE recubierto de fluoropolímero.",
+          "Cómo funciona: El terreno de juego se divide en 6 bandejas móviles de 105 metros de largo por 11,6 metros de ancho y aproximadamente 1500 toneladas de peso cada una, que se desplazan mediante carros sobre raíles y se descienden a la cueva subterránea.",
+          "Reto y solución: Al no poder desplazar el césped fuera del estadio por situarse en pleno casco urbano, SENER resolvió la conservación del césped alojándolo en el Hipogeo, una cueva subterránea de 30 metros de profundidad dotada de climatización, riego, iluminación led de crecimiento y ventilación forzada.",
+          "Materiales: La nueva fachada continua está ejecutada con lamas curvadas de acero inoxidable con tratamiento superficial reflectante difuso montadas sobre subestructuras auxiliares, proporcionando protección atmosférica e integración estética al volumen exterior del estadio.",
+          "Proceso constructivo: La secuencia constructiva se ejecutó bajo una metodología fast-track organizada en más de 40 subproyectos interconectados desarrollados íntegramente en modelos BIM, coordinando las maniobras de gran tonelaje mediante maniobras de izado por cables durante los parones del calendario deportivo."
+        ],
+        "fuentes": [
+          "https://www.typsa.com/proyectos/estadio-santiago-bernabeu/",
+          "https://www.group.sener/proyecto/sistema-cesped-retractil-hypogea",
+          "https://www.allplan.com/es/referencias/nuevo-estadio-santiago-bernabeu/",
+          "https://www.hormigonyacero.com/index.php/ache/article/view/3995",
+          "https://talat.es/hipogeo-santiago-bernabeu-la-joya-de-ingenieria/",
+          "https://www.l35.com/proyecto/estadio-santiago-bernabeu.html"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.649971+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/madrid.png",
@@ -570,6 +603,40 @@ export const POIS = [
     intereses: ["Ingeniería: Con 28,4 kilómetros de longitud, este túnel ferroviario de alta velocidad es el más largo de España, el cuarto más largo de Europa y el octavo del mundo.", "Ingeniería: A la mitad de su recorrido alberga una sala de emergencia estanca de 500 metros de longitud, conectada a ambos tubos y con capacidad para refugiar a 1200 personas.", "Ingeniería: Fue el primer túnel ferroviario de alta velocidad del mundo construido sin ataques intermedios, perforándose íntegramente desde las dos bocas exteriores mediante grandes tuneladoras de doble escudo.", "Ingeniería: Atraviesa la sierra por debajo del pico Peñalara, donde alcanza su máxima cobertura geológica con una capa de 992 metros de granito y gneis sobre la bóveda.", "28km_tunel_ferroviario_mas_largo_españa_6o_europa_9o_mundo", "dos_tubos_paralelos_diametro_9_5m", "profundidad_maxima_992m_bajo_sierra", "AVE_madrid_valladolid_1219_millones_euros", "5_tuneladoras_trabajando_simultaneamente", "granito_y_gneis_perforado_con_explosivos_y_TBM"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_mad_tuneles_guadarrama_ave_ingenieria",
+        "nombre": "la perforación de los túneles ferroviarios de Guadarrama",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La construcción del doble tubo del Túnel de Guadarrama se proyectó para salvar la barrera geográfica del Sistema Central en la línea de alta velocidad Madrid-Segovia-Valladolid, garantizando parámetros para velocidades de hasta 350 km/h y reduciendo drásticamente los tiempos de viaje entre la capital y el norte peninsular.",
+          "Autoría y equipos: El Administrador de Infraestructuras Ferroviarias (ADIF) adjudicó el proyecto y control de la infraestructura dividiéndola en lotes, contando con la ingeniería TYPSA para la supervisión técnica y empresas como Dragados, FCC y Sacyr en las Unidades Temporales de Empresa encargadas de la excavación.",
+          "Dimensiones y magnitudes: La obra consta de dos tubos independientes de 28,4 km de longitud cada uno, separados 30 metros entre sus ejes principales, que alcanzan una montera o profundización máxima de cobertura de 992 metros bajo la garganta del macizo del Pico Peñalara.",
+          "Proceso constructivo: La perforación se realizó mediante cuatro tuneladoras de tipo doble escudo telescopico, con un diámetro de excavación de 9,51 metros y un peso de 1.800 toneladas cada una, extrayendo más de cuatro millones de metros cúbicos de terreno excavado.",
+          "Sistema estructural: Cada uno de los tubos dispone de un revestimiento estructural definitivo con un diámetro interior libre de 8,50 metros, ejecutado mediante la colocación sistemática e industrializada de anillos de dovelas de hormigón armado de 32 cm de grosor.",
+          "Materiales: Los anillos de revestimiento están compuestos por piezas prefabricadas dotadas de juntas de neopreno en su contorno para garantizar la estanqueidad hidráulica frente a las presiones de agua subterránea de la sierra y soportar el empuje de las rocas ígneas y metamórficas.",
+          "Reto y solución: Para evitar alterar los acuíferos y zonas protegidas en la superficie de la Sierra de Guadarrama, la obra eliminó los pozos de ataque intermedios habituales en este tipo de longitudes y completó la perforación exclusivamente a partir de las dos bocas extremas.",
+          "Cómo funciona: Ambos tubos se interconectan estructuralmente mediante 58 galerías trasversales de evacuación situadas a intervalos de 250 metros y albergan en su zona central una gran sala subterránea de emergencias equipada con sistemas de sobrepresión de aire y capacidad para 1.200 personas."
+        ],
+        "fuentes": [
+          "https://www.adifaltavelocidad.es/linea-madrid-valladolid-tunel-de-guadarrama",
+          "https://www.dragados.com/proyectos/tuneles-guadarrama",
+          "https://www.ciudadfcc.com/tunel-de-guadarrama",
+          "https://www.typsa.com/proyectos/tuneles-ferroviarios-de-alta-velocidad-bajo-la-sierra-de-guadarrama/",
+          "https://www.ersigroup.com/proyectos/tuneles-de-guadarrama/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.650347+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/tunel-de-guadarrama-el-mas-largo-de-espana.png",
   },
 
@@ -590,6 +657,40 @@ export const POIS = [
     intereses: ["Ingeniería: Para excavar los túneles del Bypass Sur se diseñaron y construyeron dos tuneladoras gemelas, bautizadas Dulcinea y Tizona. Con más de quince metros de diámetro, fueron en su momento las tuneladoras más grandes del mundo.", "Ingeniería: El túnel tiene un diseño de doble nivel: la parte superior alberga los tres carriles de circulación rodada y la parte inferior aloja un nivel subterráneo independiente exclusivo para el paso y maniobra de vehículos de emergencia.", "Ingeniería: Las chimeneas de ventilación del subterráneo están equipadas con un sistema de filtrado de alta tecnología capaz de retener hasta el noventa por ciento de las partículas en suspensión emitidas por los vehículos.", "Curiosidad: El soterramiento del tráfico del arco sur eliminó la barrera de asfalto que separaba la ciudad del río Manzanares, permitiendo la creación en superficie del gran parque urbano Madrid Río.", "Historia: El proyecto técnico de soterramiento de la M-30 entre 2003 y 2007 estuvo dirigido por el ingeniero de caminos Manuel Melis Maynar, catedrático que coordinó la compleja ejecución técnica de la obra.", "7844m_mayor_tunel_urbano_espana", "dos_tubos_3_carriles_cada_uno_bajo_rio_manzanares", "soterramiento_m30_3900_millones_euros_2007", "transformó_ribera_manzanares_en_parque_madrid_rio", "premio_obra_civil_mejor_mundo_2009_ICE"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_mad_bypass_m30_construccion_ingenieria",
+        "nombre": "cómo se construyó el bypass sur de la M treinta",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: El Bypass Sur se proyectó para canalizar el tráfico directo de circunvalación este-oeste entre el enlace con la A-3 (Avenida del Mediterráneo) y la autovía A-42 (Paseo de Santa María de la Cabeza), descongestionando el saturado Nudo Sur de la M-30 por el que transitaban más de 250.000 vehículos diarios.",
+          "Autoría y equipos: La ingeniería TYPSA proyectó la infraestructura con Sofía Abajo González como autora del proyecto, bajo la dirección de obra del ingeniero Jorge Presa Matilla (Madrid Calle 30), mientras que la ejecución del Túnel Norte la realizó la UTE liderada por Acciona y Ferrovial Agroman, y el Túnel Sur la UTE compuesta por Dragados y FCC.",
+          "Dimensiones y magnitudes: La infraestructura consta de dos túneles gemelos unidireccionales de aproximadamente 4.200 metros de longitud total cada uno, excavados mediante tuneladoras en secciones circulares de 15,20 metros de diámetro de excavación para proporcionar un ancho útil interior de calzada de 13,45 metros con 3 carriles de 3,5 metros.",
+          "Materiales: El revestimiento estructural primario se ejecutó mediante anillos formados por dovelas prefabricadas de hormigón armado de 0,60 metros de espesor y 2,00 metros de anchura, sobre las cuales se instala un forjado intermedio de placas prefabricadas pretensadas que divide transversalmente el tubo en dos compartimentos funcionales independientes.",
+          "Sistema estructural: El sistema resistente estructural confía el soporte de las presiones del terreno a los anillos tubulares de dovelas, mientras que el peso del tráfico se soporta en el forjado intermedio central sostenido mediante ménsulas laterales de hormigón construidas in situ, liberando el espacio inferior como túnel técnico de emergencias y servicios.",
+          "Proceso constructivo: Para excavar los 3.600 metros en mina de cada tubo se emplearon dos tuneladoras de escudo EPB (Earth Pressure Balance) gigantes de 15,20 metros de diámetro de corte bautizadas como 'Dulcinea' y 'Tizona', las cuales alcanzaron rendimientos máximos de avance de hasta 46 metros diarios empujándose contra las dovelas precolocadas.",
+          "Reto y solución: El reto de perforar bajo 40 edificios urbanos y 6 infraestructuras de transporte activas (líneas de Metro 1, 3 y 6, Cercanías y AVE) con monteras variables de 23 a 75 metros se resolvió controlando de forma continua la presión de tierras en la cámara de excavación de los escudos EPB para evitar asientos en superficie.",
+          "Cómo funciona: El túnel integra un elevado nivel de seguridad mediante 13 galerías peatonales transversales de evacuación cada 200 metros, 5 galerías de conexión para vehículos cada 600 metros y un sistema de ventilación de alta tecnología con filtrado capaz de retener el 80% de las partículas contaminantes producidas por el tráfico."
+        ],
+        "fuentes": [
+          "https://www.coam.org/media/Default%20Files/fundacion/biblioteca/revista-arquitectura-100/2008-2012/docs/revista-articulos/revista-arquitectura-2010-n359-pag08-15.pdf",
+          "https://www.acciona.com/es/proyectos/tunel-norte-bypass-sur-m-30-madrid",
+          "https://azierta.es/proyectos/by-pass-sur-m-30/",
+          "https://www.belsanconstruccion.com/tuneles/bypass-sur-m-30-madrid/",
+          "https://www.acta.es/medios/articulos/automocion_y_transporte/040047.pdf"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.650219+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bypass-sur-m-30-el-mayor-tunel-urbano-de-espana.png",
   },
 
@@ -905,6 +1006,39 @@ export const POIS = [
         "lat": 39.959,
         "lng": -4.8241,
         "radio": 2000
+      },
+      {
+        "id": "es_tol_puente_castilla_mancha_ingenieria",
+        "nombre": "el Puente de Castilla-La Mancha de Talavera",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La infraestructura se proyectó para cerrar la circunvalación de la Ronda Sur de Talavera de la Reina cruzando el brazo principal del río Tajo sin colocar pilas intermedias en el lecho fluvial para evitar afecciones medioambientales.",
+          "Autoría y equipos: El proyecto fue redactado por Estudio AIA bajo la dirección del ingeniero Ramón Sánchez de León, mientras que la construcción fue ejecutada por la UTE formada por Sacyr, Aglomancha y Jesús Bárcenas, con apoyo de MC2 Estudio de Ingeniería en el control del atirantamiento.",
+          "Dimensiones y magnitudes: La estructura salvaguarda el brazo del río con un único vano atirantado de 318 metros de luz sin apoyos intermedios y un pilono inclinado que alcanza una altura total de 192 metros sobre el terreno (174 metros sobre el tablero).",
+          "Sistema estructural: El sistema estructural consta de un pilono inclinado 22,5 grados respecto a la vertical hacia la zona posterior para compensar parte del peso propio del tablero de 36 metros de anchura mediante descomposición vectorial de esfuerzos.",
+          "Sistema estructural: La suspensión del puente se sostiene mediante un total de 152 cables distribuidos en cuatro familias (dos planos delanteros y dos traseros de retenida) con tirantes cuya longitud máxima alcanza los 400 metros.",
+          "Cimentación: La cimentación principal bajo el mástil se compone de un encepado masivo de hormigón armado de 36 metros de longitud, 32 metros de anchura y 6 metros de canto, apoyado sobre 56 pilotes de 2,5 metros de diámetro penetrando 30 metros de profundidad.",
+          "Materiales: Se empleó hormigón blanco de alta resistencia característica entre 70 MPa y 80 MPa en el mástil y el tablero para reducir secciones, junto con un cajón interno de acero cortén S-355 de 135 metros de longitud como encofrado y refuerzo estructural.",
+          "Reto y solución: Para transferir la enorme fuerza concentrada de los tirantes de retenida al terreno de forma segura sin volcar, se construyeron dos grandes bloques o muertos de anclaje de hormigón de 65 metros de longitud que trabajan mediante contrapeso por su propio peso.",
+          "Proceso constructivo: Para evitar juntas frías y discontinuidades en el elemento crítico de cimentación, se ejecutó un vertido continuo de hormigón sobre el encepado principal sin interrupción durante 70 horas."
+        ],
+        "fuentes": [
+          "https://estudioaia.com/proyecto/puente-de-castilla-la-mancha-atirantado-de-talavera/",
+          "https://www.mc2.es/proyecto/proceso-de-atirantamiento-del-puente-de-castilla-la-mancha-en-talavera-de-la-reina/",
+          "https://www.ersigroup.com/obras/puente-atirantado-de-talavera/",
+          "http://puentesyobrasdearte.blogspot.com/2012/03/comportamiento-y-calculo-del-pilono.html",
+          "http://puentesyobrasdearte.blogspot.com/2012/03/cimentaciones-y-muertos-de-anclaje.html"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.858670+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/murallas-y-torres-de-talavera-de-la-reina.png",
@@ -4259,6 +4393,41 @@ export const POIS = [
     intereses: ["Cultura: Joaquín Sorolla concluyó en Ayamonte en junio de 1919 su célebre lienzo «La pesca del atún», pintura perteneciente a la serie «Visión de España» encargada por la Hispanic Society of America para su sede en Nueva York.", "Ingeniería: Inaugurado en 1991 y diseñado por el ingeniero José Luis Cancio Martins, el Puente Internacional del Guadiana mide 666 metros de longitud. Su pilar en el lado español se apoya sobre una isla artificial construida en el lecho del río.", "Historia: Tres vecinos de Ayamonte —González de Aguilar, Juan de Zamora y Rodrigo de Xerez— integraron la tripulación de Cristóbal Colón en el viaje del Descubrimiento de América en 1492.", "Curiosidad: Tras el devastador terremoto y maremoto de Lisboa de 1755, el Cabildo secular y el clero nombraron a la Virgen de las Angustias como patrona oficial de Ayamonte en enero de 1756 en acción de gracias por la salvación de la villa.", "guadiana", "frontera", "portugal", "a49", "estuario"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_hue_puente_internacional_guadiana_ingenieria",
+        "nombre": "el Puente Internacional del Guadiana",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La infraestructura se proyectó para suprimir el cruce en transbordadores entre Ayamonte y Vila Real de Santo António, eliminando rodeos por carretera de hasta 200 kilómetros y conectando la autovía española A-49 con la autoestrada portuguesa A-22.",
+          "Autoría y equipos: El diseño estructural fue realizado por el ingeniero portugués José Luis Cancio Martins, mientras que la ejecución de la obra recayó en un consorcio de construcción hispano-portugués integrado por las empresas Huarte S.A. y Teixeira Duarte.",
+          "Sistema estructural: Se trata de una estructura atirantada continua de 666 metros de longitud total, dividida en cinco vanos con luces de 36, 135, 324, 135 y 36 metros, donde el vano central de 324 metros sostiene el cruce sobre el estuario.",
+          "Cimentación: Las pilas principales en el cauce se sustentaron sobre 2.200 metros lineales de pilotes profundos de 2 metros de diámetro, mientras que las pilas menores y los estribos se cimentaron directamente mediante zapatas superficiales en los márgenes.",
+          "Dimensiones y magnitudes: El tablero de hormigón y acero posee una anchura de 18 metros con 4 carriles de circulación, suspendido por 128 tirantes distribuidos en 16 parejas a cada lado de dos pilonos principales que alcanzan 100 metros de altura.",
+          "Proceso constructivo: Las obras tuvieron una duración de 42 meses de ejecución continua y requirieron la participación de unos 300 trabajadores para realizar los trabajos en el cauce del río mediante medios auxiliares marinos y grúas de gran tonelaje.",
+          "Reto y solución: El proyecto resolvió el cruce sobre el estuario sin obstaculizar el paso marítimo situando el tablero a 20 metros de gálibo vertical libre sobre el nivel del río Guadiana a 2 kilómetros de su desembocadura.",
+          "Cómo funciona: La rehabilitación integral del sistema de atirantado y pilonos de 100 metros exigió instalar 460 toneladas de andamios multidireccionales provistos de pórticos de protección para ejecutar las labores bajo fuertes vientos sin cortar el tráfico."
+        ],
+        "fuentes": [
+          "https://www.transportes.gob.es/el-ministerio/sala-de-prensa/blog/puente-internacional-sobre-el-rio-guadiana-entre-huelva-y-el-algarve",
+          "https://www.juntadeandalucia.es/cultura/archivos/web/guest/ahpHuelva/documento_del_mes?idItem=-1&idElemento=1040523",
+          "https://www.caminosnaturales.es/recursos/mapa/pt-internacional-guadiana",
+          "https://www.vecinadelpicasso.wordpress.com/2021/08/30/puente-internacional-del-guadiana/",
+          "https://huelvabuenasnoticias.com/2021/08/31/tres-decadas-de-un-puente-que-lo-cambio-todo-en-las-relaciones-de-huelva-con-portugal/",
+          "https://www.ulmaconstruction.com/es/proyectos/rehabilitacion-mantenimiento/puente-internacional-guadiana-portugal/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.858278+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ayamonte.png",
   },
 
@@ -5234,6 +5403,38 @@ export const POIS = [
         ],
         "gemini_modelo": "gemini-3.6-flash",
         "gemini_fecha": "2026-10-31T10:04:31.112767+00:00"
+      },
+      {
+        "id": "es_sev_puente_centenario_ingenieria",
+        "nombre": "el Puente del Centenario y su ampliación",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La construcción del puente del Centenario se impulsó a finales de la década de 1980 para integrar la autovía de circunvalación SE-30 de Sevilla y salvar la dársena portuaria del río Guadalquivir de cara a la Exposición Universal de 1992, garantizando un elevado gálibo para el tráfico marítimo del puerto.",
+          "Autoría y equipos: El diseño original del puente atirantado fue redactado por los ingenieros de caminos José Antonio Fernández Ordóñez y Julio Martínez Calzón.",
+          "Dimensiones y magnitudes: El tramo atirantado del viaducto abarca cinco vanos distribuidos en luces de 48 m, 102 m, 265 m en el vano principal sobre el canal, 102 m y 48 m, sumando 565 metros de estructura atirantada continua.",
+          "Sistema estructural: La infraestructura alcanza una altura total de 120 metros en sus dos pilonos principales de hormigón y ofrece un gálibo vertical libre para la navegación marítima de 45 metros sobre el canal Alfonso XIII.",
+          "Sistema estructural: El sistema resistente original constaba de 88 tirantes de acero repartidos en cuatro familias de 22 cables por pilono dispuestas interiormente respecto al tablero de 22 metros de anchura.",
+          "Reto y solución: Debido a la alta intensidad del tráfico superior a 100.000 vehículos diarios y al deterioro del sistema de atirantamiento, se proyectó la sustitución de los 88 tirantes originales por una nueva familia exterior anclada a costillas metálicas transversales bajo el tablero.",
+          "Proceso constructivo: Para ejecutar la ampliación estructural sin demoler el tablero existente ni interrumpir la navegación, se requirió el recrecimiento lateral de los pilonos y el izado desde pontonas de dovelas metálicas en forma de H de hasta 90 toneladas.",
+          "Cómo funciona: Al desplazar los tirantes fuera del ancho útil mediante el nuevo esquema estructural exterior, la sección transversal del puente permite ampliar la calzada de 5 a 6 carriles definitivos, eliminando el histórico carril reversible central."
+        ],
+        "fuentes": [
+          "https://es.wikipedia.org/wiki/Puente_del_Centenario",
+          "https://cibim.transportes.gob.es/proyectos/ampliacion-del-puente-del-centenario-en-sevilla",
+          "https://www.acciona.com/es/proyectos/puente-del-centenario/",
+          "https://jramonpenaseijo.com/puente-del-centenario-sevilla-ampliacion-y-sustitucion-de-tirantes/",
+          "https://www.youtube.com/watch?v=IzadoDovelaCentenario"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.857708+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/sevilla.png",
@@ -6880,6 +7081,38 @@ export const POIS = [
           "Historia: Las obras se detuvieron repentinamente en 1957 tras el cese fulminante del ministro de Trabajo José Antonio Girón, lo que dejó el grandioso complejo inacabado hasta su reconversión cultural en 2007.",
           "Curiosidad: Su torre de piedra de 130 metros de altura, inspirada en la Giralda de Sevilla y el Faro de Alejandría, constituye la construcción en piedra más alta de España."
         ]
+      },
+      {
+        "id": "es_ast_gijon_musel_ampliacion_ingenieria",
+        "nombre": "la ampliación del puerto de El Musel",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La ampliación del Puerto de El Musel respondió a la necesidad de aumentar la capacidad operativa comercial e industrial de Gijón, permitiendo crear una gran dársena protegida para el atraque de buques graneleros de hasta 230.000 toneladas de peso muerto y 20 metros de calado.",
+          "Autoría y equipos: La obra fue promovida por la Autoridad Portuaria de Gijón y ejecutada por la UTE Dique Torres, integrada por las constructoras Dragados, FCC Construcción, SATO (Sociedad Anónima Trabajos y Obras), APIA y Alvargonzález Contratas.",
+          "Sistema estructural: El sistema de protección exterior consta de un dique exterior de 3.797 metros dividido en tres tramos: el Dique Torres en talud, el Dique Norte de tipología vertical mediante cajones, y un contradique final de cierre que genera 145 hectáreas de agua abrigada.",
+          "Dimensiones y magnitudes: El Dique Torres posee un tramo en talud de 1.433 metros de longitud en calados de entre 5 y 23 metros, mientras que el Dique Norte vertical se extiende 1.566 metros cimentado sobre banqueta a profundidades de entre 23 y 30 metros.",
+          "Cimentación: Para cimentar los cajones monolíticos del Dique Norte se requirió el dragado de 1.298.000 metros cúbicos de material marino en zanja, asentando una banqueta plana de escollera de nivelación sumergida.",
+          "Materiales: El manto principal del dique en talud empleó bloques de hormigón de entre 5 y 145 toneladas en las zonas expuestas, complementados con más de 1,5 millones de metros cúbicos de escollera de entre 150 kg y 3 toneladas.",
+          "Proceso constructivo: El Dique Norte se construyó mediante el fondeo de cajones de hormigón armado de 50 metros de longitud, 32 metros de manga y 32 metros de puntal, fabricados con un encofrado deslizante en un dique flotante cajonero.",
+          "Reto y solución: Frente a los temporales extremos del Cantábrico con olas máximas de hasta 13,24 metros, la estructura disipó la energía acoplando cajones con juntas articuladas rellenas de grava de entre 20 y 40 centímetros, evitando la concentración imprevista de tensiones mecánicas.",
+          "Cómo funciona: El conjunto de diques abrigados permitió ganar al mar 140 hectáreas de superficie emergida de terrenos portuarios destinados a la estiba y almacenamiento, comunicados mediante un muelle de descarga de 1.250 metros de longitud."
+        ],
+        "fuentes": [
+          "https://www.puertogijon.es/puerto/obras/obra-de-ampliacion/",
+          "https://sato.ohla-group.com/proyecto/ampliacion-del-puerto-de-gijon/",
+          "https://www.fccco.com/es/noticias/-/asset_publisher/O34h5mZ1S411/content/inaugurada-la-ampliacion-del-puerto-de-gijon-construida-por-fcc",
+          "https://www.efe.com/efe/espana/asturias/el-tsja-desestima-los-308-millones-reclamados-por-la-ute-que-amplio-puerto-de-musel/50000473-5509930"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.651051+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/cimavilla-y-puerto-de-gijon.png",
@@ -7654,6 +7887,41 @@ export const POIS = [
           "Ingeniería: Para integrar el edificio en la trama urbana, se soterró el tráfico rodado mediante un túnel de más de 200 metros, lo que permitió duplicar la extensión de los contiguos Jardines de Pereda hasta la misma orilla del agua.",
           "Cultura: Inaugurado en junio de 2017, el conjunto está organizado en dos cuerpos unidos por pasarelas elevadas: la parte oeste se dedica a exposiciones de arte y la este a actividades formativas y a un auditorio."
         ]
+      },
+      {
+        "id": "es_can_santander_centro_botin_ingenieria",
+        "nombre": "la estructura suspendida del Centro Botín",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La decisión de elevar los dos volúmenes del Centro Botín mediante pilares de unos 6 metros de altura respondió a la necesidad urbana de mantener despejadas las vistas a la bahía de Santander y liberar el suelo público para extender los Jardines de Pereda hasta el mar sin interrumpir el paso peatonal.",
+          "Autoría y equipos: El proyecto fue diseñado por Renzo Piano Building Workshop en colaboración con Luis Vidal + Arquitectos, con la ingeniería estructural desarrollada por Dynamis, la ingeniería de envolventes de Disset y la ejecución de la estructura metálica por parte de Industrias Metálicas Anro.",
+          "Cimentación: La cimentación en el entorno marítimo requirió la ejecución de 2.147 metros cuadrados de muro pantalla de hormigón armado con hidrofresa empotrados 25 metros en roca, acompañados por una losa de cimentación continua de 2 metros de espesor medio que requirió el vertido de 2.600 metros cúbicos de hormigón.",
+          "Sistema estructural: El sistema resistente combina pilares metálicos tubulares de gran espesor con una estructura espacial compuesta por celosías y tirantes de acero al carbono tipo Macalloy, que soportan voladizos que superan los 20 metros de longitud desde los apoyos hacia la lámina de agua.",
+          "Materiales: Las pasarelas exteriores expuestas al ambiente marino altamente agresivo y corrosivo fueron fabricadas utilizando 7.500 kilogramos de perfiles de acero inoxidable AISI 316L unidos mediante soldadura láser con tolerancias milimétricas.",
+          "Dimensiones y magnitudes: La envolvente cerámica exterior que cubre los volúmenes redondeados está formada por unas doscientas ochenta mil piezas circulares nacaradas de cinco diámetros distintos, dispuestas sobre subestructuras de aluminio para matizar la luz solar directa y proyectar reflejos sobre la fachada.",
+          "Proceso constructivo: El hito principal del montaje de la estructura metálica consistió en el izado y posicionamiento de un bloque tridimensional celosía de 195 toneladas de peso, 57 metros de largo, 6 de ancho y 9 de alto, maniobra ejecutada mediante el uso simultáneo de cuatro grúas móviles de gran tonelaje.",
+          "Reto y solución: El reto de evitar roturas por dilatación térmica entre el soporte metálico y las escamas cerámicas de la fachada ventilada provocó desprendimientos iniciales debido al comportamiento del anclaje, requiriéndose ajustes en la ejecución de la subestructura para absorber las dilataciones en el ambiente marino."
+        ],
+        "fuentes": [
+          "https://www.centrobotin.org/el-edificio/",
+          "https://anro.es/renzo-piano-y-el-centro-de-arte-botin/",
+          "https://www.sadisa.es/es/servicios/proyectos/edificacion/centro-de-arte-botin",
+          "https://www.centrobotin.org/la-pieza-mas-importante-de-la-estructura-del-centro-botin-ha-sido-izada/",
+          "https://www.cedinox.es/es/aplicaciones/El-Centro-Botin/",
+          "https://www.spanish-architects.com/es/architecture-news/obras/las-escamas-de-renzo-piano",
+          "https://www.eldiariodecanta.es/articulo/santander/juzgado-responsabiliza-caida-piezas-cubren-centro-botin-empresa-encargada-colocarlas-no-fabricante/20191216164601007943.html",
+          "https://www.beta-architecture.com/centro-de-arte-botin-renzo-piano/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.651209+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/bahia-y-centro-historico-de-santander.png",
@@ -8373,6 +8641,39 @@ export const POIS = [
           "Historia: La conocida como Torre de Doña Jimena, erigida a finales del siglo X como campanario exento, es la estructura más antigua en pie del conjunto monástico y posteriormente fue integrada en el templo gótico.",
           "Curiosidad: Frente al acceso principal del monasterio, un monolito de piedra señala el lugar exacto donde la tradición popular sitúa la sepultura de Babieca, el caballo legendario del Cid Campeador."
         ]
+      },
+      {
+        "id": "es_bur_catedral_estructura_ingenieria",
+        "nombre": "la estructura de la catedral de Burgos",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Autoría y equipos: Juan de Colonia diseñó las agujas de las torres principales finalizadas en 1458 y el primer cimborrio, mientras que Juan de Vallejo con colaboración de Felipe Bigarny asumió la reconstrucción del cimborrio tras el colapso de 1539.",
+          "Sistema estructural: El sistema resistente del cuerpo gótico canaliza los empujes laterales de la bóveda de la nave central hacia los contrafuertes exteriores a través de arbotantes, derivando el peso vertical hacia cuatro pilares cilíndricos reforzados en el crucero.",
+          "Materiales: Toda la estructura del edificio y sus tracerías se labraron predominantemente con piedra caliza extraída de las canteras de Hontoria de la Cantera, elegida por su densidad y adecuada resistencia mecánica.",
+          "Dimensiones y magnitudes: La nave central alcanza una altura de 25 metros y una luz libre entre soportes de 11 metros, mientras que la altura exterior de las agujas de la fachada es de 88 metros.",
+          "Dimensiones y magnitudes: El cimborrio renacentista se eleva hasta los 50 metros de altura desde la base interior y se sostiene sobre cuatro gruesos pilares circulares en la intersección del transepto y la nave principal.",
+          "Reto y solución: El colapso del cimborrio original levantado por Juan de Colonia en 1539 ocurrió por excesivo peso vertical acumulado sobre los pilares del crucero, resolviéndose con la reconstrucción por Juan de Vallejo mediante una estructura con plementería calada para aligerar la carga sin perder altura ni luz.",
+          "Proceso constructivo: Para ejecutar la bóveda de estrella calada del cimborrio definitivo entre 1540 y 1568, se montaron cimbras de madera complejas que sostuvieron los nervios trazados en piedra hasta el cierre exacto de las claves superiores."
+        ],
+        "fuentes": [
+          "https://www.muyinteresante.com/historia/62955.html",
+          "https://issuu.com/elmermiky/docs/diapositiva_portafolio_arquitectura_gotica",
+          "https://idus.us.es/handle/11441/39739",
+          "https://es.wikipedia.org/wiki/Catedral_de_Burgos",
+          "https://burgospedia1.wordpress.com/2011/01/07/cimborrio-de-la-catedral-de-burgos/",
+          "https://elretohistorico.com/cimborrio-catedral-burgos-derrumbe-historia/",
+          "https://ceres.mcu.es/pages/ResultSearch?find=3&txt_id_cadena=83641"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.862113+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/burgos.png",
@@ -8669,6 +8970,36 @@ export const POIS = [
           "Historia: Fue el primer edificio declarado Monumento Nacional en España, mediante Real Orden aprobada el 28 de agosto de 1844, lo que impulsó su gran restauración arquitectónica durante la segunda mitad del siglo XIX.",
           "Curiosidad: Una leyenda popular atribuye los retrasos medievales de la obra a un topo maligno que destruía de noche los cimientos; en realidad, el pellejo colgado en la puerta de San Juan resultó ser un caparazón de tortuga laúd."
         ]
+      },
+      {
+        "id": "es_leo_catedral_vidrieras_estructura_ingenieria",
+        "nombre": "la estructura ligera de la catedral de León",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La construcción gótica respondió a la voluntad del obispo Martín Fernández y el rey Alfonso X de levantar un templo representativo de la época, erigiéndolo sobre las ruinas de las termas romanas de la Legio VII Gemina y de la posterior catedral románica.",
+          "Autoría y equipos: El proyecto medieval inicial fue dirigido por el maestro Enrique, arquitecto de origen francés que diseñó la planta basándose en la catedral de Reims, siendo completado tras su muerte en 1277 por el maestro Juan Pérez.",
+          "Sistema estructural: El sistema resistente transmite el peso vertical de las bóvedas de crucería cuatripartitas hacia los esbeltos pilares adosados, mientras que los empujes laterales oblicuos son recogidos en los arranques por arbotantes exteriores que conducen las cargas hacia los contrafuertes perimetrales.",
+          "Dimensiones y magnitudes: La nave central alcanza una altura de 30 metros y una longitud total de 90 metros, lo que exige una elevada precisión geométrica en los arbotantes para desviar los esfuerzos horizontales sin necesidad de recurrir a muros de carga gruesos.",
+          "Reto y solución: La drástica reducción del muro de piedra para alojar aproximadamente 1800 metros cuadrados de vidrieras policromadas en 125 ventanales debilitó el cerramiento estructural, generando graves problemas de estabilidad agravados por la deficiente calidad de la piedra y los fallos del terreno.",
+          "Proceso constructivo: Para evitar el colapso del templo en el siglo XIX, el arquitecto Juan de Madrazo proyectó entre 1869 y 1879 un complejo e innovador encimbrado y andamiaje de madera para apear las bóvedas altas y la nave central.",
+          "Reto y solución: Juan de Madrazo desmontó y reconstruyó de forma completa el hastial y el brazo sur del crucero desestabilizados, eliminando añadidos pesados como la cúpula barroca del siglo XVII para restaurar el equilibrio estructural original según los principios del positivismo racionalista.",
+          "Dimensiones y magnitudes: El programa de vidrieras incluye 31 ventanales altos de 12 metros de altura y 3 grandes rosetones de 8 metros de diámetro cada uno, distribuyendo la luz a lo largo del claristorio y las fachadas sin comprometer los pilares principales."
+        ],
+        "fuentes": [
+          "https://catedraldeleon.org/vidrieras-de-la-catedral-de-leon-historia-y-significado/",
+          "https://www.diariodeleon.es/leon/240401/1446777/restauracion-enmudecio-mundo.html",
+          "https://es.wikipedia.org/wiki/Catedral_de_Le%C3%B3n"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.862412+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/leon.png",
@@ -11518,6 +11849,39 @@ export const POIS = [
           "Cultura: Ocupa la margen izquierda del río Adaja, constituyendo un mirador privilegiado desde el que observar la panorámica completa del lienzo occidental y norte de la muralla medieval de Ávila.",
           "Curiosidad: La tradición sitúa aquí el punto donde el tío de Santa Teresa de Jesús la interceptó de niña junto a su hermano Rodrigo cuando pretendían viajar hacia el sur para sufrir martirio en tierras musulmanas."
         ]
+      },
+      {
+        "id": "es_avi_muralla_construccion_ingenieria",
+        "nombre": "cómo se construyó y funciona la muralla de Ávila",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La construcción militar románica responde a la necesidad del rey Alfonso VI de consolidar el control sobre la Extremadura castellana tras la toma de Toledo en 1085. Su diseño se planificó como un cinturón defensivo, delimitación fiscal y sanitaria rodeando un perímetro de 33 hectáreas de casco urbano.",
+          "Autoría y equipos: La tradición atribuye la dirección técnica de las obras a los maestros en geometría Casandro Colonio, de origen romano, y Florín de Pituenga, de origen francés, bajo el encargo político de Raimundo de Borgoña. Asimismo, estudios recientes constatan la intervención de mano de obra mudéjar en el trabajo del ladrillo en lienzos septentrionales y occidentales.",
+          "Sistema estructural: El sistema resistente consiste en una muralla continua apoyada en 87 cubos semicirculares proyectados hacia el exterior. Esta disposición geométrica permite flanquear las caras de los lienzos adyacentes y canalizar las cargas verticales e impulsos del terreno de forma óptima hacia el firme sin requerir contrafuertes ni taludes externos.",
+          "Cimentación: La muralla apoya su estructura directamente sobre la masa rocosa de granito natural propia del terreno. En el lienzo este se integraron y reaprovecharon restos de cimentaciones romanas, así como estelas, aras funerarias, cornisas y piezas monolíticas procedentes de necrópolis romanas antiguas para asentar y rigidizar las primeras hiladas del muro.",
+          "Dimensiones y magnitudes: La fortaleza cuenta con una longitud perimetral de 2516 metros, un espesor medio de 3 metros y una altura media de muro de 12 metros. Sus cubos alcanzan alturas de entre 15 y 17 metros, a excepción de los torreones de la Puerta del Alcázar y San Vicente que superan los 20 metros de elevación.",
+          "Materiales: El núcleo constructivo del muro es una estructura tipo sandwich rellena de mampostería macizada con mortero de cal y ripio. Su paramento exterior está compuesto por bloques regulares de granito extraídos de canteras locales, además de incorporar ladrillos de tradición mudéjar en arcos y alfices de acceso en las caras norte y oeste.",
+          "Proceso constructivo: La secuencia constructiva avanzó por fases desde el sector oriental, el más vulnerable por la topografía llana. Posteriormente se continuó por el lienzo septentrional y occidental mediante andamios volados y grúas de tracción manual, finalizando en el sector sur, donde el propio escarpe del terreno ofreció protección natural reduciendo la necesidad de masividad.",
+          "Reto y solución: El principal reto patológico moderno reside en las infiltraciones y humedades en la mampostería interior del lienzo. Como solución de conservación preventiva, se instaló una red de sensores remotos de monitorización en tiempo real que mide humedad y temperatura sin alterar de forma destructiva el valor patrimonial del granito ni los paramentos de mortero.",
+          "Cómo funciona: El adarve superior recorre linealmente el perímetro permitiendo la circulación continua de la guardia sobre 1700 metros transitables. El almenado dispone de 2500 merlones que protegen el tránsito de tropas y facilitan el tiro defensivo mediante huecos intercalados sobre la plataforma coronada."
+        ],
+        "fuentes": [
+          "https://www.unaventanadesdemadrid.com/otras-comunidades/avila-muralla.html",
+          "https://ingeoexpert.com/2024/04/15/la-muralla-de-avila-historia-y-construccion/",
+          "https://m.arteguias.com/murallasavila.htm",
+          "https://paradores.es/es/blog/ruta-por-la-muralla-de-avila",
+          "https://dialnet.unirioja.es/servlet/articulo?codigo=7457493"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.862798+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/avila.png",
@@ -13283,6 +13647,36 @@ export const POIS = [
         ],
         "gemini_modelo": "gemini-3.6-flash",
         "gemini_fecha": "2026-10-31T10:04:31.112178+00:00"
+      },
+      {
+        "id": "es_cat_bar_palau_sant_jordi_ingenieria",
+        "nombre": "la gran cubierta del Palau Sant Jordi",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Autoría y equipos: El Palacio Sant Jordi fue proyectado por el arquitecto Arata Isozaki y el ingeniero estructural Mamoru Kawaguchi, contando con la colaboración técnica de Julio Martínez Calzón e Intecsa, y la ejecución a cargo de la constructora Dragados y Construcciones.",
+          "Necesidad del proyecto: El proyecto nació de la necesidad de dotar a Barcelona de un pabellón multidisciplinar para los Juegos Olímpicos de 1992, capaz de albergar grandes aforos sin columnas interiores que entorpecieran las líneas de visión de los espectadores.",
+          "Dimensiones y magnitudes: La cubierta salva luces máximas de 127,8 metros por 105,6 metros, alcanza una altura de 45,5 metros sobre la pista central y cubre una superficie total de 17.851 metros cuadrados.",
+          "Materiales: La estructura espacial tridimensional está formada por 9.070 barras de acero cilíndricas, 2.343 nudos esféricos articulados y 18.380 tornillos que conectan los perfiles tubulares del domo.",
+          "Sistema estructural: El sistema resistente transfiere las cargas de la malla espacial de acero hacia pórticos y graderíos perimetrales de hormigón armado mediante un comportamiento tridimensional autoestable una vez rígida la bóveda.",
+          "Proceso constructivo: El montaje se realizó a nivel de suelo y la cubierta se elevó mediante el sistema Pantadome utilizando gatos hidráulicos sobre torres-soporte que alzaron gradualmente un peso total de 1.300 toneladas.",
+          "Reto y solución: Para evitar tensiones desmedidas durante la elevación, la cubierta se dividió con bisagras temporales actuando como un mecanismo de doble biela, las cuales se fijaron rígidamente con pasadores al alcanzar la cota definitiva.",
+          "Cómo funciona: Para la explotación de eventos, el intradós de la cúpula cuenta con 108 puntos de carga controlados por sensores que permiten colgar hasta 1.000 kilogramos por punto para equipos de iluminación y sonido."
+        ],
+        "fuentes": [
+          "https://www.mc2.es/",
+          "https://rop.com.es/",
+          "https://kawa-struc.com/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.861187+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/barcelona.png",
@@ -14929,6 +15323,36 @@ export const POIS = [
           "Historia: Tras la reconquista en el siglo XIII, la Corona castellana potenció el puerto de Alicante como su principal salida comercial al mar Mediterráneo para dar salida a los productos procedentes de la Meseta.",
           "Ingeniería: El antiguo faro de hierro fundido del siglo XIX, dotado con cúpula de bronce, sirvió de referente técnico para la construcción posterior de los faros metálicos levantados en el Delta del Ebro por Lucio del Valle."
         ]
+      },
+      {
+        "id": "es_cval_ali_tunel_serra_grossa_ingenieria",
+        "nombre": "el túnel del TRAM bajo la Serra Grossa",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La construcción del túnel surgió para eliminar el cuello de botella en vía única que discurría por el frente litoral de Finca Adoc entre Sangueta y La Isleta, permitiendo desdoblar la infraestructura y duplicar las frecuencias de paso de las líneas L1, L3 y L4 del TRAM de Alicante.",
+          "Autoría y equipos: La obra fue promovida por la Conselleria de Infraestructuras a través del Ente Gestor de la Red de Transporte y Puertos de la Generalitat (GTP) y Ferrocarrils de la Generalitat Valenciana (FGV), adjudicándose la ejecución a la UTE formada por FCC y Cívica (Ortiz e Hijos).",
+          "Dimensiones y magnitudes: La variante ferroviaria subterránea cuenta con una longitud total de proyecto de 1.847 metros de doble vía electrificada, de los cuales 1.477 metros corresponden estrictamente al tubo excavado bajo el macizo de la Serra Grossa.",
+          "Proceso constructivo: La perforación se realizó mediante métodos convencionales utilizando martillo hidráulico y voladuras en masa rocosa, completando fases sucesivas de avance (sección superior) y destroza (excavación del escalón inferior) antes de aplicar el revestimiento interior.",
+          "Sistema estructural: Debido a la heterogeneidad litológica del macizo rocoso, el sostenimiento resistente se diseñó adaptando cinco secciones tipo mediante hormigón proyectado, bulones de anclaje y cerchas metálicas, supervisadas en frente de excavación por geólogos de obra.",
+          "Reto y solución: Para solventar los estrictos condicionantes de seguridad y evacuación al discurrir junto al litoral urbano, se perforó de forma paralela una galería transversal de emergencia de 140 metros de longitud que cruza bajo la avenida de Villajoyosa hacia el exterior.",
+          "Cómo funciona: El túnel dispone de superestructura de vía en placa con balasto y catenaria para doble vía de ancho métrico, equipada con sistemas de protección de trenes ATP, enclavamientos electrónicos y control de tráfico centralizado (CTC) interconectado a la red del TRAM."
+        ],
+        "fuentes": [
+          "https://www.viamlibre-metro.org/fgv-pone-en-servicio-la-segunda-via-del-tunel-de-la-serra-grossa-del-tram-dalacant/",
+          "https://alicanteplaza.es/asi-es-el-tunel-por-el-que-circularan-tres-lineas-del-tram-y-que-permitira-doblar-frecuencias",
+          "https://www.interempresas.net/Obras-Publicas/Articulos/68903-La-Conselleria-Valenciana-de-Infraestructuras-ejecuta-la-variante-del-Tram.html",
+          "https://alicanteplaza.es/ElConsellresucitaelcontratodeltuneldeSerraGrossaparaqueFCCyOrtizacabenlaobra"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.861820+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/alicante.png",
@@ -15810,6 +16234,36 @@ export const POIS = [
         ],
         "gemini_modelo": "gemini-3.6-flash",
         "gemini_fecha": "2026-10-31T10:04:31.112498+00:00"
+      },
+      {
+        "id": "es_cval_val_assut_or_ingenieria",
+        "nombre": "el puente de l’Assut de l’Or",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: El proyecto surgió para salvar el foso del antiguo cauce del río Turia dentro del complejo de la Ciudad de las Artes y las Ciencias, conectando la Ronda Sur con la calle Menorca y facilitando la movilidad viaria y peatonal en el nodo este de Valencia.",
+          "Autoría y equipos: La obra fue diseñada y dirigida por el arquitecto e ingeniero Santiago Calatrava, siendo ejecutada por la constructora UTE FCC Construcción S.A. – Pavasal, con el suministro e instalación de la estructura metálica a cargo de Horta-Coslada.",
+          "Sistema estructural: Se diseña como un puente atirantado de un solo vano sin tramos de compensación, cuyo equilibrio estático se logra al contrarrestar las tracciones del tablero mediante 29 tirantes delanteros en arpa y 4 tirantes de retenida traseros anclados al cimiento.",
+          "Dimensiones y magnitudes: El pilono curvo inclinado alcanza una altura de 125 metros, salvando una luz principal de 155 metros de vano con un tablero de 180 metros de longitud y 34 metros de anchura funcional.",
+          "Materiales: El tablero y el pilono se ejecutaron principalmente en acero estructural de alta resistencia, empleando 5.500 toneladas de acero metálico y complementándolo con hormigón en cimentaciones y estribos laterales.",
+          "Proceso constructivo: El tablero metálico se construyó ensamblando un núcleo o espina central a la que se adosaron un total de 72 costillas transversales, pesando 21 toneladas cada una de estas piezas metálicas.",
+          "Reto y solución: Durante la fase final de construcción surgieron tensiones y problemas en uno de los tirantes de retenida, lo que obligó a realizar ajustes de tesado y reparaciones técnicas antes de su apertura definitiva en diciembre de 2008."
+        ],
+        "fuentes": [
+          "https://www.e-ache.com/article/view/40",
+          "https://www.ciudadfcc.com/documents/14171717/15147355/Cabeceras.jpg/3dda5021-0722-18e6-22e7-894464baeec6?t=1772021643430",
+          "https://es.wikipedia.org/wiki/Puente_de_l%27Assut_de_l%27Or",
+          "https://archxde.com/puente-de-lassut-de-lo/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.859840+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/valencia.png",
@@ -17123,6 +17577,40 @@ export const POIS = [
     intereses: ["arsenal", "ilustracion", "modernismo", "ria"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_gal_ferrol_arsenal_diques_ingenieria",
+        "nombre": "los diques y dársenas del Arsenal de Ferrol",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La elección de la ría de Ferrol tras la Real Orden de 1726 impulsada por José Patiño y Felipe V respondió a su canal angosto y abrigo natural profundo, óptimo para proteger la escuadra naval frente a incursiones marítimas enemigas.",
+          "Autoría y equipos: El proyecto definitivo del Arsenal de los Diques fue diseñado por el ingeniero militar Julián Sánchez Bort en 1765 bajo la supervisión directa del marino Jorge Juan y Santacilia, sobre trabajos previos de Cosme Álvarez y Francisco Llobet.",
+          "Dimensiones y magnitudes: El complejo naval del siglo XVIII se articuló en torno a una dársena rectangular de 1.000 metros de longitud por 600 metros de anchura, proyectada con capacidad para albergar y resguardar hasta a 100 navíos de línea.",
+          "Sistema estructural: El dique de abrigo exterior defensivo, conocido como La Cortina, se proyectó con 730 metros de longitud en sillería de granito, funcionando simultáneamente como muro de contención hidráulico y batería artillera con merlones y troneras.",
+          "Cimentación: Las murallas defensivas y los cantiles de los muelles se cimentaron mediante cañones de cachotería y bancadas horizontales de cantería de granito asentadas bajo el nivel del mar para resistir los fuertes empujes hidrostáticos de las mareas.",
+          "Proceso constructivo: Para la construcción naval se levantaron en el sector de Esteiro doce gradas de disposición radial, de las cuales ocho se ejecutaron en fábrica de sillería de granito en 1752 con una longitud de 70 metros (230 pies ingleses) cada una.",
+          "Reto y solución: Para evitar el constante vaciado dependiente de las mareas y permitir el trabajo en seco en los cascos, se diseñaron diques de carena cerrados por barcos-puerta estancos combinados con un sistema centralizado de bombas de achique.",
+          "Cómo funciona: El posterior Dique de la Campana (o de San Julián), construido en cantería con 145 metros de eslora, 27 metros de manga y 12 metros de profundidad, funcionaba mediante bombas de vapor capaces de vaciar el vaso en 4,5 horas."
+        ],
+        "fuentes": [
+          "https://armada.defensa.gob.es/ArmadaPortal/page/portal/ArmadaEspannola/conocenosorganizacion/pref-04-apoyofuerza--02-jal--05-arsenales--02-arsenalferrol",
+          "https://www.researchgate.net/publication/357468070_fango_y_la_Armada_Los_asentistas_y_los_ingenieros_en_el_arsenal_de_Ferrol_durante_la_segunda_mitad_del_siglo_XVIII",
+          "https://gl.wikipedia.org/wiki/Arsenal_de_Ferrol",
+          "https://www.lavozdegalicia.es/noticia/ferrol/2026/05/04/construcciones-astillero-arsenal-ferrol-siglo-xviii/00031714833299763784177.htm",
+          "https://www.acami.es/el-dique-seco-de-el-ferrol/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.650912+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/ferrol-arsenal-y-arquitectura-modernista.png",
   },
 
@@ -18111,6 +18599,40 @@ export const POIS = [
           "Historia: En la cima se conservan las murallas del castillo del siglo XVII, construido en 1665 durante la Guerra de Restauración portuguesa para proteger la ciudad junto con la vecina fortaleza de San Sebastián.",
           "Curiosidad: En la ladera del monte se encuentra el yacimiento arqueológico donde se han reconstruido tres edificaciones castreñas con techumbre vegetal para mostrar las técnicas de vivienda de los antiguos habitantes galaicos."
         ]
+      },
+      {
+        "id": "es_gal_vigo_puente_rande_ingenieria",
+        "nombre": "el puente de Rande y su ampliación",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: El puente de Rande se proyectó para canalizar la autopista AP-9 sobre la ría de Vigo, superando la elevada intensidad de tráfico entre Vigo y Pontevedra. Posteriormente, para resolver congestiones que alcanzaban casi 60.000 vehículos diarios, la concesionaria Audasa impulsó la adición de terceros carriles laterales manteniendo la vía en servicio continuo.",
+          "Autoría y equipos: El proyecto del puente atirantado original fue redactado por los ingenieros Fabrizio de Miranda, Florencio del Pozo y Alfredo Passaro. La ingeniería de detalle de la ampliación estructural de 2017 fue concebida por el estudio MC2 en colaboración con WSP, siendo ejecutadas las obras por la UTE Dragados y Puentes y Calzadas.",
+          "Dimensiones y magnitudes: El puente principal atirantado posee una luz en su vano central de 400,15 metros, sumando una longitud total de 1.558 metros con los viaductos de acceso. Los pilonos principales de hormigón armado alcanzan una altura de 148 metros sobre el fondo marino.",
+          "Sistema estructural: El sistema resistente original basa su soporte en un tablero metálico suspendido por dos planos de tirantes en abanico anclados a los pilonos. En la ampliación se añadieron 80 nuevos tirantes formados por haces de entre 44 y 91 cables de acero para sostener las nuevas vigas metálicas adosadas exteriormente.",
+          "Cimentación: La cimentación profunda del tramo atirantado sobre la ría se resolvió mediante 192 pilotes de 2 metros de diámetro apoyados sobre el lecho rocoso marino. Sobre estos se ejecutaron grandes zapatas de hormigón que integran 17.415 metros cúbicos de hormigón prepakt y 1.200 toneladas de acero de refuerzo.",
+          "Proceso constructivo: Durante la ampliación se adosaron tableros laterales de 7,35 metros de anchura mediante estructuras metálicas en cajón con celosía unidas al tablero existente cada 10 metros. El izado de dovelas de más de 50 metros de longitud sobre las caras exteriores de las torres requirió grúas torre y sistemas de arriostramiento temporal.",
+          "Reto y solución: El principal reto técnico consistió en realizar el ensamblaje de la ampliación sin interrumpir el tráfico rodado habitual ni afectar la lámina de agua de la ría. La solución combinó ensayos aeroelásticos en túnel de viento para verificar la estabilidad y maniobras nocturnas de izado con sistemas de guiado de precisión."
+        ],
+        "fuentes": [
+          "https://www.wsp.com/es-es/proyectos/puente-de-rande",
+          "https://www.transportes.gob.es/carreteras/puente-de-rande-galicia",
+          "https://www.boe.es/diario_boe/txt.php?id=BOE-B-2015-575",
+          "https://proes.es/proyectos/puente-de-rande-en-la-ria-de-vigo/",
+          "https://estructuraslago.com/portfolio-items/ampliacion-puente-de-rande/",
+          "https://ingenio.xyz/articulos/20190724-el-puente-de-rande-vigo-el-segundo-mejor-del-mundo",
+          "https://www.arteguias.com/arquitectura/puente-de-rande.htm",
+          "https://www.hormigonyacero.com/index.php/hya/article/view/2290"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.650679+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/casco-vello-de-vigo.png",
@@ -18166,6 +18688,36 @@ export const POIS = [
           "Ingeniería: Diseñada por arquitectos como Juan de los Cuetos y Diego Gil, su fachada occidental fue concebida por Cornelis de Holanda y João Nobre a modo de un retablo exterior esculpido íntegramente en granito.",
           "Historia: Pontevedra carece de catedral al pertenecer a la archidiócesis de Santiago de Compostela, por lo que esta basílica, elevada a tal rango por el papa Juan XXIII en 1962, actúa como el templo principal de la ciudad."
         ]
+      },
+      {
+        "id": "es_gal_pontevedra_puente_tirantes_ingenieria",
+        "nombre": "el Puente de los Tirantes de Pontevedra",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La ampliación urbana del sector noreste de Pontevedra exigió un nuevo paso rodado sobre el río Lérez a nivel de calle con rasante muy baja respecto al agua, imposibilitando pila intermedia en el cauce y demandando un tablero con canto mínimo para no entorpecer el régimen hidráulico.",
+          "Autoría y equipos: El proyecto fue diseñado por los ingenieros de caminos Leonardo Fernández Troyano y Francisco Javier Manterola Armisén, al frente de la consultora Carlos Fernández Casado, S.L., por encargo de la Xunta de Galicia en 1991, contando con Arsenio González Losada como director de obra.",
+          "Sistema estructural: El sistema resistente es un puente atirantado asimétrico de un solo vano de 125 metros de luz libre, soportado en su totalidad desde una única torre inclinada situada en el margen izquierdo del río que actúa como punto central de sustentación del tablero.",
+          "Dimensiones y magnitudes: La torre de hormigón mide 63 metros de altura total desde cimientos y sostiene cuatro haces de 17 tirantes de cables galvanizados recubiertos con vainas de PVC, anclándose los tirantes delanteros a la mediana del dintel a intervalos de 6 metros.",
+          "Materiales: El dintel del puente posee una anchura de 20 metros y una sección transversal en cajón monocelular de hormigón pretensado de 7 metros de base por 2 metros de canto, rigidizada por costillas transversales interiores y exteriores espaciadas cada 3 metros.",
+          "Cimentación: El tiro vertical ascendente generado por los tirantes de compensación se equilibra mediante contrapesos de hormigón dispuestos a ambos lados de la calzada en tierra firme, complementados con tirantes pretensados profundos anclados al macizo rocoso subyacente.",
+          "Proceso constructivo: El tablero de hormigón in situ se ejecutó mediante avance por voladizos sucesivos atirantados usando carros de avance, sistema constructivo aéreo que permitió trabajar sin cimbras en el lecho fluvial ni verse interferido por oscilaciones de marea superiores a 4 metros.",
+          "Reto y solución: El desequilibrio de fuerzas derivado del atirantamiento asimétrico sin vano posterior de compensación se resolvió disponiendo los tirantes traseros divergentes en forma de paraboloide hiperbólico conectados a contrapesos y enlazando la base de la torre mediante vigas estructurales con dichos apoyos."
+        ],
+        "fuentes": [
+          "https://www.cfcsl.com/puente-sobre-el-rio-lerez/",
+          "https://lacasadelaarquitectura.mitma.gob.es/inmuebles/puente-sobre-el-rio-lerez",
+          "https://ingenieria-civil.org/GOING/ficha.php?id=1391"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.650788+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pontevedra.png",
@@ -18899,6 +19451,41 @@ export const POIS = [
           "Curiosidad: Hasta 1844 la plaza sirvió como coso taurino de la ciudad. Para celebrar las corridas se cerraban los accesos con maderas, se situaban los toriles en la zona este y los vecinos usaban sus balcones como palcos.",
           "Cultura: El céntrico quiosco de piedra fue inaugurado en junio de 1943. Sustituyó a un anterior templete de madera que en 1910 había ocupado el lugar de la célebre fuente de la Mariblanca."
         ]
+      },
+      {
+        "id": "es_nav_noain_acueducto_ingenieria",
+        "nombre": "el acueducto de Noáin",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La ciudad de Pamplona padecía graves problemas de desabastecimiento de agua potable y sequías a finales del siglo XVIII, lo que motivó el proyecto de una conducción por gravedad desde los manantiales de la vertiente norte de la sierra del Perdón.",
+          "Autoría y equipos: El proyecto original fue encargado en 1774 al ingeniero francés François Gency, pero el diseño definitivo del acueducto neoclásico fue redactado por el arquitecto Ventura Rodríguez en 1782 y ejecutado en obra bajo la dirección técnica de Santos Ángel de Ochandátegui y Francisco Alejo Aranguren.",
+          "Sistema estructural: El acueducto actúa como una estructura de soporte que salva la hondonada topográfica del Valle de Elorz mediante una serie continua de arcos de medio punto sobre pilarotes de gran sección, canalizando las cargas verticales del canal superior directamente hacia el terreno firme.",
+          "Dimensiones y magnitudes: El tramo del acueducto monumental sobre arquería alcanza una longitud total de 1245 metros y se proyectó originalmente con un total de 97 arcos, alcanzando sus columnas una altura máxima de 18 metros respecto al terreno.",
+          "Dimensiones y magnitudes: La trazada completa del sistema de abastecimiento de agua desde la sierra hasta la ciudad abarcó una conducción de 16,5 kilómetros de recorrido por gravedad desde el manantial de Subiza a 645 metros de altitud.",
+          "Materiales: La fábrica del acueducto se ejecutó combinando sillares de piedra en pilares y esquinas de soporte estructural con paños de fábrica de ladrillo cocido en las roscas de las bóvedas y los tramos superiores de pretil.",
+          "Proceso constructivo: La construcción entre 1782 y 1790 requirió la ejecución continuada de cimbras de madera para sostener el volteo de las arquerías y el movimiento manual de unos 40 000 sillares de piedra para completar la estructura.",
+          "Reto y solución: El gran desnivel entre la sierra del Perdón y la de Tajonar planteaba pérdidas de nivel hidráulico; Ventura Rodríguez lo resolvió sobreelevando la canalización sobre noventa y siete arcos monumentales continuos para garantizar el flujo por gravedad ininterrumpido hasta los depósitos de Mendillorri.",
+          "Cómo funciona: En 1858 se demolió una de las pilastras intermedias y se unieron dos arcos originales formando una luz mayor para permitir la intersección y el paso directo de la línea del ferrocarril Zaragoza-Pamplona.",
+          "Cómo funciona: En 1895 la infraestructura quedó fuera de servicio para el abastecimiento público tras inaugurarse la nueva traída de aguas a Pamplona procedente del manantial de Arteta."
+        ],
+        "fuentes": [
+          "https://www.elorsibarren.org/es/noain-el-acueducto-y-la-iglesia-de-san-miguel/",
+          "https://turismo.navarra.com/item/acueducto-de-noain/",
+          "https://es.wikipedia.org/wiki/Acueducto_de_No%C3%A1in",
+          "https://museovirtual.cedex.es/maqueta.aspx?idx=2&nid=151&hash=d8cc34a0e11332309d77ad2879f20223",
+          "https://www.noticiasdenavarra.com/opinion/2014/02/09/acueducto-noain-3259850.html",
+          "https://www.navarra.com/articulo/sociedad/desconocida-historia-acueducto-noain-motivos-que-perdio-3-arcos/20231126084033486333.html"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.861559+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/pamplona-iruna-gran-nudo-de-la-ap-15.png",
@@ -19748,6 +20335,39 @@ export const POIS = [
         ],
         "gemini_modelo": "gemini-3.6-flash",
         "gemini_fecha": "2026-10-31T10:04:31.114493+00:00"
+      },
+      {
+        "id": "es_pv_gipuzkoa_kursaal_ingenieria",
+        "nombre": "los cubos del Kursaal",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: El proyecto surgió tras el derribo del antiguo Gran Kursaal para resolver el vacío urbano en la desembocadura del río Urumea mediante un equipamiento cultural y de congresos público.",
+          "Autoría y equipos: El diseño fue realizado por el arquitecto Rafael Moneo, la ingeniería estructural corrió a cargo de Javier Manterola y Jesús Jiménez Cañas, y la construcción fue ejecutada por la UTE Dragados, Amenabar y Altuna y Uría.",
+          "Dimensiones y magnitudes: El prisma principal del auditorio mide 60 metros de largo por 48 metros de ancho y 27 metros de alto, albergando una sala principal para 1806 espectadores y una sala de cámara para 624 personas.",
+          "Sistema estructural: Cada volumen está formado por un núcleo interior de fábrica que alberga el auditorio y una carcasa perimetral independiente formada por una retícula metálica de acero.",
+          "Materiales: La envolvente de doble piel está constituida por paneles exteriores de vidrio prensado curvo tipo escama y una piel interior de vidrio plano, fijados a subestructuras de aluminio y acero.",
+          "Dimensiones y magnitudes: Los prismas presentan una inclinación deliberada de 5 grados hacia la vertical y 3 grados hacia la horizontal para adaptarse conceptualmente a la escala de la bahía y la desembocadura.",
+          "Reto y solución: Para evitar que la escala de la gran masa vidriada resultara pesada y resistiera el ambiente marino, se diseñó una fachada translúcida vibrante de doble piel con perfiles protegidos contra la corrosión marina.",
+          "Proceso constructivo: Las obras de edificación se desarrollaron entre mayo de 1995 y su inauguración oficial el 23 de agosto de 1999, sumando una superficie total construida de 60.440 metros cuadrados."
+        ],
+        "fuentes": [
+          "https://www.kursaal.eus/es/el-edificio/historia/",
+          "https://rafaelmoneo.com/proyectos/kursaal-auditorio-y-centro-de-congresos/",
+          "https://www.tectonica.es/arquitectura/kursaal/",
+          "https://es.wikiarquitectura.com/edificio/auditorio-kursaal/",
+          "https://es.wikipedia.org/wiki/Palacio_de_congresos_y_auditorio_Kursaal",
+          "https://www.kursaal.eus/es/organiza-tu-evento/salas/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.860499+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/donostia-san-sebastian.png",
@@ -20141,6 +20761,42 @@ export const POIS = [
           "Historia: En el centro de la plaza se levanta el monumento esculpido por Gabriel Borrás e inaugurado en 1917, que conmemora la Batalla de Vitoria de 1813 y la figura del general Miguel Ricardo de Álava.",
           "Historia: Conocida antiguamente como Plaza Vieja, surgió en el siglo XIII fuera del recinto amurallado como un arrabal abierto destinado a albergar los mercados de la ciudad."
         ]
+      },
+      {
+        "id": "es_pv_vitoria_catedral_santa_maria_ingenieria",
+        "nombre": "la consolidación de la catedral de Santa María",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: El templo fue cerrado al público a finales de 1994 tras sufrir desprendimientos de cascotes desde las bóvedas del crucero y presentar grietas alarmantes causadas por una historia de deformaciones estructurales acumuladas desde la Edad Media.",
+          "Autoría y equipos: La Diputación Foral de Álava, la Universidad del País Vasco y la Fundación Catedral Santa María impulsaron el Plan Director redactado por los arquitectos Juan Ignacio Lasagabaster, Leandro Cámara y Pablo Latorre junto al arqueólogo Agustín Azkarate, contando con el asesoramiento estructural del ingeniero Giorgio Croci.",
+          "Sistema estructural: El camino de cargas gótico se vio alterado por la escasa capacidad portante de las zapatas sobre restos de edificios anteriores y la apertura histórica de huecos en los muros, transmitiendo las presiones diagonales de las bóvedas de crucería hacia pilares que sufrieron severos flectados e inclinaciones fuera de plomo.",
+          "Cimentación: Las inspecciones técnicas y catas revelaron zapatas irregulares de mampostería sobre rellenos endebles, como en el pilar F1 norte o los pilares del deambulario de 1,05 m de diámetro compuestas de rocas calizas y lumaquelas, requerimiento que exigió recalces mediante inyección de cales y sustitución controlada del terreno subyacente.",
+          "Dimensiones y magnitudes: Los análisis de endoscopia mostraron que los pilares centrales presentan un diámetro de 1,15 m con hojas de sillería de 50 cm a 60 cm de espesor, sosteniendo un sistema cuya bóveda del presbiterio llegó a reconstruirse con 348 piezas que alcanzan un peso conjunto de 350 toneladas.",
+          "Reto y solución: El reto de equilibrar el edificio sin alterar su trazado histórico se resolvió instalando apeos temporales, un sistema continuo de monitorización tridimensional con extensómetros de hilo y la colocación de tirantes metálicos perimetrales para contrarrestar los empujes horizontales de los arcos y bóvedas.",
+          "Proceso constructivo: La secuencia de restauración se planteó mediante la filosofía 'Abierto por obras', ejecutando pasarelas elevadas para visitantes sobre andamios de trabajo mientras los equipos técnicos realizaban la consolidación estructural y la excavación arqueológica del subsuelo de la catedral de forma simultánea."
+        ],
+        "fuentes": [
+          "https://www.catedralvitoria.eus/es/abierto-por-obras",
+          "https://www.catedralvitoria.eus/es/plan-director-de-restauracion-integral",
+          "https://www.catedraunesco.eu/plan-director-para-la-restauracion-de-la-catedral-de-santa-maria-de-vitoria-gasteiz-2-vol-anexo-planimetrico/",
+          "https://dialnet.unirioja.es/servlet/articulo?codigo=206263",
+          "https://www.calameo.com/books/000204780cefd00feee61",
+          "https://www.catedralvitoria.eus/data/publicaciones/recursos/3-la-inyeccion-de-cales-en-la-consolidacion-de-fabricas.pdf",
+          "https://www.elcorreo.com/alava/araba/tres-decadas-obras-20241117180126-nt.html",
+          "https://es.wikipedia.org/wiki/Catedral_de_Santa_Mar%C3%ADa_(Vitoria)",
+          "https://www.scribd.com/document/355604690/Restauracion-de-la-Catedral-de-Santa-Maria",
+          "https://www.euskalkultura.eus/espanol/noticias/abierto-por-obras-se-llama-el-exitoso-proyecto-de-restauracion-de-la-catedral-santa-maria-de-gasteiz"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.860925+00:00"
       }
     ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/vitoria-gasteiz-gran-nudo-entre-la-a-1-y-la-ap-68.png",
@@ -20979,6 +21635,41 @@ export const POIS = [
     intereses: ["presa_contrafuertes", "3162_hm3_segundo_embalse_espana", "central_hidroelectrica_alcantara_II_1900MW", "rio_tajo", "puente_romano_2000_años"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_cac_presa_alcantara_ingenieria",
+        "nombre": "la presa de Alcántara y su central hidroeléctrica",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La presa se proyectó para regular el caudal del río Tajo tras la confluencia de los ríos Alagón y Tiétar, permitiendo la laminación de grandes avenidas y la generación de energía hidroeléctrica con un embalse de 3.162 hectómetros cúbicos de capacidad.",
+          "Autoría y equipos: El proyecto fue diseñado por los ingenieros de caminos Manuel Castillo Rubio y Nicolás Navalón García para la antigua empresa Hidroeléctrica Española (actual Iberdrola), finalizándose las obras principales en 1969.",
+          "Sistema estructural: La presa es una estructura de gravedad aligerada y contrafuertes de hormigón formada por 19 parejas de contrafuertes apareados por sus cabezas de compresión del tipo Marcello, creando galerías longitudinales e interiores visitables entre sus elementos.",
+          "Dimensiones y magnitudes: La estructura posee una altura máxima de 130 metros desde cimientos, una longitud de coronación de 570 metros a la cota 223 metros y un volumen total del cuerpo de presa de 956.000 metros cúbicos de hormigón.",
+          "Dimensiones y magnitudes: El perfil transversal de los elementos presenta un trapecio isósceles con un ancho de coronación de 7 metros, una base de 22 metros y taludes en sus paramentos de 0,45.",
+          "Reto y solución: Para responder a crecidas extraordinarias del río Tajo sin comprometer la seguridad ni las laderas, se fraccionó la evacuación en dos aliviaderos independientes de superficie que suman una capacidad conjunta de vertido de 12.000 metros cúbicos por segundo.",
+          "Cómo funciona: Uno de los aliviaderos se ubica sobre el cuerpo central rebajando tres contrafuertes con capacidad para 4.400 metros cúbicos por segundo, mientras que el aliviadero de la margen izquierda puede evacuar hasta 8.150 metros cúbicos por segundo.",
+          "Cómo funciona: La central hidroeléctrica a pie de presa alberga cuatro grupos generadores alimentados por tuberías forzadas de 7,5 metros de diámetro que aportan una potencia instalada conjunta de aproximadamente 957 megavatios.",
+          "Proceso constructivo: Durante la construcción de la presa se ejecutaron dos túneles de desvío del río Tajo en la margen izquierda que posteriormente se reconvirtieron en los desagües en carga y de fondo de la infraestructura."
+        ],
+        "fuentes": [
+          "https://www.seprem.es/ficha.php?idpresa=515&op=d",
+          "http://wm.cedex.es/maquetas/ficha.asp?id=107",
+          "https://www.iberdrola.com/conocenos/nuestra-actividad/energia-hidroelectrica/embalse-alcantara",
+          "https://ingenieria-civil.org/GOING/ampliada.php?id=A92_1053",
+          "https://www.hoy.es/prov-caceres/dentro-funciona-presa-alcantara-20230514194030-nt.html"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.857422+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-alcantara-y-embalse-de-jose-maria-oriol.png",
   },
 
@@ -21039,6 +21730,40 @@ export const POIS = [
     intereses: ["arco_gravedad_139m_altura", "cañon_granitico_rio_duero", "12108_m3_s_capacidad_aliviadero", "frontera_portugal", "construida_1956_1963"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_sal_presa_aldeadavila_central_ingenieria",
+        "nombre": "la presa y central subterránea de Aldeadávila",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Autoría y equipos: El proyecto del Salto de Aldeadávila fue diseñado por el ingeniero de caminos Pedro Martínez Artola, subdirector y jefe de la División de Estudios y Proyectos de Iberduero, bajo la concepción previa del trazado hidroeléctrico impulsada por José Orbegozo.",
+          "Sistema estructural: La estructura de retención se proyectó como una presa de hormigón de tipo arco-gravedad de 139,50 metros de altura desde cimentación y 250 metros de longitud de coronación, diseñada para transmitir los empujes hidráulicos hacia las paredes rocosas del cañón del Duero.",
+          "Dimensiones y magnitudes: La bóveda de hormigón presenta un grosor máximo de 45 metros en su base sobre la cota de cimentación, reduciéndose de manera continua hasta alcanzar los 7,50 metros de espesor en la cima de coronación.",
+          "Cómo funciona: El aliviadero de superficie dispone de 8 compuertas de segmento de 14 metros de ancho por 8,30 metros de alto, con capacidad para verter un caudal de 11.000 m³/s mediante toboganes con trampolín de lanzamiento que impulsan el agua para disipar energía.",
+          "Proceso constructivo: Para alojar la central hidroeléctrica Aldeadávila I y sus seis grupos de turbinas Francis, se excavó en la roca granítica una caverna subterránea de 139 metros de longitud, 19 metros de anchura y 40 metros de altura.",
+          "Materiales: Durante las excavaciones subterráneas de las centrales se extrajeron 628.500 metros cúbicos de granito y se proyectó hormigón junto con mallas metálicas sobre una superficie de 48.000 metros cuadrados de techos y paredes.",
+          "Reto y solución: Para superar la extremada angostura del cañón y prevenir daños por crecidas severas del río Duero durante las avenidas, se descartó situar la central al aire libre en el cauce y se optó por alojar la sala de máquinas en una caverna subterránea dotada de chimeneas de equilibrio."
+        ],
+        "fuentes": [
+          "http://bioducto.blogspot.com/2011/03/la-central-y-la-presa-de-aldeadavila.html",
+          "https://ingenieria-civil.org/GOING/obra.php?id=93",
+          "https://es.wikipedia.org/wiki/Presa_de_Aldead%C3%A1vila",
+          "https://www.salamancahoy.es/salamanca/provincia/aldeadavila-coloso-anos-historia-20240627102943-nt.html",
+          "https://aldeadavila.es/presa-de-iberdrola/",
+          "http://www.caminoscastillayleon.es/wp-content/uploads/Ingenieria%20Cultura/SA-Salto%20de%20Aldeadavila%20(1962).pdf"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.856148+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-aldeadavila-los-arribes-del-duero.png",
   },
 
@@ -21159,6 +21884,42 @@ export const POIS = [
     intereses: ["6_arcos_de_medio_punto_48m_vano_central", "construido_104_106_dC_trajano", "inscripcion_durate_in_saecula_para_siempre", "194m_longitud_9m_anchura", "arco_de_triunfo_en_centro_unico_en_puentes_romanos"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_cac_puente_alcantara_romano_ingenieria",
+        "nombre": "cómo levantaron el puente romano de Alcántara",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: El puente fue concebido para integrar la calzada romana que enlazaba Norba Caesarina con Conimbriga, superando el vertiginoso encajonamiento del río Tajo sin alterar la red viaria provincial.",
+          "Autoría y equipos: La proyectación y dirección técnica recayeron en el arquitecto romano Cayo Julio Lacer entre los años 103 y 106 d. C., costeado por doce municipios de la zona en honor al emperador Trajano.",
+          "Dimensiones y magnitudes: La estructura posee una longitud total de 194 metros y alcanza una altura máxima de 58,2 metros desde el lecho del río hasta la calzada, con un tablero horizontal de 8 metros de anchura.",
+          "Sistema estructural: Se compone de seis arcos de medio punto con vanos desiguales de luces decrecientes, donde los dos arcos centrales alcanzan luces de 28,8 y 27,4 metros sobre el cauce del río.",
+          "Cimentación: Las cinco pilas rectangulares apoyan directamente sus arranques sobre las formaciones rocosas pizarrosas del cauce, incorporando tajamares triangulares en el frente de aguas arriba para disipar la fuerza de la corriente.",
+          "Materiales: La obra fue ejecutada mediante sillería de granito almohadillada de unos 45 a 50 cm asentada en seco a soga y tizón, empleando en las hiladas inferiores grapas metálicas con forma de cola de milano.",
+          "Proceso constructivo: El levantamiento requirió cimbras monumentales de madera apoyadas en los resaltes de las pilas para sostener el volteo de dovelas de granito antes del cierre con clave en la coronación de cada arco.",
+          "Reto y solución: Para soportar crecidas extremas del Tajo sin arriesgar la estabilidad del puente, Lacer fijó el gálibo a más de 45 metros de altura y proyectó vanos hiperamplios que maximizan la evacuación del caudal hidráulico.",
+          "Sistema estructural: Un arco honorífico de 14 metros de altura situado sobre el pilar central actúa como hito conmemorativo y eje vertical ordenador que equilibra visual y formalmente el escalonamiento de los vanos.",
+          "Reto y solución: Tras la voladura del segundo arco por motivos bélicos en 1809 y su posterior sustitución temporal por madera, la estructura fue fielmente reconstruida en sillería en 1860 bajo la dirección del ingeniero Alejandro Millán."
+        ],
+        "fuentes": [
+          "https://listaroja.hispanianostra.org/ficha/puente-de-alcantara/",
+          "https://auladehistoria.org/puente-de-alcantara-comentario/",
+          "https://caminosnaturales.es/recursos/fichas/etapa39/40_05.html",
+          "https://arqueotrip.com/puente-romano-de-alcantara/",
+          "https://estudioaia.com/nuevo-puente-de-alcantara/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.857114+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-romano-de-alcantara-2000-anos-en-pie.png",
   },
 
@@ -21179,6 +21940,40 @@ export const POIS = [
     intereses: ["arco_atirantado_sobre_tablero_190m_vano", "santiago_calatrava_1991", "480m_longitud_total", "dialogo_con_puente_romano_2000_años_al_lado", "hormigon_blanco_postesado"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_bad_puente_lusitania_estructura_ingenieria",
+        "nombre": "cómo trabaja el Puente Lusitania",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: El proyecto surgió en 1988 por encargo de la Junta de Extremadura para absorber el tráfico rodado tras la capitalidad autonómica de Mérida y proteger el histórico Puente Romano, desviando una carga diaria de unos 15.000 vehículos hacia esta nueva infraestructura sobre el río Guadiana.",
+          "Autoría y equipos: El diseño de arquitectura e ingeniería fue realizado íntegramente por Santiago Calatrava, proyectando un sistema de arco atirantado que sustituyó la necesidad del antiguo paso vehicular por una solución de 480 metros de longitud total dividida en siete vanos.",
+          "Sistema estructural: El tablero posee un ancho total de 24 metros organizado en una franja peatonal central elevada 1,5 metros respecto a las calzadas laterales, separando físicamente a los peatones del tráfico mediante una pasarela de hormigón colocada sobre el eje de la estructura.",
+          "Sistema estructural: El camino de cargas se articula a través de un tubo de torsión o cajón central de hormigón pretensado con un canto de 4,45 metros y un ancho de 6,6 metros, desde el cual salen voladizos laterales en ala que sustentan los carriles vehiculares de ambas calzadas.",
+          "Dimensiones y magnitudes: El arco central de acero alcanza una luz principal de 190 metros y una altura libre de 34 metros sobre el tablero, del cual cuelgan 23 pares de péndulas de acero con acoplamientos de hormigón para transferir la carga suspendida directamente al cajón resistente.",
+          "Cimentación: El viaducto transmite la totalidad de sus cargas al terreno del lecho del Guadiana descansando sobre seis pilotes de hormigón anclados profundamente en el lecho rocoso del río.",
+          "Proceso constructivo: Durante la secuencia de montaje entre 1988 y 1991, el tablero central se ejecutó mediante dovelas prefabricadas de hormigón postensado conectadas en su sitio, sobre las que posteriormente se erigió la estructura metálica del arco y se tensionaron las 46 péndulas de soporte.",
+          "Reto y solución: El reto de salvar el amplio cauce del Guadiana sin entorpecer el paisaje llano circundante se solucionó confinando el tramo suspendido a un único vano de 190 metros sostenido por el arco de acero, dejando los vanos de acceso apoyados sobre estribos y pilares convencionales de hormigón."
+        ],
+        "fuentes": [
+          "https://calatrava.com/projects/merida-lusitania-bridge.html",
+          "https://es.wikipedia.org/wiki/Puente_Lusitania",
+          "http://www.puentemania.com/2613",
+          "https://www.televisionextremena.com/2021/12/11/video-el-puente-lusitania-cumple-30-anos/",
+          "https://www.laminasyaceros.com/blog/puente-lusitania"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.856782+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-de-lusitania-de-calatrava-merida.png",
   },
 
@@ -21199,6 +21994,46 @@ export const POIS = [
     intereses: ["primer_puente_transbordador_del_mundo_1893", "gondola_transporta_coches_y_personas_sin_tocar_el_agua", "160m_longitud_45m_altura", "patrimonio_humanidad_unesco_2006", "diseño_alberto_palacio_discipulo_eiffel"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_biz_puente_vizcaya_estructura_ingenieria",
+        "nombre": "cómo funciona y se construyó el Puente de Vizcaya",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La construcción del puente respondió a la necesidad de conectar las poblaciones de Portugalete y Getxo en el estuario del río Nervión sin interrumpir el intenso tráfico de barcos de gran calado que navegaban hacia el puerto de Bilbao.",
+          "Autoría y equipos: El proyecto fue concebido y diseñado por el arquitecto Alberto de Palacio y Elissague en 1887, mientras que la ingeniería de detalle, la fabricación de cables y la ejecución de la obra corrieron a cargo del ingeniero francés Ferdinand Arnodin.",
+          "Dimensiones y magnitudes: La estructura supera la ría mediante una luz de 160 metros sostenida por cuatro torres metálicas de celosía remachada de 61 metros de altura, manteniendo la viga horizontal suspendida a 45 metros sobre el nivel del mar en pleamar.",
+          "Sistema estructural: El camino de cargas transmite las acciones vivas de la barquilla al carretón superior; de ahí pasan a la viga de celosía suspendida, que traslada los esfuerzos a las torres y cables de sustentación anclados en macizos de cimentación en ambas orillas.",
+          "Materiales: Las torres se fabricaron con perfiles de hierro forjado, la viga del tablero con acero dulce laminado de Altos Hornos de Vizcaya y la suspensión utilizó cables espirales de acero desarrollados en los talleres de Ferdinand Arnodin.",
+          "Cómo funciona: El transporte se realiza mediante una barquilla suspendida por 18 cables a 40 metros por debajo del tablero superior, la cual es arrastrada por un carretón de ruedas que circula por raíles colocados en la parte inferior del dintel elevado.",
+          "Reto y solución: Para evitar los viaductos de acceso de gran longitud que requeriría un puente fijo de 45 metros de gálibo, Alberto de Palacio ideó suspender una plataforma móvil liviana a nivel de orilla en lugar de subir el tráfico rodado a la altura del tablero.",
+          "Proceso constructivo: Durante el montaje entre 1890 y 1893, los perfiles laminados en taller se ensamblaron en el emplazamiento mediante remaches al rojo vivo, izándose las torres por tramos antes de tender los cables y suspender el dintel central.",
+          "Cimentación: Las cuatro torres apoyan sobre zapatas y bloques de cimentación adaptados a la geología divergente de las orillas: una margen rocosa en Portugalete y un terreno bajo y arenoso en la margen de Getxo.",
+          "Proceso constructivo: Tras ser dinamitados sus cables en junio de 1937 durante la Guerra Civil y caer el tablero a la ría, la reconstrucción fue proyectada por el ingeniero José Juan-Aracil en 1939 y reabierta en 1941, introduciendo una viga de celosía tipo Warren."
+        ],
+        "fuentes": [
+          "https://puente-colgante.com/historia/",
+          "https://puente-colgante.com/aspectos-tecnicos-e-innovacion/",
+          "https://puente-colgante.com/la-singularidad-del-puente-bizkaia/",
+          "https://puente-colgante.com/el-dise%C3%B1ador-original/",
+          "https://www.cultura.gob.es/cultura/areas/patrimonio/mc/patrimoniomundial/bienes-declarados/por-ano-de-inscripcion/vizcaya.html",
+          "https://es.wikipedia.org/wiki/Puente_de_Vizcaya",
+          "https://www.euskadi.eus/puente-colgante-de-bizkaia/web01-a2lurbiz/es/",
+          "https://www.turismo.euskadi.eus/es/patrimonio-cultural/puente-bizkaia/aa30-12375/es/",
+          "https://ingeoexpert.com/2021/05/18/el-puente-colgante-de-bilbao-puente-bizkaia-quien-y-como-se-construyo/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.650529+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-colgante-de-bizkaia-primer-transbordador-del-mundo.png",
   },
 
@@ -21239,6 +22074,39 @@ export const POIS = [
     intereses: ["arco_superior_tablero_intermedio", "conecta_yeste_y_letur_separados_desde_1932", "puente_cuelga_sobre_el_embalse", "hormigon_armado_vano_130m", "zona_inundada_por_presa_fuensanta"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_alb_puente_vicaria_estructura_ingenieria",
+        "nombre": "el arco del Puente de La Vicaría",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La construcción de la presa de La Fuensanta en 1932 anegó los caminos históricos del municipio de Yeste con Letur y Nerpio, obligando a dar rodeos de decenas de kilómetros; el puente de La Vicaría restableció la conexión directa reduciendo los trayectos en unos 50 minutos.",
+          "Autoría y equipos: La propiedad del proyecto pertenece a la Confederación Hidrográfica del Segura; la idea y diseño inicial fueron de Juan Jódar Martínez, mientras que el diseño final y el método constructivo los proyectó la dirección técnica de Ferrovial-Agroman S.A., encabezada por Santiago Pérez-Fadón Martínez y José Emilio Herrero Beneítez.",
+          "Dimensiones y magnitudes: El viaducto alcanza una longitud total de 260 m con una anchura de 11 m y presenta una distribución de luces de 20 + 25 + 168 + 25 + 20 m, situando la rasante a un gálibo vertical de 40 m sobre el cauce del río Segura.",
+          "Sistema estructural: La luz principal del arco es de 168 m con una flecha total de 48,9 m, elevándose 120 m de la luz y 25 m de la flecha por encima del tablero; además, los dos arcos presentan una inclinación transversal de 10º hacia el plano medio de la calzada para mejorar la estabilidad frente al vuelco.",
+          "Materiales: Los arcos están formados por tubos cuasirrectangulares de acero corten S trescientos cincuenta y cinco, de uno coma dos metros de anchura constante y canto variable entre uno coma dos y dos coma cuatro metros. Se rellenaron con seiscientos metros cúbicos de hormigón autocompactante para aportar rigidez a compresión y evitar la corrosión interior.",
+          "Cimentación: Cada arranque de los arcos está empotrado mediante 28 barras de acero en zapatas de hormigón armado fijadas a la roca caliza; para neutralizar las fuerzas transversales del empuje inclinado de 10º hacia el exterior, ambas zapatas de cada margen se unen con un tirante de hormigón armado.",
+          "Cómo funciona: El tablero mixto está colgado del arco principal mediante 12 pares de péndolas consistentes en barras de acero al carbono de 85 mm de diámetro y cuenta con dos vigas metálicas longitudinales en U de 1,0 m de canto arriostradas por vigas en doble T.",
+          "Proceso constructivo: Se ensambló provisionalmente un arco metálico tipo 'bowstring' de 120 m de longitud sobre el lecho seco del embalse; este tramo central se elevó verticalmente 40 m mediante gatos hidráulicos para conectarlo con los tramos laterales construidos previamente en voladizo desde las laderas.",
+          "Reto y solución: Para evitar la instalación de apoyos permanentes o apeos provisionales en el cauce expuestos a crecidas repentinas del embalse, se diseñó el vertido del hormigón autocompactante en el interior de los arcos tubulares por bombeo en fases simétricas una vez suspendida la estructura."
+        ],
+        "fuentes": [
+          "https://www.hormigonyacero.com/index.php/ache/article/view/36",
+          "https://ingcivileng.com/el-puente-de-la-vicaria-en-el-embalse-de-la-fuensanta-yeste-albacete/",
+          "https://www.ecured.cu/Puente_de_La_Vicaria"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.859077+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/puente-de-la-vicaria-arco-sobre-el-embalse-de-fuensanta.png",
   },
 
@@ -21279,6 +22147,40 @@ export const POIS = [
     intereses: ["440m_vano_mayor_arco_hormigon_pretensado_europa_1983", "68m_sobre_embalse_barrios_luna", "autovia_a66_via_plata", "record_mundial_vano_libre_hormigon_al_inaugurarse", "construido_1979_1983"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_leo_puente_fernandez_casado_ingenieria",
+        "nombre": "el puente Ingeniero Carlos Fernández Casado",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: El proyecto surgió para permitir el paso de la autopista AP-66 sobre el embalse de Barrios de Luna en León, donde las fluctuaciones del nivel del agua y la presencia de bolos y terreno karstificado descartaron un viaducto convencional.",
+          "Autoría y equipos: El puente fue diseñado por el ingeniero de caminos Javier Manterola Armisén dentro del estudio Carlos Fernández Casado S.L., y su ejecución fue llevada a cabo por la constructora Huarte y Cía entre 1981 y 1983.",
+          "Dimensiones y magnitudes: La estructura presenta una longitud total de 643 metros, con un vano central atirantado de 440 metros de luz principal y dos vanos laterales de compensación de 101 metros acoplados a contrapesos.",
+          "Sistema estructural: El tablero de hormigón pretensado posee un ancho de 22 metros y un canto de 2,3 metros, lo que le otorga una esbeltez de L/200 reduciendo el peso propio de la superestructura.",
+          "Cómo funciona: El sistema estructural soporta las cargas sobre el dintel mediante 220 tirantes de acero que transmiten las fuerzas de tracción a dos torres o pilonas trapeciales de 123 metros de altura.",
+          "Proceso constructivo: El tablero se construyó mediante el procedimiento de avance en voladizos sucesivos suspendidos, utilizando carros de avance que hormigonaban dovelas de 4,02 metros de longitud.",
+          "Reto y solución: Para controlar las deformaciones y momentos de peso propio no equilibrados en la fase evolutiva de avance, se realizó el atirantado mediante sobretesados temporales en dos fases por cada dovela.",
+          "Sistema estructural: En el centro del vano principal se dispuso una articulación con rótula central que permite movimientos longitudinales por dilatación y fluencia, además de giros verticales, garantizando el libre movimiento térmico."
+        ],
+        "fuentes": [
+          "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYGvR0eaGgQicsANem1PGnCPgn2iG1eBOBouLCuusmuntegtcEY1OkoEard6PdAxTDFlsgHcCIBi9IAm30DaXTW6yui6CfC9Kb2ctjRJ-ePJHS1wQgkOkY2JgdVkXo11Y8rTRZzE1c0uwXcRsj871ycMuQkebHYMzYY9ys4P4Zf-dLe9r5RT3LnSJD2bSHXkyxAAemkGYVH1bczL5BYXyHY3CdrakUeESQ==",
+          "https://informesdelaconstruccion.revistas.csic.es/index.php/informesdelaconstruccion/article/view/1950",
+          "https://www.aucalsa.com/la-autopista/viaducto-c-fernandez/",
+          "https://es.wikipedia.org/wiki/Puente_Ingeniero_Carlos_Fern%C3%A1ndez_Casado",
+          "https://historiacivil.wordpress.com/2015/03/20/puente-ingeniero-fernandez-casado-3/"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.855796+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/viaducto-de-barrios-de-luna-arco-de-440m.png",
   },
 
@@ -21579,6 +22481,39 @@ export const POIS = [
     intereses: ["puente_arco_hormigon_armado_1928", "60m_sobre_rio_turia", "jose_maria_fuster_diseñador", "estilo_neomudéjar_columnas_arabizantes", "parte_del_acceso_historico_al_casco_medieval"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_ter_viaducto_fernando_hue_ingenieria",
+        "nombre": "la construcción del Viaducto Viejo de Teruel",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La construcción del viaducto surgió por la necesidad de conectar el casco antiguo de Teruel con la meseta de Pinilla para permitir el ensanche urbano hacia el sur, aprovechando administrativamente el proyecto de variante de los kilómetros 1 y 2 de la carretera Teruel-Sagunto sobre la profunda rambla de San Julián.",
+          "Autoría y equipos: El anteproyecto y diseño estructural fueron redactados en 1920 por el ingeniero de Caminos Fernando Hué de la Barrera, contando con el impulso político del director general de Obras Públicas Carlos Castel. La adjudicación de las obras recayó en la empresa y contratista encabezados por el ingeniero Mariano Luiña.",
+          "Dimensiones y magnitudes: El arco central de hormigón armado cuenta con una luz teórica de 79 metros y una flecha máxima de 26,5 metros. El ancho total del tablero es de 8 metros, distribuido en una calzada de 5 metros para vehículos y dos aceras laterales voladas de 1,5 metros cada una.",
+          "Sistema estructural: El viaducto funciona estructuralmente como un gran arco central biempotrado sobre el que se apoyan ternas de pilares verticales de hormigón armado de hasta 18 metros de altura. Estos pilares transmiten al arco principal las cargas procedentes del tablero superior, mientras que los laterales se completan con cuatro arcos secundarios de 14,40 metros de luz.",
+          "Cimentación: Las cimentaciones se ejecutaron mediante hormigón en masa escalonado directamente asentado sobre los firmes estratos de arcilla compacta del terreno. Este planteamiento requirió una excavación de 2.572,33 metros cúbicos de tierra en la sección central para garantizar el empotramiento de los apoyos del arco.",
+          "Materiales: El volumen de la zona central requirió 2.228,00 metros cúbicos de hormigón armado y 72.908,71 kilogramos de acero en armaduras. La fábrica auxiliar de soporte y paramento combinó 2.338,14 metros cúbicos de mampostería ordinaria con sillares labrados de piedra caliza blanca en las esquinas de los pilares.",
+          "Proceso constructivo: El vertido y fraguado del arco de hormigón armado se realizó sobre una compleja cimbra de madera apoyada sobre el terreno. El presupuesto material destinado a las cimbras, moldes y medios auxiliares alcanzó la cifra de 100.000 pesetas dentro de una contrata total de 909.063,73 pesetas.",
+          "Reto y solución: Para evitar colocar pilas intermedias en el fondo inestable de la rambla de San Julián, cubierta por un gran espesor de acarreos, Fernando Hué adoptó como solución la construcción de un único arco parabólico de gran luz, inspirado geométricamente en el puente suizo Gmündertobel de Emil Mörsch."
+        ],
+        "fuentes": [
+          "https://www.citoparagon.es/teruel-si-existe-90-anos-de-la-obra-monumental-de-fernando-hue/",
+          "https://patrimonioculturaldearagon.es/bienes-culturales/viaducto-viejo-o-de-fernando-hue/",
+          "https://www.dehuesca.es/~sipca/INFORMACION/7-INM-TER-029-216-012/MUESTRA/7-INM-TER-029-216-012.html",
+          "https://es.wikipedia.org/wiki/Viaducto_de_Fernando_Hu%C3%A9"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.859509+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/viaducto-de-teruel-1928-sobre-el-turia.png",
   },
 
@@ -21839,6 +22774,41 @@ export const POIS = [
     intereses: ["presa_arco_120m_altura_rio_cabriel", "858_hm3_capacidad_regadio_levante", "viaducto_A3_sobre_el_embalse_250m_altura_obra_arte", "cañon_cabriel_LIC_espacio_natural", "inaugurada_1973_abastece_cuenca_del_jucar"],
     // sponsor: { sponsorId, sponsorNombre, mensaje, url },
     // eventos: [{ id, titulo, descripcion, startDate, endDate, importancia }],
+    sub_pois: [
+      {
+        "id": "es_val_presa_contreras_ingenieria",
+        "nombre": "la presa de gravedad de Contreras",
+        "tipo": "ingenieria",
+        "perfil": "ingenieria",
+        "tema_requerido": "ingenieria",
+        "nivel": 1,
+        "categorias": [
+          "ingenieria",
+          "arquitectura",
+          "construccion"
+        ],
+        "intereses": [
+          "Necesidad del proyecto: La presa de Contreras fue proyectada a mediados del siglo XX por la Confederación Hidrográfica del Júcar con la finalidad primordial de regular los aportes del río Cabriel para incrementar las zonas de regadío en la cuenca del Júcar y abastecer de agua potable a Valencia a través del canal Júcar-Turia.",
+          "Autoría y equipos: El proyecto técnico original de la estructura fue redactado por el ingeniero de caminos Antonio Inglés Company y la ejecución de las obras públicas de edificación hidráulica fue adjudicada a la empresa contratista Portolés y Cía.",
+          "Dimensiones y magnitudes: La presa principal cuenta con una altura sobre cimientos de 129 metros y una cota de coronación fijada a 679 metros sobre el nivel del mar, extendiéndose en una longitud de coronación de 241 metros con un ancho de calzada superior de 15,60 metros.",
+          "Sistema estructural: La presa principal es una estructura de hormigón vibrado, de gravedad y planta recta. Su cuerpo transmite los empujes del embalse al terreno principalmente mediante su propio peso sobre la base del cauce del río Cabriel.",
+          "Cimentación: La cota de cimentación de la presa principal se fijó a 550 metros sobre el nivel del mar en la franja del cauce, emplazándose sobre formaciones de rocas calizas y margas de la serie mesozoica del cañón del río Cabriel.",
+          "Proceso constructivo: Las obras de construcción se ejecutaron entre los años 1958 y 1974, fabricándose el hormigón necesario para la masa de la presa en una planta cementera auxiliar levantada expresamente en la propia zona del cañón.",
+          "Reto y solución: Para solventar el cierre hidrogeológico en la margen derecha del embalse, se proyectó la presa auxiliar del Collado de la Venta, una estructura mixta de gravedad con 43 metros de altura sobre cimientos reforzada aguas arriba con un espaldón impermeabilizante de arcilla y escollera.",
+          "Cómo funciona: El aliviadero principal de la presa descarga en lámina vertiente sobre el paramento aguas abajo para dirigir el caudal hacia la rápida de descarga, bajo la cual se integró el edificio del aprovechamiento hidroeléctrico de la central hidráulica de pie de presa."
+        ],
+        "fuentes": [
+          "https://es.wikipedia.org/wiki/Embalse_de_Contreras",
+          "https://presamania.wordpress.com/2015/08/26/presa-de-contreras/",
+          "https://metidosencarretera.blogspot.com/2016/03/la-variante-de-contreras-en-la-n-iii-2.html",
+          "http://www.granellingenieros.com/descargas/TRANSFORMACION_DE_ALIVIADEROS_EN_DESAGUE.pdf",
+          "https://igme.maps.arcgis.com/home/item.html?id=a645ffed81eb42b38ef05b4b73b516ff",
+          "https://www.altimetrias.net/aspbk/verPuerto.asp?id=516"
+        ],
+        "gemini_modelo": "gemini-3.6-flash",
+        "gemini_fecha": "2026-11-01T11:12:59.860201+00:00"
+      }
+    ],
     imagenUrl: "https://raw.githubusercontent.com/CarlosVelasco1998/raidio-backend/main/poi-images/presa-de-contreras-arco-en-el-canon-del-cabriel.png",
   },
 

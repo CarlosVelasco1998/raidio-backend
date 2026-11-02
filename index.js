@@ -1342,7 +1342,38 @@ function normalizarLocalidad(value) {
     .trim();
 }
 
-function validarEventosGemini(text, { todayIso, limitIso, expectedLocality }) {
+const LIVE_LANGUAGE_WORDS = {
+  en: new Set([
+    "the", "and", "is", "are", "with", "for", "from", "this", "that",
+    "there", "will", "through", "around", "also", "taking", "place",
+    "on", "of", "to", "in", "over", "these", "has", "have", "its",
+    "events", "event", "during", "until", "between", "confirmed", "found",
+  ]),
+  es: new Set([
+    "el", "la", "los", "las", "es", "son", "con", "para", "desde",
+    "este", "esta", "estos", "estas", "que", "hay", "se", "del", "una",
+    "uno", "un", "por", "durante", "tambien", "hasta", "entre", "evento",
+    "eventos", "celebra", "celebrara", "confirmado", "encontrado",
+  ]),
+};
+
+function liveTextMatchesLanguage(text, lang = "es") {
+  const words = limpiar(text)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .match(/\p{L}+/gu) || [];
+  if (words.length < 5) return true;
+
+  const enScore = words.filter((word) => LIVE_LANGUAGE_WORDS.en.has(word)).length;
+  const esScore = words.filter((word) => LIVE_LANGUAGE_WORDS.es.has(word)).length;
+  if (lang === "en") {
+    return !(esScore >= 4 && esScore > enScore + 1);
+  }
+  return !(enScore >= 4 && enScore > esScore + 1);
+}
+
+function validarEventosGemini(text, { todayIso, limitIso, expectedLocality, lang = "es" }) {
   const payload = parseGeminiEventPayload(text);
   const isoPattern = /^\d{4}-\d{2}-\d{2}$/;
   const expected = normalizarLocalidad(expectedLocality);
@@ -1372,12 +1403,19 @@ function validarEventosGemini(text, { todayIso, limitIso, expectedLocality }) {
   // párrafo: podría mencionarlo aunque ya no figure entre los datos validados.
   const allPayloadEventsAreValid = payload.events.length <= 3 &&
     payload.events.length === valid.length;
+  const narrationLanguageOk = liveTextMatchesLanguage(payload.narration, lang);
   const narration = allPayloadEventsAreValid &&
       narrationWords >= 8 && narrationWords <= 140 &&
+      narrationLanguageOk &&
       !/\[\[|```|^\s*[-*]\s/m.test(payload.narration)
     ? payload.narration
     : "";
-  return { parsed: payload.parsed, events: valid.slice(0, 3), narration };
+  return {
+    parsed: payload.parsed,
+    events: valid.slice(0, 3),
+    narration,
+    languageMismatch: Boolean(payload.narration) && !narrationLanguageOk,
+  };
 }
 
 async function buscarEventosGemini({ zona, now, lang, poi, attempt = 0 }) {
@@ -1394,7 +1432,7 @@ async function buscarEventosGemini({ zona, now, lang, poi, attempt = 0 }) {
   const centro = limpiar(poi) || municipio;
   const retryInstruction = attempt > 0
     ? (isEN
-        ? "This is a verification retry: Google returned relevant result pages before. Inspect their dated agendas carefully and return valid JSON instead of giving up early."
+        ? "This is a verification retry: Google returned relevant result pages before. Inspect their dated agendas carefully, return valid JSON instead of giving up early, and ensure every sentence in narration and detail is written in English."
         : "Este es un segundo intento de verificación: Google ya devolvió páginas relevantes. Revisa con cuidado sus agendas fechadas y devuelve JSON válido en vez de abandonar antes de tiempo.")
     : "";
   const prompt = isEN
@@ -1406,6 +1444,8 @@ Include local fiestas, fairs, festivals, concerts, theatre, exhibitions, book fa
 
 Return ONLY one valid JSON object, without markdown or commentary, using exactly this structure:
 {"events":[{"name":"event name","locality":"town","startDate":"YYYY-MM-DD","endDate":"YYYY-MM-DD","detail":"one short verified detail"}],"narration":"one natural spoken paragraph"}
+
+MANDATORY LANGUAGE RULE: write the entire narration and every detail value in English, even when Google sources are in Spanish. Keep only official event names, venue names and place names in their original language. Never return a Spanish sentence in narration or detail.
 
 The events array may contain a maximum of 3 verified events, ordered by relevance to a traveller near ${centro} and then by date. The narration is the actual text SANCHO will speak after describing the point of interest. Write one fluid radio-style paragraph of roughly 55 to 100 words, selecting and connecting the most interesting one, two or three events. You have freedom over its opening, rhythm and structure: vary them naturally according to the place and events. It must feel like a continuation of the journey, not a database response.
 
@@ -1489,11 +1529,14 @@ No uses título, lista, enumeración, dos puntos tras una etiqueta genérica ni 
       todayIso: today,
       limitIso: limit,
       expectedLocality: municipio,
+      lang,
     });
     const needsRetry = !result.parsed || result.events.length === 0 ||
       (result.events.length > 0 && !result.narration);
     if (needsRetry && attempt === 0 && _geminiCount < GEMINI_DAILY_CAP) {
-      _geminiLast.error = "events_or_narration_need_retry";
+      _geminiLast.error = result.languageMismatch
+        ? "narration_language_mismatch"
+        : "events_or_narration_need_retry";
       console.warn(`Gemini eventos necesita verificación adicional para ${zona}. Búsquedas: ${queries.join(" | ")}`);
       console.log(`🔁 Reintentando una vez la verificación de eventos para ${zona}`);
       return buscarEventosGemini({ zona, now, lang, poi, attempt: 1 });
@@ -1575,7 +1618,8 @@ function liveSpeechFromEvents(events, zona, lang = "es") {
   const selected = events.slice(0, 2);
   const normalizarDetalle = (value) => {
     const detail = limpiar(value).replace(/[.]+$/, "");
-    return detail ? detail.charAt(0).toLocaleLowerCase(lang === "en" ? "en" : "es") + detail.slice(1) : "";
+    if (!detail || !liveTextMatchesLanguage(detail, lang)) return "";
+    return detail.charAt(0).toLocaleLowerCase(lang === "en" ? "en" : "es") + detail.slice(1);
   };
 
   if (lang === "en") {
@@ -1619,7 +1663,9 @@ async function getLiveEventsBundle({ latitude, longitude, timestamp, poiNombre, 
   const poi = limpiar(poiNombre);
   const day = isoDateInTimezone(now);
   // Un único resultado por municipio, idioma y día sirve a todos sus POIs.
-  const key = `live_v4_ai_paragraph|${normalizarLocalidad(zona)}|${lang}|${day}`;
+  // v5 invalida cualquier párrafo que Gemini hubiera cacheado en un idioma
+  // distinto al solicitado antes de incorporar la validación lingüística.
+  const key = `live_v5_language_guard|${normalizarLocalidad(zona)}|${lang}|${day}`;
   const cached = await getCachedLive(key);
   if (cached) return { ...cached, cache: "hit" };
 
@@ -1632,11 +1678,15 @@ async function getLiveEventsBundle({ latitude, longitude, timestamp, poiNombre, 
       return { context: "", text: "", events: [], zona, cache: "error" };
     }
     const events = result.events;
+    const fallbackText = liveSpeechFromEvents(events, zona, lang);
+    const generatedText = result.narration || fallbackText;
     const bundle = {
       context: liveContextFromEvents(events, zona, lang),
       // Gemini escribe el párrafo con libertad después de buscar; la plantilla
       // local queda solo como salvavidas si devuelve datos válidos sin locución.
-      text: result.narration || liveSpeechFromEvents(events, zona, lang),
+      text: liveTextMatchesLanguage(generatedText, lang)
+        ? generatedText
+        : fallbackText,
       events,
       zona,
       generatedAt: new Date().toISOString(),
